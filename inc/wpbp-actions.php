@@ -59,15 +59,11 @@ function wpbp_get_scripts() {
 	echo $scripts;
 }
 
-function script_tag($file) {
-	if ( is_array($args) ) {
-		extract(array_merge(array(
-			'src'	=> '',
-			'type'	=> 'text/javascript'
-		), $args));
-	} elseif ( is_string($args) ) {
-		$src = $args;
-	} else { return; }
+function script_tag($args) {
+	extract( array_merge( array(
+		'src'	=> ( is_string($args) ? $args : '' ),
+		'type'	=> 'text/javascript'
+	), ( is_array($args) ? $args : array() ) ) );
 	return "<script type=\"" . $type . "\" src=\"" . $src . "\"></script>\n";
 }
 
@@ -97,16 +93,12 @@ function wpbp_get_stylesheets() {
 }
 
 function stylesheet_link_tag($args) {
-	if ( is_array($args) ) {
-		extract(array_merge(array(
-			'href'	=> '',
-			'rel'	=> 'stylesheet',
-			'media'	=> 'all',
-			'type'	=> 'text/css'
-		), $args));
-	} elseif ( is_string($args) ) {
-		$href = $args;
-	} else { return; }
+	extract( array_merge( array(
+		'href'	=> ( is_string($args) ? $args : '' ),
+		'rel'	=> 'stylesheet',
+		'media'	=> 'all',
+		'type'	=> 'text/css'
+	), ( is_array($args) ? $args : array() ) ) );
 	return "<link rel=\"" . $rel . "\" href=\"" . $href . "\" type=\"" . $type . "\" media=\"" . $media . "\" />\n";
 }
 
