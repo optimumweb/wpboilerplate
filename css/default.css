@@ -1,3 +1,12 @@
+
+/*
+	wpboilerplate - default.css
+
+	You shouldn't have to edit this file.
+	Please use custom.css or custom.less to style your site.
+
+*/
+
 /* =============================================================================
    Base
    ========================================================================== */
@@ -135,16 +144,7 @@ table { border-collapse: collapse; border-spacing: 0; }
    Header
    ========================================================================== */
 
-#banner { position: relative; z-index: 1000; background: #000; }
-
-#site-info { padding: 30px; color: #fff; }
-#site-title { margin-bottom: 10px; }
-#site-title h2 a { font-size: 30px; color: #fff; text-decoration: none; }
-#site-description { font-size: 14px; font-weight: normal; }
-
-#nav-main {
-	background: #000;
-}
+#banner { position: relative; z-index: 1000; }
 
 #nav-main ul {
 	position: relative;
@@ -153,26 +153,23 @@ table { border-collapse: collapse; border-spacing: 0; }
 	padding: 0;
 	float: left;
 	width: 100%;
-	background: #000;
 }
-#nav-main ul li { display: block; float: left; margin: 0; *zoom: 1; }
-#nav-main ul li:hover { position: relative; }
+#nav-main ul li {
+	display: block;
+	float: left;
+	margin: 0;
+	*zoom: 1;
+}
+
+#nav-main ul li:hover {
+	position: relative;
+}
+
 #nav-main ul li a {
 	text-decoration: none;
 	display: block;
-	padding: 8px 14px;
-	color: #fff;
 	margin: 0;
 }
-#nav-main ul li a:hover,
-#nav-main ul li.current-menu-item > a,
-#nav-main ul li.current-menu-parent > a,
-#nav-main ul li.current-menu-ancestor > a,
-#nav-main ul li:hover > a {
-	color: #fff;
-}
-
-#nav-main ul li.current-menu-item > a { font-weight: bold; }
 
 #nav-main ul ul {
 	position: absolute;
@@ -181,12 +178,12 @@ table { border-collapse: collapse; border-spacing: 0; }
 	left: 0;
 	width: 200px;
 	padding: 0;
-	background: rgba(0,0,0,0.9);
 }
-#nav-main ul ul li { float: none; }
-#nav-main ul ul li a {
-	padding: 6px 14px;
+
+#nav-main ul ul li {
+	float: none;
 }
+
 #nav-main ul ul li a:hover,
 #nav-main ul ul li.current-menu-item > a,
 #nav-main ul ul li.current-menu-parent > a,
@@ -195,27 +192,20 @@ table { border-collapse: collapse; border-spacing: 0; }
 	color: #fff;
 }
 
-#nav-main ul ul ul { left: 100%; top: 0; }
-#nav-main ul li:hover > ul { visibility: visible; }
-
-#nav-main ul ul ul li a:hover,
-#nav-main ul ul ul li.current-menu-item > a,
-#nav-main ul ul ul li.current-menu-parent > a,
-#nav-main ul ul ul li.current-menu-ancestor > a,
-#nav-main ul ul ul li:hover > a {
-	color: #fff;
+#nav-main ul ul ul {
+	left: 100%;
+	top: 0;
 }
 
-#subnav { padding: 10px 0; background: #eee; font-size: 90%; }
-#subnav #breadcrumb { float: left; padding: 2px 20px; }
-#subnav #search { float: right; padding: 0 20px; }
+#nav-main ul li:hover > ul {
+	visibility: visible;
+}
 
 
 /* =============================================================================
    Content
    ========================================================================== */
 
-#content { background: #fff; }
 #content .container { position: relative; padding: 0; }
 
 
@@ -224,21 +214,14 @@ table { border-collapse: collapse; border-spacing: 0; }
    ========================================================================== */
    
 #main { position: relative; }
-#main .container { padding: 20px; }
-
-#main .page-title { font-size: 125%; color: #000; margin: 0; }
-
-#main p { margin-bottom: 20px; }
-
-#main .container .article-header { font-size: 110%; font-weight: bold; }
 
 /* =============================================================================
    Sidebar
    ========================================================================== */
    
-#sidebar { position: relative; padding: 20px 0; }
+#sidebar { position: relative; }
 #sidebar .container { width: auto; padding: 0; }
-#sidebar .widget { clear: both; margin-bottom: 20px; }
+#sidebar .widget { clear: both; }
 #sidebar .widget .gform_wrapper ul { padding: 0; list-style-type: none; }
 
 
@@ -246,20 +229,7 @@ table { border-collapse: collapse; border-spacing: 0; }
    Posts
    ========================================================================== */
    
-.hentry header { margin-bottom: 1.5em; }
-.hentry h1 { line-height: 1.2em; margin-bottom: 0.2em; }
-.hentry h2:first-child { line-height: 1.2em; margin-bottom: 0; }
-.hentry h2 a { text-decoration: none; }
 
-.hentry .entry-meta { font-size: 90%; }
-.hentry .entry-meta time { display: inline; position: relative; }
-
-.hentry .entry-tags { font-size: 90%; }
-
-.hentry .entry-author { padding: 20px; background: #F5F2DD; border: 1px solid #DAD1B7; }
-.hentry .entry-author .fn { margin-bottom: 5px; }
-.hentry .entry-author ul { margin-top: 5px; }
-.hentry .entry-author ul li { margin-right: 5px; }
 
 
 /* =============================================================================
@@ -316,12 +286,7 @@ figure.gallery-item figcaption { display: none; }
    Footer
    ========================================================================== */
 
-#content-info { position: relative; background: #F5F2DD; }
-#content-info #footer, #content-info #subfooter { padding: 20px 0; }
-#content-info #footer { border: solid #DAD1B7; border-width: 1px 0; }
-#content-info #subfooter { border-top: 1px solid #fff; }
-#content-info #subfooter #copy { padding: 0 20px; }
-
+#content-info { position: relative; }
 
 
 /* =============================================================================
@@ -363,25 +328,6 @@ figure.gallery-item figcaption { display: none; }
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
-
-
-
-/* =============================================================================
-   PLACEHOLDER Media Queries for Responsive Design.
-   These override the primary ('mobile first') styles
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 480px) {
-	/* Style adjustments for viewports 480px and over go here */
-
-}
-
-@media only screen and (min-width: 768px) {
-	/* Style adjustments for viewports 768px and over go here */
-
-}
-
 
 
 /* =============================================================================
