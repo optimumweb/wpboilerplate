@@ -8,7 +8,7 @@
 	
 <meta charset="utf-8">
 
-<title><?php wp_title(); ?></title>
+<title><?php wp_title(''); ?></title>
 
 <?php wpbp_stylesheets(); ?>
 
