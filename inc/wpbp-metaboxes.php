@@ -35,7 +35,7 @@ function wpbp_display_meta_boxes() {
 	?>
 	<div class="form-field form-required">
 		<label><?php echo $info['title']; ?></label>
-		<input type="text" name="[<?php echo $key; ?>][<?php echo $name; ?>]" value="<?php echo $data[$name]; ?>" />
+		<input type="text" name="[<?php echo $key; ?>][<?php echo $name; ?>]" value="<?php echo isset($data[$name]) ? $data[$name] : ""; ?>" />
 		<p><?php echo $info['description']; ?></p>
 	</div>
 	<?php
