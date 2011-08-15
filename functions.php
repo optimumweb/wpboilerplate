@@ -7,6 +7,7 @@ require_once( get_template_directory() . '/inc/wpbp-htaccess.php' );	// rewrites
 require_once( get_template_directory() . '/inc/wpbp-hooks.php' );		// hooks
 require_once( get_template_directory() . '/inc/wpbp-actions.php' );		// actions
 require_once( get_template_directory() . '/inc/wpbp-extend.php' );		// extend functions
+require_once( get_template_directory() . '/inc/wpbp-metaboxes.php' );	// custom write panels
 require_once( get_template_directory() . '/inc/wpbp-widgets.php' );		// widgets
 require_once( get_template_directory() . '/inc/wpbp-shortcodes.php' );	// shortcodes
 require_once( get_template_directory() . '/inc/wpbp-breadcrumb.php' );	// breadcrumb
