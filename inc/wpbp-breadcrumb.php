@@ -1,6 +1,6 @@
 <?php
 
-function wpbp_custom_breadcrumb($before, $after) {
+function wpbp_custom_breadcrumb($before = '', $after = '') {
 
 	echo $before;
 
