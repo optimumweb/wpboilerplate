@@ -59,9 +59,16 @@ function wpbp_get_scripts() {
 	echo $scripts;
 }
 
-function script_tag($file, $tabs = 0, $newline = true) {
-	$indent = str_repeat("\t", $tabs);
-	return $indent . "<script type=\"text/javascript\" src=\"" . $file . "\"></script>" . ($newline ? "\n" : "");
+function script_tag($file) {
+	if ( is_array($args) ) {
+		extract(array_merge(array(
+			'src'	=> '',
+			'type'	=> 'text/javascript'
+		), $args));
+	} elseif ( is_string($args) ) {
+		$src = $args;
+	} else { return; }
+	return "<script type=\"" . $type . "\" src=\"" . $src . "\"></script>\n";
 }
 
 function wpbp_get_stylesheets() {
@@ -79,7 +86,7 @@ function wpbp_get_stylesheets() {
 	$styles .= stylesheet_link_tag( get_template_directory_uri() . "/css/default.css" );
 
 	if ( $wpbp_options['js_plugins']['lesscss'] ) {
-		$styles .= stylesheet_link_tag( get_stylesheet_directory_uri() . "/css/custom.less" );
+		$styles .= stylesheet_link_tag( array( 'href' => get_stylesheet_directory_uri() . "/css/custom.less", 'rel' => 'stylesheet/less' ) );
 	} else {
 		$styles .= stylesheet_link_tag( get_stylesheet_directory_uri() . "/css/custom.css" );
 	}
@@ -89,9 +96,18 @@ function wpbp_get_stylesheets() {
 	echo $styles;
 }
 
-function stylesheet_link_tag($file, $tabs = 0, $newline = true) {
-  $indent = str_repeat("\t", $tabs);
-  return $indent . "<link rel=\"stylesheet\" href=\"" . $file . "\" type=\"text/css\">" . ($newline ? "\n" : "");
+function stylesheet_link_tag($args) {
+	if ( is_array($args) ) {
+		extract(array_merge(array(
+			'href'	=> '',
+			'rel'	=> 'stylesheet',
+			'media'	=> 'all',
+			'type'	=> 'text/css'
+		), $args));
+	} elseif ( is_string($args) ) {
+		$href = $args;
+	} else { return; }
+	return "<link rel=\"" . $rel . "\" href=\"" . $href . "\" type=\"" . $type . "\" media=\"" . $media . "\" />\n";
 }
 
 function wpbp_custom_css() {
