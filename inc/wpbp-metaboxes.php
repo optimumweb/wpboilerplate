@@ -23,7 +23,7 @@ function wpbp_create_meta_boxes() {
 	}
 }
 
-function display_meta_boxes() {
+function wpbp_display_meta_boxes() {
 	global $post, $wpbp_meta_boxes;
 ?>
 <div class="form-wrap">
