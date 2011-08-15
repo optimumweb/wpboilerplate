@@ -2,11 +2,11 @@
 
 $wpbp_meta_boxes = array(
 	'seo' => array(
-		'seo-title' => array(
+		'title' => array(
 			'title'			=> 'Title',
 			'description'	=> ''
 		),
-		'seo-description' => array(
+		'description' => array(
 			'title'			=> 'Meta Description',
 			'description'	=> ''
 		)
@@ -30,6 +30,7 @@ function wpbp_display_meta_boxes() {
 	<?php
 	foreach ( $wpbp_meta_boxes as $key => $meta_box ) :
 		$data = get_post_meta($post->ID, $key, true);
+		var_dump($data);
 		foreach ( $meta_box as $name => $info ) :
 	?>
 	<div class="form-field form-required">
@@ -51,7 +52,7 @@ function wpbp_save_meta_boxes($post_id) {
 	foreach ( $wpbp_meta_boxes as $key => $meta_box ) {
 
 		foreach( $meta_box as $name => $info ) {
-			$data[$key] = $_POST[$key][$name];
+			$data[$key] = $_POST[$key];
 		}
 
 		if ( !current_user_can( 'edit_post', $post_id ) ) {
