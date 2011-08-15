@@ -44,8 +44,8 @@ if (is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated'])) {
 	wp_update_post($home_menu_order);
 
 	// set the permalink structure
-	if (get_option('permalink_structure') !== '/%year%/%postname%/') {
-		update_option('permalink_structure', '/%year%/%postname%/');
+	if (get_option('permalink_structure') !== '/%year%/%monthnum%/%postname%/') {
+		update_option('permalink_structure', '/%year%/%monthnum%/%postname%/');
 	}
 
 	$wp_rewrite->init();
@@ -64,9 +64,9 @@ if (is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated'])) {
 		$wpbp_nav_theme_mod['primary_navigation'] = $primary_nav_id;
 	}
 
-	if (!has_nav_menu('utility_navigation')) {
-		$utility_nav_id = wp_create_nav_menu('Utility Navigation', array('slug' => 'utility_navigation'));
-		$wpbp_nav_theme_mod['utility_navigation'] = $utility_nav_id;
+	if (!has_nav_menu('secondary_navigation')) {
+		$utility_nav_id = wp_create_nav_menu('Secondary Navigation', array('slug' => 'secondary_navigation'));
+		$wpbp_nav_theme_mod['secondary_navigation'] = $utility_nav_id;
 	}
 
 	if ($wpbp_nav_theme_mod) {
