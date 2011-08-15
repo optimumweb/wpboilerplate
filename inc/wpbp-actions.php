@@ -66,6 +66,8 @@ function script_tag($file, $tabs = 0, $newline = true) {
 
 function wpbp_get_stylesheets() {
 
+	global $wpbp_options;
+
 	$styles = "";
 
 	$styles .= stylesheet_link_tag( get_template_directory_uri() . "/css/960/960.min.css" );
