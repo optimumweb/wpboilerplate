@@ -60,8 +60,6 @@ function wpbp_save_meta_boxes($post_id) {
 			return $post_id;
 		}
 
-		var_dump($data);
-
 		update_post_meta( $post_id, $key, $data );
 	}
 }
