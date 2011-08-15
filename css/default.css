@@ -1,0 +1,404 @@
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+html { font-size: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body { margin: 0; background: #fff; }
+
+body, button, input, select, textarea { font-family: sans-serif; color: #000; }
+
+::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a { color: #0000ff; }
+a:focus { outline: none; }
+a:hover, a:active { outline: 0; }
+a:active, input.button:active { outline: 0; }
+
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+body { font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.5; }
+
+abbr[title] { border-bottom: 1px dotted; }
+
+b, strong { font-weight: bold; }
+
+blockquote { margin: 1em 40px; }
+
+dfn { font-style: italic; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: bold; line-height: 1.25; margin: 0 0 10px 0; }
+
+h1 { font-size: 200%; margin-bottom: 20px; }
+h2 { font-size: 160%; }
+h3 { font-size: 130%; }
+h4 { font-size: 110%; }
+h5 { font-size: 100%; }
+h6 { font-size: 90%; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+pre, code, kbd, samp { font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 1em; }
+
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+
+small { font-size: 85%; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+ul.inline-list { list-style: none; margin: 0; padding: 0; }
+ul.inline-list li { display: block; float: left; }
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+svg:not(:root) { overflow: hidden; }
+
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+
+figure { margin: 0; }
+
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+
+label { cursor: pointer; }
+
+legend { border: 0; *margin-left: -7px; padding: 0; }
+
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+
+button, input { line-height: normal; *overflow: visible; }
+
+table button, table input { *overflow: auto; }
+
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
+
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+
+/* =============================================================================
+   Header
+   ========================================================================== */
+
+#banner { position: relative; z-index: 1000; background: #000; }
+
+#site-info { padding: 30px; color: #fff; }
+#site-title { margin-bottom: 10px; }
+#site-title h2 a { font-size: 30px; color: #fff; text-decoration: none; }
+#site-description { font-size: 14px; font-weight: normal; }
+
+#nav-main {
+	background: #000;
+}
+
+#nav-main ul {
+	position: relative;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+	background: #000;
+}
+#nav-main ul li { display: block; float: left; margin: 0; *zoom: 1; }
+#nav-main ul li:hover { position: relative; }
+#nav-main ul li a {
+	text-decoration: none;
+	display: block;
+	padding: 8px 14px;
+	color: #fff;
+	margin: 0;
+}
+#nav-main ul li a:hover,
+#nav-main ul li.current-menu-item > a,
+#nav-main ul li.current-menu-parent > a,
+#nav-main ul li.current-menu-ancestor > a,
+#nav-main ul li:hover > a {
+	color: #fff;
+}
+
+#nav-main ul li.current-menu-item > a { font-weight: bold; }
+
+#nav-main ul ul {
+	position: absolute;
+	visibility: hidden;
+	top: 100%;
+	left: 0;
+	width: 200px;
+	padding: 0;
+	background: rgba(0,0,0,0.9);
+}
+#nav-main ul ul li { float: none; }
+#nav-main ul ul li a {
+	padding: 6px 14px;
+}
+#nav-main ul ul li a:hover,
+#nav-main ul ul li.current-menu-item > a,
+#nav-main ul ul li.current-menu-parent > a,
+#nav-main ul ul li.current-menu-ancestor > a,
+#nav-main ul ul li:hover > a {
+	color: #fff;
+}
+
+#nav-main ul ul ul { left: 100%; top: 0; }
+#nav-main ul li:hover > ul { visibility: visible; }
+
+#nav-main ul ul ul li a:hover,
+#nav-main ul ul ul li.current-menu-item > a,
+#nav-main ul ul ul li.current-menu-parent > a,
+#nav-main ul ul ul li.current-menu-ancestor > a,
+#nav-main ul ul ul li:hover > a {
+	color: #fff;
+}
+
+#subnav { padding: 10px 0; background: #eee; font-size: 90%; }
+#subnav #breadcrumb { float: left; padding: 2px 20px; }
+#subnav #search { float: right; padding: 0 20px; }
+
+
+/* =============================================================================
+   Content
+   ========================================================================== */
+
+#content { background: #fff; }
+#content .container { position: relative; padding: 0; }
+
+
+/* =============================================================================
+   Main content area
+   ========================================================================== */
+   
+#main { position: relative; }
+#main .container { padding: 20px; }
+
+#main .page-title { font-size: 125%; color: #000; margin: 0; }
+
+#main p { margin-bottom: 20px; }
+
+#main .container .article-header { font-size: 110%; font-weight: bold; }
+
+/* =============================================================================
+   Sidebar
+   ========================================================================== */
+   
+#sidebar { position: relative; padding: 20px 0; }
+#sidebar .container { width: auto; padding: 0; }
+#sidebar .widget { clear: both; margin-bottom: 20px; }
+#sidebar .widget .gform_wrapper ul { padding: 0; list-style-type: none; }
+
+
+/* =============================================================================
+   Posts
+   ========================================================================== */
+   
+.hentry header { margin-bottom: 1.5em; }
+.hentry h1 { line-height: 1.2em; margin-bottom: 0.2em; }
+.hentry h2:first-child { line-height: 1.2em; margin-bottom: 0; }
+.hentry h2 a { text-decoration: none; }
+
+.hentry .entry-meta { font-size: 90%; }
+.hentry .entry-meta time { display: inline; position: relative; }
+
+.hentry .entry-tags { font-size: 90%; }
+
+.hentry .entry-author { padding: 20px; background: #F5F2DD; border: 1px solid #DAD1B7; }
+.hentry .entry-author .fn { margin-bottom: 5px; }
+.hentry .entry-author ul { margin-top: 5px; }
+.hentry .entry-author ul li { margin-right: 5px; }
+
+
+/* =============================================================================
+   Post and comment navigation
+   ========================================================================== */
+
+#post-nav { clear: both; *display: inline-block; }
+#post-nav:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; overflow: hidden; }
+#post-nav .post-previous { float: left; width: 50%; }
+#post-nav .post-next { float: right; width: 50%; text-align: right; }
+#post-nav .post-next a { float: right; }
+
+#comments-nav { clear: both; margin: 0 0 1.5em 0; *display: inline-block; }
+#comments-nav:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; overflow: hidden; }
+#comments-nav .comments-previous { float: left; width: 50%; }
+#comments-nav .comments-next { float: right; width: 50%; text-align: right; }
+#comments-nav .comments-next a { float: right; }
+
+
+/* =============================================================================
+   Post comments
+   ========================================================================== */
+   
+ol.commentlist img.avatar { float: left; margin-right: 10px; }
+ol.commentlist time { display: block; font-size: 1em; margin-bottom: 0.5em; position: relative; }
+ol.commentlist .comment-reply-link { display: block; margin-bottom: 1.5em; }
+#commentform { *display: inline-block; }
+#commentform p { margin-bottom: 1em; }
+#commentform label { display: block; }
+#commentform textarea { display: block; }
+#commentform input.button { margin-top: 0.5em; }
+#commentform:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; overflow: hidden; }
+
+
+/* =============================================================================
+   Gallery
+   ========================================================================== */
+   
+figure.gallery-item { float: left; margin: 0 1em 1em 0; position: relative; }
+figure.gallery-item a img { 
+	border: 4px solid #bbb; 
+	-moz-border-radius: 6px; 
+	-webkit-border-radius: 6px; 
+	border-radius: 6px; 
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); 
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); 
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); 
+}
+figure.gallery-item a:hover img { border-color: #ccc; }
+figure.gallery-item figcaption { display: none; }
+
+
+/* =============================================================================
+   Footer
+   ========================================================================== */
+
+#content-info { position: relative; background: #F5F2DD; }
+#content-info #footer, #content-info #subfooter { padding: 20px 0; }
+#content-info #footer { border: solid #DAD1B7; border-width: 1px 0; }
+#content-info #subfooter { border-top: 1px solid #fff; }
+#content-info #subfooter #copy { padding: 0 20px; }
+
+
+
+/* =============================================================================
+   Search form
+   ========================================================================== */
+  
+#searchform #s { padding: 5px; }
+
+
+/* =============================================================================
+   WordPress generated classes
+   ========================================================================== */
+
+.aligncenter { display: block; margin: 0 auto; }
+.alignleft { margin: 0 1.5em 1.5em 0; float: left; }
+.alignright { margin: 0 0 1.5em 1.5em; float: right; }
+
+.wp-caption { border: 1px solid #ddd; text-align: center; background: #eee; padding: 14px 10px 6px 10px; margin: 15px 10px; }
+.wp-caption-text { margin: 0; }
+
+
+/* =============================================================================
+   Non-semantic helper classes
+   Please define your styles before this section.
+   ========================================================================== */
+
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+
+[hidden] { display: none; visibility: hidden; }
+.hidden { display: none; visibility: hidden; }
+
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+.invisible { visibility: hidden; }
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+
+/* =============================================================================
+   PLACEHOLDER Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+	/* Style adjustments for viewports 480px and over go here */
+
+}
+
+@media only screen and (min-width: 768px) {
+	/* Style adjustments for viewports 768px and over go here */
+
+}
+
+
+
+/* =============================================================================
+   Print styles
+   ========================================================================== */
+ 
+@media print {
+	* { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
+	a, a:visited { text-decoration: underline; }
+	a[href]:after { content: " (" attr(href) ")"; }
+	abbr[title]:after { content: " (" attr(title) ")"; }
+	.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+	pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+	thead { display: table-header-group; }
+	tr, img { page-break-inside: avoid; }
+	img { max-width: 100% !important; }
+	@page { margin: 0.5cm; }
+	p, h2, h3 { orphans: 3; widows: 3; }
+	h2, h3 { page-break-after: avoid; }
+}
