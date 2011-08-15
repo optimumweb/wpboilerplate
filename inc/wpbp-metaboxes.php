@@ -29,7 +29,6 @@ function wpbp_display_meta_boxes() {
 <div class="form-wrap">
 	<?php
 	foreach ( $wpbp_meta_boxes as $key => $meta_box ) :
-		wp_nonce_field( plugin_basename( __FILE__ ), $key . '_wpnonce', false, true );
 		$data = get_post_meta($post->ID, $key, true);
 		foreach ( $meta_box as $name => $info ) :
 	?>
@@ -53,10 +52,6 @@ function wpbp_save_meta_boxes($post_id) {
 
 		foreach( $meta_box as $name => $info ) {
 			$data[$key] = $_POST[$key][$name];
-		}
-
-		if ( !wp_verify_nonce( $_POST[ $key . '_wpnonce' ], plugin_basename(__FILE__) ) ) {
-			return $post_id;
 		}
 
 		if ( !current_user_can( 'edit_post', $post_id ) ) {
