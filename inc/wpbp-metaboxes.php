@@ -52,7 +52,7 @@ function wpbp_save_meta_boxes($post_id) {
 	foreach ( $wpbp_meta_boxes as $key => $meta_box ) {
 
 		foreach( $meta_box as $name => $info ) {
-			$data[$key] = $_POST[$key];
+			$data[$key][$name] = $_POST[$key][$name];
 		}
 
 		if ( !current_user_can( 'edit_post', $post_id ) ) {
