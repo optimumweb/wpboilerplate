@@ -30,7 +30,6 @@ function wpbp_display_meta_boxes() {
 	<?php
 	foreach ( $wpbp_meta_boxes as $key => $meta_box ) :
 		$data = get_post_meta($post->ID, $key, true);
-		var_dump($data);
 		foreach ( $meta_box as $name => $info ) :
 	?>
 	<div class="form-field form-required">
@@ -51,6 +50,8 @@ function wpbp_save_meta_boxes($post_id) {
 
 	foreach ( $wpbp_meta_boxes as $key => $meta_box ) {
 
+		$data = array();
+
 		foreach( $meta_box as $name => $info ) {
 			$data[$key][$name] = $_POST[$key][$name];
 		}
@@ -58,6 +59,8 @@ function wpbp_save_meta_boxes($post_id) {
 		if ( !current_user_can( 'edit_post', $post_id ) ) {
 			return $post_id;
 		}
+
+		var_dump($data);
 
 		update_post_meta( $post_id, $key, $data );
 	}
