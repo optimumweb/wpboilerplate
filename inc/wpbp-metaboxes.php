@@ -103,8 +103,6 @@ function wpbp_save_meta( $post_id )
 		
 		echo "<pre>"; var_dump($wpbp_meta_box_data_new); echo "</pre>\n";
 
-		var
-
 		if ( isset( $wpbp_meta_box_data_new ) ) {
 			update_post_meta( $post_id, $wpbp_meta_box_key, $wpbp_meta_box_data_new );
 		}
