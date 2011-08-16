@@ -4,7 +4,7 @@ define( 'WPBP_META_BOX_PREFIX', 'wpbp-meta-box-' );
 
 $wpbp_meta_boxes = array(
 	'seo' => array(
-		'id'		=> 'seo',
+		'key'		=> 'seo',
 		'title'		=> 'SEO',
 		'page'		=> 'post',
 		'context'	=> 'normal',
