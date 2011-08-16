@@ -32,9 +32,9 @@ function wpbp_create_meta_boxes()
 
 		if ( function_exists( $wpbp_meta_box_display_fct ) ) {
 
-			foreach ( $wpbp_meta_boxes as $wpbp_meta_box_key => $wpbp_meta_box ) {
+			foreach ( $wpbp_meta_boxes as $wpbp_meta_box ) {
 
-				add_meta_box( WPBP_META_BOX_PREFIX . $wpbp_meta_box_key, $wpbp_meta_box['title'], $wpbp_meta_box_display_fct, $wpbp_meta_box['page'], $wpbp_meta_box['context'], $wpbp_meta_box['priority'], $wpbp_meta_box );
+				add_meta_box( WPBP_META_BOX_PREFIX . $wpbp_meta_box['key'], $wpbp_meta_box['title'], $wpbp_meta_box_display_fct, $wpbp_meta_box['page'], $wpbp_meta_box['context'], $wpbp_meta_box['priority'], $wpbp_meta_box );
 			}
 		}
 	}
@@ -55,7 +55,7 @@ function wpbp_display_meta_box( $post, $wpbp_add_meta_box_args )
 <div class="form-wrap">
 	<input type="hidden" name="<?php echo $wpbp_meta_box_nonce_name; ?>" value="<?php echo $wpbp_meta_box_nonce_value; ?>" />
 	<?php
-		foreach ( $wpbp_meta_box_fields as $$wpbp_meta_box_field_key => $wpbp_meta_box_field_args ) :
+		foreach ( $wpbp_meta_box_fields as $wpbp_meta_box_field_key => $wpbp_meta_box_field_args ) :
 			$wpbp_meta_box_field_id = $wpbp_meta_box_prefix . $wpbp_meta_box_key . '-' . $wpbp_meta_box_field_key;
 			$wpbp_meta_box_field_name = "[" . $wpbp_meta_box_key . "][" . $wpbp_meta_box_field_key . "]";
 			$wpbp_meta_box_field_value = isset( $wpbp_meta_box_data[$id] ) ? $wpbp_meta_box_data[$id] : "";
