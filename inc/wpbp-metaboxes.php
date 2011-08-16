@@ -31,37 +31,37 @@ function wpbp_create_meta_boxes()
 
 		if ( function_exists( $wpbp_meta_box_display_fct ) ) {
 
-			foreach ( $wpbp_meta_boxes as $meta_box_key => $meta_box ) {
+			foreach ( $wpbp_meta_boxes as $wpbp_meta_box_key => $wpbp_meta_box ) {
 
-				add_meta_box( WPBP_META_BOX_PREFIX . $meta_box_key, $meta_box['title'], $wpbp_meta_box_display_fct, $meta_box['page'], $meta_box['context'], $meta_box['priority'], $meta_box );
+				add_meta_box( WPBP_META_BOX_PREFIX . $wpbp_meta_box_key, $wpbp_meta_box['title'], $wpbp_meta_box_display_fct, $wpbp_meta_box['page'], $wpbp_meta_box['context'], $wpbp_meta_box['priority'], $wpbp_meta_box );
 			}
 		}
 	}
 }
 
-function wpbp_display_meta_box( $meta_box )
+function wpbp_display_meta_box( $wpbp_meta_box )
 {
-	// this callback function has access to $post and $meta_box variables
+	// this callback function has access to $post and $wpbp_meta_box variables
 
-	var_dump($meta_box);
+	var_dump($wpbp_meta_box);
 
-	$meta_box_key = key($meta_box);
-	$meta_box_nonce_name = WPBP_META_BOX_PREFIX . $meta_box_key . '-nonce';
-	$meta_box_nonce_value = wp_create_nonce( basename( __FILE__ ) );
-	$meta_box_fields = $meta_box['fields'];
-	$meta_box_data = get_post_meta( $post->ID, $meta_box_key, true );
+	$wpbp_meta_box_key = key($wpbp_meta_box);
+	$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-nonce';
+	$wpbp_meta_box_nonce_value = wp_create_nonce( basename( __FILE__ ) );
+	$wpbp_meta_box_fields = $wpbp_meta_box['fields'];
+	$wpbp_meta_box_data = get_post_meta( $post->ID, $wpbp_meta_box_key, true );
 ?>
 <div class="form-wrap">
-	<input type="hidden" name="<?php echo $meta_box_nonce_name; ?>" value="<?php echo $meta_box_nonce_value; ?>" />
+	<input type="hidden" name="<?php echo $wpbp_meta_box_nonce_name; ?>" value="<?php echo $wpbp_meta_box_nonce_value; ?>" />
 	<?php
-		foreach ( $meta_box_fields as $id => $args ) :
-			$meta_box_field_id = $wpbp_meta_box_prefix . $meta_box_key . '-' . $id;
-			$meta_box_field_name = "[" . $meta_box_key . "][" . $id . "]";
-			$meta_box_field_value = isset( $meta_box_data[$id] ) ? $meta_box_data[$id] : "";
+		foreach ( $wpbp_meta_box_fields as $id => $args ) :
+			$wpbp_meta_box_field_id = $wpbp_meta_box_prefix . $wpbp_meta_box_key . '-' . $id;
+			$wpbp_meta_box_field_name = "[" . $wpbp_meta_box_key . "][" . $id . "]";
+			$wpbp_meta_box_field_value = isset( $wpbp_meta_box_data[$id] ) ? $wpbp_meta_box_data[$id] : "";
 	?>
 	<div class="form-field form-required">
-		<label for="<?php echo $meta_box_field_id; ?>"><?php echo $args['title']; ?></label>
-		<input id="<?php echo $meta_box_field_id; ?>" type="text" name="<?php echo $meta_box_field_name; ?>" value="<?php echo $meta_box_field_value; ?>" />
+		<label for="<?php echo $wpbp_meta_box_field_id; ?>"><?php echo $args['title']; ?></label>
+		<input id="<?php echo $wpbp_meta_box_field_id; ?>" type="text" name="<?php echo $wpbp_meta_box_field_name; ?>" value="<?php echo $wpbp_meta_box_field_value; ?>" />
 		<p><?php echo $args['description']; ?></p>
 	</div>
 	<?php endforeach; ?>
@@ -73,12 +73,12 @@ function wpbp_save_meta( $post_id )
 {
 	global $wpbp_meta_boxes;
 
-	foreach ( $wpbp_meta_boxes as $meta_box_key => $meta_box ) {
+	foreach ( $wpbp_meta_boxes as $wpbp_meta_box_key => $wpbp_meta_box ) {
 
-		$meta_box_nonce_name = $wpbp_meta_box_prefix . $meta_box_key . '-nonce';
+		$wpbp_meta_box_nonce_name = $wpbp_meta_box_prefix . $wpbp_meta_box_key . '-nonce';
 
 		// verify nonce -- checks that the user has access
-		if ( !wp_verify_nonce( $_POST[$meta_box_nonce_name], basename( __FILE__ ) ) ) {
+		if ( !wp_verify_nonce( $_POST[$wpbp_meta_box_nonce_name], basename( __FILE__ ) ) ) {
 			return $post_id;
 		}
 
@@ -96,10 +96,10 @@ function wpbp_save_meta( $post_id )
 			return $post_id;
 		}
 
-		$new_meta_box_data = $_POST[$meta_box_key];
+		$new_meta_box_data = $_POST[$wpbp_meta_box_key];
 
 		if ( isset( $new_meta_box_data ) ) {
-			update_post_meta( $post_id, $meta_box_key, $new_meta_box_data );
+			update_post_meta( $post_id, $wpbp_meta_box_key, $new_meta_box_data );
 		}
 	}
 }
