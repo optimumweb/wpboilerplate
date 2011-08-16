@@ -1,6 +1,6 @@
 <?php
 
-define( 'WPBP_META_BOX_PREFIX', 'wpbp-meta-box-' );
+define( 'WPBP_META_BOX_PREFIX', 'wpbp_meta_box_' );
 
 $wpbp_meta_boxes = array(
 	'seo' => array(
@@ -45,7 +45,7 @@ function wpbp_display_meta_box( $post, $wpbp_add_meta_box_args )
 	$wpbp_meta_box = $wpbp_add_meta_box_args['args'];
 
 	$wpbp_meta_box_key = $wpbp_meta_box['key'];
-	$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-nonce';
+	$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '_nonce';
 	$wpbp_meta_box_nonce_value = wp_create_nonce( basename( __FILE__ ) );
 	$wpbp_meta_box_fields = $wpbp_meta_box['fields'];
 ?>
@@ -53,7 +53,7 @@ function wpbp_display_meta_box( $post, $wpbp_add_meta_box_args )
 	<input type="hidden" name="<?php echo $wpbp_meta_box_nonce_name; ?>" value="<?php echo $wpbp_meta_box_nonce_value; ?>" />
 	<?php
 		foreach ( $wpbp_meta_box_fields as $wpbp_meta_box_field_key => $wpbp_meta_box_field_args ) :
-			$wpbp_meta_box_field_meta_key = $wpbp_meta_box_key . '-' . $wpbp_meta_box_field_key;
+			$wpbp_meta_box_field_meta_key = $wpbp_meta_box_key . '_' . $wpbp_meta_box_field_key;
 			$wpbp_meta_box_field_id = WPBP_META_BOX_PREFIX . $wpbp_meta_box_field_meta_key;
 			$wpbp_meta_box_field_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_field_meta_key;
 			$wpbp_meta_box_field_value = get_post_meta( $post->ID, $wpbp_meta_box_field_meta_key, true );
@@ -72,13 +72,11 @@ function wpbp_save_meta( $post_id )
 {
 	global $wpbp_meta_boxes;
 
-	update_post_meta( $post_id, 'wpbp_meta_box_test', 'Meta Boxes, Y U NO WORK?' );
-
 	foreach ( $wpbp_meta_boxes as $wpbp_meta_box ) {
 
 		$wpbp_meta_box_key = $wpbp_meta_box['key'];
 
-		$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-nonce';
+		$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '_nonce';
 
 		// verify nonce -- checks that the user has access
 		if ( !wp_verify_nonce( $_POST[$wpbp_meta_box_nonce_name], basename( __FILE__ ) ) ) {
@@ -103,7 +101,7 @@ function wpbp_save_meta( $post_id )
 
 		foreach ( $wpbp_meta_box_fields as $wpbp_meta_box_field_key => $wpbp_meta_box_field_args ) {
 
-			$wpbp_meta_box_field_meta_key = $wpbp_meta_box_key . '-' . $wpbp_meta_box_field_key;
+			$wpbp_meta_box_field_meta_key = $wpbp_meta_box_key . '_' . $wpbp_meta_box_field_key;
 			$wpbp_meta_box_field_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_field_meta_key;
 			$wpbp_meta_box_field_value_old = get_post_meta( $post_id, $wpbp_meta_box_field_meta_key , true );
 			$wpbp_meta_box_field_value_new = $_POST[$wpbp_meta_box_field_name];
