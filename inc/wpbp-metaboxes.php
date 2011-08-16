@@ -48,7 +48,6 @@ function wpbp_display_meta_box( $post, $wpbp_add_meta_box_args )
 	$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-nonce';
 	$wpbp_meta_box_nonce_value = wp_create_nonce( basename( __FILE__ ) );
 	$wpbp_meta_box_fields = $wpbp_meta_box['fields'];
-	$wpbp_meta_box_data = get_post_meta( $post->ID, $wpbp_meta_box_key, false );
 ?>
 <div class="form-wrap">
 	<input type="hidden" name="<?php echo $wpbp_meta_box_nonce_name; ?>" value="<?php echo $wpbp_meta_box_nonce_value; ?>" />
@@ -56,7 +55,8 @@ function wpbp_display_meta_box( $post, $wpbp_add_meta_box_args )
 		foreach ( $wpbp_meta_box_fields as $wpbp_meta_box_field_key => $wpbp_meta_box_field_args ) :
 			$wpbp_meta_box_field_id = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-' . $wpbp_meta_box_field_key;
 			$wpbp_meta_box_field_name = "[" . $wpbp_meta_box_key . "][" . $wpbp_meta_box_field_key . "]";
-			$wpbp_meta_box_field_value = isset( $wpbp_meta_box_data[$wpbp_meta_box_field_key] ) ? $wpbp_meta_box_data[$wpbp_meta_box_field_key] : "";
+			$wpbp_meta_box_field_value_key = $wpbp_meta_box_key . '-' . $wpbp_meta_box_field_key;
+			$wpbp_meta_box_field_value = get_post_meta( $post->ID, $wpbp_meta_box_field_value_key, true );
 	?>
 	<div class="form-field form-required">
 		<label for="<?php echo $wpbp_meta_box_field_id; ?>"><?php echo $wpbp_meta_box_field_args['title']; ?></label>
@@ -82,7 +82,7 @@ function wpbp_save_meta( $post_id )
 
 		// verify nonce -- checks that the user has access
 		if ( !wp_verify_nonce( $_POST[$wpbp_meta_box_nonce_name], basename( __FILE__ ) ) ) {
-			//return $post_id;
+			return $post_id;
 		}
 
 		// check autosave
@@ -98,15 +98,20 @@ function wpbp_save_meta( $post_id )
 		} elseif ( !current_user_can( 'edit_post', $post_id) ) {
 			return $post_id;
 		}
-
-		//$wpbp_meta_box_data_old = get_post_meta( $post_id, $wpbp_meta_box_key, true );
-
-		$wpbp_meta_box_data_new = $_POST[$wpbp_meta_box_key];
 		
-		echo "<script> alert('" . var_export($wpbp_meta_box_data_new, true) . "'); </script>";
+		$wpbp_meta_box_fields = $wpbp_meta_box['fields'];
 
-		if ( isset( $wpbp_meta_box_data_new ) ) {
-			update_post_meta( $post_id, $wpbp_meta_box_key, $wpbp_meta_box_data_new );
+		foreach ( $wpbp_meta_box_fields as $wpbp_meta_box_field_key => $wpbp_meta_box_field_args ) {
+
+			$wpbp_meta_box_field_value_key = $wpbp_meta_box_key . '-' . $wpbp_meta_box_field_key;
+
+			$wpbp_meta_box_field_value_old = get_post_meta( $post_id, $wpbp_meta_box_field_value_key , true );
+
+			$wpbp_meta_box_field_value_new = $_POST[$wpbp_meta_box_key][$wpbp_meta_box_field_key];
+
+			if ( isset( $wpbp_meta_box_data_new ) && $wpbp_meta_box_field_value_new != $wpbp_meta_box_field_value_old ) {
+				update_post_meta( $post_id, $wpbp_meta_box_field_value_key, $wpbp_meta_box_field_value_new );
+			}
 		}
 	}
 }
