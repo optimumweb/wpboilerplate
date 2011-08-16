@@ -1,7 +1,5 @@
 <?php
 
-$wpbp_meta_box_prefix = 'wpbp-meta-box-';
-
 $wpbp_meta_boxes = array(
 	'seo' => array(
 		'title'		=> 'SEO',
@@ -30,6 +28,8 @@ function wpbp_create_meta_boxes()
 		$wpbp_meta_box_display_fct = 'wpbp_display_meta_box';
 
 		if ( function_exists( $wpbp_meta_box_display_fct ) ) {
+
+			$wpbp_meta_box_prefix = 'wpbp-meta-box-';
 
 			foreach ( $wpbp_meta_boxes as $meta_box_key => $meta_box ) {
 
