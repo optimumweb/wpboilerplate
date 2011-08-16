@@ -44,8 +44,6 @@ function wpbp_display_meta_box( $post, $wpbp_add_meta_box_args )
 {
 	$wpbp_meta_box = $wpbp_add_meta_box_args['args'];
 
-	//echo "<pre>"; var_dump($wpbp_add_meta_box_args); echo "</pre>\n";
-
 	$wpbp_meta_box_key = $wpbp_meta_box['key'];
 	$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-nonce';
 	$wpbp_meta_box_nonce_value = wp_create_nonce( basename( __FILE__ ) );
@@ -102,6 +100,10 @@ function wpbp_save_meta( $post_id )
 		//$wpbp_meta_box_data_old = get_post_meta( $post_id, $wpbp_meta_box_key, true );
 
 		$wpbp_meta_box_data_new = $_POST[$wpbp_meta_box_key];
+		
+		echo "<pre>"; var_dump($wpbp_meta_box_data_new); echo "</pre>\n";
+
+		var
 
 		if ( isset( $wpbp_meta_box_data_new ) ) {
 			update_post_meta( $post_id, $wpbp_meta_box_key, $wpbp_meta_box_data_new );
