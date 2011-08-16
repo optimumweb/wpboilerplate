@@ -42,14 +42,14 @@ function wpbp_create_meta_boxes()
 
 function wpbp_display_meta_box( $post, $wpbp_add_meta_box_args )
 {
-	// this callback function has access to $post and $wpbp_meta_box variables
+	$wpbp_meta_box = $wpbp_add_meta_box_args['args'];
 
-	echo "<pre>"; var_dump($wpbp_add_meta_box_args); echo "</pre>\n";
+	//echo "<pre>"; var_dump($wpbp_add_meta_box_args); echo "</pre>\n";
 
-	$wpbp_meta_box_key = key($wpbp_add_meta_box_args);
+	$wpbp_meta_box_key = $wpbp_meta_box['key'];
 	$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-nonce';
 	$wpbp_meta_box_nonce_value = wp_create_nonce( basename( __FILE__ ) );
-	$wpbp_meta_box_fields = $wpbp_add_meta_box_args['args']['fields'];
+	$wpbp_meta_box_fields = $wpbp_meta_box['fields'];
 	$wpbp_meta_box_data = get_post_meta( $post->ID, $wpbp_meta_box_key, true );
 ?>
 <div class="form-wrap">
@@ -74,7 +74,9 @@ function wpbp_save_meta( $post_id )
 {
 	global $wpbp_meta_boxes;
 
-	foreach ( $wpbp_meta_boxes as $wpbp_meta_box_key => $wpbp_meta_box ) {
+	foreach ( $wpbp_meta_boxes as $wpbp_meta_box ) {
+
+		$wpbp_meta_box_key = $wpbp_meta_box['key'];
 
 		$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-nonce';
 
