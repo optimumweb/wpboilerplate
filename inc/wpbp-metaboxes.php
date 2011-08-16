@@ -111,7 +111,10 @@ function wpbp_save_meta( $post_id )
 
 			$wpbp_meta_box_field_value_new = $_POST[$wpbp_meta_box_field_name];
 
-			update_post_meta( $post_id, $wpbp_meta_box_field_meta_key, $wpbp_meta_box_field_value_new );
+			if ( isset( $wpbp_meta_box_field_value_new ) && $wpbp_meta_box_field_value_new != $wpbp_meta_box_field_value_old ) {
+
+				update_post_meta( $post_id, $wpbp_meta_box_field_meta_key, $wpbp_meta_box_field_value_new );
+			}
 		}
 	}
 }
