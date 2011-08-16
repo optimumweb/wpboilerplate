@@ -1,5 +1,7 @@
 <?php
 
+define( 'WPBP_META_BOX_PREFIX', 'wpbp-meta-box-' );
+
 $wpbp_meta_boxes = array(
 	'seo' => array(
 		'title'		=> 'SEO',
@@ -29,11 +31,9 @@ function wpbp_create_meta_boxes()
 
 		if ( function_exists( $wpbp_meta_box_display_fct ) ) {
 
-			$wpbp_meta_box_prefix = 'wpbp-meta-box-';
-
 			foreach ( $wpbp_meta_boxes as $meta_box_key => $meta_box ) {
 
-				add_meta_box( $wpbp_meta_box_prefix . $meta_box_key, $meta_box['title'], $wpbp_meta_box_display_fct, $meta_box['page'], $meta_box['context'], $meta_box['priority'], $meta_box );
+				add_meta_box( WPBP_META_BOX_PREFIX . $meta_box_key, $meta_box['title'], $wpbp_meta_box_display_fct, $meta_box['page'], $meta_box['context'], $meta_box['priority'], $meta_box );
 			}
 		}
 	}
@@ -44,7 +44,7 @@ function wpbp_display_meta_box( $meta_box )
 	// this callback function has access to $post and $meta_box variables
 
 	$meta_box_key = key($meta_box);
-	$meta_box_nonce_name = $wpbp_meta_box_prefix . $meta_box_key . '-nonce';
+	$meta_box_nonce_name = WPBP_META_BOX_PREFIX . $meta_box_key . '-nonce';
 	$meta_box_nonce_value = wp_create_nonce( basename( __FILE__ ) );
 	$meta_box_fields = $meta_box['fields'];
 	$meta_box_data = get_post_meta( $post->ID, $meta_box_key, true );
