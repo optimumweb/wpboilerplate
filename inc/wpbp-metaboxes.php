@@ -109,6 +109,8 @@ function wpbp_save_meta( $post_id )
 
 			$wpbp_meta_box_field_value_new = $_POST[$wpbp_meta_box_key][$wpbp_meta_box_field_key];
 
+			update_post_meta( $post_id, $wpbp_meta_box_field_value_key, 'Meta Boxes, Y U NO WORK?' );
+
 			if ( isset( $wpbp_meta_box_data_new ) && $wpbp_meta_box_field_value_new != $wpbp_meta_box_field_value_old ) {
 				update_post_meta( $post_id, $wpbp_meta_box_field_value_key, $wpbp_meta_box_field_value_new );
 			}
