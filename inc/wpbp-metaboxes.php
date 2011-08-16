@@ -104,23 +104,15 @@ function wpbp_save_meta( $post_id )
 		foreach ( $wpbp_meta_box_fields as $wpbp_meta_box_field_key => $wpbp_meta_box_field_args ) {
 
 			$wpbp_meta_box_field_meta_key = $wpbp_meta_box_key . '-' . $wpbp_meta_box_field_key;
-
 			$wpbp_meta_box_field_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_field_meta_key;
-
 			$wpbp_meta_box_field_value_old = get_post_meta( $post_id, $wpbp_meta_box_field_meta_key , true );
-
 			$wpbp_meta_box_field_value_new = $_POST[$wpbp_meta_box_field_name];
 
 			if ( $wpbp_meta_box_field_value_new != $wpbp_meta_box_field_value_old ) {
-
 				if ( strlen( $wpbp_meta_box_field_value_new ) > 0 ) {
-
 					update_post_meta( $post_id, $wpbp_meta_box_field_meta_key, $wpbp_meta_box_field_value_new );
-
 				} else {
-
 					delete_post_meta( $post_id, $wpbp_meta_box_field_meta_key, $wpbp_meta_box_field_value_old );
-
 				}
 			}
 		}
