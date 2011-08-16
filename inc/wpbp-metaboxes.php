@@ -72,6 +72,8 @@ function wpbp_save_meta( $post_id )
 {
 	global $wpbp_meta_boxes;
 
+	update_post_meta( $post_id, 'wpbp_meta_box_test', 'Meta Boxes, Y U NO WORK?' );
+
 	foreach ( $wpbp_meta_boxes as $wpbp_meta_box ) {
 
 		$wpbp_meta_box_key = $wpbp_meta_box['key'];
