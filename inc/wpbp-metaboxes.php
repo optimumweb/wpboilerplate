@@ -44,7 +44,7 @@ function wpbp_display_meta_box( $post, $wpbp_add_meta_box_args )
 {
 	// this callback function has access to $post and $wpbp_meta_box variables
 
-	echo "<pre>"; var_dump($wpbp_meta_box); echo "</pre>\n";
+	echo "<pre>"; var_dump($wpbp_add_meta_box_args); echo "</pre>\n";
 
 	$wpbp_meta_box_key = key($wpbp_add_meta_box_args);
 	$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-nonce';
