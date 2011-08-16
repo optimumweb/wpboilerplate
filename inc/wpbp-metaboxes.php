@@ -58,7 +58,7 @@ function wpbp_display_meta_box( $post, $wpbp_add_meta_box_args )
 		foreach ( $wpbp_meta_box_fields as $wpbp_meta_box_field_key => $wpbp_meta_box_field_args ) :
 			$wpbp_meta_box_field_id = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-' . $wpbp_meta_box_field_key;
 			$wpbp_meta_box_field_name = "[" . $wpbp_meta_box_key . "][" . $wpbp_meta_box_field_key . "]";
-			$wpbp_meta_box_field_value = isset( $wpbp_meta_box_data[$id] ) ? $wpbp_meta_box_data[$id] : "";
+			$wpbp_meta_box_field_value = isset( $wpbp_meta_box_data[$wpbp_meta_box_field_key] ) ? $wpbp_meta_box_data[$wpbp_meta_box_field_key] : "";
 	?>
 	<div class="form-field form-required">
 		<label for="<?php echo $wpbp_meta_box_field_id; ?>"><?php echo $wpbp_meta_box_field_args['title']; ?></label>
