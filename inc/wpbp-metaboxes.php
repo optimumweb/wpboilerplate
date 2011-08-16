@@ -39,7 +39,7 @@ function wpbp_create_meta_boxes()
 	}
 }
 
-function wpbp_display_meta_box( $wpbp_meta_box )
+function wpbp_display_meta_box( $post, $wpbp_meta_box )
 {
 	// this callback function has access to $post and $wpbp_meta_box variables
 
