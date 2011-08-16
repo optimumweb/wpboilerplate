@@ -34,7 +34,7 @@ function wpbp_create_meta_boxes()
 
 			foreach ( $wpbp_meta_boxes as $wpbp_meta_box_key => $wpbp_meta_box ) {
 
-				add_meta_box( WPBP_META_BOX_PREFIX . $wpbp_meta_box_key, $wpbp_meta_box['title'], $wpbp_meta_box_display_fct, $wpbp_meta_box['page'], $wpbp_meta_box['context'], $wpbp_meta_box['priority'], $wpbp_add_meta_box_args );
+				add_meta_box( WPBP_META_BOX_PREFIX . $wpbp_meta_box_key, $wpbp_meta_box['title'], $wpbp_meta_box_display_fct, $wpbp_meta_box['page'], $wpbp_meta_box['context'], $wpbp_meta_box['priority'], $wpbp_meta_box );
 			}
 		}
 	}
