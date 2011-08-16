@@ -82,7 +82,7 @@ function wpbp_save_meta( $post_id )
 
 		// verify nonce -- checks that the user has access
 		if ( !wp_verify_nonce( $_POST[$wpbp_meta_box_nonce_name], basename( __FILE__ ) ) ) {
-			return $post_id;
+			//return $post_id;
 		}
 
 		// check autosave
