@@ -6,7 +6,73 @@
 	I strongly recommend you use of child themes when developing
 	on top of wpboilerplate. http://codex.wordpress.org/Child_Themes
 
+	! Do not forget to turn on LessCSS if you want to use this stylesheet !
+
 */
+
+/* =============================================================================
+   Mixins
+   ========================================================================== */
+
+.border-radius(@radius: @border-radius) {
+	-webkit-background-clip: padding-box;
+	-webkit-border-radius: @radius;
+	-moz-background-clip: padding-box;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+	background-clip: padding-box;
+	behavior: url(../misc/border-radius.htc);
+}
+
+.multi-border-radius(@top-left: @border-radius, @top-right: @border-radius, @bottom-right: @border-radius, @bottom-left: @border-radius) {
+	-webkit-border-top-left-radius: @top-left;
+	-webkit-border-top-right-radius: @top-right;
+	-webkit-border-bottom-right-radius: @bottom-right;
+	-webkit-border-bottom-left-radius: @bottom-left;
+	-moz-border-radius-topleft: @top-left;
+	-moz-border-radius-topright: @top-right;
+	-moz-border-radius-bottomright: @bottom-right;
+	-moz-border-radius-bottomleft: @bottom-left;
+	border-top-left-radius: @top-left;
+	border-top-right-radius: @top-right;
+	border-bottom-right-radius: @bottom-right;
+	border-bottom-left-radius: @bottom-left;
+	behavior: url(../misc/border-radius.htc);
+}
+
+.box-shadow(@horizontal: 0px, @vertical: 0px, @blur: 8px, @color: #333) {
+	-webkit-box-shadow: @horizontal @vertical @blur @color;
+	-moz-box-shadow: @horizontal @vertical @blur @color;
+	box-shadow: @horizontal @vertical @blur @color;
+}
+
+.inset-box-shadow(@horizontal: 0px, @vertical: 0px, @blur: 8px, @color: #333) {
+	-webkit-box-shadow: inset @horizontal @vertical @blur @color;
+	-moz-box-shadow: inset @horizontal @vertical @blur @color;
+	box-shadow: inset @horizontal @vertical @blur @color;
+}
+
+.multi-border-color(@top, @right, @bottom, @left) {
+	border-top: 1px solid @top;
+	border-left: 1px solid @sides;
+	border-right: 1px solid @sides;
+	border-bottom: 1px solid @bottom;
+}
+
+.vertical-gradient(@start: #000, @stop: #FFF) {
+	background: -webkit-gradient(linear, left top, left bottom, from(@start), to(@stop));
+	background: -webkit-linear-gradient(@start, @stop);
+	background: -moz-linear-gradient(center top, @start 0%, @stop 100%);
+	background: -moz-gradient(center top, @start 0%, @stop 100%);
+}
+
+.opacity(@opacity: 100) {
+	filter: alpha(opacity=@opacity);
+	-moz-opacity: @opacity/100;
+	-khtml-opacity: @opacity/100;
+	opacity: @opacity/100;
+}
+
 
 /* =============================================================================
    Header
