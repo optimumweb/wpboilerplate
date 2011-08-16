@@ -43,6 +43,8 @@ function wpbp_display_meta_box( $meta_box )
 {
 	// this callback function has access to $post and $meta_box variables
 
+	var_dump($meta_box);
+
 	$meta_box_key = key($meta_box);
 	$meta_box_nonce_name = WPBP_META_BOX_PREFIX . $meta_box_key . '-nonce';
 	$meta_box_nonce_value = wp_create_nonce( basename( __FILE__ ) );
