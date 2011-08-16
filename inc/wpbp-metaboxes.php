@@ -54,13 +54,12 @@ function wpbp_display_meta_box( $post, $wpbp_add_meta_box_args )
 	<?php
 		foreach ( $wpbp_meta_box_fields as $wpbp_meta_box_field_key => $wpbp_meta_box_field_args ) :
 			$wpbp_meta_box_field_id = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '-' . $wpbp_meta_box_field_key;
-			$wpbp_meta_box_field_name = "[" . $wpbp_meta_box_key . "][" . $wpbp_meta_box_field_key . "]";
 			$wpbp_meta_box_field_value_key = $wpbp_meta_box_key . '-' . $wpbp_meta_box_field_key;
 			$wpbp_meta_box_field_value = get_post_meta( $post->ID, $wpbp_meta_box_field_value_key, true );
 	?>
 	<div class="form-field form-required">
 		<label for="<?php echo $wpbp_meta_box_field_id; ?>"><?php echo $wpbp_meta_box_field_args['title']; ?></label>
-		<input id="<?php echo $wpbp_meta_box_field_id; ?>" type="text" name="<?php echo $wpbp_meta_box_field_name; ?>" value="<?php echo $wpbp_meta_box_field_value; ?>" />
+		<input id="<?php echo $wpbp_meta_box_field_id; ?>" type="text" name="<?php echo $wpbp_meta_box_field_value_key; ?>" value="<?php echo $wpbp_meta_box_field_value; ?>" />
 		<p><?php echo $wpbp_meta_box_field_args['description']; ?></p>
 	</div>
 	<?php endforeach; ?>
@@ -107,7 +106,7 @@ function wpbp_save_meta( $post_id )
 
 			$wpbp_meta_box_field_value_old = get_post_meta( $post_id, $wpbp_meta_box_field_value_key , true );
 
-			$wpbp_meta_box_field_value_new = $_POST[$wpbp_meta_box_key][$wpbp_meta_box_field_key];
+			$wpbp_meta_box_field_value_new = $_POST[$wpbp_meta_box_field_value_key];
 
 			update_post_meta( $post_id, $wpbp_meta_box_field_value_key, 'Meta Boxes, Y U NO WORK?' );
 
