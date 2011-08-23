@@ -52,7 +52,7 @@ $sidebars = array('Nav', 'Sidebar', 'Footer');
 foreach ($sidebars as $sidebar) {
 	register_sidebar(array('name'=> $sidebar,
 		'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="container">',
-		'after_widget' => '</div></div>',
+		'after_widget' => '</div><div class="clear"></div></div>',
 		'before_title' => '<h3>',
 		'after_title' => '</h3>'
 	));
