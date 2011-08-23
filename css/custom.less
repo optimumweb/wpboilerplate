@@ -59,6 +59,10 @@
 	box-shadow: inset @horizontal @vertical @blur @color;
 }
 
+.text-shadow(@horizontal: 0px, @vertical: 0px, @blur: 2px, @color: #333) {
+	text-shadow: @horizontal @vertical @blur @color;
+}
+
 .multi-border-color(@top, @right, @bottom, @left) {
 	border-top: 1px solid @top;
 	border-left: 1px solid @sides;
@@ -67,6 +71,7 @@
 }
 
 .vertical-gradient(@start: #000, @stop: #FFF) {
+	background: @start;
 	background: -webkit-gradient(linear, left top, left bottom, from(@start), to(@stop));
 	background: -webkit-linear-gradient(@start, @stop);
 	background: -moz-linear-gradient(center top, @start 0%, @stop 100%);
