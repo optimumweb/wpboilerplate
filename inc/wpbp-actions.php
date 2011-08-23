@@ -40,14 +40,14 @@ function wpbp_get_scripts() {
 	if ( $wpbp_options['js_plugins']['lesscss'] ) {
 		$scripts .= script_tag( get_template_directory_uri() . "/js/libs/less-1.1.3.min.js" );
 	}
-	
-	if ( $wpbp_options['js_plugins']['formalize'] ) {
-		$scripts .= script_tag( get_template_directory_uri() . "/js/plugins/jquery.formalize.min.js" );
-	}
 
 	if ( $wpbp_options['js_plugins']['jquery'] ) {
 
 		$scripts .= script_tag( get_template_directory_uri() . "/js/libs/jquery-1.6.2.min.js" );
+
+		if ( $wpbp_options['js_plugins']['formalize'] ) {
+			$scripts .= script_tag( get_template_directory_uri() . "/js/plugins/jquery.formalize.min.js" );
+		}
 
 		if ( $wpbp_options['js_plugins']['php-jquery-ajax-mail'] ) {
 			$scripts .= script_tag( get_template_directory_uri() . "/js/plugins/jquery.mail.min.js" );
