@@ -54,7 +54,7 @@ function wpbp_get_scripts() {
 		}
 	}
 
-	$scripts .= script_tag( get_template_directory_uri() . "/js/scripts.js" );
+	$scripts .= script_tag( get_stylesheet_directory_uri() . "/js/scripts.js" );
 
 	echo $scripts;
 }
