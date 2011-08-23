@@ -191,11 +191,11 @@ function wpbp_theme_options_render_page() {
 							<input type="checkbox" name="wpbp_theme_options[js_plugins][modernizr]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['modernizr'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> Modernizr<br />
               				<small class="description"><?php _e('Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.', 'wpbp'); ?></small>
 							<br />
-							<input type="checkbox" name="wpbp_theme_options[js_plugins][formalize]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['formalize'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> Formalize<br />
-              				<small class="description"><?php _e('Break the cycle of inconsistent form defaults, style forms with impunity!', 'wpbp'); ?></small>
-							<br />
 							<input type="checkbox" name="wpbp_theme_options[js_plugins][jquery]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['jquery'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> jQuery<br />
               				<small class="description"><?php _e('jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.', 'wpbp'); ?></small>
+							<br />
+							<input type="checkbox" name="wpbp_theme_options[js_plugins][formalize]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['formalize'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> Formalize<br />
+              				<small class="description"><?php _e('Break the cycle of inconsistent form defaults, style forms with impunity! <i>(requires jQuery)</i>', 'wpbp'); ?></small>
 							<br />
 							<input type="checkbox" name="wpbp_theme_options[js_plugins][php-jquery-ajax-mail]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['php-jquery-ajax-mail'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> PHP, jQuery &amp; AJAX mail<br />
               				<small class="description"><?php _e('Send mail easily with this jQuery plugin using AJAX and PHP. <i>(requires jQuery)</i>', 'wpbp'); ?></small>
@@ -222,45 +222,15 @@ function wpbp_theme_options_validate($input) {
 	// set the value of the main container class depending on the selected grid framework
 	$output['container_class'] = $wpbp_css_frameworks[$output['css_framework']]['classes']['container'];
 
-	if (isset($input['main_class']))
-		$output['main_class'] = $input['main_class'];
-
-	if (isset($input['sidebar_class']))
-		$output['sidebar_class'] = $input['sidebar_class'];
-
-	if (isset($input['google_analytics_id']))
-		$output['google_analytics_id'] = $input['google_analytics_id'];
-
-	if (isset($input['custom_css']))
-		$output['custom_css'] = $input['custom_css'];
-
-	if (isset($input['js_plugins']['lesscss']))
-		$output['js_plugins']['lesscss'] = $input['js_plugins']['lesscss'];
-	else
-		$output['js_plugins']['lesscss'] = 0;
-
-	if (isset($input['js_plugins']['modernizr']))
-		$output['js_plugins']['modernizr'] = $input['js_plugins']['modernizr'];
-	else
-		$output['js_plugins']['modernizr'] = 0;
-
-	if (isset($input['js_plugins']['formalize']))
-		$output['js_plugins']['formalize'] = $input['js_plugins']['formalize'];
-	else
-		$output['js_plugins']['formalize'] = 0;
-
-	if (isset($input['js_plugins']['jquery']))
-		$output['js_plugins']['jquery'] = $input['js_plugins']['jquery'];
-	else
-		$output['js_plugins']['jquery'] = 0;
-
-	if (isset($input['js_plugins']['php-jquery-ajax-mail']))
-		$output['js_plugins']['php-jquery-ajax-mail'] = $input['js_plugins']['php-jquery-ajax-mail'];
-	else
-		$output['js_plugins']['php-jquery-ajax-mail'] = 0;
-
-	if ($output['js_plugins']['jquery'] != 1)
-		$output['js_plugins']['php-jquery-ajax-mail'] = 0;
+	$output['main_class'] = ( isset( $input['main_class'] ) ) ? $input['main_class'] : null;
+	$output['sidebar_class'] = ( isset( $input['sidebar_class'] ) ) ? $input['sidebar_class'] : null;
+	$output['google_analytics_id'] = ( isset( $input['google_analytics_id'] ) ) ? $input['google_analytics_id'] : null;
+	$output['custom_css'] = ( isset( $input['custom_css'] ) ) ? $input['custom_css'] : null;
+	$output['js_plugins']['lesscss'] = ( isset( $input['js_plugins']['lesscss'] ) ) ? $input['js_plugins']['lesscss'] : 0;
+	$output['js_plugins']['modernizr'] = ( isset( $input['js_plugins']['modernizr'] ) ) ? $input['js_plugins']['modernizr'] : 0;
+	$output['js_plugins']['jquery'] = ( isset( $input['js_plugins']['jquery'] ) ) ? $input['js_plugins']['jquery'] : 0;
+	$output['js_plugins']['formalize'] = ( isset( $input['js_plugins']['formalize'] ) && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['formalize'] : 0;
+	$output['js_plugins']['php-jquery-ajax-mail'] = ( isset( $input['js_plugins']['php-jquery-ajax-mail'] )  && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['php-jquery-ajax-mail'] : 0;
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);
 }
