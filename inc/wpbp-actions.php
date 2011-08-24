@@ -27,6 +27,7 @@ function wpbp_google_analytics()
 </script>
 <?php
 	}
+	return;
 }
 
 function wpbp_og_tags()
@@ -79,6 +80,8 @@ function wpbp_get_scripts()
 	$scripts .= script_tag( get_stylesheet_directory_uri() . "/js/scripts.js" );
 
 	echo $scripts;
+
+	return;
 }
 
 function script_tag($args)
@@ -114,6 +117,8 @@ function wpbp_get_stylesheets()
 	$styles .= stylesheet_link_tag( get_stylesheet_directory_uri() . "/style.css" );
 
 	echo $styles;
+
+	return;
 }
 
 function stylesheet_link_tag($args)
@@ -124,6 +129,7 @@ function stylesheet_link_tag($args)
 		'media'	=> 'all',
 		'type'	=> 'text/css'
 	), ( is_array($args) ? $args : array() ) ) );
+
 	return "<link rel=\"" . $rel . "\" href=\"" . $href . "\" type=\"" . $type . "\" media=\"" . $media . "\" />\n";
 }
 
@@ -135,6 +141,7 @@ function wpbp_custom_css()
 <?php echo $wpbp_options['custom_css'] . "\n"; ?>
 </style>
 <?php
+	return;
 }
 
 function wpbp_get_breadcrumb()
