@@ -1,7 +1,5 @@
 <?php
 
-define( 'WPBP_META_BOX_PREFIX', 'wpbp_meta_box_' );
-
 /*
  * You can declare a meta box the following way
  *
@@ -25,6 +23,8 @@ $wpbp_meta_boxes = array(
 	)
 );
 */
+
+define( 'WPBP_META_BOX_PREFIX', 'wpbp_meta_box_' );
 
 function wpbp_create_meta_boxes()
 {
