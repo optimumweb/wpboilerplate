@@ -15,13 +15,4 @@ if ( !function_exists('single_author_title') ) {
 
 }
 
-if ( !function_exists('get_theme_directory') ) {
-
-	function get_theme_directory()
-	{
-		return get_theme_root() . '/' . get_stylesheet();
-	}
-
-}
-
 ?>

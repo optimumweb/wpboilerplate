@@ -1,5 +1,8 @@
 <?php
 
+define('TEMPLATE_DIRECTORY', get_template_directory());
+define('THEME_DIRECTORY', get_theme_root() . '/' . get_stylesheet());
+
 $required_files = array(
 	'/inc/wpbp-activation.php',	// activation
 	'/inc/wpbp-options.php',	// theme options
@@ -15,7 +18,7 @@ $required_files = array(
 );
 
 foreach ( $required_files as $f ) {
-	$fpath = ( file_exists( get_theme_directory() . $f ) ) ? get_theme_directory() . $f : ( file_exists( get_template_directory() . $f ) ? get_template_directory() . $f : false );
+	$fpath = ( file_exists( THEME_DIRECTORY . $f ) ) ? THEME_DIRECTORY . $f : ( file_exists( TEMPLATE_DIRECTORY . $f ) ? TEMPLATE_DIRECTORY . $f : false );
 	if ( $fpath ) {
 		echo "Including: " . $fpath . "<br />\n";
 		require_once( $fpath );
@@ -26,7 +29,7 @@ $wpbp_options = wpbp_get_theme_options();
 
 function wpbp_setup() {
 
-	load_theme_textdomain('wpbp', get_template_directory() . '/lang');
+	load_theme_textdomain('wpbp', TEMPLATE_DIRECTORY . '/lang');
 	
 	// tell the TinyMCE editor to use editor-style.css
 	// if you have issues with getting the editor to show your changes then use the following line:
