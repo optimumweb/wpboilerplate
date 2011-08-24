@@ -1,12 +1,14 @@
 <?php
 
+add_action('wpbp_head', 'wpbp_og_tags');
 add_action('wpbp_head', 'wpbp_google_analytics');
 add_action('wpbp_head', 'wpbp_custom_css');
 add_action('wpbp_stylesheets', 'wpbp_get_stylesheets');
 add_action('wpbp_scripts', 'wpbp_get_scripts');
 add_action('wpbp_breadcrumb', 'wpbp_get_breadcrumb');
 
-function wpbp_google_analytics() {
+function wpbp_google_analytics()
+{
 	global $wpbp_options;
 	$wpbp_google_analytics_id = $wpbp_options['google_analytics_id'];
 	$wpbp_get_google_analytics_id = esc_attr($wpbp_options['google_analytics_id']);
@@ -27,7 +29,27 @@ function wpbp_google_analytics() {
 	}
 }
 
-function wpbp_get_scripts() {
+function wpbp_og_tags()
+{
+	global $wp_query;
+
+	$og = array(
+		'title'			=> wp_title(''),
+		'url'			=> $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
+		'image'			=> is_single() ? wpbp_get_post_image( $wp_query->post->ID ) : false,
+		'site_name'		=> get_bloginfo('name'),
+		'description'	=> is_single() ? get_the_excerpt( $wp_query->post->ID ) : false,
+	);
+
+	foreach ( $og as $key => $val ) {
+		echo "<meta property=\"og:" . $key . "\" content=\"" . $val . "\" />\n";
+	}
+	
+	return;
+}
+
+function wpbp_get_scripts()
+{
 
 	global $wpbp_options;
 
@@ -59,7 +81,8 @@ function wpbp_get_scripts() {
 	echo $scripts;
 }
 
-function script_tag($args) {
+function script_tag($args)
+{
 	extract( array_merge( array(
 		'src'	=> ( is_string($args) ? $args : '' ),
 		'type'	=> 'text/javascript'
@@ -67,7 +90,8 @@ function script_tag($args) {
 	return "<script type=\"" . $type . "\" src=\"" . $src . "\"></script>\n";
 }
 
-function wpbp_get_stylesheets() {
+function wpbp_get_stylesheets()
+{
 
 	global $wpbp_options;
 
@@ -92,7 +116,8 @@ function wpbp_get_stylesheets() {
 	echo $styles;
 }
 
-function stylesheet_link_tag($args) {
+function stylesheet_link_tag($args)
+{
 	extract( array_merge( array(
 		'href'	=> ( is_string($args) ? $args : '' ),
 		'rel'	=> 'stylesheet',
@@ -102,7 +127,8 @@ function stylesheet_link_tag($args) {
 	return "<link rel=\"" . $rel . "\" href=\"" . $href . "\" type=\"" . $type . "\" media=\"" . $media . "\" />\n";
 }
 
-function wpbp_custom_css() {
+function wpbp_custom_css()
+{
 	global $wpbp_options;
 ?>
 <style type="text/css">
@@ -111,7 +137,8 @@ function wpbp_custom_css() {
 <?php
 }
 
-function wpbp_get_breadcrumb() {
+function wpbp_get_breadcrumb()
+{
 	wpbp_custom_breadcrumb();
 }
 
