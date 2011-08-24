@@ -2,6 +2,9 @@
 
 define( 'WPBP_META_BOX_PREFIX', 'wpbp_meta_box_' );
 
+/*
+ * You can declare a meta box the following way
+ *
 $wpbp_meta_boxes = array(
 	'seo' => array(
 		'key'		=> 'seo',
@@ -21,6 +24,7 @@ $wpbp_meta_boxes = array(
 		)
 	)
 );
+*/
 
 function wpbp_create_meta_boxes()
 {
