@@ -1,16 +1,25 @@
 <?php
 
-require_once( get_template_directory() . '/inc/wpbp-activation.php' );	// activation
-require_once( get_template_directory() . '/inc/wpbp-options.php' );		// theme options
-require_once( get_template_directory() . '/inc/wpbp-cleanup.php' );		// cleanup
-require_once( get_template_directory() . '/inc/wpbp-htaccess.php' );	// rewrites for assets, h5bp htaccess
-require_once( get_template_directory() . '/inc/wpbp-hooks.php' );		// hooks
-require_once( get_template_directory() . '/inc/wpbp-actions.php' );		// actions
-require_once( get_template_directory() . '/inc/wpbp-extend.php' );		// extend functions
-require_once( get_template_directory() . '/inc/wpbp-widgets.php' );		// widgets
-require_once( get_template_directory() . '/inc/wpbp-shortcodes.php' );	// shortcodes
-require_once( get_template_directory() . '/inc/wpbp-breadcrumb.php' );	// breadcrumb
-require_once( get_template_directory() . '/inc/wpbp-custom.php' );		// custom functions
+$required_files = array(
+	'/inc/wpbp-activation.php',	// activation
+	'/inc/wpbp-options.php',	// theme options
+	'/inc/wpbp-cleanup.php',	// cleanup
+	'/inc/wpbp-htaccess.php',	// rewrites for assets, h5bp htaccess
+	'/inc/wpbp-hooks.php',		// hooks
+	'/inc/wpbp-actions.php',	// actions
+	'/inc/wpbp-extend.php',		// extend functions
+	'/inc/wpbp-widgets.php',	// widgets
+	'/inc/wpbp-shortcodes.php',	// shortcodes
+	'/inc/wpbp-breadcrumb.php',	// breadcrumb
+	'/inc/wpbp-custom.php'		// custom functions
+);
+
+foreach ( $required_files as $f ) {
+	$fpath = ( file_exists( get_theme_root() . $f ) ) ? get_theme_root() . $f : ( file_exists( get_template_directory() . $f ) ? get_template_directory() . $f : false );
+	if ( $fpath ) {
+		require_once( $fpath );
+	}
+}
 
 $wpbp_options = wpbp_get_theme_options();
 
