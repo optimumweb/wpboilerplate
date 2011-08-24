@@ -17,6 +17,7 @@ $required_files = array(
 foreach ( $required_files as $f ) {
 	$fpath = ( file_exists( get_theme_root() . $f ) ) ? get_theme_root() . $f : ( file_exists( get_template_directory() . $f ) ? get_template_directory() . $f : false );
 	if ( $fpath ) {
+		echo get_theme_root() . $f;
 		echo "Including: " . $fpath . "<br />\n";
 		require_once( $fpath );
 	}
