@@ -20,7 +20,6 @@ $required_files = array(
 foreach ( $required_files as $f ) {
 	$fpath = ( file_exists( THEME_DIRECTORY . $f ) ) ? THEME_DIRECTORY . $f : ( file_exists( TEMPLATE_DIRECTORY . $f ) ? TEMPLATE_DIRECTORY . $f : false );
 	if ( $fpath ) {
-		echo "Including: " . $fpath . "<br />\n";
 		require_once( $fpath );
 	}
 }
