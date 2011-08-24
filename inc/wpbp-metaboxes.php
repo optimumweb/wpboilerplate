@@ -79,7 +79,7 @@ function wpbp_save_meta( $post_id )
 		$wpbp_meta_box_nonce_name = WPBP_META_BOX_PREFIX . $wpbp_meta_box_key . '_nonce';
 
 		// verify nonce -- checks that the user has access
-		if ( !wp_verify_nonce( $_POST[$wpbp_meta_box_nonce_name], basename( __FILE__ ) ) ) {
+		if ( !isset( $_POST[$wpbp_meta_box_nonce_name] ) || !wp_verify_nonce( $_POST[$wpbp_meta_box_nonce_name], basename( __FILE__ ) ) ) {
 			return $post_id;
 		}
 
