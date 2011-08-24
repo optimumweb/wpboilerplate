@@ -14,7 +14,7 @@ $required_files = array(
 	'/inc/wpbp-custom.php'		// custom functions
 );
 
-echo get_stylesheet();
+echo get_theme_root() . get_stylesheet();
 
 foreach ( $required_files as $f ) {
 	$fpath = ( file_exists( get_theme_root() . $f ) ) ? get_theme_root() . $f : ( file_exists( get_template_directory() . $f ) ? get_template_directory() . $f : false );
