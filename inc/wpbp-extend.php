@@ -27,12 +27,28 @@ if ( !function_exists('wpbp_has_post_thumbnail') ) {
 
 if ( !function_exists('wpbp_post_thumbnail') ) {
 
-	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 150, $quality = 90)
+	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 'auto', $quality = 90)
 	{
-		$url = get_post_meta( $post_ID, 'featured_image_url', true );
+		$orig_url = get_post_meta( $post_ID, 'featured_image_url', true );
+
+		list($orig_width, $orig_height, $orig_type, $orig_attr) = getimagesize( $url );
+
+		$orig_ratio = round( $orig_width / $orig_height );
+
+		if ( $width == 'auto' && $height == 'auto' ) {
+			$width = $orig_width;
+			$height = $orig_height;
+		}
+		elseif ( $height == 'auto' ) {
+			$height = round( $width / $orig_ratio );
+		}
+		elseif ( $width == 'auto' ) {
+			$width = round( $height * $orig_ratio );
+		}
+
 		$alt = get_the_title( $post_ID );
-		$src = get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $url;
-		echo "<img src=\"" . $src . "\" width=\"" . $width . "\" height=\"" . $height . "\" alt=\"" . $alt . "\" />\n";
+		$src = get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $orig_url;
+		echo "<img class=\"post-thumbnail\" src=\"" . $src . "\" width=\"" . $width . "\" height=\"" . $height . "\" alt=\"" . $alt . "\" />\n";
 		return;
 	}
 
