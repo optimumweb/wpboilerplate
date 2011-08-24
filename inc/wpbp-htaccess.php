@@ -26,7 +26,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
 		$wpbp_new_non_wp_rules = array(
 			'css/(.*)'     => 'wp-content/themes/'. $theme_name . '/css/$1',
 			'js/(.*)'      => 'wp-content/themes/'. $theme_name . '/js/$1',
-			'resize/(.*)'  => 'wp-content/themes/wpboilerplate/img/resize.php',
+			'resize/(.*)'  => 'wp-content/themes/'. $theme_name . '/img/$1',
 			'img/(.*)'     => 'wp-content/themes/'. $theme_name . '/img/$1',
 			'plugins/(.*)' => 'wp-content/plugins/$1'
 		);
