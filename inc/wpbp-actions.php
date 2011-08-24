@@ -34,12 +34,16 @@ function wpbp_og_tags()
 {
 	global $wp_query;
 
+	if ( is_single() ) {
+		$current_post = get_post( $wp_query->post->ID );
+	}
+
 	$og = array(
-		'title'			=> wp_title(''),
+		'title'			=> is_single() ? $current_post->post_title : wp_title(''),
 		'url'			=> $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
 		'image'			=> is_single() ? wpbp_get_post_image( $wp_query->post->ID ) : false,
 		'site_name'		=> get_bloginfo('name'),
-		'description'	=> is_single() ? get_the_excerpt( $wp_query->post->ID ) : false,
+		'description'	=> is_single() ? $current_post->post_excerpt : false,
 	);
 
 	foreach ( $og as $key => $val ) {
