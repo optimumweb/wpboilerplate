@@ -31,7 +31,7 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 	{
 		$orig_url = get_post_meta( $post_ID, 'featured_image_url', true );
 
-		list($orig_width, $orig_height, $orig_type, $orig_attr) = getimagesize( $url );
+		list($orig_width, $orig_height, $orig_type, $orig_attr) = getimagesize( $orig_url );
 
 		$orig_ratio = round( $orig_width / $orig_height );
 
