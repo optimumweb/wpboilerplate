@@ -15,6 +15,16 @@ if ( !function_exists('single_author_title') ) {
 
 }
 
+if ( !function_exists('wpbp_has_post_thumbnail') ) {
+
+	function wpbp_has_post_thumbnail($post_ID)
+	{
+		$url = get_post_meta( $post_ID, 'featured_image_url', true );
+		return ( strlen( $url ) > 0 ) ? true : false;
+	}
+
+}
+
 if ( !function_exists('wpbp_post_thumbnail') ) {
 
 	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 150, $quality = 0.9)
