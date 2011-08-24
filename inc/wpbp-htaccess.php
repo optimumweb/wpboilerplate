@@ -27,7 +27,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
 			'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
 			'js/(.*)'       => 'wp-content/themes/'. $theme_name . '/js/$1',
 			'img/(.*)'      => 'wp-content/themes/'. $theme_name . '/img/$1',
-			'img/resize/(.*)' => 'wp-content/themes/wpboilerplate/img/resize.php?src=$1',
+			'img/resize/'   => 'wp-content/themes/wpboilerplate/img/resize.php',
 			'plugins/(.*)'  => 'wp-content/plugins/$1'
 		);
 		$wp_rewrite->non_wp_rules += $wpbp_new_non_wp_rules;
