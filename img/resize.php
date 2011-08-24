@@ -47,7 +47,7 @@ if ( !defined('BROWSER_CACHE_DISABLE') ) define('BROWSER_CACHE_DISABLE', false);
 
 // Image size and defaults
 if ( !defined('MAX_WIDTH') ) 		define('MAX_WIDTH', 1500);		// Maximum image width
-if ( !defined('MAX_HEIGHT') ) 		define('MAX_HEIGHT', 1500);	// Maximum image height
+if ( !defined('MAX_HEIGHT') ) 		define('MAX_HEIGHT', 1500);		// Maximum image height
 if ( !defined('NOT_FOUND_IMAGE') )	define('NOT_FOUND_IMAGE', '');	// Image to serve if any 404 occurs
 if ( !defined('ERROR_IMAGE') )		define('ERROR_IMAGE', '');		// Image to serve if an error occurs instead of showing error message
 

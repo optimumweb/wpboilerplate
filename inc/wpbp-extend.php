@@ -27,7 +27,7 @@ if ( !function_exists('wpbp_has_post_thumbnail') ) {
 
 if ( !function_exists('wpbp_post_thumbnail') ) {
 
-	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 150, $quality = 0.9)
+	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 150, $quality = 90)
 	{
 		$url = get_post_meta( $post_ID, 'featured_image_url', true );
 		$alt = get_the_title( $post_ID );
