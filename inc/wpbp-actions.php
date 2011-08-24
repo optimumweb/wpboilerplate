@@ -36,12 +36,13 @@ function wpbp_og_tags()
 
 	if ( is_single() ) {
 		$current_post = get_post( $wp_query->post->ID );
+		$current_post_image = wpbp_get_post_image( $wp_query->post->ID );
 	}
 
 	$og = array(
 		'title'			=> is_single() ? $current_post->post_title : wp_title(''),
 		'url'			=> $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
-		'image'			=> is_single() ? wpbp_get_post_image( $wp_query->post->ID ) : false,
+		'image'			=> is_single() ? $current_post_image['url'] : false,
 		'site_name'		=> get_bloginfo('name'),
 		'description'	=> is_single() ? $current_post->post_excerpt : false,
 	);
