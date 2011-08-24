@@ -40,7 +40,7 @@ function wpbp_og_tags()
 	}
 
 	$og = array(
-		'title'			=> is_single() ? $current_post->post_title : wp_title(''),
+		'title'			=> is_single() ? $current_post->post_title : wp_title('', false),
 		'url'			=> $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"],
 		'image'			=> is_single() ? $current_post_image['url'] : false,
 		'site_name'		=> get_bloginfo('name'),
