@@ -21,8 +21,13 @@ function wpbp_build_form($fields, $current = null)
 
 		// input: text
 		if ( $type == 'text' ) {
+
 			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label><br />";
-			$value = ( isset($current[$key]) ? $current[$key] : ( isset($defval) ? $defval : "" ) );
+
+			if ( isset($current[$key]) ) $value = $current[$key];
+			elseif ( isset($defval) ) $value = $defval;
+			else $value = "";
+
 			echo "<input type=\"text\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"" . $value . "\" class=\"widefat\" />";
 		}
 
@@ -31,7 +36,12 @@ function wpbp_build_form($fields, $current = null)
 			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label><br />";
 			echo "<select name=\"" . $name . "\" id=\"" . $id . "\" class=\"widefat\">";
 			foreach ( $options as $optkey => $optval ) {
-				$selected = ( isset($current[$key]) && $current[$key] == $optkey ) ? " selected=\"selected\"" : "";
+
+				if ( isset($current[$key]) && $current[$key] == $optkey ) $selected = true;
+				elseif ( !isset($current[$key]) && $defval == $optkey ) $selected = true;
+				else $selected = false;
+				$selected = ( $selected ) ? " selected=\"selected\"" : "";
+
 				echo "<option value=\"" . $optkey . "\"" . $selected . ">" . __($optval, 'wpbp') . "</option>";
 			}
 			echo "</select>";
@@ -39,29 +49,51 @@ function wpbp_build_form($fields, $current = null)
 
 		// checkbox
 		elseif ( $type == 'checkbox' ) {
-			$checked = ( isset($current[$key]) && $current[$key] == 'on' ) ? " checked=\"checked\"" : "";
+
+			if ( isset($current[$key]) && $current[$key] == $optkey ) $checked = true;
+			elseif ( !isset($current[$key]) && $defval == 'on' ) $checked = true;
+			else $checked = false;
+			$checked = ( $checked ) ? " checked=\"checked\"" : "";
+
 			echo "<input type=\"checkbox\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"on\"" . $checked . " /> ";
 			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label>";
 		}
 
 		// multi-checkbox
 		elseif ( $type == 'multi-checkbox' ) {
+
 			echo "<label>" . __($title, 'wpbp') . "</label><br />";
+
 			foreach ( $options as $optkey => $optval ) {
+
+				if ( isset($current[$key][$optkey]) && $current[$key][$optkey] == 'on' ) $checked = true;
+				elseif ( !isset($current[$key]) && ( is_array($defval) && in_array($optkey, $defval) ) ) $checked = true;
+				else $checked = false;
+				$checked = ( $checked ) ? " checked=\"checked\"" : "";
+
 				$checked = ( isset($current[$key][$optkey]) && $current[$key][$optkey] == 'on' ) ? " checked=\"checked\"" : "";
 				echo "<input type=\"checkbox\" name=\"" . $name . "[" . $optkey . "]\" id=\"" . $id . "-" . $optkey . "\" value=\"on\"" . $checked . " /> ";
 				echo "<label for=\"" . $id . "-" . $optkey . "\">" . __($optval, 'wpbp') . "</label><br />";
 			}
+
 		}
 
 		// radio
 		elseif ( $type == 'radio' ) {
+
 			echo "<label>" . __($title, 'wpbp') . "</label><br />";
+
 			foreach ( $options as $optkey => $optval ) {
-				$checked = ( isset($current[$key]) && $current[$key] == $optkey ) ? " checked=\"checked\"" : "";
+
+				if ( isset($current[$key]) && $current[$key] == $optkey ) $checked = true;
+				elseif ( !isset($current[$key]) && $defval == $optkey ) $checked = true;
+				else $checked = false;
+				$checked = ( $checked ) ? " checked=\"checked\"" : "";
+
 				echo "<input type=\"radio\" name=\"" . $name . "\" id=\"" . $id . "-" . $optkey . "\" value=\"" . $optkey . "\"" . $checked . " /> ";
 				echo "<label for=\"" . $id . "-" . $optkey . "\">" . __($optval, 'wpbp') . "</label><br />";
 			}
+
 		}
 
 		echo "</p>" . PHP_EOL;
