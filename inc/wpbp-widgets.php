@@ -26,7 +26,7 @@ function wpbp_build_form($fields, $current = null)
 		elseif ( $type == 'dropdown' ) {
 			echo "<select name=\"" . $name . "\" id=\"" . $id . "\">";
 			foreach ( $options as $optkey => $optval ) {
-				$selected = ( $current[$key] == $optkey ) ? " selected=\"selected\"" : "";
+				$selected = ( isset($current[$key]) && $current[$key] == $optkey ) ? " selected=\"selected\"" : "";
 				echo "<option value=\"" . $optkey . "\"" . $selected . ">" . $optval . "</option>";
 			}
 			echo "</select>";
