@@ -15,8 +15,7 @@ class wpbp_vcard extends WP_Widget {
 		if ( isset($title) && strlen($title) > 0 ) {
 			echo $before_title . $title . $after_title;
 		}
-  ?>
-
+		?>
 		<p class="vcard">
 			<a class="fn org url" href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a><br>
 			<span class="adr">
@@ -28,7 +27,6 @@ class wpbp_vcard extends WP_Widget {
 			<span class="tel"><span class="value"><span class="hidden">+1-</span><?php echo $tel; ?></span></span><br>
 			<a class="email" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
 		</p>        
-        
     <?php echo $after_widget;
         
 	}
@@ -161,14 +159,31 @@ class wpbp_most_popular extends WP_Widget {
 				'name' => $this->get_field_name('time_range'),
 				'title' => 'Time range:',
 				'type' => 'dropdown',
-				'defaval' => 'today',
 				'required' => true,
 				'options' => array(
 					'today' => 'Today',
 					'3-days' => 'Last 3 days',
 					'7-days' => 'Last week',
 					'all-time' => 'All-time'
-				)
+				),
+				'defval' => 'today'
+			),
+			'display' => array(
+				'id' => $this->get_field_id('display'),
+				'name' => $this->get_field_name('display'),
+				'title' => 'Display:',
+				'type' => 'multi-checkbox',
+				'required' => false,
+				'options' => array(
+					'post_title' => 'Post title',
+					'featured_image' => 'Featured image',
+					'post_time' => 'Post time',
+					'post_author' => 'Post author',
+					'post_excerpt' => 'Post excerpt',
+					'comment_count' => 'Comment count',
+					'view_count' => 'View count'
+				),
+				'defval' => array('post_title', 'post_time')
 			)
 		);
 		wpbp_build_form($fields, $instance);
