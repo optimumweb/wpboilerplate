@@ -67,7 +67,7 @@ function wpbp_build_form($fields, $current = null)
 			foreach ( $options as $optkey => $optval ) {
 
 				if ( isset($current[$key][$optkey]) && $current[$key][$optkey] == 'on' ) $checked = true;
-				elseif ( !isset($current[$key]) && ( is_array($defval) && in_array($optkey, $defval) ) ) $checked = true;
+				elseif ( !isset($current[$key][$optkey]) && ( is_array($defval) && in_array($optkey, $defval) ) ) $checked = true;
 				else $checked = false;
 				$checked = ( $checked ) ? " checked=\"checked\"" : "";
 
