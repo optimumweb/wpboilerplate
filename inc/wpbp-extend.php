@@ -67,4 +67,14 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 
 }
 
+if ( !function_exists('wpbp_get_the_excerpt') ) {
+
+	function wpbp_get_the_excerpt($post_ID, $limit = 250)
+	{
+		$post = get_post( $post_ID );
+		$excerpt = ( isset( $post->post_excerpt ) && strlen( $post->post_excerpt ) > 0 ) ? $post->post_excerpt : substr( strip_tags( $post->post_content ), 0, 250 );
+		return $excerpt;
+	}
+}
+
 ?>
