@@ -20,11 +20,11 @@ function wpbp_build_form($fields, $current = null)
 
 		if ( $type == 'text' ) {
 			$value = ( isset($current[$key]) ? $current[$key] : ( isset($defval) ? $defval : "" ) );
-			echo "<input type=\"text\" name=\"" . $name . "\" value=\"" . $value . "\" class=\"widefat\" id=\"" . $id . "\" />";
+			echo "<input type=\"text\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"" . $value . "\" class=\"widefat\" />";
 		}
 
 		elseif ( $type == 'dropdown' ) {
-			echo "<select name=\"" . $name . "\" id=\"" . $id . "\">";
+			echo "<select name=\"" . $name . "\" id=\"" . $id . "\" class=\"widefat\">";
 			foreach ( $options as $optkey => $optval ) {
 				$selected = ( isset($current[$key]) && $current[$key] == $optkey ) ? " selected=\"selected\"" : "";
 				echo "<option value=\"" . $optkey . "\"" . $selected . ">" . $optval . "</option>";
