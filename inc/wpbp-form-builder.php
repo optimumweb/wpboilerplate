@@ -71,7 +71,6 @@ function wpbp_build_form($fields, $current = null)
 				else $checked = false;
 				$checked = ( $checked ) ? " checked=\"checked\"" : "";
 
-				$checked = ( isset($current[$key][$optkey]) && $current[$key][$optkey] == 'on' ) ? " checked=\"checked\"" : "";
 				echo "<input type=\"checkbox\" name=\"" . $name . "[" . $optkey . "]\" id=\"" . $id . "-" . $optkey . "\" value=\"on\"" . $checked . " /> ";
 				echo "<label for=\"" . $id . "-" . $optkey . "\">" . __($optval, 'wpbp') . "</label><br />";
 			}
