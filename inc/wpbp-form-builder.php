@@ -66,12 +66,12 @@ function wpbp_build_form($fields, $current = null)
 
 			foreach ( $options as $optkey => $optval ) {
 
-				if ( isset($current[$key][$optkey]) && $current[$key][$optkey] == 'on' ) $checked = true;
-				elseif ( !isset($current[$key][$optkey]) && ( is_array($defval) && in_array($optkey, $defval) ) ) $checked = true;
+				if ( isset($current[$key][$optkey]) && in_array($optkey, $current[$key]) ) $checked = true;
+				elseif ( !isset($current[$key]) && ( is_array($defval) && in_array($optkey, $defval) ) ) $checked = true;
 				else $checked = false;
 				$checked = ( $checked ) ? " checked=\"checked\"" : "";
 
-				echo "<input type=\"checkbox\" name=\"" . $name . "[" . $optkey . "]\" id=\"" . $id . "-" . $optkey . "\" value=\"on\"" . $checked . " /> ";
+				echo "<input type=\"checkbox\" name=\"" . $name . "[]\" id=\"" . $id . "-" . $optkey . "\" value=\"" . $optkey . "\"" . $checked . " /> ";
 				echo "<label for=\"" . $id . "-" . $optkey . "\">" . __($optval, 'wpbp') . "</label><br />";
 			}
 
