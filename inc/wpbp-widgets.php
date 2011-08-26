@@ -103,15 +103,19 @@ class wpbp_cat_nav extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
-		global $wp_query;
+		echo "<ul class=\"cat-list\">";
 
 		$cats = get_categories();
-		echo "<ul class=\"cat-list\">";
 		foreach($cats as $cat) {
-			$cat_name = $cat->slug;
-			echo "<li class=\"cat-name" . ( ( is_category() && ( $cat->ID == $wp_query->queried_object->cat_ID ) ) ? " current-menu-item" : "" ) . "\"><a href=\"" . get_category_link( $cat->cat_ID ) . "\">" . $cat->name . "</a>";
+
+			$current_menu_item = ( is_category() && ( $cat->ID == get_query_var('cat') ) ) ? " current-menu-item" : "";
+			echo "<li class=\"cat-name" . $current_menu_item . "\"><a href=\"" . get_category_link( $cat->cat_ID ) . "\">" . $cat->name . "</a>";
 			echo "<ul class=\"cat-posts\">";
-			$cat_posts = get_posts('numberposts=-1&category_name='.$cat_name);
+
+			$cat_posts = get_posts( array(
+				'numberposts' => -1,
+				'category' => $cat->cat_ID
+			) );
 			foreach( $cat_posts as $post ) {
 				setup_postdata($post);
 				$current_menu_item = ( is_single() && ( get_the_ID() == get_query_var('page_id') ) ) ? " current-menu-item" : "";
