@@ -4,17 +4,18 @@ define('TEMPLATE_DIRECTORY', get_template_directory());
 define('THEME_DIRECTORY', get_theme_root() . '/' . get_stylesheet());
 
 $required_files = array(
-	'/inc/wpbp-activation.php',	// activation
-	'/inc/wpbp-options.php',	// theme options
-	'/inc/wpbp-cleanup.php',	// cleanup
-	'/inc/wpbp-htaccess.php',	// rewrites for assets, h5bp htaccess
-	'/inc/wpbp-hooks.php',		// hooks
-	'/inc/wpbp-actions.php',	// actions
-	'/inc/wpbp-extend.php',		// extend functions
-	'/inc/wpbp-widgets.php',	// widgets
-	'/inc/wpbp-shortcodes.php',	// shortcodes
-	'/inc/wpbp-breadcrumb.php',	// breadcrumb
-	'/inc/wpbp-custom.php'		// custom functions
+	'/inc/wpbp-activation.php',   // activation
+	'/inc/wpbp-options.php',      // theme options
+	'/inc/wpbp-cleanup.php',      // cleanup
+	'/inc/wpbp-htaccess.php',     // rewrites for assets, h5bp htaccess
+	'/inc/wpbp-hooks.php',        // hooks
+	'/inc/wpbp-actions.php',      // actions
+	'/inc/wpbp-form-builder.php', // makes building forms easy
+	'/inc/wpbp-extend.php',       // extend functions
+	'/inc/wpbp-widgets.php',      // widgets
+	'/inc/wpbp-shortcodes.php',   // shortcodes
+	'/inc/wpbp-breadcrumb.php',   // breadcrumb
+	'/inc/wpbp-custom.php'        // custom functions
 );
 
 foreach ( $required_files as $f ) {
