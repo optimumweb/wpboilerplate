@@ -75,6 +75,8 @@ function wpbp_build_form($fields, $current = null)
 				echo "<label for=\"" . $id . "-" . $optkey . "\">" . __($optval, 'wpbp') . "</label><br />";
 			}
 
+			echo "<input type=\"hidden\" name=\"" . $name . "[]\" id=\"" . $id . "-isset\" value=\"isset\" />"; // fixes the $defval bug when nothing is checked
+
 		}
 
 		// radio
