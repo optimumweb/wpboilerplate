@@ -17,19 +17,6 @@
 			<footer>
 				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpbp'), 'after' => '</p></nav>' )); ?>
 				<p class="entry-tags"><?php the_tags(); ?></p>
-				<div class="entry-author vcard">
-					<h3 class="fn"><?php the_author_meta('display_name'); ?></h3>
-					<div class="description">
-						<?php the_author_meta('description'); ?>
-					</div>
-					<ul class="inline-list">
-						<?php if ( strlen( get_the_author_meta('user_url') ) != 0 ) : ?>
-						<li><a class="url" href="<?php the_author_meta('user_url'); ?>" target="_blank"><?php the_author_meta('user_url'); ?></a></li><?php endif; ?>
-						<?php if ( strlen( get_the_author_meta('user_email') ) != 0 ) : ?>
-						<li><a class="email" href="mailto:<?php the_author_meta('user_email'); ?>"><?php the_author_meta('user_email'); ?></a></li><?php endif; ?>
-					</ul>
-					<div class="clear"></div>
-				</div>
 			</footer>
 			<div class="clear"></div>
 			<hr />

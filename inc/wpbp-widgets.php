@@ -36,36 +36,51 @@ class wpbp_vcard extends WP_Widget {
 	}
 
 	function form($instance) {
-	?>
-		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title (optional):', 'wpbp'); ?></label>
-			<input type="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" />
-		</p>       
-		<p>
-			<label for="<?php echo $this->get_field_id('street_address'); ?>"><?php _e('Street Address:', 'wpbp'); ?></label>
-			<input type="text" name="<?php echo $this->get_field_name('street_address'); ?>" value="<?php echo esc_attr($instance['street_address']); ?>" class="widefat" id="<?php echo $this->get_field_id('street_address'); ?>" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id('locality'); ?>"><?php _e('City/Locality:', 'wpbp'); ?></label>
-			<input type="text" name="<?php echo $this->get_field_name('locality'); ?>" value="<?php echo esc_attr($instance['locality']); ?>" class="widefat" id="<?php echo $this->get_field_id('locality'); ?>" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id('region'); ?>"><?php _e('State/Region:', 'wpbp'); ?></label>
-			<input type="text" name="<?php echo $this->get_field_name('region'); ?>" value="<?php echo esc_attr($instance['region']); ?>" class="widefat" id="<?php echo $this->get_field_id('region'); ?>" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id('postal_code'); ?>"><?php _e('Zipcode/Postal Code:', 'wpbp'); ?></label>
-			<input type="text" name="<?php echo $this->get_field_name('postal_code'); ?>" value="<?php echo esc_attr($instance['postal_code']); ?>" class="widefat" id="<?php echo $this->get_field_id('postal_code'); ?>" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id('tel'); ?>"><?php _e('Telephone:', 'wpbp'); ?></label>
-			<input type="text" name="<?php echo $this->get_field_name('tel'); ?>" value="<?php echo esc_attr($instance['tel']); ?>" class="widefat" id="<?php echo $this->get_field_id('tel'); ?>" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id('email'); ?>"><?php _e('Email:', 'wpbp'); ?></label>
-			<input type="text" name="<?php echo $this->get_field_name('email'); ?>" value="<?php echo esc_attr($instance['email']); ?>" class="widefat" id="<?php echo $this->get_field_id('email'); ?>" />
-		</p>
-	<?php
+		$fields = array(
+			'title' => array(
+				'id' => $this->get_field_id('title'),
+				'name' => $this->get_field_name('title'),
+				'title' => 'Title:',
+				'type' => 'text',
+				'required' => false
+			),
+			'street_address' => array(
+				'id' => $this->get_field_id('street_address'),
+				'name' => $this->get_field_name('street_address'),
+				'title' => 'Street Address:',
+				'type' => 'text',
+				'required' => false
+			),
+			'locality' => array(
+				'id' => $this->get_field_id('locality'),
+				'name' => $this->get_field_name('locality'),
+				'title' => 'City/Locality:',
+				'type' => 'text',
+				'required' => false
+			),
+			'postal_code' => array(
+				'id' => $this->get_field_id('postal_code'),
+				'name' => $this->get_field_name('postal_code'),
+				'title' => 'Zipcode/Postal Code:',
+				'type' => 'text',
+				'required' => false
+			),
+			'tel' => array(
+				'id' => $this->get_field_id('tel'),
+				'name' => $this->get_field_name('tel'),
+				'title' => 'Telephone:',
+				'type' => 'text',
+				'required' => false
+			),
+			'email' => array(
+				'id' => $this->get_field_id('email'),
+				'name' => $this->get_field_name('email'),
+				'title' => 'Email:',
+				'type' => 'text',
+				'required' => false
+			)
+		);
+		wpbp_build_form($fields, $instance);
 	}
 } 
 
