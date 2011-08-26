@@ -28,7 +28,7 @@ function wpbp_build_form($fields, $current = null)
 			elseif ( isset($defval) ) $value = $defval;
 			else $value = "";
 
-			echo "<input type=\"text\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"" . $value . "\" class=\"widefat\" />";
+			echo "<input type=\"text\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"" . esc_attr($value) . "\" class=\"widefat\" />";
 		}
 
 		// select
