@@ -12,7 +12,7 @@ class wpbp_vcard extends WP_Widget {
 		extract($instance);
 
 		echo $before_widget;
-		if ($title) {
+		if ( isset($title) && strlen($title) > 0 ) {
 			echo $before_title . $title . $after_title;
 		}
   ?>
@@ -86,7 +86,7 @@ class wpbp_cat_nav extends WP_Widget {
 		extract($instance);
 
 		echo $before_widget;
-		if ($title) {
+		if ( isset($title) && strlen($title) > 0 ) {
 			echo $before_title . $title . $after_title;
 		}
 
@@ -132,7 +132,7 @@ class wpbp_most_popular extends WP_Widget {
 		extract($instance);
 
 		echo $before_widget;
-		if ($title) {
+		if ( isset($title) && strlen($title) > 0 ) {
 			echo $before_title . $title . $after_title;
 		}
 
