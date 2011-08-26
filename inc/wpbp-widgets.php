@@ -185,12 +185,16 @@ class wpbp_most_popular extends WP_Widget {
 	function form($instance) {
 		$fields = array(
 			'title' => array(
+				'id' => $this->get_field_id('title'),
+				'name' => $this->get_field_name('title'),
 				'title' => 'Title:',
 				'type' => 'text',
 				'defval' => '',
 				'required' => false
 			),
 			'time_range' => array(
+				'id' => $this->get_field_id('time_range'),
+				'name' => $this->get_field_name('time_range'),
 				'title' => 'Time range:',
 				'type' => 'dropdown',
 				'defaval' => 'today',
