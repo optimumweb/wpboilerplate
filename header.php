@@ -24,6 +24,8 @@
 
 <body <?php $page_slug = $post->post_name; body_class($page_slug); ?>>
 
+	<?php var_dump($wp_query); ?>
+
 	<?php wpbp_wrap_before(); ?>
 	<div id="wrap" role="document">
 		<?php wpbp_header_before(); ?>
