@@ -53,7 +53,8 @@ class wpbp_vcard extends WP_Widget {
 				'name' => $this->get_field_name('title'),
 				'title' => 'Title (optional):',
 				'type' => 'text',
-				'required' => false
+				'required' => false,
+				'defval' => ''
 			),
 			'fn' => array(
 				'id' => $this->get_field_id('fn'),
@@ -84,35 +85,40 @@ class wpbp_vcard extends WP_Widget {
 				'name' => $this->get_field_name('street_address'),
 				'title' => 'Street Address:',
 				'type' => 'text',
-				'required' => false
+				'required' => false,
+				'defval' => ''
 			),
 			'locality' => array(
 				'id' => $this->get_field_id('locality'),
 				'name' => $this->get_field_name('locality'),
 				'title' => 'City/Locality:',
 				'type' => 'text',
-				'required' => false
+				'required' => false,
+				'defval' => ''
 			),
 			'region' => array(
 				'id' => $this->get_field_id('region'),
 				'name' => $this->get_field_name('region'),
 				'title' => 'State/Region:',
 				'type' => 'text',
-				'required' => false
+				'required' => false,
+				'defval' => ''
 			),
 			'postal_code' => array(
 				'id' => $this->get_field_id('postal_code'),
 				'name' => $this->get_field_name('postal_code'),
 				'title' => 'Zipcode/Postal Code:',
 				'type' => 'text',
-				'required' => false
+				'required' => false,
+				'defval' => ''
 			),
 			'tel' => array(
 				'id' => $this->get_field_id('tel'),
 				'name' => $this->get_field_name('tel'),
 				'title' => 'Telephone:',
 				'type' => 'text',
-				'required' => false
+				'required' => false,
+				'defval' => ''
 			),
 			'email' => array(
 				'id' => $this->get_field_id('email'),
