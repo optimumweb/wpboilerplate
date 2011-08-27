@@ -12,7 +12,7 @@ function wpbp_get_the_views($post_ID, $start = null, $end = null)
 	$total_views = 0;
 
 	if ( strlen($post_views) > 0 ) {
-		$post_views = json_decode($post_views);
+		$post_views = json_decode($post_views, true);
 		for ( $date = $start; $date <= $end; $date = strtotime("+1 day", $date) ) {
 			$total_views += $post_views[date('Y-m-d', $date)];
 		}
@@ -34,7 +34,7 @@ function wpbp_set_the_views($post_ID, $date = null)
 
 	if ( strlen($post_views) > 0 ) {
 		echo "wpbp_post_views = " . $post_views . " ";
-		$post_views = json_decode($post_views);
+		$post_views = json_decode($post_views, true);
 		echo "wpbp_post_views = "; print_r($post_views); echo " ";
 		$post_views[$date] = isset($post_views[$date]) ? ( $post_views[$date] + 1 ) : 0;
 		$post_views = json_encode($post_views);
