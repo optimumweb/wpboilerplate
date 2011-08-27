@@ -35,8 +35,10 @@ function wpbp_set_the_views($post_ID, $date = null)
 	if ( strlen($post_views) > 0 ) {
 		echo "wpbp_post_views = " . $post_views . " ";
 		$post_views = json_decode($post_views);
+		echo "wpbp_post_views = "; print_r($post_views); echo " ";
 		$post_views[$date] = isset($post_views[$date]) ? ( $post_views[$date] + 1 ) : 0;
 		$post_views = json_encode($post_views);
+		echo "wpbp_post_views = " . $post_views . " ";
 		update_post_meta($post_ID, 'wpbp_posts_views', $post_views);
 	}
 	else {
