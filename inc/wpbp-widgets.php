@@ -159,6 +159,8 @@ class wpbp_cat_nav extends WP_Widget {
 		extract($args);
 		extract($instance);
 
+		global $wp_query;
+
 		echo $before_widget;
 		if ( isset($title) && strlen($title) > 0 ) {
 			echo $before_title . $title . $after_title;
@@ -184,7 +186,7 @@ class wpbp_cat_nav extends WP_Widget {
 				'order' => $posts_order
 			) );
 			foreach( $cat_posts as $post ) {
-				$current_menu_item = ( is_single() && ( $post->ID == get_query_var('page_id') ) ) ? " current-menu-item" : "";
+				$current_menu_item = ( is_single() && ( $post->ID == $wp_query->post->ID ) ) ? " current-menu-item" : "";
 				echo "<li class=\"post-link" . $current_menu_item . "\"><a href=\"" . get_permalink( $post->ID ) . "\">" . $post->post_title . "</a></li>";
 			}
 			echo "</ul></li>";
