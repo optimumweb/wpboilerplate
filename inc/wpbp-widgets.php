@@ -201,6 +201,14 @@ class wpbp_cat_nav extends WP_Widget {
 
 	function form($instance) {
 		$fields = array(
+			'title' => array(
+				'id' => $this->get_field_id('title'),
+				'name' => $this->get_field_name('title'),
+				'title' => 'Title (optional):',
+				'type' => 'text',
+				'required' => false,
+				'defval' => ''
+			),
 			'number_cats' => array(
 				'id' => $this->get_field_id('number_cats'),
 				'name' => $this->get_field_name('number_cats'),
