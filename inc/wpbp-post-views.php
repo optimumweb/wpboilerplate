@@ -23,6 +23,8 @@ function wpbp_get_the_views($post_ID, $start = null, $end = null)
 
 function wpbp_set_the_views($post_ID, $date = null)
 {
+	echo "Running wpbp_set_the_views()! ";
+	
 	$date = ( !is_null($date) ) ? $date : date('Y-m-d');
 	list($year, $month, $day) = array_map( 'intval', explode('-', $date) );
 
