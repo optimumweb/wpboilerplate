@@ -28,13 +28,25 @@ class wpbp_vcard extends WP_Widget {
 				<?php endif; ?>
 			<?php endif; ?>
 			<span class="adr">
-				<span class="street-address"><?php echo $street_address; ?></span><br>
-				<span class="locality"><?php echo $locality; ?></span>,
-				<span class="region"><?php echo $region; ?></span>
-				<span class="postal-code"><?php echo $postal_code; ?></span><br>
+				<?php if ( isset( $street_address ) && strlen( $street_address ) > 0 ) : ?>
+					<span class="street-address"><?php echo $street_address; ?></span><br>
+				<?php endif; ?>
+				<?php if ( isset( $locality ) && strlen( $locality ) > 0 ) : ?>
+					<span class="locality"><?php echo $locality; ?></span>,
+				<?php endif; ?>
+				<?php if ( isset( $region ) && strlen( $region ) > 0 ) : ?>
+					<span class="region"><?php echo $region; ?></span>
+				<?php endif; ?>
+				<?php if ( isset( $post_code ) && strlen( $postal_code ) > 0 ) : ?>
+					<span class="postal-code"><?php echo $postal_code; ?></span><br>
+				<?php endif; ?>
 			</span>
-			<span class="tel"><span class="value"><span class="hidden">+1-</span><?php echo $tel; ?></span></span><br>
-			<a class="email" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+			<?php if ( isset( $tel ) && strlen( $tel ) > 0 ) : ?>
+				<span class="tel"><span class="value"><span class="hidden">+1-</span><?php echo $tel; ?></span></span><br>
+			<?php endif; ?>
+			<?php if ( isset( $email ) && strlen( $email ) > 0 ) : ?>
+				<a class="email" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+			<?php endif; ?>
 		</p>        
     <?php echo $after_widget;
         
