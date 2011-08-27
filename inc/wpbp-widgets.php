@@ -45,6 +45,7 @@ class wpbp_vcard extends WP_Widget {
 	}
 
 	function form($instance) {
+		global $current_user;
 		get_currentuserinfo();
 		$fields = array(
 			'title' => array(
