@@ -185,6 +185,7 @@ class wpbp_cat_nav extends WP_Widget {
 			) );
 			foreach( $cat_posts as $post ) {
 				setup_postdata($post);
+				var_dump($post);
 				$current_menu_item = ( is_single() && ( get_the_ID() == get_query_var('page_id') ) ) ? " current-menu-item" : "";
 				echo "<li class=\"post-link" . $current_menu_item . "\"><a href=\"" . get_permalink() . "\">" . get_the_title() . "</a></li>";
 			}
