@@ -17,12 +17,21 @@ class wpbp_vcard extends WP_Widget {
 		}
 		?>
 		<p class="vcard">
-			<a class="fn org url" href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a><br>
+			<?php if ( isset( $fn ) && strlen( $fn ) > 0 ) : ?>
+				<span class="fn"><?php echo $fn; ?></span><br>
+			<?php endif; ?>
+			<?php if ( isset( $org ) && strlen( $org ) > 0 ) : ?>
+				<?php if ( isset( $org_url ) && strlen( $org_url ) > 0 ) : ?>
+					<a class="org url" href="<?php echo $org_url; ?>"><?php echo $org; ?></a><br />
+				<?php else : ?>
+					<span class="org"><?php echo $org; ?></span><br />
+				<?php endif; ?>
+			<?php endif; ?>
 			<span class="adr">
-			<span class="street-address"><?php echo $street_address; ?></span><br>
-			<span class="locality"><?php echo $locality; ?></span>,
-			<span class="region"><?php echo $region; ?></span>
-			<span class="postal-code"><?php echo $postal_code; ?></span><br>
+				<span class="street-address"><?php echo $street_address; ?></span><br>
+				<span class="locality"><?php echo $locality; ?></span>,
+				<span class="region"><?php echo $region; ?></span>
+				<span class="postal-code"><?php echo $postal_code; ?></span><br>
 			</span>
 			<span class="tel"><span class="value"><span class="hidden">+1-</span><?php echo $tel; ?></span></span><br>
 			<a class="email" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
@@ -36,13 +45,38 @@ class wpbp_vcard extends WP_Widget {
 	}
 
 	function form($instance) {
+		get_currentuserinfo();
 		$fields = array(
 			'title' => array(
 				'id' => $this->get_field_id('title'),
 				'name' => $this->get_field_name('title'),
-				'title' => 'Title:',
+				'title' => 'Title (optional):',
 				'type' => 'text',
 				'required' => false
+			),
+			'fn' => array(
+				'id' => $this->get_field_id('fn'),
+				'name' => $this->get_field_name('fn'),
+				'title' => 'Full Name:',
+				'type' => 'text',
+				'required' => false,
+				'defval' => $current_user->first_name . ' ' . $current_user->last_name
+			),
+			'org' => array(
+				'id' => $this->get_field_id('org'),
+				'name' => $this->get_field_name('org'),
+				'title' => 'Company:',
+				'type' => 'text',
+				'required' => false,
+				'defval' => get_bloginfo('name')
+			),
+			'org_url' => array(
+				'id' => $this->get_field_id('org_url'),
+				'name' => $this->get_field_name('org_url'),
+				'title' => 'Company URL:',
+				'type' => 'text',
+				'required' => false,
+				'defval' => get_bloginfo('url')
 			),
 			'street_address' => array(
 				'id' => $this->get_field_id('street_address'),
@@ -77,7 +111,8 @@ class wpbp_vcard extends WP_Widget {
 				'name' => $this->get_field_name('email'),
 				'title' => 'Email:',
 				'type' => 'text',
-				'required' => false
+				'required' => false,
+				'defval' => $current_user->user_email
 			)
 		);
 		wpbp_build_form($fields, $instance);
@@ -105,7 +140,11 @@ class wpbp_cat_nav extends WP_Widget {
 
 		echo "<ul class=\"cat-list\">";
 
-		$cats = get_categories();
+		$cats = get_categories( array(
+			'number' => $number_cats,
+			'orderby' => $order_cats_by,
+			'order' => $cats_order
+		) );
 		foreach($cats as $cat) {
 
 			$current_menu_item = ( is_category() && ( $cat->ID == get_query_var('cat') ) ) ? " current-menu-item" : "";
@@ -113,8 +152,10 @@ class wpbp_cat_nav extends WP_Widget {
 			echo "<ul class=\"cat-posts\">";
 
 			$cat_posts = get_posts( array(
-				'numberposts' => -1,
-				'category' => $cat->cat_ID
+				'numberposts' => $number_posts,
+				'category' => $cat->cat_ID,
+				'orderby' => $order_posts_by,
+				'order' => $posts_order
 			) );
 			foreach( $cat_posts as $post ) {
 				setup_postdata($post);
@@ -133,7 +174,84 @@ class wpbp_cat_nav extends WP_Widget {
 		return $new_instance;
 	}
 
-	function form($instance) {}
+	function form($instance) {
+		$fields = array(
+			'number_cats' => array(
+				'id' => $this->get_field_id('number_cats'),
+				'name' => $this->get_field_name('number_cats'),
+				'title' => 'Maximum number of categories to display:',
+				'type' => 'text',
+				'defval' => '-1',
+				'required' => true
+			),
+			'order_cats_by' => array(
+				'id' => $this->get_field_id('order_cats_by'),
+				'name' => $this->get_field_name('order_cats_by'),
+				'title' => 'Order categories by:',
+				'type' => 'dropdown',
+				'required' => true,
+				'options' => array(
+					'id' => 'ID',
+					'name' => 'Name',
+					'slug' => 'Slug',
+					'count' => 'Count',
+					'term_group' => 'Term Group'
+				),
+				'defval' => 'name'
+			),
+			'cats_order' => array(
+				'id' => $this->get_field_id('cats_order'),
+				'name' => $this->get_field_name('cats_order'),
+				'title' => 'Order:',
+				'type' => 'dropdown',
+				'required' => true,
+				'options' => array(
+					'asc' => 'asc',
+					'desc' => 'desc'
+				),
+				'defval' => 'asc'
+			),
+			'number_posts' => array(
+				'id' => $this->get_field_id('number_posts'),
+				'name' => $this->get_field_name('number_posts'),
+				'title' => 'Maximum number of posts to display per category:',
+				'type' => 'text',
+				'defval' => '-1',
+				'required' => true
+			),
+			'order_posts_by' => array(
+				'id' => $this->get_field_id('order_posts_by'),
+				'name' => $this->get_field_name('order_posts_by'),
+				'title' => 'Order posts by:',
+				'type' => 'dropdown',
+				'required' => true,
+				'options' => array(
+					'none' => 'No order',
+					'ID' => 'ID',
+					'author' => 'Author',
+					'title' => 'Title',
+					'date' => 'Date',
+					'modified' => 'Last modified',
+					'rand' => 'Random',
+					'comment_count' => 'Comment count'
+				),
+				'defval' => 'date'
+			),
+			'posts_order' => array(
+				'id' => $this->get_field_id('posts_order'),
+				'name' => $this->get_field_name('posts_order'),
+				'title' => 'Order:',
+				'type' => 'dropdown',
+				'required' => true,
+				'options' => array(
+					'asc' => 'asc',
+					'desc' => 'desc'
+				),
+				'defval' => 'asc'
+			)
+		);
+		wpbp_build_form($fields, $instance);
+	}
 }
 
 register_widget('wpbp_cat_nav');
