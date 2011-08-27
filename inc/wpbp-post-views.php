@@ -34,13 +34,13 @@ function wpbp_set_the_views($post_ID, $date = null)
 		$post_views = json_decode($post_views, true);
 		$post_views[$date] = isset($post_views[$date]) ? ( $post_views[$date] + 1 ) : 0;
 		$post_views = json_encode($post_views);
-		update_post_meta($post_ID, 'wpbp_posts_views', $post_views);
+		update_post_meta($post_ID, 'wpbp_post_views', $post_views);
 	}
 	else {
 		$post_views = array();
 		$post_views[$date] = 1;
 		$post_views = json_encode($post_views);
-		add_post_meta($post_ID, 'wpbp_posts_views', $post_views, true);
+		add_post_meta($post_ID, 'wpbp_post_views', $post_views, true);
 	}
 
 	return true;
