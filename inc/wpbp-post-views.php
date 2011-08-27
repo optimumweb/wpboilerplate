@@ -46,14 +46,4 @@ function wpbp_set_the_views($post_ID, $date = null)
 	return true;
 }
 
-function wpbp_count_view()
-{
-	global $wp_query;
-	if ( is_single() && isset($wp_query->post->ID) ) {
-		$wpbp_set_the_views( $wp_query->post->ID, date('Y-m-d') );
-		echo "Counted view!";
-	}
-}
-add_action('wpbp_footer', 'wpbp_count_view');
-
 ?>

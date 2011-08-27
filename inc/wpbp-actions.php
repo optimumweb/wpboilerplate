@@ -6,6 +6,7 @@ add_action('wpbp_head', 'wpbp_custom_css');
 add_action('wpbp_stylesheets', 'wpbp_get_stylesheets');
 add_action('wpbp_scripts', 'wpbp_get_scripts');
 add_action('wpbp_breadcrumb', 'wpbp_get_breadcrumb');
+add_action('wpbp_footer', 'wpbp_count_view');
 
 function wpbp_google_analytics()
 {
@@ -152,6 +153,15 @@ function wpbp_custom_css()
 function wpbp_get_breadcrumb()
 {
 	wpbp_custom_breadcrumb();
+}
+
+function wpbp_count_view()
+{
+	global $wp_query;
+	if ( is_single() && isset($wp_query->post->ID) ) {
+		wpbp_set_the_views( $wp_query->post->ID, date('Y-m-d') );
+		echo "Counted view!";
+	}
 }
 
 ?>
