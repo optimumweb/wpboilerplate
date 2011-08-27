@@ -33,6 +33,7 @@ function wpbp_set_the_views($post_ID, $date = null)
 	$post_views = get_post_meta($post_ID, 'wpbp_post_views', true);
 
 	if ( strlen($post_views) > 0 ) {
+		echo "wpbp_post_views = " . $post_views . " ";
 		$post_views = json_decode($post_views);
 		$post_views[$date] = isset($post_views[$date]) ? ( $post_views[$date] + 1 ) : 0;
 		$post_views = json_encode($post_views);
