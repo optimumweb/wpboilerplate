@@ -26,7 +26,7 @@ function wpbp_set_the_views($post_ID, $date = null)
 	$date = ( !is_null($date) ) ? $date : date('Y-m-d');
 	list($m, $d, $Y) = explode('-', $date);
 
-	if ( !checkdate($m, $d, $Y) ) return false;
+	//if ( !checkdate($m, $d, $Y) ) return false;
 
 	$post_views = get_post_meta($post_ID, 'wpbp_post_views', true);
 
