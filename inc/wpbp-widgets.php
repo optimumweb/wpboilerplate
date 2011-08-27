@@ -93,6 +93,13 @@ class wpbp_vcard extends WP_Widget {
 				'type' => 'text',
 				'required' => false
 			),
+			'region' => array(
+				'id' => $this->get_field_id('region'),
+				'name' => $this->get_field_name('region'),
+				'title' => 'State/Region:',
+				'type' => 'text',
+				'required' => false
+			),
 			'postal_code' => array(
 				'id' => $this->get_field_id('postal_code'),
 				'name' => $this->get_field_name('postal_code'),
@@ -148,7 +155,7 @@ class wpbp_cat_nav extends WP_Widget {
 		) );
 		foreach($cats as $cat) {
 
-			$current_menu_item = ( is_category() && ( $cat->ID == get_query_var('cat') ) ) ? " current-menu-item" : "";
+			$current_menu_item = ( is_category() && ( $cat->cat_ID == get_query_var('cat') ) ) ? " current-menu-item" : "";
 			echo "<li class=\"cat-name" . $current_menu_item . "\"><a href=\"" . get_category_link( $cat->cat_ID ) . "\">" . $cat->name . "</a>";
 			echo "<ul class=\"cat-posts\">";
 
