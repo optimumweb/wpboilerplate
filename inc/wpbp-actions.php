@@ -159,8 +159,8 @@ function wpbp_count_view()
 {
 	global $wp_query;
 	if ( is_single() && isset($wp_query->post->ID) ) {
-		wpbp_set_the_views( $wp_query->post->ID, date('Y-m-d') );
-		echo "Counted view!";
+		$view_counted = wpbp_set_the_views( $wp_query->post->ID, date('Y-m-d') );
+		if ( $view_counted ) echo "Counted view!";
 	}
 }
 
