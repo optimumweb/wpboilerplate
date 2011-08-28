@@ -54,7 +54,10 @@ class wpbp_vcard extends WP_Widget {
 				<span class="tel"><span class="value"><span class="hidden">+1-</span><?php echo $tel; ?></span></span><br />
 			<?php endif; ?>
 			<?php if ( isset( $email ) && strlen( $email ) > 0 ) : ?>
-				<a class="email" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+				<a class="email" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a><br />
+			<?php endif; ?>
+			<?php if ( isset( $note ) && strlen( $note ) > 0 ) : ?>
+				<span class="note"><?php echo $note; ?></span>
 			<?php endif; ?>
 		</p>        
     <?php echo $after_widget;
