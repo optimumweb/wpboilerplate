@@ -80,7 +80,7 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 
 if ( !function_exists('array_plot') ) {
 
-	function array_plot(&$array, $function)
+	function array_plot($array, $function)
 	{
 		$keys = $array;
 		$values = array_map($array, $function);
