@@ -13,9 +13,9 @@
 							//$author = wpbp_get_author();
 							//var_dump( $author );
 						?>
-						<?php if ( $author->google_profile ) : ?>
-							<a href="<?php echo $author->google_profile; ?>" rel="me">
-								<?php printf( __("%s's Google Profile", "wpbp"), $author->display_name ); ?>
+						<?php //if ( $author->google_profile ) : ?>
+							<a href="<?php //echo $author->google_profile; ?>" rel="me">
+								<?php //printf( __("%s's Google Profile", "wpbp"), $author->display_name ); ?>
 							</a>
 						<?php //endif; ?>
 					</div>
