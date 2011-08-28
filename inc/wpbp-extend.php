@@ -83,7 +83,7 @@ if ( !function_exists('array_plot') ) {
 	function array_plot($array, $function)
 	{
 		$keys = $array;
-		$values = array_map($array, $function);
+		$values = array_map($function, $array);
 		return array_combine($keys, $values);
 	}
 
