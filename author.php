@@ -10,8 +10,8 @@
 					</h1>
 					<div class="author-info">
 						<?php
-							$author = wpbp_get_author();
-							var_dump( $author );
+							//$author = wpbp_get_author();
+							//var_dump( $author );
 						?>
 						<?php if ( $author->google_profile ) : ?>
 							<a href="<?php echo $author->google_profile; ?>" rel="me">
