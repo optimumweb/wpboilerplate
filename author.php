@@ -8,6 +8,22 @@
 					<h1 class="page-title">
 						<?php printf( __('Author: &laquo; %s &raquo;', 'wpbp'), single_author_title('', false) ); ?>
 					</h1>
+					<div class="author-info">
+						<?php
+							$author_info = array(
+								'user_login', 'user_nicename', 'user_email', 'user_url',
+								'display_name', 'nickname', 'first_name', 'last_name',
+								'description', 'jabber', 'aim', 'yim', 'google_profile'
+							);
+							array_plot($author_info, 'get_the_author_meta');
+							var_dump($author_info);
+						?>
+						<?php if ( $author_info['google_profile'] ) : ?>
+							<a href="<?php echo $author_info['google_profile']; ?>" rel="me">
+								<?php printf( __("%s's Google Profile", "wpbp"), $author_info['display_name'] ); ?>
+							</a>
+						<?php endif; ?>
+					</div>
 					<?php wpbp_loop_before(); ?>
 					<?php get_template_part('loop', 'author'); ?>
 					<?php wpbp_loop_after(); ?>
