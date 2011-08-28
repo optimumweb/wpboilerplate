@@ -6,7 +6,7 @@
 			<div id="main" class="<?php echo $wpbp_options['main_class']; ?>" role="main">
 				<div class="container">
 					<h1 class="page-title">
-						<?php printf( __('Author: &laquo; %s &raquo;', 'wpbp'), single_author_title('', false) ); ?>
+						<?php //printf( __('Author: &laquo; %s &raquo;', 'wpbp'), single_author_title('', false) ); ?>
 					</h1>
 					<div class="author-info">
 						<?php
