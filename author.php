@@ -13,11 +13,11 @@
 							//$author = wpbp_get_author();
 							var_dump( $author );
 						?>
-						<?php if ( $author->google_profile ) : ?>
+						<?php //if ( $author->google_profile ) : ?>
 							<a href="<?php echo $author->google_profile; ?>" rel="me">
 								<?php printf( __("%s's Google Profile", "wpbp"), $author->display_name ); ?>
 							</a>
-						<?php endif; ?>
+						<?php //endif; ?>
 					</div>
 					<?php wpbp_loop_before(); ?>
 					<?php get_template_part('loop', 'author'); ?>
