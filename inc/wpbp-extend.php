@@ -88,6 +88,7 @@ if ( !function_exists('array_plot') ) {
 				$y = $function( $x );
 				if ( isset( $y ) ) {
 					$image[$x] = $y;
+					echo $x . ": " . $y . "<br />\n";
 				}
 			}
 		}
