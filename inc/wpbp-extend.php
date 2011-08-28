@@ -1,11 +1,26 @@
 <?php
 
+if ( !function_exists('wpbp_get_author') ) {
+
+	function wpbp_get_author($field = null, $ID = null)
+	{
+		if ( isset( $ID ) ) {
+			$author = get_user_by('id', $ID);
+		} elseif ( isset( get_query_var('author_name') ) ) {
+			$author = get_user_by('slug', get_query_var('author_name'));
+		}
+		return isset($field) ? ( isset( $author->$field ) ? $author->$field : false ) : $author ;
+	}
+
+}
+
 if ( !function_exists('single_author_title') ) {
 
 	function single_author_title($prefix = '', $display = true)
 	{
-		global $wp_query;
-		$single_author_title = $prefix . $wp_query->queried_object->display_name;
+		$author = wpbp_get_author('display_name');
+		if ( !$author ) return false;
+		$single_author_title = $prefix . $author;
 		if ( $display ) {
 			echo $single_author_title;
 		} else {

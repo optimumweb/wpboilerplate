@@ -10,14 +10,8 @@
 					</h1>
 					<div class="author-info">
 						<?php
-							$author_info = array_plot( array(
-								'user_login', 'user_nicename', 'user_email', 'user_url',
-								'display_name', 'nickname', 'first_name', 'last_name',
-								'description', 'jabber', 'aim', 'yim', 'google_profile'
-							), 'get_the_author_meta' );
-							var_dump($wp_query);
-							var_dump( $author_info );
-							var_dump( get_the_author_meta('google_profile') );
+							$author = wpbp_get_author();
+							var_dump( $author );
 						?>
 						<?php if ( $author_info['google_profile'] ) : ?>
 							<a href="<?php echo $author_info['google_profile']; ?>" rel="me">
