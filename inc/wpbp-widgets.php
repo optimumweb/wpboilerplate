@@ -18,7 +18,7 @@ class wpbp_vcard extends WP_Widget {
 		?>
 		<p class="vcard">
 			<?php if ( isset( $photo ) && strlen( $photo ) > 0 ) : ?>
-				<img src="<?php echo $photo; ?>" class="photo" alt="<?php echo ( isset( $fn ) && strlen( $fn ) > 0 ) ? $fn : ( ( isset( $org ) && strlen( $org ) > 0 ) ? $org : "" ); ?>" /><br />
+				<img src="<?php echo $photo; ?>" class="photo" alt="<?php echo ( isset( $fn ) && strlen( $fn ) > 0 ) ? $fn :  ""; ?>" /><br />
 			<?php endif; ?>
 			<?php if ( isset( $fn ) && strlen( $fn ) > 0 ) : ?>
 				<span class="fn"><?php echo $fn; ?></span><br />
@@ -28,6 +28,9 @@ class wpbp_vcard extends WP_Widget {
 					<a class="org url" href="<?php echo $org_url; ?>"><?php echo $org; ?></a><br />
 				<?php else : ?>
 					<span class="org"><?php echo $org; ?></span><br />
+				<?php endif; ?>
+				<?php if ( isset( $logo ) && strlen( $logo ) > 0 ) : ?>
+					<img src="<?php echo $logo; ?>" class="logo" alt="<?php echo $org; ?>" /><br />
 				<?php endif; ?>
 			<?php endif; ?>
 			<span class="adr">
@@ -79,6 +82,14 @@ class wpbp_vcard extends WP_Widget {
 				'required' => false,
 				'defval' => $current_user->first_name . ' ' . $current_user->last_name
 			),
+			'photo' => array(
+				'id' => $this->get_field_id('photo'),
+				'name' => $this->get_field_name('photo'),
+				'title' => 'Photo URL:',
+				'type' => 'text',
+				'required' => false,
+				'defval' => $current_user->photo
+			),
 			'org' => array(
 				'id' => $this->get_field_id('org'),
 				'name' => $this->get_field_name('org'),
@@ -95,13 +106,13 @@ class wpbp_vcard extends WP_Widget {
 				'required' => false,
 				'defval' => get_bloginfo('url')
 			),
-			'photo' => array(
-				'id' => $this->get_field_id('photo'),
-				'name' => $this->get_field_name('photo'),
-				'title' => 'Photo URL:',
+			'logo' => array(
+				'id' => $this->get_field_id('logo'),
+				'name' => $this->get_field_name('logo'),
+				'title' => 'Logo URL:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => $current_user->photo
+				'defval' => ''
 			),
 			'street_address' => array(
 				'id' => $this->get_field_id('street_address'),
