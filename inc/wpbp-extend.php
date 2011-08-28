@@ -9,7 +9,7 @@ if ( !function_exists('wpbp_get_author') ) {
 		} elseif ( is_author() && isset( get_query_var('author_name') ) ) {
 			$author = get_user_by('slug', get_query_var('author_name'));
 		}
-		return isset($field) ? ( isset( $author->$field ) ? $author->$field : false ) : $author ;
+		return ( isset($field) ) ? ( ( isset( $author->$field ) ) ? $author->$field : false ) : $author ;
 	}
 
 }
