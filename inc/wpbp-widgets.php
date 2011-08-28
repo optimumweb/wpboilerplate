@@ -169,7 +169,7 @@ class wpbp_cat_nav extends WP_Widget {
 		echo "<ul class=\"cat-list\">";
 
 		$cats = get_categories( array(
-			'number' => $number_cats,
+			'number' => ( $number_cats > 0 ) ? $number_cats : null,
 			'orderby' => $order_cats_by,
 			'order' => $cats_order
 		) );
