@@ -6,18 +6,18 @@
 			<div id="main" class="<?php echo $wpbp_options['main_class']; ?>" role="main">
 				<div class="container">
 					<h1 class="page-title">
-						<?php //printf( __('Author: &laquo; %s &raquo;', 'wpbp'), single_author_title('', false) ); ?>
+						<?php printf( __('Author: &laquo; %s &raquo;', 'wpbp'), single_author_title('', false) ); ?>
 					</h1>
 					<div class="author-info">
 						<?php
-							//$author = wpbp_get_author();
-							//var_dump( $author );
+							$author = wpbp_get_author();
+							var_dump( $author );
 						?>
-						<?php //if ( $author->google_profile ) : ?>
-							<a href="<?php //echo $author->google_profile; ?>" rel="me">
-								<?php //printf( __("%s's Google Profile", "wpbp"), $author->display_name ); ?>
+						<?php if ( $author->google_profile ) : ?>
+							<a href="<?php echo $author->google_profile; ?>" rel="me">
+								<?php printf( __("%s's Google Profile", "wpbp"), $author->display_name ); ?>
 							</a>
-						<?php //endif; ?>
+						<?php endif; ?>
 					</div>
 					<?php wpbp_loop_before(); ?>
 					<?php get_template_part('loop', 'author'); ?>
