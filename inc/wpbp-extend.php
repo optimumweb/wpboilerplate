@@ -88,6 +88,7 @@ if ( !function_exists('array_plot') ) {
 				$result = $function( $value );
 				if ( isset($result) ) {
 					$plot[$key] = $result;
+					echo $key . ": " . $result . "<br />";
 				}
 			}
 		}
