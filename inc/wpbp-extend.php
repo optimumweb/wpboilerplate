@@ -80,19 +80,18 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 
 if ( !function_exists('array_plot') ) {
 
-	function array_plot($array, $function)
+	function array_plot($domain, $function)
 	{
-		$plot = array();
-		foreach ( $array as $key => $value ) {
-			if ( is_string($key) ) {
-				$result = $function( $value );
-				echo $key . ": " . $result . "<br />";
-				if ( isset($result) ) {
-					$plot[$key] = $result;
+		$image = array();
+		foreach ( $domain as $x ) {
+			if ( is_int($x) || is_string($x) ) {
+				$y = $function( $x );
+				if ( isset( $y ) ) {
+					$image[$x] = $y;
 				}
 			}
 		}
-		return $plot;
+		return $image;
 	}
 
 }
