@@ -31,6 +31,18 @@ function wpbp_build_form($fields, $current = null)
 			echo "<input type=\"text\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"" . esc_attr($value) . "\" class=\"widefat\" />";
 		}
 
+		// input: textarea
+		if ( $type == 'textarea' ) {
+
+			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label><br />";
+
+			if ( isset($current[$key]) ) $value = $current[$key];
+			elseif ( isset($defval) ) $value = $defval;
+			else $value = "";
+
+			echo "<textarea name=\"" . $name . "\" id=\"" . $id . "\" class=\"widefat\">" . esc_attr($value) . "</textarea>";
+		}
+
 		// select
 		elseif ( $type == 'dropdown' ) {
 			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label><br />";

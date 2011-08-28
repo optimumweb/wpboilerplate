@@ -23,6 +23,9 @@ class wpbp_vcard extends WP_Widget {
 			<?php if ( isset( $fn ) && strlen( $fn ) > 0 ) : ?>
 				<span class="fn"><?php echo $fn; ?></span><br />
 			<?php endif; ?>
+			<?php if ( isset( $job_title ) && strlen( $job_title ) > 0 ) : ?>
+				<span class="title"><?php echo $job_title; ?></span><br />
+			<?php endif; ?>
 			<?php if ( isset( $org ) && strlen( $org ) > 0 ) : ?>
 				<?php if ( isset( $org_url ) && strlen( $org_url ) > 0 ) : ?>
 					<a class="org url" href="<?php echo $org_url; ?>"><?php echo $org; ?></a><br />
@@ -81,6 +84,14 @@ class wpbp_vcard extends WP_Widget {
 				'type' => 'text',
 				'required' => false,
 				'defval' => $current_user->first_name . ' ' . $current_user->last_name
+			),
+			'job_title' => array(
+				'id' => $this->get_field_id('job_title'),
+				'name' => $this->get_field_name('job_title'),
+				'title' => 'Job Title:',
+				'type' => 'text',
+				'required' => false,
+				'defval' => ''
 			),
 			'photo' => array(
 				'id' => $this->get_field_id('photo'),
@@ -161,6 +172,14 @@ class wpbp_vcard extends WP_Widget {
 				'type' => 'text',
 				'required' => false,
 				'defval' => $current_user->user_email
+			),
+			'note' => array(
+				'id' => $this->get_field_id('note'),
+				'name' => $this->get_field_name('note'),
+				'title' => 'Note:',
+				'type' => 'textarea',
+				'required' => false,
+				'defval' => $current_user->description
 			)
 		);
 		wpbp_build_form($fields, $instance);
