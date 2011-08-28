@@ -86,9 +86,9 @@ if ( !function_exists('array_plot') ) {
 		foreach ( $array as $key => $value ) {
 			if ( is_string($key) ) {
 				$result = $function( $value );
+				echo $key . ": " . $result . "<br />";
 				if ( isset($result) ) {
 					$plot[$key] = $result;
-					echo $key . ": " . $result . "<br />";
 				}
 			}
 		}
