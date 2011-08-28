@@ -82,9 +82,16 @@ if ( !function_exists('array_plot') ) {
 
 	function array_plot($array, $function)
 	{
-		$keys = $array;
-		$values = array_map($function, $array);
-		return array_combine($keys, $values);
+		$plot = array();
+		foreach ( $array as $key => $value ) {
+			if ( is_string($key) ) {
+				$result = $function( $value );
+				if ( isset($result) ) {
+					$plot[$key] = $result;
+				}
+			}
+		}
+		return $plot;
 	}
 
 }
