@@ -1,6 +1,15 @@
 <?php
 
-function wpbp_admin_enqueue_scripts($hook_suffix) {
+function wpbp_add_google_profile( $contactmethods )
+{
+	// Add Google Profiles
+	$contactmethods['google_profile'] = 'Google Profile URL';
+	return $contactmethods;
+}
+add_filter( 'user_contactmethods', 'wpbp_add_google_profile', 10, 1);
+
+function wpbp_admin_enqueue_scripts($hook_suffix)
+{
 	if ($hook_suffix !== 'appearance_page_theme_options')
 		return;
 
@@ -9,7 +18,8 @@ function wpbp_admin_enqueue_scripts($hook_suffix) {
 }
 add_action('admin_enqueue_scripts', 'wpbp_admin_enqueue_scripts');
 
-function wpbp_theme_options_init() {
+function wpbp_theme_options_init()
+{
 	if (false === wpbp_get_theme_options())
 		add_option('wpbp_theme_options', wpbp_get_default_theme_options());
 
@@ -21,12 +31,14 @@ function wpbp_theme_options_init() {
 }
 add_action('admin_init', 'wpbp_theme_options_init');
 
-function wpbp_option_page_capability($capability) {
+function wpbp_option_page_capability($capability)
+{
 	return 'edit_theme_options';
 }
 add_filter('option_page_capability_wpbp_options', 'wpbp_option_page_capability');
 
-function wpbp_theme_options_add_page() {
+function wpbp_theme_options_add_page()
+{
 	$theme_page = add_theme_page(
 		__('Theme Options', 'wpbp'),
 		__('Theme Options', 'wpbp'),
@@ -40,7 +52,8 @@ function wpbp_theme_options_add_page() {
 }
 add_action('admin_menu', 'wpbp_theme_options_add_page');
 
-function wpbp_admin_bar_render() {
+function wpbp_admin_bar_render()
+{
 	global $wp_admin_bar;
 
 	$wp_admin_bar->add_menu(array(
@@ -75,7 +88,8 @@ $wpbp_css_frameworks = array(
 );
 
 // Write the above array of CSS frameworks into a script tag
-function wpbp_add_frameworks_object_script() {
+function wpbp_add_frameworks_object_script()
+{
 	global $wpbp_css_frameworks;
 	$json = json_encode($wpbp_css_frameworks);
 ?>
@@ -86,7 +100,8 @@ function wpbp_add_frameworks_object_script() {
 }
 add_action('admin_head', 'wpbp_add_frameworks_object_script');
 
-function wpbp_get_default_theme_options() {
+function wpbp_get_default_theme_options()
+{
 	global $wpbp_css_frameworks;
 	$default_framework = '960gs_16';
 	$default_framework_settings = $wpbp_css_frameworks[$default_framework];
@@ -109,11 +124,13 @@ function wpbp_get_default_theme_options() {
 	return apply_filters('wpbp_default_theme_options', $default_theme_options);
 }
 
-function wpbp_get_theme_options() {
+function wpbp_get_theme_options()
+{
 	return get_option('wpbp_theme_options', wpbp_get_default_theme_options());
 }
 
-function wpbp_theme_options_render_page() {
+function wpbp_theme_options_render_page()
+{
 	global $wpbp_css_frameworks;
 	?>
 	<div class="wrap">
@@ -212,7 +229,8 @@ function wpbp_theme_options_render_page() {
 	<?php
 }
 
-function wpbp_theme_options_validate($input) {
+function wpbp_theme_options_validate($input)
+{
 	global $wpbp_css_frameworks;
 	$output = $defaults = wpbp_get_default_theme_options();
 
