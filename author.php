@@ -15,7 +15,8 @@
 								'display_name', 'nickname', 'first_name', 'last_name',
 								'description', 'jabber', 'aim', 'yim', 'google_profile'
 							), 'get_the_author_meta' );
-							var_dump($author_info);
+							var_dump( $author_info );
+							var_dump( get_the_author_meta('google_profile') );
 						?>
 						<?php if ( $author_info['google_profile'] ) : ?>
 							<a href="<?php echo $author_info['google_profile']; ?>" rel="me">
