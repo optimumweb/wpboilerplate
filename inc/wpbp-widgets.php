@@ -17,8 +17,11 @@ class wpbp_vcard extends WP_Widget {
 		}
 		?>
 		<p class="vcard">
+			<?php if ( isset( $photo ) && strlen( $photo ) > 0 ) : ?>
+				<img src="<?php echo $photo; ?>" class="photo" alt="<?php echo ( isset( $fn ) && strlen( $fn ) > 0 ) ? $fn : ( ( isset( $org ) && strlen( $org ) > 0 ) ? $org : "" ); ?>" /><br />
+			<?php endif; ?>
 			<?php if ( isset( $fn ) && strlen( $fn ) > 0 ) : ?>
-				<span class="fn"><?php echo $fn; ?></span><br>
+				<span class="fn"><?php echo $fn; ?></span><br />
 			<?php endif; ?>
 			<?php if ( isset( $org ) && strlen( $org ) > 0 ) : ?>
 				<?php if ( isset( $org_url ) && strlen( $org_url ) > 0 ) : ?>
@@ -29,20 +32,20 @@ class wpbp_vcard extends WP_Widget {
 			<?php endif; ?>
 			<span class="adr">
 				<?php if ( isset( $street_address ) && strlen( $street_address ) > 0 ) : ?>
-					<span class="street-address"><?php echo $street_address; ?></span><br>
+					<span class="street-address"><?php echo $street_address; ?></span><br />
 				<?php endif; ?>
 				<?php if ( isset( $locality ) && strlen( $locality ) > 0 ) : ?>
-					<span class="locality"><?php echo $locality; ?></span>,
+					<span class="locality"><?php echo $locality; ?></span />>,
 				<?php endif; ?>
 				<?php if ( isset( $region ) && strlen( $region ) > 0 ) : ?>
-					<span class="region"><?php echo $region; ?></span>
+					<span class="region"><?php echo $region; ?></span />>
 				<?php endif; ?>
 				<?php if ( isset( $post_code ) && strlen( $postal_code ) > 0 ) : ?>
-					<span class="postal-code"><?php echo $postal_code; ?></span><br>
+					<span class="postal-code"><?php echo $postal_code; ?></span><br />
 				<?php endif; ?>
 			</span>
 			<?php if ( isset( $tel ) && strlen( $tel ) > 0 ) : ?>
-				<span class="tel"><span class="value"><span class="hidden">+1-</span><?php echo $tel; ?></span></span><br>
+				<span class="tel"><span class="value"><span class="hidden">+1-</span><?php echo $tel; ?></span></span><br />
 			<?php endif; ?>
 			<?php if ( isset( $email ) && strlen( $email ) > 0 ) : ?>
 				<a class="email" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
@@ -91,6 +94,14 @@ class wpbp_vcard extends WP_Widget {
 				'type' => 'text',
 				'required' => false,
 				'defval' => get_bloginfo('url')
+			),
+			'photo' => array(
+				'id' => $this->get_field_id('photo'),
+				'name' => $this->get_field_name('photo'),
+				'title' => 'Photo URL:',
+				'type' => 'text',
+				'required' => false,
+				'defval' => $current_user->photo
 			),
 			'street_address' => array(
 				'id' => $this->get_field_id('street_address'),

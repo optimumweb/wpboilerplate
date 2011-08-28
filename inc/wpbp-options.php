@@ -1,12 +1,14 @@
 <?php
 
-function wpbp_add_google_profile( $contactmethods )
+function wpbp_add_contactmethods( $contactmethods )
 {
-	// Add Google Profiles
+	// Add Google Profile
 	$contactmethods['google_profile'] = 'Google Profile URL';
+	// Add Photo
+	$contactmethods['photo'] = 'Photo URL';
 	return $contactmethods;
 }
-add_filter( 'user_contactmethods', 'wpbp_add_google_profile', 10, 1);
+add_filter( 'user_contactmethods', 'wpbp_add_contactmethods', 10, 1);
 
 function wpbp_admin_enqueue_scripts($hook_suffix)
 {
