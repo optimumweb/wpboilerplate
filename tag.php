@@ -6,16 +6,10 @@
 			<div id="main" class="<?php echo $wpbp_options['main_class']; ?>" role="main">
 				<div class="container">
 					<h1 class="page-title">
-						<?php if ( is_day() ) : ?>
-							<?php printf( __('Daily Archives: &laquo; %s &raquo;', 'wpbp'), get_the_date() ); ?>
-						<?php elseif ( is_month() ) : ?>
-							<?php printf( __('Monthly Archives: &laquo; %s &raquo;', 'wpbp'), get_the_date('F Y') ); ?>
-						<?php elseif ( is_year() ) : ?>
-							<?php printf( __('Yearly Archives: &laquo; %s &raquo;', 'wpbp'), get_the_date('Y') ); ?>
-						<php endif; ?>
+						<?php printf( __('Tag: &laquo; %s &raquo;', 'wpbp'), single_tag_title('', false) ); ?>
 					</h1>
 					<?php wpbp_loop_before(); ?>
-					<?php get_template_part('loop', 'archive'); ?>
+					<?php get_template_part('loop', 'tag'); ?>
 					<?php wpbp_loop_after(); ?>
 				</div>
 			</div>
