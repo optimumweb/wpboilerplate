@@ -6,7 +6,7 @@ if ( !function_exists('wpbp_get_author') ) {
 	{
 		if ( isset( $ID ) && is_int($ID) ) {
 			$author = get_user_by('id', $ID);
-		} elseif ( is_author() && isset( get_query_var('author_name') ) ) {
+		} elseif ( is_author() ) {
 			$author = get_user_by('slug', get_query_var('author_name'));
 		}
 		return ( isset($field) ) ? ( ( isset( $author->$field ) ) ? $author->$field : false ) : $author ;
