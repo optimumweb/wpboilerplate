@@ -312,7 +312,7 @@ figure.gallery-item figcaption { display: none; }
    960.gis Fixes
    ========================================================================== */
 
-.full-width { padding-left: 10px; padding-right: 10px; }
+.full-width { padding-left: 10px !important; padding-right: 10px !important; }
 
 /* =============================================================================
    Non-semantic helper classes
