@@ -41,10 +41,10 @@ class wpbp_vcard extends WP_Widget {
 					<span class="street-address"><?php echo $street_address; ?></span><br />
 				<?php endif; ?>
 				<?php if ( isset( $locality ) && strlen( $locality ) > 0 ) : ?>
-					<span class="locality"><?php echo $locality; ?></span />>,
+					<span class="locality"><?php echo $locality; ?></span /><br />,
 				<?php endif; ?>
 				<?php if ( isset( $region ) && strlen( $region ) > 0 ) : ?>
-					<span class="region"><?php echo $region; ?></span />>
+					<span class="region"><?php echo $region; ?></span /><br />
 				<?php endif; ?>
 				<?php if ( isset( $post_code ) && strlen( $postal_code ) > 0 ) : ?>
 					<span class="postal-code"><?php echo $postal_code; ?></span><br />
@@ -78,7 +78,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Title (optional):',
 				'type' => 'text',
 				'required' => false,
-				'defval' => ''
+				'defval' => '',
+				'class' => 'widefat'
 			),
 			'fn' => array(
 				'id' => $this->get_field_id('fn'),
@@ -86,7 +87,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Full Name:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => $current_user->first_name . ' ' . $current_user->last_name
+				'defval' => $current_user->first_name . ' ' . $current_user->last_name,
+				'class' => 'widefat'
 			),
 			'job_title' => array(
 				'id' => $this->get_field_id('job_title'),
@@ -94,7 +96,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Job Title:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => ''
+				'defval' => '',
+				'class' => 'widefat'
 			),
 			'photo' => array(
 				'id' => $this->get_field_id('photo'),
@@ -102,7 +105,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Photo URL:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => $current_user->photo
+				'defval' => $current_user->photo,
+				'class' => 'widefat'
 			),
 			'org' => array(
 				'id' => $this->get_field_id('org'),
@@ -110,7 +114,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Company:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => get_bloginfo('name')
+				'defval' => get_bloginfo('name'),
+				'class' => 'widefat'
 			),
 			'org_url' => array(
 				'id' => $this->get_field_id('org_url'),
@@ -118,7 +123,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Company URL:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => get_bloginfo('url')
+				'defval' => get_bloginfo('url'),
+				'class' => 'widefat'
 			),
 			'logo' => array(
 				'id' => $this->get_field_id('logo'),
@@ -126,7 +132,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Logo URL:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => ''
+				'defval' => '',
+				'class' => 'widefat'
 			),
 			'street_address' => array(
 				'id' => $this->get_field_id('street_address'),
@@ -134,7 +141,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Street Address:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => ''
+				'defval' => '',
+				'class' => 'widefat'
 			),
 			'locality' => array(
 				'id' => $this->get_field_id('locality'),
@@ -142,7 +150,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'City/Locality:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => ''
+				'defval' => '',
+				'class' => 'widefat'
 			),
 			'region' => array(
 				'id' => $this->get_field_id('region'),
@@ -150,7 +159,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'State/Region:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => ''
+				'defval' => '',
+				'class' => 'widefat'
 			),
 			'postal_code' => array(
 				'id' => $this->get_field_id('postal_code'),
@@ -158,7 +168,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Zipcode/Postal Code:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => ''
+				'defval' => '',
+				'class' => 'widefat'
 			),
 			'tel' => array(
 				'id' => $this->get_field_id('tel'),
@@ -166,7 +177,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Telephone:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => ''
+				'defval' => '',
+				'class' => 'widefat'
 			),
 			'email' => array(
 				'id' => $this->get_field_id('email'),
@@ -174,7 +186,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Email:',
 				'type' => 'text',
 				'required' => false,
-				'defval' => $current_user->user_email
+				'defval' => $current_user->user_email,
+				'class' => 'widefat'
 			),
 			'note' => array(
 				'id' => $this->get_field_id('note'),
@@ -182,7 +195,8 @@ class wpbp_vcard extends WP_Widget {
 				'title' => 'Note:',
 				'type' => 'textarea',
 				'required' => false,
-				'defval' => $current_user->description
+				'defval' => $current_user->description,
+				'class' => 'widefat'
 			)
 		);
 		wpbp_build_form($fields, $instance);
@@ -253,7 +267,8 @@ class wpbp_cat_nav extends WP_Widget {
 				'title' => 'Title (optional):',
 				'type' => 'text',
 				'required' => false,
-				'defval' => ''
+				'defval' => '',
+				'class' => 'widefat'
 			),
 			'number_cats' => array(
 				'id' => $this->get_field_id('number_cats'),
@@ -261,7 +276,8 @@ class wpbp_cat_nav extends WP_Widget {
 				'title' => 'Maximum number of categories to display:',
 				'type' => 'text',
 				'defval' => '-1',
-				'required' => true
+				'required' => true,
+				'class' => 'widefat'
 			),
 			'order_cats_by' => array(
 				'id' => $this->get_field_id('order_cats_by'),
@@ -276,7 +292,8 @@ class wpbp_cat_nav extends WP_Widget {
 					'count' => 'Count',
 					'term_group' => 'Term Group'
 				),
-				'defval' => 'name'
+				'defval' => 'name',
+				'class' => 'widefat'
 			),
 			'cats_order' => array(
 				'id' => $this->get_field_id('cats_order'),
@@ -288,7 +305,8 @@ class wpbp_cat_nav extends WP_Widget {
 					'asc' => 'asc',
 					'desc' => 'desc'
 				),
-				'defval' => 'asc'
+				'defval' => 'asc',
+				'class' => 'widefat'
 			),
 			'number_posts' => array(
 				'id' => $this->get_field_id('number_posts'),
@@ -296,7 +314,8 @@ class wpbp_cat_nav extends WP_Widget {
 				'title' => 'Maximum number of posts to display per category:',
 				'type' => 'text',
 				'defval' => '-1',
-				'required' => true
+				'required' => true,
+				'class' => 'widefat'
 			),
 			'order_posts_by' => array(
 				'id' => $this->get_field_id('order_posts_by'),
@@ -314,7 +333,8 @@ class wpbp_cat_nav extends WP_Widget {
 					'rand' => 'Random',
 					'comment_count' => 'Comment count'
 				),
-				'defval' => 'date'
+				'defval' => 'date',
+				'class' => 'widefat'
 			),
 			'posts_order' => array(
 				'id' => $this->get_field_id('posts_order'),
@@ -326,7 +346,8 @@ class wpbp_cat_nav extends WP_Widget {
 					'asc' => 'asc',
 					'desc' => 'desc'
 				),
-				'defval' => 'asc'
+				'defval' => 'asc',
+				'class' => 'widefat'
 			)
 		);
 		wpbp_build_form($fields, $instance);
@@ -370,7 +391,8 @@ class wpbp_most_popular extends WP_Widget {
 				'title' => 'Title:',
 				'type' => 'text',
 				'defval' => '',
-				'required' => false
+				'required' => false,
+				'class' => 'widefat'
 			),
 			'time_range' => array(
 				'id' => $this->get_field_id('time_range'),
@@ -384,7 +406,8 @@ class wpbp_most_popular extends WP_Widget {
 					'7-days' => 'Last week',
 					'all-time' => 'All-time'
 				),
-				'defval' => 'today'
+				'defval' => 'today',
+				'class' => 'widefat'
 			),
 			'display' => array(
 				'id' => $this->get_field_id('display'),

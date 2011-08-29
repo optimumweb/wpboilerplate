@@ -28,7 +28,7 @@ function wpbp_build_form($fields, $current = null)
 			elseif ( isset($defval) ) $value = $defval;
 			else $value = "";
 
-			echo "<input type=\"text\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"" . esc_attr($value) . "\" class=\"widefat\" />";
+			echo "<input type=\"text\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"" . esc_attr($value) . "\" class=\"" . $class . "\" />";
 		}
 
 		// input: textarea
@@ -40,13 +40,13 @@ function wpbp_build_form($fields, $current = null)
 			elseif ( isset($defval) ) $value = $defval;
 			else $value = "";
 
-			echo "<textarea name=\"" . $name . "\" id=\"" . $id . "\" class=\"widefat\">" . esc_attr($value) . "</textarea>";
+			echo "<textarea name=\"" . $name . "\" id=\"" . $id . "\" class=\"" . $class . "\">" . esc_attr($value) . "</textarea>";
 		}
 
 		// select
 		elseif ( $type == 'dropdown' ) {
 			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label><br />";
-			echo "<select name=\"" . $name . "\" id=\"" . $id . "\" class=\"widefat\">";
+			echo "<select name=\"" . $name . "\" id=\"" . $id . "\" class=\"" . $class . "\">";
 			foreach ( $options as $optkey => $optval ) {
 
 				if ( isset($current[$key]) && $current[$key] == $optkey ) $selected = true;
@@ -67,7 +67,7 @@ function wpbp_build_form($fields, $current = null)
 			else $checked = false;
 			$checked = ( $checked ) ? " checked=\"checked\"" : "";
 
-			echo "<input type=\"checkbox\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"on\"" . $checked . " /> ";
+			echo "<input type=\"checkbox\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"on\"" . $checked . " class=\"" . $class . "\" /> ";
 			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label>";
 		}
 
@@ -87,7 +87,7 @@ function wpbp_build_form($fields, $current = null)
 				echo "<label for=\"" . $id . "-" . $optkey . "\">" . __($optval, 'wpbp') . "</label><br />";
 			}
 
-			echo "<input type=\"hidden\" name=\"" . $name . "[]\" id=\"" . $id . "-isset\" value=\"isset\" />"; // fixes the $defval bug when nothing is checked
+			echo "<input type=\"hidden\" name=\"" . $name . "[]\" id=\"" . $id . "-isset\" value=\"isset\" class=\"" . $class . "\" />"; // fixes the $defval bug when nothing is checked
 
 		}
 
@@ -103,7 +103,7 @@ function wpbp_build_form($fields, $current = null)
 				else $checked = false;
 				$checked = ( $checked ) ? " checked=\"checked\"" : "";
 
-				echo "<input type=\"radio\" name=\"" . $name . "\" id=\"" . $id . "-" . $optkey . "\" value=\"" . $optkey . "\"" . $checked . " /> ";
+				echo "<input type=\"radio\" name=\"" . $name . "\" id=\"" . $id . "-" . $optkey . "\" value=\"" . $optkey . "\"" . $checked . " class=\"" . $class . "\" /> ";
 				echo "<label for=\"" . $id . "-" . $optkey . "\">" . __($optval, 'wpbp') . "</label><br />";
 			}
 
