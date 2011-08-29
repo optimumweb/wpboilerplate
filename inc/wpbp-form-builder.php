@@ -22,7 +22,7 @@ function wpbp_build_form($fields, $current = null)
 		// input: text
 		if ( $type == 'text' ) {
 
-			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label><br />";
+			echo "<label for=\"" . $id . "\">" . __($label, 'wpbp') . "</label><br />";
 
 			if ( isset($current[$key]) ) $value = $current[$key];
 			elseif ( isset($defval) ) $value = $defval;
@@ -34,7 +34,7 @@ function wpbp_build_form($fields, $current = null)
 		// input: textarea
 		if ( $type == 'textarea' ) {
 
-			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label><br />";
+			echo "<label for=\"" . $id . "\">" . __($label, 'wpbp') . "</label><br />";
 
 			if ( isset($current[$key]) ) $value = $current[$key];
 			elseif ( isset($defval) ) $value = $defval;
@@ -45,7 +45,7 @@ function wpbp_build_form($fields, $current = null)
 
 		// select
 		elseif ( $type == 'dropdown' ) {
-			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label><br />";
+			echo "<label for=\"" . $id . "\">" . __($label, 'wpbp') . "</label><br />";
 			echo "<select name=\"" . $name . "\" id=\"" . $id . "\" class=\"" . $class . "\">";
 			foreach ( $options as $optkey => $optval ) {
 
@@ -68,13 +68,13 @@ function wpbp_build_form($fields, $current = null)
 			$checked = ( $checked ) ? " checked=\"checked\"" : "";
 
 			echo "<input type=\"checkbox\" name=\"" . $name . "\" id=\"" . $id . "\" value=\"on\"" . $checked . " class=\"" . $class . "\" /> ";
-			echo "<label for=\"" . $id . "\">" . __($title, 'wpbp') . "</label>";
+			echo "<label for=\"" . $id . "\">" . __($label, 'wpbp') . "</label>";
 		}
 
 		// multi-checkbox
 		elseif ( $type == 'multi-checkbox' ) {
 
-			echo "<label>" . __($title, 'wpbp') . "</label><br />";
+			echo "<label>" . __($label, 'wpbp') . "</label><br />";
 
 			foreach ( $options as $optkey => $optval ) {
 
@@ -94,7 +94,7 @@ function wpbp_build_form($fields, $current = null)
 		// radio
 		elseif ( $type == 'radio' ) {
 
-			echo "<label>" . __($title, 'wpbp') . "</label><br />";
+			echo "<label>" . __($label, 'wpbp') . "</label><br />";
 
 			foreach ( $options as $optkey => $optval ) {
 
