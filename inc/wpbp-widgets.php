@@ -371,9 +371,10 @@ class wpbp_most_popular extends WP_Widget {
 		$views = array();
 		foreach( $posts as $post ) {
 			$post_ID = $post->ID;
-			var_dump($start, $end, $post_ID);
 			$views[$post_ID] = wpbp_get_the_views($start, $end, $post_ID);
 		}
+
+		var_dump($views);
 
 		echo $after_widget;
 
