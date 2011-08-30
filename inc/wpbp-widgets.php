@@ -349,7 +349,31 @@ class wpbp_most_popular extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
+		$end = date('Y-m-d');
+
+		if ( $time_range == 'today' ) {
+			$start = $end;
+		} elseif ( $time_range == '3-days' ) {
+			$start = date('Y-m-d', strtotime('-3 days') );
+		} elseif ( $time_range == '7-days' ) {
+			$start = date('Y-m-d', strtotime('-7 days') );
+		} else {
+			$start = date('Y-m-d', 0 );
+		}
+
 		$category = get_query_var('cat');
+
+		$posts = get_posts( array(
+			'numberposts' => -1,
+			'category' => $category,
+		) );
+
+		$views = array();
+		foreach( $posts as $post ) {
+			$post_ID = $post->ID;
+			var_dump($start, $end, $post_ID);
+			$views[$post_ID] = wpbp_get_the_views($start, $end, $post_ID);
+		}
 
 		echo $after_widget;
 
