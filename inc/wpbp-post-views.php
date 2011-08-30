@@ -5,6 +5,7 @@ function wpbp_get_the_views($start = null, $end = null, $post_ID = null)
 	// if the post ID is not specified, get the current post ID
 	if ( !isset($post_ID) ) {
 		if ( is_single() ) {
+			global $wp_query;
 			$post_ID = $wp_query->post->ID;
 		} else {
 			return false;
@@ -24,10 +25,9 @@ function wpbp_get_the_views($start = null, $end = null, $post_ID = null)
 		$post_views = json_decode($post_views, true);
 		for ( $date = $start; $date <= $end; $date = strtotime("+1 day", $date) ) {
 			$total_views += $post_views[date('Y-m-d', $date)];
+			echo date('Y-m-d', $date) . ": " . $post_views[date('Y-m-d', $date)] . "<br />";
 		}
 	}
-
-	var_dump($start, $end, $post_ID);
 
 	return $total_views;
 }
