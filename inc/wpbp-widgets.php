@@ -363,7 +363,7 @@ class wpbp_most_popular extends WP_Widget {
 
 		echo "<ul class=\"wpbp-most-popular\">";
 		foreach( $posts as $post ) {
-			echo "<li><a href=\"" . get_permalink( $post->ID ) . "\">" . $post->post_title . "</a> (" . get_post_meta($post->ID, 'wpbp_post_views', true) . ")</li>";
+			echo "<li><a href=\"" . get_permalink( $post->ID ) . "\">" . $post->post_title . "</a></li>";
 		}
 		echo "</ul>";
 
