@@ -354,8 +354,8 @@ class wpbp_most_popular extends WP_Widget {
 		$posts = get_posts( array(
 			'numberposts' => $number_posts,
 			'category' => $category,
-			'orderby' => 'meta_value_num date',
-			'order' => 'asc',
+			'orderby' => 'meta_value_num',
+			'order' => 'desc',
 			'meta_key' => 'wpbp_post_views'
 		) );
 
