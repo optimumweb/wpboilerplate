@@ -25,7 +25,6 @@ function wpbp_get_the_views($start = null, $end = null, $post_ID = null)
 		$post_views = json_decode($post_views, true);
 		for ( $date = $start; $date <= $end; $date = strtotime("+1 day", $date) ) {
 			$total_views += $post_views[date('Y-m-d', $date)];
-			echo date('Y-m-d', $date) . ": " . $post_views[date('Y-m-d', $date)] . "<br />";
 		}
 	}
 
