@@ -12,7 +12,7 @@
 							<?php printf( __('Monthly Archives: &laquo; %s &raquo;', 'wpbp'), get_the_date('F Y') ); ?>
 						<?php elseif ( is_year() ) : ?>
 							<?php printf( __('Yearly Archives: &laquo; %s &raquo;', 'wpbp'), get_the_date('Y') ); ?>
-						<php endif; ?>
+						<?php endif; ?>
 					</h1>
 					<?php wpbp_loop_before(); ?>
 					<?php get_template_part('loop', 'archive'); ?>

@@ -366,15 +366,18 @@ class wpbp_most_popular extends WP_Widget {
 		$category = get_query_var('cat');
 
 		$posts = get_posts( array(
-			'numberposts' => -1,
+			'numberposts' => $number_posts,
 			'category' => $category,
+			'orderby' => 'meta_value_num',
+			'order' => 'desc',
+			'meta_key' => 'wpbp_post_views'
 		) );
 
-		$views = array();
-		foreach( $posts as $post ) {
-			$post_ID = $post->ID;
-			$views[$post_ID] = wpbp_get_the_views($start, $end, $post_ID);
-		}
+		echo "<ul class=\"wpbp-most-popular\">";
+		foreach( $posts as $post ) :	setup_postdata($post);
+			?><li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li><?php
+		endforeach; wp_reset_postdata();
+		echo "</ul>";
 
 		$chrono = microtime(true) - $chrono;
 		var_dump( $chrono );
@@ -395,6 +398,15 @@ class wpbp_most_popular extends WP_Widget {
 				'title' => 'Title:',
 				'type' => 'text',
 				'class' => 'widefat'
+			),
+			'number_posts' => array(
+				'id' => $this->get_field_id('number_posts'),
+				'name' => $this->get_field_name('number_posts'),
+				'title' => 'Number of posts to show:',
+				'type' => 'text',
+				'defval' => 10,
+				'class' => 'widefat',
+				'required' => true
 			),
 			'time_range' => array(
 				'id' => $this->get_field_id('time_range'),

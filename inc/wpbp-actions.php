@@ -159,7 +159,10 @@ function wpbp_count_view()
 {
 	global $wp_query;
 	if ( is_single() && isset( $wp_query->post->ID ) ) {
-		wpbp_set_the_views( $wp_query->post->ID, date('Y-m-d') );
+		$post_ID = $wp_query->post->ID;
+		$post_views = get_post_meta($post_ID, 'wpbp_post_views', true);
+		$post_views = ( isset($post_views) ) ? $post_views + 1 : 1;
+		update_post_meta($post_ID, 'wpbp_post_views', $post_views);
 	}
 }
 
