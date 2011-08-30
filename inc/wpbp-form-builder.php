@@ -3,9 +3,17 @@
 function wpbp_prepare_fields(&$fields, $prefix = 'wpbp-')
 {
 	foreach ( $fields as $key => $field ) {
+
 		// make sure we have an id and name for each field
 		$fields[$key]['id'] = ( isset($fields[$key]['id']) && strlen($fields[$key]['id']) > 0 ) ? $fields[$key]['id'] : $prefix . $key;
 		$fields[$key]['name'] = ( isset($fields[$key]['name']) && strlen($fields[$key]['id']) > 0 ) ? $fields[$key]['name'] : $prefix . $key;
+
+		// defining defval and class as empty strings will fix the empty value bug
+		$fields[$key]['defval'] = ( isset($fields[$key]['defval']) ) ? $fields[$key]['defval'] : '';
+		$fields[$key]['class'] = ( isset($fields[$key]['class']) ) ? $fields[$key]['class'] : '';
+
+		// fields are not required by default
+		$fields[$key]['required'] = ( isset($fields[$key]['required']) ) ? $fields[$key]['defval'] : false;
 	}
 }
 
