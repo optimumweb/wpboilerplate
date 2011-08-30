@@ -362,9 +362,9 @@ class wpbp_most_popular extends WP_Widget {
 		) );
 
 		echo "<ul class=\"wpbp-most-popular\">";
-		foreach( $posts as $post ) : setup_postdata($post);
-			?><li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li><?php
-		endforeach; wp_reset_postdata();
+		foreach( $posts as $post ) {
+			echo "<li><a href=\"" . get_permalink( $post->ID ) . "\">" . $post->post_title . "</a></li>";
+		}
 		echo "</ul>";
 
 		$chrono = microtime(true) - $chrono;
