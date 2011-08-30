@@ -11,8 +11,8 @@ function wpbp_get_the_views($start = null, $end = null, $post_ID = null)
 		}
 	}
 
-	$start = !is_null($start) ? strtotime($start) : strtotime( date('Y-m-d', strtotime('-1 day') ) );
-	$end = !is_null($end) ? strtotime($end) : strtotime( date('Y-m-d', strtotime('-1 day') ) );
+	$start = !is_null($start) ? strtotime($start) : strtotime( date('Y-m-d', strtotime('now') ) );
+	$end = !is_null($end) ? strtotime($end) : strtotime( date('Y-m-d', strtotime('now') ) );
 
 	if ( $start > $end ) return false;
 
