@@ -349,14 +349,13 @@ class wpbp_most_popular extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
-		$category = get_query_var('cat');
-
 		$posts = get_posts( array(
 			'numberposts' => $number_posts,
-			'category' => $category,
+			'category' => get_query_var('cat'),
 			'orderby' => 'meta_value_num',
 			'order' => 'desc',
-			'meta_key' => 'wpbp_post_views'
+			'meta_key' => 'wpbp_post_views',
+			'w' => date('W')
 		) );
 
 		echo "<ul class=\"wpbp-most-popular\">";
