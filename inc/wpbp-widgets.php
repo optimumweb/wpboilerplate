@@ -380,7 +380,7 @@ class wpbp_most_popular extends WP_Widget {
 		echo "</ul>";
 
 		$chrono = microtime(true) - $chrono;
-		var_dump( $chrono, $posts );
+		var_dump( $chrono );
 
 		echo $after_widget;
 
