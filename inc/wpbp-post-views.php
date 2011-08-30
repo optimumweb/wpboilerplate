@@ -1,7 +1,16 @@
 <?php
 
-function wpbp_get_the_views($post_ID, $start = null, $end = null)
+function wpbp_get_the_views($start = null, $end = null, $post_ID = null)
 {
+	// if the post ID is not specified, get the current post ID
+	if ( !isset($post_ID) ) {
+		if ( is_single() ) {
+			$post_ID = $wp_query->post->ID;
+		} else {
+			return false;
+		}
+	}
+
 	$start = !is_null($start) ? strtotime($start) : strtotime( date('Y-m-d', strtotime('-1 day') ) );
 	$end = !is_null($end) ? strtotime($end) : strtotime( date('Y-m-d', strtotime('-1 day') ) );
 
