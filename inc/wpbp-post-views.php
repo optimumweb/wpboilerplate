@@ -27,6 +27,8 @@ function wpbp_get_the_views($start = null, $end = null, $post_ID = null)
 		}
 	}
 
+	var_dump($start, $end, $post_ID);
+
 	return $total_views;
 }
 
