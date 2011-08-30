@@ -351,18 +351,6 @@ class wpbp_most_popular extends WP_Widget {
 
 		$chrono = microtime(true);
 
-		$end = date('Y-m-d');
-
-		if ( $time_range == 'today' ) {
-			$start = $end;
-		} elseif ( $time_range == '3-days' ) {
-			$start = date('Y-m-d', strtotime('-3 days') );
-		} elseif ( $time_range == '7-days' ) {
-			$start = date('Y-m-d', strtotime('-7 days') );
-		} else {
-			$start = date('Y-m-d', 0 );
-		}
-
 		$category = get_query_var('cat');
 
 		$posts = get_posts( array(
@@ -373,8 +361,10 @@ class wpbp_most_popular extends WP_Widget {
 			'meta_key' => 'wpbp_post_views'
 		) );
 
+		var_dump($posts);
+
 		echo "<ul class=\"wpbp-most-popular\">";
-		foreach( $posts as $post ) :	setup_postdata($post);
+		foreach( $posts as $post ) : setup_postdata($post);
 			?><li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li><?php
 		endforeach; wp_reset_postdata();
 		echo "</ul>";
