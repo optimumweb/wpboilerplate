@@ -349,6 +349,8 @@ class wpbp_most_popular extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
+		$chrono = microtime(true);
+
 		$end = date('Y-m-d');
 
 		if ( $time_range == 'today' ) {
@@ -374,7 +376,8 @@ class wpbp_most_popular extends WP_Widget {
 			$views[$post_ID] = wpbp_get_the_views($start, $end, $post_ID);
 		}
 
-		var_dump($views);
+		$chrono = microtime(true) - $chrono;
+		var_dump( $chrono );
 
 		echo $after_widget;
 
