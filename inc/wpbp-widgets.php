@@ -349,8 +349,6 @@ class wpbp_most_popular extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
-		$chrono = microtime(true);
-
 		$category = get_query_var('cat');
 
 		$posts = get_posts( array(
@@ -366,9 +364,6 @@ class wpbp_most_popular extends WP_Widget {
 			echo "<li><a href=\"" . get_permalink( $post->ID ) . "\">" . $post->post_title . "</a></li>";
 		}
 		echo "</ul>";
-
-		$chrono = microtime(true) - $chrono;
-		var_dump( $chrono );
 
 		echo $after_widget;
 
