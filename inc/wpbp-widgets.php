@@ -357,7 +357,8 @@ class wpbp_most_popular extends WP_Widget {
 			'orderby' => 'meta_value_num',
 			'order' => 'desc',
 			'meta_key' => 'wpbp_post_views',
-			'w' => date('W')
+			'year' => date('Y'),
+			'monthnum' => date('m')
 		) );
 
 		echo "<ul class=\"wpbp-most-popular\">";
