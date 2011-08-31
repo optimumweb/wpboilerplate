@@ -385,6 +385,8 @@ class wpbp_most_popular extends WP_Widget {
 
 		$query_args = array_merge($query_args, $time_args);
 
+		var_dump($query_args);
+
 		$posts = get_posts( $query_args );
 
 		echo "<ul class=\"wpbp-most-popular\">";
