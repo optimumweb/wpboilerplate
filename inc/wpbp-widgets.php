@@ -375,8 +375,6 @@ class wpbp_most_popular extends WP_Widget {
 				$query_args['year'] = $year;
 		} elseif ( $time_range == 'all_time' ) {}
 
-		var_dump($query_args);
-
 		$posts = get_posts( $query_args );
 
 		echo "<ul class=\"wpbp-most-popular\">";
