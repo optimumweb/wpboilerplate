@@ -351,15 +351,39 @@ class wpbp_most_popular extends WP_Widget {
 
 		$category = get_query_var('cat');
 
-		$posts = get_posts( array(
+		$args = array(
 			'numberposts' => $number_posts,
 			'category' => $category,
 			'orderby' => 'meta_value_num',
 			'order' => 'desc',
-			'meta_key' => 'wpbp_post_views',
-			'year' => date('Y'),
-			'monthnum' => date('m')
-		) );
+			'meta_key' => 'wpbp_post_views'
+		);
+
+		list($year, $month, $week, $day) = explode(',', date('Y,m,W,d'));
+
+		if ( $time_range == 'today' ) {
+			$args = array_merge( $args, array(
+				'year' => $year,
+				'monthnum' => $month,
+				'day' => $day
+			) );
+		} elseif ( $time_range == 'this_week' ) {
+			$args = array_merge( $args, array(
+				'year' => $year,
+				'w' => $week
+			) );
+		} elseif ( $time_range == 'this_month' ) {
+			$args = array_merge( $args, array(
+				'year' => $year,
+				'monthnum' => $month
+			) );
+		} elseif ( $time_range == 'this_year' ) {
+			$args = array_merge( $args, array(
+				'year' => $year
+			) );
+		} elseif ( $time_range == 'all_time' ) {}
+
+		$posts = get_posts( $args );
 
 		echo "<ul class=\"wpbp-most-popular\">";
 		foreach( $posts as $post ) {
@@ -401,11 +425,12 @@ class wpbp_most_popular extends WP_Widget {
 				'required' => true,
 				'options' => array(
 					'today' => 'Today',
-					'3-days' => 'Last 3 days',
-					'7-days' => 'Last week',
-					'all-time' => 'All-time'
+					'this_week' => 'This Week',
+					'this_month' => 'This Month',
+					'this_year' => 'This Year',
+					'all_time' => 'Since the beginning of time'
 				),
-				'defval' => 'today',
+				'defval' => 'this_week',
 				'class' => 'widefat'
 			),
 			'display' => array(
