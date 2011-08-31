@@ -362,28 +362,18 @@ class wpbp_most_popular extends WP_Widget {
 		list($year, $month, $week, $day) = explode(',', date('Y,m,W,d'));
 
 		if ( $time_range == 'today' ) {
-			$time_args = array(
-				'year' => $year,
-				'monthnum' => $month,
-				'day' => $day
-			);
+				$query_args['year'] = $year;
+				$query_args['monthnum'] = $month;
+				$query_args['day'] = $day;
 		} elseif ( $time_range == 'this_week' ) {
-			$time_args = array(
-				'year' => $year,
-				'w' => $week
-			);
+				$query_args['year'] = $year;
+				$query_args['w'] = $week;
 		} elseif ( $time_range == 'this_month' ) {
-			$time_args = array(
-				'year' => $year,
-				'monthnum' => $month
-			);
+				$query_args['year'] = $year;
+				$query_args['monthnum'] = $month;
 		} elseif ( $time_range == 'this_year' ) {
-			$time_args = array(
-				'year' => $year
-			);
+				$query_args['year'] = $year;
 		} elseif ( $time_range == 'all_time' ) {}
-
-		$query_args = array_merge($query_args, $time_args);
 
 		var_dump($query_args);
 
