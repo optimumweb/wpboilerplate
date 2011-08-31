@@ -351,7 +351,7 @@ class wpbp_most_popular extends WP_Widget {
 
 		$category = get_query_var('cat');
 
-		$args = array(
+		$query_args = array(
 			'numberposts' => $number_posts,
 			'category' => $category,
 			'orderby' => 'meta_value_num',
@@ -362,28 +362,30 @@ class wpbp_most_popular extends WP_Widget {
 		list($year, $month, $week, $day) = explode(',', date('Y,m,W,d'));
 
 		if ( $time_range == 'today' ) {
-			$args = array_merge( $args, array(
+			$time_args = array(
 				'year' => $year,
 				'monthnum' => $month,
 				'day' => $day
-			) );
+			);
 		} elseif ( $time_range == 'this_week' ) {
-			$args = array_merge( $args, array(
+			$time_args = array(
 				'year' => $year,
 				'w' => $week
-			) );
+			);
 		} elseif ( $time_range == 'this_month' ) {
-			$args = array_merge( $args, array(
+			$time_args = array(
 				'year' => $year,
 				'monthnum' => $month
-			) );
+			);
 		} elseif ( $time_range == 'this_year' ) {
-			$args = array_merge( $args, array(
+			$time_args = array(
 				'year' => $year
-			) );
+			);
 		} elseif ( $time_range == 'all_time' ) {}
 
-		$posts = get_posts( $args );
+		$query_args = array_merge($query_args, $time_args);
+
+		$posts = get_posts( $query_args );
 
 		echo "<ul class=\"wpbp-most-popular\">";
 		foreach( $posts as $post ) {
