@@ -378,9 +378,9 @@ class wpbp_most_popular extends WP_Widget {
 		$posts = get_posts( $query_args );
 
 		echo "<ul class=\"wpbp-most-popular\">";
-		foreach( $posts as $post ) : setup_postdata($post); ?>
+		foreach( $posts as $post ) : $this = $post; setup_postdata($this); ?>
 			<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-		<?php wp_reset_postdata(); endforeach;
+		<?php endforeach; wp_reset_postdata();
 		echo "</ul>";
 
 		echo $after_widget;
