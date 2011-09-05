@@ -1,0 +1,3 @@
+[submodule "css/less"]
+	path = css/less
+	url = git@github.com:jonathanroy/less-mixins.git
