@@ -17,10 +17,12 @@ function wpbp_custom_breadcrumb($sep = ' &rarr; ', $before = '', $after = '', $b
 		if ( is_category() || is_single() ) {
 
 			if ( is_category() ) {
+				echo $before_item;
 				single_cat_title();
+				echo $after_item;
 			}
 
-			if ( is_single() ) {
+			elseif ( is_single() ) {
 				$categories = get_the_category();
 				$category = $categories[0];
 				echo $before_item . "<a href=\"" . get_category_link( $category->cat_ID ) . "\">" . $category->cat_name . "</a>" . $after_item;
