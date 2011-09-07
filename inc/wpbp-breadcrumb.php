@@ -47,6 +47,11 @@ function wpbp_custom_breadcrumb($sep = ' &rarr; ', $before = '', $after = '', $b
 			echo $after_item;
 		}
 
+		elseif ( in_array( get_post_type(), get_post_types('public=1&_builtin=0','names','and') ) ) {
+			$post_type = get_post_type_object( get_post_type() );
+			echo $before_item . $post_type->labels->name . $after_item;
+		}
+
 		elseif ( is_page() ) {
 
 			$page_parents = "";
