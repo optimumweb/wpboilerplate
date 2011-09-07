@@ -18,7 +18,7 @@ function wpbp_custom_breadcrumb($sep = ' &rarr; ', $before = '', $after = '', $b
 
 			if ( in_array( get_post_type(), get_post_types( array( 'public' => true, '_builtin' => false ), 'names', 'and' ) ) ) {
 				$post_type = get_post_type_object( get_post_type() );
-				echo $before_item . $post_type->labels->name . $after_item;
+				echo $before_item . $post_type->labels->name . $after_item . $sep;
 
 				echo $before_item . get_the_title() . $after_item;
 			}
@@ -26,8 +26,7 @@ function wpbp_custom_breadcrumb($sep = ' &rarr; ', $before = '', $after = '', $b
 			else {
 				$categories = get_the_category();
 				$category = $categories[0];
-				echo $before_item . "<a href=\"" . get_category_link( $category->cat_ID ) . "\">" . $category->cat_name . "</a>" . $after_item;
-				echo $sep;
+				echo $before_item . "<a href=\"" . get_category_link( $category->cat_ID ) . "\">" . $category->cat_name . "</a>" . $after_item . $sep;
 				echo $before_item . get_the_title() . $after_item;
 			}
 		}
