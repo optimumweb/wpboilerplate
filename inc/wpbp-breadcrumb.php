@@ -24,7 +24,7 @@ function wpbp_custom_breadcrumb($sep = ' &rarr; ', $before = '', $after = '', $b
 
 			if ( in_array( get_post_type(), get_post_types( array( 'public' => true, '_builtin' => false ), 'names', 'and' ) ) ) {
 				$post_type = get_post_type_object( get_post_type() );
-				echo $before_item . $post_type->labels->name . $after_item . 'xxxxxx';
+				echo $before_item . $post_type->labels->name . $after_item;
 			}
 
 			if ( is_single() ) {
