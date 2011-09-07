@@ -1,6 +1,6 @@
 <?php
 
-function wpbp_custom_breadcrumb($before = '', $after = '', $sep = ' &rarr; ', $before_item = '', $after_item = '') {
+function wpbp_custom_breadcrumb($sep = ' &rarr; ', $before = '', $after = '', $before_item = '', $after_item = '') {
 
 	echo $before;
 
