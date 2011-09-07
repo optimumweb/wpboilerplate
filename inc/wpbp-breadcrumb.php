@@ -73,6 +73,8 @@ function wpbp_custom_breadcrumb($sep = ' &rarr; ', $before = '', $after = '', $b
 	}
 
 	echo $after . "\n";
+
+	var_dump(get_post_types('public=1&_builtin=0','names','and'));
 }
 
 ?>
