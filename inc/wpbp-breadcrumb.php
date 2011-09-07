@@ -28,14 +28,11 @@ function wpbp_custom_breadcrumb($sep = ' &rarr; ', $before = '', $after = '', $b
 			}
 
 			if ( is_single() ) {
-
-					$categories = get_the_category();
-					$category = $categories[0];
-					echo $before_item . "<a href=\"" . get_category_link( $category->cat_ID ) . "\">" . $category->cat_name . "</a>" . $after_item;
-					echo $sep;
-					echo $before_item . get_the_title() . $after_item;
-				}
-
+				$categories = get_the_category();
+				$category = $categories[0];
+				echo $before_item . "<a href=\"" . get_category_link( $category->cat_ID ) . "\">" . $category->cat_name . "</a>" . $after_item;
+				echo $sep;
+				echo $before_item . get_the_title() . $after_item;
 			}
 		}
 
