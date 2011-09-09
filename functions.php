@@ -61,15 +61,21 @@ function wpbp_setup() {
 
 add_action('after_setup_theme', 'wpbp_setup');
 
-// create widget areas: sidebar, footer
-$sidebars = array('Nav', 'Sidebar', 'Footer');
-foreach ($sidebars as $sidebar) {
-	register_sidebar(array('name'=> $sidebar,
-		'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="container">',
-		'after_widget' => '</div><div class="clear"></div></div>',
-		'before_title' => '<h3>',
-		'after_title' => '</h3>'
-	));
+
+function wpbp_register_sidebars($sidebars)
+{
+	foreach ($sidebars as $sidebar) {
+		register_sidebar( array(
+			'name'=> $sidebar,
+			'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="container">',
+			'after_widget' => '</div><div class="clear"></div></div>',
+			'before_title' => '<h3>',
+			'after_title' => '</h3>'
+		) );
+	}
 }
+
+// create widget areas: sidebar, footer
+wpbp_register_sidebars( array( 'Nav', 'Sidebar', 'Footer' ) );
 
 ?>
