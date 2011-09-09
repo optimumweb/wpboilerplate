@@ -1,3 +1,6 @@
 [submodule "css/less"]
 	path = css/less
 	url = git@github.com:jonathanroy/less-mixins.git
+[submodule "plugins/ajax-mail"]
+	path = plugins/ajax-mail
+	url = git@github.com:jonathanroy/ajax-mail.git
