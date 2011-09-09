@@ -69,7 +69,7 @@ function wpbp_register_sidebars($sidebars)
 	}
 	else {
 		foreach ( $sidebars as $sidebar ) {
-			return register_sidebar( array(
+			register_sidebar( array(
 				'name'=> $sidebar,
 				'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="container">',
 				'after_widget' => '</div><div class="clear"></div></div>',
@@ -77,6 +77,7 @@ function wpbp_register_sidebars($sidebars)
 				'after_title' => '</h3>'
 			) );
 		}
+		return true;
 	}
 	return false;
 }
