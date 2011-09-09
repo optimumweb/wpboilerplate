@@ -64,15 +64,21 @@ add_action('after_setup_theme', 'wpbp_setup');
 
 function wpbp_register_sidebars($sidebars)
 {
-	foreach ($sidebars as $sidebar) {
-		register_sidebar( array(
-			'name'=> $sidebar,
-			'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="container">',
-			'after_widget' => '</div><div class="clear"></div></div>',
-			'before_title' => '<h3>',
-			'after_title' => '</h3>'
-		) );
+	if ( !is_array( $sidebars ) && is_string( $sidebars ) ) {
+		return wpbp_register_sidebars( $sidebars );
 	}
+	else {
+		foreach ( $sidebars as $sidebar ) {
+			return register_sidebar( array(
+				'name'=> $sidebar,
+				'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="container">',
+				'after_widget' => '</div><div class="clear"></div></div>',
+				'before_title' => '<h3>',
+				'after_title' => '</h3>'
+			) );
+		}
+	}
+	return false;
 }
 
 // create widget areas: sidebar, footer
