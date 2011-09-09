@@ -213,19 +213,24 @@ class wpbp_cat_nav extends WP_Widget {
 
 			$current_menu_item = ( is_category() && ( $cat->cat_ID == get_query_var('cat') ) ) ? " current-menu-item" : "";
 			echo "<li class=\"cat-name" . $current_menu_item . "\"><a href=\"" . get_category_link( $cat->cat_ID ) . "\">" . $cat->name . "</a>";
-			echo "<ul class=\"cat-posts\">";
 
-			$cat_posts = get_posts( array(
-				'numberposts' => $number_posts,
-				'category' => $cat->cat_ID,
-				'orderby' => $order_posts_by,
-				'order' => $posts_order
-			) );
-			foreach( $cat_posts as $post ) {
-				$current_menu_item = ( is_single() && ( $post->ID == $wp_query->post->ID ) ) ? " current-menu-item" : "";
-				echo "<li class=\"post-link" . $current_menu_item . "\"><a href=\"" . get_permalink( $post->ID ) . "\">" . $post->post_title . "</a></li>";
+			if ( $number_posts != 0 ) {
+				echo "<ul class=\"cat-posts\">";
+
+				$cat_posts = get_posts( array(
+					'numberposts' => $number_posts,
+					'category' => $cat->cat_ID,
+					'orderby' => $order_posts_by,
+					'order' => $posts_order
+				) );
+				foreach( $cat_posts as $post ) {
+					$current_menu_item = ( is_single() && ( $post->ID == $wp_query->post->ID ) ) ? " current-menu-item" : "";
+					echo "<li class=\"post-link" . $current_menu_item . "\"><a href=\"" . get_permalink( $post->ID ) . "\">" . $post->post_title . "</a></li>";
+				}
+				echo "</ul>";
 			}
-			echo "</ul></li>";
+
+			echo "</li>";
 		}
 		echo "</ul>";
 
