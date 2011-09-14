@@ -67,6 +67,8 @@ if ( !function_exists('wpbp_get_post_image') ) {
 			return false;
 		}
 
+		if (!$url) return false;
+
 		list($width, $height, $type, $attr) = getimagesize( $url );
 
 		$ratio = round( $width / $height );
