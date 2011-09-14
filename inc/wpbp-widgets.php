@@ -404,14 +404,14 @@ class wpbp_most_popular extends WP_Widget {
 			'title' => array(
 				'id' => $this->get_field_id('title'),
 				'name' => $this->get_field_name('title'),
-				'title' => 'Title:',
+				'label' => 'Title:',
 				'type' => 'text',
 				'class' => 'widefat'
 			),
 			'number_posts' => array(
 				'id' => $this->get_field_id('number_posts'),
 				'name' => $this->get_field_name('number_posts'),
-				'title' => 'Number of posts to show:',
+				'label' => 'Number of posts to show:',
 				'type' => 'text',
 				'defval' => 10,
 				'class' => 'widefat',
@@ -420,7 +420,7 @@ class wpbp_most_popular extends WP_Widget {
 			'time_range' => array(
 				'id' => $this->get_field_id('time_range'),
 				'name' => $this->get_field_name('time_range'),
-				'title' => 'Time range:',
+				'label' => 'Time range:',
 				'type' => 'dropdown',
 				'required' => true,
 				'options' => array(
@@ -436,7 +436,7 @@ class wpbp_most_popular extends WP_Widget {
 			'display' => array(
 				'id' => $this->get_field_id('display'),
 				'name' => $this->get_field_name('display'),
-				'title' => 'Display:',
+				'label' => 'Display:',
 				'type' => 'multi-checkbox',
 				'options' => array(
 					'post_title' => 'Post title',
