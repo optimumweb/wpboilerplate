@@ -85,28 +85,28 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 	{
 		$post_image = wpbp_get_post_image( $post_ID );
 
-		if ( !$post_image ) {
-			echo "<!-- WPBP: No post thumbnail found! //-->" . PHP_EOL;
-			return false;
+		if ( $post_image ) {
+
+			if ( $width == 'auto' && $height == 'auto' ) {
+				$width = $post_image['width'];
+				$height = $post_image['height'];
+			}
+			elseif ( $height == 'auto' ) {
+				$height = round( $width / $post_image['ratio'] );
+			}
+			elseif ( $width == 'auto' ) {
+				$width = round( $height * $post_image['ratio'] );
+			}
+
+			$alt = get_the_title( $post_ID );
+			$src = get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $post_image['url'];
+
+			echo "<img class=\"post-thumbnail\" src=\"" . $src . "\" width=\"" . $width . "\" height=\"" . $height . "\" alt=\"" . $alt . "\" />\n";
+
+			return;
 		}
 
-		if ( $width == 'auto' && $height == 'auto' ) {
-			$width = $post_image['width'];
-			$height = $post_image['height'];
-		}
-		elseif ( $height == 'auto' ) {
-			$height = round( $width / $post_image['ratio'] );
-		}
-		elseif ( $width == 'auto' ) {
-			$width = round( $height * $post_image['ratio'] );
-		}
-
-		$alt = get_the_title( $post_ID );
-		$src = get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $post_image['url'];
-
-		echo "<img class=\"post-thumbnail\" src=\"" . $src . "\" width=\"" . $width . "\" height=\"" . $height . "\" alt=\"" . $alt . "\" />\n";
-
-		return;
+		return false;
 	}
 
 }
