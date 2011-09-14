@@ -65,9 +65,12 @@ if ( !function_exists('wpbp_get_post_image') ) {
 
 		if ( isset( $url ) && strlen( $url ) > 0 ) {
 			if ( @fclose( @fopen( $url, 'r' ) ) ) {
-				list($width, $height, $type, $attr) = @getimagesize( $url );
-				$ratio = round( $width / $height );
-				return ( $attr != false && isset( $$attr ) ) ? $$attr : compact( 'url', 'width', 'height', 'ratio', 'type', 'attr' );
+				$image_attr = @getimagesize( $url );
+				if ( is_array( $image_attr ) ) {
+					list($width, $height, $type, $attr) = $image_attr;
+					$ratio = round( $width / $height );
+					return ( $attr != false && isset( $$attr ) ) ? $$attr : compact( 'url', 'width', 'height', 'ratio', 'type', 'attr' );
+				}
 			}
 		}
 
