@@ -53,10 +53,12 @@ if ( !function_exists('wpbp_get_post_image') ) {
 
 		if ( isset( $meta_featured_image_url ) && strlen( $meta_featured_image_url ) > 0 ) {
 			$url = $meta_featured_image_url;
+			echo "meta_featued_image_url";
 		}
 
 		elseif ( has_post_thumbnail( $post_ID ) ) {
 			$url = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ), 'single-post-thumbnail' );
+			echo "has_post_thumbnail";
 		}
 
 		else {
