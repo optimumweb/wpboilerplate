@@ -63,7 +63,7 @@ function wpbp_get_scripts()
 	$scripts = "";
 
 	if ( $wpbp_options['js_plugins']['modernizr'] ) {
-		$scripts .= script_tag( 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.js' );
+		$scripts .= script_tag( 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js' );
 	}
 
 	if ( $wpbp_options['js_plugins']['lesscss'] ) {
