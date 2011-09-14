@@ -56,10 +56,11 @@ if ( !function_exists('wpbp_get_post_image') ) {
 		}
 
 		elseif ( has_post_thumbnail( $post_ID ) ) {
-			$images = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ), 'single-post-thumbnail' );
-			$url = $images[0];
+			//$images = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ), 'single-post-thumbnail' );
+			//$url = $images[0];
 			//$url = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ) );
-			echo "!!! has_post_thumbnail = " . $url . " !!!";
+			echo get_the_post_thumbnail( $post_ID );
+			//echo "!!! has_post_thumbnail = " . $url . " !!!";
 		}
 
 		else {
