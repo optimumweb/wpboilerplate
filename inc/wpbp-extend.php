@@ -46,12 +46,15 @@ if ( !function_exists('wpbp_get_post_image') ) {
 	{
 		$meta_featured_image_url = get_post_meta( $post_ID, 'featured_image_url', true );
 
-		if ( isset( $meta_featured_image_url ) && strlen( $meta_featured_image_url ) ) {
+		if ( isset( $meta_featured_image_url ) && strlen( $meta_featured_image_url ) > 0 ) {
 			$url = $meta_featured_image_url;
 		}
 
 		else {
 			$url = wp_get_attachment_url( $post_ID );
+			if ( $url ) {
+				update_post_meta( $post_ID, 'featured_image_url', $url );
+			}
 		}
 
 		if ( !$url ) return false;
