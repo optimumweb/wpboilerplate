@@ -71,7 +71,10 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 	{
 		$post_image = wpbp_get_post_image( $post_ID );
 
-		if ( !$post_image ) return false;
+		if ( !$post_image ) {
+			echo "<!-- WPBP: No post thumbnail found! //-->" . PHP_EOL;
+			return false;
+		}
 
 		if ( $width == 'auto' && $height == 'auto' ) {
 			$width = $post_image['width'];
