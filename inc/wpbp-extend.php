@@ -64,13 +64,11 @@ if ( !function_exists('wpbp_get_post_image') ) {
 		}
 
 		if ( isset( $url ) && strlen( $url ) > 0 ) {
-			if ( @fclose( @fopen( $url, 'r' ) ) ) {
-				$image_attr = @getimagesize( $url );
-				if ( is_array( $image_attr ) ) {
-					list($width, $height, $type, $attr) = $image_attr;
-					$ratio = round( $width / $height );
-					return ( $attr != false && isset( $$attr ) ) ? $$attr : compact( 'url', 'width', 'height', 'ratio', 'type', 'attr' );
-				}
+			$image_attr = @getimagesize( $url );
+			if ( is_array( $image_attr ) ) {
+				list($width, $height, $type, $attr) = $image_attr;
+				$ratio = round( $width / $height );
+				return ( $attr != false && isset( $$attr ) ) ? $$attr : compact( 'url', 'width', 'height', 'ratio', 'type', 'attr' );
 			}
 		}
 
@@ -96,7 +94,7 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 			}
 			elseif ( $width == 'auto' ) {
 				$width = round( $height * $post_image['ratio'] );
-			}
+			}<?php
 
 			$alt = get_the_title( $post_ID );
 			$src = get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $post_image['url'];
