@@ -50,21 +50,18 @@ if ( !function_exists('wpbp_get_post_image') ) {
 	function wpbp_get_post_image($post_ID, $attr = false)
 	{
 		$meta_featured_image_url = get_post_meta( $post_ID, 'featured_image_url', true );
+
 		if ( isset( $meta_featured_image_url ) && strlen( $meta_featured_image_url ) > 0 ) {
 			$url = $meta_featured_image_url;
 		}
-		else {
-			if ( has_post_thumbnail( $post_ID ) ) {
-				$url = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ), 'single-post-thumbnail' );
-				if ( $url ) {
-					update_post_meta( $post_ID, 'featured_image_url', $url );
-				}
-			}
+
+		elseif ( has_post_thumbnail( $post_ID ) ) {
+			$url = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ), 'single-post-thumbnail' );
 		}
 
-		var_dump($url);
-
-		if ( !$url ) return false;
+		else {
+			return false;
+		}
 
 		list($width, $height, $type, $attr) = getimagesize( $url );
 
