@@ -56,7 +56,8 @@ if ( !function_exists('wpbp_get_post_image') ) {
 		}
 
 		elseif ( has_post_thumbnail( $post_ID ) ) {
-			$url = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ) );
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID, 'full' ) );
+			$url = $image[0];
 		}
 
 		else {
