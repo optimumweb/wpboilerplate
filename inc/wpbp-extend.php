@@ -94,7 +94,7 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 			}
 			elseif ( $width == 'auto' ) {
 				$width = round( $height * $post_image['ratio'] );
-			}<?php
+			}
 
 			$alt = get_the_title( $post_ID );
 			$src = get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $post_image['url'];
