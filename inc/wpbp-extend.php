@@ -57,6 +57,8 @@ if ( !function_exists('wpbp_get_post_image') ) {
 			}
 		}
 
+		var_dump($url);
+
 		if ( !$url ) return false;
 
 		list($width, $height, $type, $attr) = getimagesize( $url );
