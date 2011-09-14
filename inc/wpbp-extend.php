@@ -33,7 +33,7 @@ if ( !function_exists('single_author_title') ) {
 if ( !function_exists('wpbp_has_post_thumbnail') ) {
 
 	function wpbp_has_post_thumbnail($post_ID)
-	{
+	{ return false;
 		if ( has_post_thumbnail( $post_ID ) ) {
 			return true;
 		}
