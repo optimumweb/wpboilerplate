@@ -63,23 +63,23 @@ function wpbp_get_scripts()
 	$scripts = "";
 
 	if ( $wpbp_options['js_plugins']['modernizr'] ) {
-		$scripts .= script_tag( get_template_directory_uri() . "/plugins/modernizr/modernizr-2.0.6.min.js" );
+		$scripts .= script_tag( 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.js' );
 	}
 
 	if ( $wpbp_options['js_plugins']['lesscss'] ) {
-		$scripts .= script_tag( get_template_directory_uri() . "/plugins/less/less-1.1.3.min.js" );
+		$scripts .= script_tag( 'http://firecdn.net/libs/less/1.1.3/less.min.js' );
 	}
 
 	if ( $wpbp_options['js_plugins']['jquery'] ) {
 
-		$scripts .= script_tag( get_template_directory_uri() . "/plugins/jquery/jquery-1.6.2.min.js" );
+		$scripts .= script_tag( 'http://firecdn.net/libs/jquery/1.6.3/jquery.min.js' );
 
 		if ( $wpbp_options['js_plugins']['formalize'] ) {
-			$scripts .= script_tag( get_template_directory_uri() . "/plugins/formalize/jquery.formalize.min.js" );
+			$scripts .= script_tag( 'http://firecdn.net/libs/formalize/js/jquery.formalize.js' );
 		}
 
 		if ( $wpbp_options['js_plugins']['php-jquery-ajax-mail'] ) {
-			$scripts .= script_tag( get_template_directory_uri() . "/plugins/ajax-mail/jquery.ajax-mail.js" );
+			$scripts .= script_tag( 'http://firecdn.net/libs/ajax-mail/jquery.ajax-mail.js' );
 		}
 	}
 
@@ -106,10 +106,10 @@ function wpbp_get_stylesheets()
 
 	$styles = "";
 
-	$styles .= stylesheet_link_tag( get_template_directory_uri() . "/plugins/960gs/960.min.css" );
+	$styles .= stylesheet_link_tag( 'http://firecdn.net/libs/960gs/960.min.css' );
 
 	if ( $wpbp_options['js_plugins']['formalize'] ) {
-		$styles .= stylesheet_link_tag( get_template_directory_uri() . "/plugins/formalize/formalize.min.css" );
+		$styles .= stylesheet_link_tag( 'http://firecdn.net/libs/formalize/css/formalize.css' );
 	}
 
 	$styles .= stylesheet_link_tag( get_template_directory_uri() . "/css/default.css" );
