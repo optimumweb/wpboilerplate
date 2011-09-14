@@ -44,7 +44,17 @@ if ( !function_exists('wpbp_get_post_image') ) {
 
 	function wpbp_get_post_image($post_ID, $attr = false)
 	{
-		$url = get_post_meta( $post_ID, 'featured_image_url', true );
+		$meta_featured_image_url = get_post_meta( $post_ID, 'featured_image_url', true );
+
+		if ( isset( $meta_featured_image_url ) && strlen( $meta_featured_image_url ) ) {
+			$url = $meta_featured_image_url;
+		}
+
+		else {
+			$url = wp_get_attachment_url( $post_ID );
+		}
+
+		if ( !$url ) return false;
 
 		list($width, $height, $type, $attr) = getimagesize( $url );
 
@@ -60,6 +70,8 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 'auto', $quality = 90)
 	{
 		$post_image = wpbp_get_post_image( $post_ID );
+
+		if ( !$post_image ) return false;
 
 		if ( $width == 'auto' && $height == 'auto' ) {
 			$width = $post_image['width'];
