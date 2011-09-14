@@ -79,7 +79,7 @@ function wpbp_get_scripts()
 		}
 
 		if ( $wpbp_options['js_plugins']['php-jquery-ajax-mail'] ) {
-			$scripts .= script_tag( 'http://firecdn.net/libs/ajax-mail/jquery.ajax-mail.js' );
+			$scripts .= script_tag( get_template_directory_uri() . 'plugins/ajax-mail/jquery.ajax-mail.js' );
 		}
 	}
 
