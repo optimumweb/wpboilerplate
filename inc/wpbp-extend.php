@@ -63,11 +63,15 @@ if ( !function_exists('wpbp_get_post_image') ) {
 			return false;
 		}
 
-		list($width, $height, $type, $attr) = getimagesize( $url );
+		if ( isset( $url ) && strlen( $url ) > 0 ) {
+			if ( @fclose( @fopen( $url, 'r' ) ) ) {
+				list($width, $height, $type, $attr) = @getimagesize( $url );
+				$ratio = round( $width / $height );
+				return ( $attr != false && isset( $$attr ) ) ? $$attr : compact( 'url', 'width', 'height', 'ratio', 'type', 'attr' );
+			}
+		}
 
-		$ratio = round( $width / $height );
-
-		return ( $attr != false && isset( $$attr ) ) ? $$attr : compact( 'url', 'width', 'height', 'ratio', 'type', 'attr' );
+		return false;
 	}
 
 }
