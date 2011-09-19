@@ -53,7 +53,7 @@ if ( !function_exists('wpbp_get_post_image') ) {
 
 		if ( isset( $featured_image_url ) && strlen( $featured_image_url ) > 0 ) {
 
-			$image_attr = @getimagesize( $featured_image_url );
+			$image_attr = getimagesize( $featured_image_url );
 			if ( is_array( $image_attr ) ) {
 				list($width, $height, $type, $attr) = $image_attr;
 				$ratio = round( $width / $height );
@@ -73,7 +73,7 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 	{
 		$post_image = wpbp_get_post_image( $post_ID );
 
-		if ( $post_image ) {
+		if ( $post_image !== false ) {
 
 			if ( $width == 'auto' && $height == 'auto' ) {
 				$width = $post_image['width'];
@@ -91,7 +91,7 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 
 			echo "<img class=\"post-thumbnail\" src=\"" . $src . "\" width=\"" . $width . "\" height=\"" . $height . "\" alt=\"" . $alt . "\" />\n";
 
-			return;
+			return true;
 		}
 
 		return false;
