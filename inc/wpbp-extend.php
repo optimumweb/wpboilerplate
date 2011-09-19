@@ -49,28 +49,17 @@ if ( !function_exists('wpbp_get_post_image') ) {
 
 	function wpbp_get_post_image($post_ID, $attr = false)
 	{
-		$meta_featured_image_url = get_post_meta( $post_ID, 'featured_image_url', true );
+		$featured_image_url = get_post_meta( $post_ID, 'featured_image_url', true );
 
-		if ( isset( $meta_featured_image_url ) && strlen( $meta_featured_image_url ) > 0 ) {
-			$url = $meta_featured_image_url;
-		}
+		if ( isset( $featured_image_url ) && strlen( $featured_image_url ) > 0 ) {
 
-		elseif ( has_post_thumbnail( $post_ID ) ) {
-			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID, 'full' ) );
-			$url = $image[0];
-		}
-
-		else {
-			return false;
-		}
-
-		if ( isset( $url ) && strlen( $url ) > 0 ) {
-			$image_attr = @getimagesize( $url );
+			$image_attr = @getimagesize( $featured_image_url );
 			if ( is_array( $image_attr ) ) {
 				list($width, $height, $type, $attr) = $image_attr;
 				$ratio = round( $width / $height );
 				return ( $attr != false && isset( $$attr ) ) ? $$attr : compact( 'url', 'width', 'height', 'ratio', 'type', 'attr' );
 			}
+
 		}
 
 		return false;
@@ -82,7 +71,6 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 
 	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 'auto', $quality = 90)
 	{
-		return;
 		$post_image = wpbp_get_post_image( $post_ID );
 
 		if ( $post_image ) {
