@@ -51,6 +51,8 @@ if ( !function_exists('wpbp_get_post_image') ) {
 	{
 		$featured_image_url = get_post_meta( $post_ID, 'featured_image_url', true );
 
+		return $featured_image_url;
+
 		if ( isset( $featured_image_url ) && strlen( $featured_image_url ) > 0 ) {
 
 			$image_attr = getimagesize( $featured_image_url );
