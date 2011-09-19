@@ -73,6 +73,10 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 	{
 		$post_image = wpbp_get_post_image( $post_ID );
 
+		var_dump( $post_image );
+
+		return;
+
 		if ( $post_image !== false ) {
 
 			if ( $width == 'auto' && $height == 'auto' ) {
