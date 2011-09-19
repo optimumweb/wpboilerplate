@@ -49,11 +49,11 @@ if ( !function_exists('wpbp_get_post_image') ) {
 
 	function wpbp_get_post_image($post_ID, $attr = false)
 	{
-		$featured_image_url = get_post_meta( $post_ID, 'featured_image_url', true );
+		$url = get_post_meta( $post_ID, 'url', true );
 
-		if ( isset( $featured_image_url ) && strlen( $featured_image_url ) > 0 ) {
+		if ( isset( $url ) && strlen( $url ) > 0 ) {
 
-			$image_attr = getimagesize( $featured_image_url );
+			$image_attr = getimagesize( $url );
 
 			if ( is_array( $image_attr ) ) {
 				list($width, $height, $type, $attr) = $image_attr;
