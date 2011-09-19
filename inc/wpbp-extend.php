@@ -82,6 +82,7 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 
 	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 'auto', $quality = 90)
 	{
+		return;
 		$post_image = wpbp_get_post_image( $post_ID );
 
 		if ( $post_image ) {
