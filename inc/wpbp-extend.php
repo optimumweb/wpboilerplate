@@ -74,11 +74,7 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 	{
 		$post_image = wpbp_get_post_image( $post_ID );
 
-		var_dump( $post_image );
-
-		return;
-
-		if ( $post_image !== false ) {
+		if ( $post_image !== false && is_array( $post_image ) ) {
 
 			if ( $width == 'auto' && $height == 'auto' ) {
 				$width = $post_image['width'];
