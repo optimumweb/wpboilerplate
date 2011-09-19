@@ -49,7 +49,7 @@ if ( !function_exists('wpbp_get_post_image') ) {
 
 	function wpbp_get_post_image($post_ID, $attr = false)
 	{
-		$url = get_post_meta( $post_ID, 'url', true );
+		$url = get_post_meta( $post_ID, 'featured_image_url', true );
 
 		if ( isset( $url ) && strlen( $url ) > 0 ) {
 
