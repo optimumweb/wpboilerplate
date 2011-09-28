@@ -45,22 +45,67 @@ if ( !function_exists('wpbp_has_post_thumbnail') ) {
 
 }
 
+if ( !function_exists('wpbp_get_image_size') ) {
+
+	function wpbp_get_image_size($url)
+	{
+		$image_attr = @getimagesize($url);
+		if ( isset($image_attr) && is_array($image_attr) ) {
+			list($width, $height, $type, $attr) = $image_attr;
+			$ratio = round( $width / $height );
+			return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
+		}
+		return false;
+	}
+
+}
+
+if ( !function_exists('wpbp_resize_image_url') ) {
+
+	function wpbp_resize_image_url($url, $width, $height = 'auto', $q = '90')
+	{
+		$image = wpbp_get_image_size($url);
+
+		if ( $width == 'auto' && $height == 'auto' ) {
+			$width = $image['width'];
+			$height = $image['height'];
+		}
+		elseif ( $height == 'auto' ) {
+			$height = round( $width / $image['ratio'] );
+		}
+		elseif ( $width == 'auto' ) {
+			$width = round( $height * $image['ratio'] );
+		}
+
+		$src = get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $url;
+	}
+
+}
+
 if ( !function_exists('wpbp_get_post_image') ) {
 
 	function wpbp_get_post_image($post_ID, $attr = false)
 	{
-		$url = get_post_meta( $post_ID, 'featured_image_url', true );
+		$meta_featured_image_url = get_post_meta( $post_ID, 'featured_image_url', true );
+
+		if ( isset( $meta_featured_image_url ) && strlen( $meta_featured_image_url ) > 0 ) {
+			$url = $meta_featured_image_url;
+		}
+
+		elseif ( has_post_thumbnail( $post_ID ) ) {
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID, 'full' ) );
+			$url = $image[0];
+		}
+
+		else {
+			return false;
+		}
 
 		if ( isset( $url ) && strlen( $url ) > 0 ) {
-
-			$image_attr = getimagesize( $url );
-
-			if ( is_array( $image_attr ) ) {
-				list($width, $height, $type, $attr) = $image_attr;
-				$ratio = round( $width / $height );
-				return ( $attr != false && isset( $$attr ) ) ? $$attr : compact( 'url', 'width', 'height', 'ratio', 'type', 'attr' );
+			$image_attr = wpbp_get_image_size($url);
+			if ( isset($image_attr) && is_array($image_attr) ) {
+				return ( $attr != false && isset($$attr) ) ? $$attr : compact('url', 'width', 'height', 'ratio', 'type', 'attr');
 			}
-
 		}
 
 		return false;
@@ -74,25 +119,15 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 	{
 		$post_image = wpbp_get_post_image( $post_ID );
 
-		if ( $post_image !== false && is_array( $post_image ) ) {
+		if ( isset($post_image) && is_array($post_image) ) {
 
-			if ( $width == 'auto' && $height == 'auto' ) {
-				$width = $post_image['width'];
-				$height = $post_image['height'];
-			}
-			elseif ( $height == 'auto' ) {
-				$height = round( $width / $post_image['ratio'] );
-			}
-			elseif ( $width == 'auto' ) {
-				$width = round( $height * $post_image['ratio'] );
-			}
+			$alt = get_the_title($post_ID);
 
-			$alt = get_the_title( $post_ID );
-			$src = get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $post_image['url'];
+			$src = wpbp_resize_image_url( $post_image['url'], $width, $height, $quality );
 
 			echo "<img class=\"post-thumbnail\" src=\"" . $src . "\" width=\"" . $width . "\" height=\"" . $height . "\" alt=\"" . $alt . "\" />\n";
 
-			return true;
+			return;
 		}
 
 		return false;
