@@ -2,8 +2,11 @@
 
 function wpbp_add_contactmethods( $contactmethods )
 {
-	// Add Google Profile
+	// Add Social Profile
 	$contactmethods['google_profile'] = 'Google Profile URL';
+	$contactmethods['facebook_profile'] = 'Facebook Profile URL';
+	$contactmethods['twitter_profile'] = 'Twitter Profile URL';
+	$contactmethods['linkedin_profile'] = 'LinkedIn Profile URL';
 	// Add Photo
 	$contactmethods['photo'] = 'Photo URL';
 	return $contactmethods;
