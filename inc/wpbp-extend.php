@@ -64,20 +64,20 @@ if ( !function_exists('wpbp_resize_image_url') ) {
 
 	function wpbp_resize_image_url($url, $width, $height = 'auto', $q = '90')
 	{
-		$image = wpbp_get_image_size($url);
+		$image_attr = wpbp_get_image_size($url);
 
 		if ( $width == 'auto' && $height == 'auto' ) {
-			$width = $image['width'];
-			$height = $image['height'];
+			$width = $image_attr['width'];
+			$height = $image_attr['height'];
 		}
 		elseif ( $height == 'auto' ) {
-			$height = round( $width / $image['ratio'] );
+			$height = round( $width / $image_attr['ratio'] );
 		}
 		elseif ( $width == 'auto' ) {
-			$width = round( $height * $image['ratio'] );
+			$width = round( $height * $image_attr['ratio'] );
 		}
 
-		$src = get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $url;
+		return get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $url;
 	}
 
 }
