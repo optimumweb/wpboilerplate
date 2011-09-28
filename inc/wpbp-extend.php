@@ -77,7 +77,7 @@ if ( !function_exists('wpbp_resize_image_url') ) {
 			$width = round( $height * $image_attr['ratio'] );
 		}
 
-		return get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $quality . '&src=' . $url;
+		return get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $q . '&src=' . $url;
 	}
 
 }
