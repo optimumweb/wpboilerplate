@@ -55,7 +55,8 @@ function wpbp_setup() {
 		
 	add_theme_support('menus');
 	register_nav_menus(array(
-		'primary_navigation' => __('Primary Navigation', 'wpbp')
+		'primary_navigation' => __('Primary Navigation', 'wpbp'),
+		'secondary_navigation' => __('Secondary Navigation', 'wpbp'),
 	));	
 }
 
