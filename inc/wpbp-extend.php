@@ -134,6 +134,7 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 			$alt = get_the_title($post_ID);
 			$src = wpbp_resize_image_url( $post_image['url'], $width, $height, $quality );
             $src_attr = wpbp_get_image_size( $src );
+            var_dump($src_attr);
             if ( isset($src_attr) && is_array($src_attr) ) {
                 echo "<img class=\"post-thumbnail\" src=\"" . $src . "\" width=\"" . $src_attr['width'] . "\" height=\"" . $src_attr['height'] . "\" alt=\"" . $alt . "\" />\n";
             }
