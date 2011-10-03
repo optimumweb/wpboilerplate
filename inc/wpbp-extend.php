@@ -50,16 +50,20 @@ if ( !function_exists('wpbp_get_image_size') ) {
 	function wpbp_get_image_size($url)
 	{
 		if ( !strpos($url, 'http') ) {
-			//$protocol = ( isset($_SERVER['HTTPS']) ) ? 'https' : 'http';
-			//$url = $protocol . '://' . $_SERVER['SERVER_NAME'] . $url;
+			$protocol = ( isset($_SERVER['HTTPS']) ) ? 'https' : 'http';
+			$url = $protocol . '://' . $_SERVER['SERVER_NAME'] . $url;
 		}
 
+        var_dump($url);
+
 		$image_attr = @getimagesize($url);
+
 		if ( isset($image_attr) && is_array($image_attr) ) {
 			list($width, $height, $type, $attr) = $image_attr;
 			$ratio = round( $width / $height );
 			return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
 		}
+        
 		return false;
 	}
 
@@ -71,7 +75,7 @@ if ( !function_exists('wpbp_resize_image_url') ) {
 	{
 		$image_attr = wpbp_get_image_size($url);
 
-		if ( isset($image_attr) && $image_attr !== false ) {
+		if ( isset($image_attr) && is_array($image_attr) ) {
 
 			if ( $width == 'auto' && $height == 'auto' ) {
 				$width = $image_attr['width'];
@@ -98,11 +102,11 @@ if ( !function_exists('wpbp_get_post_image') ) {
 	{
 		$meta_featured_image_url = get_post_meta( $post_ID, 'featured_image_url', true );
 
-		if ( isset( $meta_featured_image_url ) && strlen( $meta_featured_image_url ) > 0 ) {
+		if ( isset($meta_featured_image_url) && strlen($meta_featured_image_url) > 0 ) {
 			$url = $meta_featured_image_url;
 		}
 
-		elseif ( has_post_thumbnail( $post_ID ) ) {
+		elseif ( has_post_thumbnail($post_ID) ) {
 			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID, 'full' ) );
 			$url = $image[0];
 		}
@@ -111,7 +115,7 @@ if ( !function_exists('wpbp_get_post_image') ) {
 			return false;
 		}
 
-		if ( isset( $url ) && strlen( $url ) > 0 ) {
+		if ( isset($url) && strlen($url) > 0 ) {
 			$image_attr = wpbp_get_image_size($url);
 			if ( isset($image_attr) && is_array($image_attr) ) {
 				return ( $attr != false && isset($$attr) ) ? $$attr : compact('url', 'width', 'height', 'ratio', 'type', 'attr');
@@ -128,6 +132,8 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 'auto', $quality = 90)
 	{
 		$post_image = wpbp_get_post_image( $post_ID );
+
+        var_dump($post_image);
 
 		if ( isset($post_image) && is_array($post_image) ) {
 			$alt = get_the_title($post_ID);
