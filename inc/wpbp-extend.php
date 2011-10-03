@@ -130,6 +130,8 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 	{
 		$post_image = wpbp_get_post_image( $post_ID );
 
+        var_dump($post_image);
+
 		if ( isset($post_image) && is_array($post_image) ) {
 			$alt = get_the_title($post_ID);
 			$src = wpbp_resize_image_url( $post_image['url'], $width, $height, $quality );
