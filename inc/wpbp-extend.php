@@ -50,8 +50,8 @@ if ( !function_exists('wpbp_get_image_size') ) {
 	function wpbp_get_image_size($url)
 	{
 		if ( !strpos($url, 'http') ) {
-			$protocol = ( isset($_SERVER['HTTPS']) ) ? 'https' : 'http';
-			$url = $protocol . '://' . $_SERVER['SERVER_NAME'] . $url;
+			//$protocol = ( isset($_SERVER['HTTPS']) ) ? 'https' : 'http';
+			//$url = $protocol . '://' . $_SERVER['SERVER_NAME'] . $url;
 		}
 
 		$image_attr = @getimagesize($url);
