@@ -49,7 +49,7 @@ if ( !function_exists('wpbp_get_image_size') ) {
 
 	function wpbp_get_image_size($url)
 	{
-		if ( !strpos($url, 'http') ) {
+		if ( strpos($url, 'http') === false ) {
 			$protocol = ( isset($_SERVER['HTTPS']) ) ? 'https' : 'http';
 			$url = $protocol . '://' . $_SERVER['SERVER_NAME'] . $url;
 		}
