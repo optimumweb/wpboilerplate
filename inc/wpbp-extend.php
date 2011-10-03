@@ -83,7 +83,7 @@ if ( !function_exists('wpbp_resize_image_url') ) {
 
 		}
 
-		return;
+		return $url;
 	}
 
 }
