@@ -62,7 +62,7 @@ if ( !function_exists('wpbp_get_image_size') ) {
 
 if ( !function_exists('wpbp_resize_image_url') ) {
 
-	function wpbp_resize_image_url($url, $width, $height = 'auto', $q = '90')
+	function wpbp_resize_image_url($url, $width = 'auto', $height = 'auto', $q = '90')
 	{
 		$image_attr = wpbp_get_image_size($url);
 
