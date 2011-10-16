@@ -7,3 +7,6 @@
 [submodule "plugins/less-mixins"]
 	path = plugins/less-mixins
 	url = git@github.com:jonathanroy/less-mixins.git
+[submodule "plugins/jSlider"]
+	path = plugins/jSlider
+	url = git@github.com:optimumweb/jSlider.git
