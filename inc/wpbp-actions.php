@@ -63,27 +63,31 @@ function wpbp_get_scripts()
 	$scripts = "";
 
 	if ( $wpbp_options['js_plugins']['modernizr'] ) {
-		$scripts .= script_tag( 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js' );
+		$scripts .= script_tag('http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js');
 	}
 
 	if ( $wpbp_options['js_plugins']['lesscss'] ) {
-		$scripts .= script_tag( 'http://firecdn.net/libs/less/1.1.3/less.min.js' );
+		$scripts .= script_tag('http://firecdn.net/libs/less/1.1.3/less.min.js');
 	}
 
 	if ( $wpbp_options['js_plugins']['jquery'] ) {
 
-		$scripts .= script_tag( 'http://firecdn.net/libs/jquery/1.6.3/jquery.min.js' );
+		$scripts .= script_tag('http://firecdn.net/libs/jquery/1.6.3/jquery.min.js');
 
 		if ( $wpbp_options['js_plugins']['formalize'] ) {
-			$scripts .= script_tag( 'http://firecdn.net/libs/formalize/js/jquery.formalize.js' );
+			$scripts .= script_tag('http://firecdn.net/libs/formalize/js/jquery.formalize.js');
 		}
 
-		if ( $wpbp_options['js_plugins']['php-jquery-ajax-mail'] ) {
+		if ( $wpbp_options['js_plugins']['ajax-mail'] ) {
 			$scripts .= script_tag( get_template_directory_uri() . '/plugins/ajax-mail/jquery.ajax-mail.js' );
+		}
+
+		if ( $wpbp_options['js_plugins']['jSlider'] ) {
+			$scripts .= script_tag('http://firecdn.net/libs/jSlider/jquery.jSlider.js');
 		}
 	}
 
-	$scripts .= script_tag( get_stylesheet_directory_uri() . "/js/scripts.js" );
+	$scripts .= script_tag( get_stylesheet_directory_uri() . '/js/scripts.js' );
 
 	echo $scripts;
 
@@ -106,10 +110,14 @@ function wpbp_get_stylesheets()
 
 	$styles = "";
 
-	$styles .= stylesheet_link_tag( 'http://firecdn.net/libs/960gs/960.min.css' );
+	$styles .= stylesheet_link_tag('http://firecdn.net/libs/960gs/960.min.css');
 
 	if ( $wpbp_options['js_plugins']['formalize'] ) {
-		$styles .= stylesheet_link_tag( 'http://firecdn.net/libs/formalize/css/formalize.css' );
+		$styles .= stylesheet_link_tag('http://firecdn.net/libs/formalize/css/formalize.css');
+	}
+
+	if ( $wpbp_options['js_plugins']['jSlider'] ) {
+		$styles .= stylesheet_link_tag('http://firecdn.net/libs/jSlider/jSlider.css');
 	}
 
 	$styles .= stylesheet_link_tag( get_template_directory_uri() . "/css/default.css" );
