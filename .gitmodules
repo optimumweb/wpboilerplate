@@ -1,12 +1,9 @@
-[submodule "css/less"]
-	path = css/less
-	url = git@github.com:jonathanroy/less-mixins.git
-[submodule "plugins/ajax-mail"]
-	path = plugins/ajax-mail
-	url = git@github.com:jonathanroy/ajax-mail.git
 [submodule "plugins/less-mixins"]
 	path = plugins/less-mixins
-	url = git@github.com:jonathanroy/less-mixins.git
+	url = git@github.com:optimumweb/less-mixins.git
 [submodule "plugins/jSlider"]
 	path = plugins/jSlider
 	url = git@github.com:optimumweb/jSlider.git
+[submodule "plugins/ajax-mail"]
+	path = plugins/ajax-mail
+	url = git@github.com:optimumweb/ajax-mail.git
