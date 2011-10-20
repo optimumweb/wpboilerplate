@@ -39,8 +39,9 @@ if ( !function_exists('wpbp_has_post_thumbnail') ) {
 		}
 		else {
 			$url = get_post_meta( $post_ID, 'featured_image_url', true );
-			return ( strlen( $url ) > 0 ) ? true : false;
+            if ( strlen( $url ) > 0 ) return true;
 		}
+        return false;
 	}
 
 }
@@ -89,7 +90,7 @@ if ( !function_exists('wpbp_resize_image_url') ) {
 			return get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $q . '&src=' . $url;
 		}
 
-		return $url;
+		return false;
 	}
 
 }
@@ -103,12 +104,10 @@ if ( !function_exists('wpbp_get_post_image') ) {
 		if ( isset($meta_featured_image_url) && strlen($meta_featured_image_url) > 0 ) {
 			$url = $meta_featured_image_url;
 		}
-
 		elseif ( has_post_thumbnail($post_ID) ) {
 			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID, 'full' ) );
 			$url = $image[0];
 		}
-
 		else {
 			return false;
 		}
@@ -116,7 +115,7 @@ if ( !function_exists('wpbp_get_post_image') ) {
 		if ( isset($url) && strlen($url) > 0 ) {
 			$image_attr = wpbp_get_image_size($url);
 			if ( isset($image_attr) && is_array($image_attr) ) {
-				return ( $attr != false && isset($$attr) ) ? $$attr : compact('url', 'width', 'height', 'ratio', 'type', 'attr');
+				return ( $attr !== false && isset($$attr) ) ? $$attr : compact('url', 'width', 'height', 'ratio', 'type', 'attr');
 			}
 		}
 
@@ -133,8 +132,10 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 
 		if ( isset($post_image) && is_array($post_image) ) {
 			$alt = get_the_title($post_ID);
-			$src = wpbp_resize_image_url( $post_image['url'], $width, $height, $quality );
-            echo "<img class=\"post-thumbnail\" src=\"" . $src . "\" alt=\"" . $alt . "\" />\n";
+			$src = wpbp_resize_image_url($post_image['url'], $width, $height, $quality);
+            if ( $src !== false ) {
+                echo "<img class=\"post-thumbnail\" src=\"" . $src . "\" alt=\"" . $alt . "\" />\n";
+            }
 			return;
 		}
 
