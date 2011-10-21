@@ -163,11 +163,11 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 
 	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 'auto', $quality = 90)
 	{
-		$post_image = wpbp_get_post_image( $post_ID );
+		$post_image_url = wpbp_get_post_image($post_ID, 'url');
 
-		if ( isset($post_image) && is_array($post_image) ) {
+		if ( isset($post_image_url) && $post_image_url !== false && strlen($post_image_url) > 0 ) {
 			$alt = get_the_title($post_ID);
-			$src = wpbp_resize_image_url($post_image['url'], $width, $height, $quality);
+			$src = wpbp_resize_image_url($post_image_url, $width, $height, $quality);
             if ( isset($src) && $src !== false && strlen($src) > 0 ) {
                 echo "<img class=\"post-thumbnail\" src=\"" . $src . "\" alt=\"" . $alt . "\" />\n";
             }
