@@ -89,14 +89,18 @@ if ( !function_exists('wpbp_get_image_size') ) {
 	function wpbp_get_image_size($url)
 	{
 		$url = wpbp_get_full_url($url);
+        
+        if ( wpbp_is_valid_image($url) ) {
 
-		$image_attr = @getimagesize($url);
-
-		if ( isset($image_attr) && is_array($image_attr) ) {
-			list($width, $height, $type, $attr) = $image_attr;
-			$ratio = round( $width / $height );
-			return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
-		}
+    		$image_attr = @getimagesize($url);
+    
+    		if ( isset($image_attr) && is_array($image_attr) ) {
+    			list($width, $height, $type, $attr) = $image_attr;
+    			$ratio = round( $width / $height );
+    			return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
+    		}
+        
+        }
         
 		return false;
 	}
