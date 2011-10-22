@@ -14,7 +14,7 @@ if ( !function_exists('image_tag') ) {
         if ( isset($args['src']) && is_string($args['src']) && strlen($args['src']) > 0 ) {
             echo "<img ";
             foreach ( $args as $key => $value ) {
-                if ( isset($key,$value) && ( is_string($key) && is_string($value) ) && ( strlen($key) > 0 && strlen($value) > 0 ) ) {
+                if ( isset($key,$value) ) {
                     echo $key . "=\"" . $value . "\" ";
                 }
             }
