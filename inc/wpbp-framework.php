@@ -45,7 +45,7 @@ if ( !function_exists('wpbp_get_full_url') ) {
     }
     
 }
-
+/*
 if ( !function_exists('wpbp_get_current_url') ) {
     
     function wpbp_get_current_url()
@@ -54,6 +54,7 @@ if ( !function_exists('wpbp_get_current_url') ) {
     }
     
 }
+*/
 
 if ( !function_exists('wpbp_is_valid_image') ) {
 
