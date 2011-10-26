@@ -46,6 +46,15 @@ if ( !function_exists('wpbp_get_full_url') ) {
     
 }
 
+if ( !function_exists('wpbp_get_current_url') ) {
+    
+    function wpbp_get_current_url()
+    {
+        return ( !empty($_SERVER['HTTPS']) ) ? "https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] : "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+    }
+    
+}
+
 if ( !function_exists('wpbp_is_valid_image') ) {
 
     function wpbp_is_valid_image($url, $valid_image_types = array( IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG ))
