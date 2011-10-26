@@ -62,19 +62,6 @@ if ( !function_exists('wpbp_has_post_thumbnail') ) {
 
 }
 
-if ( !function_exists('wpbp_get_full_url') ) {
-    
-    function wpbp_get_full_url($url)
-    {
-        if ( strpos($url, 'http') === false ) {
-    		$protocol = ( isset($_SERVER['HTTPS']) ) ? 'https' : 'http';
-			$url = $protocol . '://' . $_SERVER['SERVER_NAME'] . $url;
-		}
-        return $url;
-    }
-    
-}
-
 if ( !function_exists('wpbp_is_valid_image') ) {
 
     function wpbp_is_valid_image($url, $valid_image_types = array( IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG ))
