@@ -6,7 +6,11 @@ if ( !function_exists('set_post_ID') ) {
 	{
 		if ( !isset($post_ID) || !is_int($post_ID) ) {
             global $wp_query;
-            $post_ID = $wp_query->post->ID;
+            if ( isset($wp_query->post->ID) ) {
+                $post_ID = $wp_query->post->ID;
+            } else {
+                throw new Exception('No post ID.');
+            }
         }
 	}
     
