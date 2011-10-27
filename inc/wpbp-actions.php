@@ -123,6 +123,7 @@ function wpbp_get_stylesheets()
 	$styles .= stylesheet_link_tag( get_template_directory_uri() . "/css/default.css" );
 
 	if ( $wpbp_options['js_plugins']['lesscss'] ) {
+        $styles .= stylesheet_link_tag( array( 'href' => 'http://firecdn.net/libs/less-mixins/mixins.less', 'rel' => 'stylesheet/less' ) );
 		$styles .= stylesheet_link_tag( array( 'href' => get_stylesheet_directory_uri() . "/css/custom.less", 'rel' => 'stylesheet/less' ) );
 	} else {
 		$styles .= stylesheet_link_tag( get_stylesheet_directory_uri() . "/css/custom.css" );
