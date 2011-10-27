@@ -166,7 +166,6 @@ table { border-collapse: collapse; border-spacing: 0; }
 }
 
 #nav-main ul li a {
-	text-decoration: none;
 	display: block;
 	margin: 0;
 }
@@ -184,13 +183,6 @@ table { border-collapse: collapse; border-spacing: 0; }
 	float: none;
 }
 
-#nav-main ul ul li a:hover,
-#nav-main ul ul li.current-menu-item > a,
-#nav-main ul ul li.current-menu-parent > a,
-#nav-main ul ul li.current-menu-ancestor > a,
-#nav-main ul ul li:hover > a {
-	color: #fff;
-}
 
 #nav-main ul ul ul {
 	left: 100%;
