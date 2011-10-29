@@ -84,7 +84,11 @@ function wpbp_get_scripts()
 
         if ( $wpbp_options['js_plugins']['jSlider'] ) {
             $scripts .= script_tag('http://firecdn.net/libs/jSlider/jquery.jSlider.min.js');
-	    }
+        }
+        
+        if ( $wpbp_options['js_plugins']['cycle'] ) {
+            $scripts .= script_tag('http://firecdn.net/libs/cycle/jquery.cycle.min.js');
+        }
     }
 
 	$scripts .= script_tag( get_stylesheet_directory_uri() . '/js/scripts.js' );

@@ -118,12 +118,13 @@ function wpbp_get_default_theme_options()
 		'google_analytics_id'	=> '',
 		'custom_css'			=> '',
 		'js_plugins'			=>	array(
-										'lesscss'				=> 1,
-										'modernizr'				=> 1,
-										'formalize'				=> 1,
-										'jquery'				=> 1,
-										'ajax-mail'				=> 1,
-										'jSlider'				=> 1
+										'lesscss'   => 1,
+										'modernizr' => 1,
+										'formalize' => 1,
+										'jquery'    => 1,
+										'ajax-mail' => 1,
+										'jSlider'   => 1,
+                                        'cycle'     => 1
 									)
 	);
 
@@ -223,8 +224,11 @@ function wpbp_theme_options_render_page()
 							<input type="checkbox" name="wpbp_theme_options[js_plugins][ajax-mail]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['ajax-mail'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> AJAX Mail<br />
               				<small class="description"><?php _e('Send mail easily with this jQuery plugin using AJAX and PHP. <i>(requires jQuery)</i>', 'wpbp'); ?></small>
 							<br />
-							<input type="checkbox" name="wpbp_theme_options[js_plugins][jSlider]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['jSlider'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> jSlider<br />
+    						<input type="checkbox" name="wpbp_theme_options[js_plugins][jSlider]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['jSlider'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> jSlider<br />
               				<small class="description"><?php _e('Simple and semantic jQuery slider. <i>(requires jQuery)</i>', 'wpbp'); ?></small>
+                            <br />
+    						<input type="checkbox" name="wpbp_theme_options[js_plugins][cycle]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['cycle'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> Cycle<br />
+              				<small class="description"><?php _e('Powerful jQuery slideshow plugin. <i>(requires jQuery)</i>', 'wpbp'); ?></small>
 						</fieldset>
 					</td>
 				</tr>
@@ -259,6 +263,7 @@ function wpbp_theme_options_validate($input)
 	$output['js_plugins']['formalize'] = ( isset( $input['js_plugins']['formalize'] ) && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['formalize'] : 0;
 	$output['js_plugins']['ajax-mail'] = ( isset( $input['js_plugins']['ajax-mail'] )  && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['ajax-mail'] : 0;
 	$output['js_plugins']['jSlider'] = ( isset( $input['js_plugins']['jSlider'] )  && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['jSlider'] : 0;
+    $output['js_plugins']['cycle'] = ( isset( $input['js_plugins']['cycle'] )  && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['cycle'] : 0;
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);
 }
