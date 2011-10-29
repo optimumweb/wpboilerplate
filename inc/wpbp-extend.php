@@ -220,8 +220,6 @@ class Description_Walker extends Walker_Nav_Menu
         
         $description  = ! empty( $item->description ) ? '<span>'.esc_attr( $item->description ).'</span>' : '';
         
-        if($depth != 0) $description = "";
-        
         $item_output = $args->before;
         $item_output .= '<a'. $attributes .'>';
         $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID );
