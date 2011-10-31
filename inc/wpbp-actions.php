@@ -81,13 +81,11 @@ function wpbp_get_scripts()
         if ( $wpbp_options['js_plugins']['ajax-mail'] ) {
                 $scripts .= script_tag( get_template_directory_uri() . '/plugins/ajax-mail/jquery.ajax-mail.js' );
         }
-
-        if ( $wpbp_options['js_plugins']['jSlider'] ) {
-            $scripts .= script_tag('http://firecdn.net/libs/jSlider/jquery.jSlider.min.js');
-        }
-        
-        if ( $wpbp_options['js_plugins']['cycle'] ) {
-            $scripts .= script_tag('http://firecdn.net/libs/cycle/jquery.cycle.min.js');
+    }
+    
+    if ( $wpbp_options['js_files'] ) {
+        foreach ( ( explode('\n', $wpbp_options['js_files']) ) as $js_file ) {
+            $scripts .= script_tag( $js_file );
         }
     }
 

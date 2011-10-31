@@ -117,6 +117,7 @@ function wpbp_get_default_theme_options()
 		'sidebar_class'			=> $default_framework_settings['classes']['sidebar'],
 		'google_analytics_id'	=> '',
 		'custom_css'			=> '',
+        'js_files'              => '',
 		'js_plugins'			=>	array(
 										'lesscss'   => 1,
 										'modernizr' => 1,
@@ -205,6 +206,16 @@ function wpbp_theme_options_render_page()
 						</fieldset>
 					</td>
 				</tr>
+                
+                <tr valign="top"><th scope="row"><?php _e('Javascript files', 'wpbp'); ?></th>
+    				<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Javascript files', 'wpbp'); ?></span></legend>
+							<textarea name="wpbp_theme_options[js_files]" id="js_files" cols="94" rows="10"><?php echo esc_attr($wpbp_options['js_files']); ?></textarea>
+							<br />
+							<small class="description"><?php printf(__('Enter javascript files URL you want to include. One file per line.', 'wpbp')); ?></small>
+						</fieldset>
+					</td>
+				</tr>
 
 				<tr valign="top"><th scope="row"><?php _e('JavaScript Plugins', 'wpbp'); ?></th>
 					<td>
@@ -223,12 +234,6 @@ function wpbp_theme_options_render_page()
 							<br />
 							<input type="checkbox" name="wpbp_theme_options[js_plugins][ajax-mail]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['ajax-mail'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> AJAX Mail<br />
               				<small class="description"><?php _e('Send mail easily with this jQuery plugin using AJAX and PHP. <i>(requires jQuery)</i>', 'wpbp'); ?></small>
-							<br />
-    						<input type="checkbox" name="wpbp_theme_options[js_plugins][jSlider]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['jSlider'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> jSlider<br />
-              				<small class="description"><?php _e('Simple and semantic jQuery slider. <i>(requires jQuery)</i>', 'wpbp'); ?></small>
-                            <br />
-    						<input type="checkbox" name="wpbp_theme_options[js_plugins][cycle]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['cycle'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> Cycle<br />
-              				<small class="description"><?php _e('Powerful jQuery slideshow plugin. <i>(requires jQuery)</i>', 'wpbp'); ?></small>
 						</fieldset>
 					</td>
 				</tr>
@@ -262,8 +267,6 @@ function wpbp_theme_options_validate($input)
 	$output['js_plugins']['jquery'] = ( isset( $input['js_plugins']['jquery'] ) ) ? $input['js_plugins']['jquery'] : 0;
 	$output['js_plugins']['formalize'] = ( isset( $input['js_plugins']['formalize'] ) && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['formalize'] : 0;
 	$output['js_plugins']['ajax-mail'] = ( isset( $input['js_plugins']['ajax-mail'] )  && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['ajax-mail'] : 0;
-	$output['js_plugins']['jSlider'] = ( isset( $input['js_plugins']['jSlider'] )  && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['jSlider'] : 0;
-    $output['js_plugins']['cycle'] = ( isset( $input['js_plugins']['cycle'] )  && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['cycle'] : 0;
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);
 }
