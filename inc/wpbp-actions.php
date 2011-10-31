@@ -152,11 +152,13 @@ function stylesheet_link_tag($args)
 function wpbp_custom_css()
 {
 	global $wpbp_options;
+    if ( $wpbp_options['custom_css'] ) {
 ?>
 <style type="text/css">
 <?php echo $wpbp_options['custom_css'] . "\n"; ?>
 </style>
 <?php
+    }
 	return;
 }
 
