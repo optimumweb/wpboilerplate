@@ -262,6 +262,7 @@ function wpbp_theme_options_validate($input)
 	$output['sidebar_class'] = ( isset( $input['sidebar_class'] ) ) ? $input['sidebar_class'] : null;
 	$output['google_analytics_id'] = ( isset( $input['google_analytics_id'] ) ) ? $input['google_analytics_id'] : null;
 	$output['custom_css'] = ( isset( $input['custom_css'] ) ) ? $input['custom_css'] : null;
+    $output['js_files'] = ( isset( $input['js_files'] ) ) ? $input['js_files'] : null;
 	$output['js_plugins']['lesscss'] = ( isset( $input['js_plugins']['lesscss'] ) ) ? $input['js_plugins']['lesscss'] : 0;
 	$output['js_plugins']['modernizr'] = ( isset( $input['js_plugins']['modernizr'] ) ) ? $input['js_plugins']['modernizr'] : 0;
 	$output['js_plugins']['jquery'] = ( isset( $input['js_plugins']['jquery'] ) ) ? $input['js_plugins']['jquery'] : 0;
