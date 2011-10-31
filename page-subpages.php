@@ -12,13 +12,12 @@ get_header(); ?>
 					<?php wpbp_loop_before(); ?>
 					<?php get_template_part('loop', 'page'); ?>
 					<?php wpbp_loop_after(); ?>
-					<?php
-						$children = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0');
-						if ($children) { ?>
+					<?php $children = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0'); ?>
+					<?php if ($children) : ?>
 						<ul>
 							<?php echo $children; ?>
 						</ul>
-					<?php } ?>
+					<?php endif; ?>
 				</div>
 			</div>
 			<?php wpbp_main_after(); ?>

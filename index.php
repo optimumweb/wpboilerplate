@@ -5,7 +5,9 @@
 			<?php wpbp_main_before(); ?>
 			<div id="main" class="<?php echo $wpbp_options['main_class']; ?>" role="main">
 				<div class="container">
-					<h1 class="page-title"><?php _e('Latest Posts', 'wpbp');?></h1>
+					<h1 class="page-title">
+                        <?php _e('Latest Posts', 'wpbp');?>
+                    </h1>
 					<?php get_template_part('loop', 'index'); ?>
 				</div>
 			</div>

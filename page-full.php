@@ -7,8 +7,8 @@ get_header(); ?>
 	<div id="content">
 		<div class="container <?php echo $wpbp_options['container_class']; ?>">
 			<?php wpbp_main_before(); ?>
-			<div id="main" role="main">
-				<div class="container full-width">
+			<div id="main" class="full_grid" role="main">
+				<div class="container">
 					<?php wpbp_loop_before(); ?>
 					<?php get_template_part('loop', 'page'); ?>
 					<?php wpbp_loop_after(); ?>

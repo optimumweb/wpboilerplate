@@ -85,6 +85,6 @@ function wpbp_register_sidebars($sidebars)
 }
 
 // create widget areas: sidebar, footer
-wpbp_register_sidebars( array( 'Nav', 'Sidebar', 'Footer' ) );
+wpbp_register_sidebars( array( 'Sidebar' ) );
 
 ?>

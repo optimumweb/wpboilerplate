@@ -8,7 +8,7 @@
 	
 <meta charset="utf-8">
 
-<title><?php wp_title(''); ?> - <?php bloginfo('name'); ?></title>
+<title><?php wp_title(''); ?></title>
 
 <?php wpbp_stylesheets(); ?>
 
@@ -27,31 +27,20 @@
 	<?php wpbp_wrap_before(); ?>
 	<div id="wrap" role="document">
 		<?php wpbp_header_before(); ?>
-		<header id="banner" role="banner">
+		<header id="header" role="banner">
 			<?php wpbp_header_inside(); ?>
-			<div class="container <?php echo $wpbp_options['container_class']; ?>">
-				<div id="site-info">
+            <div id="site-info">
+			    <div class="container <?php echo $wpbp_options['container_class']; ?>">
 					<div id="site-title"><h2><a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a></h2></div>
 					<div id="site-description"><?php bloginfo('description'); ?></div>
 				</div>
 			</div>
-			<nav id="nav-main" role="navigation">
+			<nav id="main-nav" role="navigation">
 				<div class="container <?php echo $wpbp_options['container_class']; ?>">
 					<?php dynamic_sidebar("Nav"); ?>
 					<div class="clear"></div>
 				</div>
 			</nav>
-			<div id="subnav">
-				<div class="container <?php echo $wpbp_options['container_class']; ?>">
-					<div id="breadcrumb">
-						<?php wpbp_breadcrumb(); ?>
-					</div>
-					<div id="search">
-						<?php get_search_form(); ?>
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div>
 		</header>
 		<div class="clear"></div>
 		<?php wpbp_header_after(); ?>
