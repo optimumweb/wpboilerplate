@@ -144,8 +144,7 @@ table { border-collapse: collapse; border-spacing: 0; }
    CSS Framework Fixes
    ========================================================================== */
    
-body.960gs_16 { background: #eee !important; }
-body.960gs_12 .full_grid, body.960gs_16 .full_grid { padding-left: 10px !important; padding-right: 10px !important; }
+body.960gs_12 .full_grid, body.960gs_16 .full_grid { width: 940px; margin-left: 10px !important; margin-right: 10px !important; }
 
 /* =============================================================================
    WordPress generated classes
