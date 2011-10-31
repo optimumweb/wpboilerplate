@@ -1,3 +1,4 @@
+<?php global $wpbp_options, $post; ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" <?php language_attributes(); ?>> <![endif]-->
@@ -22,4 +23,4 @@
 
 </head>
 
-<body <?php $page_slug = $post->post_name; body_class($page_slug); ?>>
+<body <?php body_class($post->post_name, $wpbp_options['css_framework']); ?>>
