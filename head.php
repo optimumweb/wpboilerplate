@@ -23,4 +23,4 @@
 
 </head>
 
-<body <?php body_class($post->post_name, $wpbp_options['css_framework']); ?>>
+<body <?php body_class( array( $post->post_name, $wpbp_options['css_framework'] ) ); ?>>
