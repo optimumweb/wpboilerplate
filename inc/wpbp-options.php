@@ -111,21 +111,20 @@ function wpbp_get_default_theme_options()
 	$default_framework = '960gs_16';
 	$default_framework_settings = $wpbp_css_frameworks[$default_framework];
 	$default_theme_options = array(
-		'css_framework'			=> $default_framework,
-		'container_class'		=> $default_framework_settings['classes']['container'],
-		'main_class'			=> $default_framework_settings['classes']['main'],
-		'sidebar_class'			=> $default_framework_settings['classes']['sidebar'],
-		'google_analytics_id'	=> '',
-		'custom_css'			=> '',
+		'css_framework'         => $default_framework,
+		'container_class'       => $default_framework_settings['classes']['container'],
+		'main_class'            => $default_framework_settings['classes']['main'],
+		'sidebar_class'         => $default_framework_settings['classes']['sidebar'],
+		'google_analytics_id'   => '',
+        'css_files'             => '',
+		'custom_css'            => '',
         'js_files'              => '',
-		'js_plugins'			=>	array(
+		'js_plugins'            => array(
 										'lesscss'   => 1,
 										'modernizr' => 1,
 										'formalize' => 1,
 										'jquery'    => 1,
-										'ajax-mail' => 1,
-										'jSlider'   => 1,
-                                        'cycle'     => 1
+										'ajax-mail' => 1
 									)
 	);
 
@@ -196,6 +195,16 @@ function wpbp_theme_options_render_page()
 						</fieldset>
 					</td>
 				</tr>
+                
+                <tr valign="top"><th scope="row"><?php _e('CSS files', 'wpbp'); ?></th>
+        			<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('CSS files', 'wpbp'); ?></span></legend>
+							<textarea name="wpbp_theme_options[css_files]" id="css_files" cols="94" rows="10"><?php echo esc_attr($wpbp_options['css_files']); ?></textarea>
+							<br />
+							<small class="description"><?php printf(__('Enter CSS files URL you want to include. One file per line.', 'wpbp')); ?></small>
+						</fieldset>
+					</td>
+				</tr>
 
 				<tr valign="top"><th scope="row"><?php _e('Custom CSS', 'wpbp'); ?></th>
 					<td>
@@ -261,6 +270,7 @@ function wpbp_theme_options_validate($input)
 	$output['main_class'] = ( isset( $input['main_class'] ) ) ? $input['main_class'] : null;
 	$output['sidebar_class'] = ( isset( $input['sidebar_class'] ) ) ? $input['sidebar_class'] : null;
 	$output['google_analytics_id'] = ( isset( $input['google_analytics_id'] ) ) ? $input['google_analytics_id'] : null;
+    $output['css_files'] = ( isset( $input['css_files'] ) ) ? $input['css_files'] : null;
 	$output['custom_css'] = ( isset( $input['custom_css'] ) ) ? $input['custom_css'] : null;
     $output['js_files'] = ( isset( $input['js_files'] ) ) ? $input['js_files'] : null;
 	$output['js_plugins']['lesscss'] = ( isset( $input['js_plugins']['lesscss'] ) ) ? $input['js_plugins']['lesscss'] : 0;

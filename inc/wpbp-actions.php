@@ -129,6 +129,12 @@ function wpbp_get_stylesheets()
 	} else {
 		$styles .= stylesheet_link_tag( get_stylesheet_directory_uri() . "/css/custom.css" );
 	}
+    
+    if ( $wpbp_options['css_files'] ) {
+        foreach ( ( explode('\n', $wpbp_options['css_files']) ) as $css_file ) {
+            $styles .= script_tag( $css_file );
+        }
+    }
 
 	$styles .= stylesheet_link_tag( get_stylesheet_directory_uri() . "/style.css" );
 
