@@ -118,10 +118,6 @@ function wpbp_get_stylesheets()
 		$styles .= stylesheet_link_tag('http://firecdn.net/libs/formalize/css/formalize.css');
 	}
 
-	if ( $wpbp_options['js_plugins']['jSlider'] ) {
-		$styles .= stylesheet_link_tag('http://firecdn.net/libs/jSlider/jSlider.css');
-	}
-
 	$styles .= stylesheet_link_tag( get_template_directory_uri() . "/css/default.css" );
 
 	if ( $wpbp_options['js_plugins']['lesscss'] ) {
