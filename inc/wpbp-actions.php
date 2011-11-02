@@ -128,7 +128,7 @@ function wpbp_get_stylesheets()
     
     if ( $wpbp_options['css_files'] ) {
         foreach ( ( explode('\n', $wpbp_options['css_files']) ) as $css_file ) {
-            $styles .= script_tag( $css_file );
+            $styles .= stylesheet_link_tag( $css_file );
         }
     }
 
