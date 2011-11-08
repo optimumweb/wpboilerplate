@@ -110,10 +110,19 @@
 }
 
 .ir(@img) {
-    text-indent: -10000px;
+    display: block;
+    border: 0;
+    text-indent: -999em;
+    overflow: hidden;
     background-image: url("@{img}");
-    background-position: 0 0;
+    background-color: transparent;
     background-repeat: no-repeat;
+    text-align: left;
+    direction: ltr;
+    
+    br {
+        display: none;
+    }
 }
 
 /* for use on :after */
