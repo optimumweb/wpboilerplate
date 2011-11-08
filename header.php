@@ -13,7 +13,7 @@
 			    </h1>
 			    <nav id="main-nav" role="navigation">
 			    	<div class="container">
-				    	<?php dynamic_sidebar("Nav"); ?>
+				    	<?php wp_nav_menu( array( 'theme_location' => 'primary_navigation' ) ); ?>
 				    	<div class="clear"></div>
 			    	</div>
 			    </nav>
