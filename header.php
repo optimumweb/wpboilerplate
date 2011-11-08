@@ -7,7 +7,7 @@
 		<header id="header" role="banner">
 			<?php wpbp_header_inside(); ?>
             <div class="container <?php echo $wpbp_options['container_class']; ?>">
-                <h1 class="site-title">
+                <h1 id="site-title">
                     <a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a>
 				    <span><?php bloginfo('description'); ?></span>
 			    </h1>
