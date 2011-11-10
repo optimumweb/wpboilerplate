@@ -76,11 +76,11 @@ if ( !function_exists('wpbp_is_valid_image') ) {
             $image_attr = @getimagesize($url);
             
             if ( isset($image_attr) && is_array($image_attr) ) {
-                $wpdb->insert('wpbp_images', array('url' => $url, 'status' => 1));
+                $wpdb->insert('wpbp_images', array('ID' => null, 'url' => $url, 'status' => 1));
                 return true;
             }
             
-            $wpdb->insert('wpbp_images', array('url' => $url, 'status' => 0));
+            $wpdb->insert('wpbp_images', array('ID' => null, 'url' => $url, 'status' => 0));
             return false;
         
         }
