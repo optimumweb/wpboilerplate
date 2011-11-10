@@ -69,11 +69,7 @@ if ( !function_exists('wpbp_is_valid_image') ) {
         
         var_dump( $image_status );
         
-        if ( $image_status == 0 ) return false;
-        
-        elseif ( $image_status == 1 ) return true;
-        
-        else {
+        if ( $image_status === null ) {
         
             $image_attr = @getimagesize($url);
             
@@ -86,6 +82,13 @@ if ( !function_exists('wpbp_is_valid_image') ) {
             return false;
         
         }
+        
+        elseif ( $image_status == 1 ) {
+            return true;
+        }
+        
+        return false;
+        
 	}
     
 }
