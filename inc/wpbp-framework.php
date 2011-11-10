@@ -119,7 +119,7 @@ if ( !function_exists('wpbp_get_image_size') ) {
                         
             			list($width, $height, $type, $attr) = $image_attr;
             			
-                        $ratio = round( $width / $height );
+                        $ratio = ( $height != 0 ) ? round( $width / $height ) : 0;
             			
                         $wpdb->update(
                             'wpbp_images',
