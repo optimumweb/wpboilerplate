@@ -67,6 +67,8 @@ if ( !function_exists('wpbp_is_valid_image') ) {
         
         $image_status = $wpdb->get_var( $wpdb->prepare("SELECT status FROM wpbp_images WHERE url = '%s' LIMIT 1", $url) );
         
+        var_dump( $image_status );
+        
         if ( $image_status == 0 ) return false;
         
         elseif ( $image_status == 1 ) return true;
@@ -76,7 +78,6 @@ if ( !function_exists('wpbp_is_valid_image') ) {
             $image_attr = @getimagesize($url);
             
             if ( isset($image_attr) && is_array($image_attr) ) {
-                var_dump("Insert image " . $url . " in 'wpbp_images'.<br />");
                 $wpdb->insert('wpbp_images', array('ID' => null, 'url' => $url, 'status' => 1));
                 return true;
             }
