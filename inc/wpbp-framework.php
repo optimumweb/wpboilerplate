@@ -107,7 +107,7 @@ if ( !function_exists('wpbp_get_image_size') ) {
 
             if ( is_array($image) ) {
 
-                if ( isset($image['width'], $image['height'], $image['ratio'], $image['type'], $image['attr']) ) {
+                if ( $image['width'] != 0 && $image['height'] != 0 ) {
                     return $image;
                 }
             
