@@ -61,6 +61,7 @@ if ( !function_exists('wpbp_is_valid_image') ) {
 
     function wpbp_is_valid_image($url)
 	{
+        global $wpdb;
         
         $url = wpbp_get_full_url($url);
         
@@ -91,6 +92,8 @@ if ( !function_exists('wpbp_get_image_size') ) {
 
 	function wpbp_get_image_size($url)
 	{
+        global $wpdb;
+        
 		$url = wpbp_get_full_url($url);
         
         if ( wpbp_is_valid_image($url) ) {
