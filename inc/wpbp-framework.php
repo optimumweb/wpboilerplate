@@ -154,10 +154,11 @@ if ( !function_exists('array_plot') ) {
 }
 
 function strpos_arr($haystack, $needle) { 
-    if(!is_array($needle)) $needle = array($needle); 
-    foreach($needle as $what) { 
-        if(($pos = strpos($haystack, $what))!==false) return $pos; 
-    } 
+    if ( !is_array($needle) ) $needle = array($needle);
+    if ( !is_string($haystack) ) return false;
+    foreach ( $needle as $what ) { 
+        if ( ( $pos = strpos($haystack, $what) ) !== false ) return $pos; 
+    }
     return false; 
 } 
 
