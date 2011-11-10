@@ -103,8 +103,6 @@ if ( !function_exists('wpbp_get_image_size') ) {
             
             $image = $wpdb->get_row( $wpdb->prepare("SELECT * FROM wpbp_images WHERE url = '%s' LIMIT 1", $url), ARRAY_A );
 
-            var_dump($image);
-
             if ( is_array($image) ) {
 
                 if ( $image['width'] != 0 && $image['height'] != 0 ) {
@@ -121,19 +119,7 @@ if ( !function_exists('wpbp_get_image_size') ) {
             			
                         $ratio = ( $height != 0 ) ? round( $width / $height ) : 0;
             			
-                        $wpdb->update(
-                            'wpbp_images',
-                            array(
-                                'width' => $width,
-                                'height' => $height,
-                                'ratio' => $ratio,
-                                'type' => $type,
-                                'attr' => $attr
-                            ),
-                            array(
-                                'url' => $url
-                            )
-                        );
+                        $wpdb->update('wpbp_images', array('width' => $width, 'height' => $height, 'ratio' => $ratio, 'type' => $type, 'attr' => $attr), array('url' => $url));
                         
                         return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
             		
