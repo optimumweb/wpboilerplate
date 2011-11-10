@@ -67,8 +67,6 @@ if ( !function_exists('wpbp_is_valid_image') ) {
         
         $image_status = $wpdb->get_var( $wpdb->prepare("SELECT status FROM wpbp_images WHERE url = '%s' LIMIT 1", $url) );
         
-        var_dump( $image_status );
-        
         if ( $image_status === null ) {
         
             $image_attr = @getimagesize($url);
@@ -104,6 +102,8 @@ if ( !function_exists('wpbp_get_image_size') ) {
         if ( wpbp_is_valid_image($url) ) {
             
             $image = $wpdb->get_row( $wpdb->prepare("SELECT * FROM wpbp_images WHERE url = '%s' LIMIT 1", $url), ARRAY_A );
+
+            var_dump($image);
 
             if ( is_array($image) ) {
 
