@@ -65,17 +65,19 @@ if ( !function_exists('wpbp_is_valid_image') ) {
         
         $url = wpbp_get_full_url($url);
         
-        if ( function_exists('exif_imagetype') ) {
-            $image_type = @exif_imagetype($url);
-        }
-        else {
-            $image_attr = @getimagesize($url);
-            if ( isset($image_attr) && is_array($image_attr) ) {
-                $image_type = $image_attr[2];
+        if ( strpos_arr( $url, array('.jpg', '.jpeg', '.gif', '.png') ) ) {
+            if ( function_exists('exif_imagetype') ) {
+                $image_type = @exif_imagetype($url);
             }
-        }
-        if ( isset($image_type) && is_string($image_type) && in_array($image_type, $valid_image_types) ) {
-            return true;
+            else {
+                $image_attr = @getimagesize($url);
+                if ( isset($image_attr) && is_array($image_attr) ) {
+                    $image_type = $image_attr[2];
+                }
+            }
+            if ( isset($image_type) && is_string($image_type) && in_array($image_type, $valid_image_types) ) {
+                return true;
+            }
         }
         return false;
 	}
@@ -150,5 +152,13 @@ if ( !function_exists('array_plot') ) {
 	}
 
 }
+
+function strpos_arr($haystack, $needle) { 
+    if(!is_array($needle)) $needle = array($needle); 
+    foreach($needle as $what) { 
+        if(($pos = strpos($haystack, $what))!==false) return $pos; 
+    } 
+    return false; 
+} 
 
 ?>
