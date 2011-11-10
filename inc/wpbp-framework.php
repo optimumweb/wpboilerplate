@@ -69,7 +69,7 @@ if ( !function_exists('wpbp_is_valid_image') ) {
         if ( isset($image_attr) && is_array($image_attr) ) {
             $image_type = $image_attr[2];
         }
-        if ( isset($image_type) && is_string($image_type) && in_array($image_type, $valid_image_types) ) {
+        if ( isset($image_type) && in_array($image_type, $valid_image_types) ) {
             return true;
         }
         return false;
