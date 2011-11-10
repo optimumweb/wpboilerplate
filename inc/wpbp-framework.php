@@ -66,7 +66,7 @@ if ( !function_exists('wpbp_is_valid_image') ) {
         $url = wpbp_get_full_url($url);
         
         if ( function_exists('exif_imagetype') ) {
-            $image_type = exif_imagetype($url);
+            $image_type = @exif_imagetype($url);
         }
         else {
             $image_attr = @getimagesize($url);
@@ -74,7 +74,7 @@ if ( !function_exists('wpbp_is_valid_image') ) {
                 $image_type = $image_attr[2];
             }
         }
-        if ( isset($image_type) && in_array($image_type, $valid_image_types) ) {
+        if ( isset($image_type) && is_string($image_type) && in_array($image_type, $valid_image_types) ) {
             return true;
         }
         return false;
