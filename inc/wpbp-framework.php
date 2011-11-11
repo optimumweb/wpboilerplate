@@ -158,6 +158,19 @@ if ( !function_exists('wpbp_resize_image_url') ) {
 
 }
 
+if ( !function_exists('wpbp_table_exists') ) {
+    
+    function wpbp_table_exists($table_name)
+    {
+        global $wpdb;
+        
+        $sql = @$wpdb->query("SELECT * FROM " . $table_name . " LIMIT 1");
+        
+        return ( !$sql ) ? false : true;
+    }
+    
+}
+
 if ( !function_exists('array_plot') ) {
 
     function array_plot($domain, $function)

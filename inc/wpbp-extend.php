@@ -46,43 +46,47 @@ if ( !function_exists('single_author_title') ) {
 
 }
 
-    
-    function wpbp_table_exists($table_name)
-    {
-        global $wpdb;
-        
-        $sql = @$wpdb->query("SELECT * FROM " . $table_name . " LIMIT 1");
-        
-        return ( !$sql ) ? false : true;
-    }
+if ( !function_exists('wpbp_image_table_exists') ) {
     
     function wpbp_image_table_exists()
     {
-        return wpbp_table_exists('wpbp_images');
+        if ( function_exists('wpbp_table_exists') ) {
+            return wpbp_table_exists('wpbp_images');
+        }
     }
+    
+}
+
+if ( !function_exists('wpbp_create_image_table') ) {
     
     function wpbp_create_image_table()
     {
         global $wpdb;
         
-        if ( wpbp_image_table_exists() ) return false;
+        if ( !wpbp_image_table_exists() ) {
         
-        $wpbp_image_table_name = 'wpbp_images';
+            $wpbp_image_table_name = 'wpbp_images';
+            
+            $sql = $wpdb->query("
+                CREATE TABLE IF NOT EXISTS " . $prefix . $wpbp_image_table_name . " (
+                    ID       INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (ID), INDEX (ID),
+                    url      VARCHAR(255) NOT NULL, UNIQUE (url),
+                    width    SMALLINT,
+                    height   SMALLINT,
+                    ratio    FLOAT,
+                    type     TINYINT,
+                    status   TINYINT NOT NULL
+                ) ENGINE = MyISAM;
+            ");
+            
+            return $sql;
         
-        $sql = $wpdb->query("
-            CREATE TABLE IF NOT EXISTS " . $prefix . $wpbp_image_table_name . " (
-                ID       INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (ID), INDEX (ID),
-                url      VARCHAR(255) NOT NULL, UNIQUE (url),
-                width    SMALLINT,
-                height   SMALLINT,
-                ratio    FLOAT,
-                type     TINYINT,
-                status   TINYINT NOT NULL
-            ) ENGINE = MyISAM;
-        ");
+        }
         
-        return $sql;
+        return false;
     }
+
+}
 
 if ( !function_exists('wpbp_has_post_thumbnail') ) {
 
@@ -96,81 +100,6 @@ if ( !function_exists('wpbp_has_post_thumbnail') ) {
             if ( strlen( $url ) > 0 ) return true;
 		}
         return false;
-	}
-
-}
-
-if ( !function_exists('wpbp_is_valid_image') ) {
-
-    function wpbp_is_valid_image($url, $valid_image_types = array( IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG ))
-	{
-        if ( !is_array($valid_image_types) ) return null;
-        
-        $url = wpbp_get_full_url($url);
-        
-        if ( function_exists('exif_imagetype') ) {
-            $image_type = exif_imagetype($url);
-        }
-        else {
-            $image_attr = @getimagesize($url);
-            if ( isset($image_attr) && is_array($image_attr) ) {
-                $image_type = $image_attr[2];
-            }
-        }
-        if ( isset($image_type) && in_array($image_type, $valid_image_types) ) {
-            return true;
-        }
-        return false;
-	}
-    
-}
-
-if ( !function_exists('wpbp_get_image_size') ) {
-
-	function wpbp_get_image_size($url)
-	{
-		$url = wpbp_get_full_url($url);
-        
-        if ( wpbp_is_valid_image($url) ) {
-
-    		$image_attr = @getimagesize($url);
-    
-    		if ( isset($image_attr) && is_array($image_attr) ) {
-    			list($width, $height, $type, $attr) = $image_attr;
-    			$ratio = round( $width / $height );
-    			return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
-    		}
-        
-        }
-        
-		return false;
-	}
-
-}
-
-if ( !function_exists('wpbp_resize_image_url') ) {
-
-	function wpbp_resize_image_url($url, $width = 'auto', $height = 'auto', $q = '90')
-	{
-		$image_attr = wpbp_get_image_size($url);
-
-		if ( isset($image_attr) && is_array($image_attr) ) {
-
-			if ( $width == 'auto' && $height == 'auto' ) {
-				$width = $image_attr['width'];
-				$height = $image_attr['height'];
-			}
-			elseif ( $height == 'auto' ) {
-				$height = round( $width / $image_attr['ratio'] );
-			}
-			elseif ( $width == 'auto' ) {
-				$width = round( $height * $image_attr['ratio'] );
-			}
-
-			return get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $q . '&src=' . $url;
-		}
-
-		return false;
 	}
 
 }
