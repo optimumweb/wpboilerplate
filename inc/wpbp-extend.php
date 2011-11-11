@@ -16,9 +16,9 @@ if ( !function_exists('set_post_ID') ) {
     
 }
 
-if ( !function_exists('wpbp_get_author') ) {
+if ( !function_exists('get_author') ) {
 
-	function wpbp_get_author($field = null, $ID = null)
+	function get_author($field = null, $ID = null)
 	{
 		if ( isset( $ID ) && is_int($ID) ) {
 			$author = get_user_by('id', $ID);
@@ -86,41 +86,30 @@ if ( !function_exists('wpbp_create_image_table') ) {
 
 }
 
-if ( !function_exists('wpbp_has_post_thumbnail') ) {
+if ( !function_exists('has_featured_image') ) {
 
-	function wpbp_has_post_thumbnail($post_ID)
+	function has_featured_image($post_ID = null)
 	{
-		if ( has_post_thumbnail( $post_ID ) ) {
-			return true;
-		}
-		else {
-			$url = get_post_meta( $post_ID, 'featured_image_url', true );
-            if ( strlen( $url ) > 0 ) return true;
-		}
+        set_post_ID($post_ID);
+		$url = get_post_meta($post_ID, 'featured_image_url', true);
+        if ( strlen( $url ) > 0 ) return true;
         return false;
 	}
 
 }
 
-if ( !function_exists('wpbp_get_post_image') ) {
+if ( !function_exists('get_featured_image') ) {
 
-	function wpbp_get_post_image($post_ID, $attr = false)
+	function get_featured_image($post_ID = null, $attr = false)
 	{
-		$meta_featured_image_url = get_post_meta( $post_ID, 'featured_image_url', true );
-
-		if ( isset($meta_featured_image_url) && strlen($meta_featured_image_url) > 0 ) {
-			$url = $meta_featured_image_url;
-		}
-		elseif ( has_post_thumbnail($post_ID) ) {
-			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID, 'full' ) );
-			$url = $image[0];
-		}
-		else {
-			return false;
-		}
-
-		if ( isset($url) && strlen($url) > 0 ) {
-			$image_attr = wpbp_get_image_size($url);
+        set_post_ID($post_ID);
+        
+		if ( has_featured_image($post_ID) ) {
+			
+            $url = get_post_meta($post_ID, 'featured_image_url', true);
+            
+    		$image_attr = get_image_size($url);
+            
 			if ( isset($image_attr) && is_array($image_attr) ) {
 				return ( $attr !== false && isset($$attr) ) ? $$attr : compact('url', 'width', 'height', 'ratio', 'type', 'attr');
 			}
@@ -131,11 +120,13 @@ if ( !function_exists('wpbp_get_post_image') ) {
 
 }
 
-if ( !function_exists('wpbp_post_thumbnail') ) {
+if ( !function_exists('featured_image') ) {
 
-	function wpbp_post_thumbnail($post_ID, $width = 150, $height = 'auto', $quality = 90)
+	function featured_image($post_ID = null, $width = 150, $height = 'auto', $quality = 90)
 	{
-		$post_image_url = wpbp_get_post_image($post_ID, 'url');
+        set_post_ID($post_ID);
+        
+		$post_image_url = get_featured_image($post_ID, 'url');
 
 		if ( isset($post_image_url) && $post_image_url !== false && strlen($post_image_url) > 0 ) {
 			$alt = get_the_title($post_ID);
@@ -153,8 +144,9 @@ if ( !function_exists('wpbp_post_thumbnail') ) {
 
 if ( !function_exists('wpbp_get_the_excerpt') ) {
 
-	function wpbp_get_the_excerpt($post_ID, $limit = 250)
+	function wpbp_get_the_excerpt($post_ID = null, $limit = 250)
 	{
+        set_post_ID($post_ID);
 		$post = get_post( $post_ID );
 		$excerpt = ( isset( $post->post_excerpt ) && strlen( $post->post_excerpt ) > 0 ) ? $post->post_excerpt : substr( strip_tags( $post->post_content ), 0, 250 ) . '...';
 		return $excerpt;
