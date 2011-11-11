@@ -184,19 +184,24 @@ add_action('admin_notices', 'delayed_admin_notices');
 
 function delayed_admin_notices()
 {
-    echo "<div class=\"error\">" . var_dump($_SESSION) . "</div>";
+    echo "<div class=\"error\">" . var_dump($_COOKIES) . "</div>";
     $post_ID = $_GET['post'];
-    foreach ( $_SESSION['delayed_admin_notices'][$post_ID] as $notice ) {
-        echo "<div class=\"" . $notice['type'] . "\"><p>" . $notice['message'] . "</p></div>";
+    $delayed_admin_notices = unserialize($_COOKIES['delayed_admin_notices']);
+    if ( isset($delayed_admin_notices[$post_ID]) ) {
+        foreach ( $delayed_admin_notices[$post_ID] as $notice ) {
+            echo "<div class=\"" . $notice['type'] . "\"><p>" . $notice['message'] . "</p></div>";
+        }
     }
 }
 
 function add_delayed_admin_notice($message, $type, $post_ID)
 {
-    $_SESSION['delayed_admin_notices'][$post_ID][] = array(
-        'message' => $message,
-        'type' => $type
-    );
+    $delayed_admin_notices = unserialize($_COOKIES['delayed_admin_notices']);
+    if ( !isset($delayed_admin_notices) ) $delayed_admin_notices = array();
+    if ( !isset($delayed_admin_notices[$post_ID]) ) $delayed_admin_notices[$post_ID] = array();
+    $delayed_admin_notices[$post_ID][] = array( 'message' => $message, 'type' => $type );
+    $delayed_admin_notices = serialize($delayed_admin_notices);
+    setcookie('delayed_admin_notices', $delayed_admin_notices, time()+3600);
 }
 
 add_action('save_post', 'wpbp_validate_featured_image_url');
