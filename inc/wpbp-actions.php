@@ -184,8 +184,8 @@ add_action('save_post', 'wpbp_validate_featured_image_url');
 
 function wpbp_validate_featured_image_url($post_ID)
 {
-    if ( wpbp_has_featured_image($post_ID) ) {
-        $featured_image_url = wpbp_get_featured_image($post_ID);
+    if ( has_featured_image($post_ID) ) {
+        $featured_image_url = get_featured_image($post_ID);
         if ( !wpbp_is_valid_image($featured_image_url) ) {
             return update_post_meta($post_ID, 'featured_image_url', '', $featured_image_url);
         }
