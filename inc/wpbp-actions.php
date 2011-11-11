@@ -184,6 +184,7 @@ add_action('admin_notices', 'delayed_admin_notices');
 
 function delayed_admin_notices()
 {
+    echo "<div class=\"error\"><p>Test</p></div>";
     $post_ID = $_GET['post'];
     foreach ( $_SESSION['delayed_admin_notices'][$post_ID] as $notice ) {
         echo "<div class=\"" . $notice['type'] . "\"><p>" . $notice['message'] . "</p></div>";
