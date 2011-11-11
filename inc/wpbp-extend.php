@@ -51,7 +51,7 @@ if ( !function_exists('wpbp_image_table_exists') ) {
     function wpbp_image_table_exists()
     {
         if ( function_exists('wpbp_table_exists') ) {
-            return wpbp_table_exists('wpbp_images');
+            return wpbp_table_exists(WPBP_IMAGE_TABLE);
         }
     }
     
@@ -64,11 +64,9 @@ if ( !function_exists('wpbp_create_image_table') ) {
         global $wpdb;
         
         if ( !wpbp_image_table_exists() ) {
-        
-            $wpbp_image_table_name = 'wpbp_images';
             
             $sql = $wpdb->query("
-                CREATE TABLE IF NOT EXISTS " . $prefix . $wpbp_image_table_name . " (
+                CREATE TABLE IF NOT EXISTS " . WPBP_IMAGE_TABLE . " (
                     ID       INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (ID), INDEX (ID),
                     url      VARCHAR(255) NOT NULL, UNIQUE (url),
                     width    SMALLINT,

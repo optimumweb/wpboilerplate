@@ -1,5 +1,9 @@
 <?php
 
+// define constants
+global $wpdb;
+if ( !defined('WPBP_IMAGE_TABLE') ) define('WPBP_IMAGE_TABLE', $wpdb->prefix . 'wpbp_images');
+
 function wpbp_add_contactmethods( $contactmethods )
 {
 	// Add Social Profile
