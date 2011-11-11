@@ -108,7 +108,7 @@ if ( !function_exists('get_featured_image') ) {
 			
             $url = get_post_meta($post_ID, 'featured_image_url', true);
             
-    		$image_attr = get_image_size($url);
+    		$image_attr = wpbp_get_image_size($url);
             
 			if ( isset($image_attr) && is_array($image_attr) ) {
 				return ( $attr !== false && isset($$attr) ) ? $$attr : compact('url', 'width', 'height', 'ratio', 'type', 'attr');
