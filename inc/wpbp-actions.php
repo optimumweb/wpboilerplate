@@ -184,7 +184,7 @@ add_action('admin_notices', 'delayed_admin_notices');
 
 function delayed_admin_notices()
 {
-    echo "<div class=\"error\"><p>" . var_dump($_COOKIES) . "</p></div>";
+    echo "<div class=\"error\"><p>" . var_export($_COOKIES) . "</p></div>";
     $post_ID = $_GET['post'];
     $delayed_admin_notices = unserialize($_COOKIES['delayed_admin_notices']);
     if ( isset($delayed_admin_notices[$post_ID]) ) {
