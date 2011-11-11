@@ -116,7 +116,7 @@ if (is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated'])) {
         $wpbp_image_table_name = 'wpbp_images';
         
         $sql = $wpdb->query("
-            CREATE TABLE IF NOT EXISTS " . $prefix . $wpbp_image_table_name " (
+            CREATE TABLE IF NOT EXISTS " . $prefix . $wpbp_image_table_name . " (
                 ID       INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (ID), INDEX (ID),
                 url      VARCHAR(255) NOT NULL, UNIQUE (url),
                 width    SMALLINT,
