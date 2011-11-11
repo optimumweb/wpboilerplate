@@ -182,13 +182,12 @@ function wpbp_count_view()
 
 add_action('save_post', 'wpbp_validate_featured_image_url');
 
+add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . __('Please make sure your featured image url is valid', 'wpbp') . "</p></div>';"));
 function wpbp_validate_featured_image_url($post_ID)
 {
     if ( has_featured_image($post_ID) ) {
         $featured_image_url = get_featured_image($post_ID);
         if ( !wpbp_is_valid_image($featured_image_url) ) {
-            add_action('admin_notices', create_function('', "echo '<script type=\"text/javascript\">alert('" . __('Please make sure your featured image url is valid', 'wpbp') . "');</script>';"));
-            //add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . __('Please make sure your featured image url is valid', 'wpbp') . "</p></div>';"));
             return update_post_meta($post_ID, 'featured_image_url', '', $featured_image_url);
         }
     }
