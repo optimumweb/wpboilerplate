@@ -92,44 +92,6 @@ if (is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated'])) {
     
     // create table to check image properties
     // allows faster loading
-    
-    function wpbp_table_exists($table_name)
-    {
-        global $wpdb;
-        
-        $sql = @$wpdb->query("SELECT * FROM " . $table_name . " LIMIT 1");
-        
-        return ( !$sql ) ? false : true;
-    }
-    
-    function wpbp_image_table_exists()
-    {
-        return wpbp_table_exists('wpbp_images');
-    }
-    
-    function wpbp_create_image_table()
-    {
-        global $wpdb;
-        
-        if ( wpbp_image_table_exists() ) return false;
-        
-        $wpbp_image_table_name = 'wpbp_images';
-        
-        $sql = $wpdb->query("
-            CREATE TABLE IF NOT EXISTS " . $prefix . $wpbp_image_table_name . " (
-                ID       INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (ID), INDEX (ID),
-                url      VARCHAR(255) NOT NULL, UNIQUE (url),
-                width    SMALLINT,
-                height   SMALLINT,
-                ratio    FLOAT,
-                type     TINYINT,
-                status   TINYINT NOT NULL
-            ) ENGINE = MyISAM;
-        ");
-        
-        return $sql;
-    }
-    
     wpbp_create_image_table();
 
 }
