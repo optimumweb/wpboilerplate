@@ -196,7 +196,10 @@ function delayed_admin_notices()
 
 function add_delayed_admin_notice($message, $type, $post_ID)
 {
-    $delayed_admin_notices = unserialize($_COOKIES['delayed_admin_notices']);
+    if ( isset($_COOKIES['delayed_admin_notices']) ) {
+        $delayed_admin_notices = unserialize($_COOKIES['delayed_admin_notices']);
+        setcookie('delayed_admin_notices', '', time()-3600);
+    }
     if ( !isset($delayed_admin_notices) ) $delayed_admin_notices = array();
     if ( !isset($delayed_admin_notices[$post_ID]) ) $delayed_admin_notices[$post_ID] = array();
     $delayed_admin_notices[$post_ID][] = array( 'message' => $message, 'type' => $type );
