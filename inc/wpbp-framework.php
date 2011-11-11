@@ -65,9 +65,11 @@ if ( !function_exists('wpbp_is_valid_image') ) {
         
         $url = wpbp_get_full_url($url);
         
-        $image_status = $wpdb->get_var( $wpdb->prepare("SELECT status FROM wpbp_images WHERE url = '%s' LIMIT 1", $url) );
+        if ( wpbp_image_table_exists() ) {
+            $image_status = $wpdb->get_var( $wpdb->prepare("SELECT status FROM wpbp_images WHERE url = '%s' LIMIT 1", $url) );
+        }
         
-        if ( $image_status === null ) {
+        if ( !isset($image_status) || $image_status === null ) {
         
             $image_attr = @getimagesize($url);
             
@@ -101,31 +103,25 @@ if ( !function_exists('wpbp_get_image_size') ) {
         
         if ( wpbp_is_valid_image($url) ) {
             
-            $image = $wpdb->get_row( $wpdb->prepare("SELECT * FROM wpbp_images WHERE url = '%s' LIMIT 1", $url), ARRAY_A );
+            if ( wpbp_image_table_exists() ) {
+                $image = $wpdb->get_row( $wpdb->prepare("SELECT * FROM wpbp_images WHERE url = '%s' LIMIT 1", $url), ARRAY_A );
+            }
 
-            if ( is_array($image) ) {
-
-                if ( $image['width'] != 0 && $image['height'] != 0 ) {
-                    return $image;
-                }
+            if ( isset($image) && is_array($image) && ( $image['width'] != 0 && $image['height'] != 0 ) ) {
+                return $image;
+            }
             
-                else {
-                    
-                    $image_attr = @getimagesize($url);
-    
-                	if ( isset($image_attr) && is_array($image_attr) ) {
-                        
-            			list($width, $height, $type, $attr) = $image_attr;
-            			
-                        $ratio = ( $height != 0 ) ? round( $width / $height ) : 0;
-            			
-                        $wpdb->update('wpbp_images', array('width' => $width, 'height' => $height, 'ratio' => $ratio, 'type' => $type), array('url' => $url));
-                        
-                        return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
-            		
-                    }
-                    
+            else {
+                
+                $image_attr = @getimagesize($url);
+
+            	if ( isset($image_attr) && is_array($image_attr) ) {
+        			list($width, $height, $type, $attr) = $image_attr;
+                    $ratio = ( $height != 0 ) ? round( $width / $height ) : 0;
+                    $wpdb->update('wpbp_images', array('width' => $width, 'height' => $height, 'ratio' => $ratio, 'type' => $type), array('url' => $url));
+                    return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
                 }
+                
             }
         
         }
