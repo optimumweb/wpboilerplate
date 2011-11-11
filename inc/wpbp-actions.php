@@ -180,14 +180,32 @@ function wpbp_count_view()
 	}
 }
 
+add_action('admin_notices', 'delayed_admin_notices');
+
+function delayed_admin_notices()
+{
+    $post_ID = $_GET['post'];
+    foreach ( $_SESSION['delayed_admin_notices'][$post_ID] as $notice ) {
+        echo "<div class=\"" . $notice['type'] . "\"><p>" . $notice['message'] . "</p></div>";
+    }
+}
+
+function add_delayed_admin_notice($message, $type, $post_ID)
+{
+    $_SESSION['delayed_admin_notices'][$post_ID][] = array(
+        'message' => $message,
+        'type' => $type
+    );
+}
+
 add_action('save_post', 'wpbp_validate_featured_image_url');
 
-add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . __('Please make sure your featured image url is valid', 'wpbp') . "</p></div>';"));
 function wpbp_validate_featured_image_url($post_ID)
 {
     if ( has_featured_image($post_ID) ) {
         $featured_image_url = get_featured_image($post_ID);
         if ( !wpbp_is_valid_image($featured_image_url) ) {
+            add_delayed_admin_notice(__('Please make sure your featured image url is valid', 'wpbp'), 'error', $_GET['post']);
             return update_post_meta($post_ID, 'featured_image_url', '', $featured_image_url);
         }
     }
