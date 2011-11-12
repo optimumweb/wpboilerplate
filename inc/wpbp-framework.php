@@ -80,7 +80,6 @@ if ( !function_exists('wpbp_is_valid_image') ) {
             
             $wpdb->insert(WPBP_IMAGE_TABLE, array('ID' => null, 'url' => $url, 'status' => 0));
             return false;
-        
         }
         
         elseif ( $image_status == 1 ) {
@@ -88,7 +87,6 @@ if ( !function_exists('wpbp_is_valid_image') ) {
         }
         
         return false;
-        
 	}
     
 }
