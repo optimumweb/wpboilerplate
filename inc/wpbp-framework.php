@@ -107,11 +107,21 @@ if ( !function_exists('wpbp_is_valid_image') ) {
 
 if ( !function_exists('wpbp_get_image_size') ) {
 
-	function wpbp_get_image_size($url)
+	function wpbp_get_image_size($url, $raw = false)
 	{
         global $wpdb;
         
 		$url = wpbp_get_full_url($url);
+        
+        if ( $raw ) {
+            $image_attr = @getimagesize($url);
+            if ( isset($image_attr) && is_array($image_attr) ) {
+            	list($width, $height, $type, $attr) = $image_attr;
+                $ratio = ( $height != 0 ) ? round($width / $height, 2) : null;
+                return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
+            }
+            return false;
+        }
         
         if ( wpbp_is_valid_image($url) ) {
             
@@ -131,40 +141,19 @@ if ( !function_exists('wpbp_get_image_size') ) {
                 
                 else {
                     
-                    $image_attr = @getimagesize($url);
+                    $image = wpbp_get_image_size($url, true);
                     
-                    if ( isset($image_attr) && is_array($image_attr) ) {
-                    
-                		list($width, $height, $type, $attr) = $image_attr;
-                        
-                        $ratio = ( $height != 0 ) ? round($width / $height, 2) : null;
-                        
-                        $wpdb->update(
-                            WPBP_IMAGE_TABLE,
-                            array('width' => $width, 'height' => $height, 'ratio' => $ratio, 'type' => $type),
-                            array('url' => $url)
-                        );
-                        
-                        return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
+                    if ( isset($image) && is_array($image) ) {
+                        $wpdb->update(WPBP_IMAGE_TABLE, $image, array('url' => $url));
+                        return $image;
                     }
                     
                 }
             }
             
             else {
-                
                 wpbp_create_image_table();
-                
-                $image_attr = @getimagesize($url);
-
-            	if ( isset($image_attr) && is_array($image_attr) ) {
-                    
-        			list($width, $height, $type, $attr) = $image_attr;
-                    
-                    $ratio = ( $height != 0 ) ? round($width / $height, 2) : null;
-                    
-                    return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
-                }
+                return wpbp_get_image_size($url, true);
             }
         
         }
