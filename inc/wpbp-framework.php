@@ -115,10 +115,37 @@ if ( !function_exists('wpbp_get_image_size') ) {
             
             if ( wpbp_image_table_exists() ) {
                 
-                $image = $wpdb->get_row( $wpdb->prepare("SELECT * FROM " . WPBP_IMAGE_TABLE . " WHERE url = '%s' LIMIT 1", $url), ARRAY_A );
+                $image = $wpdb->get_row(
+                    $wpdb->prepare("
+                        SELECT * FROM " . WPBP_IMAGE_TABLE . "
+                        WHERE url = '%s'
+                        LIMIT 1
+                    ", $url),
+                ARRAY_A );
                 
                 if ( isset($image) && is_array($image) && ( $image['width'] != 0 && $image['height'] != 0 ) ) {
                     return $image;
+                }
+                
+                else {
+                    
+                    $image_attr = @getimagesize($url);
+                    
+                    if ( isset($image_attr) && is_array($image_attr) ) {
+                    
+                		list($width, $height, $type, $attr) = $image_attr;
+                        
+                        $ratio = ( $height != 0 ) ? round($width / $height, 2) : null;
+                        
+                        $wpdb->update(
+                            WPBP_IMAGE_TABLE,
+                            array('width' => $width, 'height' => $height, 'ratio' => $ratio, 'type' => $type),
+                            array('url' => $url)
+                        );
+                        
+                        return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
+                    }
+                    
                 }
             }
             
@@ -133,12 +160,6 @@ if ( !function_exists('wpbp_get_image_size') ) {
         			list($width, $height, $type, $attr) = $image_attr;
                     
                     $ratio = ( $height != 0 ) ? round($width / $height, 2) : null;
-                    
-                    $wpdb->update(
-                        WPBP_IMAGE_TABLE,
-                        array('width' => $width, 'height' => $height, 'ratio' => $ratio, 'type' => $type),
-                        array('url' => $url)
-                    );
                     
                     return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
                 }
