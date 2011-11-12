@@ -66,7 +66,12 @@ if ( !function_exists('wpbp_is_valid_image') ) {
         $url = wpbp_get_full_url($url);
         
         if ( wpbp_image_table_exists() ) {
-            $image_status = $wpdb->get_var( $wpdb->prepare("SELECT status FROM " . WPBP_IMAGE_TABLE . " WHERE url = '%s' LIMIT 1", $url) );
+            $image_status = $wpdb->get_var(
+                $wpdb->prepare("
+                    SELECT status FROM " . WPBP_IMAGE_TABLE . "
+                    WHERE url = '%s'
+                    LIMIT 1
+                ", $url) );
         }
         
         if ( !isset($image_status) || $image_status === null ) {
@@ -74,11 +79,17 @@ if ( !function_exists('wpbp_is_valid_image') ) {
             $image_attr = @getimagesize($url);
             
             if ( isset($image_attr) && is_array($image_attr) ) {
-                $wpdb->insert(WPBP_IMAGE_TABLE, array('ID' => null, 'url' => $url, 'status' => 1));
+                $wpdb->insert(
+                    WPBP_IMAGE_TABLE,
+                    array('ID' => null, 'url' => $url, 'status' => 1)
+                );
                 return true;
             }
             
-            $wpdb->insert(WPBP_IMAGE_TABLE, array('ID' => null, 'url' => $url, 'status' => 0));
+            $wpdb->insert(
+                WPBP_IMAGE_TABLE,
+                array('ID' => null, 'url' => $url, 'status' => 0)
+            );
             return false;
         }
         
