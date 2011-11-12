@@ -198,7 +198,7 @@ function reset_delayed_admin_notices()
 
 function get_delayed_admin_notices()
 {
-    return unserialize( get_option('delayed_admin_notices', serialize(array())) )
+    return unserialize( get_option('delayed_admin_notices', serialize(array())) );
 }
 
 function add_delayed_admin_notice($message, $type)
