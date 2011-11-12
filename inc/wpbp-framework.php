@@ -112,6 +112,8 @@ if ( !function_exists('wpbp_get_image_size') ) {
             
             else {
                 
+                wpbp_create_image_table();
+                
                 $image_attr = @getimagesize($url);
 
             	if ( isset($image_attr) && is_array($image_attr) ) {
