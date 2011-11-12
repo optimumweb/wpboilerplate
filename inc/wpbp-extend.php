@@ -34,7 +34,7 @@ if ( !function_exists('single_author_title') ) {
 
 	function single_author_title($prefix = '', $display = true)
 	{
-		$author = wpbp_get_author('display_name');
+		$author = get_author('display_name');
 		if ( !$author ) return false;
 		$single_author_title = $prefix . $author;
 		if ( $display ) {

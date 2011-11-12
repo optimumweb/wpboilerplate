@@ -80,23 +80,17 @@ if ( !function_exists('wpbp_is_valid_image') ) {
             $image_attr = @getimagesize($url);
             
             if ( isset($image_attr) && is_array($image_attr) ) {
-                $wpdb->insert(
-                    WPBP_IMAGE_TABLE,
-                    array('ID' => null, 'url' => $url, 'status' => 1)
-                );
+                $wpdb->insert(WPBP_IMAGE_TABLE, array('ID' => null, 'url' => $url, 'status' => 1));
                 return true;
             }
             
             else {
-                $wpdb->insert(
-                    WPBP_IMAGE_TABLE,
-                    array('ID' => null, 'url' => $url, 'status' => 0)
-                );
+                $wpdb->insert(WPBP_IMAGE_TABLE, array('ID' => null, 'url' => $url, 'status' => 0));
                 return false;
             }
         }
         
-        elseif ( $image_status ) {
+        elseif ( $image_status == 1 ) {
             return true;
         }
         
@@ -127,27 +121,18 @@ if ( !function_exists('wpbp_get_image_size') ) {
             
             if ( wpbp_image_table_exists() ) {
                 
-                $image = $wpdb->get_row(
-                    $wpdb->prepare("
-                        SELECT * FROM " . WPBP_IMAGE_TABLE . "
-                        WHERE url = '%s'
-                        LIMIT 1
-                    ", $url),
-                ARRAY_A );
+                $image = $wpdb->get_row( $wpdb->prepare("SELECT * FROM " . WPBP_IMAGE_TABLE . " WHERE url = '%s' LIMIT 1 ", $url), ARRAY_A );
                 
-                if ( isset($image) && is_array($image) && ( $image['width'] != 0 && $image['height'] != 0 ) ) {
+                if ( isset($image) && is_array($image) && isset($image['width'], $image['height']) ) {
                     return $image;
                 }
                 
                 else {
-                    
                     $image = wpbp_get_image_size($url, true);
-                    
                     if ( isset($image) && is_array($image) ) {
                         $wpdb->update(WPBP_IMAGE_TABLE, $image, array('url' => $url));
                         return $image;
                     }
-                    
                 }
             }
             
