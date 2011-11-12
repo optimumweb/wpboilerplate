@@ -58,7 +58,7 @@ function wpbp_setup() {
 	register_nav_menus(array(
 		'primary_navigation' => __('Primary Navigation', 'wpbp'),
 		'secondary_navigation' => __('Secondary Navigation', 'wpbp'),
-	));	
+	));
 }
 
 add_action('after_setup_theme', 'wpbp_setup');
