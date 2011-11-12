@@ -117,13 +117,17 @@ if ( !function_exists('wpbp_get_image_size') ) {
                 $image_attr = @getimagesize($url);
 
             	if ( isset($image_attr) && is_array($image_attr) ) {
+                    
         			list($width, $height, $type, $attr) = $image_attr;
-                    $ratio = ( $height != 0 ) ? round($width / $height, 2) : 0;
+                    
+                    $ratio = ( $height != 0 ) ? round($width / $height, 2) : null;
+                    
                     $wpdb->update(
                         WPBP_IMAGE_TABLE,
                         array('width' => $width, 'height' => $height, 'ratio' => $ratio, 'type' => $type),
                         array('url' => $url)
                     );
+                    
                     return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
                 }
             }
