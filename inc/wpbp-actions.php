@@ -184,37 +184,39 @@ add_action('admin_notices', 'delayed_admin_notices');
 
 function delayed_admin_notices()
 {
-    echo "<div class=\"error\"><p>" . var_export($_COOKIES, true) . "</p></div>";
-    $post_ID = $_GET['post'];
-    $delayed_admin_notices = unserialize($_COOKIES['delayed_admin_notices']);
-    if ( isset($delayed_admin_notices[$post_ID]) ) {
-        foreach ( $delayed_admin_notices[$post_ID] as $notice ) {
-            echo "<div class=\"" . $notice['type'] . "\"><p>" . $notice['message'] . "</p></div>";
-        }
+    $delayed_admin_notices = get_delayed_admin_notices();
+    foreach ( $delayed_admin_notices as $notice ) {
+        echo "<div class=\"" . $notice['type'] . "\"><p>" . $notice['message'] . "</p></div>";
     }
+    reset_delayed_admin_notices();
 }
 
-function add_delayed_admin_notice($message, $type, $post_ID)
+function reset_delayed_admin_notices()
 {
-    if ( isset($_COOKIES['delayed_admin_notices']) ) {
-        $delayed_admin_notices = unserialize($_COOKIES['delayed_admin_notices']);
-        setcookie('delayed_admin_notices', '', time()-3600);
-    }
-    if ( !isset($delayed_admin_notices) ) $delayed_admin_notices = array();
-    if ( !isset($delayed_admin_notices[$post_ID]) ) $delayed_admin_notices[$post_ID] = array();
-    $delayed_admin_notices[$post_ID][] = array( 'message' => $message, 'type' => $type );
-    $delayed_admin_notices = serialize($delayed_admin_notices);
-    setcookie('delayed_admin_notices', $delayed_admin_notices, time()+3600);
+     update_option('delayed_admin_notices', serialize(array()));
 }
 
-add_action('add_meta_boxes', 'wpbp_validate_featured_image_url');
+function get_delayed_admin_notices()
+{
+    return unserialize( get_option('delayed_admin_notices', serialize(array())) )
+}
+
+function add_delayed_admin_notice($message, $type)
+{
+    $delayed_admin_notices = get_delayed_admin_notices();
+    $delayed_admin_notices[] = array( 'message' => $message, 'type' => $type );
+    $delayed_admin_notices = serialize($delayed_admin_notices);
+    update_option('delayed_admin_notices', $delayed_admin_notices);
+}
+
+add_action('save_post', 'wpbp_validate_featured_image_url');
 
 function wpbp_validate_featured_image_url($post_ID)
 {
     if ( has_featured_image($post_ID) ) {
         $featured_image_url = get_featured_image($post_ID);
         if ( !wpbp_is_valid_image($featured_image_url) ) {
-            add_delayed_admin_notice(__('Please make sure your featured image url is valid', 'wpbp'), 'error', $_GET['post']);
+            add_delayed_admin_notice(__('Please make sure your featured image url is valid', 'wpbp'), 'error');
             return update_post_meta($post_ID, 'featured_image_url', '', $featured_image_url);
         }
     }
