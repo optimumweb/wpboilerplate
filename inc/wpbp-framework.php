@@ -71,7 +71,8 @@ if ( !function_exists('wpbp_is_valid_image') ) {
                     SELECT status FROM " . WPBP_IMAGE_TABLE . "
                     WHERE url = '%s'
                     LIMIT 1
-                ", $url) );
+                ", $url)
+            );
         }
         
         if ( !isset($image_status) || $image_status === null ) {
