@@ -164,12 +164,10 @@ if ( !function_exists('wpbp_resize_image_url') ) {
 
 if ( !function_exists('wpbp_table_exists') ) {
     
-    function wpbp_table_exists($table_name)
+    function wpbp_table_exists($table)
     {
         global $wpdb;
-        
-        $sql = @$wpdb->query("SELECT * FROM " . $table_name . " LIMIT 1");
-        
+        $sql = @$wpdb->query("SELECT * FROM " . $table . " LIMIT 1");
         return ( !$sql ) ? false : true;
     }
     
