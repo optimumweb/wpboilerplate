@@ -87,14 +87,16 @@ if ( !function_exists('wpbp_is_valid_image') ) {
                 return true;
             }
             
-            $wpdb->insert(
-                WPBP_IMAGE_TABLE,
-                array('ID' => null, 'url' => $url, 'status' => 0)
-            );
-            return false;
+            else {
+                $wpdb->insert(
+                    WPBP_IMAGE_TABLE,
+                    array('ID' => null, 'url' => $url, 'status' => 0)
+                );
+                return false;
+            }
         }
         
-        elseif ( $image_status == 1 ) {
+        elseif ( $image_status ) {
             return true;
         }
         
