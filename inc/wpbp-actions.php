@@ -193,7 +193,7 @@ function delayed_admin_notices()
 
 function reset_delayed_admin_notices()
 {
-     update_option('delayed_admin_notices', serialize(array()));
+     return update_option('delayed_admin_notices', serialize(array()));
 }
 
 function get_delayed_admin_notices()
@@ -206,7 +206,7 @@ function add_delayed_admin_notice($message, $type)
     $delayed_admin_notices = get_delayed_admin_notices();
     $delayed_admin_notices[] = array( 'message' => $message, 'type' => $type );
     $delayed_admin_notices = serialize($delayed_admin_notices);
-    update_option('delayed_admin_notices', $delayed_admin_notices);
+    return update_option('delayed_admin_notices', $delayed_admin_notices);
 }
 
 add_action('save_post', 'wpbp_validate_featured_image_url');
