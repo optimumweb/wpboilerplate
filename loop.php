@@ -16,7 +16,6 @@
 				<div class="entry-meta">
 					<time class="updated" datetime="<?php the_time('c'); ?>" pubdate><?php printf(__('Posted on %s at %s', 'wpbp'), get_the_time(__('l, F jS, Y', 'wpbp')), get_the_time()); ?></time>
 					<span class="byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>
-                    <span class="entry-category"><?php _e('in', 'wpbp'); ?> <?php the_category(', '); ?></span>
 				</div>
 			</header>
 			<div class="entry-content">
