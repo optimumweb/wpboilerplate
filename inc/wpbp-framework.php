@@ -66,13 +66,7 @@ if ( !function_exists('wpbp_is_valid_image') ) {
         $url = wpbp_get_full_url($url);
         
         if ( wpbp_image_table_exists() ) {
-            $image_status = $wpdb->get_var(
-                $wpdb->prepare("
-                    SELECT status FROM " . WPBP_IMAGE_TABLE . "
-                    WHERE url = '%s'
-                    LIMIT 1
-                ", $url)
-            );
+            $image_status = $wpdb->get_var( $wpdb->prepare("SELECT status FROM " . WPBP_IMAGE_TABLE . " WHERE url = '%s' LIMIT 1 ", $url) );
         }
         
         if ( !isset($image_status) || $image_status === null ) {
@@ -112,7 +106,7 @@ if ( !function_exists('wpbp_get_image_size') ) {
             if ( isset($image_attr) && is_array($image_attr) ) {
             	list($width, $height, $type, $attr) = $image_attr;
                 $ratio = ( $height != 0 ) ? round($width / $height, 2) : null;
-                return compact('url', 'width', 'height', 'ratio', 'type', 'attr');
+                return compact('url', 'width', 'height', 'ratio', 'type');
             }
             return false;
         }
