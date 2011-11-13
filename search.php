@@ -8,7 +8,6 @@
 					<h1 class="page-title">
 						<?php printf( __('Search results for: &laquo; %s &raquo;', 'wpbp'), get_search_query() ); ?>
 					</h1>
-					<hr />
 					<?php wpbp_loop_before(); ?>
 					<?php get_template_part('loop', 'search'); ?>
 					<?php wpbp_loop_after(); ?>
