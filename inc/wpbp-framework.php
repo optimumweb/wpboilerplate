@@ -123,14 +123,13 @@ if ( !function_exists('wpbp_get_image_size') ) {
                 
                 $image = $wpdb->get_row( $wpdb->prepare("SELECT * FROM " . WPBP_IMAGE_TABLE . " WHERE url = '%s' LIMIT 1 ", $url), ARRAY_A );
                 
-                echo "<!-- " . var_export($image, true) . " //-->\n";
-                
                 if ( isset($image) && is_array($image) && isset($image['width'], $image['height']) ) {
                     return $image;
                 }
                 
                 else {
                     $image = wpbp_get_image_size($url, true);
+                    echo "<!-- " . var_export($image, true) . " //-->\n";
                     if ( isset($image) && is_array($image) ) {
                         $wpdb->update(WPBP_IMAGE_TABLE, $image, array('url' => $url));
                         return $image;
