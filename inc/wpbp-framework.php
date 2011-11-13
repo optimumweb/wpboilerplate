@@ -129,9 +129,9 @@ if ( !function_exists('wpbp_get_image_size') ) {
                 
                 else {
                     $image = wpbp_get_image_size($url, true);
-                    echo "<!-- " . var_export($image, true) . " //-->\n";
                     if ( isset($image) && is_array($image) ) {
                         $wpdb->update(WPBP_IMAGE_TABLE, $image, array('url' => $url));
+                        echo "<!-- " . var_export($image, true) . " //-->\n";
                         return $image;
                     }
                 }
