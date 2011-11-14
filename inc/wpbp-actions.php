@@ -45,11 +45,13 @@ function wpbp_og_tags()
         'url'         => wpbp_get_current_url(),
         'image'       => is_single() ? $current_post_image['url'] : null,
         'site_name'   => htmlentities(get_bloginfo('name')),
-        'description' => is_single() ? htmlentities(wpbp_get_the_excerpt($wp_query->post->ID)) : null,
+        'description' => is_single() ? htmlentities(wpbp_get_the_excerpt($wp_query->post->ID)) : null
     );
 
     foreach ( $og as $key => $val ) {
-        echo "<meta property=\"og:" . $key . "\" content=\"" . $val . "\" />\n";
+        if ( isset($val) && strlen($val) > 0 ) {
+            echo "<meta property=\"og:" . $key . "\" content=\"" . $val . "\" />\n";
+        }
     }
 
     return;
