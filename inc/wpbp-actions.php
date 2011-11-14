@@ -41,11 +41,11 @@ function wpbp_og_tags()
     }
 
     $og = array(
-        'title'       => wp_title('', false),
+        'title'       => htmlentities(wp_title('', false)),
         'url'         => wpbp_get_current_url(),
         'image'       => is_single() ? $current_post_image['url'] : null,
-        'site_name'   => get_bloginfo('name'),
-        'description' => is_single() ? wpbp_get_the_excerpt($wp_query->post->ID) : null,
+        'site_name'   => htmlentities(get_bloginfo('name')),
+        'description' => is_single() ? htmlentities(wpbp_get_the_excerpt($wp_query->post->ID)) : null,
     );
 
     foreach ( $og as $key => $val ) {
