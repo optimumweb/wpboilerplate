@@ -89,10 +89,6 @@ if (is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated'])) {
 			wp_update_nav_menu_item($primary_nav_term_id, 0, $item);
 		}
 	}
-    
-    // create table to check image properties
-    // allows faster loading
-    wpbp_create_image_table();
 
 }
 
