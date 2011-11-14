@@ -41,7 +41,7 @@ function wpbp_og_tags()
     }
 
     $og = array(
-        'title'       => htmlentities(wp_title('', false)),
+        'title'       => htmlentities(trim(wp_title('', false))),
         'url'         => wpbp_get_current_url(),
         'image'       => is_single() ? $current_post_image['url'] : null,
         'site_name'   => htmlentities(get_bloginfo('name')),
