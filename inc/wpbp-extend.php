@@ -86,6 +86,34 @@ if ( !function_exists('wpbp_create_image_table') ) {
 
 }
 
+if ( !function_exists('download_image_from_url') ) {
+
+    function download_image_from_url($url, $fname = null)
+    {
+        $url = wpbp_get_full_url($url);
+        
+        if ( wpbp_is_valid_image($url) ) {
+            
+            $fname = ( isset($fname) ) ? $fname : end( explode('/', $url) );
+            
+            $upload_dir = wp_upload_dir();
+            $dirpath = $upload_dir['path'];
+            $dirurl = $upload_dir['url'];
+            $fpath = $dirpath . '/' . $fname;
+            $furl = $dirurl . '/' . $fname;
+            
+            $i = file_get_contents($url);
+            $f = fopen($fpath, 'w+');
+            fwrite($f, $i);
+            fclose($f);
+            
+        }
+        
+        return ( file_exists($fpath) && wpbp_is_valid_image($fileurl) ) ? array( 'path' => $fpath, 'url' => $furl ) : false;
+    }
+
+}
+
 if ( !function_exists('has_featured_image') ) {
 
 	function has_featured_image($post_ID = null)
