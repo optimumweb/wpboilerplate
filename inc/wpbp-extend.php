@@ -90,8 +90,6 @@ if ( !function_exists('download_image_from_url') ) {
 
     function download_image_from_url($url, $fname = null)
     {
-        $url = wpbp_get_full_url($url);
-        
         if ( wpbp_is_valid_image($url) ) {
             
             $fname = ( isset($fname) ) ? $fname : end( explode('/', $url) );
@@ -107,9 +105,10 @@ if ( !function_exists('download_image_from_url') ) {
             fwrite($f, $i);
             fclose($f);
             
+            return ( file_exists($fpath) && wpbp_is_valid_image($fileurl) ) ? array( 'path' => $fpath, 'url' => $furl ) : false;
         }
         
-        return ( file_exists($fpath) && wpbp_is_valid_image($fileurl) ) ? array( 'path' => $fpath, 'url' => $furl ) : false;
+        return false;
     }
 
 }
