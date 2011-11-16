@@ -218,7 +218,8 @@ function wpbp_validate_featured_image_url($post_ID)
     if ( has_featured_image($post_ID) ) {
         $featured_image_url = get_featured_image($post_ID);
         if ( wpbp_is_valid_image($featured_image_url) ) {
-            if ( strpos($featured_image_url, (site_url())) === false ) {
+            $upload_dir = wp_upload_dir();
+            if ( strpos($featured_image_url, $upload_dir['baseurl']) === false ) {
                 $local_featured_image = download_image_from_url($featured_image_url);
                 if ( isset($local_featured_image) && is_array($local_featured_image) && isset($local_featured_image['url']) ) {
                     update_post_meta($post_ID, 'featured_image_url', $local_featured_image['url'], $featured_image_url);
