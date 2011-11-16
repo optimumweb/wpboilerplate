@@ -1,4 +1,61 @@
-NG_ENABLED') )      define('OPTIPNG_ENABLED', false);
+<?php
+/**
+ * TimThumb by Ben Gillbanks and Mark Maunder
+ * Based on work done by Tim McDaniels and Darren Hoyt
+ * http://code.google.com/p/timthumb/
+ *
+ * GNU General Public License, version 2
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ *
+ * Examples and documentation available on the project homepage
+ * http://www.binarymoon.co.uk/projects/timthumb/
+ */
+
+/*
+	-----TimThumb CONFIGURATION-----
+	You can either edit the configuration variables manually here, or you can
+	create a file called timthumb-config.php and define variables you want
+	to customize in there. It will automatically be loaded by timthumb.
+	This will save you having to re-edit these variables everytime you download
+	a new version of timthumb.
+
+*/
+define('VERSION', '2.8'); // Version of this script
+
+// Load a config file if it exists. Otherwise, use the values below.
+if ( file_exists('timthumb-config.php'))    require_once('timthumb-config.php');
+if ( !defined('DEBUG_ON') )                 define('DEBUG_ON', false);					// Enable debug logging to web server error log (STDERR)
+if ( !defined('DEBUG_LEVEL') )              define('DEBUG_LEVEL', 1);					// Debug level 1 is less noisy and 3 is the most noisy
+if ( !defined('MEMORY_LIMIT') )             define('MEMORY_LIMIT', '30M');				// Set PHP memory limit
+if ( !defined('BLOCK_EXTERNAL_LEECHERS') )  define('BLOCK_EXTERNAL_LEECHERS', false);	// If the image or webshot is being loaded on an external site, display a red "No Hotlinking" gif.
+
+// Image fetching and caching
+if ( !defined('ALLOW_EXTERNAL') )                   define('ALLOW_EXTERNAL', true);                    // Allow image fetching from external websites. Will check against ALLOWED_SITES if ALLOW_ALL_EXTERNAL_SITES is false
+if ( !defined('ALLOW_ALL_EXTERNAL_SITES') )         define('ALLOW_ALL_EXTERNAL_SITES', true);          // Less secure.
+if ( !defined('FILE_CACHE_ENABLED') )               define('FILE_CACHE_ENABLED', true);                // Should we store resized/modified images on disk to speed things up?
+if ( !defined('FILE_CACHE_TIME_BETWEEN_CLEANS'))    define('FILE_CACHE_TIME_BETWEEN_CLEANS', 86400);   // How often the cache is cleaned
+if ( !defined('FILE_CACHE_MAX_FILE_AGE') )          define('FILE_CACHE_MAX_FILE_AGE', 86400);          // How old does a file have to be to be deleted from the cache
+if ( !defined('FILE_CACHE_SUFFIX') )                define('FILE_CACHE_SUFFIX', '.txt');               // What to put at the end of all files in the cache directory so we can identify them
+if ( !defined('FILE_CACHE_DIRECTORY') )             define('FILE_CACHE_DIRECTORY', './cache');         // Directory where images are cached. Left blank it will use the system temporary directory (which is better for security)
+if ( !defined('MAX_FILE_SIZE') )                    define('MAX_FILE_SIZE', 10485760);                 // 10 Megs is 10485760. This is the max internal or external file size that we'll process.
+if ( !defined('CURL_TIMEOUT') )                     define('CURL_TIMEOUT', 20);                        // Timeout duration for Curl. This only applies if you have Curl installed and aren't using PHP's default URL fetching mechanism.
+if ( !defined('WAIT_BETWEEN_FETCH_ERRORS') )        define('WAIT_BETWEEN_FETCH_ERRORS', 3600);         // Time to wait between errors fetching remote file
+
+// Browser caching
+if ( !defined('BROWSER_CACHE_MAX_AGE') )    define('BROWSER_CACHE_MAX_AGE', 864000); // Time to cache in the browser
+if ( !defined('BROWSER_CACHE_DISABLE') )    define('BROWSER_CACHE_DISABLE', false);  // Use for testing if you want to disable all browser caching
+
+// Image size and defaults
+if ( !defined('MAX_WIDTH') )         define('MAX_WIDTH', 5000);     // Maximum image width
+if ( !defined('MAX_HEIGHT') )        define('MAX_HEIGHT', 5000);    // Maximum image height
+if ( !defined('NOT_FOUND_IMAGE') )   define('NOT_FOUND_IMAGE', ''); // Image to serve if any 404 occurs
+if ( !defined('ERROR_IMAGE') )       define('ERROR_IMAGE', '');     // Image to serve if an error occurs instead of showing error message
+
+// Image compression is enabled if either of these point to valid paths
+
+// These are now disabled by default because the file sizes of PNGs (and GIFs) are much smaller than we used to generate.
+// They only work for PNGs. GIFs and JPEGs are not affected.
+if ( !defined('OPTIPNG_ENABLED') )      define('OPTIPNG_ENABLED', false);
 if ( !defined('OPTIPNG_PATH') )         define('OPTIPNG_PATH', '/usr/bin/optipng');   // This will run first because it gives better compression than pngcrush.
 if ( !defined('PNGCRUSH_ENABLED') )     define('PNGCRUSH_ENABLED', false);
 if ( !defined('PNGCRUSH_PATH') )        define('PNGCRUSH_PATH', '/usr/bin/pngcrush'); // This will only run if OPTIPNG_PATH is not set or is not valid
