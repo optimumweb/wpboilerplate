@@ -223,6 +223,7 @@ function wpbp_validate_featured_image_url($post_ID)
             if ( strpos($featured_image_url, $upload_dir['baseurl']) === false ) {
                 $local_featured_image = download_image_from_url($featured_image_url);
                 add_delayed_admin_notice(var_export($local_featured_image, true), 'updated');
+                add_delayed_admin_notice(var_export($local_featured_image, true), 'updated');
                 if ( isset($local_featured_image) && is_array($local_featured_image) && isset($local_featured_image['url']) ) {
                     update_post_meta($post_ID, 'featured_image_url', $local_featured_image['url'], $featured_image_url);
                     add_delayed_admin_notice(__('The featured image was downloaded locally!', 'wpbp'), 'updated');
