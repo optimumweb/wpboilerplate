@@ -220,7 +220,6 @@ function wpbp_validate_featured_image_url($post_ID)
         $featured_image_url = $featured_image['url'];
         if ( wpbp_is_valid_image($featured_image_url) ) {
             $upload_dir = wp_upload_dir();
-            add_delayed_admin_notice(var_export($upload_dir['baseurl'], true), 'updated');
             if ( strpos($featured_image_url, $upload_dir['baseurl']) === false ) {
                 $local_featured_image = download_image_from_url($featured_image_url);
                 if ( isset($local_featured_image) && is_array($local_featured_image) && isset($local_featured_image['url']) ) {
@@ -229,6 +228,7 @@ function wpbp_validate_featured_image_url($post_ID)
                 }
                 else {
                     add_delayed_admin_notice(__('An error occured when downloading the featured image locally!', 'wpbp'), 'error');
+                    add_delayed_admin_notice(var_export($upload_dir['baseurl'], true), 'updated');
                 }
             }
         }
