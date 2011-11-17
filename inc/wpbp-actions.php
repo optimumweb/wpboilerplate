@@ -195,7 +195,7 @@ function delayed_admin_notices()
 
 function reset_delayed_admin_notices()
 {
-     return update_option('delayed_admin_notices', serialize(array()));
+     return delete_option('delayed_admin_notices');
 }
 
 function get_delayed_admin_notices()
