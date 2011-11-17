@@ -216,8 +216,8 @@ add_action('save_post', 'wpbp_validate_featured_image_url');
 function wpbp_validate_featured_image_url($post_ID)
 {
     if ( has_featured_image($post_ID) ) {
-        $featured_image_url = get_featured_image($post_ID);
-        add_delayed_admin_notice($featured_image_url);
+        $featured_image = get_featured_image($post_ID);
+        $featured_image_url = $featured_image['url'];
         if ( wpbp_is_valid_image($featured_image_url) ) {
             $upload_dir = wp_upload_dir();
             if ( strpos($featured_image_url, $upload_dir['baseurl']) === false ) {
