@@ -228,7 +228,7 @@ function wpbp_validate_featured_image_url($post_ID)
                 }
                 else {
                     add_delayed_admin_notice(__('An error occured when downloading the featured image locally!', 'wpbp'), 'error');
-                    add_delayed_admin_notice(strpos($featured_image_url, $upload_dir['baseurl']), 'updated');
+                    add_delayed_admin_notice(var_export(strpos($featured_image_url, $upload_dir['baseurl']), true), 'updated');
                 }
             }
         }
