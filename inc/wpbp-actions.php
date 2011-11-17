@@ -203,7 +203,7 @@ function get_delayed_admin_notices()
     return unserialize( get_option('delayed_admin_notices', serialize(array())) );
 }
 
-function add_delayed_admin_notice($message, $type)
+function add_delayed_admin_notice($message, $type = 'updated')
 {
     $delayed_admin_notices = get_delayed_admin_notices();
     $delayed_admin_notices[] = array( 'message' => $message, 'type' => $type );
@@ -217,6 +217,7 @@ function wpbp_validate_featured_image_url($post_ID)
 {
     if ( has_featured_image($post_ID) ) {
         $featured_image_url = get_featured_image($post_ID);
+        add_delayed_admin_notice($featured_image_url);
         if ( wpbp_is_valid_image($featured_image_url) ) {
             $upload_dir = wp_upload_dir();
             if ( strpos($featured_image_url, $upload_dir['baseurl']) === false ) {
