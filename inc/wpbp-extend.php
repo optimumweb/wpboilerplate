@@ -105,7 +105,7 @@ if ( !function_exists('download_image_from_url') ) {
             fwrite($f, $i);
             fclose($f);
             
-            return ( file_exists($fpath) && wpbp_is_valid_image($fileurl) ) ? array( 'path' => $fpath, 'url' => $furl ) : false;
+            return ( file_exists($fpath) && wpbp_is_valid_image($furl) ) ? array( 'path' => $fpath, 'url' => $furl ) : false;
         }
         
         return false;
