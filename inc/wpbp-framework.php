@@ -14,7 +14,7 @@ if ( !function_exists('image_tag') ) {
         if ( isset($options['resize']) && $options['resize'] == true ) {
             if ( isset($args['width'], $args['height']) ) {
                 if ( !isset($options['quality']) ) $options['quality'] = 90;
-                $args['src'] = wpbp_resize_image_url( $args['src'], $args['width'], $args['height'], $args['quality'] );
+                $args['src'] = wpbp_resize_image_url( $args['src'], $args['width'], $args['height'], $options['quality'] );
             }
         }
         
