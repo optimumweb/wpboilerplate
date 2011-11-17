@@ -187,6 +187,7 @@ add_action('admin_notices', 'delayed_admin_notices');
 function delayed_admin_notices()
 {
     $delayed_admin_notices = get_delayed_admin_notices();
+    var_dump($delayed_admin_notices);
     foreach ( $delayed_admin_notices as $notice ) {
         echo "<div class=\"" . $notice['type'] . "\"><p>" . $notice['message'] . "</p></div>";
     }
