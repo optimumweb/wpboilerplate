@@ -181,6 +181,27 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 
 }
 
+// the following function requires WPML to be installed and active
+if ( !function_exists('wpbp_wpml_lang_sel') ) {
+    
+    function wpbp_wpml_lang_sel()
+    {
+        $languages = icl_get_languages('skip_missing=1&orderby=code');
+    	echo "<ul class=\"menu lang-sel\">";
+    	if ( count($languages) > 1 ) {
+    		foreach( $languages as $lang ) {
+    			echo "<li id=\"lang-" . $lang['language_code'] . "\"" . ( $lang['active'] ? " class=\"current-menu-item\"" : "" ) . "><a" . ( $lang['active'] ? "" : " rel=\"alternate\"" ) . " href=\"" . $lang['url'] . "\" hreflang=\"" . $lang['language_code'] . "\">" . $lang['native_name'] . "</a></li>";
+    		}
+    	}
+    	else {
+    		echo "<li id=\"lang-en\"" . ( ( ICL_LANGUAGE_CODE == "en" ) ? " class=\"current-menu-item\"" : "" ) . "><a" . ( ( ICL_LANGUAGE_CODE == "en" ) ? "" : " rel=\"alternate\"" ) . " href=\"" . ( ( ICL_LANGUAGE_CODE == "en" ) ? "#" : "/en/" ) . "\" hreflang=\"en\">English</a></li>";
+    		echo "<li id=\"lang-fr\"" . ( ( ICL_LANGUAGE_CODE == "fr" ) ? " class=\"current-menu-item\"" : "" ) . "><a" . ( ( ICL_LANGUAGE_CODE == "fr" ) ? "" : " rel=\"alternate\"" ) . " href=\"" . ( ( ICL_LANGUAGE_CODE == "fr" ) ? "#" : "/" ) . "\" hreflang=\"fr\">Fran&ccedil;ais</a></li>";
+    	}
+    	echo "</ul>";
+    }
+    
+}
+
 class Description_Walker extends Walker_Nav_Menu
 {
     function start_el(&$output, $item, $depth, $args)
