@@ -86,7 +86,7 @@ function wpbp_get_scripts()
     }
     
     if ( $wpbp_options['js_files'] ) {
-        foreach ( ( explode('\n', $wpbp_options['js_files']) ) as $js_file ) {
+        foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['js_files']) ) as $js_file ) {
             $scripts .= script_tag( $js_file );
         }
     }
@@ -129,7 +129,7 @@ function wpbp_get_stylesheets()
 	}
     
     if ( $wpbp_options['css_files'] ) {
-        foreach ( ( explode('\n', $wpbp_options['css_files']) ) as $css_file ) {
+        foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['css_files']) ) as $css_file ) {
             $styles .= stylesheet_link_tag( $css_file );
         }
     }
