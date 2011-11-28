@@ -4,7 +4,7 @@
 global $wpdb;
 if ( !defined('WPBP_IMAGE_TABLE') ) define('WPBP_IMAGE_TABLE', $wpdb->prefix . 'wpbp_images');
 
-function wpbp_add_contactmethods( $contactmethods )
+function wpbp_add_contactmethods($contactmethods)
 {
 	// Add Social Profile
 	$contactmethods['google_profile'] = 'Google Profile URL';
@@ -15,11 +15,11 @@ function wpbp_add_contactmethods( $contactmethods )
 	$contactmethods['photo'] = 'Photo URL';
 	return $contactmethods;
 }
-add_filter( 'user_contactmethods', 'wpbp_add_contactmethods', 10, 1);
+add_filter('user_contactmethods', 'wpbp_add_contactmethods', 10, 1);
 
 function wpbp_admin_enqueue_scripts($hook_suffix)
 {
-	if ($hook_suffix !== 'appearance_page_theme_options')
+	if ( $hook_suffix !== 'appearance_page_theme_options' )
 		return;
 
 	wp_enqueue_style('wpbp-theme-options', get_template_directory_uri() . '/inc/css/theme-options.css');
@@ -29,14 +29,10 @@ add_action('admin_enqueue_scripts', 'wpbp_admin_enqueue_scripts');
 
 function wpbp_theme_options_init()
 {
-	if (false === wpbp_get_theme_options())
+	if ( wpbp_get_theme_options() === false ) {
 		add_option('wpbp_theme_options', wpbp_get_default_theme_options());
-
-	register_setting(
-		'wpbp_options',
-		'wpbp_theme_options',
-		'wpbp_theme_options_validate'
-	);
+	}
+	register_setting('wpbp_options', 'wpbp_theme_options', 'wpbp_theme_options_validate');
 }
 add_action('admin_init', 'wpbp_theme_options_init');
 
@@ -49,15 +45,14 @@ add_filter('option_page_capability_wpbp_options', 'wpbp_option_page_capability')
 function wpbp_theme_options_add_page()
 {
 	$theme_page = add_theme_page(
-		__('Theme Options', 'wpbp'),
-		__('Theme Options', 'wpbp'),
-		'edit_theme_options',
-		'theme_options',
+		__('Boilerplate Theme Options', 'wpbp'),
+		__('Boilerplate Theme Options', 'wpbp'),
+		'edit_wpbp_theme_options',
+		'wpbp_theme_options',
 		'wpbp_theme_options_render_page'
 	);
 
-	if (!$theme_page)
-		return;
+	if (!$theme_page) return;
 }
 add_action('admin_menu', 'wpbp_theme_options_add_page');
 
@@ -67,9 +62,9 @@ function wpbp_admin_bar_render()
 
 	$wp_admin_bar->add_menu(array(
 		'parent' => 'appearance',
-		'id' => 'theme_options',
-		'title' => __('Boilerplate Options', 'wpbp'),
-		'href' => admin_url( 'themes.php?page=wpbp_options')
+		'id' => 'wpbp_theme_options',
+		'title' => __('Boilerplate Theme Options', 'wpbp'),
+		'href' => admin_url('themes.php?page=wpbp_options')
 	));
 }
 add_action('wp_before_admin_bar_render', 'wpbp_admin_bar_render');
@@ -101,18 +96,14 @@ function wpbp_add_frameworks_object_script()
 {
 	global $wpbp_css_frameworks;
 	$json = json_encode($wpbp_css_frameworks);
-    ?>
-	<script>
-		var wpbp_css_frameworks = <?php echo $json; ?>;
-	</script>
-	<?php
+    echo "<script> var wpbp_css_frameworks = " . $json . "; </script>\n";
 }
 add_action('admin_head', 'wpbp_add_frameworks_object_script');
 
 function wpbp_get_default_theme_options()
 {
 	global $wpbp_css_frameworks;
-	$default_framework = '960gs_16';
+	$default_framework = '960gs_12';
 	$default_framework_settings = $wpbp_css_frameworks[$default_framework];
 	$default_theme_options = array(
 		'css_framework'         => $default_framework,
@@ -123,12 +114,7 @@ function wpbp_get_default_theme_options()
         'css_files'             => '',
 		'custom_css'            => '',
         'js_files'              => '',
-		'js_plugins'            => array(
-										'lesscss'   => 1,
-										'modernizr' => 1,
-										'formalize' => 1,
-										'jquery'    => 1
-									)
+		'js_plugins'            => array('lesscss' => 1, 'modernizr' => 1, 'formalize' => 1, 'jquery' => 1)
 	);
 
 	return apply_filters('wpbp_default_theme_options', $default_theme_options);
