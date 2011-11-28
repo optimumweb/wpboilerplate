@@ -79,10 +79,6 @@ function wpbp_get_scripts()
         if ( $wpbp_options['js_plugins']['formalize'] ) {
             $scripts .= script_tag('http://firecdn.net/libs/formalize/js/jquery.formalize.js');
         }
-
-        if ( $wpbp_options['js_plugins']['ajax-mail'] ) {
-                $scripts .= script_tag( get_template_directory_uri() . '/plugins/ajax-mail/jquery.ajax-mail.js' );
-        }
     }
     
     if ( $wpbp_options['js_files'] ) {

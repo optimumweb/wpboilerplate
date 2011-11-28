@@ -68,8 +68,8 @@ function wpbp_admin_bar_render()
 	$wp_admin_bar->add_menu(array(
 		'parent' => 'appearance',
 		'id' => 'theme_options',
-		'title' => __('Theme Options', 'wpbp'),
-		'href' => admin_url( 'themes.php?page=theme_options')
+		'title' => __('Boilerplate Options', 'wpbp'),
+		'href' => admin_url( 'themes.php?page=wpbp_options')
 	));
 }
 add_action('wp_before_admin_bar_render', 'wpbp_admin_bar_render');
@@ -101,7 +101,7 @@ function wpbp_add_frameworks_object_script()
 {
 	global $wpbp_css_frameworks;
 	$json = json_encode($wpbp_css_frameworks);
-?>
+    ?>
 	<script>
 		var wpbp_css_frameworks = <?php echo $json; ?>;
 	</script>
@@ -127,8 +127,7 @@ function wpbp_get_default_theme_options()
 										'lesscss'   => 1,
 										'modernizr' => 1,
 										'formalize' => 1,
-										'jquery'    => 1,
-										'ajax-mail' => 1
+										'jquery'    => 1
 									)
 	);
 
@@ -146,7 +145,7 @@ function wpbp_theme_options_render_page()
 	?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
-		<h2><?php printf(__('%s Theme Options', 'wpbp'), get_current_theme()); ?></h2>
+		<h2><?php _e('Boilerplate Options', 'wpbp'); ?></h2>
 		<?php settings_errors(); ?>
 
 		<form method="post" action="options.php">
@@ -244,9 +243,6 @@ function wpbp_theme_options_render_page()
 							<br />
 							<input type="checkbox" name="wpbp_theme_options[js_plugins][formalize]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['formalize'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> Formalize<br />
               				<small class="description"><?php _e('Break the cycle of inconsistent form defaults, style forms with impunity! <i>(requires jQuery)</i>', 'wpbp'); ?></small>
-							<br />
-							<input type="checkbox" name="wpbp_theme_options[js_plugins][ajax-mail]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['ajax-mail'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> AJAX Mail<br />
-              				<small class="description"><?php _e('Send mail easily with this jQuery plugin using AJAX and PHP. <i>(requires jQuery)</i>', 'wpbp'); ?></small>
 						</fieldset>
 					</td>
 				</tr>
@@ -281,7 +277,6 @@ function wpbp_theme_options_validate($input)
 	$output['js_plugins']['modernizr'] = ( isset( $input['js_plugins']['modernizr'] ) ) ? $input['js_plugins']['modernizr'] : 0;
 	$output['js_plugins']['jquery'] = ( isset( $input['js_plugins']['jquery'] ) ) ? $input['js_plugins']['jquery'] : 0;
 	$output['js_plugins']['formalize'] = ( isset( $input['js_plugins']['formalize'] ) && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['formalize'] : 0;
-	$output['js_plugins']['ajax-mail'] = ( isset( $input['js_plugins']['ajax-mail'] )  && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['ajax-mail'] : 0;
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);
 }
