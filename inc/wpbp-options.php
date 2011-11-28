@@ -45,8 +45,8 @@ add_filter('option_page_capability_wpbp_options', 'wpbp_option_page_capability')
 function wpbp_theme_options_add_page()
 {
 	$theme_page = add_theme_page(
-		__('Boilerplate Theme Options', 'wpbp'),
-		__('Boilerplate Theme Options', 'wpbp'),
+		__('Boilerplate Options', 'wpbp'),
+		__('Boilerplate Options', 'wpbp'),
 		'edit_wpbp_theme_options',
 		'wpbp_theme_options',
 		'wpbp_theme_options_render_page'
@@ -63,7 +63,7 @@ function wpbp_admin_bar_render()
 	$wp_admin_bar->add_menu(array(
 		'parent' => 'appearance',
 		'id' => 'wpbp_theme_options',
-		'title' => __('Boilerplate Theme Options', 'wpbp'),
+		'title' => __('Boilerplate Options', 'wpbp'),
 		'href' => admin_url('themes.php?page=wpbp_options')
 	));
 }
