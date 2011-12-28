@@ -7,7 +7,7 @@ get_header(); ?>
 	<div id="content">
 		<div class="container <?php echo $wpbp_options['container_class']; ?>">
 			<?php wpbp_main_before(); ?>
-			<div id="main" class="<?php echo $wpbp_options['main_class']; ?>" role="main">
+			<div id="main" role="main">
 				<div class="container">
 					<?php wpbp_loop_before(); ?>
 					<?php get_template_part('loop', 'page'); ?>
