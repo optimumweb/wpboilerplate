@@ -238,7 +238,17 @@ class Description_Walker extends Walker_Nav_Menu
 
 class Minimal_Walker extends Walker_Nav_Menu
 {
-    function start_el(&$output, $item, $depth, $args)
+    function start_lvl($output, $depth)
+    {
+        return "";
+    }
+    
+    function end_lvl($output, $depth)
+    {
+        return "";
+    }
+    
+    function start_el($output, $item, $depth, $args)
     {
         global $wp_query;
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
@@ -262,6 +272,13 @@ class Minimal_Walker extends Walker_Nav_Menu
         $item_output .= '</a>';
         
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+        
+        retun $output;
+    }
+    
+    function end_el($output, $element, $depth)
+    {
+        return "";
     }
 }
 
