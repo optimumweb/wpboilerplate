@@ -20,9 +20,9 @@ $(window).load(function() {
 	$('.valign').each(function() {
 		$this = $(this);
 		$ref = ( typeof $this.data('ref') != 'undefined' ) ? $($this.data('ref')) : $this.parent();
-		thisHeight = $this.height(), refHeight = $ref.height();
+		thisHeight = $this.outerHeight(true), refHeight = $ref.outerHeight(true);
 		offset = Math.round( ( refHeight - thisHeight ) / 2 );
-		$this.css('padding-top', offset + 'px').css('padding-bottom', offset + 'px');
+		$this.css('margin-top', offset + 'px').css('margin-bottom', offset + 'px');
 	});
 
 });
