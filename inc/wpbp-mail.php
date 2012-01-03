@@ -111,6 +111,8 @@
 				$this->build_mail_headers()
 			);
 			
+			var_dump($this->build_mail_headers());
+			
 			if ( $sent )
 				$this->set_response('Sent');
 			else
