@@ -79,7 +79,11 @@ function wpbp_get_scripts()
         if ( $wpbp_options['js_plugins']['formalize'] ) {
             $scripts .= script_tag('http://firecdn.net/libs/formalize/js/jquery.formalize.js');
         }
+        
+        $scripts .= script_tag( get_template_directory_uri() . '/js/wpbp.jquery.js' );
     }
+    
+    $scripts .= script_tag( get_template_directory_uri() . '/js/wpbp.js' );
     
     if ( $wpbp_options['js_files'] ) {
         foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['js_files']) ) as $js_file ) {
