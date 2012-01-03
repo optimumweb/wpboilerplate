@@ -1,0 +1,111 @@
+<?php
+
+	/**
+	 * Mail
+	 *
+	 * Simple mail class from the WordPress Boilerplate
+	 * @author Jonathan Roy <jroy@optimumweb.ca>
+	 * @version 1.0
+	 * @package wpboilerplate
+	 */
+	
+	class Mail {
+		
+		public $options = array(
+			'to'			=> '',
+			'from'			=> '',
+			'reply_to'		=> '',
+			'cc'			=> '',
+			'bcc'			=> '',
+			'subject'		=> 'New Email',
+			'mime-version'	=> '1.0',
+			'content-type'	=> 'text/html; charset=iso-8859-1'
+		);
+		
+		public $body = '';
+		
+		public function set_options($new_options)
+		{
+			if ( is_array($new_options) )
+				$this->options = array_merge($this->options, $new_options);
+			else
+				echo '<p class="error">"' . __CLASS__ . '" error: Invalid options!</p>';
+		}
+		
+		public function get_options()
+		{
+			return $this->options;
+		}
+		
+		public function set_option($key, $value)
+		{
+			$this->options[$key] = $value;
+		}
+		
+		public function get_option($option_key)
+		{
+			return $this->options[$option_key];
+		}
+		
+		public function set_body($body)
+		{
+			$this->body = $body;
+		}
+		
+		public function get_body()
+		{
+			return $this->body;
+		}
+		
+		public function build_fields_html($fields)
+		{
+			$html = "";
+			foreach ( $fields as $field ) {
+				if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
+				$html .= "<p>" . "<strong>" . $field['label'] . "</strong>: " . $field['value'] . "</p>\n";
+			}
+			$html .= "<hr />\n";
+			
+			return $html;
+		}
+		
+		private function build_mail_headers()
+		{
+			$headers = "";
+			
+			$options = get_options();
+			
+			if ( $options['from'] )
+				$headers .= "From: " . $options['from'] . "\n";
+			if ( $options['reply_to'] )
+				$headers .= "Reply-To: " . $options['reply_to'] . "\n";
+			if ( $options['cc'] )
+				$headers .= "Cc: " . $options['cc'] . "\n";
+			if ( $options['bcc'] )
+				$headers .= "Bcc: " . $options['bcc'] . "\n";
+			if ( $options['mime_version'] )
+				$headers .= "MIME-Version: " . $options['mime_version'] . "\n";
+			if ( $options['content_type'] )
+				$headers .= "Content-Type: " . $options['content_type'];
+			
+			return $headers;
+		}
+		
+		public function send()
+		{
+			$response = @mail(
+				$this->get_option('to'),
+				$this->get_option('subject'),
+				$this->get_body(),
+				$this->build_mail_headers()
+			);
+			
+			if ( !$response )
+				echo '<p class="error">"' . __CLASS__ . '" error: Could not send mail!</p>';
+				
+			return $response;
+		}
+	
+	}
+
+?>

@@ -13,6 +13,7 @@ $required_files = array(
 	'/inc/wpbp-form-builder.php', // makes building forms easy
     '/inc/wpbp-framework.php',    // set of functions and tools
 	'/inc/wpbp-extend.php',       // extend wordpress functions
+	'/inc/wpbp-mail.php',         // simple but powerful mail class
 	'/inc/wpbp-widgets.php',      // widgets
 	'/inc/wpbp-shortcodes.php',   // shortcodes
 	'/inc/wpbp-breadcrumb.php',   // breadcrumb
