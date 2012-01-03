@@ -8,6 +8,19 @@ $(document).ready(function() {
 		$(this).css('background-image', 'url(' + $(this).data('ir') + ')');
 	});
 	
+	$('form.auto-label').each(function() {
+		$thisForm = $(this);
+		$thisForm.find('label').each(function() {
+			$thisLabel = $(this);
+			thisLabelHtml = $thisLabel.html();
+			$thisInput = $('#' + $thisLabel);
+			thisInputName = $thisInput.attr('name');
+			thisInputLabelName = thisInputName.replace('value', 'label');
+			thisInputLabelValue = thisLabelHtml.replace(/<(\S+).*>(.*)<\/\1>/, '');
+			$thisForm.prepend('<input name="' + thisInputLabelName + '" value="' + thisInputLabelValue + '" type="hidden" />');
+		});
+	});
+	
 });
 
 $(window).load(function() {
