@@ -24,6 +24,8 @@
 		
 		public $body = '';
 		
+		public $response = 'Not sent';
+		
 		public function set_options($new_options)
 		{
 			if ( is_array($new_options) )
@@ -55,6 +57,16 @@
 		public function get_body()
 		{
 			return $this->body;
+		}
+		
+		public function set_response($response)
+		{
+			$this->response = $response;
+		}
+		
+		public function get_response()
+		{
+			return $this->response;
 		}
 		
 		public function build_fields_html($fields)
@@ -93,17 +105,17 @@
 		
 		public function send()
 		{
-			$response = @mail(
+			$sent = @mail(
 				$this->get_option('to'),
 				$this->get_option('subject'),
 				$this->get_body(),
 				$this->build_mail_headers()
 			);
 			
-			if ( !$response )
-				echo '<p class="error">"' . __CLASS__ . '" error: Could not send mail!</p>';
-				
-			return $response;
+			if ( $sent )
+				$this->set_response('Sent');
+			else
+				$this->set_response('Error');
 		}
 	
 	}
