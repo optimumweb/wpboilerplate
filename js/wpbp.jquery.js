@@ -12,8 +12,9 @@ $(document).ready(function() {
 		$thisForm = $(this);
 		$thisForm.find('label').each(function() {
 			$thisLabel = $(this);
+			thisLabelFor = $thisLabel.attr('for');
 			thisLabelHtml = $thisLabel.html();
-			$thisInput = $('#' + $thisLabel);
+			$thisInput = $('#' + thisLabelFor);
 			thisInputName = $thisInput.attr('name');
 			thisInputLabelName = thisInputName.replace('value', 'label');
 			thisInputLabelValue = thisLabelHtml.replace(/<(\S+).*>(.*)<\/\1>/, '');
