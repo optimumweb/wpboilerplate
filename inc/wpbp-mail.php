@@ -85,7 +85,7 @@
 		{
 			$headers = "";
 			
-			$options = get_options();
+			$options = $this->get_options();
 			
 			if ( $options['from'] )
 				$headers .= "From: " . $options['from'] . "\n";
@@ -105,7 +105,7 @@
 		
 		public function send()
 		{
-			$sent = mail(
+			$sent = @mail(
 				$this->get_option('to'),
 				$this->get_option('subject'),
 				$this->get_body(),
