@@ -76,7 +76,6 @@
 				if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
 				$html .= "<p>" . "<strong>" . $field['label'] . "</strong>: " . $field['value'] . "</p>\n";
 			}
-			$html .= "<hr />\n";
 			
 			return $html;
 		}
