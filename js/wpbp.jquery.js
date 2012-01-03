@@ -8,24 +8,6 @@ $(document).ready(function() {
 		$(this).css('background-image', 'url(' + $(this).data('ir') + ')');
 	});
 	
-	$('form.auto-label').each(function() {
-		$thisForm = $(this);
-		$thisForm.find('label').each(function() {
-			$thisLabel = $(this);
-			thisLabelFor = $thisLabel.attr('for');
-			if ( typeof thisLabelFor != 'undefined' ) {
-				thisLabelHtml = $thisLabel.html();
-				$thisInput = $('#' + thisLabelFor);
-				if ( $thisInput.size() == 1 ) {
-					thisInputName = $thisInput.attr('name');
-					thisInputLabelName = thisInputName.replace('value', 'label');
-					thisInputLabelValue = thisLabelHtml.replace(/<(\S+).*>(.*)<\/\1>/, '');
-					$thisForm.prepend('<input name="' + thisInputLabelName + '" value="' + thisInputLabelValue + '" type="hidden" />');
-				}
-			}
-		});
-	});
-	
 });
 
 $(window).load(function() {
