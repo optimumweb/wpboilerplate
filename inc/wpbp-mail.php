@@ -105,7 +105,7 @@
 		
 		public function send()
 		{
-			$sent = @mail(
+			$sent = mail(
 				$this->get_option('to'),
 				$this->get_option('subject'),
 				$this->get_body(),
