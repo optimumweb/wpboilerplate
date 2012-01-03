@@ -13,12 +13,16 @@ $(document).ready(function() {
 		$thisForm.find('label').each(function() {
 			$thisLabel = $(this);
 			thisLabelFor = $thisLabel.attr('for');
-			thisLabelHtml = $thisLabel.html();
-			$thisInput = $('#' + thisLabelFor);
-			thisInputName = $thisInput.attr('name');
-			thisInputLabelName = thisInputName.replace('value', 'label');
-			thisInputLabelValue = thisLabelHtml.replace(/<(\S+).*>(.*)<\/\1>/, '');
-			$thisForm.prepend('<input name="' + thisInputLabelName + '" value="' + thisInputLabelValue + '" type="hidden" />');
+			if ( typeof thisLabelFor != 'undefined' ) {
+				thisLabelHtml = $thisLabel.html();
+				$thisInput = $('#' + thisLabelFor);
+				if ( $thisInput.size() == 1 ) {
+					thisInputName = $thisInput.attr('name');
+					thisInputLabelName = thisInputName.replace('value', 'label');
+					thisInputLabelValue = thisLabelHtml.replace(/<(\S+).*>(.*)<\/\1>/, '');
+					$thisForm.prepend('<input name="' + thisInputLabelName + '" value="' + thisInputLabelValue + '" type="hidden" />');
+				}
+			}
 		});
 	});
 	
