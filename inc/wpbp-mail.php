@@ -34,7 +34,7 @@
 		public function set_options($new_options)
 		{
 			if ( is_array($new_options) )
-				$this->options = array_merge($this->options, $new_options);
+				$this->options = array_merge((array) $this->options, (array) $new_options);
 			else
 				echo '<p class="error">"' . __CLASS__ . '" error: Invalid options!</p>';
 		}
