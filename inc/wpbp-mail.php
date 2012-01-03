@@ -24,8 +24,8 @@
 				'cc'			=> '',
 				'bcc'			=> '',
 				'subject'		=> 'New Email',
-				'mime-version'	=> '1.0',
-				'content-type'	=> 'text/html; charset=iso-8859-1'
+				'mime_version'	=> '1.0',
+				'content_type'	=> 'text/html; charset=iso-8859-1'
 			) );
 			
 			$this->set_response('Not sent');
