@@ -1,4 +1,5 @@
 <?php
+
 	/**
 	 * Template Name: AJAX
 	 *
@@ -7,5 +8,5 @@
 	 * @package wpboilerplate
 	 */
 
-	echo "AJAX Template";
+
 ?>
