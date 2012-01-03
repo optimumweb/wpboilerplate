@@ -11,20 +11,25 @@
 	
 	class Mail {
 		
-		public $options = array(
-			'to'			=> '',
-			'from'			=> '',
-			'reply_to'		=> '',
-			'cc'			=> '',
-			'bcc'			=> '',
-			'subject'		=> 'New Email',
-			'mime-version'	=> '1.0',
-			'content-type'	=> 'text/html; charset=iso-8859-1'
-		);
+		public $options;
+		public $body;
+		public $response;
 		
-		public $body = '';
-		
-		public $response = 'Not sent';
+		public function __construct()
+		{
+			$this->set_options( array(
+				'to'			=> '',
+				'from'			=> '',
+				'reply_to'		=> '',
+				'cc'			=> '',
+				'bcc'			=> '',
+				'subject'		=> 'New Email',
+				'mime-version'	=> '1.0',
+				'content-type'	=> 'text/html; charset=iso-8859-1'
+			) );
+			
+			$this->set_response('Not sent');
+		}
 		
 		public function set_options($new_options)
 		{
