@@ -74,12 +74,30 @@
 			return $this->response;
 		}
 		
-		public function build_fields_html($fields)
+		public function build_fields_html($fields, $format = null)
 		{
-			$html = "";
-			foreach ( $fields as $field ) {
-				if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
-				$html .= "<p>" . "<strong>" . $field['label'] . "</strong>: " . $field['value'] . "</p>\n";
+			$html = '';
+			switch ( $format ) {
+			
+				case 'table' :
+					$html .= '<table width="100%" cellpadding="2" cellspacing="0">';
+					$html .= '<tbody>';
+					foreach ( $fields as $field ) {
+						if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
+						$html .= '<tr>';
+						$html .= '<td align="right" style="white-space: nowrap;"><strong>' . $field['label'] . '</strong></td>';
+						$html .= '<td>' . $field['value'] . '</td>';
+						$html .= '</tr>';
+					}
+					$html .= '</tbody></table>';
+					break;
+				
+				default :
+					foreach ( $fields as $field ) {
+						if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
+						$html .= "<p>" . "<strong>" . $field['label'] . "</strong>: " . $field['value'] . "</p>";
+					}
+					
 			}
 			
 			return $html;
