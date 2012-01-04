@@ -84,6 +84,7 @@
 						if ( !$is_valid ) {
 							$this->add_invalid_field($field);
 						}
+						var_dump($field);
 					}
 				}
 			}
