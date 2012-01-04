@@ -65,20 +65,19 @@
 		{
 			if ( isset($fields) && is_array($fields) ) {
 				foreach ( $fields as $field ) {
-					extract($field);
-					if ( isset($required) ) {
-						switch ( $required ) {
+					if ( isset($field['required']) ) {
+						switch ( $field['required'] ) {
 							case 'alphanum' :
-								$is_valid = $this->is_alphanum($value);
+								$is_valid = $this->is_alphanum($field['value']);
 								break;
 							case 'email' :
-								$is_valid = $this->is_valid_email($value);
+								$is_valid = $this->is_valid_email($field['value']);
 								break;
 							case 'tel' :
-								$is_valid = $this->is_valid_tel($value);
+								$is_valid = $this->is_valid_tel($field['value']);
 								break;
 							default :
-								$is_valid = $this->is_valid_string($value);
+								$is_valid = $this->is_valid_string($field['value']);
 						}
 						$this->set_validity($is_valid);
 						if ( !$is_valid ) {
