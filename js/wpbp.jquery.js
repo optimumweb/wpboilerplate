@@ -2,6 +2,8 @@ $(document).ready(function() {
 
 	$('.ir').each(function() { $(this).IR(); });
 	
+	$('form.ajax, form.ajax-form').each(function() { $(this).ajaxForm(); });
+	
 });
 
 $(window).load(function() {
