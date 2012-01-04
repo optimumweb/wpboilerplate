@@ -138,6 +138,7 @@ $(window).load(function() {
 						url:	formAction,
 						data:	$form.serialize(),
 						success: function(response) {
+							console.log(response);
 							switch ( response ) {
 								case 'success' :
 									$formSuccess.fadeIn();
@@ -155,6 +156,7 @@ $(window).load(function() {
 					});
 				}
 				else {
+					console.log('Input error detected!');
 					$formSuccess.hide();
 					$formWarning.fadeIn();
 					$formError.error();
