@@ -85,7 +85,7 @@
 					foreach ( $fields as $field ) {
 						if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
 						$html .= '<tr>';
-						$html .= '<td width="100" align="right" style="white-space: nowrap;"><strong>' . $field['label'] . '</strong></td>';
+						$html .= '<td width="100" align="right" style="white-space: nowrap; padding-right: 10px;"><strong>' . $field['label'] . '</strong></td>';
 						$html .= '<td>' . $field['value'] . '</td>';
 						$html .= '</tr>';
 					}
