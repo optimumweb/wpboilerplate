@@ -67,7 +67,6 @@
 				foreach ( $fields as $field ) {
 					extract($field);
 					if ( isset($required) ) {
-						$is_valid = false;
 						switch ( $required ) {
 							case 'alphanum' :
 								$is_valid = $this->is_alphanum($value);
