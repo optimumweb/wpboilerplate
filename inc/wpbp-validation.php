@@ -89,7 +89,7 @@
 				}
 			}
 			else {
-				$this->valid = false;
+				$this->set_validity(false);
 			}
 		}
 		
