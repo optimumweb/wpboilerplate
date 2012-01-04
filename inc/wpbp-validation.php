@@ -48,13 +48,13 @@
 			}
 		}
 		
-		public function set_invalid_fields($invalid_fields)
+		private function set_invalid_fields($invalid_fields)
 		{
 			if ( is_array($invalid_fields) )
 				$this->invalid_fields = $invalid_fields;
 		}
 		
-		public function add_invalid_field($invalid_field)
+		private function add_invalid_field($invalid_field)
 		{
 			$invalid_fields = $this->get_invalid_fields();
 			$invalid_fields[] = $invalid_field;
@@ -66,7 +66,7 @@
 			if ( isset($fields) && is_array($fields) ) {
 				foreach ( $fields as $field ) {
 					extract($field);
-					if ( isset($required) && strlen($required) > 0 ) {
+					if ( isset($required) ) {
 						$is_valid = false;
 						switch ( $required ) {
 							case 'alphanum' :
