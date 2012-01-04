@@ -93,6 +93,10 @@ $(window).load(function() {
 	
 			$form.submit(function(e) {
 	
+				$formSuccess.hide();
+				$formWarning.hide();
+				$formError.hide();
+				
 				// show that we are working in the background
 				$formLoading.show();
 	
@@ -137,19 +141,14 @@ $(window).load(function() {
 							switch ( response ) {
 								case 'success' :
 									$formSuccess.fadeIn();
-									$formWarning.hide();
-									$formError.hide();
 									$formFields.hide();
 									// trigger google analytics
 									_gaq.push(['_trackPageview', '/form-sent/' + formId]);
 									break;
 								case 'warning' :
-									$formSuccess.hide();
 									$formWarning.fadeIn();
-									$formError.hide();
+									break;
 								default :
-									$formSuccess.hide();
-									$formWarning.hide();
 									$formError.fadeIn();
 							}
 						}
