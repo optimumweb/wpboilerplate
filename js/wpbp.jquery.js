@@ -67,6 +67,7 @@ $(window).load(function() {
  */
 
 (function($) {
+
 	$.fn.extend({
 	
 		ajaxForm: function() {
