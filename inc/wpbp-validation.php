@@ -40,10 +40,12 @@
 		public function list_invalid_fields()
 		{
 			$invalid_fields = $this->get_invalid_fields();
-			echo '<ul>';
-			foreach ( $invalid_fields as $invalid_field )
-				echo '<li>' . $invalid_field['label'] . '</li>';
-			echo '</ul>';
+			if ( isset($invalid_fields) && is_array($invalid_fields) && count($invalid_fields) != 0 ) {
+				echo '<ul>';
+				foreach ( $invalid_fields as $invalid_field )
+					echo '<li>' . $invalid_field['label'] . '</li>';
+				echo '</ul>';
+			}
 		}
 		
 		public function set_invalid_fields($invalid_fields)
