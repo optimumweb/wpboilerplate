@@ -39,7 +39,7 @@
 		
 		public function list_invalid_fields()
 		{
-			$invalid_fields = get_invalid_fields();
+			$invalid_fields = $this->get_invalid_fields();
 			echo '<ul>';
 			foreach ( $invalid_fields as $invalid_field )
 				echo '<li>' . $invalid_field['label'] . '</li>';
@@ -54,9 +54,9 @@
 		
 		public function add_invalid_field($invalid_field)
 		{
-			$invalid_fields = get_invalid_fields();
+			$invalid_fields = $this->get_invalid_fields();
 			$invalid_fields[] = $invalid_field;
-			set_invalid_fields($invalid_fields);
+			$this->set_invalid_fields($invalid_fields);
 		}
 		
 		public function validate_fields($fields)
@@ -79,9 +79,9 @@
 							default :
 								$is_valid = $this->is_valid_string($value);
 						}
-						set_validity($is_valid);
+						$this->set_validity($is_valid);
 						if ( !$is_valid ) {
-							add_invalid_field($field);
+							$this->add_invalid_field($field);
 						}
 					}
 				}
@@ -93,29 +93,29 @@
 		
 		public function validate_alphanum($value)
 		{
-			set_validity( is_alphanum($value) );
+			$this->set_validity( $this->is_alphanum($value) );
 		}
 		
 		public function validate_length($min_len = null, $max_len = null, $value)
 		{
 			if ( isset($min_len, $max_len) )
-				set_validity( is_between($min_len, $max_len, $value) );
+				$this->set_validity( $this->is_between($min_len, $max_len, $value) );
 			elseif ( isset($min_len) )
-				set_validity( is_longer_than($min_len, $value) );
+				$this->set_validity( $this->is_longer_than($min_len, $value) );
 			elseif ( isset($max_len) )
-				set_validity( is_shorter_than($max_len, $value) );
+				$this->set_validity( $this->is_shorter_than($max_len, $value) );
 			else
-				set_validity(false);
+				$this->set_validity(false);
 		}
 		
 		public function validate_email($value)
 		{
-			set_validity( is_valid_email($value) );
+			$this->set_validity( $this->is_valid_email($value) );
 		}
 		
 		public function validate_tel($value)
 		{
-			set_validity( is_valid_tel($value) );
+			$this->set_validity( $this->is_valid_tel($value) );
 		}
 		
 		public function is_valid_string($value)
