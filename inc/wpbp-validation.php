@@ -15,7 +15,7 @@
 		
 		public function __construct()
 		{
-			$this->set_validity(false);
+			$this->set_validity(true);
 			$this->set_invalid_fields(array());
 		}
 		
