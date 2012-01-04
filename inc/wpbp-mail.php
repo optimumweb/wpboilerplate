@@ -28,7 +28,7 @@
 				'content_type'	=> 'text/html; charset=utf-8'
 			) );
 			
-			$this->set_response('not sent');
+			$this->set_response('none');
 		}
 		
 		public function set_options($new_options)
@@ -145,7 +145,7 @@
 			);
 			
 			if ( $sent )
-				$this->set_response('sent');
+				$this->set_response('success');
 			else
 				$this->set_response('error');
 		}
