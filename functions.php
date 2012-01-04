@@ -10,6 +10,7 @@ $required_files = array(
 	'/inc/wpbp-htaccess.php',     // rewrites for assets, h5bp htaccess
 	'/inc/wpbp-hooks.php',        // hooks
 	'/inc/wpbp-actions.php',      // actions
+	'/inc/wpbp-validation.php'    // form validation tool
 	'/inc/wpbp-form-builder.php', // makes building forms easy
     '/inc/wpbp-framework.php',    // set of functions and tools
 	'/inc/wpbp-extend.php',       // extend wordpress functions
