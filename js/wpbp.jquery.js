@@ -26,7 +26,7 @@ $(window).load(function() {
 		IR: function() {
 			var $this = $(this);
 			var ir = $this.data('ir');
-			if ( typeof if != 'undefined' ) {
+			if ( typeof ir != 'undefined' ) {
 				$this.css('background-image', 'url(' + ir + ')');
 			}
 		}
