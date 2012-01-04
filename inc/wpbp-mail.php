@@ -74,19 +74,26 @@
 			return $this->response;
 		}
 		
-		public function build_fields_html($fields, $format = null)
+		public function build_fields_html($fields, $options = array())
 		{
+			$options = array_merge(array(
+				'format'	=> 'default',
+				'label_css' => 'font-weight: bold;',
+				'value_css'	=> ''
+			), $options);
+			
 			$html = '';
-			switch ( $format ) {
+			
+			switch ( $options['format'] ) {
 			
 				case 'table' :
-					$html .= '<table width="100%" cellpadding="2" cellspacing="0">';
+					$html .= '<table width="100%" cellpadding="0" cellspacing="0">';
 					$html .= '<tbody>';
 					foreach ( $fields as $field ) {
 						if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
 						$html .= '<tr>';
-						$html .= '<td width="100" align="right" style="white-space: nowrap; padding-right: 10px;"><strong>' . $field['label'] . '</strong></td>';
-						$html .= '<td>' . stripslashes(nl2br($field['value'])) . '</td>';
+						$html .= '<td style="' . $options['label_css'] . '">' . $field['label'] . '</td>';
+						$html .= '<td style="' . $options['value_css'] . '">' . stripslashes(nl2br($field['value'])) . '</td>';
 						$html .= '</tr>';
 					}
 					$html .= '</tbody></table>';
@@ -95,7 +102,10 @@
 				default :
 					foreach ( $fields as $field ) {
 						if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
-						$html .= "<p>" . "<strong>" . $field['label'] . "</strong>: " . $field['value'] . "</p>";
+						$html .= '<p>';
+						$html .= '<span style="' . $options['label_css'] . '">' . $field['label'] . ': </span> ';
+						$html .= '<span style="' . $options['value_css'] . '">' . stripslashes(nl2br($field['value'])) . '</span>';
+						$html .= '</p>';
 					}
 					
 			}
