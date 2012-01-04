@@ -145,6 +145,9 @@ $(window).load(function() {
 			e.preventDefault();
 
 		});
+		
+		// show that the form is ajax-enabled
+		$form.addClass('ajax-enabled');
 
 	}
 
