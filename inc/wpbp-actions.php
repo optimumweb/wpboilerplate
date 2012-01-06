@@ -7,6 +7,7 @@ add_action('wpbp_stylesheets', 'wpbp_get_stylesheets');
 add_action('wpbp_scripts', 'wpbp_get_scripts');
 add_action('wpbp_breadcrumb', 'wpbp_get_breadcrumb');
 add_action('wpbp_footer', 'wpbp_count_view');
+add_action('wpbp_loop_after', 'wpbp_clear');
 
 function wpbp_google_analytics()
 {
@@ -237,6 +238,11 @@ function wpbp_validate_featured_image_url($post_ID)
             update_post_meta($post_ID, 'featured_image_url', '', $featured_image_url);
         }
     }
+}
+
+function wpbp_clear()
+{
+	echo '<div class="clear"></div>' . PHP_EOL;
 }
 
 ?>
