@@ -143,10 +143,10 @@ $(window).load(function() {
 								$formFields.hide();
 								// trigger google analytics
 								_gaq.push(['_trackPageview', '/form-sent/' + formId]);
-							}
+							},
 							400: function() {
 								$formWarning.fadeIn();
-							}
+							},
 							500: function() {
 								$formError.fadeIn();
 							}
