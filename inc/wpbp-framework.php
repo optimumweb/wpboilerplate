@@ -200,4 +200,23 @@ if ( !function_exists('array_plot') ) {
 
 }
 
+if ( !function_exists('sanitize') ) {
+
+	function sanitize($value, $type = 'string')
+	{
+		switch ( gettype($value) ) {
+
+			case 'array' :
+				return array_map('sanitize', $value);
+				
+			case 'string' :
+				return filter_var(mysql_real_escape_string($value, FILTER_SANITIZE_STRING));
+			
+			default :
+				return $value;
+		}
+	}
+
+}
+
 ?>
