@@ -137,20 +137,18 @@ $(window).load(function() {
 						type:	formMethod,
 						url:	formAction,
 						data:	$form.serialize(),
-						success: function(response) {
-							console.log(response);
-							switch ( response ) {
-								case 'success' :
-									$formSuccess.fadeIn();
-									$formFields.hide();
-									// trigger google analytics
-									_gaq.push(['_trackPageview', '/form-sent/' + formId]);
-									break;
-								case 'warning' :
-									$formWarning.fadeIn();
-									break;
-								default :
-									$formError.fadeIn();
+						statusCode: {
+							200: function() {
+								$formSuccess.fadeIn();
+								$formFields.hide();
+								// trigger google analytics
+								_gaq.push(['_trackPageview', '/form-sent/' + formId]);
+							}
+							400: function() {
+								$formWarning.fadeIn();
+							}
+							500: function() {
+								$formError.fadeIn();
 							}
 						}
 					});
