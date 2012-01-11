@@ -202,15 +202,16 @@ if ( !function_exists('array_plot') ) {
 
 if ( !function_exists('sanitize') ) {
 
-	function sanitize($value, $type = 'string')
+	function sanitize($value)
 	{
-		switch ( gettype($value) ) {
-
+		$type = gettype($value);
+		
+		switch ( $type ) {
 			case 'array' :
 				return array_map('sanitize', $value);
 				
 			case 'string' :
-				return filter_var(mysql_real_escape_string($value, FILTER_SANITIZE_STRING));
+				return filter_var($value, FILTER_SANITIZE_STRING);
 			
 			default :
 				return $value;
