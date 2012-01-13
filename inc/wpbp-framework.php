@@ -217,6 +217,20 @@ if ( !function_exists('sanitize') ) {
 				return $value;
 		}
 	}
+	
+}
+
+if ( !function_exists('array_to_xml') ) {
+
+	function array_to_xml(array $arr, SimpleXMLElement $xml)
+	{
+		foreach ($arr as $k => $v) {
+			is_array($v)
+				? array_to_xml($v, $xml->addChild($k))
+				: $xml->addChild($k, $v);
+		}
+		return $xml;
+	}
 
 }
 
