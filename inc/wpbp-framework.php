@@ -6,8 +6,7 @@ if ( !function_exists('get_image_tag') ) {
 	function get_image_tag($args, $options = array())
     {
         if ( is_string($args) ) {
-            $src = $args;
-            $args = array('src' => $src);
+            $args = array('src' => $args);
         }
         elseif ( !is_array($args) ) return false;
         
@@ -18,15 +17,13 @@ if ( !function_exists('get_image_tag') ) {
             }
         }
         
-        if ( isset($args['src']) && is_string($args['src']) && strlen($args['src']) > 0 ) {
-            $tag = '<img ';
-            foreach ( $args as $key => $value ) {
-                if ( isset($key,$value) ) {
-                    $tag .= $key . '="' . $value . '" ';
-                }
-            }
-            $tag .= '/>';
-        }
+        if ( !isset($args['src']) || !is_string($args['src']) || strlen($args['src']) == 0 ) return false;
+        
+		$tag = '<img ';
+		foreach ( $args as $key => $value ) {
+			$tag .= isset($key,$value) ? $key . '="' . $value . '" ' : '';
+		}
+		$tag .= '/>';
         
         return $tag;
     }
