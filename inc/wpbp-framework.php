@@ -1,9 +1,9 @@
 <?php
 
 
-if ( !function_exists('image_tag') ) {
-    
-    function image_tag($args, $options = array())
+if ( !function_exists('get_image_tag') ) {
+
+	function get_image_tag($args, $options = array())
     {
         if ( is_string($args) ) {
             $src = $args;
@@ -19,19 +19,29 @@ if ( !function_exists('image_tag') ) {
         }
         
         if ( isset($args['src']) && is_string($args['src']) && strlen($args['src']) > 0 ) {
-            echo "<img ";
+            $tag = '<img ';
             foreach ( $args as $key => $value ) {
                 if ( isset($key,$value) ) {
-                    echo $key . "=\"" . $value . "\" ";
+                    $tag .= $key . '="' . $value . '" ';
                 }
             }
-            echo "/>";
+            $tag .= '/>';
         }
         
-        return;
+        return $tag;
     }
+    
+    if ( !function_exists('image_tag') ) {
+    	
+    	function image_tag($args, $options = array())
+    	{
+    		echo get_image_tag($args, $options);
+    	}
+    	
+	}
 
 }
+
 
 if ( !function_exists('wpbp_get_full_url') ) {
     
