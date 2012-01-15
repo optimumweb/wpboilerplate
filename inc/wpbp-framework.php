@@ -27,18 +27,17 @@ if ( !function_exists('get_image_tag') ) {
         
         return $tag;
     }
-    
-    if ( !function_exists('image_tag') ) {
-    	
-    	function image_tag($args, $options = array())
-    	{
-    		echo get_image_tag($args, $options);
-    	}
-    	
-	}
 
 }
 
+if ( !function_exists('image_tag') && function_exists('get_image_tag') ) {
+    	
+	function image_tag($args, $options = array())
+	{
+		echo get_image_tag($args, $options);
+	}
+	
+}
 
 if ( !function_exists('wpbp_get_full_url') ) {
     
