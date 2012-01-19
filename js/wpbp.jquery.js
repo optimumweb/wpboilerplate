@@ -221,6 +221,7 @@ jQuery.fn.collapsible = function() {
 	
 		var $this = $(this);
 		var $trigger = ( $this.find('.trigger').size() && $this.find('.trigger') ) || ( $this.find('.title').size() && $this.find('.title') );
+		$trigger.fadeOut().fadeIn();
 		var $content = $this.find('.content');
 		
 		var triggerTarget = $trigger.attr('target');
