@@ -234,18 +234,19 @@ jQuery.fn.collapsible = function() {
 			}
 		}
 		
-		if ( window.location.hash == '#' + $this.attr('id') ) $this.addClass('open').slideDown();
-		
 		if ( $content.is(':visible') ) {
-			$this.addClass('open');
-			$this.removeClass('closed');
+			$this.addClass('open').removeClass('closed');
 			$content.show();
 		}
 		
 		else {
-			$this.addClass('closed');
-			$this.removeClass('open');
+			$this.addClass('closed').removeClass('open');
 			$content.hide();
+		}
+		
+		if ( window.location.hash == '#' + $this.attr('id') ) {
+			$this.addClass('open').removeClass('closed');
+			$content.slideDown();
 		}
 		
 		$trigger.click(function(e) {
