@@ -234,6 +234,8 @@ jQuery.fn.collapsible = function() {
 			}
 		}
 		
+		if ( window.location.hash == '#' + $this.attr('id') ) $this.addClass('open').slideDown();
+		
 		if ( $content.is(':visible') ) {
 			$this.addClass('open');
 			$this.removeClass('closed');
