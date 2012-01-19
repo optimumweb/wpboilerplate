@@ -223,6 +223,8 @@ jQuery.fn.collapsible = function() {
 		var $trigger = $this.find('.trigger, .title');
 		var $content = $this.find('.content');
 		
+		var id = $this.attr('id');
+		
 		var triggerTarget = function() {
 			$trigger.each(function() { if ( typeof $(this).attr('target') != 'undefined' ) return $(this).attr('target'); });
 			return null;
@@ -244,13 +246,14 @@ jQuery.fn.collapsible = function() {
 			$content.hide();
 		}
 		
-		if ( window.location.hash == '#' + $this.attr('id') ) {
+		if ( typeof id != 'undefined' && typeof window.location.hash != 'undefined' && window.location.hash == '#' + id ) {
 			$this.addClass('open').removeClass('closed');
 			$content.slideDown();
 		}
 		
 		$trigger.click(function(e) {
 			e.preventDefault();
+			window.location.hash = ( typeof id != 'undefined' ) ? id : '';
 			if ( $this.hasClass('open') ) {
 				$content.slideUp('slow', function() {
 					$this.addClass('closed');
