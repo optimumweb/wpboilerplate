@@ -227,8 +227,8 @@ jQuery.fn.collapsible = function() {
 			$trigger.each(function() { if ( typeof $(this).attr('target') != 'undefined' ) return $(this).attr('target'); });
 			return null;
 		}
-		if ( triggerTarget != null ) {
-			var $triggerTarget = $(triggerTarget);
+		if ( triggerTarget() != null ) {
+			var $triggerTarget = $(triggerTarget());
 			if ( $triggerTarget.size() > 0 ) {
 				var $content = $triggerTarget;
 			}
