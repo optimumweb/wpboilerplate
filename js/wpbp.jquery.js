@@ -220,7 +220,7 @@ jQuery.fn.collapsible = function() {
 	return this.each(function() {
 	
 		var $this = $(this);
-		var $trigger = $this.find('.trigger');
+		var $trigger = $this.find('.trigger') || $this.find('.title');
 		var $content = $this.find('.content');
 		
 		var triggerTarget = $trigger.attr('target');
