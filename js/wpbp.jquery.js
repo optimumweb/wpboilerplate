@@ -253,22 +253,23 @@ jQuery.fn.collapsible = function() {
 		
 		$trigger.click(function(e) {
 			e.preventDefault();
-			if ( typeof id != 'undefined' ) {
-				$this.attr('id', id + '-tmp');
-				window.location.hash = id;
-				$this.attr('id', id);
-			}
 			if ( $this.hasClass('open') ) {
 				$content.slideUp('slow', function() {
 					$this.addClass('closed');
 					$this.removeClass('open');
 				});
+				if ( typeof id != 'undefined' ) {
+					$this.attr('id', id + '-tmp');
+					window.location.hash = id;
+					$this.attr('id', id);
+				}
 			}
 			else {
 				$content.slideDown('slow', function() {
 					$this.addClass('open');
 					$this.removeClass('closed');
 				});
+				window.location.hash = '';
 			}
 		});
 		
