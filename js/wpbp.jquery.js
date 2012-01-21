@@ -258,17 +258,17 @@ jQuery.fn.collapsible = function() {
 					$this.addClass('closed');
 					$this.removeClass('open');
 				});
-				if ( typeof id != 'undefined' ) {
-					$this.attr('id', id + '-tmp');
-					window.location.hash = id;
-					$this.attr('id', id);
-				}
 			}
 			else {
 				$content.slideDown('slow', function() {
 					$this.addClass('open');
 					$this.removeClass('closed');
 				});
+				if ( typeof id != 'undefined' ) {
+					$this.attr('id', id + '-tmp');
+					window.location.hash = id;
+					$this.attr('id', id);
+				}
 			}
 		});
 		
