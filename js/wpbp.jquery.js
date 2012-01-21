@@ -253,7 +253,11 @@ jQuery.fn.collapsible = function() {
 		
 		$trigger.click(function(e) {
 			e.preventDefault();
-			window.location.hash = ( typeof id != 'undefined' ) ? id : '';
+			if ( typeof id != 'undefined' ) {
+				$this.attr('id', id + '-tmp');
+				window.location.hash = id;
+				$this.attr('id', id);
+			}
 			if ( $this.hasClass('open') ) {
 				$content.slideUp('slow', function() {
 					$this.addClass('closed');
