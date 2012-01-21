@@ -269,7 +269,6 @@ jQuery.fn.collapsible = function() {
 					$this.addClass('open');
 					$this.removeClass('closed');
 				});
-				window.location.hash = '';
 			}
 		});
 		
