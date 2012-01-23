@@ -66,7 +66,9 @@ function wpbp_get_scripts()
     $scripts = "";
 
     if ( $wpbp_options['js_plugins']['modernizr'] ) {
-            $scripts .= script_tag('http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js');
+		wp_deregister_script('modernizr');
+		wp_register_script('modernizr', 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js');
+		wp_enqueue_script('modernizr');
     }
 
     if ( $wpbp_options['js_plugins']['lesscss'] ) {
