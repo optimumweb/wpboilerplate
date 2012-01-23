@@ -73,10 +73,10 @@ function wpbp_get_scripts()
 
     if ( $wpbp_options['js_plugins']['jquery'] ) {
 
-		wpbp_add_script('jquery', 'http://firecdn.net/libs/jquery/1.6.3/jquery.min.js', array(), '1.6.3')
+		wpbp_add_script('jquery', 'http://firecdn.net/libs/jquery/1.6.3/jquery.min.js', array(), '1.6.3');
 
         if ( $wpbp_options['js_plugins']['formalize'] ) {
-        	wpbp_add_script('formalize', 'http://firecdn.net/libs/formalize/js/jquery.formalize.js', array('jquery'))
+        	wpbp_add_script('formalize', 'http://firecdn.net/libs/formalize/js/jquery.formalize.js', array('jquery'));
         }
         
         wpbp_add_script('wpbp_jquery', get_template_directory_uri() . '/js/wpbp.jquery.js', array('jquery'));
