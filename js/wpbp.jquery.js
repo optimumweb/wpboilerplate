@@ -4,6 +4,8 @@ $(document).ready(function() {
 	
 	$('form.ajax, form.ajax-form').ajaxForm();
 	
+	$('.collapsible').collapsible();
+	
 });
 
 $(window).load(function() {
