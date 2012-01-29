@@ -3,9 +3,8 @@
 add_action('wpbp_head', 'wpbp_og_tags');
 add_action('wpbp_head', 'wpbp_google_analytics');
 add_action('wpbp_head', 'wpbp_custom_css');
-add_action('wpbp_stylesheets', 'wpbp_get_stylesheets');
+add_action('wp_enqueue_scripts', 'wpbp_get_styles');
 add_action('wp_enqueue_scripts', 'wpbp_get_scripts');
-add_action('wpbp_breadcrumb', 'wpbp_get_breadcrumb');
 add_action('wpbp_footer', 'wpbp_count_view');
 add_action('wpbp_loop_after', 'wpbp_clear');
 
@@ -111,39 +110,44 @@ function script_tag($args)
 	return "<script type=\"" . $type . "\" src=\"" . $src . "\"></script>\n";
 }
 
-function wpbp_get_stylesheets()
+function wpbp_get_styles()
 {
 
 	global $wpbp_options;
 
-	$styles = "";
-
-	$styles .= stylesheet_link_tag('http://firecdn.net/libs/960gs/960.min.css');
+	wpbp_add_style('960.gs', 'http://firecdn.net/libs/960gs/960.min.css');
 
 	if ( $wpbp_options['js_plugins']['formalize'] ) {
-		$styles .= stylesheet_link_tag('http://firecdn.net/libs/formalize/css/formalize.css');
+		wpbp_add_style('formalize', 'http://firecdn.net/libs/formalize/css/formalize.css');
 	}
 
-	$styles .= stylesheet_link_tag( get_template_directory_uri() . "/css/default.css" );
+	wpbp_add_style('default', get_template_directory_uri() . '/css/default.css');
 
 	if ( $wpbp_options['js_plugins']['lesscss'] ) {
 		$styles .= stylesheet_link_tag( array( 'href' => get_stylesheet_directory_uri() . "/css/custom.less", 'rel' => 'stylesheet/less' ) );
 	} else {
-		$styles .= stylesheet_link_tag( get_stylesheet_directory_uri() . "/css/custom.css" );
+		wpbp_add_style('custom', get_stylesheet_directory_uri() . '/css/custom.css');
 	}
     
     if ( $wpbp_options['css_files'] ) {
         foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['css_files']) ) as $css_file ) {
-            $styles .= stylesheet_link_tag( $css_file );
+            wpbp_add_style( pathinfo($css_file, PATHINFO_FILENAME), $css_file );
         }
     }
 
-	$styles .= stylesheet_link_tag( get_stylesheet_directory_uri() . "/style.css" );
-
-	echo $styles;
+	wpbp_add_style( get_stylesheet_directory_uri() . '/style.css' );
 
 	return;
 }
+
+function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = false)
+{
+	wp_deregister_style($handle);
+	wp_register_style($handle, $src, $deps, $ver, $media);
+	wp_enqueue_style($handle, $src, $deps, $ver, $media);
+}
+
+apply_filters( 'style_loader_tag', "<link id='hig3242g' rel='stylesheet' href='$href' type='text/css' media='$media' />\n", $handle );
 
 function stylesheet_link_tag($args)
 {
@@ -168,11 +172,6 @@ function wpbp_custom_css()
 <?php
     }
 	return;
-}
-
-function wpbp_get_breadcrumb()
-{
-	wpbp_custom_breadcrumb();
 }
 
 function wpbp_count_view()
