@@ -147,7 +147,7 @@ function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $m
 	wp_enqueue_style($handle, $src, $deps, $ver, $media);
 }
 
-apply_filters( 'style_loader_tag', "<link id='hig3242g' rel='stylesheet' href='$href' type='text/css' media='$media' />\n", $handle );
+apply_filters( 'style_loader_tag', "<link rel='stylesheet/less' href='$href' type='text/css' media='$media' />\n", $handle );
 
 function stylesheet_link_tag($args)
 {
