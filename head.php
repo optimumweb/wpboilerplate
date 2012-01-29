@@ -11,11 +11,7 @@
 
 <title><?php wp_title(''); ?></title>
 
-<?php wpbp_stylesheets(); ?>
-
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
-
-<?php wpbp_scripts(); ?>
 
 <?php wp_head(); ?>
 
