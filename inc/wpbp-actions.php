@@ -147,7 +147,7 @@ function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $m
 	wp_enqueue_style($handle, $src, $deps, $ver, $media);
 }
 
-apply_filters( 'style_loader_tag', "<link rel='stylesheet/less' href='$href' type='text/css' media='$media' />\n", $handle );
+apply_filters( 'style_loader_tag', "<link rel='stylesheet' href='$href' type='text/css' media='$media' data-test='1' />\n", $handle );
 
 function stylesheet_link_tag($args)
 {
