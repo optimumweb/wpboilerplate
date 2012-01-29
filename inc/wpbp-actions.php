@@ -115,7 +115,7 @@ function wpbp_get_styles()
 
 	global $wpbp_options;
 
-	wpbp_add_style('960.gs', 'http://firecdn.net/libs/960gs/960.min.css');
+	wpbp_add_style('960gs', 'http://firecdn.net/libs/960gs/960.min.css');
 
 	if ( $wpbp_options['js_plugins']['formalize'] ) {
 		wpbp_add_style('formalize', 'http://firecdn.net/libs/formalize/css/formalize.css');
