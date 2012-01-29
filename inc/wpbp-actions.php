@@ -124,9 +124,9 @@ function wpbp_get_styles()
 	wpbp_add_style('default', get_template_directory_uri() . '/css/default.css');
 
 	if ( $wpbp_options['js_plugins']['lesscss'] ) {
-		wpbp_add_style('custom', get_stylesheet_directory_uri() . '/css/custom.less');
+		wpbp_add_style('custom', get_stylesheet_directory_uri() . '/css/custom.less', array('default'));
 	} else {
-		wpbp_add_style('custom', get_stylesheet_directory_uri() . '/css/custom.css');
+		wpbp_add_style('custom', get_stylesheet_directory_uri() . '/css/custom.css', array('default'));
 	}
     
     if ( $wpbp_options['css_files'] ) {
