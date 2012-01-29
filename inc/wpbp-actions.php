@@ -124,7 +124,7 @@ function wpbp_get_styles()
 	wpbp_add_style('default', get_template_directory_uri() . '/css/default.css');
 
 	if ( $wpbp_options['js_plugins']['lesscss'] ) {
-		$styles .= stylesheet_link_tag( array( 'href' => get_stylesheet_directory_uri() . "/css/custom.less", 'rel' => 'stylesheet/less' ) );
+		wpbp_add_style('custom', get_stylesheet_directory_uri() . '/css/custom.less');
 	} else {
 		wpbp_add_style('custom', get_stylesheet_directory_uri() . '/css/custom.css');
 	}
