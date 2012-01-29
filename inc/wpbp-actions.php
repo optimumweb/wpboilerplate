@@ -140,7 +140,7 @@ function wpbp_get_styles()
 	return;
 }
 
-function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = false)
+function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
 {
 	wp_deregister_style($handle);
 	wp_register_style($handle, $src, $deps, $ver, $media);
