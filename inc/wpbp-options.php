@@ -113,8 +113,7 @@ function wpbp_get_default_theme_options()
 		'google_analytics_id'   => '',
         'css_files'             => '',
 		'custom_css'            => '',
-        'js_files'              => '',
-		'js_plugins'            => array('lesscss' => 1, 'modernizr' => 1, 'formalize' => 1, 'jquery' => 1)
+        'js_files'              => ''
 	);
 
 	return apply_filters('wpbp_default_theme_options', $default_theme_options);
@@ -215,24 +214,6 @@ function wpbp_theme_options_render_page()
 					</td>
 				</tr>
 
-				<tr valign="top"><th scope="row"><?php _e('JavaScript Plugins', 'wpbp'); ?></th>
-					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('JavaScript Plugins', 'wpbp'); ?></span></legend>
-							<input type="checkbox" name="wpbp_theme_options[js_plugins][lesscss]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['lesscss'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> LessCSS<br />
-              				<small class="description"><?php _e('LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions.', 'wpbp'); ?></small>
-							<br />
-							<input type="checkbox" name="wpbp_theme_options[js_plugins][modernizr]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['modernizr'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> Modernizr<br />
-              				<small class="description"><?php _e('Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.', 'wpbp'); ?></small>
-							<br />
-							<input type="checkbox" name="wpbp_theme_options[js_plugins][jquery]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['jquery'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> jQuery<br />
-              				<small class="description"><?php _e('jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.', 'wpbp'); ?></small>
-							<br />
-							<input type="checkbox" name="wpbp_theme_options[js_plugins][formalize]" value="1" id="sidebar_class" <?php echo ( $wpbp_options['js_plugins']['formalize'] == 1 ) ? "checked=\"checked\"" : ""; ?> /> Formalize<br />
-              				<small class="description"><?php _e('Break the cycle of inconsistent form defaults, style forms with impunity! <i>(requires jQuery)</i>', 'wpbp'); ?></small>
-						</fieldset>
-					</td>
-				</tr>
-
 			</table>
 
 			<?php submit_button(); ?>
@@ -259,10 +240,6 @@ function wpbp_theme_options_validate($input)
     $output['css_files'] = ( isset( $input['css_files'] ) ) ? $input['css_files'] : null;
 	$output['custom_css'] = ( isset( $input['custom_css'] ) ) ? $input['custom_css'] : null;
     $output['js_files'] = ( isset( $input['js_files'] ) ) ? $input['js_files'] : null;
-	$output['js_plugins']['lesscss'] = ( isset( $input['js_plugins']['lesscss'] ) ) ? $input['js_plugins']['lesscss'] : 0;
-	$output['js_plugins']['modernizr'] = ( isset( $input['js_plugins']['modernizr'] ) ) ? $input['js_plugins']['modernizr'] : 0;
-	$output['js_plugins']['jquery'] = ( isset( $input['js_plugins']['jquery'] ) ) ? $input['js_plugins']['jquery'] : 0;
-	$output['js_plugins']['formalize'] = ( isset( $input['js_plugins']['formalize'] ) && $output['js_plugins']['jquery'] != 0 ) ? $input['js_plugins']['formalize'] : 0;
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);
 }
