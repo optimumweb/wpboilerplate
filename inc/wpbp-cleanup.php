@@ -392,6 +392,12 @@ if (get_option('blogdescription') === 'Just another WordPress site') {
 	add_action('admin_notices', 'wpbp_notice_tagline');
 }
 
+// WPML fixes
+// prevent loading WPML css & js
+if ( !defined('ICL_DONT_LOAD_NAVIGATION_CSS') ) define('ICL_DONT_LOAD_NAVIGATION_CSS', true);
+if ( !defined('ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS') ) define('ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);
+if ( !defined('ICL_DONT_LOAD_LANGUAGES_JS') ) define('ICL_DONT_LOAD_LANGUAGES_JS', true);
+
 // set the post revisions to 5 unless the constant
 // was set in wp-config.php to avoid DB bloat
 if (!defined('WP_POST_REVISIONS')) define('WP_POST_REVISIONS', 5);
