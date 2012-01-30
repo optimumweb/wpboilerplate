@@ -111,7 +111,7 @@ function wpbp_get_styles()
 
 function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
 {
-	if ( @file_get_contents($src, null, null, 0, 1) !== false ) {
+	if ( true || @file_get_contents($src, null, null, 0, 1) !== false ) {
 		wp_deregister_style($handle);
 		wp_register_style($handle, $src, $deps, $ver, $media);
 		wp_enqueue_style($handle, $src, $deps, $ver, $media);
