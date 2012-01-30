@@ -65,16 +65,16 @@ function wpbp_get_scripts()
     wpbp_add_script('combine', 'http://firecdn.net/libs/combine.js.php?s=modernizr,less,jquery');
 
     if ( $wpbp_options['js_plugins']['modernizr'] ) {
-		wpbp_add_script('modernizr', 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js', array(), '2.0.6');
+		//wpbp_add_script('modernizr', 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js', array(), '2.0.6');
     }
 
     if ( $wpbp_options['js_plugins']['lesscss'] ) {
-    	wpbp_add_script('lesscss', 'http://firecdn.net/libs/less/1.1.3/less.min.js', array(), '1.1.3');
+    	//wpbp_add_script('lesscss', 'http://firecdn.net/libs/less/1.1.3/less.min.js', array(), '1.1.3');
     }
 
     if ( $wpbp_options['js_plugins']['jquery'] ) {
 
-		wpbp_add_script('jquery', 'http://firecdn.net/libs/jquery/1.6.3/jquery.min.js', array(), '1.6.3');
+		//wpbp_add_script('jquery', 'http://firecdn.net/libs/jquery/1.6.3/jquery.min.js', array(), '1.6.3');
 
         if ( $wpbp_options['js_plugins']['formalize'] ) {
         	wpbp_add_script('formalize', 'http://firecdn.net/libs/formalize/js/jquery.formalize.js', array('jquery'));
