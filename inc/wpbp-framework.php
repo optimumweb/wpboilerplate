@@ -39,6 +39,35 @@ if ( !function_exists('image_tag') && function_exists('wpbp_get_image_tag') ) {
 	
 }
 
+if ( !function_exists('script_tag') ) {
+
+	function script_tag($args)
+	{
+		extract( array_merge( array(
+			'src'	=> ( is_string($args) ? $args : '' ),
+			'type'	=> 'text/javascript'
+		), ( is_array($args) ? $args : array() ) ) );
+		return "<script type=\"" . $type . "\" src=\"" . $src . "\"></script>\n";
+	}
+
+}
+
+if ( !function_exists('stylesheet_link_tag') ) {
+
+	function stylesheet_link_tag($args)
+	{
+		extract( array_merge( array(
+			'href'	=> ( is_string($args) ? $args : '' ),
+			'rel'	=> 'stylesheet',
+			'media'	=> 'all',
+			'type'	=> 'text/css'
+		), ( is_array($args) ? $args : array() ) ) );
+	
+		return "<link rel=\"" . $rel . "\" href=\"" . $href . "\" type=\"" . $type . "\" media=\"" . $media . "\" />\n";
+	}
+
+}
+
 if ( !function_exists('wpbp_get_full_url') ) {
     
     function wpbp_get_full_url($url)

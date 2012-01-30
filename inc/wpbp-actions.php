@@ -80,18 +80,11 @@ function wpbp_get_scripts()
 
 function wpbp_add_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
 {
-	wp_deregister_script($handle);
-	wp_register_script($handle, $src, $deps, $ver, $in_footer);
-	wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
-}
-
-function script_tag($args)
-{
-	extract( array_merge( array(
-		'src'	=> ( is_string($args) ? $args : '' ),
-		'type'	=> 'text/javascript'
-	), ( is_array($args) ? $args : array() ) ) );
-	return "<script type=\"" . $type . "\" src=\"" . $src . "\"></script>\n";
+	if ( @file_get_contents($src, null, null, 0, 1) !== false ) {
+		wp_deregister_script($handle);
+		wp_register_script($handle, $src, $deps, $ver, $in_footer);
+		wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
+	}
 }
 
 function wpbp_get_styles()
@@ -118,9 +111,11 @@ function wpbp_get_styles()
 
 function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
 {
-	wp_deregister_style($handle);
-	wp_register_style($handle, $src, $deps, $ver, $media);
-	wp_enqueue_style($handle, $src, $deps, $ver, $media);
+	if ( @file_get_contents($src, null, null, 0, 1) !== false ) {
+		wp_deregister_style($handle);
+		wp_register_style($handle, $src, $deps, $ver, $media);
+		wp_enqueue_style($handle, $src, $deps, $ver, $media);
+	}
 }
 
 function enqueue_less_styles($tag, $handle) {
@@ -137,18 +132,6 @@ function enqueue_less_styles($tag, $handle) {
     return $tag;
 }
 add_filter('style_loader_tag', 'enqueue_less_styles', 5, 2);
-
-function stylesheet_link_tag($args)
-{
-	extract( array_merge( array(
-		'href'	=> ( is_string($args) ? $args : '' ),
-		'rel'	=> 'stylesheet',
-		'media'	=> 'all',
-		'type'	=> 'text/css'
-	), ( is_array($args) ? $args : array() ) ) );
-
-	return "<link rel=\"" . $rel . "\" href=\"" . $href . "\" type=\"" . $type . "\" media=\"" . $media . "\" />\n";
-}
 
 function wpbp_custom_css()
 {
@@ -172,63 +155,6 @@ function wpbp_count_view()
 		$post_views = ( isset($post_views) ) ? $post_views + 1 : 1;
 		update_post_meta($post_ID, 'wpbp_post_views', $post_views);
 	}
-}
-
-add_action('admin_notices', 'delayed_admin_notices');
-
-function delayed_admin_notices()
-{
-    $delayed_admin_notices = get_delayed_admin_notices();
-    foreach ( $delayed_admin_notices as $notice ) {
-        echo "<div class=\"" . $notice['type'] . "\"><p>" . $notice['message'] . "</p></div>";
-    }
-    reset_delayed_admin_notices();
-}
-
-function reset_delayed_admin_notices()
-{
-     return delete_option('delayed_admin_notices');
-}
-
-function get_delayed_admin_notices()
-{
-    return unserialize( get_option('delayed_admin_notices', serialize(array())) );
-}
-
-function add_delayed_admin_notice($message, $type = 'updated')
-{
-    $delayed_admin_notices = get_delayed_admin_notices();
-    $delayed_admin_notices = ( isset($delayed_admin_notices) && is_array($delayed_admin_notices) ) ? $delayed_admin_notices : array();
-    $delayed_admin_notices[] = array('message' => $message, 'type' => $type);
-    $delayed_admin_notices = serialize($delayed_admin_notices);
-    update_option('delayed_admin_notices', $delayed_admin_notices);
-}
-
-add_action('save_post', 'wpbp_validate_featured_image_url');
-
-function wpbp_validate_featured_image_url($post_ID)
-{
-    if ( has_featured_image($post_ID) ) {
-        $featured_image = get_featured_image($post_ID);
-        $featured_image_url = $featured_image['url'];
-        if ( wpbp_is_valid_image($featured_image_url) ) {
-            $upload_dir = wp_upload_dir();
-            if ( strpos($featured_image_url, $upload_dir['baseurl']) === false ) {
-                $local_featured_image = download_image_from_url($featured_image_url);
-                if ( isset($local_featured_image) && is_array($local_featured_image) && isset($local_featured_image['url']) ) {
-                    update_post_meta($post_ID, 'featured_image_url', $local_featured_image['url'], $featured_image_url);
-                    add_delayed_admin_notice(__('The featured image was downloaded locally!', 'wpbp'), 'updated');
-                }
-                else {
-                    add_delayed_admin_notice(__('An error occured when downloading the featured image locally!', 'wpbp'), 'error');
-                }
-            }
-        }
-        else {
-            add_delayed_admin_notice(__('Please make sure your featured image url is valid!', 'wpbp'), 'error');
-            update_post_meta($post_ID, 'featured_image_url', '', $featured_image_url);
-        }
-    }
 }
 
 function wpbp_clear()
