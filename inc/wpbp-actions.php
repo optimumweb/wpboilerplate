@@ -61,6 +61,8 @@ function wpbp_get_scripts()
 {
 
     global $wpbp_options;
+    
+    wpbp_add_script('combine', 'http://firecdn.net/libs/combine.js.php?s=modernizr,less,jquery');
 
     if ( $wpbp_options['js_plugins']['modernizr'] ) {
 		wpbp_add_script('modernizr', 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js', array(), '2.0.6');
