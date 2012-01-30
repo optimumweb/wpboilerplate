@@ -1,22 +1,20 @@
+# Apache configuration file
+# httpd.apache.org/docs/2.2/mod/quickreference.html
 
-# BEGIN HTML5 Boilerplate .htaccess
+# Note .htaccess files are an overhead, this logic should be in your Apache config if possible
+# httpd.apache.org/docs/2.2/howto/htaccess.html
+
+# Techniques in here adapted from all over, including:
+#   Kroc Camen: camendesign.com/.htaccess
+#   perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/
+#   Sample .htaccess file of CMS MODx: modxcms.com
+
 
 ###
-### This contains the HTML5 Boilerplate .htaccess that can be found at:
-###  github.com/paulirish/html5-boilerplate/blob/master/.htaccess
+### If you run a webserver other than Apache, consider:
+### github.com/h5bp/server-configs
 ###
-### Commented out by default:
-###  Expires headers:      Use WP Super Cache or W3 Total Cache (unless using the H5BP build script)
-###  ETag removal:         Use WP Super Cache or W3 Total Cache (unless using the H5BP build script)
-###  Start rewrite engine: Handled by WordPress
-###  Suppress/force www:   Handled by WordPress
-###  Options -MultiViews:  Causes a server 500 error on most shared hosts
-###  Custom 404 page:      Handled by WordPress
-###
-### Anytime you update this file the .htaccess file in the root of your
-### WordPress install is automatically updated with the changes whenever
-### the admin is refreshed (see roots-htaccess.php)
-###
+
 
 
 # ----------------------------------------------------------------------
@@ -30,7 +28,7 @@
 <IfModule mod_headers.c>
   Header set X-UA-Compatible "IE=Edge,chrome=1"
   # mod_headers can't match by content-type, but we don't want to send this header on *everything*...
-  <FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|xpi|safariextz|vcf)$" >
+  <FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|oex|xpi|safariextz|vcf)$" >
     Header unset X-UA-Compatible
   </FilesMatch>
 </IfModule>
@@ -40,7 +38,7 @@
 # Cross-domain AJAX requests
 # ----------------------------------------------------------------------
 
-# Serve cross-domain ajax requests, disabled.
+# Serve cross-domain Ajax requests, disabled by default.
 # enable-cors.org
 # code.google.com/p/html5security/wiki/CrossOriginRequestSecurity
 
@@ -48,6 +46,26 @@
 #    Header set Access-Control-Allow-Origin "*"
 #  </IfModule>
 
+
+# ----------------------------------------------------------------------
+# CORS-enabled images (@crossorigin)
+# ----------------------------------------------------------------------
+
+# Send CORS headers if browsers request them; enabled by default for images.
+# developer.mozilla.org/en/CORS_Enabled_Image
+# blog.chromium.org/2011/07/using-cross-domain-images-in-webgl-and.html
+# hacks.mozilla.org/2011/11/using-cors-to-load-webgl-textures-from-cross-domain-images/
+# wiki.mozilla.org/Security/Reviews/crossoriginAttribute
+
+<IfModule mod_setenvif.c>
+  <IfModule mod_headers.c>
+    # mod_headers, y u no match by Content-Type?!
+    <FilesMatch "\.(gif|png|jpe?g|svg|svgz|ico|webp)$">
+      SetEnvIf Origin ":" IS_CORS
+      Header set Access-Control-Allow-Origin "*" env=IS_CORS
+    </FilesMatch>
+  </IfModule>
+</IfModule>
 
 
 # ----------------------------------------------------------------------
@@ -85,7 +103,7 @@ AddType video/ogg                      ogv
 AddType video/mp4                      mp4 m4v
 AddType video/webm                     webm
 
-# SVG.
+# SVG
 #   Required for svg webfonts on iPad
 #   twitter.com/FontSquirrel/status/14855840545
 AddType     image/svg+xml              svg svgz
@@ -93,19 +111,21 @@ AddEncoding gzip                       svgz
 
 # Webfonts
 AddType application/vnd.ms-fontobject  eot
-AddType application/x-font-ttf    ttf ttc
+AddType application/x-font-ttf         ttf ttc
 AddType font/opentype                  otf
 AddType application/x-font-woff        woff
 
 # Assorted types
-AddType image/x-icon                   ico
-AddType image/webp                     webp
-AddType text/cache-manifest            appcache manifest
-AddType text/x-component               htc
-AddType application/x-chrome-extension crx
-AddType application/x-xpinstall        xpi
-AddType application/octet-stream       safariextz
-AddType text/x-vcard                   vcf
+AddType image/x-icon                        ico
+AddType image/webp                          webp
+AddType text/cache-manifest                 appcache manifest
+AddType text/x-component                    htc
+AddType application/x-chrome-extension      crx
+AddType application/x-opera-extension       oex
+AddType application/x-xpinstall             xpi
+AddType application/octet-stream            safariextz
+AddType application/x-web-app-manifest+json webapp
+AddType text/x-vcard                        vcf
 
 
 
@@ -245,10 +265,6 @@ AddType text/x-vcard                   vcf
   ExpiresByType text/css                  "access plus 1 year"
   ExpiresByType application/javascript    "access plus 1 year"
 
-  <IfModule mod_headers.c>
-    Header append Cache-Control "public"
-  </IfModule>
-
 </IfModule>
 
 
@@ -277,10 +293,10 @@ FileETag None
 # combination with the "ExpiresByType" rules for images (see above). If
 # needed, un-comment the following rules.
 
- BrowserMatch "MSIE" brokenvary=1
- BrowserMatch "Mozilla/4.[0-9]{2}" brokenvary=1
- BrowserMatch "Opera" !brokenvary
- SetEnvIf brokenvary 1 force-no-vary
+# BrowserMatch "MSIE" brokenvary=1
+# BrowserMatch "Mozilla/4.[0-9]{2}" brokenvary=1
+# BrowserMatch "Opera" !brokenvary
+# SetEnvIf brokenvary 1 force-no-vary
 
 
 
@@ -306,10 +322,10 @@ FileETag None
 # Turning on the rewrite engine is necessary for the following rules and features.
 # FollowSymLinks must be enabled for this to work.
 
-#<IfModule mod_rewrite.c>
-#  Options +FollowSymlinks
-#  RewriteEngine On
-#</IfModule>
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  RewriteEngine On
+</IfModule>
 
 
 
@@ -333,11 +349,11 @@ FileETag None
 # Option 1:
 # Rewrite "www.example.com -> example.com"
 
-#<IfModule mod_rewrite.c>
-#  RewriteCond %{HTTPS} !=on
-#  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-#  RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
-#</IfModule>
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
 
 # ----------------------------------------------------------------------
 
@@ -363,7 +379,7 @@ FileETag None
 # /css/style.20110203.css to /css/style.css
 
 # To understand why this is important and a better idea than all.css?v1231,
-# read: github.com/paulirish/html5-boilerplate/wiki/Version-Control-with-Cachebusting
+# read: github.com/h5bp/html5-boilerplate/wiki/Version-Control-with-Cachebusting
 
 # Uncomment to enable.
 # <IfModule mod_rewrite.c>
@@ -396,7 +412,7 @@ FileETag None
 # without -MultiViews, Apache will give a 404 for a rewrite if a folder of the same name does not exist
 #   e.g. /blog/hello : webmasterworld.com/apache/3808792.htm
 
-#Options -MultiViews
+Options -MultiViews
 
 
 
@@ -405,7 +421,7 @@ FileETag None
 # ----------------------------------------------------------------------
 
 # You can add custom pages to handle 500 or 403 pretty easily, if you like.
-#ErrorDocument 404 /404.html
+ErrorDocument 404 /404.html
 
 
 
@@ -417,7 +433,7 @@ FileETag None
 AddDefaultCharset utf-8
 
 # Force UTF-8 for a number of file formats
-AddCharset utf-8 .html .css .js .xml .json .rss .atom
+AddCharset utf-8 .css .js .xml .json .rss .atom
 
 
 
@@ -443,8 +459,20 @@ AddCharset utf-8 .html .css .js .xml .json .rss .atom
 # Block access to "hidden" directories whose names begin with a period. This
 # includes directories used by version control systems such as Subversion or Git.
 <IfModule mod_rewrite.c>
+  RewriteCond %{SCRIPT_FILENAME} -d
+  RewriteCond %{SCRIPT_FILENAME} -f
   RewriteRule "(^|/)\." - [F]
 </IfModule>
+
+
+# Block access to backup and source files
+# This files may be left by some text/html editors and
+# pose a great security danger, when someone can access them
+<FilesMatch "\.(bak|config|sql|fla|psd|ini|log|sh|inc|~|swp|dist)$">
+  Order allow,deny
+  Deny from all
+  Satisfy All
+</FilesMatch>
 
 
 # If your server is not already configured as such, the following directive
@@ -506,5 +534,3 @@ AddCharset utf-8 .html .css .js .xml .json .rss .atom
 <IfModule php5_module>
   php_value session.cookie_httponly true
 </IfModule>
-
-# END HTML5 Boilerplate
