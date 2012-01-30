@@ -80,11 +80,10 @@ function wpbp_get_scripts()
 
 function wpbp_add_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
 {
-	if ( @file_get_contents($src, null, null, 0, 1) !== false ) {
-		wp_deregister_script($handle);
-		wp_register_script($handle, $src, $deps, $ver, $in_footer);
-		wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
-	}
+	if ( $src !== false && @file_get_contents($src, null, null, 0, 1) === false ) return false;
+	wp_deregister_script($handle);
+	wp_register_script($handle, $src, $deps, $ver, $in_footer);
+	wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
 }
 
 function wpbp_get_styles()
@@ -111,11 +110,10 @@ function wpbp_get_styles()
 
 function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
 {
-	if ( true || @file_get_contents($src, null, null, 0, 1) !== false ) {
-		wp_deregister_style($handle);
-		wp_register_style($handle, $src, $deps, $ver, $media);
-		wp_enqueue_style($handle, $src, $deps, $ver, $media);
-	}
+	if ( $src !== false && @file_get_contents($src, null, null, 0, 1) === false ) return false;
+	wp_deregister_style($handle);
+	wp_register_style($handle, $src, $deps, $ver, $media);
+	wp_enqueue_style($handle, $src, $deps, $ver, $media);
 }
 
 function enqueue_less_styles($tag, $handle) {
