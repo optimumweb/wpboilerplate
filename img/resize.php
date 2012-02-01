@@ -829,7 +829,7 @@ class timthumb {
 		if(file_exists ($this->docRoot . '/' . $src)) {
 			$this->debug(3, "Found file as " . $this->docRoot . '/' . $src);
 			$real = realpath($this->docRoot . '/' . $src);
-			if(strpos($real, $realDocRoot) === 0){
+			if(stripos(preg_replace(“/\\\/”, “/”, $real), $this->docRoot) === 0) {
 				return $real;
 			} else {
 				$this->debug(1, "Security block: The file specified occurs outside the document root.");
