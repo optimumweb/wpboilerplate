@@ -113,7 +113,7 @@ function wpbp_get_styles()
 	
 	wp_register_style('default', get_template_directory_uri() . '/css/default.css');
 
-	wp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css', array('default', 'custom'));
+	wp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css');
 	
 	if ( $wpbp_options['css_files'] ) {
         foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['css_files']) ) as $css_file ) {
