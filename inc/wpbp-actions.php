@@ -1,11 +1,14 @@
 <?php
 
+add_action('init', 'wpbp_get_styles');
+add_action('init', 'wpbp_get_scripts');
+
 add_action('wpbp_head', 'wpbp_og_tags');
 add_action('wpbp_head', 'wpbp_google_analytics');
 add_action('wpbp_head', 'wpbp_custom_css');
-add_action('wp_enqueue_scripts', 'wpbp_get_styles');
-add_action('wp_enqueue_scripts', 'wpbp_get_scripts');
+
 add_action('wpbp_footer', 'wpbp_count_view');
+
 add_action('wpbp_loop_after', 'wpbp_clear');
 
 function wpbp_google_analytics()
@@ -62,9 +65,19 @@ function wpbp_get_scripts()
 
     global $wpbp_options;
 
-	wpbp_add_script('modernizr', 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js', array(), '2.0.6');
-	wpbp_add_script('lesscss', 'http://firecdn.net/libs/less/1.1.3/less.min.js', array(), '1.1.3');
-	wpbp_add_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), '1.7.1');
+	// Available Javascript Librairies
+	// You will need to enqueue the ones you want in your child theme
+	wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), '1.7.1');
+	wp_register_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', array(), '1.8.16');
+	wp_register_script('ext-core', 'https://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js', array(), '3.1.0');
+	wp_register_script('dojo', 'https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js', array(), '1.6.1');
+	wp_register_script('mootools', 'https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js', array(), '1.4.1');
+	wp_register_script('modernizr', 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js', array(), '2.0.6');
+	wp_register_script('lesscss', 'http://firecdn.net/libs/less/less.min.js', array(), 'latest');
+	wp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), 'latest');
+	wp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), 'latest');
+	wp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), 'latest');
+	
 	wpbp_add_script('wpbp_jquery', get_template_directory_uri() . '/js/wpbp.jquery.js', array('jquery'));
     
     if ( $wpbp_options['js_files'] ) {
@@ -82,7 +95,16 @@ function wpbp_add_script($handle, $src = false, $deps = array(), $ver = false, $
 {
 	wp_deregister_script($handle);
 	wp_register_script($handle, $src, $deps, $ver, $in_footer);
-	wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
+	wp_enqueue_script($handle);
+}
+
+function wpbp_enqueue_scripts( $scripts = array() )
+{
+	if ( is_array( $scripts ) ) {
+		foreach ( $scripts as $handle ) {
+			wp_enqueue_script($handle);
+		}
+	}
 }
 
 function wpbp_get_styles()
@@ -90,7 +112,8 @@ function wpbp_get_styles()
 
 	global $wpbp_options;
 
-	wpbp_add_style('960gs', 'http://firecdn.net/libs/960gs/960.min.css');
+	wp_register_style('960gs', 'http://firecdn.net/libs/960gs/960.min.css');
+	
 	wpbp_add_style('default', get_template_directory_uri() . '/css/default.css');
     
     if ( $wpbp_options['css_files'] ) {
@@ -99,10 +122,10 @@ function wpbp_get_styles()
         }
     }
 
-	wpbp_add_style('custom-less', get_stylesheet_directory_uri() . '/css/custom.less', array('default'));
-	wpbp_add_style('custom', get_stylesheet_directory_uri() . '/css/custom.css', array('default'));
+	wp_register_style('custom-less', get_stylesheet_directory_uri() . '/css/custom.less', array('default'));
+	wp_register_style('custom', get_stylesheet_directory_uri() . '/css/custom.css', array('default'));
 
-	wpbp_add_style('wp-meta', get_stylesheet_directory_uri() . '/style.css');
+	wpbp_add_style('wp-meta', get_stylesheet_directory_uri() . '/style.css', array('default', 'custom'));
 
 	return;
 }
@@ -112,6 +135,15 @@ function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $m
 	wp_deregister_style($handle);
 	wp_register_style($handle, $src, $deps, $ver, $media);
 	wp_enqueue_style($handle, $src, $deps, $ver, $media);
+}
+
+function wpbp_enqueue_styles( $styles = array() )
+{
+	if ( is_array( $styles ) ) {
+		foreach ( $styles as $handle ) {
+			wp_enqueue_style($handle);
+		}
+	}
 }
 
 function enqueue_less_styles($tag, $handle) {
@@ -144,9 +176,9 @@ function wpbp_custom_css()
 
 function wpbp_count_view()
 {
-	global $wp_query;
-	if ( is_single() && isset( $wp_query->post->ID ) ) {
-		$post_ID = $wp_query->post->ID;
+	global $post;
+	if ( is_single() && isset( $post->ID ) ) {
+		$post_ID = $post->ID;
 		$post_views = get_post_meta($post_ID, 'wpbp_post_views', true);
 		$post_views = ( isset($post_views) ) ? $post_views + 1 : 1;
 		update_post_meta($post_ID, 'wpbp_post_views', $post_views);

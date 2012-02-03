@@ -7,10 +7,10 @@
 		<header id="header" role="banner">
 			<?php wpbp_header_inside(); ?>
             <div class="container <?php echo $wpbp_options['container_class']; ?>">
-                <h1 id="site-title">
-                    <a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a>
-				    <span><?php bloginfo('description'); ?></span>
-			    </h1>
+            	<div id="site-title">
+					<h1><a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a></h1>
+					<h3><?php bloginfo('description'); ?></h3>
+			    </div>
 			    <nav id="main-nav" role="navigation">
 			    	<div class="container">
 				    	<?php wp_nav_menu( array( 'theme_location' => 'primary_navigation' ) ); ?>
