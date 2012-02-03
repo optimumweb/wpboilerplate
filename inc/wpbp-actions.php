@@ -156,6 +156,7 @@ function enqueue_less_styles($tag, $handle) {
         $rel = isset($wp_styles->registered[$handle]->extra['alt']) && $wp_styles->registered[$handle]->extra['alt'] ? 'alternate stylesheet' : 'stylesheet';
         $title = isset($wp_styles->registered[$handle]->extra['title']) ? "title='" . esc_attr( $wp_styles->registered[$handle]->extra['title'] ) . "'" : '';
         $tag = "<link rel='stylesheet' id='$handle-css' $title href='$href' type='text/less' media='$media' />\n";
+        $tag = preg_replace('/\s+/', ' ', $tag);
     }
     return $tag;
 }
