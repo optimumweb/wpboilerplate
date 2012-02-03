@@ -67,17 +67,17 @@ function wpbp_get_scripts()
 
 	// Available Javascript Librairies
 	// You will need to enqueue the ones you want in your child theme
-	wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), '1.7.1');
-	wp_register_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', array(), '1.8.16');
-	wp_register_script('ext-core', 'https://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js', array(), '3.1.0');
-	wp_register_script('dojo', 'https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js', array(), '1.6.1');
-	wp_register_script('mootools', 'https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js', array(), '1.4.1');
-	wp_register_script('modernizr', 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js', array(), '2.0.6');
-	wp_register_script('lesscss', 'http://firecdn.net/libs/less/less.min.js', array(), 'latest');
-	wp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), 'latest');
-	wp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), 'latest');
-	wp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), 'latest');
-	wp_register_script('wpbp', get_template_directory_uri() . '/js/wpbp.js', array('jquery'), 'latest');
+	wpbp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), '1.7.1');
+	wpbp_register_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', array(), '1.8.16');
+	wpbp_register_script('ext-core', 'https://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js', array(), '3.1.0');
+	wpbp_register_script('dojo', 'https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js', array(), '1.6.1');
+	wpbp_register_script('mootools', 'https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js', array(), '1.4.1');
+	wpbp_register_script('modernizr', 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js', array(), '2.0.6');
+	wpbp_register_script('lesscss', 'http://firecdn.net/libs/less/less.min.js', array(), 'latest');
+	wpbp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), 'latest');
+	wpbp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), 'latest');
+	wpbp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), 'latest');
+	wpbp_register_script('wpbp', get_template_directory_uri() . '/js/wpbp.js', array('jquery'), 'latest');
     
     if ( $wpbp_options['js_files'] ) {
         foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['js_files']) ) as $js_file ) {
@@ -88,10 +88,15 @@ function wpbp_get_scripts()
 	return;
 }
 
-function wpbp_add_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
+function wpbp_register_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
 {
 	wp_deregister_script($handle);
 	wp_register_script($handle, $src, $deps, $ver, $in_footer);
+}
+
+function wpbp_add_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
+{
+	wpbp_register_script($handle, $src, $deps, $ver, $in_footer);
 	wp_enqueue_script($handle);
 }
 
@@ -109,11 +114,9 @@ function wpbp_get_styles()
 
 	global $wpbp_options;
 
-	wp_register_style('960gs', 'http://firecdn.net/libs/960gs/960.min.css');
-	
-	wp_register_style('default', get_template_directory_uri() . '/css/default.css');
-
-	wp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css');
+	wpbp_register_style('960gs', 'http://firecdn.net/libs/960gs/960.min.css');
+	wpbp_register_style('default', get_template_directory_uri() . '/css/default.css');
+	wpbp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css');
 	
 	if ( $wpbp_options['css_files'] ) {
         foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['css_files']) ) as $css_file ) {
@@ -124,10 +127,15 @@ function wpbp_get_styles()
 	return;
 }
 
-function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
+function wpbp_register_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
 {
 	wp_deregister_style($handle);
 	wp_register_style($handle, $src, $deps, $ver, $media);
+}
+
+function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
+{
+	wpbp_register_style($handle, $src, $deps, $ver, $media);
 	wp_enqueue_style($handle, $src, $deps, $ver, $media);
 }
 
