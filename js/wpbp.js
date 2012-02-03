@@ -1,0 +1,279 @@
+$(document).ready(function() {
+
+	$('.ir').IR();
+	
+	$('form.ajax, form.ajax-form').ajaxForm();
+	
+	$('.collapsible').collapsible();
+	
+});
+
+$(window).load(function() {
+
+	$('.valign, .vAlign').vAlign();
+
+});
+
+/*
+ * IR plugin
+ *
+ * Replaces elements with the 'ir' class with an image specified by 'data-ir'.
+ * @author Jonathan Roy <jroy@optimumweb.ca>
+ * @version 1.1
+ * @package wpboilerplate
+ */
+ 
+jQuery.fn.IR = function() {
+	return this.each(function() {
+		var $this = $(this);
+		var ir = $this.data('ir');
+		if ( typeof ir != 'undefined' ) {
+			$this.css('background-image', 'url(' + ir + ')');
+		}
+	});
+}
+
+
+/*
+ * VALIGN plugin
+ *
+ * Aligns vertically elements with the 'valign' class with reference either the parent element
+ * or another element specified by 'data-ref'.
+ * @author Jonathan Roy <jroy@optimumweb.ca>
+ * @version 1.1
+ * @package wpboilerplate
+ */
+
+jQuery.fn.vAlign = function() {
+	return this.each(function() {
+		var $this = $(this);
+		var $ref = ( typeof $this.data('ref') != 'undefined' ) ? $($this.data('ref')) : $this.parent();
+		var thisHeight = $this.outerHeight(true), refHeight = $ref.outerHeight(true);
+		var offset = Math.round( ( refHeight - thisHeight ) / 2 );
+		$this.css('margin-top', offset + 'px').css('margin-bottom', offset + 'px');
+	});
+}
+
+
+/*
+ * AJAX FORM plugin
+ *
+ * Validate and send a form asynchronously
+ * @author Jonathan Roy <jroy@optimumweb.ca>
+ * @version 2.1
+ * @package wpboilerplate
+ */
+
+jQuery.fn.ajaxForm = function() {
+
+	return this.each(function() {
+
+		// define form elements
+		var $form = $(this);
+		var $formFields = $form.find('.fields');
+		var $formSuccess = $form.find('.success');
+		var $formError = $form.find('.error');
+		var $formWarning = $form.find('.warning');
+		var $formLoading = $form.find('.loading');
+
+		// define form properties
+		var formId = $form.attr('id');
+		var formAction = $form.attr('action');
+		var formMethod = $form.attr('method');
+
+		// hide response messages and loading
+		$formSuccess.hide();
+		$formWarning.hide();
+		$formError.hide();
+		$formLoading.hide();
+
+		$form.submit(function(e) {
+
+			$formSuccess.hide();
+			$formWarning.hide();
+			$formError.hide();
+			
+			// show that we are working in the background
+			$formLoading.show();
+
+			// assume no errors in submission
+			var inputError = false;
+
+			// validate all required fields
+			$form.find('.required').each(function() {
+				var $input = $(this);
+				if ( $input.val() == '' ) {
+					inputError = true;
+					$input.removeClass('valid');
+					$input.addClass('invalid');
+				}
+				else {
+					$input.removeClass('invalid');
+					$input.addClass('valid');
+				}
+			});
+
+			// validate emails
+			$form.find('.valid.email').each(function() {
+				var $input = $(this);
+				var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+				if ( !emailRegex.test( $input.val() ) ) {
+					inputError = true;
+					$input.removeClass('valid');
+					$input.addClass('invalid');
+				}
+				else {
+					$input.removeClass('invalid');
+					$input.addClass('valid');
+				}
+			});
+
+			if ( !inputError ) {
+				$.ajax({
+					type:	formMethod,
+					url:	formAction,
+					data:	$form.serialize(),
+					statusCode: {
+						200: function() {
+							$formSuccess.fadeIn();
+							$formFields.hide();
+							// trigger google analytics
+							_gaq.push(['_trackPageview', '/form-sent/' + formId]);
+						},
+						400: function() {
+							$formWarning.fadeIn();
+						},
+						500: function() {
+							$formError.fadeIn();
+						}
+					}
+				});
+			}
+			else {
+				console.log('Input error detected!');
+				$formSuccess.hide();
+				$formWarning.fadeIn();
+				$formError.error();
+			}
+
+			// hide the loading
+			$formLoading.hide();
+
+			// prevent default page load
+			e.preventDefault();
+
+		});
+		
+		// show that the form is ajax-enabled
+		$form.addClass('ajax-enabled');
+
+	});
+
+}
+
+
+/*
+ * CENTER plugin
+ *
+ * Centers an element in the window
+ * @author Jonathan Roy <jroy@optimumweb.ca>
+ * @version 1.1
+ * @package wpboilerplate
+ */
+
+jQuery.fn.center = function() {
+
+	return this.each(function() {
+
+		$this = $(this);
+		thisWidth = $this.outerWidth(true);
+		thisHeight = $this.outerHeight(true);
+		
+		$window = $(window);
+		windowWidth = $window.width();
+		windowHeight = $window.height();
+		scrollTop = $window.scrollTop();
+		
+		offsetTop = Math.round( ( windowHeight - thisHeight ) / 2 ) + scrollTop;
+		offsetLeft = Math.round( ( windowWidth - thisWidth ) / 2 );
+	
+		$this.css({
+			position: 'absolute',
+			top: offsetTop + 'px',
+			left: offsetLeft + 'px'
+		});
+    
+    });
+
+}
+
+
+/*
+ * COLLAPSIBLE plugin
+ *
+ * Makes an element collapsible (openable and closable)
+ * @author Jonathan Roy <jroy@optimumweb.ca>
+ * @version 2.1
+ * @package wpboilerplate
+ */
+
+jQuery.fn.collapsible = function() {
+
+	return this.each(function() {
+	
+		var $this = $(this);
+		var $trigger = $this.find('.trigger, .title');
+		var $content = $this.find('.content');
+		
+		var id = $this.attr('id');
+		
+		var triggerTarget = function() {
+			$trigger.each(function() { if ( typeof $(this).attr('target') != 'undefined' ) return $(this).attr('target'); });
+			return null;
+		}
+		if ( triggerTarget() != null ) {
+			var $triggerTarget = $(triggerTarget());
+			if ( $triggerTarget.size() > 0 ) {
+				var $content = $triggerTarget;
+			}
+		}
+		
+		if ( $content.is(':visible') ) {
+			$this.addClass('open').removeClass('closed');
+			$content.show();
+		}
+		
+		else {
+			$this.addClass('closed').removeClass('open');
+			$content.hide();
+		}
+		
+		if ( typeof id != 'undefined' && typeof window.location.hash != 'undefined' && window.location.hash == '#' + id ) {
+			$this.addClass('open').removeClass('closed');
+			$content.slideDown();
+		}
+		
+		$trigger.click(function(e) {
+			e.preventDefault();
+			if ( $this.hasClass('open') ) {
+				$content.slideUp('slow', function() {
+					$this.addClass('closed');
+					$this.removeClass('open');
+				});
+			}
+			else {
+				$content.slideDown('slow', function() {
+					$this.addClass('open');
+					$this.removeClass('closed');
+				});
+				if ( typeof id != 'undefined' ) {
+					$this.attr('id', id + '-tmp');
+					window.location.hash = id;
+					$this.attr('id', id);
+				}
+			}
+		});
+		
+	});
+
+}

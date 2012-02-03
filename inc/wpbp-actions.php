@@ -77,16 +77,13 @@ function wpbp_get_scripts()
 	wp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), 'latest');
 	wp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), 'latest');
 	wp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), 'latest');
-	
-	wpbp_add_script('wpbp_jquery', get_template_directory_uri() . '/js/wpbp.jquery.js', array('jquery'));
+	wp_register_script('wpbp', get_template_directory_uri() . '/js/wpbp.js', array('jquery'), 'latest');
     
     if ( $wpbp_options['js_files'] ) {
         foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['js_files']) ) as $js_file ) {
         	wpbp_add_script( pathinfo($js_file, PATHINFO_FILENAME), $js_file );
         }
     }
-
-	wpbp_add_script('theme_js', get_stylesheet_directory_uri() . '/js/scripts.js');
 
 	return;
 }
@@ -114,18 +111,18 @@ function wpbp_get_styles()
 
 	wp_register_style('960gs', 'http://firecdn.net/libs/960gs/960.min.css');
 	
-	wpbp_add_style('default', get_template_directory_uri() . '/css/default.css');
-    
-    if ( $wpbp_options['css_files'] ) {
-        foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['css_files']) ) as $css_file ) {
-            wpbp_add_style( pathinfo($css_file, PATHINFO_FILENAME), $css_file );
-        }
-    }
+	wp_register_style('default', get_template_directory_uri() . '/css/default.css');
 
 	wp_register_style('custom-less', get_stylesheet_directory_uri() . '/css/custom.less', array('default'));
 	wp_register_style('custom', get_stylesheet_directory_uri() . '/css/custom.css', array('default'));
 
-	wpbp_add_style('wp-meta', get_stylesheet_directory_uri() . '/style.css', array('default', 'custom'));
+	wp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css', array('default', 'custom'));
+	
+	if ( $wpbp_options['css_files'] ) {
+        foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['css_files']) ) as $css_file ) {
+            wpbp_add_style( pathinfo($css_file, PATHINFO_FILENAME), $css_file );
+        }
+    }
 
 	return;
 }
