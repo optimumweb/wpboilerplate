@@ -113,9 +113,6 @@ function wpbp_get_styles()
 	
 	wp_register_style('default', get_template_directory_uri() . '/css/default.css');
 
-	wp_register_style('custom-less', get_stylesheet_directory_uri() . '/css/custom.less', array('default'));
-	wp_register_style('custom', get_stylesheet_directory_uri() . '/css/custom.css', array('default'));
-
 	wp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css', array('default', 'custom'));
 	
 	if ( $wpbp_options['css_files'] ) {
