@@ -67,17 +67,19 @@ function wpbp_get_scripts()
 
 	// Available Javascript Librairies
 	// You will need to enqueue the ones you want in your child theme
+	
 	wpbp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), '1.7.1');
 	wpbp_register_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', array(), '1.8.16');
+	wpbp_register_script('scrollTo', 'http://firecdn.net/libs/scrollTo/scrollTo.min.js', array(), '1.4.2');
 	wpbp_register_script('ext-core', 'https://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js', array(), '3.1.0');
 	wpbp_register_script('dojo', 'https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js', array(), '1.6.1');
 	wpbp_register_script('mootools', 'https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js', array(), '1.4.1');
 	wpbp_register_script('modernizr', 'http://firecdn.net/libs/modernizr/2.0.6/modernizr.min.js', array(), '2.0.6');
-	wpbp_register_script('lesscss', 'http://firecdn.net/libs/less/less.min.js', array(), 'latest');
-	wpbp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), 'latest');
-	wpbp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), 'latest');
-	wpbp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), 'latest');
-	wpbp_register_script('wpbp', get_template_directory_uri() . '/js/wpbp.js', array('jquery'), 'latest');
+	wpbp_register_script('lesscss', 'http://firecdn.net/libs/less/less.min.js', array(), '1.2.1');
+	wpbp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), '1.5.1');
+	wpbp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), '2.1.9');
+	wpbp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), '2.9998');
+	wpbp_register_script('wpbp', get_template_directory_uri() . '/js/wpbp.js', array('jquery'), '2.1.0');
     
     if ( $wpbp_options['js_files'] ) {
         foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['js_files']) ) as $js_file ) {
