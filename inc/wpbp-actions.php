@@ -62,6 +62,7 @@ function wpbp_og_tags()
 
 function wpbp_get_scripts()
 {
+	if ( is_admin() ) return;
 
     global $wpbp_options;
 
@@ -113,6 +114,7 @@ function wpbp_enqueue_scripts( $scripts = array() )
 
 function wpbp_get_styles()
 {
+	if ( is_admin() ) return;
 
 	global $wpbp_options;
 
