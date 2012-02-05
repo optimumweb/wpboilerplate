@@ -67,6 +67,7 @@
 .transition-duration(@duration: 0.2s) {
 	-moz-transition-duration: @duration;
 	-webkit-transition-duration: @duration;
+	-o-transition-duration: @duration;
 	transition-duration: @duration;
 }
 
@@ -82,10 +83,11 @@
 	transform:scale(@ratio);
 }
 
-.transition(@duration: 0.2s, @ease: ease-out) {
-	-webkit-transition: all @duration @ease;
-	-moz-transition: all @duration @ease;
-	transition: all @duration @ease;
+.transition(@duration: 0.2s, @ease: ease-out, @property: all) {
+	-webkit-transition: @property @duration @ease;
+	-moz-transition: @property @duration @ease;
+	-o-transition: @property @duration @ease;
+	transition: @property @duration @ease;
 }
 
 .columns(@colwidth: 250px, @colcount: 0, @colgap: 50px, @columnRuleColor: #EEE, @columnRuleStyle: solid, @columnRuleWidth: 1px) {
