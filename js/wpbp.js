@@ -6,6 +6,8 @@ $(document).ready(function() {
 	
 	$('.collapsible').collapsible();
 	
+	$('.simpleSlider').simpleSlider();
+	
 });
 
 $(window).load(function() {
@@ -205,6 +207,33 @@ jQuery.fn.center = function() {
     
     });
 
+}
+
+
+/*
+ * simpleSlider plugin
+ *
+ * Simplest jQuery slider possible. Takes an element and cycles through its children with fadeIn/fadeOut effects.
+ * @author Jonathan Roy <jroy@optimumweb.ca>
+ * @version 1.0
+ * @package wpboilerplate
+ */
+ 
+jQuery.fn.simpleSlider = function() {
+	return this.each(function() {
+		var $this = $(this);
+		var period = $this.data('period') || 5000;
+		var fxSpeed = $this.data('fx-speed') || 500;
+		var $slides = $this.children();
+		var N = $slides.size();
+		var i = 0;
+		$slides.hide();
+		setInterval(function() {
+			$slides.is(':visible').fadeOut(fxSpeed);
+			$slides.eq(i).fadeIn(fxSpeed);
+			i += 1;
+		}, period);
+	});
 }
 
 
