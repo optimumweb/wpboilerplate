@@ -227,7 +227,7 @@ jQuery.fn.simpleSlider = function() {
 		var $slides = $this.children();
 		var N = $slides.size();
 		var i = 0;
-		$slides.hide();
+		$slides.hide().eq(0).show();
 		setInterval(function() {
 			$slides.fadeOut(fxSpeed).eq(i).delay(fxSpeed).fadeIn(fxSpeed);
 			i += 1;
