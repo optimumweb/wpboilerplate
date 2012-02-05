@@ -27,7 +27,6 @@ body, button, input, select, textarea { font-family: inherit; color: #000; }
 
 a { color: #0000ff; }
 a:focus { outline: none; }
-a:visited { background: transparent; }
 a:hover, a:active { outline: 0; }
 a:active, input.button:active { outline: 0; }
 
