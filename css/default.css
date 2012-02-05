@@ -90,9 +90,9 @@ ol.upper-roman { list-style-type: upper-roman; }
 ol.lower-roman { list-style-type: lower-roman; }
 ol.lower-alpha { list-style-type: lower-alpha; }
 
-ul.inline { list-style: none; margin: 0; padding: 0; }
-ul.inline li { display: block; float: left; }
-ul.inline.spaced li { margin: 0 1em 0 0; }
+.inline > ul, ul.inline { list-style: none; margin: 0; padding: 0; }
+.inline > ul > li, ul.inline > li { display: block; float: left; }
+.inline.spaced > ul > li, .inline > ul.spaced > li, ul.inline.spaced > li { margin: 0 1em 0 0; }
 
 
 /* =============================================================================
