@@ -226,11 +226,15 @@ jQuery.fn.simpleSlider = function() {
 		var fxSpeed = $this.data('fx-speed') || 500;
 		var $slides = $this.children();
 		var N = $slides.size();
+		var paused = false;
+		$this.hover(function(){ paused = true; }, function() { paused = false; });
 		var i = 1;
 		$slides.hide().first().show();
 		setInterval(function() {
-			$slides.fadeOut(fxSpeed).eq(i-1).delay(fxSpeed).fadeIn(fxSpeed);
-			i = ( i == N ) ? 1 : (i + 1);
+			if ( !paused ) {
+				$slides.fadeOut(fxSpeed).eq(i-1).delay(fxSpeed).fadeIn(fxSpeed);
+				i = ( i == N ) ? 1 : (i + 1);
+			}
 		}, period);
 	});
 }
