@@ -230,7 +230,7 @@ jQuery.fn.simpleSlider = function() {
 		$slides.hide().eq(0).show();
 		setInterval(function() {
 			$slides.fadeOut(fxSpeed).eq(i).delay(fxSpeed).fadeIn(fxSpeed);
-			i += 1;
+			i = ( i == N ) ? 0 : (i + 1);
 		}, period);
 	});
 }
