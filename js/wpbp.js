@@ -229,8 +229,7 @@ jQuery.fn.simpleSlider = function() {
 		var i = 0;
 		$slides.hide();
 		setInterval(function() {
-			$slides.is(':visible').fadeOut(fxSpeed);
-			$slides.eq(i).fadeIn(fxSpeed);
+			$slides.fadeOut(fxSpeed).eq(i).delay(fxSpeed).fadeIn(fxSpeed);
 			i += 1;
 		}, period);
 	});
