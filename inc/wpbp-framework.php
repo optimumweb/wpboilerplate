@@ -268,5 +268,3 @@ if ( !function_exists('array_to_xml') ) {
 	}
 
 }
-
-?>

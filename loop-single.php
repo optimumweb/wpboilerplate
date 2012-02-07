@@ -4,7 +4,9 @@
 		<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 		    <?php wpbp_post_inside_before(); ?>
 			<header>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<h1 class="entry-title">
+					<?php the_title(); ?>
+				</h1>
 				<div class="entry-meta">
 					<time class="updated" datetime="<?php the_time('c'); ?>" pubdate><?php printf(__('Posted on %s at %s', 'wpbp'), get_the_time(__('l, F jS, Y', 'wpbp')), get_the_time()); ?></time>
 					<span class="byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>

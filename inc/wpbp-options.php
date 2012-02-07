@@ -243,5 +243,3 @@ function wpbp_theme_options_validate($input)
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);
 }
-
-?>

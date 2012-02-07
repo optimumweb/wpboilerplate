@@ -414,5 +414,3 @@ function wpbp_change_mce_options($options) {
 }
 
 add_filter('tiny_mce_before_init', 'wpbp_change_mce_options');
-
-?>

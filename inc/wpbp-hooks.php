@@ -32,5 +32,3 @@ function wpbp_footer_before() { do_action('wpbp_footer_before'); }
 function wpbp_footer_inside() { do_action('wpbp_footer_inside'); }
 function wpbp_footer_after() { do_action('wpbp_footer_after'); }
 function wpbp_footer() { do_action('wpbp_footer'); }
-
-?>

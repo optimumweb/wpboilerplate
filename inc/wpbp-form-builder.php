@@ -121,4 +121,3 @@ function wpbp_build_form($fields, $current = null)
 	}
 }
 
-?>

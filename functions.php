@@ -77,7 +77,7 @@ function wpbp_register_sidebars($sidebars)
 				'name'=> $sidebar,
 				'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="container">',
 				'after_widget' => '</div><div class="clear"></div></div>',
-				'before_title' => '<h3>',
+				'before_title' => '<h3 class="widget-title">',
 				'after_title' => '</h3>'
 			) );
 		}
@@ -88,5 +88,3 @@ function wpbp_register_sidebars($sidebars)
 
 // create widget areas: sidebar, footer
 wpbp_register_sidebars( array( 'Sidebar' ) );
-
-?>

@@ -91,5 +91,3 @@ if (is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated'])) {
 	}
 
 }
-
-?>

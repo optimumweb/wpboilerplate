@@ -82,4 +82,3 @@ function wpbp_custom_breadcrumbs($args = array()) {
 	echo $after . "\n";
 }
 
-?>

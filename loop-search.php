@@ -12,7 +12,9 @@
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		    <?php wpbp_post_inside_before(); ?>
 			<header>
-				<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+				<h2 class="entry-title">
+					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+				</h2>
 				<div class="entry-meta">
 					<time class="updated" datetime="<?php the_time('c'); ?>" pubdate><?php printf(__('Posted on %s at %s', 'wpbp'), get_the_time(__('l, F jS, Y', 'wpbp')), get_the_time()); ?></time>
 					<span class="byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>

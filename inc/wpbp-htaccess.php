@@ -85,4 +85,3 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
     add_filter('mod_rewrite_rules', 'wpbp_add_h5bp_htaccess');
 }
 
-?>

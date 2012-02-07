@@ -74,5 +74,3 @@ function parse_shortcode_content($content) {
 
 	return $content;
 }
-
-?>

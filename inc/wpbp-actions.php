@@ -2,13 +2,10 @@
 
 add_action('init', 'wpbp_get_styles');
 add_action('init', 'wpbp_get_scripts');
-
 add_action('wpbp_head', 'wpbp_og_tags');
 add_action('wpbp_head', 'wpbp_google_analytics');
 add_action('wpbp_head', 'wpbp_custom_css');
-
 add_action('wpbp_footer', 'wpbp_count_view');
-
 add_action('wpbp_loop_after', 'wpbp_clear');
 
 function wpbp_google_analytics()
@@ -16,7 +13,7 @@ function wpbp_google_analytics()
     global $wpbp_options;
     $wpbp_google_analytics_id = $wpbp_options['google_analytics_id'];
     $wpbp_get_google_analytics_id = esc_attr($wpbp_options['google_analytics_id']);
-    if ($wpbp_google_analytics_id !== '') {
+    if ( $wpbp_google_analytics_id !== '' ) {
 ?>
 <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -48,7 +45,7 @@ function wpbp_og_tags()
         'url'         => wpbp_get_current_url(),
         'image'       => is_single() ? $current_post_image['url'] : null,
         'site_name'   => get_bloginfo('name'),
-        'description' => is_single() ? strip_tags(wpbp_get_the_excerpt($wp_query->post->ID)) : null
+        'description' => is_single() ? strip_tags( wpbp_get_the_excerpt( $wp_query->post->ID ) ) : null
     );
 
     foreach ( $og as $key => $val ) {
@@ -170,13 +167,13 @@ add_filter('style_loader_tag', 'enqueue_less_styles', 5, 2);
 function wpbp_custom_css()
 {
 	global $wpbp_options;
-    if ( $wpbp_options['custom_css'] ) {
+    if ( $wpbp_options['custom_css'] ) :
 ?>
 <style type="text/css">
 <?php echo $wpbp_options['custom_css'] . "\n"; ?>
 </style>
 <?php
-    }
+    endif;
 	return;
 }
 
@@ -195,5 +192,3 @@ function wpbp_clear()
 {
 	echo '<div class="clear"></div>' . PHP_EOL;
 }
-
-?>

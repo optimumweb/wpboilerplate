@@ -3,11 +3,11 @@
 	<div id="content">
 		<div class="container <?php echo $wpbp_options['container_class']; ?>">
 			<?php wpbp_main_before(); ?>
-			<div id="main" class="full_grid" role="main">
+			<div id="main" role="main">
 				<div class="container">
 					<h1 class="page-title">
-                        <?php _e('File Not Found', 'wpbp'); ?>
-                    </h1>
+						<?php _e('File Not Found', 'wpbp'); ?>
+					</h1>
 					<div class="error">
 						<p class="bottom"><?php _e('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'wpbp'); ?></p>
 					</div>

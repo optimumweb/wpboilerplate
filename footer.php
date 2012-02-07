@@ -1,5 +1,5 @@
 	<?php global $wpbp_options; ?>
-	<?php wpbp_footer_before(); ?>
+		<?php wpbp_footer_before(); ?>
 		<footer id="footer" role="contentinfo">
 			<?php wpbp_footer_inside(); ?>
 			<div class="container <?php echo $wpbp_options['container_class']; ?>">

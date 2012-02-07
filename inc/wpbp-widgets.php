@@ -455,5 +455,3 @@ class wpbp_most_popular extends WP_Widget {
 }
 
 register_widget('wpbp_most_popular');
-
-?>
