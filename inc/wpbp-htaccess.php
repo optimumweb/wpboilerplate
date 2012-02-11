@@ -70,7 +70,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
         }
     }
 
-    function wpbp_add_h5bp_htaccess($rules)
+    function wpbp_add_htaccess($rules)
     {
         global $wp_filesystem;
 
@@ -83,6 +83,6 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
         return $rules . $wp_filesystem->get_contents($filename);
     }
 
-    add_filter('mod_rewrite_rules', 'wpbp_add_h5bp_htaccess');
+    add_filter('mod_rewrite_rules', 'wpbp_add_htaccess');
 }
 
