@@ -58,9 +58,9 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
     }
 
     // only use clean urls if the theme isn't a child or an MU (Network) install
-    if (!is_multisite() && !is_child_theme()) {
+    if ( !is_multisite() && !is_child_theme() ) {
         add_action('generate_rewrite_rules', 'wpbp_add_rewrites');
-        if (!is_admin()) {
+        if ( !is_admin() ) {
             add_filter('plugins_url', 'wpbp_clean_plugins');
             add_filter('bloginfo', 'wpbp_clean_assets');
             add_filter('stylesheet_directory_uri', 'wpbp_clean_assets');
@@ -74,10 +74,11 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
     {
         global $wp_filesystem;
 
-        if (!defined('FS_METHOD')) define('FS_METHOD', 'direct');
-        if (is_null($wp_filesystem)) WP_Filesystem(array(), ABSPATH);
+        if ( !defined('FS_METHOD') ) define('FS_METHOD', 'direct');
+        if ( is_null($wp_filesystem) ) WP_Filesystem(array(), ABSPATH);
 
-        $filename = __DIR__ . '/h5bp-htaccess';
+        //$filename = __DIR__ . '/h5bp-htaccess';
+        $filename = __DIR__ / '/w3tc-htaccess';
 
         return $rules . $wp_filesystem->get_contents($filename);
     }
