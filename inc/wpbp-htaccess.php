@@ -77,8 +77,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
         if ( !defined('FS_METHOD') ) define('FS_METHOD', 'direct');
         if ( is_null($wp_filesystem) ) WP_Filesystem(array(), ABSPATH);
 
-        //$filename = __DIR__ . '/h5bp-htaccess';
-        $filename = __DIR__ . '/w3tc-htaccess';
+        $filename = __DIR__ . '/h5bp-htaccess';
         
         echo "Rules added!";
 
