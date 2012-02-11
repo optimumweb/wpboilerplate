@@ -88,13 +88,13 @@ function wpbp_get_scripts()
 	return;
 }
 
-function wpbp_register_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
+function wpbp_register_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = true)
 {
 	wp_deregister_script($handle);
 	wp_register_script($handle, $src, $deps, $ver, $in_footer);
 }
 
-function wpbp_add_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
+function wpbp_add_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = true)
 {
 	wpbp_register_script($handle, $src, $deps, $ver, $in_footer);
 	wp_enqueue_script($handle);
