@@ -182,7 +182,7 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 }
 
 // the following function requires WPML to be installed and active
-if ( !function_exists('wpbp_wpml_lang_sel') ) {
+if ( !function_exists('wpbp_wpml_lang_sel') && function_exists('icl_get_languages') ) {
     
     function wpbp_wpml_lang_sel()
     {
