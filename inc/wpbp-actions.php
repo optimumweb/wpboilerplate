@@ -88,7 +88,7 @@ function wpbp_get_scripts()
 	return;
 }
 
-function wpbp_register_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = true)
+function wpbp_register_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
 {
 	wp_deregister_script($handle);
 	wp_register_script($handle, $src, $deps, $ver, $in_footer);
