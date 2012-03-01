@@ -326,23 +326,18 @@ jQuery.fn.dropdownNav = function() {
 		var $list = $(this),
 		$select = $(document.createElement('select')).insertBefore($(this).hide());
 		$('a', this).each(function() {
-			var target = $(this).attr('target'),
-				$option = $(document.createElement('option'))
-					.appendTo($select)
-					.val(this.href)
-					.html($(this).html())
-					.click(function() {
-						if ( target === '_blank' ) {
-							window.open( $(this).val() );
-						}
-						else {
-							window.location.href = $(this).val();
-						}
-					});
-				});
-			$list.remove();
+			var target = $(this).attr('target');
+			var	$option = $(document.createElement('option')).appendTo($select).val(this.href).html($(this).html()).click(function() {
+				if ( target === '_blank' ) {
+					window.open( $(this).val() );
+				}
+				else {
+					window.location.href = $(this).val();
+				}
+			});
 		});
-
+		$list.remove();
+	
 	});
 
 }
