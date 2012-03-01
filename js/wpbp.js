@@ -8,6 +8,8 @@ $(document).ready(function() {
 	
 	$('.simpleSlider').simpleSlider();
 	
+	$('.valign, .vAlign').vAlign();
+	
 });
 
 $(window).load(function() {
