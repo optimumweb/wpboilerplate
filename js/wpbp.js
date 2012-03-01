@@ -10,6 +10,8 @@ $(document).ready(function() {
 	
 	$('.valign, .vAlign').vAlign();
 	
+	$('ul.dropdownNav').dropdownNav();
+	
 });
 
 /*
@@ -303,6 +305,44 @@ jQuery.fn.collapsible = function() {
 			}
 		});
 		
+	});
+
+}
+
+
+/*
+ * DROPDOWN plugin
+ *
+ * Converts a list into a select dropdown for navigation
+ * @author Jonathan Roy <jroy@optimumweb.ca>
+ * @version 0.9
+ * @package wpboilerplate
+ */
+
+jQuery.fn.dropdownNav = function() {
+
+	return this.each(function() {
+
+		var $list = $(this),
+		$select = $(document.createElement('select')).insertBefore($(this).hide());
+		$('>li a', this).each(function() {
+			var $target = $(this).attr('target'),
+				$option = $(document.createElement('option'))
+					.appendTo($select)
+					.val(this.href)
+					.html($(this).html())
+					.click(function() {
+						if ( target === '_blank' ) {
+							window.open( $(this).val() );
+						}
+						else {
+							window.location.href = $(this).val();
+						}
+					});
+				});
+			$list.remove();
+		});
+
 	});
 
 }
