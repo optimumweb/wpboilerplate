@@ -12,12 +12,6 @@ $(document).ready(function() {
 	
 });
 
-$(window).load(function() {
-
-	$('.valign, .vAlign').vAlign();
-
-});
-
 /*
  * IR plugin
  *
