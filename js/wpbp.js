@@ -315,7 +315,7 @@ jQuery.fn.collapsible = function() {
  *
  * Converts a list into a select dropdown for navigation
  * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 0.9
+ * @version 0.99
  * @package wpboilerplate
  */
 
@@ -323,20 +323,15 @@ jQuery.fn.dropdownNav = function() {
 
 	return this.each(function() {
 
-		var $list = $(this),
-		$select = $(document.createElement('select')).insertBefore($(this).hide());
+		var $list = $(this);
+		var $select = $(document.createElement('select')).insertBefore($(this).hide());
 		$('a', this).each(function() {
-			var target = $(this).attr('target');
-			var	$option = $(document.createElement('option')).appendTo($select).val(this.href).html($(this).html()).click(function() {
-				if ( target === '_blank' ) {
-					window.open( $(this).val() );
-				}
-				else {
-					window.location.href = $(this).val();
-				}
-			});
+			var	$option = $(document.createElement('option')).appendTo($select).val(this.href).html($(this).html());
 		});
 		$list.remove();
+		$select.change(function() {
+			window.location.href = $(this).val();
+		});
 	
 	});
 
