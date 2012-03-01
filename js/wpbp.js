@@ -325,7 +325,7 @@ jQuery.fn.dropdownNav = function() {
 
 		var $list = $(this),
 		$select = $(document.createElement('select')).insertBefore($(this).hide());
-		$('>li a', this).each(function() {
+		$('li > a', this).each(function() {
 			var $target = $(this).attr('target'),
 				$option = $(document.createElement('option'))
 					.appendTo($select)
