@@ -53,6 +53,7 @@ jQuery.fn.vAlign = function() {
 		var thisHeight = $this.outerHeight(true), refHeight = $ref.outerHeight(true);
 		var offset = Math.round( ( refHeight - thisHeight ) / 2 );
 		$this.css('margin-top', offset + 'px').css('margin-bottom', offset + 'px');
+		$this.addClass('valigned');
 	});
 }
 
