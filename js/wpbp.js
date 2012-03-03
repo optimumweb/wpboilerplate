@@ -231,8 +231,8 @@ jQuery.fn.simpleSlider = function() {
 		$slides.hide().first().show();
 		setInterval(function() {
 			if ( !paused ) {
-				$slides.fadeOut(fxSpeed).eq(i-1).delay(fxSpeed).fadeIn(fxSpeed);
 				i = ( i == N ) ? 1 : (i + 1);
+				$slides.fadeOut(fxSpeed).eq(i-1).delay(fxSpeed).fadeIn(fxSpeed);
 			}
 		}, period);
 	});
