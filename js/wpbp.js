@@ -138,7 +138,7 @@ jQuery.fn.ajaxForm = function() {
 						200: function() {
 							$formSuccess.fadeIn();
 							$formFields.hide();
-							$form.addClass('sent');
+							$form.addClass('sent').trigger('ajax-form-sent');
 							// trigger google analytics
 							_gaq.push(['_trackPageview', '/form-sent/' + formId]);
 						},
