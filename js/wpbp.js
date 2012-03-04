@@ -267,11 +267,12 @@ jQuery.fn.box = function(options, callback) {
 			if ( $this.hasClass('lazy') ) {
 				$ajaxTrigger.click(function(e) {
 					e.preventDefault();
-					$content.load( ajaxSrc );
+					if ( !$this.hasClass('ajax-loaded') )
+						$content.load( ajaxSrc, function() { $this.addClass('ajax-loaded'); } );
 				});
 			}
 			else {
-				$content.load( ajaxSrc );
+				$content.load( ajaxSrc, function() { $this.addClass('ajax-loaded'); } );
 			}
 			
 		}
