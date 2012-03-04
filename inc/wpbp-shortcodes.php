@@ -57,8 +57,8 @@ function make_box($atts, $content = null)
     $class = 'box ' . $class;
     if ( $sliding ) $class .= ' sliding';
     if ( $collapsible ) $class .= ' collapsible';
-    if ( $ajax ) $class .= 'ajax';
-    if ( $lazy ) $class .= 'lazy';
+    if ( $ajax ) $class .= ' ajax';
+    if ( $lazy ) $class .= ' lazy';
     $class = ' class="' . $class . '"';
     
     $data = '';
