@@ -4,7 +4,7 @@ $(document).ready(function() {
 	
 	$('form.ajax, form.ajax-form').ajaxForm();
 	
-	$('.collapsible').collapsible();
+	$('.box').box();
 	
 	$('.simpleSlider').simpleSlider();
 	
@@ -241,74 +241,107 @@ jQuery.fn.simpleSlider = function() {
 
 
 /*
- * COLLAPSIBLE plugin
+ * BOX plugin
  *
- * Makes an element collapsible (openable and closable)
  * @author Jonathan Roy <jroy@optimumweb.ca>
  * @version 2.1
  * @package wpboilerplate
  */
 
-jQuery.fn.collapsible = function() {
+jQuery.fn.box = function(options, callback) {
+
+	var defaults = {
+		
+    };
+    var options = $.extend( defaults, options );
+    
+    // callback
+    if( typeof callback != "function" ) { callback = function(){} }
 
 	return this.each(function() {
 	
 		var $this = $(this);
-		var $trigger = $this.find('.trigger, .title');
+		var $title = $this.find('.title');
 		var $content = $this.find('.content');
 		
 		var id = $this.attr('id');
 		
-		var triggerTarget = function() {
-			$trigger.each(function() { if ( typeof $(this).attr('target') != 'undefined' ) return $(this).attr('target'); });
-			return null;
-		}
-		if ( triggerTarget() != null ) {
-			var $triggerTarget = $(triggerTarget());
-			if ( $triggerTarget.size() > 0 ) {
-				var $content = $triggerTarget;
-			}
-		}
-		
-		if ( $content.is(':visible') ) {
-			$this.addClass('open').removeClass('closed');
-			$content.show();
-		}
-		
-		else {
-			$this.addClass('closed').removeClass('open');
-			$content.hide();
-		}
-		
-		if ( typeof id != 'undefined' && typeof window.location.hash != 'undefined' && window.location.hash == '#' + id ) {
-			$this.addClass('open').removeClass('closed');
-			$content.slideDown();
-		}
-		
-		$trigger.click(function(e) {
-			e.preventDefault();
-			if ( $this.hasClass('open') ) {
-				$content.slideUp('slow', function() {
-					$this.addClass('closed');
-					$this.removeClass('open');
+		if ( options.ajax || $this.hasClass('ajax') ) {
+			
+			var $ajaxTrigger = $this.find('a.ajax-trigger').first();
+			
+			var ajaxSrc = options.ajax-src || $this.data('src').replace('#',' #') || $ajaxTrigger.attr('href').replace('#',' #');
+			
+			if ( options.lazy || $this.hasClass('lazy') ) {
+				$ajaxTrigger.click(function(e) {
+					e.preventDefault();
+					$content.load( ajaxSrc );
 				});
 			}
 			else {
-				$content.slideDown('slow', function() {
-					$this.addClass('open');
-					$this.removeClass('closed');
-				});
-				if ( typeof id != 'undefined' ) {
-					$this.attr('id', id + '-tmp');
-					window.location.hash = id;
-					$this.attr('id', id);
+				$content.load( ajaxSrc );
+			}
+			
+		}
+		
+		if ( options.collapsible || $this.hasClass('collapsible') ) {
+		
+			var $collapseTrigger = $this.find('.collapse-trigger, .title');
+			
+			var collapseTriggerTarget = function() {
+				$collapseTrigger.each(function() { if ( typeof $(this).attr('target') != 'undefined' ) return $(this).attr('target'); });
+				return null;
+			}
+			if ( collapseTriggerTarget() != null ) {
+				var $collapseTriggerTarget = $(collapseTriggerTarget());
+				if ( $collapseTriggerTarget.size() > 0 ) {
+					var $content = $collapseTriggerTarget;
 				}
 			}
-		});
+			
+			if ( $content.is(':visible') ) {
+				$this.addClass('open').removeClass('closed');
+				$content.show();
+			}
+			
+			else {
+				$this.addClass('closed').removeClass('open');
+				$content.hide();
+			}
+			
+			if ( typeof id != 'undefined' && typeof window.location.hash != 'undefined' && window.location.hash == '#' + id ) {
+				$this.addClass('open').removeClass('closed');
+				$content.slideDown();
+			}
+			
+			$collapseTrigger.click(function(e) {
+				e.preventDefault();
+				if ( $this.hasClass('open') ) {
+					$content.slideUp('slow', function() {
+						$this.addClass('closed');
+						$this.removeClass('open');
+					});
+				}
+				else {
+					$content.slideDown('slow', function() {
+						$this.addClass('open');
+						$this.removeClass('closed');
+					});
+					if ( typeof id != 'undefined' ) {
+						$this.attr('id', id + '-tmp');
+						window.location.hash = id;
+						$this.attr('id', id);
+					}
+				}
+			});
+		
+		}
 		
 	});
 
 }
+
+
 
 
 /*

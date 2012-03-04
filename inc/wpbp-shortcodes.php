@@ -34,16 +34,71 @@ function wpbp_hr() {
 
 add_shortcode("hr", "wpbp_hr");
 
-// [box id="box-id" class="box-class"]...[/box]
-function wpbp_box($atts, $content = null) {
-	extract(shortcode_atts(array(
-		"id" => "",
-		"class" => ""
-	), $atts));
-	return "<div" . ( ( $id != "" ) ? " id=\"" . $id . "\"" : "" ) . " class=\"box" . ( ( $class != "" ) ? " " . $class : "" ) . "\">" . parse_shortcode_content($content) . "</div>";
-}
+/*
+ * MAKE BOX
+ */
 
-add_shortcode("box", "wpbp_box");
+function make_box($atts, $content = null)
+{
+    extract( shortcode_atts( array(
+        'id'			=> '',
+        'class'			=> '',
+        'title'			=> '',
+        'small'			=> false,
+        'collapsible'	=> false,
+        'sliding'		=> false,
+        'ajax'			=> false,
+        'src'			=> false,
+        'lazy'			=> false
+    ), $atts ) );
+    
+    $id = ( isset($id) && strlen($id) > 0 ) ? ' id="' . $id . '"' : '';
+    
+    $class = 'box ' . $class;
+    if ( $sliding ) $class .= ' sliding';
+    if ( $collapsible ) $class .= ' collapsible';
+    if ( $ajax ) $class .= 'ajax';
+    if ( $lazy ) $class .= 'lazy';
+    $class = ' class="' . $class . '"';
+    
+    $data = '';
+    if ( $src ) $data .= ' data-src="' . $src . '"';
+    
+    
+    $box = '<div' . $id . $class . $data . '>' . PHP_EOL;
+    
+	if ( isset($title) && strlen($title) > 0 ) {
+		$box .= '<div class="box-title title"><h3>';
+		if ( $ajax && $src ) $box .= '<a class="ajax-trigger" href="' . $src . '">' . $title . '</a>';
+		else $box .= $title;
+		$box .= '</h3></div>' . PHP_EOL;
+	}
+		
+	$box .= '<div class="box-content content">' . PHP_EOL;
+	$box .= parse_shortcode_content($content) . PHP_EOL;
+	$box .= '<div class="clear"></div></div>' . PHP_EOL;
+    
+    $box_arrow_src = ( $small ) ? 'box-arrow-small.png' : 'box-arrow.png';
+    $box_arrow = wpbp_get_image_tag( array( 'src' => 'http://pierreroy.firecdn.net/img/' . $box_arrow_src, 'width' => 30, 'height' => 30 ) );
+    
+    if ( $sliding ) {
+    	$box .= '<div class="box-controls">';
+    	$box .= '<a class="box-arrow box-prev" href="#prev">' . $box_arrow . '</a>';
+    	$box .= '<a class="box-arrow box-next" href="#next">' . $box_arrow . '</a>';
+    	$box .= '</div>' . PHP_EOL;
+    }
+    
+    if ( $collapsible ) {
+    	$box .= '<div class="box-controls">';
+    	$box .= '<a class="box-arrow collapse-trigger" href="#">' . $box_arrow . '</a>';
+    	$box .= '</div>' . PHP_EOL;
+    }
+    
+    $box .= '</div>' . PHP_EOL;
+    
+    return $box;
+}
+add_shortcode('box', 'make_box');
 
 // [article-header]...[/article-header]
 function wpbp_article_header($atts = null, $content = null) {
