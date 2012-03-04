@@ -264,7 +264,7 @@ jQuery.fn.box = function(options, callback) {
 			
 			var ajaxSrc = $this.data('src').replace('#',' #') || $ajaxTrigger.attr('href').replace('#',' #');
 			
-			if ( options.lazy || $this.hasClass('lazy') ) {
+			if ( $this.hasClass('lazy') ) {
 				$ajaxTrigger.click(function(e) {
 					e.preventDefault();
 					$content.load( ajaxSrc );
