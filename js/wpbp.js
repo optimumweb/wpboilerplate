@@ -250,14 +250,6 @@ jQuery.fn.simpleSlider = function() {
 
 jQuery.fn.box = function(options, callback) {
 
-	var defaults = {
-		
-    };
-    var options = $.extend( defaults, options );
-    
-    // callback
-    if( typeof callback != "function" ) { callback = function(){} }
-
 	return this.each(function() {
 	
 		var $this = $(this);
@@ -266,11 +258,11 @@ jQuery.fn.box = function(options, callback) {
 		
 		var id = $this.attr('id');
 		
-		if ( options.ajax || $this.hasClass('ajax') ) {
+		if ( $this.hasClass('ajax') ) {
 			
 			var $ajaxTrigger = $this.find('a.ajax-trigger').first();
 			
-			var ajaxSrc = options.ajax-src || $this.data('src').replace('#',' #') || $ajaxTrigger.attr('href').replace('#',' #');
+			var ajaxSrc = $this.data('src').replace('#',' #') || $ajaxTrigger.attr('href').replace('#',' #');
 			
 			if ( options.lazy || $this.hasClass('lazy') ) {
 				$ajaxTrigger.click(function(e) {
@@ -284,7 +276,7 @@ jQuery.fn.box = function(options, callback) {
 			
 		}
 		
-		if ( options.collapsible || $this.hasClass('collapsible') ) {
+		if ( $this.hasClass('collapsible') ) {
 		
 			var $collapseTrigger = $this.find('.collapse-trigger, .title');
 			
