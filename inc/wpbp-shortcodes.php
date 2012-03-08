@@ -52,6 +52,8 @@ function make_box($atts, $content = null)
         'lazy'			=> false
     ), $atts ) );
     
+    $id_val = $id;
+    
     $id = ( isset($id) && strlen($id) > 0 ) ? ' id="' . $id . '"' : '';
     
     $class = 'box ' . $class;
@@ -90,7 +92,7 @@ function make_box($atts, $content = null)
     
     if ( $collapsible ) {
     	$box .= '<div class="box-controls">';
-    	$box .= '<a class="box-arrow collapse-trigger" href="#">' . $box_arrow . '</a>';
+    	$box .= '<a class="box-arrow collapse-trigger valign" data-ref="#' . $id_val . ' .box-title" href="#">' . $box_arrow . '</a>';
     	$box .= '</div>' . PHP_EOL;
     }
     
