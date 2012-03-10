@@ -115,7 +115,7 @@ jQuery.fn.ajaxForm = function() {
 			});
 
 			// validate emails
-			$form.find('.valid.email').each(function() {
+			$form.find('.valid.email, .valid[type="email"]').each(function() {
 				var $input = $(this);
 				var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 				if ( !emailRegex.test( $input.val() ) ) {
