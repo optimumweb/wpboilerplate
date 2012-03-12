@@ -71,7 +71,6 @@ jQuery.fn.ajaxForm = function() {
 
 		// define form elements
 		var $form = $(this);
-		var $formFields = $form.find('.fields');
 		var $formSuccess = $form.find('.success');
 		var $formError = $form.find('.error');
 		var $formWarning = $form.find('.warning');
@@ -89,6 +88,8 @@ jQuery.fn.ajaxForm = function() {
 		$formLoading.hide();
 
 		$form.submit(function(e) {
+		
+			var $formFields = $form.find('.fields');
 
 			$formSuccess.hide();
 			$formWarning.hide();
