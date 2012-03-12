@@ -133,7 +133,7 @@ jQuery.fn.ajaxForm = function() {
 				$.ajax({
 					type:	formMethod,
 					url:	formAction,
-					data:	$(this).serialize(),
+					data:	$form.serialize(),
 					statusCode: {
 						200: function() {
 							$formSuccess.fadeIn();
