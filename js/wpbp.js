@@ -81,6 +81,11 @@ jQuery.fn.ajaxForm = function() {
 		var formId = $form.attr('id');
 		var formAction = $form.attr('action');
 		var formMethod = $form.attr('method');
+		
+		// define google analytics async urls
+		var gaSuccessUrl = $('input[name="ga_success_url"]').val() || '/async/' + formId + '/success';
+		var gaWarningUrl = $('input[name="ga_warning_url"]').val() || '/async/' + formId + '/warning';
+		var gaErrorUrl = $('input[name="ga_error_url"]').val() || '/async/' + formId + '/error';
 
 		// hide response messages and loading
 		$formSuccess.hide();
@@ -140,13 +145,17 @@ jQuery.fn.ajaxForm = function() {
 							$formFields.hide();
 							$form.addClass('sent').trigger('ajax-form-sent');
 							// trigger google analytics
-							_gaq.push(['_trackPageview', '/form-sent/' + formId]);
+							_gaq.push(['_trackPageview', gaSuccessUrl]);
 						},
 						400: function() {
 							$formWarning.fadeIn();
+							// trigger google analytics
+							_gaq.push(['_trackPageview', gaWarningUrl]);
 						},
 						500: function() {
 							$formError.fadeIn();
+							// trigger google analytics
+							_gaq.push(['_trackPageview', gaErrorUrl]);
 						}
 					}
 				});
