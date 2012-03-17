@@ -69,6 +69,7 @@ function wpbp_get_scripts()
 	
 	wpbp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), '1.7.1');
 	wpbp_register_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', array(), '1.8.16');
+	wpbp_register_script('bootstrap', 'http://firecdn.net/libs/bootstrap/js/bootstrap.min.js', array('jquery'), '2.0.2');
 	wpbp_register_script('scrollTo', 'http://firecdn.net/libs/scrollTo/jquery.scrollTo.min.js', array('jquery'), '1.4.2');
 	wpbp_register_script('ext-core', 'https://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js', array(), '3.1.0');
 	wpbp_register_script('dojo', 'https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js', array(), '1.6.1');
@@ -78,7 +79,7 @@ function wpbp_get_scripts()
 	wpbp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), '1.5.1');
 	wpbp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), '2.1.9');
 	wpbp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), '2.9998');
-	wpbp_register_script('wpbp', get_template_directory_uri() . '/js/wpbp.js', array('jquery'), '2.1.0');
+	wpbp_register_script('wpbp', 'http://firecdn.net/libs/wpbp/js/wpbp.js', array('jquery'), '2.1.0');
     
     if ( $wpbp_options['js_files'] ) {
         foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['js_files']) ) as $js_file ) {
@@ -117,7 +118,10 @@ function wpbp_get_styles()
 	global $wpbp_options;
 
 	wpbp_register_style('960gs', 'http://firecdn.net/libs/960gs/960.min.css');
+	wpbp_register_style('bootstrap', 'http://firecdn.net/libs/bootstrap/css/bootstrap.min.css');
+	wpbp_register_style('bootstrap-responsive', 'http://firecdn.net/libs/bootstrap/css/bootstrap-responsive.min.css');
 	wpbp_register_style('default', get_template_directory_uri() . '/css/default.css');
+	wpbp_register_style('wpbp-default', 'http://firecdn.net/libs/wpbp/css/default.css');
 	wpbp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css');
 	
 	if ( $wpbp_options['css_files'] ) {
