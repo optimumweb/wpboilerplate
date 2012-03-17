@@ -79,7 +79,7 @@ function wpbp_get_scripts()
 	wpbp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), '1.5.1');
 	wpbp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), '2.1.9');
 	wpbp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), '2.9998');
-	wpbp_register_script('wpbp', 'http://firecdn.net/libs/wpbp/js/wpbp.js', array('jquery'), '2.1.0');
+	wpbp_register_script('wpbp', 'http://firecdn.net/libs/wpbp/js/wpbp.min.js', array('jquery'), '2.1.0');
     
     if ( $wpbp_options['js_files'] ) {
         foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['js_files']) ) as $js_file ) {
