@@ -30,8 +30,8 @@ if ( !defined('MEMORY_LIMIT') )             define('MEMORY_LIMIT', '30M');				//
 if ( !defined('BLOCK_EXTERNAL_LEECHERS') )  define('BLOCK_EXTERNAL_LEECHERS', false);	// If the image or webshot is being loaded on an external site, display a red "No Hotlinking" gif.
 
 // Image fetching and caching
-if ( !defined('ALLOW_EXTERNAL') )                   define('ALLOW_EXTERNAL', true);                    // Allow image fetching from external websites. Will check against ALLOWED_SITES if ALLOW_ALL_EXTERNAL_SITES is false
-if ( !defined('ALLOW_ALL_EXTERNAL_SITES') )         define('ALLOW_ALL_EXTERNAL_SITES', true);          // Less secure.
+if ( !defined('ALLOW_EXTERNAL') )                   define('ALLOW_EXTERNAL', false);                   // Allow image fetching from external websites. Will check against ALLOWED_SITES if ALLOW_ALL_EXTERNAL_SITES is false
+if ( !defined('ALLOW_ALL_EXTERNAL_SITES') )         define('ALLOW_ALL_EXTERNAL_SITES', false);         // Less secure.
 if ( !defined('FILE_CACHE_ENABLED') )               define('FILE_CACHE_ENABLED', true);                // Should we store resized/modified images on disk to speed things up?
 if ( !defined('FILE_CACHE_TIME_BETWEEN_CLEANS'))    define('FILE_CACHE_TIME_BETWEEN_CLEANS', 86400);   // How often the cache is cleaned
 if ( !defined('FILE_CACHE_MAX_FILE_AGE') )          define('FILE_CACHE_MAX_FILE_AGE', 86400);          // How old does a file have to be to be deleted from the cache
