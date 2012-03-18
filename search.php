@@ -23,7 +23,6 @@
 				<?php wpbp_sidebar_inside_after(); ?>
 			</aside>
 			<?php wpbp_sidebar_after(); ?>
-			<div class="clear"></div>
 		</div>
 	</div>
 	<?php wpbp_content_after(); ?>

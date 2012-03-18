@@ -23,6 +23,5 @@
 			<div class="clear"></div>
 		</div>
 	</div>
-	<div class="clear"></div>
 	<?php wpbp_content_after(); ?>
 <?php get_footer(); ?>

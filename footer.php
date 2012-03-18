@@ -10,13 +10,10 @@
 				<div id="copy">
 					&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>
 				</div>
-				<div class="clear"></div>
 			</div>
 		</footer>
-		<div class="clear"></div>
 		<?php wpbp_footer_after(); ?>
 	</div>
-	<div class="clear"></div>
 
 <?php wp_footer(); ?>
 <?php wpbp_footer(); ?>

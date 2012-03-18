@@ -15,7 +15,6 @@ get_header(); ?>
 				</div>
 			</div>
 			<?php wpbp_main_after(); ?>
-			<div class="clear"></div>
 		</div>
 	</div>
 	<div class="clear"></div>

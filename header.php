@@ -19,5 +19,4 @@
 			    </nav>
             </div>
 		</header>
-		<div class="clear"></div>
 		<?php wpbp_header_after(); ?>
