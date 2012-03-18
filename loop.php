@@ -11,23 +11,23 @@
 	<?php wpbp_post_before(); ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php wpbp_post_inside_before(); ?>
-		<header class="entry-header">
+		<header id="entry-header">
 			<h2 class="entry-title">
 				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 			</h2>
-			<section class="entry-meta">
+			<section id="entry-meta">
 				<time class="updated" datetime="<?php the_time('c'); ?>" pubdate><?php printf(__('Posted on %s at %s', 'wpbp'), get_the_time(__('l, F jS, Y', 'wpbp')), get_the_time()); ?></time>
 				<span class="byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>
 			</section>
 		</header>
-		<section class="entry-content">
+		<section id="entry-content">
 			<?php if (is_archive() || is_search()) : // Only display excerpts for archives and search ?>
 			<?php the_excerpt(); ?>
 			<?php else : ?>
 			<?php the_content(); ?>
 			<?php endif; ?>
 		</section>
-		<footer class="entry-footer">
+		<footer id="entry-footer">
 			<p class="entry-tags"><?php the_tags(); ?></p>
 		</footer>
 		<?php wpbp_post_inside_after(); ?>
