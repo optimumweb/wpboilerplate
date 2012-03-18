@@ -1,7 +1,7 @@
 <?php
 
 	define('WP_USE_THEMES', false);
-	require('./wp-load.php');
+	require('/../../../wp-load.php');
 
 	$validation = new Validation();
 
@@ -32,7 +32,7 @@
 			$mail->set_option('bcc', $bcc);
 		
 		if ( !!$reply_to ) {
-			if ( $reply_to == 'sender' && $validation->is_valid_email($fields['email']['value']) )
+			if ( $reply_to == 'sender' && isset($fields['email']['value']) && $validation->is_valid_email($fields['email']['value']) )
 				$mail->set_option('reply_to', $fields['email']['value']);
 			else
 				$mail->set_option('reply_to', $reply_to);
