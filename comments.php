@@ -43,7 +43,7 @@
 		<?php wp_list_comments('type=comment&callback=wpbp_comments'); ?>
 		<?php // wp_list_comments(); ?>
 		</ol>
-		<footer>
+		<footer id="comments-footer">
 			<nav id="comments-nav">
 				<div class="comments-previous"><?php previous_comments_link( __( '&larr; Older comments', 'wpbp' ) ); ?></div>
 				<div class="comments-next"><?php next_comments_link( __( 'Newer comments &rarr;', 'wpbp' ) ); ?></div>

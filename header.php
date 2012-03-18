@@ -5,7 +5,7 @@
 	<div id="wrap" role="document">
 		<?php wpbp_header_before(); ?>
 		<header id="header" role="banner">
-			<?php wpbp_header_inside(); ?>
+			<?php wpbp_header_inside_before(); ?>
             <div class="container <?php echo $wpbp_options['container_class']; ?>">
             	<div id="site-title">
 					<h1><a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a></h1>
@@ -18,5 +18,6 @@
 			    	</div>
 			    </nav>
             </div>
+            <?php wpbp_header_inside_after(); ?>
 		</header>
 		<?php wpbp_header_after(); ?>

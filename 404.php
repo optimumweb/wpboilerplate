@@ -3,7 +3,8 @@
 	<div id="content">
 		<div class="container <?php echo $wpbp_options['container_class']; ?>">
 			<?php wpbp_main_before(); ?>
-			<div id="main" role="main">
+			<section id="main" role="main">
+				<?php wpbp_main_inside_before(); ?>
 				<div class="container">
 					<h1 class="page-title">
 						<?php _e('File Not Found', 'wpbp'); ?>
@@ -18,10 +19,10 @@
 						<li><?php _e('Click the <a href="javascript:history.back()">Back</a> button', 'wpbp'); ?></li>
 					</ul>
 				</div>
-			</div>
+				<?php wpbp_main_inside_after(); ?>
+			</section>
 		<?php wpbp_main_after(); ?>
 		</div>
 	</div>
-	<div class="clear"></div>
 	<?php wpbp_content_after(); ?>
 <?php get_footer(); ?>

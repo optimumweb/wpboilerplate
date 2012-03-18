@@ -50,9 +50,7 @@ function wpbp_setup() {
 
 	function wpbp_custom_image_header_site() { }
 	function wpbp_custom_image_header_admin() { ?>
-		<style type="text/css">
-			.appearance_page_custom-header #headimg { min-height: 0; }
-		</style>
+		<style type="text/css"> .appearance_page_custom-header #headimg { min-height: 0; } </style>
 	<?php }
 	add_custom_image_header('wpbp_custom_image_header_site', 'wpbp_custom_image_header_admin');
 		
