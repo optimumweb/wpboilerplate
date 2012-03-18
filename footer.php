@@ -3,12 +3,12 @@
 		<footer id="footer" role="contentinfo">
 			<?php wpbp_footer_inside(); ?>
 			<div class="container <?php echo $wpbp_options['container_class']; ?>">
-				<div id="footer-nav">
+				<nav id="footer-nav">
 					<?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation' ) ); ?>
 					<div class="clear"></div>
-				</div>
+				</nav>
 				<div id="copy">
-					<small>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></small>
+					&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>
 				</div>
 				<div class="clear"></div>
 			</div>
