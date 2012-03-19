@@ -4,7 +4,7 @@ Template Name: List Subpages
 */
 get_header(); ?>
 	<?php wpbp_content_before(); ?>
-	<div id="content">
+	<section id="content">
 		<div class="container <?php echo $wpbp_options['container_class']; ?>">
 			<div class="<?php echo $wpbp_options['main_class']; ?>">
 				<?php wpbp_main_before(); ?>
@@ -37,6 +37,6 @@ get_header(); ?>
 				<?php wpbp_sidebar_after(); ?>
 			</div>
 		</div>
-	</div>
+	</section>
 	<?php wpbp_content_after(); ?>
 <?php get_footer(); ?>

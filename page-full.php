@@ -4,7 +4,7 @@ Template Name: Full Width
 */
 get_header(); ?>
     <?php wpbp_content_before(); ?>
-	<div id="content">
+	<section id="content">
 		<div class="container <?php echo $wpbp_options['container_class']; ?>">
 			<?php wpbp_main_before(); ?>
 			<section id="main" role="main">
@@ -18,6 +18,6 @@ get_header(); ?>
 			</section>
 			<?php wpbp_main_after(); ?>
 		</div>
-	</div>
+	</section>
 	<?php wpbp_content_after(); ?>
 <?php get_footer(); ?>
