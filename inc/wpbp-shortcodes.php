@@ -96,6 +96,7 @@ function make_box($atts, $content = null)
     	$box .= '</div>' . PHP_EOL;
     }
     
+    $box .= '<div class="clear"></div>' . PHP_EOL;
     $box .= '</div>' . PHP_EOL;
     
     return $box;
