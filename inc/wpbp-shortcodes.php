@@ -56,7 +56,7 @@ function make_box($atts, $content = null)
     
     $id = ( isset($id) && strlen($id) > 0 ) ? ' id="' . $id . '"' : '';
     
-    $class = 'box ' . $class;
+    $class = 'box container ' . $class;
     if ( $sliding ) $class .= ' sliding';
     if ( $collapsible ) $class .= ' collapsible';
     if ( $ajax ) $class .= ' ajax';
