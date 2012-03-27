@@ -96,34 +96,16 @@ if ( !function_exists('wpbp_is_valid_image') ) {
 
     function wpbp_is_valid_image($url)
 	{
-        global $wpdb;
         
         $url = wpbp_get_full_url($url);
         
-        if ( wpbp_image_table_exists() ) {
-            $image_status = $wpdb->get_var( $wpdb->prepare("SELECT status FROM " . WPBP_IMAGE_TABLE . " WHERE url = '%s' LIMIT 1 ", $url) );
-        }
-        
-        if ( !isset($image_status) || $image_status === null ) {
-        
-            $image_attr = @getimagesize($url);
-            
-            if ( isset($image_attr) && is_array($image_attr) ) {
-                $wpdb->insert(WPBP_IMAGE_TABLE, array('ID' => null, 'url' => $url, 'status' => 1));
-                return true;
-            }
-            
-            else {
-                $wpdb->insert(WPBP_IMAGE_TABLE, array('ID' => null, 'url' => $url, 'status' => 0));
-                return false;
-            }
-        }
-        
-        elseif ( $image_status == 1 ) {
-            return true;
-        }
-        
-        return false;
+		$image_attr = @getimagesize($url);
+		
+		if ( isset($image_attr) && is_array($image_attr) ) {
+			return true;
+		}
+		
+		return false;
 	}
     
 }
@@ -144,33 +126,6 @@ if ( !function_exists('wpbp_get_image_size') ) {
                 return compact('url', 'width', 'height', 'ratio', 'type');
             }
             return false;
-        }
-        
-        if ( wpbp_is_valid_image($url) ) {
-            
-            if ( wpbp_image_table_exists() ) {
-                
-                $image = $wpdb->get_row( $wpdb->prepare("SELECT * FROM " . WPBP_IMAGE_TABLE . " WHERE url = '%s' LIMIT 1 ", $url), ARRAY_A );
-                
-                if ( isset($image) && is_array($image) && isset($image['width'], $image['height']) ) {
-                    return $image;
-                }
-                
-                else {
-                    $image = wpbp_get_image_size($url, true);
-                    if ( isset($image) && is_array($image) ) {
-                        $wpdb->update(WPBP_IMAGE_TABLE, $image, array('url' => $url));
-                        echo "<!-- " . var_export($image, true) . " //-->\n";
-                        return $image;
-                    }
-                }
-            }
-            
-            else {
-                wpbp_create_image_table();
-                return wpbp_get_image_size($url, true);
-            }
-        
         }
         
 		return false;
@@ -203,17 +158,6 @@ if ( !function_exists('wpbp_resize_image_url') ) {
 		return false;
 	}
 
-}
-
-if ( !function_exists('wpbp_table_exists') ) {
-    
-    function wpbp_table_exists($table)
-    {
-        global $wpdb;
-        $sql = @$wpdb->query("SELECT * FROM " . $table . " LIMIT 1");
-        return ( !$sql ) ? false : true;
-    }
-    
 }
 
 if ( !function_exists('array_plot') ) {

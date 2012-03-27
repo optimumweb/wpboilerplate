@@ -46,46 +46,6 @@ if ( !function_exists('single_author_title') ) {
 
 }
 
-if ( !function_exists('wpbp_image_table_exists') ) {
-    
-    function wpbp_image_table_exists()
-    {
-        if ( function_exists('wpbp_table_exists') ) {
-            return wpbp_table_exists(WPBP_IMAGE_TABLE);
-        }
-    }
-    
-}
-
-if ( !function_exists('wpbp_create_image_table') ) {
-    
-    function wpbp_create_image_table()
-    {
-        global $wpdb;
-        
-        if ( !wpbp_image_table_exists() ) {
-            
-            $sql = $wpdb->query("
-                CREATE TABLE IF NOT EXISTS " . WPBP_IMAGE_TABLE . " (
-                    ID       INT NOT NULL AUTO_INCREMENT, INDEX (ID), UNIQUE (id),
-                    url      VARCHAR(255) NOT NULL, UNIQUE (url),
-                    width    SMALLINT,
-                    height   SMALLINT,
-                    ratio    FLOAT,
-                    type     TINYINT,
-                    status   TINYINT NOT NULL
-                ) ENGINE = MyISAM;
-            ");
-            
-            return $sql;
-        
-        }
-        
-        return false;
-    }
-
-}
-
 if ( !function_exists('download_image_from_url') ) {
 
     function download_image_from_url($url, $fname = null)

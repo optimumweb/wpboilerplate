@@ -1,9 +1,5 @@
 <?php
 
-// define constants
-global $wpdb;
-if ( !defined('WPBP_IMAGE_TABLE') ) define('WPBP_IMAGE_TABLE', $wpdb->prefix . 'wpbp_images');
-
 function wpbp_add_contactmethods($contactmethods)
 {
 	// Add Social Profile
@@ -113,7 +109,8 @@ function wpbp_get_default_theme_options()
 		'google_analytics_id'   => '',
         'css_files'             => '',
 		'custom_css'            => '',
-        'js_files'              => ''
+        'js_files'              => '',
+        'favicon'               => ''
 	);
 
 	return apply_filters('wpbp_default_theme_options', $default_theme_options);
@@ -213,6 +210,16 @@ function wpbp_theme_options_render_page()
 						</fieldset>
 					</td>
 				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e('Favicon', 'wpbp'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Favicon', 'wpbp'); ?></span></legend>
+							<input type="text" name="wpbp_theme_options[favicon]" id="favicon" value="<?php echo esc_attr($wpbp_options['favicon']); ?>" />
+							<br />
+							<small class="description"><?php printf(__('Enter your favicon URL', 'wpbp')); ?></small>
+						</fieldset>
+					</td>
+				</tr>
 
 			</table>
 
@@ -240,6 +247,7 @@ function wpbp_theme_options_validate($input)
     $output['css_files'] = ( isset( $input['css_files'] ) ) ? $input['css_files'] : null;
 	$output['custom_css'] = ( isset( $input['custom_css'] ) ) ? $input['custom_css'] : null;
     $output['js_files'] = ( isset( $input['js_files'] ) ) ? $input['js_files'] : null;
+    $output['favicon'] = ( isset( $input['favicon'] ) ) ? $input['favicon'] : null;
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);
 }
