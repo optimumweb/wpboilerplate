@@ -214,7 +214,7 @@ function wpbp_theme_options_render_page()
 				<tr valign="top"><th scope="row"><?php _e('Favicon', 'wpbp'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Favicon', 'wpbp'); ?></span></legend>
-							<input type="text" name="wpbp_theme_options[favicon]" id="favicon" value="<?php echo esc_attr($wpbp_options['favicon']); ?>" />
+							<input type="text" name="wpbp_theme_options[favicon]" id="favicon" value="<?php echo esc_attr($wpbp_options['favicon']); ?>" class="regular-text" />
 							<br />
 							<small class="description"><?php printf(__('Enter your favicon URL', 'wpbp')); ?></small>
 						</fieldset>
