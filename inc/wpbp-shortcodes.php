@@ -175,7 +175,7 @@ function shortcode_show_menu($atts, $content, $tag)
 
 add_shortcode('show-menu', 'shortcode_show_menu');
 
-// [paypal type="buy now" amount="12.99" business="me@mybusiness.com" currency="USD" item_name="Teddy Bear" src="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif"]
+// [paypal type="buy now" amount="12.99" business="me@mybusiness.com" currency="USD" item_name="Teddy Bear" src="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" target="_blank"]
 function make_paypal($atts, $content = null) {
     
     extract(shortcode_atts(array(
@@ -189,6 +189,8 @@ function make_paypal($atts, $content = null) {
 	), $atts));
     
     ob_start();
+    
+    if ( $type == 'buy now' ) :
 ?><form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="<?php echo $target; ?>">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="business" value="<?php echo $business; ?>">
@@ -197,6 +199,18 @@ function make_paypal($atts, $content = null) {
 <input type="hidden" name="amount" value="<?php echo $amount; ?>">
 <input type="image" src="<?php echo $src; ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
 </form><?php
+    elseif ( $type == 'add to cart' ) :
+?><form name="_cart" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="paypal">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="add" value="1">
+<input type="hidden" name="business" value="<?php echo $business; ?>">
+<input type="hidden" name="currency_code" value="<?php echo $currency; ?>">
+<input type="hidden" name="item_name" value="<?php echo $item_name; ?>">
+<input type="hidden" name="amount" value="<?php echo $amount; ?>">
+<input type="image" src="<?php echo $src; ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form><?php   
+    endif;
+
     $paypal = ob_get_clean();
     return parse_shortcode_content($paypal);
 }
