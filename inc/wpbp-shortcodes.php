@@ -188,16 +188,14 @@ function make_paypal($atts, $content = null) {
 	), $atts));
     
     ob_start();
-?>  
-<form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+?><form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="business" value="<?php echo $business; ?>">
 <input type="hidden" name="currency_code" value="<?php echo $currency; ?>">
 <input type="hidden" name="item_name" value="<?php echo $item_name; ?>">
 <input type="hidden" name="amount" value="<?php echo $amount; ?>">
 <input type="image" src="<?php echo $src; ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-</form>
-<?php
+</form><?php
     $paypal = ob_get_clean();
     return parse_shortcode_content($paypal);
 }
