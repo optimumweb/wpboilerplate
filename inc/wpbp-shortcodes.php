@@ -179,6 +179,7 @@ add_shortcode('show-menu', 'shortcode_show_menu');
 function make_paypal($atts, $content = null) {
     
     extract(shortcode_atts(array(
+        'target' => '_self',
         'type' => 'buy now',
 		'amount' => '0.00',
         'business' => '',
@@ -188,7 +189,7 @@ function make_paypal($atts, $content = null) {
 	), $atts));
     
     ob_start();
-?><form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+?><form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="<?php echo $target; ?>">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="business" value="<?php echo $business; ?>">
 <input type="hidden" name="currency_code" value="<?php echo $currency; ?>">
