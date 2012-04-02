@@ -12,6 +12,7 @@
 		<footer class="page-footer">
 			<?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'wpbp'), 'after' => '</p></nav>' )); ?>
 		</footer>
+		<div class="clear"></div>
 		<?php wpbp_post_inside_after(); ?>
 	</article>
 	<?php wpbp_post_after(); ?>

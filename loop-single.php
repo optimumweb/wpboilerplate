@@ -22,6 +22,7 @@
 		<section id="entry-comments">
 			<?php comments_template(); ?>
 		</section>
+		<div class="clear"></div>
 		<?php wpbp_post_inside_after(); ?>
 	</article>
 	<?php wpbp_post_after(); ?>

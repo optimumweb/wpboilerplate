@@ -26,6 +26,7 @@
 		<footer class="post-footer">
 			<p class="post-tags"><?php the_tags(); ?></p>
 		</footer>
+		<div class="clear"></div>
 		<?php wpbp_post_inside_after(); ?>
 	</article>
 	<?php wpbp_post_after(); ?>
