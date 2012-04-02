@@ -9,11 +9,11 @@
 					<div class="container">
 						<h1 class="page-title">
 							<?php if ( is_day() ) : ?>
-								<?php printf( __('Daily Archives: &laquo; %s &raquo;', 'wpbp'), get_the_date() ); ?>
+								<?php printf( __('Daily Archives: %s', 'wpbp'), get_the_date() ); ?>
 							<?php elseif ( is_month() ) : ?>
-								<?php printf( __('Monthly Archives: &laquo; %s &raquo;', 'wpbp'), get_the_date('F Y') ); ?>
+								<?php printf( __('Monthly Archives: %s', 'wpbp'), get_the_date('F Y') ); ?>
 							<?php elseif ( is_year() ) : ?>
-								<?php printf( __('Yearly Archives: &laquo; %s &raquo;', 'wpbp'), get_the_date('Y') ); ?>
+								<?php printf( __('Yearly Archives: %s', 'wpbp'), get_the_date('Y') ); ?>
 							<?php endif; ?>
 						</h1>
 						<?php wpbp_loop_before(); ?>

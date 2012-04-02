@@ -8,7 +8,7 @@
 					<?php wpbp_main_inside_before(); ?>
 					<div class="container">
 						<h1 class="page-title">
-							<?php printf( __('Author: &laquo; %s &raquo;', 'wpbp'), single_author_title('', false) ); ?>
+							<?php printf( __('Author: %s', 'wpbp'), single_author_title('', false) ); ?>
 						</h1>
 						<div class="author-info">
 							<?php $author = get_author(); ?>
