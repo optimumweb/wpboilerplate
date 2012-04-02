@@ -358,10 +358,9 @@ class wpbp_most_popular extends WP_Widget {
 
 		$query_args = array(
 			'numberposts' => $number_posts,
-			'category' => $category,
 			'orderby' => 'meta_value_num',
-			'order' => 'desc',
-			'meta_key' => 'wpbp_post_views'
+			'meta_key' => 'wpbp_post_views',
+			'order' => 'desc'
 		);
 
 		list($year, $month, $week, $day) = explode(',', date('Y,m,W,d'));
@@ -382,14 +381,9 @@ class wpbp_most_popular extends WP_Widget {
 
 		$posts = get_posts( $query_args );
 
-		echo "<ul class=\"wpbp-most-popular\">";
-
-		global $post;
-		foreach( $posts as $post ) : setup_postdata($post);
-			?><li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li><?php
-		endforeach;
-		
-		echo "</ul>";
+		foreach( $posts as $post ) {
+			get_template_part('loop', 'most-popular');
+		}
 
 		echo $after_widget;
 
