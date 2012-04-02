@@ -12,7 +12,7 @@
 				<span class="post-author byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>
 			</section>
 		</header>
-		<section id="post-content" class="post-content">
+		<section class="post-content">
 			<?php the_content(); ?>
 		</section>
 		<footer class="post-footer">
