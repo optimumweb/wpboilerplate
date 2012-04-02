@@ -506,30 +506,37 @@ google_ad_height = $google_ad_height;
 
 	function form($instance) {
 		$fields = array(
-			'google_ad_client' => array(
+			'title' => array(
 				'id' => $this->get_field_id('title'),
 				'name' => $this->get_field_name('title'),
+				'label' => 'Title:',
+				'type' => 'text',
+				'class' => 'widefat'
+			),
+			'google_ad_client' => array(
+				'id' => $this->get_field_id('google_ad_client'),
+				'name' => $this->get_field_name('google_ad_client'),
 				'label' => 'Ad Client:',
 				'type' => 'text',
 				'class' => 'widefat'
 			),
 			'google_ad_slot' => array(
-				'id' => $this->get_field_id('title'),
-				'name' => $this->get_field_name('title'),
+				'id' => $this->get_field_id('google_ad_slot'),
+				'name' => $this->get_field_name('google_ad_slot'),
 				'label' => 'Ad Slot:',
 				'type' => 'text',
 				'class' => 'widefat'
 			),
 			'google_ad_width' => array(
-				'id' => $this->get_field_id('title'),
-				'name' => $this->get_field_name('title'),
+				'id' => $this->get_field_id('google_ad_width'),
+				'name' => $this->get_field_name('google_ad_width'),
 				'label' => 'Ad Width:',
 				'type' => 'text',
 				'class' => 'widefat'
 			),
 			'google_ad_height' => array(
-				'id' => $this->get_field_id('title'),
-				'name' => $this->get_field_name('title'),
+				'id' => $this->get_field_id('google_ad_height'),
+				'name' => $this->get_field_name('google_ad_height'),
 				'label' => 'Ad Height:',
 				'type' => 'text',
 				'class' => 'widefat'
