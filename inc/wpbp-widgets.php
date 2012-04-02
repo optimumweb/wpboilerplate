@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * WPBP: vCard
+ * Displays a vCard.
+ */
+
 class wpbp_vcard extends WP_Widget {
 
 	function wpbp_vcard() {
-		$widget_ops = array('description' => 'Display a vCard');
+		$widget_ops = array('description' => 'Displays a vCard');
 		parent::WP_Widget(false, __('WPBP: vCard', 'wpbp'), $widget_ops);
 	}
    
@@ -184,10 +189,15 @@ class wpbp_vcard extends WP_Widget {
 register_widget('wpbp_vcard');
 
 
+/**
+ * WPBP: Category Navigation
+ * Display a navigation menu based on categories and posts.
+ */
+
 class wpbp_cat_nav extends WP_Widget {
 
 	function wpbp_cat_nav() {
-		$widget_ops = array('description' => 'Display a navigation menu based on categories and posts');
+		$widget_ops = array('description' => 'Display a navigation menu based on categories and posts.');
 		parent::WP_Widget(false, __('WPBP: Category Navigation', 'wpbp'), $widget_ops);
 	}
 
@@ -338,6 +348,11 @@ class wpbp_cat_nav extends WP_Widget {
 register_widget('wpbp_cat_nav');
 
 
+/**
+ * WPBP: Most Popular
+ * Displays the most popular posts based on number of views in the last 'x' days.
+ */
+
 class wpbp_most_popular extends WP_Widget {
 
 	function wpbp_most_popular() {
@@ -449,3 +464,79 @@ class wpbp_most_popular extends WP_Widget {
 }
 
 register_widget('wpbp_most_popular');
+
+
+/**
+ * WPBP: AdSense Unit
+ * Inserts a Google AdSense Ad Unit to your page.
+ */
+ 
+ class wpbp_google_adsense_unit extends WP_Widget {
+
+	function wpbp_google_adsense_unit() {
+		$widget_ops = array('description' => 'Inserts a Google AdSense Ad Unit to your page.');
+		parent::WP_Widget(false, __('WPBP: Google AdSense Unit', 'wpbp'), $widget_ops);
+	}
+
+	function widget($args, $instance) {
+		extract($args);
+		extract($instance);
+
+		echo $before_widget;
+		if ( isset($title) && strlen($title) > 0 ) {
+			echo $before_title . $title . $after_title;
+		}
+?>
+<script type="text/javascript"><!--
+google_ad_client = $google_ad_client;
+google_ad_slot = $google_ad_slot;
+google_ad_width = $google_ad_width;
+google_ad_height = $google_ad_height;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+<?php
+
+		echo $after_widget;
+	}
+
+	function update($new_instance, $old_instance) {
+		return $new_instance;
+	}
+
+	function form($instance) {
+		$fields = array(
+			'google_ad_client' => array(
+				'id' => $this->get_field_id('title'),
+				'name' => $this->get_field_name('title'),
+				'label' => 'Ad Client:',
+				'type' => 'text',
+				'class' => 'widefat'
+			),
+			'google_ad_slot' => array(
+				'id' => $this->get_field_id('title'),
+				'name' => $this->get_field_name('title'),
+				'label' => 'Ad Slot:',
+				'type' => 'text',
+				'class' => 'widefat'
+			),
+			'google_ad_width' => array(
+				'id' => $this->get_field_id('title'),
+				'name' => $this->get_field_name('title'),
+				'label' => 'Ad Width:',
+				'type' => 'text',
+				'class' => 'widefat'
+			),
+			'google_ad_height' => array(
+				'id' => $this->get_field_id('title'),
+				'name' => $this->get_field_name('title'),
+				'label' => 'Ad Height:',
+				'type' => 'text',
+				'class' => 'widefat'
+			)
+		);
+		wpbp_build_form($fields, $instance);
+	}
+}
+
+register_widget('wpbp_google_adsense_unit');
