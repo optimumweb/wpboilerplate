@@ -394,11 +394,11 @@ class wpbp_most_popular extends WP_Widget {
 				$query_args['year'] = $year;
 		} elseif ( $time_range == 'all_time' ) {}
 
-		$posts = get_posts( $query_args );
+		$posts = new WP_Query( $query_args );
 
-		foreach( $posts as $post ) {
-			get_template_part('loop', 'most-popular');
-		}
+		get_template_part('loop', 'most-popular');
+		
+		wp_reset_query();
 
 		echo $after_widget;
 
