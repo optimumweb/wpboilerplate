@@ -3,19 +3,19 @@
 	<?php wpbp_post_before(); ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php wpbp_post_inside_before(); ?>
-		<header id="post-header">
+		<header class="post-header">
 			<h1 class="post-title">
 				<?php the_title(); ?>
 			</h1>
-			<section id="post-meta">
+			<section class="post-meta">
 				<time class="post-date updated" datetime="<?php the_time('c'); ?>" pubdate><?php printf(__('Posted on %s at %s', 'wpbp'), get_the_time(__('l, F jS, Y', 'wpbp')), get_the_time()); ?></time>
 				<span class="post-author byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>
 			</section>
 		</header>
-		<section id="post-content">
+		<section id="post-content" class="post-content">
 			<?php the_content(); ?>
 		</section>
-		<footer id="post-footer">
+		<footer class="post-footer">
 			<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpbp'), 'after' => '</p></nav>' )); ?>
 			<p class="post-tags"><?php the_tags(); ?></p>
 		</footer>
