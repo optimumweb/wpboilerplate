@@ -80,6 +80,7 @@ function wpbp_get_scripts()
 	wpbp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), '1.5.1');
 	wpbp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), '2.1.9');
 	wpbp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), '2.9998');
+	wpbp_register_script('powerslide', 'http://firecdn.net/libs/powerslide/js/powerslide.js', array('jquery'), '0.1');
 	wpbp_register_script('wpbp', 'http://firecdn.net/libs/wpbp/js/wpbp.min.js', array('jquery'), '2.1.0');
     
     if ( $wpbp_options['js_files'] ) {
@@ -121,6 +122,7 @@ function wpbp_get_styles()
 	wpbp_register_style('960gs', 'http://firecdn.net/libs/960gs/960.min.css');
 	wpbp_register_style('bootstrap', 'http://firecdn.net/libs/bootstrap/css/bootstrap.min.css');
 	wpbp_register_style('bootstrap-responsive', 'http://firecdn.net/libs/bootstrap/css/bootstrap-responsive.min.css');
+	wpbp_register_style('powerslide', 'http://firecdn.net/libs/powerslide/css/powerslide.css');
 	wpbp_register_style('default', 'http://firecdn.net/libs/wpbp/css/default.css');
 	wpbp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css');
 	
