@@ -237,7 +237,7 @@ class wpbp_tax_nav extends WP_Widget {
 				) );
 				while ( $tmp_query->have_posts() ) {
 					$tmp_query->the_post();
-					echo '<li class="post-link"><a href="' . the_permalink() . '">' . the_title() . '</a></li>';
+					echo '<li class="post-link"><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
 				}
 				wp_reset_postdata();
 				/*$posts = get_posts( array(
