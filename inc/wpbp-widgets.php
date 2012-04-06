@@ -212,7 +212,7 @@ class wpbp_tax_nav extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
-		echo '<ul class="tax-nav-menu">';
+		echo '<ul class="tax-nav-menu menu">';
 
 		$taxs = get_categories( array(
 			'taxonomy' => $taxonomy,
@@ -227,7 +227,7 @@ class wpbp_tax_nav extends WP_Widget {
 			echo '<li class="tax-name' . $current_menu_item . '"><a href="' . get_term_link( $tax ) . '">' . $tax->name . '</a>';
 
 			if ( $number_posts != 0 ) {
-				echo '<ul class="tax-posts">';
+				echo '<ul class="tax-posts sub-menu">';
 				$cat_posts = get_posts( array(
 					'numberposts' => $number_posts,
 					'category' => $tax->term_ID,
