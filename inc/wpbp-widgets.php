@@ -223,11 +223,25 @@ class wpbp_tax_nav extends WP_Widget {
 		) );
 		
 		foreach( $taxs as $tax ) {
-			$is_current_tax = ( get_query_var($taxonomy) == $tax->slug );
+			
+			if ( is_tax() ) {
+				$is_current_tax = ( get_query_var($taxonomy) == $tax->slug );
+			}
+			elseif ( is_single() ) {
+				$post_taxs = wp_get_post_terms(null, $taxonomy);
+				$is_current_tax = in_array($tax->slug, $post_taxs);
+			}
+			else {
+				$is_current_tax = false;
+			}
+			
 			echo '<li class="tax-name' . ( $is_current_tax ? ' current-taxonomy-item' : '' ) . '">';
 			echo '<a href="' . get_term_link( $tax ) . '">' . $tax->name . '</a>';
+			
 			if ( $number_posts != 0 ) {
+			
 				echo '<ul class="tax-posts sub-menu">';
+				
 				$tmp_query = new WP_Query( array(
 					'tax_query' => array(
 						array(
@@ -237,14 +251,19 @@ class wpbp_tax_nav extends WP_Widget {
 						)
 					)
 				) );
+				
 				while ( $tmp_query->have_posts() ) {
 					$tmp_query->the_post();
 					echo '<li class="post-link"><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
 				}
 				wp_reset_postdata();
+				
 				echo '</ul>';
+				
 			}
+			
 			echo '</li>';
+			
 		}
 		
 		echo '</ul>';
