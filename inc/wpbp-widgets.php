@@ -190,15 +190,15 @@ register_widget('wpbp_vcard');
 
 
 /**
- * WPBP: Category Navigation
- * Display a navigation menu based on categories and posts.
+ * WPBP: Taxonomy Navigation
+ * Displays a navigation menu based on taxonomies and their respective posts.
  */
 
-class wpbp_cat_nav extends WP_Widget {
+class wpbp_tax_nav extends WP_Widget {
 
 	function wpbp_cat_nav() {
-		$widget_ops = array('description' => 'Display a navigation menu based on categories and posts.');
-		parent::WP_Widget(false, __('WPBP: Category Navigation', 'wpbp'), $widget_ops);
+		$widget_ops = array('description' => 'Displays a navigation menu based on taxonomies and their respective posts.');
+		parent::WP_Widget(false, __('WPBP: Taxonomy Navigation', 'wpbp'), $widget_ops);
 	}
 
 	function widget($args, $instance) {
@@ -212,9 +212,10 @@ class wpbp_cat_nav extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
-		echo "<ul class=\"cat-list\">";
+		echo "<ul class=\"tax-nav-menu\">";
 
 		$cats = get_categories( array(
+			'taxonomy' => $taxonomy,
 			'number' => ( $number_cats > 0 ) ? $number_cats : null,
 			'orderby' => $order_cats_by,
 			'order' => $cats_order
@@ -261,19 +262,28 @@ class wpbp_cat_nav extends WP_Widget {
 				'type' => 'text',
 				'class' => 'widefat'
 			),
+			'taxonomy' => array(
+				'id' => $this->get_field_id('taxonomy'),
+				'name' => $this->get_field_name('taxonomy'),
+				'label' => 'Taxonomy:',
+				'type' => 'dropdown',
+				'required' => true,
+				'options' => get_taxonomies( array( 'public' => true ) ),
+				'class' => 'widefat'
+			),
 			'number_cats' => array(
 				'id' => $this->get_field_id('number_cats'),
 				'name' => $this->get_field_name('number_cats'),
-				'label' => 'Maximum number of categories to display:',
+				'label' => 'Maximum number of taxonomies to display:',
 				'type' => 'text',
 				'defval' => '-1',
 				'required' => true,
 				'class' => 'widefat'
 			),
-			'order_cats_by' => array(
-				'id' => $this->get_field_id('order_cats_by'),
-				'name' => $this->get_field_name('order_cats_by'),
-				'label' => 'Order categories by:',
+			'order_taxs_by' => array(
+				'id' => $this->get_field_id('order_taxs_by'),
+				'name' => $this->get_field_name('order_taxs_by'),
+				'label' => 'Order taxonomies by:',
 				'type' => 'dropdown',
 				'required' => true,
 				'options' => array(
@@ -286,9 +296,9 @@ class wpbp_cat_nav extends WP_Widget {
 				'defval' => 'name',
 				'class' => 'widefat'
 			),
-			'cats_order' => array(
-				'id' => $this->get_field_id('cats_order'),
-				'name' => $this->get_field_name('cats_order'),
+			'taxs_order' => array(
+				'id' => $this->get_field_id('taxs_order'),
+				'name' => $this->get_field_name('taxs_order'),
 				'label' => 'Order:',
 				'type' => 'dropdown',
 				'required' => true,
@@ -302,7 +312,7 @@ class wpbp_cat_nav extends WP_Widget {
 			'number_posts' => array(
 				'id' => $this->get_field_id('number_posts'),
 				'name' => $this->get_field_name('number_posts'),
-				'label' => 'Maximum number of posts to display per category:',
+				'label' => 'Maximum number of posts to display per taxonomy:',
 				'type' => 'text',
 				'defval' => '-1',
 				'required' => true,
@@ -345,7 +355,7 @@ class wpbp_cat_nav extends WP_Widget {
 	}
 }
 
-register_widget('wpbp_cat_nav');
+register_widget('wpbp_tax_nav');
 
 
 /**
