@@ -259,6 +259,7 @@ class wpbp_tax_nav extends WP_Widget {
 				while ( $tmp_query->have_posts() ) {
 					$tmp_query->the_post();
 					$is_current_post = ( is_single() && get_the_ID() == $post->ID );
+					echo $post->ID . ' == ' . get_the_ID() . '?';
 					echo '<li class="post-link' . ( $is_current_post ? ' current-menu-item' : '' ) . '"><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
 				}
 				wp_reset_postdata();
