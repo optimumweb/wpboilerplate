@@ -212,38 +212,38 @@ class wpbp_tax_nav extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
-		echo "<ul class=\"tax-nav-menu\">";
+		echo '<ul class="tax-nav-menu">';
 
-		$cats = get_categories( array(
+		$taxs = get_categories( array(
 			'taxonomy' => $taxonomy,
 			'number' => ( $number_cats > 0 ) ? $number_cats : null,
 			'orderby' => $order_cats_by,
 			'order' => $cats_order
 		) );
-		foreach($cats as $cat) {
+		
+		foreach($taxs as $tax) {
 
-			$current_menu_item = ( is_category() && ( $cat->cat_ID == get_query_var('cat') ) ) ? " current-menu-item" : "";
-			echo "<li class=\"cat-name" . $current_menu_item . "\"><a href=\"" . get_category_link( $cat->cat_ID ) . "\">" . $cat->name . "</a>";
+			$current_menu_item = ( is_category() && ( $tax->term_ID == get_query_var('cat') ) ) ? " current-menu-item" : "";
+			echo '<li class="tax-name' . $current_menu_item . '"><a href="' . get_term_link( $tax ) . '">' . $tax->name . '</a>';
 
 			if ( $number_posts != 0 ) {
-				echo "<ul class=\"cat-posts\">";
-
+				echo '<ul class="tax-posts">';
 				$cat_posts = get_posts( array(
 					'numberposts' => $number_posts,
-					'category' => $cat->cat_ID,
+					'category' => $tax->term_ID,
 					'orderby' => $order_posts_by,
 					'order' => $posts_order
 				) );
 				foreach( $cat_posts as $post ) {
-					$current_menu_item = ( is_single() && ( $post->ID == $wp_query->post->ID ) ) ? " current-menu-item" : "";
-					echo "<li class=\"post-link" . $current_menu_item . "\"><a href=\"" . get_permalink( $post->ID ) . "\">" . $post->post_title . "</a></li>";
+					$current_menu_item = ( is_single() && ( $post->ID == $wp_query->post->ID ) ) ? ' current-menu-item' : '';
+					echo '<li class="post-link' . $current_menu_item . '"><a href="' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a></li>';
 				}
-				echo "</ul>";
+				echo '</ul>';
 			}
 
-			echo "</li>";
+			echo '</li>';
 		}
-		echo "</ul>";
+		echo '</ul>';
 
 		echo $after_widget;
 
