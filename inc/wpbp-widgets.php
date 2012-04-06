@@ -205,7 +205,7 @@ class wpbp_tax_nav extends WP_Widget {
 		extract($args);
 		extract($instance);
 
-		global $wp_query;
+		global $wp_query, $post;
 
 		echo $before_widget;
 		if ( isset($title) && strlen($title) > 0 ) {
@@ -228,7 +228,6 @@ class wpbp_tax_nav extends WP_Widget {
 				$is_current_tax = ( get_query_var($taxonomy) == $tax->slug );
 			}
 			elseif ( is_single() ) {
-				global $post;
 				$post_taxs = wp_get_post_terms($post->ID, $taxonomy);
 				$post_taxs_slugs = array();
 				foreach ( $post_taxs as $post_tax ) {
@@ -259,6 +258,7 @@ class wpbp_tax_nav extends WP_Widget {
 				
 				while ( $tmp_query->have_posts() ) {
 					$tmp_query->the_post();
+					$is_current_post = ( is_single() && get_the_ID() == $post->ID );
 					echo '<li class="post-link"><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
 				}
 				wp_reset_postdata();
