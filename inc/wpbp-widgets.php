@@ -223,7 +223,7 @@ class wpbp_tax_nav extends WP_Widget {
 		
 		foreach( $taxs as $tax ) {
 			$is_current_tax = ( get_query_var($taxonomy) == $tax->slug );
-			echo '<li class="tax-name' . $is_current_tax ? ' current-taxonomy-item' : '' . '">';
+			echo '<li class="tax-name' . ( $is_current_tax ? ' current-taxonomy-item' : '' ) . '">';
 			echo '<a href="' . get_term_link( $tax ) . '">' . $tax->name . '</a>';
 			if ( $number_posts != 0 ) {
 				echo '<ul class="tax-posts sub-menu">';
