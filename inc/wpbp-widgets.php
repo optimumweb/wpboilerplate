@@ -235,7 +235,6 @@ class wpbp_tax_nav extends WP_Widget {
 					$post_taxs_slugs[] = $post_tax->slug;
 				}
 				$is_current_tax = in_array($tax->slug, $post_taxs_slugs);
-				var_dump($post_taxs_slugs);
 			}
 			else {
 				$is_current_tax = false;
