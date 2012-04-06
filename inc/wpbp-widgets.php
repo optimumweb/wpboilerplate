@@ -230,8 +230,12 @@ class wpbp_tax_nav extends WP_Widget {
 			elseif ( is_single() ) {
 				global $post;
 				$post_taxs = wp_get_post_terms($post->ID, $taxonomy);
-				$is_current_tax = in_array($tax->slug, $post_taxs);
-				var_dump($post_taxs);
+				$post_taxs_slugs = array();
+				foreach ( $post_taxs as $post_tax ) {
+					$post_taxs_slugs[] = $post_tax->slug;
+				}
+				$is_current_tax = in_array($tax->slug, $post_taxs_slugs);
+				var_dump($post_taxs_slugs);
 			}
 			else {
 				$is_current_tax = false;
