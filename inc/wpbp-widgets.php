@@ -216,7 +216,7 @@ class wpbp_tax_nav extends WP_Widget {
 
 		$taxs = get_categories( array(
 			'taxonomy' => $taxonomy,
-			'number' => ( $number_cats > 0 ) ? $number_cats : null,
+			'number' => $number_cats,
 			'orderby' => $order_cats_by,
 			'order' => $cats_order
 		) );
