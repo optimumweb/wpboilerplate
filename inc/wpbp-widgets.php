@@ -212,6 +212,8 @@ class wpbp_tax_nav extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
+		$current_post_id = $post->ID;
+
 		echo '<ul class="tax-nav-menu menu">';
 
 		$taxs = get_categories( array(
@@ -228,7 +230,7 @@ class wpbp_tax_nav extends WP_Widget {
 				$is_current_tax = ( get_query_var($taxonomy) == $tax->slug );
 			}
 			elseif ( is_single() ) {
-				$post_taxs = wp_get_post_terms($post->ID, $taxonomy);
+				$post_taxs = wp_get_post_terms($current_post_id, $taxonomy);
 				$post_taxs_slugs = array();
 				foreach ( $post_taxs as $post_tax ) {
 					$post_taxs_slugs[] = $post_tax->slug;
@@ -258,8 +260,8 @@ class wpbp_tax_nav extends WP_Widget {
 				
 				while ( $tmp_query->have_posts() ) {
 					$tmp_query->the_post();
-					$is_current_post = ( is_single() && get_the_ID() == $post->ID );
-					echo $post->ID . ' == ' . get_the_ID() . '?';
+					$is_current_post = ( is_single() && get_the_ID() == $current_post_id );
+					echo $current_post_id . ' == ' . get_the_ID() . '?';
 					echo '<li class="post-link' . ( $is_current_post ? ' current-menu-item' : '' ) . '"><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
 				}
 				wp_reset_postdata();
