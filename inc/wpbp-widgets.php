@@ -231,7 +231,7 @@ class wpbp_tax_nav extends WP_Widget {
 						array(
 							'taxonomy' => $taxonomy,
 							'field' => 'id',
-							'terms' => $tax->term_id;
+							'terms' => $tax->term_id
 						)
 					)
 				) );
