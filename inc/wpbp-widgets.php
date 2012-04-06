@@ -196,7 +196,7 @@ register_widget('wpbp_vcard');
 
 class wpbp_tax_nav extends WP_Widget {
 
-	function wpbp_cat_nav() {
+	function wpbp_tax_nav() {
 		$widget_ops = array('description' => 'Displays a navigation menu based on taxonomies and their respective posts.');
 		parent::WP_Widget(false, __('WPBP: Taxonomy Navigation', 'wpbp'), $widget_ops);
 	}
