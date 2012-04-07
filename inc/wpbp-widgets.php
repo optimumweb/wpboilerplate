@@ -218,9 +218,9 @@ class wpbp_tax_nav extends WP_Widget {
 
 		$taxs = get_categories( array(
 			'taxonomy' => $taxonomy,
-			'number' => ( $number_cats > 0 ) ? $number_cats : null,
-			'orderby' => $order_cats_by,
-			'order' => $cats_order,
+			'number' => ( $number_taxs > 0 ) ? $number_taxs : null,
+			'orderby' => $order_taxs_by,
+			'order' => $taxs_order,
 			'hide_empty' => 0
 		) );
 		
@@ -301,9 +301,9 @@ class wpbp_tax_nav extends WP_Widget {
 				'options' => get_taxonomies( array( 'public' => true ) ),
 				'class' => 'widefat'
 			),
-			'number_cats' => array(
-				'id' => $this->get_field_id('number_cats'),
-				'name' => $this->get_field_name('number_cats'),
+			'number_taxs' => array(
+				'id' => $this->get_field_id('number_taxs'),
+				'name' => $this->get_field_name('number_taxs'),
 				'label' => 'Maximum number of taxonomies to display:',
 				'type' => 'text',
 				'defval' => '-1',
