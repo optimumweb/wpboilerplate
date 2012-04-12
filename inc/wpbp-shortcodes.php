@@ -1,5 +1,30 @@
 <?php
 
+/**
+ * Clean up shortcode $content
+ */
+
+function parse_shortcode_content($content)
+{
+	/* Parse nested shortcodes and add formatting. */
+	$content = trim( wpautop( do_shortcode( $content ) ) );
+
+	/* Remove '</p>' from the start of the string. */
+	if ( substr( $content, 0, 4 ) == '</p>' )
+		$content = substr( $content, 4 );
+
+	/* Remove '<p>' from the end of the string. */
+	if ( substr( $content, -3, 3 ) == '<p>' )
+		$content = substr( $content, 0, -3 );
+
+	/* Remove any instances of '<p></p>'. */
+	$content = str_replace( array( '<p></p>' ), '', $content );
+
+	$content = do_shortcode( $content );
+
+	return $content;
+}
+
 // [container cols="12"]...[/container]
 function container_960gs($atts, $content = null)
 {
@@ -80,7 +105,7 @@ function make_box($atts, $content = null)
 	$box .= parse_shortcode_content($content);
 	$box .= '<div class="clear"></div></div>';
     
-    $box_arrow_src = ( $small ) ? 'box-arrow-small.png' : 'box-arrow.png';
+    $box_arrow_src = $small ? 'box-arrow-small.png' : 'box-arrow.png';
     $box_arrow = wpbp_get_image_tag( array( 'src' => 'http://pierreroy.firecdn.net/img/' . $box_arrow_src, 'width' => 30, 'height' => 30 ) );
     
     if ( $sliding ) {
@@ -109,31 +134,6 @@ function wpbp_article_header($atts = null, $content = null)
 	return '<div class="article-header">' . parse_shortcode_content($content) . '</div>';
 }
 add_shortcode("article-header", "wpbp_article_header");
-
-/**
- * Clean up shortcode $content
- */
-
-function parse_shortcode_content($content)
-{
-	/* Parse nested shortcodes and add formatting. */
-	$content = trim( wpautop( do_shortcode( $content ) ) );
-
-	/* Remove '</p>' from the start of the string. */
-	if ( substr( $content, 0, 4 ) == '</p>' )
-		$content = substr( $content, 4 );
-
-	/* Remove '<p>' from the end of the string. */
-	if ( substr( $content, -3, 3 ) == '<p>' )
-		$content = substr( $content, 0, -3 );
-
-	/* Remove any instances of '<p></p>'. */
-	$content = str_replace( array( '<p></p>' ), '', $content );
-
-	$content = do_shortcode( $content );
-
-	return $content;
-}
 
 /**
  * Plugin Name: Show Menu Shortcode
