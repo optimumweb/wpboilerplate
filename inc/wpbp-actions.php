@@ -68,19 +68,42 @@ function wpbp_get_scripts()
 	// Available Javascript Librairies
 	// You will need to enqueue the ones you want in your child theme
 	
+	// jQuery
 	wpbp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), '1.7.1');
+	
+	// jQuery UI
 	wpbp_register_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', array(), '1.8.16');
-	wpbp_register_script('bootstrap', 'http://firecdn.net/libs/bootstrap/js/bootstrap.min.js', array('jquery'), '2.0.2');
+	
+	// jQuery Plugins
 	wpbp_register_script('scrollTo', 'http://firecdn.net/libs/scrollTo/jquery.scrollTo.min.js', array('jquery'), '1.4.2');
-	wpbp_register_script('ext-core', 'https://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js', array(), '3.1.0');
-	wpbp_register_script('dojo', 'https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js', array(), '1.6.1');
-	wpbp_register_script('mootools', 'https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js', array(), '1.4.1');
-	wpbp_register_script('modernizr', 'http://firecdn.net/libs/modernizr/modernizr.js', array(), '2.0.6');
-	wpbp_register_script('lesscss', 'http://firecdn.net/libs/less/less.min.js', array(), '1.2.1');
-	wpbp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), '1.5.1');
-	wpbp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), '2.1.9');
 	wpbp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), '2.9998');
 	wpbp_register_script('powerslide', 'http://firecdn.net/libs/powerslide/js/powerslide.js', array('jquery'), '0.1');
+	
+	// Twitter Bootstrap
+	wpbp_register_script('bootstrap', 'http://firecdn.net/libs/bootstrap/js/bootstrap.min.js', array('jquery'), '2.0.2');
+	
+	// Ext JS
+	wpbp_register_script('ext-core', 'https://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js', array(), '3.1.0');
+	
+	// Dojo
+	wpbp_register_script('dojo', 'https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js', array(), '1.6.1');
+	
+	// MooTools
+	wpbp_register_script('mootools', 'https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js', array(), '1.4.1');
+	
+	// Modernizr
+	wpbp_register_script('modernizr', 'http://firecdn.net/libs/modernizr/modernizr.js', array(), '2.0.6');
+	
+	// LessCSS
+	wpbp_register_script('lesscss', 'http://firecdn.net/libs/less/less.min.js', array(), '1.2.1');
+	
+	// Sizzle
+	wpbp_register_script('sizzle', 'http://firecdn.net/libs/sizzle/sizzle.min.js', array(), '1.5.1');
+	
+	// Highcharts
+	wpbp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), '2.1.9');
+	
+	// WPBP
 	wpbp_register_script('wpbp', 'http://firecdn.net/libs/wpbp/js/wpbp.min.js', array('jquery'), '2.1.0');
     
     if ( $wpbp_options['js_files'] ) {
@@ -119,11 +142,29 @@ function wpbp_get_styles()
 
 	global $wpbp_options;
 
+	// 960gs
 	wpbp_register_style('960gs', 'http://firecdn.net/libs/960gs/960.min.css');
+	
+	// jQuery UI
+	wpbp_register_style('jquery-ui', 'http://firecdn.net/libs/jquery-ui/css/base/jquery.ui.all.css');
+	wpbp_register_style('jquery-ui-base', 'http://firecdn.net/libs/jquery-ui/css/base/jquery.ui.base.css');
+	wpbp_register_style('jquery-ui-smoothness', 'http://firecdn.net/libs/jquery-ui/css/smoothness/jquery-ui.css');
+	wpbp_register_style('jquery-ui-lightness', 'http://firecdn.net/libs/jquery-ui/css/ui-lightness/jquery-ui.css');
+	wpbp_register_style('jquery-ui-darkness', 'http://firecdn.net/libs/jquery-ui/css/ui-darkness/jquery-ui.css');
+	wpbp_register_style('jquery-ui-redmond', 'http://firecdn.net/libs/jquery-ui/css/redmond/jquery-ui.css');
+	wpbp_register_style('jquery-ui-blitzer', 'http://firecdn.net/libs/jquery-ui/css/blitzer/jquery-ui.css');
+	
+	// Twitter Bootstrap
 	wpbp_register_style('bootstrap', 'http://firecdn.net/libs/bootstrap/css/bootstrap.min.css');
 	wpbp_register_style('bootstrap-responsive', 'http://firecdn.net/libs/bootstrap/css/bootstrap-responsive.min.css');
+	
+	// PowerSlide
 	wpbp_register_style('powerslide', 'http://firecdn.net/libs/powerslide/css/powerslide.css');
+	
+	// WPBP Default
 	wpbp_register_style('default', 'http://firecdn.net/libs/wpbp/css/default.css');
+	
+	// WP Meta
 	wpbp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css');
 	
 	if ( $wpbp_options['css_files'] ) {
