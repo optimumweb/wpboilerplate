@@ -147,7 +147,6 @@ function wpbp_get_styles()
 	
 	// jQuery UI
 	wpbp_register_style('jquery-ui', 'http://firecdn.net/libs/jquery-ui/css/base/jquery.ui.all.css');
-	wpbp_register_style('jquery-ui-base', 'http://firecdn.net/libs/jquery-ui/css/base/jquery.ui.base.css');
 	wpbp_register_style('jquery-ui-smoothness', 'http://firecdn.net/libs/jquery-ui/css/smoothness/jquery-ui.css');
 	wpbp_register_style('jquery-ui-lightness', 'http://firecdn.net/libs/jquery-ui/css/ui-lightness/jquery-ui.css');
 	wpbp_register_style('jquery-ui-darkness', 'http://firecdn.net/libs/jquery-ui/css/ui-darkness/jquery-ui.css');
