@@ -91,7 +91,6 @@ function make_box($atts, $content = null)
     $data = '';
     if ( $src ) $data .= ' data-src="' . $src . '"';
     
-    
     $box = '<div' . $id . $class . $data . '>';
     
 	if ( isset($title) && strlen($title) > 0 ) {
@@ -117,7 +116,7 @@ function make_box($atts, $content = null)
     
     if ( $collapsible ) {
     	$box .= '<div class="box-controls">';
-    	$box .= '<a class="box-arrow collapse-trigger valign" data-ref="#' . $id_val . ' .box-title" href="#">' . $box_arrow . '</a>';
+    	$box .= '<a class="box-arrow collapse-trigger valign' . ( $ajax ? ' ajax-trigger' : '' ) . '" data-ref="#' . $id_val . ' .box-title" href="#">' . $box_arrow . '</a>';
     	$box .= '</div>';
     }
     
