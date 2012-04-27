@@ -19,7 +19,7 @@
 			<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpbp'), 'after' => '</p></nav>' )); ?>
 			<p class="post-tags"><?php the_tags(); ?></p>
 		</footer>
-		<section id="entry-comments">
+		<section id="post-comments">
 			<?php comments_template(); ?>
 		</section>
 		<div class="clear"></div>
