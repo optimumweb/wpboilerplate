@@ -79,7 +79,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
 
         $filename = __DIR__ . '/h5bp-htaccess';
         
-        echo "Rules added!";
+        //echo "Rules added!";
 
         return $rules . $wp_filesystem->get_contents($filename);
     }
