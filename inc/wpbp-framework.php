@@ -210,12 +210,37 @@ if ( !function_exists('encrypt') && !function_exists('decrypt') ) {
 
 	function encrypt($text)
 	{
-		return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, SALT, $text, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))));
+		if ( function_exists('mcrypt_encrypt') && function_exists('mcrypt_decrypt') ) {
+			return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, SALT, $text, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))));
+		}
+		else {
+			$result = '';
+			for ( $i=0; $i < strlen($string); $i++ ) {
+				$char = substr($string, $i, 1);
+				$keychar = substr(SALT, ($i % strlen(SALT))-1, 1);
+				$char = chr( ord($char) + ord($keychar) );
+				$result .= $char;
+			}
+			return base64_encode($result);
+		}
 	}
 	
 	function decrypt($text)
 	{
-		return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, SALT, base64_decode($text), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
+		if ( function_exists('mcrypt_encrypt') && function_exists('mcrypt_decrypt') ) {
+			return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, SALT, base64_decode($text), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
+		}
+		else {
+			$result = '';
+			$string = base64_decode($string);
+			for( $i=0; $i < strlen($string); $i++ ) {
+				$char = substr($string, $i, 1);
+				$keychar = substr(SALT, ($i % strlen(SALT))-1, 1);
+				$char = chr( ord($char) - ord($keychar) );
+				$result .= $char;
+			}
+			return $result;
+		}
 	}
 	
 }
