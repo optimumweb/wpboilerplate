@@ -215,8 +215,8 @@ if ( !function_exists('encrypt') && !function_exists('decrypt') ) {
 		}
 		else {
 			$result = '';
-			for ( $i=0; $i < strlen($string); $i++ ) {
-				$char = substr($string, $i, 1);
+			for ( $i=0; $i < strlen($text); $i++ ) {
+				$char = substr($text, $i, 1);
 				$keychar = substr(SALT, ($i % strlen(SALT))-1, 1);
 				$char = chr( ord($char) + ord($keychar) );
 				$result .= $char;
@@ -232,9 +232,9 @@ if ( !function_exists('encrypt') && !function_exists('decrypt') ) {
 		}
 		else {
 			$result = '';
-			$string = base64_decode($string);
-			for( $i=0; $i < strlen($string); $i++ ) {
-				$char = substr($string, $i, 1);
+			$text = base64_decode($text);
+			for( $i=0; $i < strlen($text); $i++ ) {
+				$char = substr($text, $i, 1);
 				$keychar = substr(SALT, ($i % strlen(SALT))-1, 1);
 				$char = chr( ord($char) - ord($keychar) );
 				$result .= $char;
