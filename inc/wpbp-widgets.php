@@ -409,18 +409,21 @@ class wpbp_latest_posts extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
-		$category = get_query_var('cat');
-
 		$query_args = array(
 			'numberposts' => $number_posts,
 			'order' => 'desc'
 		);
+        
+        global $wp_query;
+        $tmp = $wp_query;
 
 		$posts = new WP_Query( $query_args );
 
 		get_template_part('loop', 'latest-posts');
 		
 		wp_reset_query();
+        
+        $wp_query = $tmp;
 
 		echo $after_widget;
 
