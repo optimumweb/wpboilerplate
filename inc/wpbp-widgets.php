@@ -416,6 +416,9 @@ class wpbp_latest_posts extends WP_Widget {
         
         global $wp_query;
         $tmp = $wp_query;
+        $wp_query = null;
+        
+        var_dump($posts_per_page);
 
 		query_posts( $query_args );
 
