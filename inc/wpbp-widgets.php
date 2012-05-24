@@ -410,7 +410,7 @@ class wpbp_latest_posts extends WP_Widget {
 		}
 
 		$query_args = array(
-			'numberposts' => $number_posts,
+			'posts_per_page' => $posts_per_page,
 			'order' => 'desc'
 		);
         
@@ -442,9 +442,9 @@ class wpbp_latest_posts extends WP_Widget {
 				'type' => 'text',
 				'class' => 'widefat'
 			),
-			'number_posts' => array(
-				'id' => $this->get_field_id('number_posts'),
-				'name' => $this->get_field_name('number_posts'),
+			'posts_per_page' => array(
+				'id' => $this->get_field_id('posts_per_page'),
+				'name' => $this->get_field_name('posts_per_page'),
 				'label' => 'Number of posts to show:',
 				'type' => 'text',
 				'defval' => 5,
