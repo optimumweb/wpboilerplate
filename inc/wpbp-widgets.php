@@ -389,6 +389,74 @@ register_widget('wpbp_tax_nav');
 
 
 /**
+ * WPBP: Latest Posts
+ * Displays the latest posts
+ */
+
+class wpbp_latest_posts extends WP_Widget {
+
+    function wpbp_latest_posts() {
+		$widget_ops = array('description' => 'Displays the latest posts');
+		parent::WP_Widget(false, __('WPBP: Latest Posts', 'wpbp'), $widget_ops);
+	}
+
+	function widget($args, $instance) {
+		extract($args);
+		extract($instance);
+
+		echo $before_widget;
+		if ( isset($title) && strlen($title) > 0 ) {
+			echo $before_title . $title . $after_title;
+		}
+
+		$category = get_query_var('cat');
+
+		$query_args = array(
+			'numberposts' => $number_posts,
+			'order' => 'desc'
+		);
+
+		$posts = new WP_Query( $query_args );
+
+		get_template_part('loop', 'latest-posts');
+		
+		wp_reset_query();
+
+		echo $after_widget;
+
+	}
+
+	function update($new_instance, $old_instance) {
+		return $new_instance;
+	}
+
+	function form($instance) {
+		$fields = array(
+			'title' => array(
+				'id' => $this->get_field_id('title'),
+				'name' => $this->get_field_name('title'),
+				'label' => 'Title:',
+				'type' => 'text',
+				'class' => 'widefat'
+			),
+			'number_posts' => array(
+				'id' => $this->get_field_id('number_posts'),
+				'name' => $this->get_field_name('number_posts'),
+				'label' => 'Number of posts to show:',
+				'type' => 'text',
+				'defval' => 5,
+				'class' => 'widefat',
+				'required' => true
+			)
+		);
+		wpbp_build_form($fields, $instance);
+	}
+}
+
+register_widget('wpbp_latest_posts');
+
+
+/**
  * WPBP: Most Popular
  * Displays the most popular posts based on number of views in the last 'x' days.
  */
