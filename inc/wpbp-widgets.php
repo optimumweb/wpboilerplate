@@ -418,8 +418,6 @@ class wpbp_latest_posts extends WP_Widget {
         $tmp = $wp_query;
         $wp_query = null;
         
-        var_dump($posts_per_page);
-
 		query_posts( $query_args );
 
 		get_template_part('loop', 'latest-posts');
