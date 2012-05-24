@@ -417,7 +417,7 @@ class wpbp_latest_posts extends WP_Widget {
         global $wp_query;
         $tmp = $wp_query;
 
-		$posts = new WP_Query( $query_args );
+		query_posts( $query_args );
 
 		get_template_part('loop', 'latest-posts');
 		
