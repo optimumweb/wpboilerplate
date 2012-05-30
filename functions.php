@@ -1,7 +1,9 @@
 <?php
 
-define('TEMPLATE_DIRECTORY', get_template_directory());
-define('THEME_DIRECTORY', get_theme_root() . '/' . get_stylesheet());
+if ( !defined('TEMPLATE_DIRECTORY') ) define('TEMPLATE_DIRECTORY', get_template_directory());
+if ( !defined('TEMPLATE_URI') ) define('TEMPLATE_URI', get_template_directory_uri());
+if ( !defined('THEME_DIRECTORY') ) define('THEME_DIRECTORY', get_theme_root() . '/' . get_stylesheet());
+if ( !defined('THEME_URI') ) define('THEME_URI', get_stylesheet_directory_uri());
 
 $required_files = array(
 	'/inc/wpbp-activation.php',		// activation
