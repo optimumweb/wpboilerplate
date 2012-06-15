@@ -78,6 +78,7 @@ function wpbp_get_scripts()
 	wpbp_register_script('scrollTo', 'http://firecdn.net/libs/scrollTo/jquery.scrollTo.min.js', array('jquery'), '1.4.2');
 	wpbp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), '2.9998');
 	wpbp_register_script('powerslide', 'http://firecdn.net/libs/powerslide/js/powerslide.min.js', array('jquery'), '1.1');
+	wpbp_register_script('lightbox', 'http://firecdn.net/libs/lightbox/js/lightbox.min.js', array('jquery'), '2.51');
 	
 	// Twitter Bootstrap
 	wpbp_register_script('bootstrap', 'http://firecdn.net/libs/bootstrap/js/bootstrap.min.js', array('jquery'), '2.0.2');
@@ -157,6 +158,9 @@ function wpbp_get_styles()
 	wpbp_register_style('bootstrap', 'http://firecdn.net/libs/bootstrap/css/bootstrap.min.css');
 	wpbp_register_style('bootstrap-responsive', 'http://firecdn.net/libs/bootstrap/css/bootstrap-responsive.min.css');
 	
+	// Lightbox
+	wpbp_register_style('lightbox', 'http://firecdn.net/libs/lightbox/css/lightbox.min.css');
+	
 	// PowerSlide
 	wpbp_register_style('powerslide', 'http://firecdn.net/libs/powerslide/css/powerslide.css');
 	
@@ -195,21 +199,6 @@ function wpbp_enqueue_styles( $styles = array() )
 		}
 	}
 }
-
-function enqueue_less_styles($tag, $handle) {
-	global $wp_styles;
-	$match_pattern = '/\.less$/U';
-	if ( preg_match( $match_pattern, $wp_styles->registered[$handle]->src ) ) {
-		$handle = $wp_styles->registered[$handle]->handle;
-		$media = $wp_styles->registered[$handle]->args;
-		$href = $wp_styles->registered[$handle]->src . '?ver=' . $wp_styles->registered[$handle]->ver;
-		$rel = isset($wp_styles->registered[$handle]->extra['alt']) && $wp_styles->registered[$handle]->extra['alt'] ? 'alternate stylesheet' : 'stylesheet';
-		$title = isset($wp_styles->registered[$handle]->extra['title']) ? "title='" . esc_attr( $wp_styles->registered[$handle]->extra['title'] ) . "'" : '';
-		$tag = "<link rel='stylesheet' id='$handle-css' $title href='$href' type='text/less' media='$media' />\n";
-	}
-	return $tag;
-}
-add_filter('style_loader_tag', 'enqueue_less_styles', 5, 2);
 
 function wpbp_custom_css()
 {
