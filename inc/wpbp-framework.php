@@ -96,11 +96,8 @@ if ( !function_exists('is_valid_image') ) {
 
     function is_valid_image($url)
 	{
-        
         $url = get_full_url($url);
-        
 		$image_attr = @getimagesize($url);
-		
 		return ( isset($image_attr) && is_array($image_attr) );
 	}
     
