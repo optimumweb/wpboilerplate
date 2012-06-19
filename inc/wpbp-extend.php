@@ -80,8 +80,10 @@ if ( !function_exists('get_featured_image_url') ) {
 			$url = get_post_meta($post_ID, 'featured_image_url', true);
 		}
 		else {
-			$image_src = wp_get_attachment_url( get_post_thumbnail_id( $post_ID ) );
-			$url = $image_src[0];
+			$post_thumbnail_id = get_post_thumbnail_id( $post_ID );
+			if ( $post_thumbnail_id ) {
+				$url = wp_get_attachment_url( $post_thumbnail_id );
+			}
 		}
 		return $url;
 	}
