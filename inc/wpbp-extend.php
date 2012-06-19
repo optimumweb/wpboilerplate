@@ -75,12 +75,12 @@ if ( !function_exists('get_featured_image_url') ) {
 	
 	function get_featured_image_url($post_ID = null)
 	{
-		set_post_ID( $post_ID );
+		set_post_ID($post_ID);
 		if ( get_post_meta($post_ID, 'featured_image_url', true) ) {
 			$url = get_post_meta($post_ID, 'featured_image_url', true);
 		}
 		else {
-			$image_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ), 'single-post-thumbnail' );
+			$image_src = wp_get_attachment_url( get_post_thumbnail_id( $post_ID ) );
 			$url = $image_src[0];
 		}
 		return $url;
@@ -93,8 +93,8 @@ if ( !function_exists('has_featured_image') ) {
 	function has_featured_image($post_ID = null)
 	{
         set_post_ID($post_ID);
-        $url = get_featured_image_url( $post_ID );
-        if ( strlen( $url ) > 0 ) return true;
+        $url = get_featured_image_url($post_ID);
+        if ( isset($url) && strlen($url) > 0 ) return true;
         return false;
 	}
 
