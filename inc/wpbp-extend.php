@@ -127,6 +127,8 @@ if ( !function_exists('featured_image') ) {
 
 }
 
+function wpbp_get_the_excerpt($post_ID = null, $limit = 250) { return null; }
+
 if ( !function_exists('wpbp_get_the_excerpt') ) {
 
 	function wpbp_get_the_excerpt($post_ID = null, $limit = 250)
