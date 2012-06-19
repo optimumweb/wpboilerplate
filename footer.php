@@ -1,8 +1,7 @@
-<?php global $wpbp_options; ?>
 		<?php wpbp_footer_before(); ?>
 		<footer id="footer" role="contentinfo">
 			<?php wpbp_footer_inside_before(); ?>
-			<div class="container <?php echo $wpbp_options['container_class']; ?>">
+			<div class="container <?php wpbp_option('container_class'); ?>">
 				<nav id="footer-nav">
 					<?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation' ) ); ?>
 					<div class="clear"></div>

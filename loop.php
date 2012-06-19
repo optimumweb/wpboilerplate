@@ -1,5 +1,5 @@
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
-<?php if (!have_posts()) : ?>
+<?php if ( !have_posts() ) : ?>
 	<div class="notice">
 		<p class="bottom"><?php _e('Sorry, no results were found.', 'wpbp'); ?></p>
 	</div>
@@ -7,7 +7,7 @@
 <?php endif; ?>
 
 <?php /* Start loop */ ?>
-<?php while (have_posts()) : the_post(); ?>
+<?php while ( have_posts() ) : the_post(); ?>
 	<?php wpbp_post_before(); ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php wpbp_post_inside_before(); ?>

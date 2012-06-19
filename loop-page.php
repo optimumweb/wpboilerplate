@@ -1,5 +1,5 @@
 <?php /* Start loop */ ?>
-<?php while (have_posts()) : the_post(); ?>
+<?php while ( have_posts() ) : the_post(); ?>
 	<?php wpbp_post_before(); ?>
 	<article id="page-<?php the_ID(); ?>" class="page">
 		<?php wpbp_post_inside_before(); ?>

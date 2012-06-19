@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 	<?php wpbp_content_before(); ?>
 	<section id="content">
-		<div class="container <?php echo $wpbp_options['container_class']; ?>">
-			<div class="<?php echo $wpbp_options['main_class']; ?>">
+		<div class="container <?php wpbp_option('container_class'); ?>">
+			<div class="<?php wpbp_option('main_class'); ?>">
 				<?php wpbp_main_before(); ?>
 				<section id="main" role="main">
 					<?php wpbp_main_inside_before(); ?>
@@ -16,7 +16,7 @@
 				</section>
 				<?php wpbp_main_after(); ?>
 			</div>
-			<div class="<?php echo $wpbp_options['sidebar_class']; ?>">
+			<div class="<?php wpbp_option('sidebar_class'); ?>">
 				<?php wpbp_sidebar_before(); ?>
 				<aside id="sidebar" role="complementary">
 					<?php wpbp_sidebar_inside_before(); ?>

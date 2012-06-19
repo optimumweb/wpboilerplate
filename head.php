@@ -1,4 +1,4 @@
-<?php global $wpbp_options, $post; ?>
+<?php global $post; ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" <?php language_attributes(); ?>> <![endif]-->
@@ -19,4 +19,4 @@
 
 </head>
 
-<body <?php body_class( array( $post->post_name, $wpbp_options['css_framework'] ) ); ?>>
+<body <?php body_class( array( $post->post_name, wpbp_get_option('css_framework') ) ); ?>>

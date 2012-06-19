@@ -23,6 +23,17 @@ function wpbp_admin_enqueue_scripts($hook_suffix)
 }
 add_action('admin_enqueue_scripts', 'wpbp_admin_enqueue_scripts');
 
+function wpbp_get_option($option)
+{
+	global $wpbp_options;
+	return ( is_array( $wpbp_options ) && isset( $wpbp_options[$option] ) ) ? $wpbp_options[$option] : "";
+}
+
+function wpbp_option($option)
+{
+	echo wpbp_get_option($option);
+}
+
 function wpbp_theme_options_init()
 {
 	if ( wpbp_get_theme_options() === false ) {

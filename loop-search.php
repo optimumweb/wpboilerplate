@@ -1,5 +1,5 @@
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
-<?php if (!have_posts()) : ?>
+<?php if ( !have_posts() ) : ?>
 	<div class="notice">
 		<p class="bottom"><?php _e('Sorry, no results were found.', 'wpbp'); ?></p>
 	</div>
