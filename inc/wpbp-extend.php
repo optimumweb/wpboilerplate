@@ -71,12 +71,29 @@ if ( !function_exists('single_author_title') ) {
 
 }
 
+if ( !function_exists('get_featured_image_url') ) {
+	
+	function get_featured_image_url($post_ID = null)
+	{
+		set_post_ID( $post_ID );
+		if ( get_post_meta($post_ID, 'featured_image_url', true) ) {
+			$url = get_post_meta($post_ID, 'featured_image_url', true);
+		}
+		else {
+			$image_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ), 'single-post-thumbnail' );
+			$url = $image_src[0];
+		}
+		return $url;
+	}
+	
+}
+
 if ( !function_exists('has_featured_image') ) {
 
 	function has_featured_image($post_ID = null)
 	{
         set_post_ID($post_ID);
-		$url = get_post_meta($post_ID, 'featured_image_url', true);
+        $url = get_featured_image_url( $post_ID );
         if ( strlen( $url ) > 0 ) return true;
         return false;
 	}
@@ -90,11 +107,8 @@ if ( !function_exists('get_featured_image') ) {
         set_post_ID($post_ID);
         
 		if ( has_featured_image($post_ID) ) {
-			
-            $url = get_post_meta($post_ID, 'featured_image_url', true);
-            
-    		$image_attr = wpbp_get_image_size($url);
-            
+            $url = get_featured_image_url( $post_ID );
+    		$image_attr = get_image_size($url);
 			if ( isset($image_attr) && is_array($image_attr) ) {
 				return ( $attr !== false && isset($$attr) ) ? $$attr : compact('url', 'width', 'height', 'ratio', 'type', 'attr');
 			}
@@ -115,7 +129,7 @@ if ( !function_exists('featured_image') ) {
 
 		if ( isset($post_image_url) && $post_image_url !== false && strlen($post_image_url) > 0 ) {
 			$alt = get_the_title($post_ID);
-			$src = wpbp_resize_image_url($post_image_url, $width, $height, $quality);
+			$src = resize_image_url($post_image_url, $width, $height, $quality);
             if ( isset($src) && $src !== false && strlen($src) > 0 ) {
                 echo '<img class="post-thumbnail" src="' . $src . '" alt="' . $alt . '" />\n';
             }
