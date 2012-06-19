@@ -15,7 +15,7 @@ function wpbp_google_analytics()
     global $wpbp_options;
     $wpbp_google_analytics_id = $wpbp_options['google_analytics_id'];
     $wpbp_get_google_analytics_id = esc_attr($wpbp_options['google_analytics_id']);
-    if ( $wpbp_google_analytics_id !== '' ) {
+    if ( $wpbp_google_analytics_id !== '' ) :
 ?>
 <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -29,7 +29,7 @@ function wpbp_google_analytics()
     })();
 </script>
 <?php
-    }
+    endif;
     return;
 }
 

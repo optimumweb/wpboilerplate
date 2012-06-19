@@ -71,33 +71,6 @@ if ( !function_exists('single_author_title') ) {
 
 }
 
-/*if ( !function_exists('download_image_from_url') ) {
-
-    function download_image_from_url($url, $fname = null)
-    {
-        if ( wpbp_is_valid_image($url) ) {
-            
-            $fname = ( isset($fname) ) ? $fname : end( explode('/', $url) );
-            
-            $upload_dir = wp_upload_dir();
-            $dirpath = $upload_dir['path'];
-            $dirurl = $upload_dir['url'];
-            $fpath = $dirpath . '/' . $fname;
-            $furl = $dirurl . '/' . $fname;
-            
-            $i = file_get_contents($url);
-            $f = fopen($fpath, 'w+');
-            fwrite($f, $i);
-            fclose($f);
-            
-            return ( file_exists($fpath) && wpbp_is_valid_image($furl) ) ? array( 'path' => $fpath, 'url' => $furl ) : false;
-        }
-        
-        return false;
-    }
-
-}*/
-
 if ( !function_exists('has_featured_image') ) {
 
 	function has_featured_image($post_ID = null)
@@ -144,7 +117,7 @@ if ( !function_exists('featured_image') ) {
 			$alt = get_the_title($post_ID);
 			$src = wpbp_resize_image_url($post_image_url, $width, $height, $quality);
             if ( isset($src) && $src !== false && strlen($src) > 0 ) {
-                echo "<img class=\"post-thumbnail\" src=\"" . $src . "\" alt=\"" . $alt . "\" />\n";
+                echo '<img class="post-thumbnail" src="' . $src . '" alt="' . $alt . '" />\n';
             }
 			return;
 		}

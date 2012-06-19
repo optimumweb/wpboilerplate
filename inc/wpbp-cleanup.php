@@ -41,7 +41,7 @@ function wpbp_root_relative_url($input) {
 	return $output;
 }
 
-if (!is_admin()) {
+if ( !is_admin() ) {
 	add_filter('bloginfo_url', 'wpbp_root_relative_url');
 	add_filter('theme_root_uri', 'wpbp_root_relative_url');
 	add_filter('stylesheet_directory_uri', 'wpbp_root_relative_url');
@@ -64,7 +64,7 @@ if (!is_admin()) {
 
 // remove root relative URLs on any attachments in the feed
 function wpbp_root_relative_attachment_urls() {
-	if (!is_feed()) {
+	if ( !is_feed() ) {
 		add_filter('wp_get_attachment_url', 'wpbp_root_relative_url');
 		add_filter('wp_get_attachment_link', 'wpbp_root_relative_url');
 	}

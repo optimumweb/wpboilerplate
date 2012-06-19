@@ -4,7 +4,7 @@
 
 global $pagenow;
 
-if (is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated'])) {
+if ( is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated']) ) {
 
 	// on theme activation make sure there's a Home page
 	// create it if there isn't and set the Home page menu order to -1
@@ -19,7 +19,7 @@ if (is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated'])) {
 
 	$pages_to_create = array_diff($default_pages, $temp);
 
-	foreach ($pages_to_create as $new_page_title) {
+	foreach ( $pages_to_create as $new_page_title ) {
 
 		// create post object
 		$add_default_pages = array(
@@ -59,17 +59,17 @@ if (is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated'])) {
 	// add all pages to the Primary Navigation
 	$wpbp_nav_theme_mod = false;
 
-	if (!has_nav_menu('primary_navigation')) {
+	if ( !has_nav_menu('primary_navigation') ) {
 		$primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
 		$wpbp_nav_theme_mod['primary_navigation'] = $primary_nav_id;
 	}
 
-	if (!has_nav_menu('secondary_navigation')) {
+	if ( !has_nav_menu('secondary_navigation') ) {
 		$utility_nav_id = wp_create_nav_menu('Secondary Navigation', array('slug' => 'secondary_navigation'));
 		$wpbp_nav_theme_mod['secondary_navigation'] = $utility_nav_id;
 	}
 
-	if ($wpbp_nav_theme_mod) {
+	if ( $wpbp_nav_theme_mod ) {
 		set_theme_mod('nav_menu_locations', $wpbp_nav_theme_mod);
 	}
 
@@ -77,9 +77,9 @@ if (is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated'])) {
 
 	$primary_nav_term_id = (int) $primary_nav->term_id;
 	$menu_items= wp_get_nav_menu_items($primary_nav_term_id);
-	if (!$menu_items || empty($menu_items)) {
+	if ( !$menu_items || empty($menu_items) ) {
 		$pages = get_pages();
-		foreach($pages as $page) {
+		foreach ( $pages as $page ) {
 			$item = array(
 				'menu-item-object-id' => $page->ID,
 				'menu-item-object' => 'page',

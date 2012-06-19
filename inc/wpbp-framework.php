@@ -1,9 +1,9 @@
 <?php
 
 
-if ( !function_exists('wpbp_get_image_tag') ) {
+if ( !function_exists('get_image_tag') ) {
 
-	function wpbp_get_image_tag($args, $options = array())
+	function get_image_tag($args, $options = array())
     {
         if ( is_string($args) ) {
             $args = array('src' => $args);
@@ -34,7 +34,7 @@ if ( !function_exists('image_tag') && function_exists('wpbp_get_image_tag') ) {
     	
 	function image_tag($args, $options = array())
 	{
-		echo wpbp_get_image_tag($args, $options);
+		echo get_image_tag($args, $options);
 	}
 	
 }
@@ -68,9 +68,9 @@ if ( !function_exists('stylesheet_link_tag') ) {
 
 }
 
-if ( !function_exists('wpbp_get_full_url') ) {
+if ( !function_exists('get_full_url') ) {
     
-    function wpbp_get_full_url($url)
+    function get_full_url($url)
     {
         if ( strpos($url, 'http') === false ) {
         	$protocol = ( isset($_SERVER['HTTPS']) ) ? 'https' : 'http';
@@ -81,9 +81,9 @@ if ( !function_exists('wpbp_get_full_url') ) {
     
 }
 
-if ( !function_exists('wpbp_get_current_url') ) {
+if ( !function_exists('get_current_url') ) {
     
-    function wpbp_get_current_url()
+    function get_current_url()
     {
         $protocol = ( !empty($_SERVER['HTTPS']) ) ? "https://" : "http://";
         return $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
@@ -92,9 +92,9 @@ if ( !function_exists('wpbp_get_current_url') ) {
 }
 
 
-if ( !function_exists('wpbp_is_valid_image') ) {
+if ( !function_exists('is_valid_image') ) {
 
-    function wpbp_is_valid_image($url)
+    function is_valid_image($url)
 	{
         
         $url = wpbp_get_full_url($url);
@@ -110,13 +110,13 @@ if ( !function_exists('wpbp_is_valid_image') ) {
     
 }
 
-if ( !function_exists('wpbp_get_image_size') ) {
+if ( !function_exists('get_image_size') ) {
 
-	function wpbp_get_image_size($url, $raw = false)
+	function get_image_size($url, $raw = false)
 	{
         global $wpdb;
         
-		$url = wpbp_get_full_url($url);
+		$url = get_full_url($url);
         
         if ( $raw ) {
             $image_attr = @getimagesize($url);
@@ -133,11 +133,11 @@ if ( !function_exists('wpbp_get_image_size') ) {
 
 }
 
-if ( !function_exists('wpbp_resize_image_url') ) {
+if ( !function_exists('resize_image_url') ) {
 
-	function wpbp_resize_image_url($url, $width = 'auto', $height = 'auto', $q = '90')
+	function resize_image_url($url, $width = 'auto', $height = 'auto', $q = '90')
 	{
-		$image_attr = wpbp_get_image_size($url);
+		$image_attr = get_image_size($url);
 
 		if ( isset($image_attr) && is_array($image_attr) ) {
 
@@ -152,7 +152,7 @@ if ( !function_exists('wpbp_resize_image_url') ) {
 				$width = round( $height * $image_attr['ratio'] );
 			}
 
-			return get_bloginfo('template_directory') . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $q . '&src=' . $url;
+			return TEMPLATE_DIRECTORY . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $q . '&src=' . $url;
 		}
 
 		return false;
@@ -188,10 +188,8 @@ if ( !function_exists('sanitize') ) {
 		switch ( $type ) {
 			case 'array' :
 				return array_map('sanitize', $value);
-				
 			case 'string' :
 				return filter_var($value, FILTER_SANITIZE_STRING);
-			
 			default :
 				return $value;
 		}
