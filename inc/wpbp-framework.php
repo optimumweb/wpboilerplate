@@ -1,9 +1,9 @@
 <?php
 
 
-if ( !function_exists('get_image_tag') ) {
+if ( !function_exists('wpbp_get_image_tag') ) {
 
-	function get_image_tag($args, $options = array())
+	function wpbp_get_image_tag($args, $options = array())
     {
         if ( is_string($args) ) {
             $args = array('src' => $args);
@@ -30,11 +30,11 @@ if ( !function_exists('get_image_tag') ) {
 
 }
 
-if ( !function_exists('image_tag') && function_exists('get_image_tag') ) {
+if ( !function_exists('wpbp_image_tag') && function_exists('wpbp_get_image_tag') ) {
     	
-	function image_tag($args, $options = array())
+	function wpbp_image_tag($args, $options = array())
 	{
-		echo get_image_tag($args, $options);
+		echo wpbp_get_image_tag($args, $options);
 	}
 	
 }
