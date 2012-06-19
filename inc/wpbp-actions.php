@@ -12,9 +12,8 @@ add_action('wpbp_loop_after', 'wpbp_clear');
 
 function wpbp_google_analytics()
 {
-    global $wpbp_options;
-    $wpbp_google_analytics_id = $wpbp_options['google_analytics_id'];
-    $wpbp_get_google_analytics_id = esc_attr($wpbp_options['google_analytics_id']);
+    $wpbp_google_analytics_id = wpbp_get_option('google_analytics_id');
+    $wpbp_get_google_analytics_id = esc_attr( wpbp_get_option('google_analytics_id') );
     if ( $wpbp_google_analytics_id !== '' ) :
 ?>
 <script type="text/javascript">
@@ -63,8 +62,6 @@ function wpbp_get_scripts()
 {
 	if ( is_admin() ) return;
 
-    global $wpbp_options;
-
 	// Available Javascript Librairies
 	// You will need to enqueue the ones you want in your child theme
 	
@@ -107,8 +104,8 @@ function wpbp_get_scripts()
 	// WPBP
 	wpbp_register_script('wpbp', 'http://firecdn.net/libs/wpbp/js/wpbp.min.js', array('jquery'), '2.1.0');
     
-    if ( $wpbp_options['js_files'] ) {
-        foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['js_files']) ) as $js_file ) {
+    if ( wpbp_get_option('js_files') ) {
+        foreach ( ( preg_split('/\r\n|\r|\n/', wpbp_get_option('js_files')) ) as $js_file ) {
         	wpbp_add_script( pathinfo($js_file, PATHINFO_FILENAME), $js_file );
         }
     }
@@ -141,8 +138,6 @@ function wpbp_get_styles()
 {
 	if ( is_admin() ) return;
 
-	global $wpbp_options;
-
 	// 960gs
 	wpbp_register_style('960gs', 'http://firecdn.net/libs/960gs/960.min.css');
 	
@@ -170,8 +165,8 @@ function wpbp_get_styles()
 	// WP Meta
 	wpbp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css');
 	
-	if ( $wpbp_options['css_files'] ) {
-        foreach ( ( preg_split('/\r\n|\r|\n/', $wpbp_options['css_files']) ) as $css_file ) {
+	if ( wpbp_get_option('css_files') ) {
+        foreach ( ( preg_split('/\r\n|\r|\n/', wpbp_get_option('css_files')) ) as $css_file ) {
             wpbp_add_style( pathinfo($css_file, PATHINFO_FILENAME), $css_file );
         }
     }
@@ -202,11 +197,10 @@ function wpbp_enqueue_styles( $styles = array() )
 
 function wpbp_custom_css()
 {
-	global $wpbp_options;
-    if ( $wpbp_options['custom_css'] ) :
+    if ( wpbp_get_option('custom_css') ) :
 ?>
 <style type="text/css">
-<?php echo $wpbp_options['custom_css'] . "\n"; ?>
+<?php wpbp_option('custom_css') . "\n"; ?>
 </style>
 <?php
     endif;
@@ -215,9 +209,8 @@ function wpbp_custom_css()
 
 function wpbp_favicon()
 {
-	global $wpbp_options;
-	if ( $wpbp_options['favicon'] ) {
-		echo '<link rel="icon" type="image/png" href="' . $wpbp_options['favicon'] . '">';
+	if ( wpbp_get_option('favicon') ) {
+		echo '<link rel="icon" type="image/png" href="' . wpbp_get_option('favicon') . '">';
 	}
 }
 
