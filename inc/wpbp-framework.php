@@ -30,7 +30,7 @@ if ( !function_exists('get_image_tag') ) {
 
 }
 
-if ( !function_exists('image_tag') && function_exists('wpbp_get_image_tag') ) {
+if ( !function_exists('image_tag') && function_exists('get_image_tag') ) {
     	
 	function image_tag($args, $options = array())
 	{
