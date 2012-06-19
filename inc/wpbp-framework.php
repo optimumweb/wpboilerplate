@@ -97,15 +97,11 @@ if ( !function_exists('is_valid_image') ) {
     function is_valid_image($url)
 	{
         
-        $url = wpbp_get_full_url($url);
+        $url = get_full_url($url);
         
 		$image_attr = @getimagesize($url);
 		
-		if ( isset($image_attr) && is_array($image_attr) ) {
-			return true;
-		}
-		
-		return false;
+		return ( isset($image_attr) && is_array($image_attr) );
 	}
     
 }
@@ -248,9 +244,7 @@ if ( !function_exists('array_to_xml') ) {
 	function array_to_xml(array $arr, SimpleXMLElement $xml)
 	{
 		foreach ($arr as $k => $v) {
-			is_array($v)
-				? array_to_xml($v, $xml->addChild($k))
-				: $xml->addChild($k, $v);
+			is_array($v) ? array_to_xml($v, $xml->addChild($k)) : $xml->addChild($k, $v);
 		}
 		return $xml;
 	}
