@@ -43,7 +43,7 @@ function wpbp_og_tags()
 
     $og = array(
         'title'       => trim(wp_title('', false)),
-        'url'         => wpbp_get_current_url(),
+        'url'         => get_current_url(),
         'image'       => is_single() ? $current_post_image['url'] : null,
         'site_name'   => get_bloginfo('name'),
         'description' => is_single() ? strip_tags( wpbp_get_the_excerpt( $wp_query->post->ID ) ) : null
