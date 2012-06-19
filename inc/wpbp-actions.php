@@ -49,7 +49,7 @@ function wpbp_og_tags()
 
     foreach ( $og as $key => $val ) {
         if ( isset($val) && strlen($val) > 0 ) {
-            echo "<meta property=\"og:" . $key . "\" content=\"" . $val . "\" />\n";
+            echo '<meta property="og:' . $key . '" content="' . $val . '" />' . PHP_EOL;
         }
     }
 
