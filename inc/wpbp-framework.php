@@ -73,7 +73,7 @@ if ( !function_exists('get_full_url') ) {
     function get_full_url($url)
     {
         if ( strpos($url, 'http') === false ) {
-        	$protocol = ( isset($_SERVER['HTTPS']) ) ? 'https' : 'http';
+        	$protocol = ( @$_SERVER['HTTPS'] == "on" ) ? 'https' : 'http';
 			$url = $protocol . '://' . $_SERVER['SERVER_NAME'] . $url;
 		}
         return $url;
@@ -85,7 +85,7 @@ if ( !function_exists('get_current_url') ) {
     
     function get_current_url()
     {
-        $protocol = ( !empty($_SERVER['HTTPS']) ) ? "https://" : "http://";
+        $protocol = ( @$_SERVER['HTTPS'] == "on" ) ? "https://" : "http://";
         return $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     }
     
