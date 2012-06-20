@@ -4,10 +4,22 @@
  * Clean up shortcode $content
  */
 
-function parse_shortcode_content($content)
+function parse_shortcode_content($content, $options = array())
 {
-	/* Parse nested shortcodes and add formatting. */
-	$content = trim( wpautop( do_shortcode( $content ) ) );
+	extract( array_merge( array(
+		'wpautop'		=> true,
+		'do_shortcode'	=> true,
+		'trim'			=> true,
+	), $options ) );
+
+	if ( $do_shortcode )
+		$content = do_shortcode( $content );
+		
+	if ( $wpautop )
+		$content = wpautop( $content );
+		
+	if ( $trim )
+		$content = trim( $content );
 
 	/* Remove '</p>' from the start of the string. */
 	if ( substr( $content, 0, 4 ) == '</p>' )
@@ -20,7 +32,8 @@ function parse_shortcode_content($content)
 	/* Remove any instances of '<p></p>'. */
 	$content = str_replace( array( '<p></p>' ), '', $content );
 
-	$content = do_shortcode( $content );
+	if ( $do_shortcode )
+		$content = do_shortcode( $content );
 
 	return $content;
 }
