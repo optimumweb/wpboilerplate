@@ -35,7 +35,7 @@ function parse_shortcode_content($content, $options = array())
 	if ( $do_shortcode )
 		$content = do_shortcode( $content );
 
-	return $pre_comment . $content;
+	return $content;
 }
 
 // [container cols="12"]...[/container]
