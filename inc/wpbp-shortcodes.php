@@ -35,8 +35,6 @@ function parse_shortcode_content($content, $options = array())
 	if ( $do_shortcode )
 		$content = do_shortcode( $content );
 
-	$pre_comment = "<!-- " . var_export($options, true) . " -->\n";
-
 	return $pre_comment . $content;
 }
 
