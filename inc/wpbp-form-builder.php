@@ -70,7 +70,7 @@ function wpbp_build_form($fields, $current = null)
 		// checkbox
 		elseif ( $type == 'checkbox' ) {
 
-			if ( isset($current[$key]) && $current[$key] == $optkey ) $checked = true;
+			if ( isset($current[$key]) && ( $current[$key] == $optkey || $current[$key] == 'on' ) ) $checked = true;
 			elseif ( !isset($current[$key]) && $defval == 'on' ) $checked = true;
 			else $checked = false;
 			$checked = $checked ? ' checked="checked"' : '';
