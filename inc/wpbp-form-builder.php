@@ -73,7 +73,7 @@ function wpbp_build_form($fields, $current = null)
 			if ( isset($current[$key]) && $current[$key] == $optkey ) $checked = true;
 			elseif ( !isset($current[$key]) && $defval == 'on' ) $checked = true;
 			else $checked = false;
-			$checked = ( $checked ) ? ' checked="checked"' : '';
+			$checked = $checked ? ' checked="checked"' : '';
 
 			echo '<input type="checkbox" name="' . $name . '" id="' . $id . '" value="on"' . $checked . ' class="' . $class . '" /> ';
 			echo '<label for="' . $id . '">' . __($label, 'wpbp') . '</label>';
@@ -89,7 +89,7 @@ function wpbp_build_form($fields, $current = null)
 				if ( isset($current[$key]) && in_array($optkey, $current[$key]) ) $checked = true;
 				elseif ( !isset($current[$key]) && ( is_array($defval) && in_array($optkey, $defval) ) ) $checked = true;
 				else $checked = false;
-				$checked = ( $checked ) ? ' checked="checked"' : '';
+				$checked = $checked ? ' checked="checked"' : '';
 
 				echo '<input type="checkbox" name="' . $name . '[]" id="' . $id . '-' . $optkey . '" value="' . $optkey . '"' . $checked . ' /> ';
 				echo '<label for="' . $id . '-' . $optkey . '">' . __($optval, 'wpbp') . '</label><br />';
@@ -109,7 +109,7 @@ function wpbp_build_form($fields, $current = null)
 				if ( isset($current[$key]) && $current[$key] == $optkey ) $checked = true;
 				elseif ( !isset($current[$key]) && $defval == $optkey ) $checked = true;
 				else $checked = false;
-				$checked = ( $checked ) ? ' checked="checked"' : '';
+				$checked = $checked ? ' checked="checked"' : '';
 
 				echo '<input type="radio" name="' . $name . '" id="' . $id . '-' . $optkey . '" value="' . $optkey . '"' . $checked . ' class="' . $class . '" /> ';
 				echo '<label for="' . $id . '-' . $optkey . '">' . __($optval, 'wpbp') . '</label><br />';
