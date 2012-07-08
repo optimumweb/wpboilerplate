@@ -1,9 +1,9 @@
 <?php
 
-if ( !defined('TEMPLATE_DIRECTORY') ) define('TEMPLATE_DIRECTORY', get_template_directory());
-if ( !defined('TEMPLATE_URI') ) define('TEMPLATE_URI', get_template_directory_uri());
-if ( !defined('THEME_DIRECTORY') ) define('THEME_DIRECTORY', get_theme_root() . '/' . get_stylesheet());
-if ( !defined('THEME_URI') ) define('THEME_URI', get_stylesheet_directory_uri());
+if ( !defined('TEMPLATE_DIRECTORY') )	define('TEMPLATE_DIRECTORY',	get_template_directory());
+if ( !defined('TEMPLATE_URI') )			define('TEMPLATE_URI',			get_template_directory_uri());
+if ( !defined('THEME_DIRECTORY') )		define('THEME_DIRECTORY',		get_theme_root() . '/' . get_stylesheet());
+if ( !defined('THEME_URI') )			define('THEME_URI',				get_stylesheet_directory_uri());
 
 $required_files = array(
 	'/inc/wpbp-activation.php',		// activation
@@ -12,6 +12,7 @@ $required_files = array(
 	'/inc/wpbp-htaccess.php',		// rewrites for assets, h5bp htaccess
 	'/inc/wpbp-hooks.php',			// hooks
 	'/inc/wpbp-actions.php',		// actions
+	'/inc/wpbp-enqueue.php',		// takes care of enqueued scripts and stylesheets
 	'/inc/wpbp-validation.php',		// form validation tool
 	'/inc/wpbp-form-builder.php',	// makes building forms easy
     '/inc/wpbp-framework.php',		// set of functions and tools
@@ -19,6 +20,7 @@ $required_files = array(
 	'/inc/wpbp-mail.php',			// simple but powerful mail class
 	'/inc/wpbp-widgets.php',		// widgets
 	'/inc/wpbp-shortcodes.php',		// shortcodes
+	'/inc/wpbp-utm.php',			// google analytics utm variables
 	'/inc/wpbp-breadcrumb.php',		// breadcrumb
 	'/inc/wpbp-custom.php'			// custom functions
 );
@@ -88,3 +90,4 @@ function wpbp_register_sidebars($sidebars)
 
 // create widget areas: sidebar, footer
 wpbp_register_sidebars( array( 'Sidebar' ) );
+
