@@ -10,7 +10,7 @@
  * utmcct => campaign content
  */
 
-function wpbp_get_utm($key = null)
+function wpbp_get_utm($key = null, $override = array())
 {
 	$utm = array();
 	
@@ -36,11 +36,11 @@ function wpbp_get_utm($key = null)
 	
 		}
 		
-		$utm['name']	= $utm['utmccn'];
-		$utm['source']	= $utm['utmcsr'];
-		$utm['medium']	= $utm['utmcmd'];
-		$utm['term']	= $utm['utmctr'];
-		$utm['content']	= $utm['utmcct'];
+		$utm['name']	= $override['name']		|| $utm['utmccn'];
+		$utm['source']	= $override['source']	|| $utm['utmcsr'];
+		$utm['medium']	= $override['medium']	|| $utm['utmcmd'];
+		$utm['term']	= $override['term']		|| $utm['utmctr'];
+		$utm['content']	= $override['content']	|| $utm['utmcct'];
 		
 	}
 	
