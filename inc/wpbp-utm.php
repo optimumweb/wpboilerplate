@@ -36,11 +36,11 @@ function wpbp_get_utm($key = null, $override = array())
 	
 		}
 		
-		$utm['name']	= $override['name']		? $override['name']		: $utm['utmccn'];
-		$utm['source']	= $override['source']	? $override['source']	: $utm['utmcsr'];
-		$utm['medium']	= $override['medium']	? $override['medium']	: $utm['utmcmd'];
-		$utm['term']	= $override['term']		? $override['term']		: $utm['utmctr'];
-		$utm['content']	= $override['content']	? $override['content']	: $utm['utmcct'];
+		$utm['campaign']	= $override['campaign']	? $override['campaign']	: $utm['utmccn'];
+		$utm['source']		= $override['source']	? $override['source']	: $utm['utmcsr'];
+		$utm['medium']		= $override['medium']	? $override['medium']	: $utm['utmcmd'];
+		$utm['term']		= $override['term']		? $override['term']		: $utm['utmctr'];
+		$utm['content']		= $override['content']	? $override['content']	: $utm['utmcct'];
 		
 	}
 	
