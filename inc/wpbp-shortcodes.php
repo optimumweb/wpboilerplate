@@ -73,10 +73,10 @@ function wpbp_hr()
 add_shortcode('hr', 'wpbp_hr');
 
 /**
- * MAKE BOX
+ * MAKE SMARTBOX
  */
 
-function make_box($atts, $content = null)
+function make_smartbox($atts, $content = null)
 {
     extract( shortcode_atts( array(
         'id'			=> '',
@@ -94,7 +94,7 @@ function make_box($atts, $content = null)
     
     $id = ( isset($id) && strlen($id) > 0 ) ? ' id="' . $id . '"' : '';
     
-    $class = 'box container ' . $class;
+    $class = 'smartbox container ' . $class;
     if ( $sliding ) $class .= ' sliding';
     if ( $collapsible ) $class .= ' collapsible';
     if ( $ajax ) $class .= ' ajax';
@@ -118,7 +118,7 @@ function make_box($atts, $content = null)
 	$box .= '<div class="clear"></div></div>';
     
     $box_arrow_src = $small ? 'box-arrow-small.png' : 'box-arrow.png';
-    $box_arrow = wpbp_get_image_tag( array( 'src' => 'http://pierreroy.firecdn.net/img/' . $box_arrow_src, 'width' => 30, 'height' => 30 ) );
+    $box_arrow = wpbp_get_image_tag( array( 'src' => 'http://firecdn.net/libs/wpbp/img/' . $box_arrow_src, 'width' => 30, 'height' => 30 ) );
     
     if ( $sliding ) {
     	$box .= '<div class="box-controls">';
@@ -138,7 +138,7 @@ function make_box($atts, $content = null)
     
     return $box;
 }
-add_shortcode('box', 'make_box');
+add_shortcode('smartbox', 'make_smartbox');
 
 // [article-header]...[/article-header]
 function wpbp_article_header($atts = null, $content = null)
