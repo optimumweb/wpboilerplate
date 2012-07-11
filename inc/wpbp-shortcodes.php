@@ -21,15 +21,15 @@ function parse_shortcode_content($content, $options = array())
 	if ( $trim )
 		$content = trim( $content );
 
-	/* Remove '</p>' from the start of the string. */
+	// Remove '</p>' from the start of the string.
 	if ( substr( $content, 0, 4 ) == '</p>' )
 		$content = substr( $content, 4 );
 
-	/* Remove '<p>' from the end of the string. */
+	// Remove '<p>' from the end of the string.
 	if ( substr( $content, -3, 3 ) == '<p>' )
 		$content = substr( $content, 0, -3 );
 
-	/* Remove any instances of '<p></p>'. */
+	// Remove any instances of '<p></p>'.
 	$content = str_replace( array( '<p></p>' ), '', $content );
 
 	if ( $do_shortcode )
