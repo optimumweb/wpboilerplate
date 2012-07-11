@@ -111,7 +111,7 @@ function make_smartbox($atts, $content = null)
     
     if ( $src && !$ajax ) {
     	$src_ID		= get_ID_by_slug( $src );
-    	if ( get_post( $src_ID ) ) {
+    	if ( $src_ID && get_post( $src_ID ) ) {
 			$title		= wpbp_first_valid( $title, get_the_title( $src_ID ) );
 			$content	= wpbp_first_valid( $content, get_post_field( 'post_content', $src_ID ) );
     	}
