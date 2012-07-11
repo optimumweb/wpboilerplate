@@ -134,19 +134,16 @@ function make_smartbox($atts, $content = null)
 	$box .= parse_shortcode_content($content);
 	$box .= '<div class="clear"></div></div>';
     
-    $box_arrow_src = $small ? 'box-arrow-small.png' : 'box-arrow.png';
-    $box_arrow = wpbp_get_image_tag( array( 'src' => 'http://firecdn.net/libs/wpbp/img/' . $box_arrow_src, 'width' => 30, 'height' => 30 ) );
-    
     if ( $sliding ) {
     	$box .= '<div class="box-controls">';
-    	$box .= '<a class="box-arrow box-prev" href="#prev">' . $box_arrow . '</a>';
-    	$box .= '<a class="box-arrow box-next" href="#next">' . $box_arrow . '</a>';
+    	$box .= '<a class="box-arrow box-prev" href="#prev"><span></span></a>';
+    	$box .= '<a class="box-arrow box-next" href="#next"><span></span></a>';
     	$box .= '</div>';
     }
     
     if ( $collapsible ) {
     	$box .= '<div class="box-controls">';
-    	$box .= '<a class="box-arrow collapse-trigger valign' . ( $ajax ? ' ajax-trigger' : '' ) . '" data-ref="#' . $id_val . ' .box-title" href="#">' . $box_arrow . '</a>';
+    	$box .= '<a class="box-arrow collapse-trigger valign' . ( $ajax ? ' ajax-trigger' : '' ) . '" data-ref="#' . $id_val . ' .box-title" href="#"><span></span></a>';
     	$box .= '</div>';
     }
     
