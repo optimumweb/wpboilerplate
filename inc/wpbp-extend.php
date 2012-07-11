@@ -20,6 +20,21 @@ if ( !function_exists('set_post_ID') ) {
     
 }
 
+if ( !function_exists('get_ID_by_slug') ) {
+	
+	/**
+	 * get_ID_by_slug
+	 * Returns the ID of a given post slug
+	 */
+	function get_ID_by_slug($post_slug, $post_type = 'page')
+	{
+		$page = get_page_by_path( $post_slug, 'OBJECT', $post_type );
+		
+		return $page ? $page->ID : null;
+	}
+
+}
+
 if ( !function_exists('blog_url') ) {
 
 	/**
