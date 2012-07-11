@@ -47,7 +47,8 @@ if ( !function_exists('script_tag') ) {
 			'src'	=> ( is_string($args) ? $args : '' ),
 			'type'	=> 'text/javascript'
 		), ( is_array($args) ? $args : array() ) ) );
-		return "<script type=\"" . $type . "\" src=\"" . $src . "\"></script>\n";
+		
+		return '<script type="' . $type . '" src="' . $src . '"></script>\n';
 	}
 
 }
@@ -63,7 +64,7 @@ if ( !function_exists('stylesheet_link_tag') ) {
 			'type'	=> 'text/css'
 		), ( is_array($args) ? $args : array() ) ) );
 	
-		return "<link rel=\"" . $rel . "\" href=\"" . $href . "\" type=\"" . $type . "\" media=\"" . $media . "\" />\n";
+		return '<link rel="' . $rel . '" href="' . $href . '" type="' . $type . '" media="' . $media . '" />\n';
 	}
 
 }
@@ -73,7 +74,7 @@ if ( !function_exists('get_full_url') ) {
     function get_full_url($url)
     {
         if ( strpos($url, 'http') === false ) {
-        	$protocol = ( @$_SERVER['HTTPS'] == "on" ) ? 'https' : 'http';
+        	$protocol = ( @$_SERVER['HTTPS'] == 'on' ) ? 'https' : 'http';
 			$url = $protocol . '://' . $_SERVER['SERVER_NAME'] . $url;
 		}
         return $url;
@@ -85,7 +86,7 @@ if ( !function_exists('get_current_url') ) {
     
     function get_current_url()
     {
-        $protocol = ( @$_SERVER['HTTPS'] == "on" ) ? "https://" : "http://";
+        $protocol = ( @$_SERVER['HTTPS'] == "on" ) ? 'https://' : 'http://';
         return $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     }
     
