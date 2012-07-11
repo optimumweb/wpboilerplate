@@ -26,10 +26,10 @@ if ( !function_exists('get_ID_by_slug') ) {
 	 * get_ID_by_slug
 	 * Returns the ID of a given post slug
 	 */
-	function get_ID_by_slug($slug, $post_type = 'page')
+	function get_ID_by_slug($slug)
 	{
 		global $wpdb;
-		$post_ID = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '" . $slug . "' AND post_type = '" . $post_type . "'");
+		$post_ID = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '" . $slug . "'");
 		return $post_ID;
 	}
 
