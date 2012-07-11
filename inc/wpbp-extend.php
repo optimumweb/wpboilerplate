@@ -35,6 +35,15 @@ if ( !function_exists('get_ID_by_slug') ) {
 
 }
 
+if ( !function_exists('get_post_content') ) {
+	
+	function get_post_content( $post_ID )
+	{
+		return;
+	}
+	
+}
+
 if ( !function_exists('blog_url') ) {
 
 	/**

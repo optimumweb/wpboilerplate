@@ -84,6 +84,7 @@ function make_smartbox($atts, $content = null)
         'title'			=> '',
         'small'			=> false,
         'collapsible'	=> false,
+        'closed'		=> false,
         'sliding'		=> false,
         'ajax'			=> false,
         'src'			=> false,
@@ -92,23 +93,33 @@ function make_smartbox($atts, $content = null)
     
     $id_val = $id;
     
+    // define box #id
     $id = ( isset($id) && strlen($id) > 0 ) ? ' id="' . $id . '"' : '';
     
+    // define box .class
     $class = 'smartbox container ' . $class;
-    if ( $sliding ) $class .= ' sliding';
-    if ( $collapsible ) $class .= ' collapsible';
-    if ( $ajax ) $class .= ' ajax';
-    if ( $lazy ) $class .= ' lazy';
+    if ( $sliding )		$class .= ' sliding';
+    if ( $collapsible )	$class .= ' collapsible';
+    if ( $closed )		$class .= ' closed';
+    if ( $ajax )		$class .= ' ajax';
+    if ( $lazy )		$class .= ' lazy';
     $class = ' class="' . $class . '"';
     
+    // define box data
     $data = '';
     if ( $src ) $data .= ' data-src="' . $src . '"';
+    
+    if ( $src && !$ajax ) {
+    	$src_ID		= get_ID_by_slug( $src );
+    	$title		= wpbp_first_valid( $title, get_the_title( $src_ID ) );
+    	$content	= wpbp_first_valid( $content, get_post_field( 'post_content', $src_ID ) );
+    }
     
     $box = '<div' . $id . $class . $data . '>';
     
 	if ( isset($title) && strlen($title) > 0 ) {
 		$box .= '<div class="box-title title"><h3>';
-		if ( $ajax && $src ) $box .= '<a class="ajax-trigger" href="' . $src . '">' . $title . '</a>';
+		if ( $src && $ajax ) $box .= '<a class="ajax-trigger" href="' . $src . '">' . $title . '</a>';
 		else $box .= $title;
 		$box .= '</h3></div>';
 	}

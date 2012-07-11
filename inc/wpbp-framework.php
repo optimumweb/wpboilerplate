@@ -1,5 +1,27 @@
 <?php
 
+if ( !function_exists('wpbp_first_valid') ) {
+	
+	/**
+	 * wpbp_first_valid
+	 * Returns the first valid variable in a list
+	 */
+	function wpbp_first_valid()
+	{
+		$vars = func_get_args();
+		
+		foreach ( $vars as $var ) {
+			if ( isset( $var ) ) {
+				if ( is_string( $var ) && strlen( $var ) == 0 ) {}
+				elseif ( is_array( $var ) && count( $var ) == 0 ) {}
+				else return $var;
+			}
+		}
+		
+		return null;
+	}
+	
+}
 
 if ( !function_exists('wpbp_get_image_tag') ) {
 
