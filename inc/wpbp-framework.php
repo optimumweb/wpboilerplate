@@ -12,8 +12,8 @@ if ( !function_exists('wpbp_first_valid') ) {
 		
 		foreach ( $vars as $var ) {
 			if ( isset( $var ) ) {
-				if ( is_string( $var ) && strlen( $var ) == 0 ) {}
-				elseif ( is_array( $var ) && count( $var ) == 0 ) {}
+				if ( is_string( $var ) && strlen( $var ) == 0 ) continue;
+				elseif ( is_array( $var ) && count( $var ) == 0 ) continue;
 				else return $var;
 			}
 		}
@@ -215,23 +215,18 @@ if ( !function_exists('sanitize') ) {
 
 if ( !function_exists('encrypt') && !function_exists('decrypt') ) {
 
-	/*!
-	 * MAKE SURE TO DEFINE A SALT IN YOUR CHILD THEME
-	 * THE SALT DEFINED HERE IS A LAST RESORT ONLY
-	 */
-	
-	if ( !defined('SALT') ) define('SALT', 'wPHVcl6U8t~X-R`R#+ ,7`(NMd,ue,8aC Le%-rVinK-_*3;/BVP$W#c=~L v+[?');
-
-	function encrypt($text)
+	function encrypt($text, $key = null)
 	{
+		if ( !$key ) $key = AUTH_SALT;
+		
 		if ( function_exists('mcrypt_encrypt') && function_exists('mcrypt_decrypt') ) {
-			return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, SALT, $text, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))));
+			return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $text, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))));
 		}
 		else {
 			$result = '';
 			for ( $i=0; $i < strlen($text); $i++ ) {
 				$char = substr($text, $i, 1);
-				$keychar = substr(SALT, ($i % strlen(SALT))-1, 1);
+				$keychar = substr($key, ($i % strlen($key))-1, 1);
 				$char = chr( ord($char) + ord($keychar) );
 				$result .= $char;
 			}
@@ -239,17 +234,19 @@ if ( !function_exists('encrypt') && !function_exists('decrypt') ) {
 		}
 	}
 	
-	function decrypt($text)
+	function decrypt($text, $key = null)
 	{
+		if ( !$key ) $key = AUTH_SALT;
+		
 		if ( function_exists('mcrypt_encrypt') && function_exists('mcrypt_decrypt') ) {
-			return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, SALT, base64_decode($text), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
+			return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, base64_decode($text), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
 		}
 		else {
 			$result = '';
 			$text = base64_decode($text);
 			for( $i=0; $i < strlen($text); $i++ ) {
 				$char = substr($text, $i, 1);
-				$keychar = substr(SALT, ($i % strlen(SALT))-1, 1);
+				$keychar = substr($key, ($i % strlen($key))-1, 1);
 				$char = chr( ord($char) - ord($keychar) );
 				$result .= $char;
 			}
