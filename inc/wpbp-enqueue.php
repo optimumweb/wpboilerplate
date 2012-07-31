@@ -18,6 +18,7 @@ function wpbp_get_scripts()
 	wpbp_register_script('cycle', 'http://firecdn.net/libs/cycle/jquery.cycle.min.js', array('jquery'), '2.9998');
 	wpbp_register_script('powerslide', 'http://firecdn.net/libs/powerslide/js/powerslide.min.js', array('jquery'), '1.1');
 	wpbp_register_script('lightbox', 'http://firecdn.net/libs/lightbox/js/lightbox.min.js', array('jquery'), '2.51');
+	wpbp_register_script('hoverIntent', 'http://firecdn.net/libs/hoverIntent/jquery.hoverIntent.min.js', array('jquery'), '6.0');
 	
 	// Twitter Bootstrap
 	wpbp_register_script('bootstrap', 'http://firecdn.net/libs/bootstrap/js/bootstrap.min.js', array('jquery'), '2.0.2');
