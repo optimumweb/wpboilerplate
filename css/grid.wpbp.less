@@ -3,9 +3,8 @@
 // Grid system based on 960.gs
 // -----------------------------------------------------
 
-
 body {
-  min-width: 960px;
+  min-width: 940px;
 }
 
 // CONTAINERS
@@ -13,9 +12,10 @@ body {
 
 .container_12,
 .container_16 {
+  .box-sizing(border-box);
   margin-left: auto;
   margin-right: auto;
-  width: 960px;
+  width: 940px;
 }
 
 // GRID GLOBAL STYLES
@@ -37,10 +37,11 @@ body {
 .grid_14,
 .grid_15,
 .grid_16 {
-  display: inline;
+  .box-sizing(border-box);
   float: left;
-  margin-left: 10px;
-  margin-right: 10px;
+  position: relative;
+  padding: 0 10px;
+  min-height: 1px;
 }
 
 .push_1, .pull_1,
@@ -66,11 +67,11 @@ body {
 // --------------------------------------------------
 
 .alpha {
-  margin-left: 0;
+  padding-left: 0;
 }
 
 .omega {
-  margin-right: 0;
+  padding-right: 0;
 }
 
 // 12 COLUMNS GRID
@@ -78,568 +79,573 @@ body {
 
 .container_12 {
 
+	@colWidth: 8.333333333333333%;
+
   // Column Space
   // -------------------------
-
+  
   .grid_1 {
-    width: 60px;
+    width: @colWidth * 1;
   }
-
+  
   .grid_2 {
-    width: 140px;
+    width: @colWidth * 2;
   }
-
+  
   .grid_3 {
-    width: 220px;
+    width: @colWidth * 3;
   }
-
+  
   .grid_4 {
-    width: 300px;
+    width: @colWidth * 4;
   }
-
+  
   .grid_5 {
-    width: 380px;
+    width: @colWidth * 5;
   }
-
+  
   .grid_6 {
-    width: 460px;
+    width: @colWidth * 6;
   }
-
+  
   .grid_7 {
-    width: 540px;
+    width: @colWidth * 7;
   }
-
+  
   .grid_8 {
-    width: 620px;
+    width: @colWidth * 8;
   }
   
   .grid_9 {
-    width: 700px;
+    width: @colWidth * 9;
   }
   
   .grid_10 {
-    width: 780px;
+    width: @colWidth * 10;
   }
   
   .grid_11 {
-    width: 860px;
+    width: @colWidth * 11;
   }
   
   .grid_12 {
-    width: 940px;
+    width: @colWidth * 12;
   }
   
   // Prefix Space
   // -------------------------
   
   .prefix_1 {
-    padding-left: 80px;
+    padding-left: @colWidth * 1;
   }
   
   .prefix_2 {
-    padding-left: 160px;
+    padding-left: @colWidth * 2;
   }
   
   .prefix_3 {
-    padding-left: 240px;
+    padding-left: @colWidth * 3;
   }
   
   .prefix_4 {
-    padding-left: 320px;
+    padding-left: @colWidth * 4;
   }
   
   .prefix_5 {
-    padding-left: 400px;
+    padding-left: @colWidth * 5;
   }
   
   .prefix_6 {
-    padding-left: 280px;
+    padding-left: @colWidth * 6;
   }
   
   .prefix_7 {
-    padding-left: 560px;
+    padding-left: @colWidth * 7;
   }
   
   .prefix_8 {
-    padding-left: 640px;
+    padding-left: @colWidth * 8;
   }
   
   .prefix_9 {
-    padding-left: 720px;
+    padding-left: @colWidth * 9;
   }
   
   .prefix_10 {
-    padding-left: 800px;
+    padding-left: @colWidth * 10;
   }
   
   .prefix_11 {
-    padding-left: 880px;
+    padding-left: @colWidth * 11;
   }
   
   // Suffix Space
   // -------------------------
   
   .suffix_1 {
-    padding-right: 80px;
+    padding-right: @colWidth * 1;
   }
   
   .suffix_2 {
-    padding-right: 160px;
+    padding-right: @colWidth * 2;
   }
   
   .suffix_3 {
-    padding-right: 240px;
-  }
-  
-  .suffix_4 {
-    padding-right: 320px;
+    padding-right: @colWidth * 3;
   }
   
   .suffix_5 {
-    padding-right: 400px;
+    padding-right: @colWidth * 4;
+  }
+  
+  .suffix_4 {
+    padding-right: @colWidth * 5;
   }
   
   .suffix_6 {
-    padding-right: 480px;
+    padding-right: @colWidth * 6;
   }
   
   .suffix_7 {
-    padding-right: 560px;
+    padding-right: @colWidth * 7;
   }
   
   .suffix_8 {
-    padding-right: 640px;
+    padding-right: @colWidth * 8;
   }
   
   .suffix_9 {
-    padding-right: 720px;
+    padding-right: @colWidth * 9;
   }
   
   .suffix_10 {
-    padding-right: 800px;
+    padding-right: @colWidth * 10;
   }
   
   .suffix_11 {
-    padding-right: 880px;
+    padding-right: @colWidth * 11;
   }
   
   // Push Space
   // -------------------------
   
   .push_1 {
-    left: 80px;
+    left: @colWidth * 1;
   }
   
   .push_2 {
-    left: 160px;
+    left: @colWidth * 2;
   }
   
   .push_3 {
-    left: 240px;
+    left: @colWidth * 3;
   }
   
   .push_4 {
-    left: 320px;
+    left: @colWidth * 4;
   }
   
   .push_5 {
-    left: 400px;
+    left: @colWidth * 5;
   }
   
   .push_6 {
-    left: 480px;
+    left: @colWidth * 6;
   }
   
   .push_7 {
-    left: 560px;
+    left: @colWidth * 7;
   }
   
   .push_8 {
-    left: 640px;
+    left: @colWidth * 8;
   }
   
   .push_9 {
-    left: 720px;
+    left: @colWidth * 9;
   }
   
   .push_10 {
-    left: 800px;
+    left: @colWidth * 10;
   }
   
   .push_11 {
-    left: 880px;
+    left: @colWidth * 11;
   }
   
   // Pull Space
   // -------------------------
   
   .pull_1 {
-    left: -80px;
+    left: -@colWidth * 1;
   }
   
   .pull_2 {
-    left: -160px;
+    left: -@colWidth * 2;
   }
   
   .pull_3 {
-    left: -240px;
+    left: -@colWidth * 3;
   }
   
   .pull_4 {
-    left: -320px;
+    left: -@colWidth * 4;
   }
   
   .pull_5 {
-    left: -400px;
+    left: -@colWidth * 5;
   }
   
   .pull_6 {
-    left: -480px;
+    left: -@colWidth * 6;
   }
   
   .pull_7 {
-    left: -560px;
+    left: -@colWidth * 7;
   }
   
   .pull_8 {
-    left: -640px;
+    left: -@colWidth * 8;
   }
   
   .pull_9 {
-    left: -720px;
+    left: -@colWidth * 9;
   }
   
   .pull_10 {
-    left: -800px;
+    left: -@colWidth * 10;
   }
   
   .pull_11 {
-    left: -880px;
+    left: -@colWidth * 11;
   }
+  
 }
 
 // 16 COLUMNS GRID
 // --------------------------------------------------
 
 .container_16 {
-
+  
+  @colWidth: 6.250%;
+  
   // Column Space
   // -------------------------
   
   .grid_1 {
-    width: 40px;
+    width: @colWidth * 1;
   }
   
   .grid_2 {
-    width: 100px;
+    width: @colWidth * 2;
   }
   
   .grid_3 {
-    width: 160px;
+    width: @colWidth * 3;
   }
   
   .grid_4 {
-    width: 220px;
+    width: @colWidth * 4;
   }
   
   .grid_5 {
-    width: 280px;
+    width: @colWidth * 5;
   }
   
   .grid_6 {
-    width: 340px;
+    width: @colWidth * 6;
   }
   
   .grid_7 {
-    width: 400px;
+    width: @colWidth * 7;
   }
   
   .grid_8 {
-    width: 460px;
+    width: @colWidth * 8;
   }
   
   .grid_9 {
-    width: 520px;
+    width: @colWidth * 9;
   }
   
   .grid_10 {
-    width: 580px;
+    width: @colWidth * 10;
   }
   
   .grid_11 {
-    width: 640px;
+    width: @colWidth * 11;
   }
   
   .grid_12 {
-    width: 700px;
+    width: @colWidth * 12;
   }
   
   .grid_13 {
-    width: 760px;
+    width: @colWidth * 13;
   }
   
   .grid_14 {
-    width: 820px;
+    width: @colWidth * 14;
   }
   
   .grid_15 {
-    width: 880px;
+    width: @colWidth * 15;
   }
   
   .grid_16 {
-    width: 940px;
+    width: @colWidth * 16;
   }
   
   // Prefix Space
   // -------------------------
   
   .prefix_1 {
-    padding-left: 60px;
+    padding-left: @colWidth * 1;
   }
   
   .prefix_2 {
-    padding-left: 120px;
+    padding-left: @colWidth * 2;
   }
   
   .prefix_3 {
-    padding-left: 180px;
+    padding-left: @colWidth * 3;
   }
   
   .prefix_4 {
-    padding-left: 240px;
+    padding-left: @colWidth * 4;
   }
   
   .prefix_5 {
-    padding-left: 300px;
+    padding-left: @colWidth * 5;
   }
   
   .prefix_6 {
-    padding-left: 360px;
+    padding-left: @colWidth * 6;
   }
   
   .prefix_7 {
-    padding-left: 420px;
+    padding-left: @colWidth * 7;
   }
   
   .prefix_8 {
-    padding-left: 480px;
+    padding-left: @colWidth * 8;
   }
   
   .prefix_9 {
-    padding-left: 540px;
+    padding-left: @colWidth * 9;
   }
   
   .prefix_10 {
-    padding-left: 600px;
+    padding-left: @colWidth * 10;
   }
   
   .prefix_11 {
-    padding-left: 660px;
+    padding-left: @colWidth * 11;
   }
   
   .prefix_12 {
-    padding-left: 720px;
+    padding-left: @colWidth * 12;
   }
   
   .prefix_13 {
-    padding-left: 780px;
+    padding-left: @colWidth * 13;
   }
   
   .prefix_14 {
-    padding-left: 840px;
+    padding-left: @colWidth * 14;
   }
   
   .prefix_15 {
-    padding-left: 900px;
+    padding-left: @colWidth * 15;
   }
   
   // Suffix Space
   // -------------------------
   
   .suffix_1 {
-    padding-right: 60px;
+    padding-right: @colWidth * 1;
   }
   
   .suffix_2 {
-    padding-right: 120px;
+    padding-right: @colWidth * 2;
   }
   
   .suffix_3 {
-    padding-right: 180px;
+    padding-right: @colWidth * 3;
   }
   
   .suffix_5 {
-    padding-right: 300px;
+    padding-right: @colWidth * 4;
   }
   
   .suffix_4 {
-    padding-right: 240px;
+    padding-right: @colWidth * 5;
   }
   
   .suffix_6 {
-    padding-right: 360px;
+    padding-right: @colWidth * 6;
   }
   
   .suffix_7 {
-    padding-right: 420px;
+    padding-right: @colWidth * 7;
   }
   
   .suffix_8 {
-    padding-right: 480px;
+    padding-right: @colWidth * 8;
   }
   
   .suffix_9 {
-    padding-right: 540px;
+    padding-right: @colWidth * 9;
   }
   
   .suffix_10 {
-    padding-right: 600px;
+    padding-right: @colWidth * 10;
   }
   
   .suffix_11 {
-    padding-right: 660px;
+    padding-right: @colWidth * 11;
   }
   
   .suffix_12 {
-    padding-right: 720px;
+    padding-right: @colWidth * 12;
   }
   
   .suffix_13 {
-    padding-right: 780px;
+    padding-right: @colWidth * 13;
   }
   
   .suffix_14 {
-    padding-right: 840px;
+    padding-right: @colWidth * 14;
   }
   
   .suffix_15 {
-    padding-right: 900px;
+    padding-right: @colWidth * 15;
   }
   
   // Push Space
   // -------------------------
   
   .push_1 {
-    left: 60px;
+    left: @colWidth * 1;
   }
   
   .push_2 {
-    left: 120px;
+    left: @colWidth * 2;
   }
   
   .push_3 {
-    left: 180px;
+    left: @colWidth * 3;
   }
   
   .push_4 {
-    left: 240px;
+    left: @colWidth * 4;
   }
   
   .push_5 {
-    left: 300px;
+    left: @colWidth * 5;
   }
   
   .push_6 {
-    left: 360px;
+    left: @colWidth * 6;
   }
   
   .push_7 {
-    left: 420px;
+    left: @colWidth * 7;
   }
   
   .push_8 {
-    left: 480px;
+    left: @colWidth * 8;
   }
   
   .push_9 {
-    left: 540px;
+    left: @colWidth * 9;
   }
   
   .push_10 {
-    left: 600px;
+    left: @colWidth * 10;
   }
   
   .push_11 {
-    left: 660px;
+    left: @colWidth * 11;
   }
   
   .push_12 {
-    left: 720px;
+    left: @colWidth * 12;
   }
   
   .push_13 {
-    left: 780px;
+    left: @colWidth * 13;
   }
   
   .push_14 {
-    left: 840px;
+    left: @colWidth * 14;
   }
   
   .push_15 {
-    left: 900px;
+    left: @colWidth * 15;
   }
   
   // Pull Space
   // -------------------------
   
   .pull_1 {
-    left: -60px;
+    left: -@colWidth * 1;
   }
   
   .pull_2 {
-    left: -120px;
+    left: -@colWidth * 2;
   }
   
   .pull_3 {
-    left: -180px;
+    left: -@colWidth * 3;
   }
   
   .pull_4 {
-    left: -240px;
+    left: -@colWidth * 4;
   }
   
   .pull_5 {
-    left: -300px;
+    left: -@colWidth * 5;
   }
   
   .pull_6 {
-    left: -360px;
+    left: -@colWidth * 6;
   }
   
   .pull_7 {
-    left: -420px;
+    left: -@colWidth * 7;
   }
   
   .pull_8 {
-    left: -480px;
+    left: -@colWidth * 8;
   }
   
   .pull_9 {
-    left: -540px;
+    left: -@colWidth * 9;
   }
   
   .pull_10 {
-    left: -600px;
+    left: -@colWidth * 10;
   }
   
   .pull_11 {
-    left: -660px;
+    left: -@colWidth * 11;
   }
   
   .pull_12 {
-    left: -720px;
+    left: -@colWidth * 12;
   }
   
   .pull_13 {
-    left: -780px;
+    left: -@colWidth * 13;
   }
   
   .pull_14 {
-    left: -840px;
+    left: -@colWidth * 14;
   }
   
   .pull_15 {
-    left: -900px;
+    left: -@colWidth * 15;
   }
 
 }
