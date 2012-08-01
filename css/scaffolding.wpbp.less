@@ -1,0 +1,45 @@
+// Scaffolding
+// scaffolding.wpbp.less
+// Basic and global styles for generating a grid system, structural layout, and page templates
+// -------------------------------------------------------------------------------------------
+
+
+// Body reset
+// ----------
+
+body {
+  margin: 0;
+  font-family: @baseFontFamily;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
+  color: @textColor;
+  background-color: @bodyBackground;
+}
+
+
+// Links
+// -----
+
+a {
+  color: @linkColor;
+  text-decoration: none;
+  
+  &:hover {
+    color: @linkColorHover;
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    outline: none;
+  }
+  
+  &:hover,
+  &:active {
+    outline: 0;
+  }
+  
+  &:active,
+  input.button:active {
+    outline: 0;
+  }
+}

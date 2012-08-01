@@ -44,8 +44,8 @@ function wpbp_get_scripts()
 	// Highcharts
 	wpbp_register_script('highcharts', 'http://firecdn.net/libs/highcharts/highcharts.min.js', array(), '2.1.9');
 	
-	// WPBP
-	wpbp_register_script('wpbp', 'http://firecdn.net/libs/wpbp/js/wpbp.min.js', array('jquery'), '2.1.0');
+	// WPBP.js
+	wpbp_register_script('wpbp', TEMPLATE_URI . '/js/wpbp.min.js', array('jquery'), '3.1.0');
     
     if ( wpbp_get_option('js_files') ) {
         foreach ( ( preg_split('/\r\n|\r|\n/', wpbp_get_option('js_files')) ) as $js_file ) {
@@ -102,8 +102,9 @@ function wpbp_get_styles()
 	// PowerSlide
 	wpbp_register_style('powerslide', 'http://firecdn.net/libs/powerslide/css/powerslide.css');
 	
-	// WPBP Default
+	// WPBP
 	wpbp_register_style('default', 'http://firecdn.net/libs/wpbp/css/default.css');
+	wpbp_register_style('wpbp', TEMPLATE_URI . '/css/wpbp.css');
 	
 	// WP Meta
 	wpbp_register_style('wp-meta', get_stylesheet_directory_uri() . '/style.css');

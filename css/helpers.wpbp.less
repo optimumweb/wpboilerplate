@@ -1,0 +1,64 @@
+// Helpers
+// helpers.wpbp.less
+// Non-semantic helper classes
+// --------------------------------------------------------
+
+// Quick floats
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+
+
+// Image replacement
+.ir {
+  display: block;
+  border: 0;
+  text-indent: -999em;
+  overflow: hidden;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+  
+  br {
+    display: none;
+  }
+}
+
+.hidden,
+[hidden] {
+  display: none;
+  visibility: hidden;
+}
+
+.visuallyhidden {
+  position: absolute;
+  border: 0;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  
+  &.focusable:active,
+  &.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.valign, .vAlign {
+  position: relative;
+}
