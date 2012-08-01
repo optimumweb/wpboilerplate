@@ -1,9 +1,8 @@
-// Labels & Badges
-// labels-badges.wpbp.less
+// Badges
+// badges.wpbp.less
 // --------------------------------------------------------
 
 // Base classes
-.label,
 .badge {
   font-size: @baseFontSize * .846;
   font-weight: bold;
@@ -15,10 +14,6 @@
   background-color: @grayLight;
 }
 // Set unique padding and border-radii
-.label {
-  padding: 1px 4px 2px;
-  .border-radius(3px);
-}
 .badge {
   padding: 1px 9px 2px;
   .border-radius(9px);
@@ -26,7 +21,6 @@
 
 // Hover state, but only for links
 a {
-  &.label:hover,
   &.badge:hover {
     color: @white;
     text-decoration: none;
@@ -36,7 +30,6 @@ a {
 
 // Colors
 // Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
-.label,
 .badge {
   // Important (red)
   &-important         { background-color: @errorText; }
