@@ -24,7 +24,7 @@
 			
 		});
 		
-		$(window).load(function() {
+		$(window).bind('load resize', function() {
 			
 			$('.valign, .vAlign').vAlign();
 			
