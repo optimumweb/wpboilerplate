@@ -29,6 +29,21 @@
 			$('.valign, .vAlign').vAlign();
 			
 		});
+		
+		$(window).bind('load resize', function() {
+			
+			var w = $(this).width();
+			var $html = $('html');
+			
+			     if ( w <= 760 )  $html.data('window-size', 'tiny');
+			else if ( w <= 980 )  $html.data('window-size', 'small');
+			else if ( w <= 1280 ) $html.data('window-size', 'regular');
+			else if ( w <= 1600 ) $html.data('window-size', 'large');
+			else if ( w <= 1940 ) $html.data('window-size', 'xlarge');
+			else if ( w <= 2540 ) $html.data('window-size', 'xxlarge');
+			else if ( w > 2540 )  $html.data('window-size', 'xxxlarge');
+			
+		});
 	
 	})
 
