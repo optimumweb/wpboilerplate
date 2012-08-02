@@ -4,14 +4,15 @@
 // -----------------------------------------------------
 
 // Choose a decent box model first
-* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+* {
+  .box-sizing(border-box);
+}
 
 // CONTAINERS
 // --------------------------------------------------
 
 .container_12,
 .container_16 {
-  .box-sizing(border-box);
   margin-left: auto;
   margin-right: auto;
 }
@@ -35,7 +36,6 @@
 .grid_14,
 .grid_15,
 .grid_16 {
-  .box-sizing(border-box);
   float: left;
   position: relative;
   padding: 0 10px;
