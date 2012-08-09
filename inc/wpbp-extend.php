@@ -172,7 +172,7 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 
 if ( !function_exists('wpbp_error_log') ) {
 
-	function wpbp_error_log($message)
+	function wpbp_error_log($message, $echo_in_footer = false)
 	{
 		$wp_debug_file_path = WP_CONTENT_DIR . '/debug.log';
 
@@ -184,6 +184,12 @@ if ( !function_exists('wpbp_error_log') ) {
 
 				 @fclose( $handle );
 			}
+		}
+
+		if ( $echo_in_footer ) {
+			add_action('wpbp_footer', function() {
+				echo "<!-- WPBP ERROR: " . $message . " -->" . PHP_EOL;
+			});
 		}
 
 		return $result;
