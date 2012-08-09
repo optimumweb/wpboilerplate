@@ -180,7 +180,7 @@ if ( !function_exists('wpbp_error_log') ) {
 
 			if ( $handle = @fopen($wp_debug_file_path, 'a') ) {
 
-				 $result = @fwrite($handle, $message);
+				 $result = @fwrite($handle, $message . PHP_EOL);
 
 				 @fclose( $handle );
 			}
