@@ -178,16 +178,13 @@ if ( !function_exists('wpbp_error_log') ) {
 
 		if ( is_writeable( $wp_debug_file_path ) ) {
 
-			if ( $handle = @fopen($filename, 'a') ) {
+			if ( $handle = @fopen($wp_debug_file_path, 'a') ) {
 
 				 $result = debug_fwrite($handle, $message);
 
 				 @fclose( $handle );
 			}
-
-			else return 2;
 		}
-		else return 1;
 
 		return $result;
 	}
