@@ -1,7 +1,28 @@
 <?php
 
+if ( !function_exists('wpbp_is_valid_var') ) {
+
+	function wpbp_is_valid_var($var)
+	{
+		if ( isset( $var ) ) {
+
+			// string
+			if ( is_string( $var ) && strlen( $var ) == 0 ) return false;
+
+			// array
+			elseif ( is_array( $var ) && count( $var ) == 0 ) return false;
+
+			// unknown
+			else return true;
+		}
+
+		return false;
+	}
+
+}
+
 if ( !function_exists('wpbp_first_valid') ) {
-	
+
 	/**
 	 * wpbp_first_valid
 	 * Returns the first valid variable in a list
@@ -9,18 +30,15 @@ if ( !function_exists('wpbp_first_valid') ) {
 	function wpbp_first_valid()
 	{
 		$vars = func_get_args();
-		
+
 		foreach ( $vars as $var ) {
-			if ( isset( $var ) ) {
-				if ( is_string( $var ) && strlen( $var ) == 0 ) continue;
-				elseif ( is_array( $var ) && count( $var ) == 0 ) continue;
-				else return $var;
-			}
+			if ( wpbp_is_valid_var( $var ) ) return $var;
+			else continue;
 		}
-		
+
 		return null;
 	}
-	
+
 }
 
 if ( !function_exists('wpbp_get_image_tag') ) {
@@ -31,34 +49,34 @@ if ( !function_exists('wpbp_get_image_tag') ) {
             $args = array('src' => $args);
         }
         elseif ( !is_array($args) ) return false;
-        
+
         if ( isset($options['resize']) && $options['resize'] == true ) {
             if ( isset($args['width'], $args['height']) ) {
                 if ( !isset($options['quality']) ) $options['quality'] = 90;
                 $args['src'] = resize_image_url( $args['src'], $args['width'], $args['height'], $options['quality'] );
             }
         }
-        
+
         if ( !isset($args['src']) || !is_string($args['src']) || strlen($args['src']) == 0 ) return false;
-        
+
 		$tag = '<img ';
 		foreach ( $args as $key => $value ) {
 			$tag .= isset($key,$value) ? $key . '="' . $value . '" ' : '';
 		}
 		$tag .= '/>';
-        
+
         return $tag;
     }
 
 }
 
 if ( !function_exists('wpbp_image_tag') && function_exists('wpbp_get_image_tag') ) {
-    	
+
 	function wpbp_image_tag($args, $options = array())
 	{
 		echo wpbp_get_image_tag($args, $options);
 	}
-	
+
 }
 
 if ( !function_exists('script_tag') ) {
@@ -69,7 +87,7 @@ if ( !function_exists('script_tag') ) {
 			'src'	=> ( is_string($args) ? $args : '' ),
 			'type'	=> 'text/javascript'
 		), ( is_array($args) ? $args : array() ) ) );
-		
+
 		return '<script type="' . $type . '" src="' . $src . '"></script>\n';
 	}
 
@@ -85,14 +103,14 @@ if ( !function_exists('stylesheet_link_tag') ) {
 			'media'	=> 'all',
 			'type'	=> 'text/css'
 		), ( is_array($args) ? $args : array() ) ) );
-	
+
 		return '<link rel="' . $rel . '" href="' . $href . '" type="' . $type . '" media="' . $media . '" />\n';
 	}
 
 }
 
 if ( !function_exists('get_full_url') ) {
-    
+
     function get_full_url($url)
     {
         if ( strpos($url, 'http') === false ) {
@@ -101,17 +119,17 @@ if ( !function_exists('get_full_url') ) {
 		}
         return $url;
     }
-    
+
 }
 
 if ( !function_exists('get_current_url') ) {
-    
+
     function get_current_url()
     {
         $protocol = ( @$_SERVER['HTTPS'] == "on" ) ? 'https://' : 'http://';
         return $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     }
-    
+
 }
 
 
@@ -123,7 +141,7 @@ if ( !function_exists('is_valid_image') ) {
 		$image_attr = @getimagesize($url);
 		return ( isset($image_attr) && is_array($image_attr) );
 	}
-    
+
 }
 
 if ( !function_exists('get_image_size') ) {
@@ -131,9 +149,9 @@ if ( !function_exists('get_image_size') ) {
 	function get_image_size($url, $raw = false)
 	{
         global $wpdb;
-        
+
 		$url = get_full_url($url);
-        
+
         if ( $raw ) {
             $image_attr = @getimagesize($url);
             if ( isset($image_attr) && is_array($image_attr) ) {
@@ -143,7 +161,7 @@ if ( !function_exists('get_image_size') ) {
             }
             return false;
         }
-        
+
 		return false;
 	}
 
@@ -200,7 +218,7 @@ if ( !function_exists('sanitize') ) {
 	function sanitize($value)
 	{
 		$type = gettype($value);
-		
+
 		switch ( $type ) {
 			case 'array' :
 				return array_map('sanitize', $value);
@@ -210,7 +228,7 @@ if ( !function_exists('sanitize') ) {
 				return $value;
 		}
 	}
-	
+
 }
 
 if ( !function_exists('encrypt') && !function_exists('decrypt') ) {
@@ -218,7 +236,7 @@ if ( !function_exists('encrypt') && !function_exists('decrypt') ) {
 	function encrypt($text, $key = null)
 	{
 		if ( !$key ) $key = AUTH_SALT;
-		
+
 		if ( function_exists('mcrypt_encrypt') && function_exists('mcrypt_decrypt') ) {
 			return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $text, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))));
 		}
@@ -233,11 +251,11 @@ if ( !function_exists('encrypt') && !function_exists('decrypt') ) {
 			return base64_encode($result);
 		}
 	}
-	
+
 	function decrypt($text, $key = null)
 	{
 		if ( !$key ) $key = AUTH_SALT;
-		
+
 		if ( function_exists('mcrypt_encrypt') && function_exists('mcrypt_decrypt') ) {
 			return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, base64_decode($text), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
 		}
@@ -253,7 +271,7 @@ if ( !function_exists('encrypt') && !function_exists('decrypt') ) {
 			return $result;
 		}
 	}
-	
+
 }
 
 if ( !function_exists('array_to_xml') ) {
