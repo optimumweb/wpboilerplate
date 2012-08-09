@@ -13,33 +13,30 @@
 function wpbp_get_utm($key = null, $override = array())
 {
 	$utm = array();
-	
-	if ( !empty( $_COOKIE['__utmz'] ) ) { 
-	
+
+	if ( !empty( $_COOKIE['__utmz'] ) ) {
+
 		$pattern = "/(utmcsr=([^\|]*)[\|]?)|(utmccn=([^\|]*)[\|]?)|(utmcmd=([^\|]*)[\|]?)|(utmctr=([^\|]*)[\|]?)|(utmcct=([^\|]*)[\|]?)/i";
-		
+
 		preg_match_all( $pattern, $_COOKIE['__utmz'], $matches );
-		
+
 		if ( !empty( $matches[0] ) ) {
-		
+
 			foreach ( $matches[0] as $match ) {
-			
+
 				$pair = null;
-				
+
 				$match = trim($match, "|");
-				
+
 				list($k, $v) = explode("=", $match);
-				
+
 				$utm[$k] = $v;
-		
 			}
-	
 		}
-		
+
 		$utm = array_merge( $utm, $override );
-		
 	}
-	
+
 	return $key ? $utm[$key] : $utm;
 }
 

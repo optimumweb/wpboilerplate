@@ -185,6 +185,7 @@ if ( !function_exists('wpbp_error_log') ) {
 				 @fclose( $handle );
 			}
 		}
+		else return 1;
 
 		return $result;
 	}
