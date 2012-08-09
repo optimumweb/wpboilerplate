@@ -1,7 +1,7 @@
 <?php
 
 if ( !function_exists('set_post_ID') ) {
-    
+
     /**
      * set_post_ID
      * Assigns the current post ID to the passed variable.
@@ -17,11 +17,11 @@ if ( !function_exists('set_post_ID') ) {
             }
         }
 	}
-    
+
 }
 
 if ( !function_exists('get_ID_by_slug') ) {
-	
+
 	/**
 	 * get_ID_by_slug
 	 * Returns the ID of a given post slug
@@ -45,7 +45,7 @@ if ( !function_exists('blog_url') ) {
 	{
 		return get_permalink( get_option('page_for_posts' ) );
 	}
-	
+
 }
 
 if ( !function_exists('get_author') ) {
@@ -87,7 +87,7 @@ if ( !function_exists('single_author_title') ) {
 }
 
 if ( !function_exists('get_featured_image_url') ) {
-	
+
 	function get_featured_image_url($post_ID = null)
 	{
 		set_post_ID($post_ID);
@@ -102,7 +102,7 @@ if ( !function_exists('get_featured_image_url') ) {
 		}
 		return get_full_url($url);
 	}
-	
+
 }
 
 if ( !function_exists('has_featured_image') ) {
@@ -122,7 +122,7 @@ if ( !function_exists('get_featured_image') ) {
 	function get_featured_image($post_ID = null, $attr = false)
 	{
         set_post_ID($post_ID);
-        
+
 		if ( has_featured_image($post_ID) ) {
             $url = get_featured_image_url( $post_ID );
     		$image_attr = get_image_size($url);
@@ -141,7 +141,7 @@ if ( !function_exists('featured_image') ) {
 	function featured_image($post_ID = null, $width = 150, $height = 'auto', $quality = 90)
 	{
         set_post_ID($post_ID);
-        
+
 		$post_image_url = get_featured_image($post_ID, 'url');
 
 		if ( isset($post_image_url) && $post_image_url !== false && strlen($post_image_url) > 0 ) {
@@ -170,9 +170,30 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 
 }
 
+if ( !function_exists('wpbp_error_log') ) {
+
+	function wpbp_error_log($message)
+	{
+		$wp_debug_file_path = WP_CONTENT_DIR . '/debug.log';
+
+		if ( is_writeable( $wp_debug_file_path ) ) {
+
+			if ( $handle = @fopen($filename, 'a') ) {
+
+				 $result = @fwrite($handle, $somecontent);
+
+				 @fclose( $handle );
+			}
+		}
+
+		return $result;
+	}
+
+}
+
 // the following function requires WPML to be installed and active
 if ( !function_exists('wpbp_wpml_lang_sel') && function_exists('icl_get_languages') ) {
-    
+
     function wpbp_wpml_lang_sel()
     {
         $languages = icl_get_languages('skip_missing=1&orderby=code');
@@ -188,6 +209,6 @@ if ( !function_exists('wpbp_wpml_lang_sel') && function_exists('icl_get_language
     	}
     	echo '</ul>';
     }
-    
+
 }
 
