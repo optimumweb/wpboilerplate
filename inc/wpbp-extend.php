@@ -172,7 +172,7 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 
 if ( !function_exists('wpbp_error_log') ) {
 
-	function wpbp_error_log($message, $echo_in_footer = false)
+	function wpbp_error_log($message, $notify_admin = false, $echo_in_footer = false)
 	{
 		$wp_debug_file_path = WP_CONTENT_DIR . '/debug.log';
 
@@ -186,7 +186,26 @@ if ( !function_exists('wpbp_error_log') ) {
 			}
 		}
 
+		if ( $notify_admin ) {
+
+			$admin_email = get_option('admin_email');
+
+			$mail = new Mail();
+			$mail->set_option('content_type', "text/plain; charset=utf-8");
+			$mail->set_option('from', $admin_email);
+			$mail->set_option('to', $admin_email);
+			$mail->set_option('subject', "WPBP Error Notification");
+			$mail->set_body( $message );
+			$mail->send();
+
+			if ( $mail->get_response() != 200 ) {
+
+				wpbp_error_log("Can't send error notification to admin (" . $admin_email . ")");
+			}
+		}
+
 		if ( $echo_in_footer && current_user_can('manage_options') ) {
+
 			add_action('wpbp_footer', function() {
 				echo "<!-- WPBP ERROR: " . $message . " -->" . PHP_EOL;
 			});
