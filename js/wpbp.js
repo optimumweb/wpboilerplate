@@ -236,9 +236,6 @@
 										_gaq.push(['_trackEvent', 'AjaxForms', 'Error', formId]);
 									}
 								}
-							},
-							success: function(data) {
-								console.log( data );
 							}
 						});
 
