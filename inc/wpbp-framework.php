@@ -21,6 +21,21 @@ if ( !function_exists('wpbp_is_valid_var') ) {
 
 }
 
+if ( !function_exists('wpbp_are_valid_vars') && function_exists('wpbp_is_valid_var') ) {
+
+	function wpbp_are_valid_vars()
+	{
+		$vars = func_get_args();
+
+		foreach ( $vars as $var ) {
+			if ( wpbp_is_valid_var( $var ) ) continue;
+			else return false;
+		}
+
+		return true;
+	}
+}
+
 if ( !function_exists('wpbp_first_valid') ) {
 
 	/**
