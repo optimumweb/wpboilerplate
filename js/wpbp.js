@@ -172,6 +172,10 @@
 					// assume no errors in submission
 					var inputError = false;
 
+					// validation settings
+					var validClass = 'valid success';
+					var invalidClass = 'invalid warning';
+
 					// validate all required fields
 					$form.find('.required').each(function() {
 
@@ -179,13 +183,13 @@
 
 						if ( $input.val() == '' ) {
 							inputError = true;
-							$input.removeClass('valid').addClass('invalid');
-							$input.parents('.control-group').removeClass('valid').addClass('invalid');
+							$input.removeClass( validClass ).addClass( invalidClass );
+							$input.parents('.control-group').removeClass( validClass ).addClass( invalidClass );
 						}
 
 						else {
-							$input.removeClass('invalid').addClass('valid');
-							$input.parents('.control-group').removeClass('valid').addClass('invalid');
+							$input.removeClass( invalidClass ).addClass( validClass );
+							$input.parents('.control-group').removeClass( validClass ).addClass( invalidClass );
 						}
 
 					});
@@ -199,13 +203,13 @@
 
 						if ( !emailRegex.test( $input.val() ) ) {
 							inputError = true;
-							$input.removeClass('valid').addClass('invalid');
-							$input.parents('.control-group').removeClass('valid').addClass('invalid');
+							$input.removeClass( validClass ).addClass( invalidClass );
+							$input.parents('.control-group').removeClass( validClass ).addClass( invalidClass );
 						}
 
 						else {
-							$input.removeClass('invalid').addClass('valid');
-							$input.parents('.control-group').removeClass('invalid').addClass('valid');
+							$input.removeClass( invalidClass ).addClass( validClass );
+							$input.parents('.control-group').removeClass( invalidClass ).addClass( validClass );
 						}
 
 					});
