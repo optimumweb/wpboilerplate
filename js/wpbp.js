@@ -174,7 +174,7 @@
 
 					// validation settings
 					var validClass = 'valid success';
-					var invalidClass = 'invalid warning';
+					var invalidClass = 'invalid error';
 
 					// validate all required fields
 					$form.find('.required').each(function() {
