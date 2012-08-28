@@ -180,12 +180,12 @@
 						if ( $input.val() == '' ) {
 							inputError = true;
 							$input.removeClass('valid').addClass('invalid');
-							$input.parent('.control-group').removeClass('valid').addClass('invalid');
+							$input.parents('.control-group').removeClass('valid').addClass('invalid');
 						}
 
 						else {
 							$input.removeClass('invalid').addClass('valid');
-							$input.parent('.control-group').removeClass('valid').addClass('invalid');
+							$input.parents('.control-group').removeClass('valid').addClass('invalid');
 						}
 
 					});
@@ -200,10 +200,12 @@
 						if ( !emailRegex.test( $input.val() ) ) {
 							inputError = true;
 							$input.removeClass('valid').addClass('invalid');
+							$input.parents('.control-group').removeClass('valid').addClass('invalid');
 						}
 
 						else {
 							$input.removeClass('invalid').addClass('valid');
+							$input.parents('.control-group').removeClass('invalid').addClass('valid');
 						}
 
 					});
