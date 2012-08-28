@@ -84,7 +84,12 @@ class Capability_Based_Walker extends Walker_Nav_Menu
 {
 	function start_el(&$output, $item, $depth, $args = array())
 	{
-		if ( strlen( $item->xfn ) >= 1 && !current_user_can( $item->xfn ) ) return;
+		if ( strlen( $item->xfn ) >= 1 ) {
+			$req_caps = explode(',' $item->xfn);
+			foreach ( $req_caps as $req_cap ) {
+				if ( !current_user_can( $req_cap ) ) return;
+			}
+		}
 
 		global $wp_query;
 
@@ -115,7 +120,12 @@ class Capability_Based_Walker extends Walker_Nav_Menu
 
 	function end_el(&$output, $item, $depth, $args = array())
 	{
-		if ( strlen( $item->xfn ) >= 1 && !current_user_can( $item->xfn ) ) return;
+		if ( strlen( $item->xfn ) >= 1 ) {
+			$req_caps = explode(',' $item->xfn);
+			foreach ( $req_caps as $req_cap ) {
+				if ( !current_user_can( $req_cap ) ) return;
+			}
+		}
 
 		$output .= "</li>\n";
 	}
