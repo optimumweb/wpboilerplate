@@ -85,7 +85,7 @@ class Capability_Based_Walker extends Walker_Nav_Menu
 	function start_el(&$output, $item, $depth, $args = array())
 	{
 		if ( strlen( $item->xfn ) >= 1 ) {
-			$req_caps = explode(',' $item->xfn);
+			$req_caps = explode(',', $item->xfn);
 			foreach ( $req_caps as $req_cap ) {
 				if ( !current_user_can( $req_cap ) ) return;
 			}
@@ -121,7 +121,7 @@ class Capability_Based_Walker extends Walker_Nav_Menu
 	function end_el(&$output, $item, $depth, $args = array())
 	{
 		if ( strlen( $item->xfn ) >= 1 ) {
-			$req_caps = explode(',' $item->xfn);
+			$req_caps = explode(',', $item->xfn);
 			foreach ( $req_caps as $req_cap ) {
 				if ( !current_user_can( $req_cap ) ) return;
 			}
