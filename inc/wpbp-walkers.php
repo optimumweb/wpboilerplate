@@ -82,9 +82,12 @@ class Minimal_Walker extends Walker_Nav_Menu
 
 class Capability_Based_Walker extends Walker_Nav_Menu
 {
-	function start_el(&$output, $item, $depth, $args)
+	function start_el(&$output, $item, $depth, $args = array())
 	{
-		if ( strlen( $item->xfn ) == 0 || current_user_can( $item->xfn ) ) {
+		if ( strlen( $item->xfn ) >= 1 && !current_user_can( $item->xfn ) ) {
+			$output .= "";
+		}
+		else {
 
 			global $wp_query;
 
@@ -112,7 +115,15 @@ class Capability_Based_Walker extends Walker_Nav_Menu
 
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
+	}
 
-		return $output;
+	function end_el(&$output, $item, $depth, $args = array())
+	{
+		if ( strlen( $item->xfn ) >= 1 && !current_user_can( $item->xfn ) ) {
+			$output .= "";
+		}
+		else {
+			$output .= "</li>\n";
+		}
 	}
 }
