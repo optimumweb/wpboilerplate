@@ -201,13 +201,11 @@
 
 						if ( !emailRegex.test( $input.val() ) ) {
 							inputError = true;
-							$input.removeClass( validClass ).addClass( invalidClass );
-							$input.parents('.control-group').removeClass( validClass ).addClass( invalidClass );
+							$input.removeClass( validClass ).addClass( invalidClass ).parents('.control-group').removeClass( validClass ).addClass( invalidClass );
 						}
 
 						else {
-							$input.removeClass( invalidClass ).addClass( validClass );
-							$input.parents('.control-group').removeClass( invalidClass ).addClass( validClass );
+							$input.removeClass( invalidClass ).addClass( validClass ).parents('.control-group').removeClass( invalidClass ).addClass( validClass );
 						}
 
 					});
