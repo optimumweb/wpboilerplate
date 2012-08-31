@@ -195,7 +195,7 @@ if ( !function_exists('resize_image_url') ) {
 			$width = round( $height * $image_attr['ratio'] );
 		}
 
-		return TEMPLATE_DIRECTORY . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $q . '&src=' . $url;
+		return TEMPLATE_URI . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $q . '&src=' . $url;
 	}
 
 }
