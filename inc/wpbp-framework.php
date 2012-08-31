@@ -163,8 +163,6 @@ if ( !function_exists('get_image_size') ) {
 
 	function get_image_size($url, $raw = false)
 	{
-        global $wpdb;
-
 		$url = get_full_url($url);
 
         if ( $raw ) {
