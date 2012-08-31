@@ -184,25 +184,18 @@ if ( !function_exists('resize_image_url') ) {
 
 	function resize_image_url($url, $width = 'auto', $height = 'auto', $q = '90')
 	{
-		$image_attr = get_image_size($url);
-
-		if ( isset($image_attr) && is_array($image_attr) ) {
-
-			if ( $width == 'auto' && $height == 'auto' ) {
-				$width = $image_attr['width'];
-				$height = $image_attr['height'];
-			}
-			elseif ( $height == 'auto' ) {
-				$height = round( $width / $image_attr['ratio'] );
-			}
-			elseif ( $width == 'auto' ) {
-				$width = round( $height * $image_attr['ratio'] );
-			}
-
-			return TEMPLATE_DIRECTORY . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $q . '&src=' . $url;
+		if ( $width == 'auto' && $height == 'auto' ) {
+			$width = $image_attr['width'];
+			$height = $image_attr['height'];
+		}
+		elseif ( $height == 'auto' ) {
+			$height = round( $width / $image_attr['ratio'] );
+		}
+		elseif ( $width == 'auto' ) {
+			$width = round( $height * $image_attr['ratio'] );
 		}
 
-		return false;
+		return TEMPLATE_DIRECTORY . '/img/resize.php?w=' . $width . '&h=' . $height . '&q=' . $q . '&src=' . $url;
 	}
 
 }
