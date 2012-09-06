@@ -180,14 +180,17 @@
 					$form.find('.required').each(function() {
 
 						var $input = $(this);
+						var $group = $input.parents('.control-group').first();
 
 						if ( $input.val() == '' ) {
 							inputError = true;
-							$input.removeClass( validClass ).addClass( invalidClass ).parents('.control-group').removeClass( validClass ).addClass( invalidClass );
+							$input.removeClass( validClass ).addClass( invalidClass );
+							$group.removeClass( validClass ).addClass( invalidClass );
 						}
 
 						else {
-							$input.removeClass( invalidClass ).addClass( validClass ).parents('.control-group').removeClass( validClass ).addClass( invalidClass );
+							$input.removeClass( invalidClass ).addClass( validClass );
+							$group.removeClass( invalidClass ).addClass( validClass );
 						}
 
 					});
