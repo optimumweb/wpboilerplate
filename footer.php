@@ -20,3 +20,4 @@
 
 </body>
 </html>
+<?php wpbp_after_html(); ?>
