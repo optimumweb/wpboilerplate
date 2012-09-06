@@ -212,6 +212,8 @@
 
 					if ( !inputError ) {
 
+						$form.trigger('valid');
+
 						$.ajax({
 							type:	formMethod,
 							url:	formAction,
@@ -220,7 +222,7 @@
 								200: function() {
 									$formSuccess.fadeIn();
 									$formFields.hide();
-									$form.addClass('sent').trigger('ajax-form-sent');
+									$form.trigger('success').addClass('sent');
 									// trigger google analytics
 									if ( typeof _gaq != 'undefined' ) {
 										_gaq.push(['_trackEvent', 'AjaxForms', 'Success', formId]);
@@ -228,12 +230,14 @@
 								},
 								400: function() {
 									$formWarning.fadeIn();
+									$form.trigger('warning');
 									// trigger google analytics
 									if ( typeof _gaq != 'undefined' ) {
 										_gaq.push(['_trackEvent', 'AjaxForms', 'Warning', formId]);
 									}
 								},
 								500: function() {
+									$form.trigger('error');
 									$formError.fadeIn();
 									// trigger google analytics
 									if ( typeof _gaq != 'undefined' ) {
@@ -246,7 +250,7 @@
 					}
 
 					else {
-						console.log('Input error detected!');
+						$form.trigger('invalid');
 						$formSuccess.hide();
 						$formWarning.fadeIn();
 						$formError.error();
@@ -258,7 +262,7 @@
 				});
 
 				// show that the form is ajax-enabled
-				$form.addClass('ajax-enabled');
+				$form.trigger('enabled').addClass('ajax-enabled');
 
 			});
 		};
