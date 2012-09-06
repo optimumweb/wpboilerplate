@@ -137,6 +137,7 @@
 				var formId = $form.attr('id');
 				var formAction = $form.attr('action');
 				var formMethod = $form.attr('method');
+				var formEnctype = $form.attr('enctype');
 
 				// hide response messages and loading
 				$formSuccess.hide();
@@ -218,9 +219,10 @@
 						$form.trigger('valid');
 
 						$.ajax({
-							type:	formMethod,
-							url:	formAction,
-							data:	$form.serialize(),
+							type:	     formMethod,
+							url:	     formAction,
+							data:	     $form.serialize(),
+							contentType: formEnctype,
 							statusCode: {
 								200: function() {
 									$formSuccess.fadeIn();
