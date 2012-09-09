@@ -34,7 +34,7 @@ function wpbp_get_scripts()
 	wpbp_register_script('mootools', 'https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js', array(), '1.4.1');
 
 	// Modernizr
-	wpbp_register_script('modernizr', 'http://firecdn.net/libs/modernizr/modernizr.js', array(), '2.0.6');
+	wpbp_register_script('modernizr', 'http://firecdn.net/libs/modernizr/modernizr.min.js', array(), '2.6.2');
 
 	// LessCSS
 	wpbp_register_script('lesscss', 'http://firecdn.net/libs/less/less.min.js', array(), '1.2.1');
