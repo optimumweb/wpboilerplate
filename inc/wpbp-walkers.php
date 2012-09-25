@@ -86,14 +86,7 @@ class Capability_Based_Walker extends Walker_Nav_Menu
 	{
 		$required_capability = $item->xfn;
 
-		if ( wpbp_is_valid_var( $required_capability ) ) {
-			if ( substr( $required_capability, 0, 1 ) == "!" ) {
-				if ( current_user_can( $required_capability ) ) return;
-			}
-			else {
-				if ( !current_user_can( $required_capability ) ) return;
-			}
-		}
+		if ( !current_user_can( $required_capability ) ) return;
 
 		global $wp_query;
 
