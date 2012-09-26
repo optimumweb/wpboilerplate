@@ -229,8 +229,8 @@ if ( !function_exists('sanitize') ) {
 			case 'array' :
 				return array_map('sanitize', $value);
 			case 'string' :
-				//return filter_var($value, FILTER_SANITIZE_STRING);
-				return mysql_real_escape_string($value);
+				return filter_var($value, FILTER_SANITIZE_STRING);
+				//return mysql_real_escape_string($value);
 			default :
 				return $value;
 		}
