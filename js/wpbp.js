@@ -24,7 +24,7 @@
 
 			$('.same-height-as').sameHeightAs();
 
-			$.wpbpModal();
+			$('body').wpbpModal();
 
 		});
 
