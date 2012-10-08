@@ -648,7 +648,9 @@
 
 			}).center();
 
-			$modalTriggers.click(function() {
+			$modalTriggers.click(function(e) {
+
+				e.preventDefault();
 
 				var $this = $(this);
 				var $target = $( $this.data('target') );
