@@ -656,7 +656,10 @@
 					var target = $this.data('wpbp-target-modal-box');
 					var $target = $( target );
 
-					if ( $target.hasClass('wpbp-modal-box') ) {
+					if ( $target.size() == 0 || !$target.hasClass('wpbp-modal-box') ) {
+						console.log('Error: Target "' + target + '" is not a modal box!');
+					}
+					else {
 
 						if ( $this.hasClass('wpbp-modal-open') ) {
 							$target.trigger('open');
@@ -671,8 +674,6 @@
 							$target.trigger('open');
 						}
 
-					} else {
-						console.log('Error: Target "' + target + '" is not a modal box!');
 					}
 
 				});
