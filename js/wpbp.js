@@ -602,7 +602,8 @@
 
 			return this.each(function() {
 
-				var duration = 250;
+				var fadeDuration = 250;
+				var blanketOpacity = 0.5;
 
 				var $blanket = $('#wpbp-modal-blanket');
 				var $anchors = $('a[href^="#"]');
@@ -624,9 +625,9 @@
 
 					var $this = $(this);
 
-					$blanket.fadeTo(duration, 0.25, function() {
+					$blanket.fadeTo(fadeDuration, blanketOpactiy, function() {
 
-						$this.fadeIn(duration, function() {
+						$this.fadeIn(fadeDuration, function() {
 
 							$this.trigger('opened').addClass('wpbp-modal-box-opened');
 
@@ -638,9 +639,9 @@
 
 					var $this = $(this);
 
-					$this.fadeOut(duration, function() {
+					$this.fadeOut(fadeDuration, function() {
 
-						$blanket.fadeOut(duration);
+						$blanket.fadeOut(fadeDuration);
 
 						$this.trigger('closed').addClass('wpbp-modal-box-closed');
 
