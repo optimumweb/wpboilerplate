@@ -668,6 +668,19 @@
 
 			});
 
+
+			// close modal boxes when the blanket is clicked
+			$blanket.click(function() {
+				$modalBoxes.trigger('close');
+			});
+
+			// close modal boxes when the ESC key is pressed
+			$(window).keyup(function(e) {
+				if ( e.which == 27 ) {
+					$modalBoxes.trigger('close');
+				}
+			});
+
 		};
 
 	})
