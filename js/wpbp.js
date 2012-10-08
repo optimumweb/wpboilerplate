@@ -615,7 +615,7 @@
 					var $href = $(href);
 
 					if ( $href.size() == 1 && $href.hasClass('wpbp-modal-box') ) {
-						$this.data('target', href).addClass('wpbp-modal-trigger');
+						$this.data('wpbp-target-modal-box', href).addClass('wpbp-modal-trigger');
 					}
 
 				});
@@ -653,19 +653,26 @@
 					e.preventDefault();
 
 					var $this = $(this);
-					var $target = $( $this.data('target') );
+					var target = $this.data('wpbp-target-modal-box');
+					var $target = $( target );
 
-					if ( $this.hasClass('wpbp-modal-open') ) {
-						$target.trigger('open');
-					}
-					else if ( $this.hasClass('wpbp-modal-close') ) {
-						$target.trigger('close');
-					}
-					else if ( $target.hasClass('wpbp-modal-box-opened') ) {
-						$target.trigger('close');
-					}
-					else {
-						$target.trigger('open');
+					if ( $target.hasClass('wpbp-modal-box') ) {
+
+						if ( $this.hasClass('wpbp-modal-open') ) {
+							$target.trigger('open');
+						}
+						else if ( $this.hasClass('wpbp-modal-close') ) {
+							$target.trigger('close');
+						}
+						else if ( $target.hasClass('wpbp-modal-box-opened') ) {
+							$target.trigger('close');
+						}
+						else {
+							$target.trigger('open');
+						}
+
+					} else {
+						console.log('Error: Target "' + target + '" is not a modal box!');
 					}
 
 				});
