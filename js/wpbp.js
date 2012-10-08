@@ -625,7 +625,7 @@
 
 					var $this = $(this);
 
-					$blanket.fadeTo(fadeDuration, blanketOpactiy, function() {
+					$blanket.fadeTo(fadeDuration, blanketOpacity, function() {
 
 						$this.fadeIn(fadeDuration, function() {
 
