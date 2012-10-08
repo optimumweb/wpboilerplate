@@ -643,7 +643,7 @@
 
 						$blanket.fadeOut(fadeDuration);
 
-						$this.trigger('closed').addClass('wpbp-modal-box-closed');
+						$this.trigger('closed').removeClass('wpbp-modal-box-opened');
 
 					});
 
