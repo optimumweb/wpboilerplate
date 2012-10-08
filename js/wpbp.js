@@ -18,9 +18,13 @@
 
 			$('.valign, .vAlign').vAlign();
 
+			$('.fullCenter').center();
+
 			$('ul.dropdownNav').dropdownNav();
 
 			$('.same-height-as').sameHeightAs();
+
+			$.wpbpModal();
 
 		});
 
@@ -296,17 +300,17 @@
 
 			return this.each(function() {
 
-				var $this = $(this);
-				var thisWidth = $this.outerWidth(true);
+				var $this      = $(this);
+				var thisWidth  = $this.outerWidth(true);
 				var thisHeight = $this.outerHeight(true);
 
-				var $window = $(window);
-				var windowWidth = $window.width();
+				var $window      = $(window);
+				var windowWidth  = $window.width();
 				var windowHeight = $window.height();
-				var scrollTop = $window.scrollTop();
+				var scrollTop    = $window.scrollTop();
 
-				var offsetTop = Math.round( ( windowHeight - thisHeight ) / 2 ) + scrollTop;
-				var offsetLeft = Math.round( ( windowWidth - thisWidth ) / 2 );
+				var offsetTop  = Math.max( Math.round( ( windowHeight - thisHeight ) / 2 ) + scrollTop, 0 );
+				var offsetLeft = Math.max( Math.round( ( windowWidth - thisWidth ) / 2 ), 0 );
 
 				$this.css({
 					position: 'absolute',
@@ -568,6 +572,98 @@
 				if ( ref && $(ref).size() ) {
 					var $ref = $(ref);
 					$this.height( $ref.height() );
+				}
+
+			});
+
+		};
+
+	})
+
+}(window.jQuery);
+
+
+/*
+ * wpbpModal
+ *
+ *
+ * @author Jonathan Roy <jroy@optimumweb.ca>
+ * @version 0.1
+ * @package wpboilerplate
+ */
+
+!function($) {
+
+	$(function() {
+
+		"use strict"; // jshint ;_;
+
+		jQuery.fn.wpbpModal = function() {
+
+			var duration = 250;
+
+			var $blanket = $('#wpbp-modal-blanket');
+			var $anchors = $('a[href^="#"]');
+			var $modalBoxes = $('.wpbp-modal-box');
+
+			$anchors.each(function() {
+
+				var $this = $(this);
+				var href = $this.attr('href');
+				var $href = $(href);
+
+				if ( $href.size() == 1 && $href.hasClass('wpbp-modal-box') ) {
+					$this.data('target', href).addClass('wpbp-modal-trigger');
+				}
+
+			});
+
+			var $modalTriggers = $('.wpbp-modal-trigger');
+
+			$modalBoxes.bind('open', function() {
+
+				var $this = $(this);
+
+				$blanket.fadeTo(duration, 0.25, function() {
+
+					$this.fadeIn(duration, function() {
+
+						$this.trigger('opened').addClass('wpbp-modal-box-opened');
+
+					});
+
+				});
+
+			}).bind('close', function() {
+
+				var $this = $(this);
+
+				$this.fadeOut(duration, function() {
+
+					$blanket.fadeOut(duration);
+
+					$this.trigger('closed').addClass('wpbp-modal-box-closed');
+
+				});
+
+			}).center();
+
+			$modalTriggers.click(function() {
+
+				var $this = $(this);
+				var $target = $( $this.data('target') );
+
+				if ( $this.hasClass('wpbp-modal-open') ) {
+					$target.trigger('open');
+				}
+				else if ( $this.hasClass('wpbp-modal-close') ) {
+					$target.trigger('close');
+				}
+				else if ( $target.hasClass('wpbp-modal-box-opened') ) {
+					$target.trigger('close');
+				}
+				else {
+					$target.trigger('open');
 				}
 
 			});
