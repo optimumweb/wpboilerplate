@@ -600,87 +600,89 @@
 
 		jQuery.fn.wpbpModal = function() {
 
-			var duration = 250;
+			return this.each(function() {
 
-			var $blanket = $('#wpbp-modal-blanket');
-			var $anchors = $('a[href^="#"]');
-			var $modalBoxes = $('.wpbp-modal-box');
+				var duration = 250;
 
-			$anchors.each(function() {
+				var $blanket = $('#wpbp-modal-blanket');
+				var $anchors = $('a[href^="#"]');
+				var $modalBoxes = $('.wpbp-modal-box');
 
-				var $this = $(this);
-				var href = $this.attr('href');
-				var $href = $(href);
+				$anchors.each(function() {
 
-				if ( $href.size() == 1 && $href.hasClass('wpbp-modal-box') ) {
-					$this.data('target', href).addClass('wpbp-modal-trigger');
-				}
+					var $this = $(this);
+					var href = $this.attr('href');
+					var $href = $(href);
 
-			});
+					if ( $href.size() == 1 && $href.hasClass('wpbp-modal-box') ) {
+						$this.data('target', href).addClass('wpbp-modal-trigger');
+					}
 
-			var $modalTriggers = $('.wpbp-modal-trigger');
+				});
 
-			$modalBoxes.bind('open', function() {
+				$modalBoxes.bind('open', function() {
 
-				var $this = $(this);
+					var $this = $(this);
 
-				$blanket.fadeTo(duration, 0.25, function() {
+					$blanket.fadeTo(duration, 0.25, function() {
 
-					$this.fadeIn(duration, function() {
+						$this.fadeIn(duration, function() {
 
-						$this.trigger('opened').addClass('wpbp-modal-box-opened');
+							$this.trigger('opened').addClass('wpbp-modal-box-opened');
+
+						});
 
 					});
 
+				}).bind('close', function() {
+
+					var $this = $(this);
+
+					$this.fadeOut(duration, function() {
+
+						$blanket.fadeOut(duration);
+
+						$this.trigger('closed').addClass('wpbp-modal-box-closed');
+
+					});
+
+				}).center();
+
+				$('.wpbp-modal-trigger').click(function(e) {
+
+					e.preventDefault();
+
+					var $this = $(this);
+					var $target = $( $this.data('target') );
+
+					if ( $this.hasClass('wpbp-modal-open') ) {
+						$target.trigger('open');
+					}
+					else if ( $this.hasClass('wpbp-modal-close') ) {
+						$target.trigger('close');
+					}
+					else if ( $target.hasClass('wpbp-modal-box-opened') ) {
+						$target.trigger('close');
+					}
+					else {
+						$target.trigger('open');
+					}
+
 				});
 
-			}).bind('close', function() {
 
-				var $this = $(this);
-
-				$this.fadeOut(duration, function() {
-
-					$blanket.fadeOut(duration);
-
-					$this.trigger('closed').addClass('wpbp-modal-box-closed');
-
-				});
-
-			}).center();
-
-			$modalTriggers.click(function(e) {
-
-				e.preventDefault();
-
-				var $this = $(this);
-				var $target = $( $this.data('target') );
-
-				if ( $this.hasClass('wpbp-modal-open') ) {
-					$target.trigger('open');
-				}
-				else if ( $this.hasClass('wpbp-modal-close') ) {
-					$target.trigger('close');
-				}
-				else if ( $target.hasClass('wpbp-modal-box-opened') ) {
-					$target.trigger('close');
-				}
-				else {
-					$target.trigger('open');
-				}
-
-			});
-
-
-			// close modal boxes when the blanket is clicked
-			$blanket.click(function() {
-				$modalBoxes.trigger('close');
-			});
-
-			// close modal boxes when the ESC key is pressed
-			$(window).keyup(function(e) {
-				if ( e.which == 27 ) {
+				// close modal boxes when the blanket is clicked
+				$blanket.click(function() {
 					$modalBoxes.trigger('close');
-				}
+				});
+
+				// close modal boxes when the ESC key is pressed
+				$(window).keyup(function(e) {
+					if ( e.which == 27 ) {
+						$modalBoxes.trigger('close');
+					}
+				});
+
 			});
 
 		};
