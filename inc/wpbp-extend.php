@@ -2,49 +2,49 @@
 
 if ( !function_exists('set_post_ID') ) {
 
-    /**
-     * set_post_ID
-     * Assigns the current post ID to the passed variable.
-     */
-    function set_post_ID(&$post_ID)
-	{
-		if ( !isset($post_ID) || !is_int($post_ID) ) {
-            global $wp_query;
-            if ( isset($wp_query->post->ID) ) {
-                $post_ID = $wp_query->post->ID;
-            } else {
-                throw new Exception('No post ID.');
-            }
-        }
-	}
+  /**
+   * set_post_ID
+   * Assigns the current post ID to the passed variable.
+   */
+  function set_post_ID(&$post_ID)
+  {
+    if ( !isset($post_ID) || !is_int($post_ID) ) {
+      global $wp_query;
+      if ( isset($wp_query->post->ID) ) {
+        $post_ID = $wp_query->post->ID;
+      } else {
+        throw new Exception('No post ID.');
+      }
+    }
+  }
 
 }
 
 if ( !function_exists('get_ID_by_slug') ) {
 
-	/**
-	 * get_ID_by_slug
-	 * Returns the ID of a given post slug
-	 */
-	function get_ID_by_slug($slug)
-	{
-		global $wpdb;
-		$post_ID = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '" . $slug . "'");
-		return $post_ID;
-	}
+  /**
+   * get_ID_by_slug
+   * Returns the ID of a given post slug
+   */
+  function get_ID_by_slug($slug)
+  {
+    global $wpdb;
+    $post_ID = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '" . $slug . "'");
+    return $post_ID;
+  }
 
 }
 
 if ( !function_exists('blog_url') ) {
 
-	/**
-	 * blog_url
-	 * Returns the url of the posts page.
-	 */
-	function blog_url()
-	{
-		return get_permalink( get_option('page_for_posts' ) );
-	}
+  /**
+   * blog_url
+   * Returns the url of the posts page.
+   */
+  function blog_url()
+  {
+    return get_permalink( get_option('page_for_posts' ) );
+  }
 
 }
 
@@ -172,68 +172,63 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 
 if ( !function_exists('wpbp_error_log') ) {
 
-	function wpbp_error_log($message, $notify_admin = false, $echo_in_footer = false)
-	{
-		$wp_debug_file_path = WP_CONTENT_DIR . '/debug.log';
+  function wpbp_error_log($message, $notify_admin = false, $echo_in_footer = false)
+  {
+    $wp_debug_file_path = WP_CONTENT_DIR . '/debug.log';
 
-		if ( is_writeable( $wp_debug_file_path ) ) {
+    if ( is_writeable( $wp_debug_file_path ) ) {
+      if ( $handle = @fopen($wp_debug_file_path, 'a') ) {
+        $result = @fwrite($handle, $message . PHP_EOL);
+        @fclose( $handle );
+      }
+    }
 
-			if ( $handle = @fopen($wp_debug_file_path, 'a') ) {
+    if ( $notify_admin ) {
 
-				 $result = @fwrite($handle, $message . PHP_EOL);
+      $admin_email = get_option('admin_email');
 
-				 @fclose( $handle );
-			}
-		}
+      $mail = new Mail();
+      $mail->set_option('content_type', "text/plain; charset=utf-8");
+      $mail->set_option('from', $admin_email);
+      $mail->set_option('to', $admin_email);
+      $mail->set_option('subject', "WPBP Error Notification");
+      $mail->set_body( $message );
+      $mail->send();
 
-		if ( $notify_admin ) {
+      if ( $mail->get_response() != 200 ) {
+        wpbp_error_log("Can't send error notification to admin (" . $admin_email . ")");
+      }
+    }
 
-			$admin_email = get_option('admin_email');
+    if ( $echo_in_footer && current_user_can('manage_options') ) {
+      add_action('wpbp_footer', function() {
+        echo "<!-- WPBP ERROR: " . $message . " -->" . PHP_EOL;
+      });
+    }
 
-			$mail = new Mail();
-			$mail->set_option('content_type', "text/plain; charset=utf-8");
-			$mail->set_option('from', $admin_email);
-			$mail->set_option('to', $admin_email);
-			$mail->set_option('subject', "WPBP Error Notification");
-			$mail->set_body( $message );
-			$mail->send();
-
-			if ( $mail->get_response() != 200 ) {
-
-				wpbp_error_log("Can't send error notification to admin (" . $admin_email . ")");
-			}
-		}
-
-		if ( $echo_in_footer && current_user_can('manage_options') ) {
-
-			add_action('wpbp_footer', function() {
-				echo "<!-- WPBP ERROR: " . $message . " -->" . PHP_EOL;
-			});
-		}
-
-		return $result;
-	}
+    return $result;
+  }
 
 }
 
 // the following function requires WPML to be installed and active
 if ( !function_exists('wpbp_wpml_lang_sel') && function_exists('icl_get_languages') ) {
 
-    function wpbp_wpml_lang_sel()
-    {
-        $languages = icl_get_languages('skip_missing=1&orderby=code');
-    	echo '<ul class="menu lang-sel">';
-    	if ( count($languages) > 1 ) {
-    		foreach( $languages as $lang ) {
-    			echo '<li id="lang-' . $lang['language_code'] . '"' . ( $lang['active'] ? ' class="current-menu-item"' : '' ) . '><a' . ( $lang['active'] ? '' : ' rel="alternate"' ) . ' href="' . $lang['url'] . '" hreflang="' . $lang['language_code'] . '">' . $lang['native_name'] . '</a></li>';
-    		}
-    	}
-    	else {
-    		echo '<li id="lang-en"' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? ' class="current-menu-item"' : '' ) . '><a' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? '' : ' rel="alternate"' ) . ' href="' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? '#' : '/en/' ) . '" hreflang="en">English</a></li>';
-    		echo '<li id="lang-fr"' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? ' class="current-menu-item"' : '' ) . '><a' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? '' : ' rel="alternate"' ) . ' href="' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? '#' : '/' ) . '" hreflang="fr">Fran&ccedil;ais</a></li>';
-    	}
-    	echo '</ul>';
+  function wpbp_wpml_lang_sel()
+  {
+    $languages = icl_get_languages('skip_missing=1&orderby=code');
+    echo '<ul class="menu lang-sel">';
+    if ( count($languages) > 1 ) {
+      foreach( $languages as $lang ) {
+        echo '<li id="lang-' . $lang['language_code'] . '"' . ( $lang['active'] ? ' class="current-menu-item"' : '' ) . '><a' . ( $lang['active'] ? '' : ' rel="alternate"' ) . ' href="' . $lang['url'] . '" hreflang="' . $lang['language_code'] . '">' . $lang['native_name'] . '</a></li>';
+      }
     }
+    else {
+      echo '<li id="lang-en"' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? ' class="current-menu-item"' : '' ) . '><a' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? '' : ' rel="alternate"' ) . ' href="' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? '#' : '/en/' ) . '" hreflang="en">English</a></li>';
+      echo '<li id="lang-fr"' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? ' class="current-menu-item"' : '' ) . '><a' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? '' : ' rel="alternate"' ) . ' href="' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? '#' : '/' ) . '" hreflang="fr">Fran&ccedil;ais</a></li>';
+    }
+    echo '</ul>';
+  }
 
 }
 
