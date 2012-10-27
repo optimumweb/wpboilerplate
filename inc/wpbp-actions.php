@@ -1,6 +1,6 @@
 <?php
 
-add_action('init', 'wpbp_register_libs');
+add_action('init', 'wpbp_register_lib');
 add_action('wpbp_head', 'wpbp_og_tags');
 add_action('wpbp_head', 'wpbp_google_analytics');
 add_action('wpbp_head', 'wpbp_custom_css');
