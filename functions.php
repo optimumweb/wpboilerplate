@@ -12,6 +12,7 @@ $required_files = array(
 	'/inc/wpbp-htaccess.php',		// rewrites for assets, h5bp htaccess
 	'/inc/wpbp-hooks.php',			// hooks
 	'/inc/wpbp-actions.php',		// actions
+	'/inc/wpbp-lib.php',		// library
 	'/inc/wpbp-enqueue.php',		// takes care of enqueued scripts and stylesheets
 	'/inc/wpbp-validation.php',		// form validation tool
 	'/inc/wpbp-form-builder.php',	// makes building forms easy
@@ -40,16 +41,16 @@ $wpbp_options = wpbp_get_theme_options();
 function wpbp_setup() {
 
 	load_theme_textdomain('wpbp', TEMPLATE_DIRECTORY . '/lang');
-	
+
 	// tell the TinyMCE editor to use editor-style.css
 	// if you have issues with getting the editor to show your changes then use the following line:
 	// add_editor_style('editor-style.css?' . time());
 	add_editor_style('editor-style.css');
-	
+
 	// http://codex.wordpress.org/Post_Thumbnails
 	add_theme_support('post-thumbnails');
 	//set_post_thumbnail_size(150, 150, false);
-	
+
 	// http://codex.wordpress.org/Post_Formats
 	//add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 
@@ -58,7 +59,7 @@ function wpbp_setup() {
 		<style type="text/css"> .appearance_page_custom-header #headimg { min-height: 0; } </style>
 	<?php }
 	add_custom_image_header('wpbp_custom_image_header_site', 'wpbp_custom_image_header_admin');
-		
+
 	add_theme_support('menus');
 	register_nav_menus(array(
 		'primary_navigation' => __('Primary Navigation', 'wpbp'),
