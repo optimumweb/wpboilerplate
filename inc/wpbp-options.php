@@ -113,6 +113,7 @@ function wpbp_get_default_theme_options()
 		'main_class'            => $default_framework_settings['classes']['main'],
 		'sidebar_class'         => $default_framework_settings['classes']['sidebar'],
 		'google_analytics_id'   => '',
+		'responsive'            => 'responsive',
         'css_files'             => '',
 		'custom_css'            => '',
         'js_files'              => '',
@@ -166,6 +167,17 @@ function wpbp_theme_options_render_page()
 						</fieldset>
 					</td>
 				</tr>
+
+				<tr valign="top" class="radio-option"><th scope="row"><?php _e('Responsive?', 'wpbp'); ?></th>
+                    <td>
+                        <fieldset><legend class="screen-reader-text"><span><?php _e('Responsive?', 'wpbp'); ?></span></legend>
+                            <select name="wpbp_theme_options[responsive]" id="wpbp_theme_options[responsive]">
+                                <option value="responsive" <?php selected($wpbp_options['responsive'], 'responsive'); ?>><?php _e("Yes", 'wpbp'); ?></option>
+                                <option value="" <?php selected($wpbp_options['responsive'], 'no'); ?>><?php _e("No", 'wpbp'); ?></option>
+                            </select>
+                        </fieldset>
+                    </td>
+                </tr>
 
 				<tr valign="top"><th scope="row"><?php _e('#main CSS Classes', 'wpbp'); ?></th>
 					<td>

@@ -20,4 +20,4 @@
 
 </head>
 
-<body <?php body_class( array( $post->post_name, wpbp_get_option('css_framework') ) ); ?>>
+<body <?php body_class( array( $post->post_name, wpbp_get_option('css_framework'), wpbp_get_option('responsive') ) ); ?>>
