@@ -46,6 +46,10 @@ body { min-width: 960px; }
     position: relative;
     padding: 0 10px;
     min-height: 1px;
+
+    &.center { text-align: center; }
+    &.left { text-align: left; }
+    &.right { text-align: right; }
 }
 
 .push_1, .pull_1,
@@ -76,10 +80,6 @@ body { min-width: 960px; }
 
 .omega {
     padding-right: 0;
-}
-
-.center {
-    text-align: center;
 }
 
 // GENERATORS
@@ -310,11 +310,11 @@ body.mobile-responsive {
         .grid_16 {
             float: none;
             width: 100%;
-        }
-    }
 
-    .mobile-center {
-        text-align: center;
+            &.mobile-center { text-align: center; }
+            &.mobile-left { text-align: left; }
+            &.mobile-right { text-align: right; }
+        }
     }
 }
 
