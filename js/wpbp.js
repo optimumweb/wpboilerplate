@@ -526,7 +526,7 @@
 			return this.each(function() {
 
 				var $list = $(this);
-				var $select = $( document.createElement('select') ).insertBefore( $(this).hide() ).addClass( $(this).attr('class') );
+				var $select = $( document.createElement('select') ).insertBefore( $(this) ).addClass( $(this).attr('class') );
 
 				$('a', this).each(function() {
 					var	$option = $( document.createElement('option') ).appendTo( $select ).val( this.href ).html( $(this).html() );
