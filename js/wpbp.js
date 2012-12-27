@@ -532,7 +532,7 @@
 					var	$option = $( document.createElement('option') ).appendTo( $select ).val( this.href ).html( $(this).html() );
 				});
 
-				$list.remove();
+				if ( $list.hasClass('remove') ) $list.remove();
 
 				$select.change(function() {
 					window.location.href = $(this).val();
