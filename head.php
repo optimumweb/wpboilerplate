@@ -10,6 +10,8 @@
 
 <meta charset="utf-8">
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title><?php wp_title(''); ?></title>
 
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
