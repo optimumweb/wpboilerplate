@@ -220,6 +220,29 @@ body { min-width: 960px; }
     .pullSpace(@cols, @colWidth);
 }
 
+// BLOCK GRIDS
+// --------------------------------------------------
+
+.block_grid {
+    > * {
+        display: block;
+        float: left;
+        position: relative;
+        padding: 0 10px;
+        min-height: 1px;
+    }
+
+    &.by_2 > * { width: 100% / 2.00; }
+    &.by_3 > * { width: 100% / 3.00; }
+    &.by_4 > * { width: 100% / 4.00; }
+    &.by_5 > * { width: 100% / 5.00; }
+    &.by_6 > * { width: 100% / 6.00; }
+    &.by_7 > * { width: 100% / 7.00; }
+    &.by_8 > * { width: 100% / 8.00; }
+    &.by_9 > * { width: 100% / 9.00; }
+    &.by_10 > * { width: 100% / 10.00; }
+}
+
 // RESPONSIVE GRID
 // --------------------------------------------------
 
@@ -314,6 +337,10 @@ body.mobile-responsive {
             &.mobile-center { text-align: center; }
             &.mobile-left { text-align: left; }
             &.mobile-right { text-align: right; }
+        }
+
+        .block_grid > * {
+            width: 100%;
         }
     }
 }
