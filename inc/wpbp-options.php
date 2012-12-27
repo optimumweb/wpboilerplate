@@ -173,7 +173,7 @@ function wpbp_theme_options_render_page()
                         <fieldset><legend class="screen-reader-text"><span><?php _e('Responsive?', 'wpbp'); ?></span></legend>
                             <select name="wpbp_theme_options[responsive]" id="wpbp_theme_options[responsive]">
                                 <option value="responsive" <?php selected($wpbp_options['responsive'], 'responsive'); ?>><?php _e("Yes", 'wpbp'); ?></option>
-                                <option value="" <?php selected($wpbp_options['responsive'], 'no'); ?>><?php _e("No", 'wpbp'); ?></option>
+                                <option value="non-responsive" <?php selected($wpbp_options['responsive'], 'non-responsive'); ?>><?php _e("No", 'wpbp'); ?></option>
                             </select>
                         </fieldset>
                     </td>
@@ -253,19 +253,21 @@ function wpbp_theme_options_validate($input)
 	global $wpbp_css_frameworks;
 	$output = $defaults = wpbp_get_default_theme_options();
 
-	if (isset($input['css_framework']) && array_key_exists($input['css_framework'], $wpbp_css_frameworks))
+	if ( isset($input['css_framework']) && array_key_exists($input['css_framework'], $wpbp_css_frameworks) ) {
 		$output['css_framework'] = $input['css_framework'];
+	}
 
 	// set the value of the main container class depending on the selected grid framework
 	$output['container_class'] = $wpbp_css_frameworks[$output['css_framework']]['classes']['container'];
 
-	$output['main_class'] = ( isset( $input['main_class'] ) ) ? $input['main_class'] : null;
-	$output['sidebar_class'] = ( isset( $input['sidebar_class'] ) ) ? $input['sidebar_class'] : null;
-	$output['google_analytics_id'] = ( isset( $input['google_analytics_id'] ) ) ? $input['google_analytics_id'] : null;
-    $output['css_files'] = ( isset( $input['css_files'] ) ) ? $input['css_files'] : null;
-	$output['custom_css'] = ( isset( $input['custom_css'] ) ) ? $input['custom_css'] : null;
-    $output['js_files'] = ( isset( $input['js_files'] ) ) ? $input['js_files'] : null;
-    $output['favicon'] = ( isset( $input['favicon'] ) ) ? $input['favicon'] : null;
+	$output['responsive']          = isset($input['responsive'])          ? $input['responsive']          : null;
+	$output['main_class']          = isset($input['main_class'])          ? $input['main_class']          : null;
+	$output['sidebar_class']       = isset($input['sidebar_class'])       ? $input['sidebar_class']       : null;
+	$output['google_analytics_id'] = isset($input['google_analytics_id']) ? $input['google_analytics_id'] : null;
+    $output['css_files']           = isset($input['css_files'])           ? $input['css_files']           : null;
+	$output['custom_css']          = isset($input['custom_css'])          ? $input['custom_css']          : null;
+    $output['js_files']            = isset($input['js_files'])            ? $input['js_files']            : null;
+    $output['favicon']             = isset($input['favicon'])             ? $input['favicon']             : null;
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);
 }
