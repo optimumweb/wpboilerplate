@@ -172,8 +172,9 @@ function wpbp_theme_options_render_page()
                     <td>
                         <fieldset><legend class="screen-reader-text"><span><?php _e('Responsive?', 'wpbp'); ?></span></legend>
                             <select name="wpbp_theme_options[responsive]" id="wpbp_theme_options[responsive]">
-                                <option value="responsive" <?php selected($wpbp_options['responsive'], 'responsive'); ?>><?php _e("Yes", 'wpbp'); ?></option>
-                                <option value="non-responsive" <?php selected($wpbp_options['responsive'], 'non-responsive'); ?>><?php _e("No", 'wpbp'); ?></option>
+                                <option value="responsive" <?php selected($wpbp_options['responsive'], 'responsive'); ?>><?php _e("Full-responsive", 'wpbp'); ?></option>
+                                <option value="mobile-responsive" <?php selected($wpbp_options['responsive'], 'responsive'); ?>><?php _e("Mobile-responsive", 'wpbp'); ?></option>
+                                <option value="non-responsive" <?php selected($wpbp_options['responsive'], 'non-responsive'); ?>><?php _e("Non-responsive", 'wpbp'); ?></option>
                             </select>
                         </fieldset>
                     </td>
