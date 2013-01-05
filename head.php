@@ -10,7 +10,9 @@
 
 <meta charset="utf-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php if ( in_array(wpbp_get_option('responsive'), array('responsive', 'mobile-responsive')) ) : ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php endif; ?>
 
 <title><?php wp_title(''); ?></title>
 

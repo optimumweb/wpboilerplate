@@ -1475,7 +1475,6 @@ img {
   body.responsive .block_grid > *,
   body.mobile-responsive .block_grid > * {
     width: 100%;
-    padding: 0;
   }
 }
 img {
