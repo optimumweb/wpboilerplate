@@ -1204,10 +1204,10 @@ img {
   overflow: hidden;
 }
 .embed-container.r16x9 {
-  padding-bottom: 56.25 '%';
+  padding-bottom: 56.25%;
 }
 .embed-container.r4x3 {
-  padding-bottom: 75 '%';
+  padding-bottom: 75.00%;
 }
 .embed-container iframe,
 .embed-container object,
