@@ -1472,8 +1472,43 @@ img {
   body.mobile-responsive .grid_16.omega {
     padding: 0;
   }
+  body.responsive .grid_1 .block_grid > *,
+  body.mobile-responsive .grid_1 .block_grid > *,
+  body.responsive .grid_2 .block_grid > *,
+  body.mobile-responsive .grid_2 .block_grid > *,
+  body.responsive .grid_3 .block_grid > *,
+  body.mobile-responsive .grid_3 .block_grid > *,
+  body.responsive .grid_4 .block_grid > *,
+  body.mobile-responsive .grid_4 .block_grid > *,
+  body.responsive .grid_5 .block_grid > *,
+  body.mobile-responsive .grid_5 .block_grid > *,
+  body.responsive .grid_6 .block_grid > *,
+  body.mobile-responsive .grid_6 .block_grid > *,
+  body.responsive .grid_7 .block_grid > *,
+  body.mobile-responsive .grid_7 .block_grid > *,
+  body.responsive .grid_8 .block_grid > *,
+  body.mobile-responsive .grid_8 .block_grid > *,
+  body.responsive .grid_9 .block_grid > *,
+  body.mobile-responsive .grid_9 .block_grid > *,
+  body.responsive .grid_10 .block_grid > *,
+  body.mobile-responsive .grid_10 .block_grid > *,
+  body.responsive .grid_11 .block_grid > *,
+  body.mobile-responsive .grid_11 .block_grid > *,
+  body.responsive .grid_12 .block_grid > *,
+  body.mobile-responsive .grid_12 .block_grid > *,
+  body.responsive .grid_13 .block_grid > *,
+  body.mobile-responsive .grid_13 .block_grid > *,
+  body.responsive .grid_14 .block_grid > *,
+  body.mobile-responsive .grid_14 .block_grid > *,
+  body.responsive .grid_15 .block_grid > *,
+  body.mobile-responsive .grid_15 .block_grid > *,
+  body.responsive .grid_16 .block_grid > *,
+  body.mobile-responsive .grid_16 .block_grid > * {
+    padding: 0;
+  }
   body.responsive .block_grid > *,
   body.mobile-responsive .block_grid > * {
+    float: none;
     width: 100%;
   }
 }
