@@ -1203,11 +1203,11 @@ img {
   padding-bottom: 56.25%;
   /* 16/9 ratio */
 
-  padding-top: 30px;
-  /* IE6 workaround*/
-
   height: 0;
   overflow: hidden;
+}
+.embed-container.r16x9 {
+  padding-bottom: 56.25%;
 }
 .embed-container iframe,
 .embed-container object,

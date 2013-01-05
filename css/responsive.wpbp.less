@@ -14,10 +14,16 @@ img {
 
 .embed-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16/9 ratio */
-    padding-top: 30px; /* IE6 workaround*/
     height: 0;
     overflow: hidden;
+    padding-bottom: @ratio*100+'%';
+
+    &.r16x9 {
+        padding-bottom: ( 9.00 / 16.00 ) + '%';
+    }
+    &.r4x3 {
+        padding-bottom: ( 3.00 / 4.00 ) + '%';
+    }
 
     iframe,
     object,
