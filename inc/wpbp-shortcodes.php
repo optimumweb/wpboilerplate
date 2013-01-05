@@ -143,7 +143,7 @@ function make_smartbox($atts, $content = null)
     
     if ( $collapsible ) {
     	$box .= '<div class="box-controls">';
-    	$box .= '<a class="box-arrow collapse-trigger valign' . ( $ajax ? ' ajax-trigger' : '' ) . '" data-ref="#' . $id_val . ' .box-title" href="#"><span></span></a>';
+    	$box .= '<a class="box-arrow collapse-trigger' . ( $ajax ? ' ajax-trigger' : '' ) . '" href="#"><span></span></a>';
     	$box .= '</div>';
     }
     
