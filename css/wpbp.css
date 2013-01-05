@@ -732,273 +732,6 @@ body {
 .block_grid.by_10 > * {
   width: 10%;
 }
-body.responsive img,
-body.mobile-responsive img,
-body.responsive embed,
-body.mobile-responsive embed,
-body.responsive iframe,
-body.mobile-responsive iframe {
-  max-width: 100%;
-}
-@media only screen and (min-width: 1600px) {
-  body.responsive {
-    min-width: 1560px;
-  }
-  body.responsive .container_12,
-  body.responsive .container_16 {
-    width: 1560px;
-  }
-}
-@media only screen and (min-width: 1280px) and (max-width: 1600px) {
-  body.responsive {
-    min-width: 1200px;
-  }
-  body.responsive .container_12,
-  body.responsive .container_16 {
-    width: 1200px;
-  }
-}
-@media only screen and (min-width: 980px) and (max-width: 1280px) {
-  body.responsive {
-    min-width: 960px;
-  }
-  body.responsive .container_12,
-  body.responsive .container_16 {
-    width: 960px;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 980px) {
-  body.responsive {
-    min-width: 720px;
-  }
-  body.responsive .container_12,
-  body.responsive .container_16 {
-    width: 720px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  body.responsive,
-  body.mobile-responsive {
-    -webkit-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-  }
-  body.responsive .container_12,
-  body.mobile-responsive .container_12,
-  body.responsive .container_16,
-  body.mobile-responsive .container_16 {
-    width: 100%;
-  }
-  body.responsive .grid_1,
-  body.mobile-responsive .grid_1,
-  body.responsive .grid_2,
-  body.mobile-responsive .grid_2,
-  body.responsive .grid_3,
-  body.mobile-responsive .grid_3,
-  body.responsive .grid_4,
-  body.mobile-responsive .grid_4,
-  body.responsive .grid_5,
-  body.mobile-responsive .grid_5,
-  body.responsive .grid_6,
-  body.mobile-responsive .grid_6,
-  body.responsive .grid_7,
-  body.mobile-responsive .grid_7,
-  body.responsive .grid_8,
-  body.mobile-responsive .grid_8,
-  body.responsive .grid_9,
-  body.mobile-responsive .grid_9,
-  body.responsive .grid_10,
-  body.mobile-responsive .grid_10,
-  body.responsive .grid_11,
-  body.mobile-responsive .grid_11,
-  body.responsive .grid_12,
-  body.mobile-responsive .grid_12,
-  body.responsive .grid_13,
-  body.mobile-responsive .grid_13,
-  body.responsive .grid_14,
-  body.mobile-responsive .grid_14,
-  body.responsive .grid_15,
-  body.mobile-responsive .grid_15,
-  body.responsive .grid_16,
-  body.mobile-responsive .grid_16 {
-    float: none;
-    width: 100%;
-  }
-  body.responsive .grid_1.mobile-center,
-  body.mobile-responsive .grid_1.mobile-center,
-  body.responsive .grid_2.mobile-center,
-  body.mobile-responsive .grid_2.mobile-center,
-  body.responsive .grid_3.mobile-center,
-  body.mobile-responsive .grid_3.mobile-center,
-  body.responsive .grid_4.mobile-center,
-  body.mobile-responsive .grid_4.mobile-center,
-  body.responsive .grid_5.mobile-center,
-  body.mobile-responsive .grid_5.mobile-center,
-  body.responsive .grid_6.mobile-center,
-  body.mobile-responsive .grid_6.mobile-center,
-  body.responsive .grid_7.mobile-center,
-  body.mobile-responsive .grid_7.mobile-center,
-  body.responsive .grid_8.mobile-center,
-  body.mobile-responsive .grid_8.mobile-center,
-  body.responsive .grid_9.mobile-center,
-  body.mobile-responsive .grid_9.mobile-center,
-  body.responsive .grid_10.mobile-center,
-  body.mobile-responsive .grid_10.mobile-center,
-  body.responsive .grid_11.mobile-center,
-  body.mobile-responsive .grid_11.mobile-center,
-  body.responsive .grid_12.mobile-center,
-  body.mobile-responsive .grid_12.mobile-center,
-  body.responsive .grid_13.mobile-center,
-  body.mobile-responsive .grid_13.mobile-center,
-  body.responsive .grid_14.mobile-center,
-  body.mobile-responsive .grid_14.mobile-center,
-  body.responsive .grid_15.mobile-center,
-  body.mobile-responsive .grid_15.mobile-center,
-  body.responsive .grid_16.mobile-center,
-  body.mobile-responsive .grid_16.mobile-center {
-    text-align: center;
-  }
-  body.responsive .grid_1.mobile-left,
-  body.mobile-responsive .grid_1.mobile-left,
-  body.responsive .grid_2.mobile-left,
-  body.mobile-responsive .grid_2.mobile-left,
-  body.responsive .grid_3.mobile-left,
-  body.mobile-responsive .grid_3.mobile-left,
-  body.responsive .grid_4.mobile-left,
-  body.mobile-responsive .grid_4.mobile-left,
-  body.responsive .grid_5.mobile-left,
-  body.mobile-responsive .grid_5.mobile-left,
-  body.responsive .grid_6.mobile-left,
-  body.mobile-responsive .grid_6.mobile-left,
-  body.responsive .grid_7.mobile-left,
-  body.mobile-responsive .grid_7.mobile-left,
-  body.responsive .grid_8.mobile-left,
-  body.mobile-responsive .grid_8.mobile-left,
-  body.responsive .grid_9.mobile-left,
-  body.mobile-responsive .grid_9.mobile-left,
-  body.responsive .grid_10.mobile-left,
-  body.mobile-responsive .grid_10.mobile-left,
-  body.responsive .grid_11.mobile-left,
-  body.mobile-responsive .grid_11.mobile-left,
-  body.responsive .grid_12.mobile-left,
-  body.mobile-responsive .grid_12.mobile-left,
-  body.responsive .grid_13.mobile-left,
-  body.mobile-responsive .grid_13.mobile-left,
-  body.responsive .grid_14.mobile-left,
-  body.mobile-responsive .grid_14.mobile-left,
-  body.responsive .grid_15.mobile-left,
-  body.mobile-responsive .grid_15.mobile-left,
-  body.responsive .grid_16.mobile-left,
-  body.mobile-responsive .grid_16.mobile-left {
-    text-align: left;
-  }
-  body.responsive .grid_1.mobile-right,
-  body.mobile-responsive .grid_1.mobile-right,
-  body.responsive .grid_2.mobile-right,
-  body.mobile-responsive .grid_2.mobile-right,
-  body.responsive .grid_3.mobile-right,
-  body.mobile-responsive .grid_3.mobile-right,
-  body.responsive .grid_4.mobile-right,
-  body.mobile-responsive .grid_4.mobile-right,
-  body.responsive .grid_5.mobile-right,
-  body.mobile-responsive .grid_5.mobile-right,
-  body.responsive .grid_6.mobile-right,
-  body.mobile-responsive .grid_6.mobile-right,
-  body.responsive .grid_7.mobile-right,
-  body.mobile-responsive .grid_7.mobile-right,
-  body.responsive .grid_8.mobile-right,
-  body.mobile-responsive .grid_8.mobile-right,
-  body.responsive .grid_9.mobile-right,
-  body.mobile-responsive .grid_9.mobile-right,
-  body.responsive .grid_10.mobile-right,
-  body.mobile-responsive .grid_10.mobile-right,
-  body.responsive .grid_11.mobile-right,
-  body.mobile-responsive .grid_11.mobile-right,
-  body.responsive .grid_12.mobile-right,
-  body.mobile-responsive .grid_12.mobile-right,
-  body.responsive .grid_13.mobile-right,
-  body.mobile-responsive .grid_13.mobile-right,
-  body.responsive .grid_14.mobile-right,
-  body.mobile-responsive .grid_14.mobile-right,
-  body.responsive .grid_15.mobile-right,
-  body.mobile-responsive .grid_15.mobile-right,
-  body.responsive .grid_16.mobile-right,
-  body.mobile-responsive .grid_16.mobile-right {
-    text-align: right;
-  }
-  body.responsive .grid_1.alpha,
-  body.mobile-responsive .grid_1.alpha,
-  body.responsive .grid_2.alpha,
-  body.mobile-responsive .grid_2.alpha,
-  body.responsive .grid_3.alpha,
-  body.mobile-responsive .grid_3.alpha,
-  body.responsive .grid_4.alpha,
-  body.mobile-responsive .grid_4.alpha,
-  body.responsive .grid_5.alpha,
-  body.mobile-responsive .grid_5.alpha,
-  body.responsive .grid_6.alpha,
-  body.mobile-responsive .grid_6.alpha,
-  body.responsive .grid_7.alpha,
-  body.mobile-responsive .grid_7.alpha,
-  body.responsive .grid_8.alpha,
-  body.mobile-responsive .grid_8.alpha,
-  body.responsive .grid_9.alpha,
-  body.mobile-responsive .grid_9.alpha,
-  body.responsive .grid_10.alpha,
-  body.mobile-responsive .grid_10.alpha,
-  body.responsive .grid_11.alpha,
-  body.mobile-responsive .grid_11.alpha,
-  body.responsive .grid_12.alpha,
-  body.mobile-responsive .grid_12.alpha,
-  body.responsive .grid_13.alpha,
-  body.mobile-responsive .grid_13.alpha,
-  body.responsive .grid_14.alpha,
-  body.mobile-responsive .grid_14.alpha,
-  body.responsive .grid_15.alpha,
-  body.mobile-responsive .grid_15.alpha,
-  body.responsive .grid_16.alpha,
-  body.mobile-responsive .grid_16.alpha,
-  body.responsive .grid_1.omega,
-  body.mobile-responsive .grid_1.omega,
-  body.responsive .grid_2.omega,
-  body.mobile-responsive .grid_2.omega,
-  body.responsive .grid_3.omega,
-  body.mobile-responsive .grid_3.omega,
-  body.responsive .grid_4.omega,
-  body.mobile-responsive .grid_4.omega,
-  body.responsive .grid_5.omega,
-  body.mobile-responsive .grid_5.omega,
-  body.responsive .grid_6.omega,
-  body.mobile-responsive .grid_6.omega,
-  body.responsive .grid_7.omega,
-  body.mobile-responsive .grid_7.omega,
-  body.responsive .grid_8.omega,
-  body.mobile-responsive .grid_8.omega,
-  body.responsive .grid_9.omega,
-  body.mobile-responsive .grid_9.omega,
-  body.responsive .grid_10.omega,
-  body.mobile-responsive .grid_10.omega,
-  body.responsive .grid_11.omega,
-  body.mobile-responsive .grid_11.omega,
-  body.responsive .grid_12.omega,
-  body.mobile-responsive .grid_12.omega,
-  body.responsive .grid_13.omega,
-  body.mobile-responsive .grid_13.omega,
-  body.responsive .grid_14.omega,
-  body.mobile-responsive .grid_14.omega,
-  body.responsive .grid_15.omega,
-  body.mobile-responsive .grid_15.omega,
-  body.responsive .grid_16.omega,
-  body.mobile-responsive .grid_16.omega {
-    padding: 0;
-  }
-  body.responsive .block_grid > *,
-  body.mobile-responsive .block_grid > * {
-    width: 100%;
-  }
-}
 .clear {
   clear: both;
   display: block;
@@ -1460,6 +1193,291 @@ sub {
   background-image: url(http://firecdn.net/images/social_icons/vector/32px/youtube.png);
 }
 img {
+  width: auto;
+  height: auto;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16/9 ratio */
+
+  padding-top: 30px;
+  /* IE6 workaround*/
+
+  height: 0;
+  overflow: hidden;
+}
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (min-width: 1600px) {
+  body.responsive {
+    min-width: 1560px;
+  }
+  body.responsive .container_12,
+  body.responsive .container_16 {
+    width: 1560px;
+  }
+}
+@media only screen and (min-width: 1280px) and (max-width: 1600px) {
+  body.responsive {
+    min-width: 1200px;
+  }
+  body.responsive .container_12,
+  body.responsive .container_16 {
+    width: 1200px;
+  }
+}
+@media only screen and (min-width: 980px) and (max-width: 1280px) {
+  body.responsive {
+    min-width: 960px;
+  }
+  body.responsive .container_12,
+  body.responsive .container_16 {
+    width: 960px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 980px) {
+  body.responsive {
+    min-width: 720px;
+  }
+  body.responsive .container_12,
+  body.responsive .container_16 {
+    width: 720px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  body.responsive,
+  body.mobile-responsive {
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+  body.responsive .container_12,
+  body.mobile-responsive .container_12,
+  body.responsive .container_16,
+  body.mobile-responsive .container_16 {
+    width: 100%;
+  }
+  body.responsive .grid_1,
+  body.mobile-responsive .grid_1,
+  body.responsive .grid_2,
+  body.mobile-responsive .grid_2,
+  body.responsive .grid_3,
+  body.mobile-responsive .grid_3,
+  body.responsive .grid_4,
+  body.mobile-responsive .grid_4,
+  body.responsive .grid_5,
+  body.mobile-responsive .grid_5,
+  body.responsive .grid_6,
+  body.mobile-responsive .grid_6,
+  body.responsive .grid_7,
+  body.mobile-responsive .grid_7,
+  body.responsive .grid_8,
+  body.mobile-responsive .grid_8,
+  body.responsive .grid_9,
+  body.mobile-responsive .grid_9,
+  body.responsive .grid_10,
+  body.mobile-responsive .grid_10,
+  body.responsive .grid_11,
+  body.mobile-responsive .grid_11,
+  body.responsive .grid_12,
+  body.mobile-responsive .grid_12,
+  body.responsive .grid_13,
+  body.mobile-responsive .grid_13,
+  body.responsive .grid_14,
+  body.mobile-responsive .grid_14,
+  body.responsive .grid_15,
+  body.mobile-responsive .grid_15,
+  body.responsive .grid_16,
+  body.mobile-responsive .grid_16 {
+    float: none;
+    width: 100%;
+  }
+  body.responsive .grid_1.mobile-center,
+  body.mobile-responsive .grid_1.mobile-center,
+  body.responsive .grid_2.mobile-center,
+  body.mobile-responsive .grid_2.mobile-center,
+  body.responsive .grid_3.mobile-center,
+  body.mobile-responsive .grid_3.mobile-center,
+  body.responsive .grid_4.mobile-center,
+  body.mobile-responsive .grid_4.mobile-center,
+  body.responsive .grid_5.mobile-center,
+  body.mobile-responsive .grid_5.mobile-center,
+  body.responsive .grid_6.mobile-center,
+  body.mobile-responsive .grid_6.mobile-center,
+  body.responsive .grid_7.mobile-center,
+  body.mobile-responsive .grid_7.mobile-center,
+  body.responsive .grid_8.mobile-center,
+  body.mobile-responsive .grid_8.mobile-center,
+  body.responsive .grid_9.mobile-center,
+  body.mobile-responsive .grid_9.mobile-center,
+  body.responsive .grid_10.mobile-center,
+  body.mobile-responsive .grid_10.mobile-center,
+  body.responsive .grid_11.mobile-center,
+  body.mobile-responsive .grid_11.mobile-center,
+  body.responsive .grid_12.mobile-center,
+  body.mobile-responsive .grid_12.mobile-center,
+  body.responsive .grid_13.mobile-center,
+  body.mobile-responsive .grid_13.mobile-center,
+  body.responsive .grid_14.mobile-center,
+  body.mobile-responsive .grid_14.mobile-center,
+  body.responsive .grid_15.mobile-center,
+  body.mobile-responsive .grid_15.mobile-center,
+  body.responsive .grid_16.mobile-center,
+  body.mobile-responsive .grid_16.mobile-center {
+    text-align: center;
+  }
+  body.responsive .grid_1.mobile-left,
+  body.mobile-responsive .grid_1.mobile-left,
+  body.responsive .grid_2.mobile-left,
+  body.mobile-responsive .grid_2.mobile-left,
+  body.responsive .grid_3.mobile-left,
+  body.mobile-responsive .grid_3.mobile-left,
+  body.responsive .grid_4.mobile-left,
+  body.mobile-responsive .grid_4.mobile-left,
+  body.responsive .grid_5.mobile-left,
+  body.mobile-responsive .grid_5.mobile-left,
+  body.responsive .grid_6.mobile-left,
+  body.mobile-responsive .grid_6.mobile-left,
+  body.responsive .grid_7.mobile-left,
+  body.mobile-responsive .grid_7.mobile-left,
+  body.responsive .grid_8.mobile-left,
+  body.mobile-responsive .grid_8.mobile-left,
+  body.responsive .grid_9.mobile-left,
+  body.mobile-responsive .grid_9.mobile-left,
+  body.responsive .grid_10.mobile-left,
+  body.mobile-responsive .grid_10.mobile-left,
+  body.responsive .grid_11.mobile-left,
+  body.mobile-responsive .grid_11.mobile-left,
+  body.responsive .grid_12.mobile-left,
+  body.mobile-responsive .grid_12.mobile-left,
+  body.responsive .grid_13.mobile-left,
+  body.mobile-responsive .grid_13.mobile-left,
+  body.responsive .grid_14.mobile-left,
+  body.mobile-responsive .grid_14.mobile-left,
+  body.responsive .grid_15.mobile-left,
+  body.mobile-responsive .grid_15.mobile-left,
+  body.responsive .grid_16.mobile-left,
+  body.mobile-responsive .grid_16.mobile-left {
+    text-align: left;
+  }
+  body.responsive .grid_1.mobile-right,
+  body.mobile-responsive .grid_1.mobile-right,
+  body.responsive .grid_2.mobile-right,
+  body.mobile-responsive .grid_2.mobile-right,
+  body.responsive .grid_3.mobile-right,
+  body.mobile-responsive .grid_3.mobile-right,
+  body.responsive .grid_4.mobile-right,
+  body.mobile-responsive .grid_4.mobile-right,
+  body.responsive .grid_5.mobile-right,
+  body.mobile-responsive .grid_5.mobile-right,
+  body.responsive .grid_6.mobile-right,
+  body.mobile-responsive .grid_6.mobile-right,
+  body.responsive .grid_7.mobile-right,
+  body.mobile-responsive .grid_7.mobile-right,
+  body.responsive .grid_8.mobile-right,
+  body.mobile-responsive .grid_8.mobile-right,
+  body.responsive .grid_9.mobile-right,
+  body.mobile-responsive .grid_9.mobile-right,
+  body.responsive .grid_10.mobile-right,
+  body.mobile-responsive .grid_10.mobile-right,
+  body.responsive .grid_11.mobile-right,
+  body.mobile-responsive .grid_11.mobile-right,
+  body.responsive .grid_12.mobile-right,
+  body.mobile-responsive .grid_12.mobile-right,
+  body.responsive .grid_13.mobile-right,
+  body.mobile-responsive .grid_13.mobile-right,
+  body.responsive .grid_14.mobile-right,
+  body.mobile-responsive .grid_14.mobile-right,
+  body.responsive .grid_15.mobile-right,
+  body.mobile-responsive .grid_15.mobile-right,
+  body.responsive .grid_16.mobile-right,
+  body.mobile-responsive .grid_16.mobile-right {
+    text-align: right;
+  }
+  body.responsive .grid_1.alpha,
+  body.mobile-responsive .grid_1.alpha,
+  body.responsive .grid_2.alpha,
+  body.mobile-responsive .grid_2.alpha,
+  body.responsive .grid_3.alpha,
+  body.mobile-responsive .grid_3.alpha,
+  body.responsive .grid_4.alpha,
+  body.mobile-responsive .grid_4.alpha,
+  body.responsive .grid_5.alpha,
+  body.mobile-responsive .grid_5.alpha,
+  body.responsive .grid_6.alpha,
+  body.mobile-responsive .grid_6.alpha,
+  body.responsive .grid_7.alpha,
+  body.mobile-responsive .grid_7.alpha,
+  body.responsive .grid_8.alpha,
+  body.mobile-responsive .grid_8.alpha,
+  body.responsive .grid_9.alpha,
+  body.mobile-responsive .grid_9.alpha,
+  body.responsive .grid_10.alpha,
+  body.mobile-responsive .grid_10.alpha,
+  body.responsive .grid_11.alpha,
+  body.mobile-responsive .grid_11.alpha,
+  body.responsive .grid_12.alpha,
+  body.mobile-responsive .grid_12.alpha,
+  body.responsive .grid_13.alpha,
+  body.mobile-responsive .grid_13.alpha,
+  body.responsive .grid_14.alpha,
+  body.mobile-responsive .grid_14.alpha,
+  body.responsive .grid_15.alpha,
+  body.mobile-responsive .grid_15.alpha,
+  body.responsive .grid_16.alpha,
+  body.mobile-responsive .grid_16.alpha,
+  body.responsive .grid_1.omega,
+  body.mobile-responsive .grid_1.omega,
+  body.responsive .grid_2.omega,
+  body.mobile-responsive .grid_2.omega,
+  body.responsive .grid_3.omega,
+  body.mobile-responsive .grid_3.omega,
+  body.responsive .grid_4.omega,
+  body.mobile-responsive .grid_4.omega,
+  body.responsive .grid_5.omega,
+  body.mobile-responsive .grid_5.omega,
+  body.responsive .grid_6.omega,
+  body.mobile-responsive .grid_6.omega,
+  body.responsive .grid_7.omega,
+  body.mobile-responsive .grid_7.omega,
+  body.responsive .grid_8.omega,
+  body.mobile-responsive .grid_8.omega,
+  body.responsive .grid_9.omega,
+  body.mobile-responsive .grid_9.omega,
+  body.responsive .grid_10.omega,
+  body.mobile-responsive .grid_10.omega,
+  body.responsive .grid_11.omega,
+  body.mobile-responsive .grid_11.omega,
+  body.responsive .grid_12.omega,
+  body.mobile-responsive .grid_12.omega,
+  body.responsive .grid_13.omega,
+  body.mobile-responsive .grid_13.omega,
+  body.responsive .grid_14.omega,
+  body.mobile-responsive .grid_14.omega,
+  body.responsive .grid_15.omega,
+  body.mobile-responsive .grid_15.omega,
+  body.responsive .grid_16.omega,
+  body.mobile-responsive .grid_16.omega {
+    padding: 0;
+  }
+  body.responsive .block_grid > *,
+  body.mobile-responsive .block_grid > * {
+    width: 100%;
+  }
+}
+img {
   border: 0;
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
@@ -1599,12 +1617,4 @@ figure {
   .show-for-landscape {
     display: none !important;
   }
-}
-body.responsive img {
-  width: auto;
-  height: auto\9;
-  /* ie8 */
-
-  max-width: 100% !important;
-  max-height: 100% !important;
 }
