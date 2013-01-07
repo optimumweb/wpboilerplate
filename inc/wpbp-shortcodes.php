@@ -253,7 +253,7 @@ function make_embed($atts)
         'frameborder' => 0
     ), $atts));
 
-    if ( strlen($src) ) {
+    if ( isset($src) && strlen($src) > 0 ) {
         $ratio = explode('x', $ratio);
         $ratio = $ratio[1] / $ratio[0];
         $padding_bottom = ( $ratio * 100 ) . '%';
