@@ -33,7 +33,6 @@ function wpbp_google_analytics()
 
 function wpbp_og_tags()
 {
-
     if ( is_single() ) {
     	set_post_ID( $post_ID );
     }
@@ -41,9 +40,9 @@ function wpbp_og_tags()
     $og = array(
         'title'       => trim( wp_title('', false) ),
         'url'         => get_current_url(),
-        'image'       => is_single() ? get_featured_image_url( $post_ID ) : null,
+        'image'       => $post_ID ? get_featured_image_url( $post_ID ) : null,
         'site_name'   => get_bloginfo('name'),
-        'description' => is_single() ? strip_tags( wpbp_get_the_excerpt( $post_ID ) ) : null
+        'description' => $post_ID ? strip_tags( wpbp_get_the_excerpt( $post_ID ) ) : null
     );
 
     foreach ( $og as $key => $val ) {
@@ -51,8 +50,6 @@ function wpbp_og_tags()
             echo '<meta property="og:' . $key . '" content="' . $val . '" />' . PHP_EOL;
         }
     }
-
-    return;
 }
 
 function wpbp_custom_css()
@@ -64,38 +61,28 @@ function wpbp_custom_css()
 </style>
 <?php
     endif;
-	return;
-}
-
-function wpbp_favicon()
-{
-	if ( wpbp_get_option('favicon') ) {
-		echo '<link rel="icon" type="image/png" href="' . wpbp_get_option('favicon') . '">';
-	}
 }
 
 function wpbp_add_post_js()
 {
-	set_post_ID($post_ID);
-	if ( get_post_meta($post_ID, 'js', true) ) : ?>
-		<script type="text/javascript">
-			<?php echo get_post_meta($post_ID, 'js', true); ?>
-		</script>
-	<?php endif;
+    set_post_ID($post_ID);
+    if ( get_post_meta($post_ID, 'js', true) ) :
+?>
+    <script type="text/javascript">
+        <?php echo get_post_meta($post_ID, 'js', true); ?>
+    </script>
+<?php
+    endif;
 }
 
-function wpbp_count_view()
+function wpbp_favicon()
 {
-	global $post;
-	if ( is_single() && isset( $post->ID ) ) {
-		$post_ID = $post->ID;
-		$post_views = get_post_meta($post_ID, 'wpbp_post_views', true);
-		$post_views = isset($post_views) ? $post_views + 1 : 1;
-		update_post_meta($post_ID, 'wpbp_post_views', $post_views);
-	}
+    if ( wpbp_get_option('favicon') ) {
+        echo '<link rel="icon" type="image/png" href="' . wpbp_get_option('favicon') . '">';
+    }
 }
 
 function wpbp_clear()
 {
-	echo '<div class="clear"></div>' . PHP_EOL;
+	echo '<div class="clear"></div>';
 }
