@@ -204,21 +204,21 @@ function shortcode_show_menu($atts, $content, $tag)
 add_shortcode('show-menu', 'shortcode_show_menu');
 
 // [paypal type="buy now" amount="12.99" business="me@mybusiness.com" currency="USD" item_name="Teddy Bear" src="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" target="_blank"]
-function make_paypal($atts, $content = null) {
-    
+function make_paypal($atts, $content = null)
+{
     extract(shortcode_atts(array(
-        'target' => '_self',
-        'type' => 'buy now',
-		'amount' => '0.00',
-        'business' => '',
-        'currency' => 'USD',
+        'target'    => '_self',
+        'type'      => 'buy_now',
+		'amount'    => '0.00',
+        'business'  => '',
+        'currency'  => 'USD',
         'item_name' => '',
-        'src' => 'http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif'
+        'src'       => 'http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif'
 	), $atts));
     
     ob_start();
     
-    if ( $type == 'buy now' ) :
+    if ( $type == 'buy_now' ) :
 ?><form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="<?php echo $target; ?>">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="business" value="<?php echo $business; ?>">
@@ -227,7 +227,7 @@ function make_paypal($atts, $content = null) {
 <input type="hidden" name="amount" value="<?php echo $amount; ?>">
 <input type="image" src="<?php echo $src; ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
 </form><?php
-    elseif ( $type == 'add to cart' ) :
+    elseif ( $type == 'add_to_cart' ) :
 ?><form name="_cart" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="paypal">
 <input type="hidden" name="cmd" value="_cart">
 <input type="hidden" name="add" value="1">
@@ -243,3 +243,22 @@ function make_paypal($atts, $content = null) {
     return parse_shortcode_content($paypal);
 }
 add_shortcode('paypal', 'make_paypal');
+
+function make_embed($atts)
+{
+    extract(shortcode_atts(array(
+        'ratio'       => '16x9',
+        'type'        => 'iframe',
+        'src'         => '',
+        'frameborder' => 0
+    ), $atts));
+
+    if ( strlen($src) ) {
+        $ratio = explode('x', $ratio);
+        $ratio = $ratio[1] / $ratio[0];
+        $padding_bottom = ( $ratio * 100 ) . '%';
+
+        return '<div class="embed-container" style="padding-bottom:'. $padding_bottom .';"><'. $type .' src="'. $src .'" frameborder="'. $frameborder .'" allowfullscreen></'. $type .'></div>';
+    }
+}
+add_shortcode('embed', 'make_embed');
