@@ -1075,8 +1075,10 @@ sub {
 .vAlign {
   position: relative;
 }
+i.social > a,
 .social.icon > a,
-.social-icon > a {
+.social-icon > a,
+.social_icon > a {
   display: block;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1089,108 +1091,176 @@ sub {
   text-align: left;
   direction: ltr;
 }
+i.social > a br,
 .social.icon > a br,
-.social-icon > a br {
+.social-icon > a br,
+.social_icon > a br {
   display: none;
 }
+i.social.x16 > a,
 .social.icon.x16 > a,
-.social-icon.x16 > a {
+.social-icon.x16 > a,
+.social_icon.x16 > a {
   width: 16px;
   height: 16px;
 }
+i.social.x24 > a,
 .social.icon.x24 > a,
-.social-icon.x24 > a {
+.social-icon.x24 > a,
+.social_icon.x24 > a {
   width: 24px;
   height: 24px;
 }
+i.social.x32 > a,
 .social.icon.x32 > a,
-.social-icon.x32 > a {
+.social-icon.x32 > a,
+.social_icon.x32 > a {
   width: 32px;
   height: 32px;
 }
+i.social.vector.x16.facebook > a,
 .social.icon.vector.x16.facebook > a,
-.social-icon.vector.x16.facebook > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/16px/facebook.png);
+.social-icon.vector.x16.facebook > a,
+.social_icon.vector.x16.facebook > a {
+  background-image: url(../img/social_icons/vector/16px/facebook.png);
 }
+i.social.vector.x16.twitter > a,
 .social.icon.vector.x16.twitter > a,
-.social-icon.vector.x16.twitter > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/16px/twitter.png);
+.social-icon.vector.x16.twitter > a,
+.social_icon.vector.x16.twitter > a {
+  background-image: url(../img/social_icons/vector/16px/twitter.png);
 }
+i.social.vector.x16.twitter-2 > a,
 .social.icon.vector.x16.twitter-2 > a,
-.social-icon.vector.x16.twitter-2 > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/16px/twitter-2.png);
+.social-icon.vector.x16.twitter-2 > a,
+.social_icon.vector.x16.twitter-2 > a {
+  background-image: url(../img/social_icons/vector/16px/twitter-2.png);
 }
+i.social.vector.x16.linkedin > a,
 .social.icon.vector.x16.linkedin > a,
-.social-icon.vector.x16.linkedin > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/16px/linkedin.png);
+.social-icon.vector.x16.linkedin > a,
+.social_icon.vector.x16.linkedin > a {
+  background-image: url(../img/social_icons/vector/16px/linkedin.png);
 }
+i.social.vector.x16.google-plus > a,
 .social.icon.vector.x16.google-plus > a,
-.social-icon.vector.x16.google-plus > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/16px/google-plus.png);
+.social-icon.vector.x16.google-plus > a,
+.social_icon.vector.x16.google-plus > a {
+  background-image: url(../img/social_icons/vector/16px/google-plus.png);
 }
+i.social.vector.x16.google-plus-black > a,
 .social.icon.vector.x16.google-plus-black > a,
-.social-icon.vector.x16.google-plus-black > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/16px/google-plus-black.png);
+.social-icon.vector.x16.google-plus-black > a,
+.social_icon.vector.x16.google-plus-black > a {
+  background-image: url(../img/social_icons/vector/16px/google-plus-black.png);
 }
+i.social.vector.x16.pinterest > a,
+.social.icon.vector.x16.pinterest > a,
+.social-icon.vector.x16.pinterest > a,
+.social_icon.vector.x16.pinterest > a {
+  background-image: url(../img/social_icons/vector/16px/pinterest.png);
+}
+i.social.vector.x16.youtube > a,
 .social.icon.vector.x16.youtube > a,
-.social-icon.vector.x16.youtube > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/16px/youtube.png);
+.social-icon.vector.x16.youtube > a,
+.social_icon.vector.x16.youtube > a {
+  background-image: url(../img/social_icons/vector/16px/youtube.png);
 }
+i.social.vector.x24.facebook > a,
 .social.icon.vector.x24.facebook > a,
-.social-icon.vector.x24.facebook > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/24px/facebook.png);
+.social-icon.vector.x24.facebook > a,
+.social_icon.vector.x24.facebook > a {
+  background-image: url(../img/social_icons/vector/24px/facebook.png);
 }
+i.social.vector.x24.twitter > a,
 .social.icon.vector.x24.twitter > a,
-.social-icon.vector.x24.twitter > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/24px/twitter.png);
+.social-icon.vector.x24.twitter > a,
+.social_icon.vector.x24.twitter > a {
+  background-image: url(../img/social_icons/vector/24px/twitter.png);
 }
+i.social.vector.x24.twitter-2 > a,
 .social.icon.vector.x24.twitter-2 > a,
-.social-icon.vector.x24.twitter-2 > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/24px/twitter-2.png);
+.social-icon.vector.x24.twitter-2 > a,
+.social_icon.vector.x24.twitter-2 > a {
+  background-image: url(../img/social_icons/vector/24px/twitter-2.png);
 }
+i.social.vector.x24.linkedin > a,
 .social.icon.vector.x24.linkedin > a,
-.social-icon.vector.x24.linkedin > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/24px/linkedin.png);
+.social-icon.vector.x24.linkedin > a,
+.social_icon.vector.x24.linkedin > a {
+  background-image: url(../img/social_icons/vector/24px/linkedin.png);
 }
+i.social.vector.x24.google-plus > a,
 .social.icon.vector.x24.google-plus > a,
-.social-icon.vector.x24.google-plus > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/24px/google-plus.png);
+.social-icon.vector.x24.google-plus > a,
+.social_icon.vector.x24.google-plus > a {
+  background-image: url(../img/social_icons/vector/24px/google-plus.png);
 }
+i.social.vector.x24.google-plus-black > a,
 .social.icon.vector.x24.google-plus-black > a,
-.social-icon.vector.x24.google-plus-black > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/24px/google-plus-black.png);
+.social-icon.vector.x24.google-plus-black > a,
+.social_icon.vector.x24.google-plus-black > a {
+  background-image: url(../img/social_icons/vector/24px/google-plus-black.png);
 }
+i.social.vector.x24.pinterest > a,
+.social.icon.vector.x24.pinterest > a,
+.social-icon.vector.x24.pinterest > a,
+.social_icon.vector.x24.pinterest > a {
+  background-image: url(../img/social_icons/vector/24px/pinterest.png);
+}
+i.social.vector.x24.youtube > a,
 .social.icon.vector.x24.youtube > a,
-.social-icon.vector.x24.youtube > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/24px/youtube.png);
+.social-icon.vector.x24.youtube > a,
+.social_icon.vector.x24.youtube > a {
+  background-image: url(../img/social_icons/vector/24px/youtube.png);
 }
+i.social.vector.x32.facebook > a,
 .social.icon.vector.x32.facebook > a,
-.social-icon.vector.x32.facebook > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/32px/facebook.png);
+.social-icon.vector.x32.facebook > a,
+.social_icon.vector.x32.facebook > a {
+  background-image: url(../img/social_icons/vector/32px/facebook.png);
 }
+i.social.vector.x32.twitter > a,
 .social.icon.vector.x32.twitter > a,
-.social-icon.vector.x32.twitter > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/32px/twitter.png);
+.social-icon.vector.x32.twitter > a,
+.social_icon.vector.x32.twitter > a {
+  background-image: url(../img/social_icons/vector/32px/twitter.png);
 }
+i.social.vector.x32.twitter-2 > a,
 .social.icon.vector.x32.twitter-2 > a,
-.social-icon.vector.x32.twitter-2 > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/32px/twitter-2.png);
+.social-icon.vector.x32.twitter-2 > a,
+.social_icon.vector.x32.twitter-2 > a {
+  background-image: url(../img/social_icons/vector/32px/twitter-2.png);
 }
+i.social.vector.x32.linkedin > a,
 .social.icon.vector.x32.linkedin > a,
-.social-icon.vector.x32.linkedin > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/32px/linkedin.png);
+.social-icon.vector.x32.linkedin > a,
+.social_icon.vector.x32.linkedin > a {
+  background-image: url(../img/social_icons/vector/32px/linkedin.png);
 }
+i.social.vector.x32.google-plus > a,
 .social.icon.vector.x32.google-plus > a,
-.social-icon.vector.x32.google-plus > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/32px/google-plus.png);
+.social-icon.vector.x32.google-plus > a,
+.social_icon.vector.x32.google-plus > a {
+  background-image: url(../img/social_icons/vector/32px/google-plus.png);
 }
+i.social.vector.x32.google-plus-black > a,
 .social.icon.vector.x32.google-plus-black > a,
-.social-icon.vector.x32.google-plus-black > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/32px/google-plus-black.png);
+.social-icon.vector.x32.google-plus-black > a,
+.social_icon.vector.x32.google-plus-black > a {
+  background-image: url(../img/social_icons/vector/32px/google-plus-black.png);
 }
+i.social.vector.x32.pinterest > a,
+.social.icon.vector.x32.pinterest > a,
+.social-icon.vector.x32.pinterest > a,
+.social_icon.vector.x32.pinterest > a {
+  background-image: url(../img/social_icons/vector/32px/pinterest.png);
+}
+i.social.vector.x32.youtube > a,
 .social.icon.vector.x32.youtube > a,
-.social-icon.vector.x32.youtube > a {
-  background-image: url(http://firecdn.net/images/social_icons/vector/32px/youtube.png);
+.social-icon.vector.x32.youtube > a,
+.social_icon.vector.x32.youtube > a {
+  background-image: url(../img/social_icons/vector/32px/youtube.png);
 }
 img {
   width: auto;
