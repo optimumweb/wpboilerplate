@@ -244,7 +244,7 @@ function make_paypal($atts, $content = null)
 }
 add_shortcode('paypal', 'make_paypal');
 
-function make_embed($atts)
+function make_responsive_embed($atts)
 {
     extract(shortcode_atts(array(
         'ratio'       => '16x9',
@@ -261,4 +261,4 @@ function make_embed($atts)
         return '<div class="embed-container" style="padding-bottom:'. $padding_bottom .';"><'. $type .' src="'. $src .'" frameborder="'. $frameborder .'" allowfullscreen></'. $type .'></div>';
     }
 }
-add_shortcode('embed', 'make_embed');
+add_shortcode('responsive_embed', 'make_responsive_embed');
