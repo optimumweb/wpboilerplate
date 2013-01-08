@@ -1,7 +1,6 @@
 <?php
 
 add_action('init', 'wpbp_register_lib');
-add_action('wpbp_head', 'wpbp_og_tags');
 add_action('wpbp_head', 'wpbp_google_analytics');
 add_action('wpbp_head', 'wpbp_custom_css');
 add_action('wpbp_head', 'wpbp_favicon');
@@ -29,27 +28,6 @@ function wpbp_google_analytics()
 <?php
     endif;
     return;
-}
-
-function wpbp_og_tags()
-{
-    if ( is_single() ) {
-    	set_post_ID( $post_ID );
-    }
-
-    $og = array(
-        'title'       => trim( wp_title('', false) ),
-        'url'         => get_current_url(),
-        'image'       => $post_ID ? get_featured_image_url( $post_ID ) : null,
-        'site_name'   => get_bloginfo('name'),
-        'description' => $post_ID ? strip_tags( wpbp_get_the_excerpt( $post_ID ) ) : null
-    );
-
-    foreach ( $og as $key => $val ) {
-        if ( isset($val) && strlen($val) > 0 ) {
-            echo '<meta property="og:' . $key . '" content="' . $val . '" />' . PHP_EOL;
-        }
-    }
 }
 
 function wpbp_custom_css()
