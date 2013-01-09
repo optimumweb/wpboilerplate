@@ -27,7 +27,6 @@ function wpbp_google_analytics()
 </script>
 <?php
     endif;
-    return;
 }
 
 function wpbp_custom_css()
