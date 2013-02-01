@@ -1160,6 +1160,12 @@ i.social.vector.x16.pinterest > a,
 .social_icon.vector.x16.pinterest > a {
   background-image: url(../img/social_icons/vector/16px/pinterest.png);
 }
+i.social.vector.x16.yelp > a,
+.social.icon.vector.x16.yelp > a,
+.social-icon.vector.x16.yelp > a,
+.social_icon.vector.x16.yelp > a {
+  background-image: url(../img/social_icons/vector/16px/yelp.png);
+}
 i.social.vector.x16.youtube > a,
 .social.icon.vector.x16.youtube > a,
 .social-icon.vector.x16.youtube > a,
@@ -1208,6 +1214,12 @@ i.social.vector.x24.pinterest > a,
 .social_icon.vector.x24.pinterest > a {
   background-image: url(../img/social_icons/vector/24px/pinterest.png);
 }
+i.social.vector.x24.yelp > a,
+.social.icon.vector.x24.yelp > a,
+.social-icon.vector.x24.yelp > a,
+.social_icon.vector.x24.yelp > a {
+  background-image: url(../img/social_icons/vector/24px/yelp.png);
+}
 i.social.vector.x24.youtube > a,
 .social.icon.vector.x24.youtube > a,
 .social-icon.vector.x24.youtube > a,
@@ -1255,6 +1267,12 @@ i.social.vector.x32.pinterest > a,
 .social-icon.vector.x32.pinterest > a,
 .social_icon.vector.x32.pinterest > a {
   background-image: url(../img/social_icons/vector/32px/pinterest.png);
+}
+i.social.vector.x32.yelp > a,
+.social.icon.vector.x32.yelp > a,
+.social-icon.vector.x32.yelp > a,
+.social_icon.vector.x32.yelp > a {
+  background-image: url(../img/social_icons/vector/32px/yelp.png);
 }
 i.social.vector.x32.youtube > a,
 .social.icon.vector.x32.youtube > a,
