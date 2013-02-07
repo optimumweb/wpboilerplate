@@ -200,12 +200,6 @@ if ( !function_exists('wpbp_error_log') ) {
       }
     }
 
-    if ( $echo_in_footer && current_user_can('manage_options') ) {
-      add_action('wpbp_footer', function() {
-        echo "<!-- WPBP ERROR: " . $message . " -->" . PHP_EOL;
-      });
-    }
-
     return $result;
   }
 
