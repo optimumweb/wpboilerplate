@@ -49,7 +49,7 @@ function wpbp_theme_options_add_page()
 	$theme_page = add_theme_page(
 		__('Boilerplate Options', 'wpbp'),
 		__('Boilerplate Options', 'wpbp'),
-		'edit_wpbp_theme_options',
+		'manage_options',
 		'wpbp_theme_options',
 		'wpbp_theme_options_render_page'
 	);
@@ -199,7 +199,7 @@ function wpbp_theme_options_render_page()
 						</fieldset>
 					</td>
 				</tr>
-                
+
                 <tr valign="top"><th scope="row"><?php _e('CSS files', 'wpbp'); ?></th>
         			<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('CSS files', 'wpbp'); ?></span></legend>
@@ -219,7 +219,7 @@ function wpbp_theme_options_render_page()
 						</fieldset>
 					</td>
 				</tr>
-                
+
                 <tr valign="top"><th scope="row"><?php _e('Javascript files', 'wpbp'); ?></th>
     				<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Javascript files', 'wpbp'); ?></span></legend>
@@ -229,7 +229,7 @@ function wpbp_theme_options_render_page()
 						</fieldset>
 					</td>
 				</tr>
-				
+
 				<tr valign="top"><th scope="row"><?php _e('Favicon', 'wpbp'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Favicon', 'wpbp'); ?></span></legend>
