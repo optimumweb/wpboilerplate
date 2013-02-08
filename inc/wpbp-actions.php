@@ -5,7 +5,6 @@ add_action('wpbp_head', 'wpbp_google_analytics');
 add_action('wpbp_head', 'wpbp_custom_css');
 add_action('wpbp_head', 'wpbp_favicon');
 add_action('wpbp_footer', 'wpbp_add_post_js');
-add_action('wpbp_footer', 'wpbp_count_view');
 add_action('wpbp_loop_after', 'wpbp_clear');
 
 function wpbp_google_analytics()
