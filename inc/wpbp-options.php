@@ -108,11 +108,12 @@ function wpbp_get_default_theme_options()
 	$default_framework = '960gs_12';
 	$default_framework_settings = $wpbp_css_frameworks[$default_framework];
 	$default_theme_options = array(
+        'google_analytics_id'   => '',
+        'google_tag_manager_id' => '',
 		'css_framework'         => $default_framework,
 		'container_class'       => $default_framework_settings['classes']['container'],
 		'main_class'            => $default_framework_settings['classes']['main'],
 		'sidebar_class'         => $default_framework_settings['classes']['sidebar'],
-		'google_analytics_id'   => '',
 		'responsive'            => 'responsive',
         'css_files'             => '',
 		'custom_css'            => '',
@@ -146,15 +147,25 @@ function wpbp_theme_options_render_page()
 
 			<table class="form-table">
 
-				<tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'wpbp'); ?></th>
-					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'wpbp'); ?></span></legend>
-							<input type="text" name="wpbp_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($wpbp_options['google_analytics_id']); ?>" />
-							<br />
-							<small class="description"><?php printf(__('Enter your UA-XXXXX-X ID', 'wpbp')); ?></small>
-						</fieldset>
-					</td>
-				</tr>
+                <tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'wpbp'); ?></th>
+                    <td>
+                        <fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'wpbp'); ?></span></legend>
+                            <input type="text" name="wpbp_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($wpbp_options['google_analytics_id']); ?>" />
+                            <br />
+                            <small class="description"><?php printf(__('Enter your UA-XXXXX-X ID', 'wpbp')); ?></small>
+                        </fieldset>
+                    </td>
+                </tr>
+
+                <tr valign="top"><th scope="row"><?php _e('Google Tag Manager ID', 'wpbp'); ?></th>
+                    <td>
+                        <fieldset><legend class="screen-reader-text"><span><?php _e('Google Tag Manager ID', 'wpbp'); ?></span></legend>
+                            <input type="text" name="wpbp_theme_options[google_tag_manager_id]" id="google_tag_manager_id" value="<?php echo esc_attr($wpbp_options['google_tag_manager_id']); ?>" />
+                            <br />
+                            <small class="description"><?php printf(__('Enter your GTM-XXXX ID', 'wpbp')); ?></small>
+                        </fieldset>
+                    </td>
+                </tr>
 
 				<tr valign="top" class="radio-option"><th scope="row"><?php _e('CSS Grid Framework', 'wpbp'); ?></th>
 					<td>
@@ -261,14 +272,15 @@ function wpbp_theme_options_validate($input)
 	// set the value of the main container class depending on the selected grid framework
 	$output['container_class'] = $wpbp_css_frameworks[$output['css_framework']]['classes']['container'];
 
-	$output['responsive']          = isset($input['responsive'])          ? $input['responsive']          : null;
-	$output['main_class']          = isset($input['main_class'])          ? $input['main_class']          : null;
-	$output['sidebar_class']       = isset($input['sidebar_class'])       ? $input['sidebar_class']       : null;
-	$output['google_analytics_id'] = isset($input['google_analytics_id']) ? $input['google_analytics_id'] : null;
-    $output['css_files']           = isset($input['css_files'])           ? $input['css_files']           : null;
-	$output['custom_css']          = isset($input['custom_css'])          ? $input['custom_css']          : null;
-    $output['js_files']            = isset($input['js_files'])            ? $input['js_files']            : null;
-    $output['favicon']             = isset($input['favicon'])             ? $input['favicon']             : null;
+    $output['google_analytics_id']   = isset($input['google_analytics_id'])   ? $input['google_analytics_id']   : null;
+    $output['google_tag_manager_id'] = isset($input['google_tag_manager_id']) ? $input['google_tag_manager_id'] : null;
+	$output['responsive']            = isset($input['responsive'])            ? $input['responsive']            : null;
+	$output['main_class']            = isset($input['main_class'])            ? $input['main_class']            : null;
+	$output['sidebar_class']         = isset($input['sidebar_class'])         ? $input['sidebar_class']         : null;
+    $output['css_files']             = isset($input['css_files'])             ? $input['css_files']             : null;
+	$output['custom_css']            = isset($input['custom_css'])            ? $input['custom_css']            : null;
+    $output['js_files']              = isset($input['js_files'])              ? $input['js_files']              : null;
+    $output['favicon']               = isset($input['favicon'])               ? $input['favicon']               : null;
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);
 }
