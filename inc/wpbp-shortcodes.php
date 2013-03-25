@@ -7,16 +7,20 @@
 function parse_shortcode_content($content, $options = array())
 {
 	extract( array_merge( array(
-		'wpautop'		=> true,
-		'do_shortcode'	=> true,
-		'trim'			=> true,
+        'unautop'      => true,
+		'wpautop'      => false,
+		'do_shortcode' => true,
+		'trim'         => true,
 	), $options ) );
+
+    if ( $unautop )
+        $content = shortcode_unautop( $content );
+
+    if ( $wpautop )
+        $content = wpautop( $content );
 
 	if ( $do_shortcode )
 		$content = do_shortcode( $content );
-		
-	if ( $wpautop )
-		$content = wpautop( $content );
 		
 	if ( $trim )
 		$content = trim( $content );
@@ -31,6 +35,7 @@ function parse_shortcode_content($content, $options = array())
 
 	// Remove any instances of '<p></p>'.
 	$content = str_replace( array( '<p></p>' ), '', $content );
+    $content = str_replace( array( '<p> </p>' ), '', $content );
 
 	if ( $do_shortcode )
 		$content = do_shortcode( $content );
