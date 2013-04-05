@@ -96,11 +96,11 @@ function make_smartbox($atts, $content = null)
         'src'         => false,
         'lazy'        => false
     ), $atts ) );
-    
-    $id_val = $id;
-    
+
+    if ( !$id ) $id = sanitize_title_with_dashes($title);
+
     // define box #id
-    $id = ( isset($id) && strlen($id) > 0 ) ? ' id="' . $id . '"' : '';
+    $id = ' id="' . $id . '"';
     
     // define box .class
     $class = 'smartbox container ' . $class;

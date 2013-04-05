@@ -3,11 +3,11 @@
 function wpbp_custom_breadcrumbs($args = array()) {
 
 	extract( array_merge( array(
-		'before' => '',
-		'after' => '',
+		'before'      => '',
+		'after'       => '',
 		'before_item' => '',
-		'after_item' => '',
-		'sep' => '&rarr;'
+		'after_item'  => '',
+		'sep'         => '&rarr;'
 	), $args ) );
 
 	echo $before;
