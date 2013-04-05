@@ -97,7 +97,7 @@ function make_smartbox($atts, $content = null)
         'lazy'        => false
     ), $atts ) );
 
-    if ( !$id ) $id = sanitize_title_with_dashes($title);
+    if ( !$id ) $id = substr(sanitize_title($title), 0, 50);
 
     // define box #id
     $id = ' id="' . $id . '"';
