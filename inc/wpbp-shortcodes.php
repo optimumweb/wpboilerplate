@@ -84,16 +84,17 @@ add_shortcode('hr', 'wpbp_hr');
 function make_smartbox($atts, $content = null)
 {
     extract( shortcode_atts( array(
-        'id'			=> '',
-        'class'			=> '',
-        'title'			=> '',
-        'small'			=> false,
-        'collapsible'	=> false,
-        'closed'		=> false,
-        'sliding'		=> false,
-        'ajax'			=> false,
-        'src'			=> false,
-        'lazy'			=> false
+        'id'          => '',
+        'class'       => '',
+        'title'       => '',
+        'title_tag'   => 'h3',
+        'small'       => false,
+        'collapsible' => false,
+        'closed'      => false,
+        'sliding'     => false,
+        'ajax'        => false,
+        'src'         => false,
+        'lazy'        => false
     ), $atts ) );
     
     $id_val = $id;
@@ -129,10 +130,12 @@ function make_smartbox($atts, $content = null)
     $box = '<div' . $id . $class . $data . '>';
     
 	if ( isset($title) && strlen($title) > 0 ) {
-		$box .= '<div class="box-title title"><h3>';
+		$box .= '<div class="box-title title">';
+        if ( $title_tag ) $box .= '<' . $title_tag . '>';
 		if ( $src && $ajax ) $box .= '<a class="ajax-trigger" href="' . $src . '">' . $title . '</a>';
 		else $box .= $title;
-		$box .= '</h3></div>';
+        if ( $title_tag ) $box .= '</' . $title_tag . '>';
+		$box .= '</div>';
 	}
 		
 	$box .= '<div class="box-content content">';
