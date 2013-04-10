@@ -90,11 +90,13 @@
 					$html .= '<table width="100%" cellpadding="0" cellspacing="0">';
 					$html .= '<tbody>';
 					foreach ( $fields as $field ) {
-						if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
-						$html .= '<tr>';
-						$html .= '<td style="' . $options['label_css'] . '">' . $field['label'] . '</td>';
-						$html .= '<td style="' . $options['value_css'] . '">' . stripslashes(nl2br($field['value'])) . '</td>';
-						$html .= '</tr>';
+                        if ( !$field['hide_in_email'] ) {
+                            if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
+                            $html .= '<tr>';
+                            $html .= '<td style="' . $options['label_css'] . '">' . $field['label'] . '</td>';
+                            $html .= '<td style="' . $options['value_css'] . '">' . stripslashes(nl2br($field['value'])) . '</td>';
+                            $html .= '</tr>';
+                        }
 					}
 					$html .= '</tbody></table>';
 					break;
