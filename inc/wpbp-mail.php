@@ -101,11 +101,13 @@
 				
 				default :
 					foreach ( $fields as $field ) {
-						if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
-						$html .= '<p>';
-						$html .= '<span style="' . $options['label_css'] . '">' . $field['label'] . ': </span> ';
-						$html .= '<span style="' . $options['value_css'] . '">' . stripslashes(nl2br($field['value'])) . '</span>';
-						$html .= '</p>';
+                        if ( !$field['hide_in_email'] ) {
+                            if ( is_array($field['value']) ) $field['value'] = implode(', ', $field['value']);
+                            $html .= '<p>';
+                            $html .= '<span style="' . $options['label_css'] . '">' . $field['label'] . ': </span> ';
+                            $html .= '<span style="' . $options['value_css'] . '">' . stripslashes(nl2br($field['value'])) . '</span>';
+                            $html .= '</p>';
+                        }
 					}
 					
 			}
