@@ -76,6 +76,8 @@
 							case 'tel' :
 								$is_valid = $this->is_valid_tel($field['value']);
 								break;
+                            case 'honeypot' :
+                                $is_valid = $this->is_valid_honeypot($field['value']);
 							default :
 								$is_valid = $this->is_valid_string($field['value']);
 						}
@@ -112,11 +114,11 @@
 		{
 			$this->set_validity( $this->is_valid_email($value) );
 		}
-		
-		public function validate_tel($value)
-		{
-			$this->set_validity( $this->is_valid_tel($value) );
-		}
+
+        public function validate_tel($value)
+        {
+            $this->set_validity( $this->is_valid_tel($value) );
+        }
 		
 		public function is_valid_string($value)
 		{
@@ -174,5 +176,13 @@
 			else
 				return $this->is_between(6, 15, $value);
 		}
+
+        public function is_valid_honeypot($value)
+        {
+            if ( isset($value) && is_string($value) && strlen($value) == 0 )
+                return true;
+            else
+                return false;
+        }
 	
 	}
