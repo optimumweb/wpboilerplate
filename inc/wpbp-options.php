@@ -118,6 +118,7 @@ function wpbp_get_default_theme_options()
         'css_files'             => '',
 		'custom_css'            => '',
         'js_files'              => '',
+        'custom_js'             => '',
         'favicon'               => ''
 	);
 
@@ -241,6 +242,16 @@ function wpbp_theme_options_render_page()
 					</td>
 				</tr>
 
+                <tr valign="top"><th scope="row"><?php _e('Custom Javascript', 'wpbp'); ?></th>
+                    <td>
+                        <fieldset><legend class="screen-reader-text"><span><?php _e('Custom Javascript', 'wpbp'); ?></span></legend>
+                            <textarea name="wpbp_theme_options[custom_js]" id="custom_css" cols="94" rows="10"><?php echo esc_attr($wpbp_options['custom_js']); ?></textarea>
+                            <br />
+                            <small class="description"><?php printf(__('Enter custom Javascript for this site', 'wpbp')); ?></small>
+                        </fieldset>
+                    </td>
+                </tr>
+
 				<tr valign="top"><th scope="row"><?php _e('Favicon', 'wpbp'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Favicon', 'wpbp'); ?></span></legend>
@@ -280,6 +291,7 @@ function wpbp_theme_options_validate($input)
     $output['css_files']             = isset($input['css_files'])             ? $input['css_files']             : null;
 	$output['custom_css']            = isset($input['custom_css'])            ? $input['custom_css']            : null;
     $output['js_files']              = isset($input['js_files'])              ? $input['js_files']              : null;
+    $output['custom_js']             = isset($input['custom_js'])             ? $input['custom_js']             : null;
     $output['favicon']               = isset($input['favicon'])               ? $input['favicon']               : null;
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);

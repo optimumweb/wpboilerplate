@@ -5,6 +5,7 @@ add_action('wpbp_head', 'wpbp_google_analytics');
 add_action('wpbp_head', 'wpbp_google_tag_manager');
 add_action('wpbp_head', 'wpbp_custom_css');
 add_action('wpbp_head', 'wpbp_favicon');
+add_action('wpbp_footer', 'wpbp_custom_js');
 add_action('wpbp_footer', 'wpbp_add_post_js');
 add_action('wpbp_loop_after', 'wpbp_clear');
 
@@ -44,8 +45,19 @@ function wpbp_custom_css()
     if ( wpbp_get_option('custom_css') ) :
 ?>
 <style type="text/css">
-<?php wpbp_option('custom_css') . "\n"; ?>
+<?php wpbp_option('custom_css') . PHP_EOL; ?>
 </style>
+<?php
+    endif;
+}
+
+function wpbp_custom_js()
+{
+    if ( wpbp_get_option('custom_js') ) :
+?>
+<script type="text/javascript">
+<?php wpbp_option('custom_js') . PHP_EOL; ?>
+</script>
 <?php
     endif;
 }
