@@ -45,7 +45,7 @@ function wpbp_custom_css()
     if ( wpbp_get_option('custom_css') ) :
 ?>
 <style type="text/css">
-<?php wpbp_option('custom_css') . PHP_EOL; ?>
+<?php wpbp_option('custom_css'); ?>
 </style>
 <?php
     endif;
@@ -56,7 +56,7 @@ function wpbp_custom_js()
     if ( wpbp_get_option('custom_js') ) :
 ?>
 <script type="text/javascript">
-<?php wpbp_option('custom_js') . PHP_EOL; ?>
+<?php wpbp_option('custom_js'); ?>
 </script>
 <?php
     endif;
