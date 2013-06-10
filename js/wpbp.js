@@ -723,8 +723,8 @@
             return this.each(function() {
 
                 var $this     = $(this),
-                    $anchors  = $this.find('.tab-anchors').find('a'),
-                    $contents = $this.find('.tab-contents').find('.tab');
+                    $anchors  = $this.children('.tab-anchors').find('a'),
+                    $contents = $this.children('.tab-contents').find('.tab');
 
                 $contents.hide().filter('.active').show();
 
