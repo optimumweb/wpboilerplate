@@ -26,6 +26,8 @@
 
 			$('body').wpbpModal();
 
+            $('.wpbp-tabs').wpbpTabs();
+
 		});
 
 		$(window).bind('load resize', function() {
@@ -697,5 +699,53 @@
 		};
 
 	})
+
+}(window.jQuery);
+
+
+/*
+ * wpbpTabs
+ *
+ *
+ * @author Jonathan Roy <jroy@optimumweb.ca>
+ * @version 0.1
+ * @package wpboilerplate
+ */
+
+!function($) {
+
+    $(function() {
+
+        "use strict"; // jshint ;_;
+
+        jQuery.fn.wpbpTabs = function() {
+
+            return this.each(function() {
+
+                var $this     = $(this),
+                    $anchors  = $this.children('ul > li > a'),
+                    $contents = $this.children('div');
+
+                $contents.hide().filter('.active').show();
+
+                $anchors.click(function() {
+
+                    var $anchor       = $(this),
+                        anchorTarget  = $anchor.attr('href'),
+                        $anchorTarget = $(anchorTarget);
+
+                    $contents.removeClass('active').hide();
+                    $anchorTarget.addClass('active').show();
+
+                    $anchors.removeClass('active');
+                    $anchor.addClass('active');
+
+                });
+
+            });
+
+        };
+
+    })
 
 }(window.jQuery);
