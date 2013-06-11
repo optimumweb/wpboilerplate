@@ -724,9 +724,9 @@
 
                 var $this     = $(this),
                     $anchors  = $this.children('.tab-anchors').find('a'),
-                    $contents = $this.children('.tab-contents').find('.tab');
+                    $contents = $this.children('.tab-contents').find('.tab').not('.tabs .tab');
 
-                $contents.show().hide().filter('.active').show();
+                $contents.hide().filter('.active').show();
 
                 $anchors.click(function() {
 
