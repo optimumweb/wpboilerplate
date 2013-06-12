@@ -728,7 +728,9 @@
 
                 $contents.hide().filter('.active').show();
 
-                $anchors.click(function() {
+                $anchors.click(function(e) {
+
+                    e.preventDefault();
 
                     var $anchor       = $(this),
                         anchorTarget  = $anchor.attr('href'),
