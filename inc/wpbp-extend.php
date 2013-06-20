@@ -10,8 +10,8 @@ if ( !function_exists('set_post_ID') ) {
   {
     if ( !isset($post_ID) || !is_int($post_ID) ) {
       global $wp_query;
-      if ( isset($wp_query->post->ID) ) {
-        $post_ID = $wp_query->post->ID;
+      if ( isset($wp_query->queried_object->ID) ) {
+        $post_ID = $wp_query->queried_object->ID;
       } else {
           $post_ID = false;
       }
