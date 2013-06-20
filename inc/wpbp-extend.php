@@ -9,12 +9,7 @@ if ( !function_exists('set_post_ID') ) {
   function set_post_ID(&$post_ID)
   {
     if ( !isset($post_ID) || !is_int($post_ID) ) {
-      global $wp_query;
-      if ( isset($wp_query->queried_object->ID) ) {
-        $post_ID = $wp_query->queried_object->ID;
-      } else {
-          $post_ID = false;
-      }
+      $post_ID = get_queried_object_id();
     }
   }
 
