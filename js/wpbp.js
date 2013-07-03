@@ -750,7 +750,7 @@
                         skip = 0;
 
                     var slideshow = window.setInterval(function() {
-                        if ( skip < 0 ) {
+                        if ( skip < 0 && inview ) {
                             var $nextAnchor = $anchors.filter('.active').parent().next().find('a');
                             if ( $nextAnchor.size() == 0 ) $nextAnchor = $anchors.first()
                             $nextAnchor.trigger('fire');
@@ -761,6 +761,15 @@
 
                     $anchors.click(function(e) {
                         skip = 2;
+                    });
+
+                    var $window = $(window),
+                        thisHeight = parseInt( $this.outerHeight(true) ),
+                        thisOffset = parseInt( $this.offset().top ),
+                        inView = true;
+
+                    $window.scroll(function() {
+                        inView = ( $window.scrollTop() + $window.height() ) > thisOffset && $window.scrollTop() < ( thisOffset + thisHeight );
                     });
                 }
 
