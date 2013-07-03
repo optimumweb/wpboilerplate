@@ -732,6 +732,8 @@
 
                     e.preventDefault();
 
+                    window.clearInterval(slideshow);
+
                     var $anchor       = $(this),
                         anchorTarget  = $anchor.attr('href'),
                         $anchorTarget = $(anchorTarget);
@@ -743,6 +745,15 @@
                     $anchor.addClass('active');
 
                 });
+
+                if ( $this.hasClass('slideshow') ) {
+                    var speed = $this.data('speed') ? $this.data('speed') : 4000;
+
+                    var slideshow = window.setInterval(function() {
+                        var $nextAnchor = $anchors.filter('.active').parent().next().find('a') || $nextAnchor = $anchors.first();
+                        $nextAnchor.click();
+                    }, speed);
+                }
 
             });
 
