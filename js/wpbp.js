@@ -750,7 +750,8 @@
                     var speed = $this.data('speed') ? $this.data('speed') : 4000;
 
                     var slideshow = window.setInterval(function() {
-                        var $nextAnchor = $anchors.filter('.active').parent().next().find('a') || $nextAnchor = $anchors.first();
+                        var $nextAnchor = $anchors.filter('.active').parent().next().find('a');
+                        if ( $nextAnchor.size() == 0 ) $nextAnchor = $anchors.first()
                         $nextAnchor.click();
                     }, speed);
                 }
