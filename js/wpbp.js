@@ -732,8 +732,6 @@
 
                     e.preventDefault();
 
-                    window.clearInterval(slideshow);
-
                     var $anchor       = $(this),
                         anchorTarget  = $anchor.attr('href'),
                         $anchorTarget = $(anchorTarget);
