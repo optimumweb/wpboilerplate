@@ -100,6 +100,10 @@ function wpbp_get_lib($which = null)
       'js'   => TEMPLATE_URI . '/lib/highcharts/highcharts.min.js',
       'ver'  => '2.1.9'
     ),
+    'inview' => array(
+      'js'   => TEMPLATE_URI . '/lib/inview/jquery.inview.js',
+      'ver'  => '1.0'
+    ),
     'default' => array(
       'css'  => TEMPLATE_URI . '/lib/wpbp/css/default.css'
     ),
