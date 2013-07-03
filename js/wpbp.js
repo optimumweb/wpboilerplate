@@ -770,6 +770,7 @@
 
                     $window.scroll(function() {
                         inView = ( $window.scrollTop() + $window.height() ) > thisOffset && $window.scrollTop() < ( thisOffset + thisHeight );
+                        console.log(inView);
                     });
                 }
 
