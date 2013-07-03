@@ -747,20 +747,20 @@
 
                 if ( $this.hasClass('slideshow') ) {
                     var speed = $this.data('speed') ? $this.data('speed') : 4000,
-                        skip = false;
+                        skip = 0;
 
                     var slideshow = window.setInterval(function() {
-                        if ( !skip ) {
+                        if ( skip < 0 ) {
                             var $nextAnchor = $anchors.filter('.active').parent().next().find('a');
                             if ( $nextAnchor.size() == 0 ) $nextAnchor = $anchors.first()
                             $nextAnchor.trigger('fire');
                         } else {
-                            skip = false;
+                            --skip;
                         }
                     }, speed);
 
                     $anchors.click(function(e) {
-                        var skip = true;
+                        var skip = 2;
                     });
                 }
 
