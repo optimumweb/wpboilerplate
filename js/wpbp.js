@@ -747,7 +747,8 @@
 
                 if ( $this.hasClass('slideshow') ) {
                     var speed = $this.data('speed') ? $this.data('speed') : 4000,
-                        skip = 0;
+                        skip = 0,
+                        inView = true;
 
                     var slideshow = window.setInterval(function() {
                         if ( skip < 0 && inview ) {
@@ -765,8 +766,7 @@
 
                     var $window = $(window),
                         thisHeight = parseInt( $this.outerHeight(true) ),
-                        thisOffset = parseInt( $this.offset().top ),
-                        inView = true;
+                        thisOffset = parseInt( $this.offset().top );
 
                     $window.scroll(function() {
                         inView = ( $window.scrollTop() + $window.height() ) > thisOffset && $window.scrollTop() < ( thisOffset + thisHeight );
