@@ -760,7 +760,7 @@
                     }, speed);
 
                     $anchors.click(function(e) {
-                        var skip = 2;
+                        skip = 2;
                     });
                 }
 
