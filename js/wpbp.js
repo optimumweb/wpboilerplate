@@ -728,10 +728,7 @@
 
                 $contents.hide().filter('.active').show();
 
-                $anchors.click(function(e) {
-
-                    e.preventDefault();
-
+                $anchors.bind('fire', function() {
                     var $anchor       = $(this),
                         anchorTarget  = $anchor.attr('href'),
                         $anchorTarget = $(anchorTarget);
@@ -741,17 +738,27 @@
 
                     $anchors.removeClass('active');
                     $anchor.addClass('active');
+                });
 
+                $anchors.click(function(e) {
+                    e.preventDefault();
+                    $(this).trigger('fire');
                 });
 
                 if ( $this.hasClass('slideshow') ) {
                     var speed = $this.data('speed') ? $this.data('speed') : 4000;
 
                     var slideshow = window.setInterval(function() {
-                        var $nextAnchor = $anchors.filter('.active').parent().next().find('a');
-                        if ( $nextAnchor.size() == 0 ) $nextAnchor = $anchors.first()
-                        $nextAnchor.click();
+                        if ( !--skip ) {
+                            var $nextAnchor = $anchors.filter('.active').parent().next().find('a');
+                            if ( $nextAnchor.size() == 0 ) $nextAnchor = $anchors.first()
+                            $nextAnchor.trigger('fire');
+                        }
                     }, speed);
+
+                    $anchors.click(function(e) {
+                        var skip = 2;
+                    });
                 }
 
                 if ( $this.hasClass('same-height') ) {
