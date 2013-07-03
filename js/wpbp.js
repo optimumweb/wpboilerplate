@@ -754,6 +754,16 @@
                     }, speed);
                 }
 
+                if ( $this.hasClass('same-height') ) {
+                    var maxHeight = 0;
+                    $contents.each(function() {
+                        if ( $(this).height() > maxHeight ) {
+                            maxHeight = $(this).height();
+                        }
+                    });
+                    $contents.height(maxHeight);
+                }
+
             });
 
         };
