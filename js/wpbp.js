@@ -751,7 +751,7 @@
                         inView = true;
 
                     var slideshow = window.setInterval(function() {
-                        if ( skip < 0 && inview ) {
+                        if ( skip < 0 && inView ) {
                             var $nextAnchor = $anchors.filter('.active').parent().next().find('a');
                             if ( $nextAnchor.size() == 0 ) $nextAnchor = $anchors.first()
                             $nextAnchor.trigger('fire');
