@@ -532,7 +532,7 @@
 
 				$('a', this).each(function() {
 					var	$option = $( document.createElement('option') ).appendTo( $select ).val( this.href ).html( $(this).html() );
-                    if ( $(this).hasClass('current-menu-item') ) {
+                    if ( $(this).parent('li').hasClass('current-menu-item') ) {
                         $option.attr('selected', 'selected');
                     }
 				});
