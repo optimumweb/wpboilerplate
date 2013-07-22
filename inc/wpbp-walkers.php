@@ -21,9 +21,8 @@ class Description_Walker extends Walker_Nav_Menu
         $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn )        . '"' : '';
         $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url )        . '"' : '';
 
-        $separator = '<span class="separator"> - </span>';
-
-        $description = ! empty( $item->description ) ? '<span class="description">'.esc_attr( $item->description ).'</span>' : '';
+        $separator   = !empty( $item->description ) ? '<span class="separator"> - </span>' : '';
+        $description = !empty( $item->description ) ? '<span class="description">'.esc_attr( $item->description ).'</span>' : '';
 
         $item_output = $args->before;
         $item_output .= '<a' . $attributes . '>';
