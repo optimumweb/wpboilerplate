@@ -3,4 +3,4 @@
 .animate-element.from-right { right: -150%; }
 .animate-element.from-top { top: -150%; }
 .animate-element.from-bottom { bottom: -150%; }
-.animate-element.appear { visibility: hidden; }
+.animate-element.appear { opacity: 0.01; }
