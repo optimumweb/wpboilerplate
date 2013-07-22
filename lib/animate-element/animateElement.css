@@ -4,5 +4,5 @@
 .animate-element.from-top { top: -150%; }
 .animate-element.from-bottom { bottom: -150%; }
 .animate-element.appear { opacity: 0.01; }
-.animate-element.lift { bottom: -100px; opacity: 0.01; }
+.animate-element.lift { bottom: -100px; }
 .animate-element.drop { top: -100px; opacity: 0.01; }
