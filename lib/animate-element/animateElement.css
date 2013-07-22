@@ -1,7 +1,7 @@
 .animate-element { position: relative; opacity: 0.01; }
-.animate-element.from-left { left: -300px; }
-.animate-element.from-right { right: -300px; }
-.animate-element.from-top { top: -300px; }
-.animate-element.from-bottom { bottom: -300px; }
+.animate-element.from-left { left: -500px; }
+.animate-element.from-right { right: -500px; }
+.animate-element.from-top { top: -500px; }
+.animate-element.from-bottom { bottom: -500px; }
 .animate-element.lift { bottom: -100px; }
 .animate-element.drop { top: -100px; }
