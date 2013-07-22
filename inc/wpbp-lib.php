@@ -104,7 +104,7 @@ function wpbp_get_lib($which = null)
       'js'   => TEMPLATE_URI . '/lib/inview/jquery.inview.js',
       'ver'  => '1.0'
     ),
-    'tinynav' => array(
+    'tinyNav' => array(
       'js'   => TEMPLATE_URI . '/lib/tinynav/tinynav.min.js',
       'ver'  => '1.1'
     ),
