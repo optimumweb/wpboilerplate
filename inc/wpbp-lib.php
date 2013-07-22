@@ -101,7 +101,7 @@ function wpbp_get_lib($which = null)
       'ver'  => '2.1.9'
     ),
     'inview' => array(
-      'js'   => TEMPLATE_URI . '/lib/inview/jquery.inview.js',
+      'js'   => TEMPLATE_URI . '/lib/inview/jquery.inview.min.js',
       'ver'  => '1.0'
     ),
     'tinyNav' => array(
@@ -111,7 +111,7 @@ function wpbp_get_lib($which = null)
     'animateElement' => array(
       'js'   => TEMPLATE_URI . '/lib/animate-element/jquery.animateElement.js',
       'css'  => TEMPLATE_URI . '/lib/animate-element/animateElement.css',
-      'deps' => array('jquery'),
+      'deps' => array('jquery', 'inview'),
       'ver'  => '1.0'
     ),
     'default' => array(
