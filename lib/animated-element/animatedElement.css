@@ -1,0 +1,9 @@
+@media screen and (min-width: 768px) {
+    .animated-element { position: relative; opacity: 0.01; }
+    .animated-element.from-left { left: -500px; }
+    .animated-element.from-right { right: -500px; }
+    .animated-element.from-top { top: -500px; }
+    .animated-element.from-bottom { bottom: -500px; }
+    .animated-element.lift { bottom: -100px; }
+    .animated-element.drop { top: -100px; }
+}

@@ -109,8 +109,8 @@ function wpbp_get_lib($which = null)
       'ver'  => '1.1'
     ),
     'animateElement' => array(
-      'js'   => TEMPLATE_URI . '/lib/animate-element/jquery.animateElement.js',
-      'css'  => TEMPLATE_URI . '/lib/animate-element/animateElement.css',
+      'js'   => TEMPLATE_URI . '/lib/animated-element/jquery.animatedElement.js',
+      'css'  => TEMPLATE_URI . '/lib/animated-element/animatedElement.css',
       'deps' => array('jquery', 'inview'),
       'ver'  => '1.0'
     ),
