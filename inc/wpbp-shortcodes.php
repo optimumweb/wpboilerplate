@@ -277,6 +277,6 @@ function make_taxonomy_list($atts)
         'taxonomy' => 'post_tag',
     ), $atts));
 
-    return wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'format' => 'list', 'echo' => false ) );
+    var_dump( wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'format' => 'list', 'echo' => false ) ) );
 }
 add_shortcode('taxonomy_list', 'make_taxonomy_list');
