@@ -280,11 +280,24 @@ function make_taxonomy_list($atts)
     ), $atts));
 
     $taxonomies = array_map("trim", explode(",", $tax));
+    $args = array( 'orderby' => $orderby, 'hide_empty' => $hide_empty );
 
-    //return wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'format' => 'list', 'echo' => false ) );
-    var_dump( get_terms( $taxonomies, array(
-        'orderby'    => $orderby,
-        'hide_empty' => $hide_empty
-    ) ) );
+    $list_children = function($parent_id) {
+        $children = get_terms( $taxonomies, array_merge( $args, array( 'parent' => $parent_id ) ) );
+        if ( count($children) > 0 ) {
+            echo '<ul>';
+            foreach ( $children as $child ) {
+                echo '<li>';
+                echo '<a href="' . get_term_link($child) . '">' . $child->name . '</a>';
+                echo $list_children($child->term_id);
+                echo '</li>';
+            }
+            echo '</ul>';
+        }
+    };
+
+    ob_start();
+    $list_children(0);
+    return ob_get_clean();
 }
 add_shortcode('taxonomy_list', 'make_taxonomy_list');
