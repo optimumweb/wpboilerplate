@@ -274,9 +274,17 @@ add_shortcode('responsive_embed', 'make_responsive_embed');
 function make_taxonomy_list($atts)
 {
     extract(shortcode_atts(array(
-        'taxonomy' => 'post_tag',
+        'tax'        => 'post_tag',
+        'orderby'    => 'name',
+        'hide_empty' => false
     ), $atts));
 
-    return wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'format' => 'list', 'echo' => false ) );
+    $taxonomies = array_map("trim", explode(",", $tax));
+
+    //return wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'format' => 'list', 'echo' => false ) );
+    var_dump( get_terms( $taxonomies, array(
+        'orderby'    => $orderby,
+        'hide_empty' => $hide_empty
+    ) ) );
 }
 add_shortcode('taxonomy_list', 'make_taxonomy_list');
