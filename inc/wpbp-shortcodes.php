@@ -270,3 +270,13 @@ function make_responsive_embed($atts)
     }
 }
 add_shortcode('responsive_embed', 'make_responsive_embed');
+
+function make_taxonomy_list($atts)
+{
+    extract(shortcode_atts(array(
+        'taxonomy' => 'post_tag',
+    ), $atts));
+
+    return wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'format' => 'list', 'echo' => false ) );
+}
+add_shortcode('taxonomy_list', 'make_taxonomy_list');
