@@ -281,6 +281,8 @@ function make_taxonomy_list($atts)
 
     $taxonomies = array_map("trim", explode(",", $tax));
 
+    var_dump( $taxonomies );
+
     //return wp_tag_cloud( array( 'taxonomy' => $taxonomy, 'format' => 'list', 'echo' => false ) );
     var_dump( get_terms( $taxonomies, array(
         'orderby'    => $orderby,
