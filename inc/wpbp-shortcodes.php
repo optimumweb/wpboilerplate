@@ -289,7 +289,7 @@ function make_taxonomy_list($atts)
             foreach ( $children as $child ) {
                 echo '<li>';
                 echo '<a href="' . get_term_link($child) . '">' . $child->name . '</a>';
-                echo $list_children($child->term_id);
+                $list_children($child->term_id);
                 echo '</li>';
             }
             echo '</ul>';
