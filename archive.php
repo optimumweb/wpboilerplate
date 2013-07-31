@@ -14,6 +14,8 @@
 								<?php printf( __('Monthly Archives: %s', 'wpbp'), get_the_date('F Y') ); ?>
 							<?php elseif ( is_year() ) : ?>
 								<?php printf( __('Yearly Archives: %s', 'wpbp'), get_the_date('Y') ); ?>
+                            <?php else : ?>
+                                <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; ?>
 							<?php endif; ?>
 						</h1>
 						<?php wpbp_loop_before(); ?>
