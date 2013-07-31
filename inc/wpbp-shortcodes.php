@@ -271,6 +271,20 @@ function make_responsive_embed($atts)
 }
 add_shortcode('responsive_embed', 'make_responsive_embed');
 
+function list_term_children($term_id, $taxonomies, $args) {
+    $children = get_terms( $taxonomies, array_merge( $args, array( 'parent' => $term_id ) ) );
+    if ( count($children) > 0 ) {
+        echo '<ul>';
+        foreach ( $children as $child ) {
+            echo '<li>';
+            echo '<a href="' . get_term_link($child) . '">' . $child->name . '</a>';
+            list_term_children($child->term_id, $taxonomies, $args);
+            echo '</li>';
+        }
+        echo '</ul>';
+    }
+}
+
 function make_taxonomy_list($atts)
 {
     extract(shortcode_atts(array(
@@ -282,22 +296,8 @@ function make_taxonomy_list($atts)
     $taxonomies = array_map("trim", explode(",", $tax));
     $args = array( 'orderby' => $orderby, 'hide_empty' => $hide_empty );
 
-    $list_children = function($parent_id) {
-        $children = get_terms( $taxonomies, array_merge( $args, array( 'parent' => $parent_id ) ) );
-        if ( count($children) > 0 ) {
-            echo '<ul>';
-            foreach ( $children as $child ) {
-                echo '<li>';
-                echo '<a href="' . get_term_link($child) . '">' . $child->name . '</a>';
-                $list_children($child->term_id);
-                echo '</li>';
-            }
-            echo '</ul>';
-        }
-    };
-
     ob_start();
-    $list_children(0);
+    list_term_children(0, $taxonomies, $args);
     return ob_get_clean();
 }
 add_shortcode('taxonomy_list', 'make_taxonomy_list');
