@@ -18,6 +18,9 @@
                                 <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; ?>
 							<?php endif; ?>
 						</h1>
+                        <?php if ( term_description() ) : ?>
+                        <p class="term-description"><?php echo term_description(); ?></p>
+                        <?php endif; ?>
 						<?php wpbp_loop_before(); ?>
 						<?php get_template_part('loop', 'archive'); ?>
 						<?php wpbp_loop_after(); ?>
