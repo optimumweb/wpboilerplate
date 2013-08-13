@@ -104,6 +104,10 @@ function wpbp_get_lib($which = null)
       'js'   => TEMPLATE_URI . '/lib/inview/jquery.inview.min.js',
       'ver'  => '1.0'
     ),
+    'jquery-cookie' => array(
+      'js'   => TEMPLATE_URI . '/lib/jquery-cookie/jquery.cookie.js',
+      'ver'  => '1.0'
+    ),
     'tinyNav' => array(
       'js'   => TEMPLATE_URI . '/lib/tinynav/tinynav.min.js',
       'ver'  => '1.1'
