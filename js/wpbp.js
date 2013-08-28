@@ -2,33 +2,37 @@
  * WPBP.js
  */
 
-$(document).ready(function() {
+$(function() {
 
-    $('.ir, .imageReplace').imageReplace();
+    $(document).ready(function() {
 
-    $('form.ajax, form.ajax-form').ajaxForm();
+        $('.ir, .imageReplace').imageReplace();
 
-    $('.smartbox').smartbox();
+        $('form.ajax, form.ajax-form').ajaxForm();
 
-    $('.simpleSlider').simpleSlider();
+        $('.smartbox').smartbox();
 
-    $('.valign, .vAlign').vAlign();
+        $('.simpleSlider').simpleSlider();
 
-    $('.fullCenter').center();
+        $('.valign, .vAlign').vAlign();
 
-    $('ul.dropdownNav').dropdownNav();
+        $('.fullCenter').center();
 
-    $('.same-height-as').sameHeightAs();
+        $('ul.dropdownNav').dropdownNav();
 
-    $('body').wpbpModal();
+        $('.same-height-as').sameHeightAs();
 
-    $('.wpbp-tabs').wpbpTabs();
+        $('body').wpbpModal();
 
-});
+        $('.wpbp-tabs').wpbpTabs();
 
-$(window).bind('load resize', function() {
+    });
 
-    $('.valign, .vAlign').vAlign();
+    $(window).bind('load resize', function() {
+
+        $('.valign, .vAlign').vAlign();
+
+    });
 
 });
 
