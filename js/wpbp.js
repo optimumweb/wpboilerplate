@@ -593,7 +593,7 @@
  *
  *
  * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 0.1
+ * @version 0.2
  * @package wpboilerplate
  */
 
@@ -684,6 +684,8 @@
 
 				});
 
+                // trigger open on boxes open by default
+                $modalBoxes.filter('.wpbp-modal-open').trigger('open');
 
 				// close modal boxes when the blanket is clicked
 				$blanket.click(function() {
