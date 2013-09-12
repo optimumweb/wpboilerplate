@@ -95,7 +95,7 @@ if ( !function_exists('get_featured_image_url') ) {
 				$url = wp_get_attachment_url( $post_thumbnail_id );
 			}
 		}
-		return get_full_url($url);
+        if ( isset( $url ) ) return get_full_url($url);
 	}
 
 }
