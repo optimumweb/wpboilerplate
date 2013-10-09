@@ -1,6 +1,7 @@
 <?php
 
 add_action('init', 'wpbp_register_lib');
+add_action('wpbp_head', 'wpbp_google_analytics_content_experiment');
 add_action('wpbp_head', 'wpbp_google_analytics');
 add_action('wpbp_head', 'wpbp_google_tag_manager');
 add_action('wpbp_head', 'wpbp_custom_css');
@@ -25,6 +26,28 @@ function wpbp_google_analytics()
     })();
 </script>
 <!-- End Google Analytics -->
+<?php endif;
+}
+
+function wpbp_google_analytics_content_experiment()
+{
+    set_post_ID($post_ID);
+    $test_key = get_post_meta($post_ID, 'ga_test_key', true);
+    if ( $test_key ) : ?>
+<!-- Google Analytics Content Experiment code -->
+<script>function utmx_section(){}function utmx(){}(function(){var
+k='<?php echo $test_key; ?>',d=document,l=d.location,c=d.cookie;
+if(l.search.indexOf('utm_expid='+k)>0)return;
+function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+</script><script>utmx('url','A/B');</script>
+<!-- End of Google Analytics Content Experiment code -->
 <?php endif;
 }
 
