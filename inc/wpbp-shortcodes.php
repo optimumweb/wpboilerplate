@@ -301,3 +301,28 @@ function make_taxonomy_list($atts)
     return ob_get_clean();
 }
 add_shortcode('taxonomy_list', 'make_taxonomy_list');
+
+function make_spacer($atts)
+{
+    extract(shortcode_atts(array(
+        'size' => 'medium',
+    ), $atts));
+
+    switch ($size) {
+        case 'small':
+            $height = "0.5em";
+            break;
+        case 'medium':
+            $height = "1em";
+            break;
+        case 'large':
+            $height = "2em";
+            break;
+        default:
+            $height = $size;
+            break;
+    }
+
+    return '<div style="height: ' . $height . '"></div>';
+}
+add_shortcode('spacer', 'make_spacer');
