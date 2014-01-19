@@ -696,7 +696,7 @@ $(function() {
                     $anchorTarget = $(anchorTarget);
 
                 $contents.removeClass('active').hide();
-                $anchorTarget.addClass('active').fadeIn();
+                $anchorTarget.addClass('active').show();
 
                 $anchors.removeClass('active');
                 $anchor.addClass('active');
