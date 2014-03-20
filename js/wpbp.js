@@ -708,7 +708,7 @@ $(function() {
             });
 
             if ( $this.hasClass('slideshow') ) {
-                var speed = $this.data('speed') ? $this.data('speed') : 4000,
+                var speed = $this.data('speed') ? $this.data('speed') : 10000,
                     skip = 0,
                     inView = true;
 
