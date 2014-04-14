@@ -167,36 +167,40 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 
 if ( !function_exists('wpbp_error_log') ) {
 
-  function wpbp_error_log($message, $notify_admin = false, $echo_in_footer = false)
-  {
-    $wp_debug_file_path = WP_CONTENT_DIR . '/debug.log';
+    function wpbp_error_log($message, $notify_admin = false, $echo_in_footer = false)
+    {
+        $wp_debug_file_path = WP_CONTENT_DIR . '/debug.log';
 
-    if ( is_writeable( $wp_debug_file_path ) ) {
-      if ( $handle = @fopen($wp_debug_file_path, 'a') ) {
-        $result = @fwrite($handle, $message . PHP_EOL);
-        @fclose( $handle );
-      }
+        if ( is_writeable( $wp_debug_file_path ) ) {
+            if ( $handle = @fopen($wp_debug_file_path, 'a') ) {
+                $result = @fwrite($handle, $message . PHP_EOL);
+                @fclose( $handle );
+            }
+        }
+
+        if ( $notify_admin ) {
+
+            $admin_email = get_option('admin_email');
+
+            $mail = new Mail();
+            $mail->set_option('content_type', "text/plain; charset=utf-8");
+            $mail->set_option('from', $admin_email);
+            $mail->set_option('to', $admin_email);
+            $mail->set_option('subject', "WPBP Error Notification");
+            $mail->set_body( $message );
+            $mail->send();
+
+            if ( $mail->get_response() != 200 ) {
+                wpbp_error_log("Can't send error notification to admin (" . $admin_email . ")");
+            }
+        }
+
+        if ( $echo_in_footer ) {
+            // to do
+        }
+
+        return $result;
     }
-
-    if ( $notify_admin ) {
-
-      $admin_email = get_option('admin_email');
-
-      $mail = new Mail();
-      $mail->set_option('content_type', "text/plain; charset=utf-8");
-      $mail->set_option('from', $admin_email);
-      $mail->set_option('to', $admin_email);
-      $mail->set_option('subject', "WPBP Error Notification");
-      $mail->set_body( $message );
-      $mail->send();
-
-      if ( $mail->get_response() != 200 ) {
-        wpbp_error_log("Can't send error notification to admin (" . $admin_email . ")");
-      }
-    }
-
-    return $result;
-  }
 
 }
 
