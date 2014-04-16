@@ -112,6 +112,10 @@ function wpbp_get_lib($which = null)
             'js'   => TEMPLATE_URI . '/lib/tinynav/tinynav.min.js',
             'ver'  => '1.1'
         ),
+        'galleria' => array(
+            'js'   => TEMPLATE_URI . '/lib/galleria/galleria-1.3.5.min.js',
+            'ver'  => '1.3.5'
+        ),
         'gmap' => array(
             'js'   => TEMPLATE_URI . '/lib/gmap/gmap.js',
             'ver'  => '1.1'
