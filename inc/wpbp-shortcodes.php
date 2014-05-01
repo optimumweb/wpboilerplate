@@ -134,8 +134,10 @@ function make_smartbox($atts, $content = null)
 	if ( isset($title) && strlen($title) > 0 ) {
 		$box .= '<div class="box-title title">';
         if ( $title_tag ) $box .= '<' . $title_tag . '>';
-        if ( $href ) $box .= '<a href="' . $href . '" target="' . $target . '">' . $title . '</a>';
-		if ( $src && $ajax ) $box .= '<a class="ajax-trigger" href="' . $src . '">' . $title . '</a>';
+        if ( $href || ( $src && $ajax ) ) {
+            if ( $href ) $box .= '<a href="' . $href . '" target="' . $target . '">' . $title . '</a>';
+            if ( $src && $ajax ) $box .= '<a class="ajax-trigger" href="' . $src . '">' . $title . '</a>';
+        }
 		else $box .= $title;
         if ( $title_tag ) $box .= '</' . $title_tag . '>';
 		$box .= '</div>';
