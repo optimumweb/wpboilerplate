@@ -329,7 +329,7 @@ $(function() {
                 period     = $this.data('period') || 5000,
                 fxSpeed    = $this.data('fx-speed') || 500,
                 hoverPause = $this.data('hover-pause') || "no",
-                $slides    = $this.children().not('.next, .prev'),
+                $slides    = $this.find('.slides').children(),
                 N          = $slides.size(),
                 $fireNext  = $this.find('.next'),
                 $firePrev  = $this.find('.prev'),
@@ -372,13 +372,9 @@ $(function() {
                 $this.trigger('firePrev');
             });
 
-            //var i = 1;
-
             setInterval(function() {
                 if ( !paused ) {
                     $this.trigger('fireNext');
-                    //i = ( i == N ) ? 1 : (i + 1);
-                    //$slides.fadeOut(fxSpeed).eq(i-1).delay(fxSpeed).fadeIn(fxSpeed);
                 }
             }, period);
 
