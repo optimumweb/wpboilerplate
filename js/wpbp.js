@@ -358,8 +358,15 @@ $(function() {
                 $current.fadeOut(fxSpeed, function() { $prev.fadeIn(fxSpeed); });
             });
 
-            $fireNext.click(function(e) { $this.trigger('fireNext'); });
-            $firePrev.click(function(e) { $this.trigger('firePrev'); });
+            $fireNext.click(function(e) {
+                e.preventDefault();
+                $this.trigger('fireNext');
+            });
+
+            $firePrev.click(function(e) {
+                e.preventDefault();
+                $this.trigger('firePrev');
+            });
 
             //var i = 1;
 
