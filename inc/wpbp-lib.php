@@ -130,7 +130,7 @@ function wpbp_get_lib($which = null)
             'css'  => TEMPLATE_URI . '/lib/wpbp/css/default.css'
         ),
         'wpbp' => array(
-            'js'   => TEMPLATE_URI . '/js/wpbp.min.js',
+            'js'   => TEMPLATE_URI . '/js/wpbp.js',
             'css'  => TEMPLATE_URI . '/css/wpbp.css',
             'deps' => array('jquery'),
             'ver'  => '3.1.0'
