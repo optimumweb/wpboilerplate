@@ -348,14 +348,18 @@ $(function() {
                 var $current = $slides.filter('.current'),
                     $next = $current.next().size() ? $current.next() : $slides.first();
 
-                $current.fadeOut(fxSpeed, function() { $next.fadeIn(fxSpeed); });
+                $current.fadeOut(fxSpeed, function() {
+                    $next.fadeIn(fxSpeed).addClass('current');
+                }).removeClass('current');
             });
 
             $this.bind('firePrev', function() {
                 var $current = $slides.filter('.current'),
                     $prev = $current.prev().size() ? $current.prev() : $slides.last();
 
-                $current.fadeOut(fxSpeed, function() { $prev.fadeIn(fxSpeed); });
+                $current.fadeOut(fxSpeed, function() {
+                    $prev.fadeIn(fxSpeed).addClass('current');
+                }).removeClass('current');
             });
 
             $fireNext.click(function(e) {
