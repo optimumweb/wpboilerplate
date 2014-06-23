@@ -313,7 +313,7 @@ $(function() {
  *
  * Simplest jQuery slider possible. Takes an element and cycles through its children with fadeIn/fadeOut effects.
  * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 1.0
+ * @version 2.0
  * @package wpboilerplate
  */
 
@@ -325,26 +325,49 @@ $(function() {
 
         return this.each(function() {
 
-            var $this = $(this);
-            var period = $this.data('period') || 5000;
-            var fxSpeed = $this.data('fx-speed') || 500;
-            var $slides = $this.children();
-            var N = $slides.size();
-            var paused = false;
+            var $this      = $(this),
+                period     = $this.data('period') || 5000,
+                fxSpeed    = $this.data('fx-speed') || 500,
+                hoverPause = $this.data('hover-pause') || "no",
+                $slides    = $this.children(),
+                N          = $slides.size(),
+                $fireNext  = $this.find('.next'),
+                $firePrev  = $this.find('.prev'),
+                paused     = false;
 
-            $this.hover(
-                function() { paused = true; },
-                function() { paused = false; }
-            );
+            if ( hoverPause == "yes" ) {
+                $this.hover(
+                    function() { paused = true; },
+                    function() { paused = false; }
+                );
+            }
 
-            var i = 1;
+            $slides.hide().first().show().addClass('current');
 
-            $slides.hide().first().show();
+            $this.bind('fireNext', function() {
+                var $current = $slides.filter('.current'),
+                    $next = $current.next().size() ? $current.next() : $slides.first();
+
+                $current.fadeOut(fxSpeed, function() { $next.fadeIn(fxSpeed); });
+            });
+
+            $this.bind('firePrev', function() {
+                var $current = $slides.filter('.current'),
+                    $prev = $current.prev().size() ? $current.prev() : $slides.last();
+
+                $current.fadeOut(fxSpeed, function() { $prev.fadeIn(fxSpeed); });
+            });
+
+            $fireNext.click(function(e) { $this.trigger('fireNext'); });
+            $firePrev.click(function(e) { $this.trigger('firePrev'); });
+
+            //var i = 1;
 
             setInterval(function() {
                 if ( !paused ) {
-                    i = ( i == N ) ? 1 : (i + 1);
-                    $slides.fadeOut(fxSpeed).eq(i-1).delay(fxSpeed).fadeIn(fxSpeed);
+                    $this.trigger('fireNext');
+                    //i = ( i == N ) ? 1 : (i + 1);
+                    //$slides.fadeOut(fxSpeed).eq(i-1).delay(fxSpeed).fadeIn(fxSpeed);
                 }
             }, period);
 
