@@ -329,6 +329,7 @@ $(function() {
                 period     = $this.data('period') || 5000,
                 fxSpeed    = $this.data('fx-speed') || 500,
                 hoverPause = $this.data('hover-pause') || "no",
+                slideshow  = $this.data('slideshow') || "yes",
                 $slides    = $this.find('.slides').children(),
                 N          = $slides.size(),
                 $fireNext  = $this.find('.next'),
@@ -340,6 +341,10 @@ $(function() {
                     function() { paused = true; },
                     function() { paused = false; }
                 );
+            }
+
+            if ( N <= 1 ) {
+                slideshow = "no";
             }
 
             $slides.hide().first().show().addClass('current');
@@ -373,7 +378,7 @@ $(function() {
             });
 
             setInterval(function() {
-                if ( !paused ) {
+                if ( !paused && slideshow == "yes" ) {
                     $this.trigger('fireNext');
                 }
             }, period);
