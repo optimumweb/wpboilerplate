@@ -334,7 +334,8 @@ $(function() {
                 N          = $slides.size(),
                 $fireNext  = $this.find('.next'),
                 $firePrev  = $this.find('.prev'),
-                paused     = false;
+                paused     = false,
+                skip       = 0;
 
             if ( hoverPause == "yes" ) {
                 $this.hover(
@@ -356,6 +357,8 @@ $(function() {
                 $current.fadeOut(fxSpeed, function() {
                     $next.fadeIn(fxSpeed).addClass('current');
                 }).removeClass('current');
+
+                skip = 1;
             });
 
             $this.bind('firePrev', function() {
@@ -365,6 +368,8 @@ $(function() {
                 $current.fadeOut(fxSpeed, function() {
                     $prev.fadeIn(fxSpeed).addClass('current');
                 }).removeClass('current');
+
+                skip = 1;
             });
 
             $fireNext.click(function(e) {
@@ -378,7 +383,7 @@ $(function() {
             });
 
             setInterval(function() {
-                if ( !paused && slideshow == "yes" ) {
+                if ( !paused && !skip-- && slideshow == "yes" ) {
                     $this.trigger('fireNext');
                 }
             }, period);
