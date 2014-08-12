@@ -432,6 +432,8 @@ $(function() {
             var infinity = 1E6,
                 duration = infinity / speed;
 
+            console.log(duration);
+
             $container.animate({marginLeft: -infinity}, duration, 'linear', function() {});
         });
 
