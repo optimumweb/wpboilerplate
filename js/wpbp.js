@@ -348,6 +348,8 @@ $(function() {
 
             if ( N <= 1 ) {
                 slideshow = "no";
+                $fireNext.hide();
+                $firePrev.hide();
             }
 
             $slides.hide().first().show().addClass('current');
