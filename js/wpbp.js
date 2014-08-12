@@ -434,7 +434,9 @@ $(function() {
             setInterval(function() {
                 var slideDistance = $items.first().outerWidth(true, true);
 
-                $container.animate({marginLeft: offset - slideDistance + 'px'}, 500, function() {
+                offset -= slideDistance;
+
+                $container.animate({marginLeft: offset + 'px'}, 500, function() {
                     $items.first().insertAfter($items.last());
                 });
             }, 1000);
