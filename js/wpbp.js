@@ -432,12 +432,12 @@ $(function() {
             var offset = 0;
 
             setInterval(function() {
-                var slideDistance = $items.first().width();
+                var slideDistance = $container.children().first().width();
 
                 offset -= slideDistance;
 
                 $container.animate({marginLeft: offset + 'px'}, 500, function() {
-                    $items.first().insertAfter($items.last());
+                    $container.children().first().insertAfter($container.children().last());
                 });
             }, 1000);
         });
