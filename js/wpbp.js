@@ -432,10 +432,10 @@ $(function() {
             setInterval(function() {
                 var slideDistance = $items.first().outerWidth(true, true);
 
-                $container.animate({marginLeft: -slideDistance}, 500, function() {
+                $container.animate({marginLeft: -slideDistance + 'px'}, 500, function() {
                     $items.first().insertAfter($items.last());
                 });
-            }, 500);
+            }, 1000);
         });
 
     };
