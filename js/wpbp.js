@@ -429,7 +429,7 @@ $(function() {
 
             $this.css('overflow', 'hidden');
 
-            var infinity = 10000,
+            var infinity = 1000,
                 duration = infinity / speed;
 
             console.log(duration);
