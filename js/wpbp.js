@@ -434,7 +434,7 @@ $(function() {
 
             console.log(duration);
 
-            $container.animate({marginLeft: -infinity + 'px'}, duration, 'linear', function() {});
+            $container.animate({marginLeft: -infinity + 'px'}, duration, 'linear');
         });
 
     };
