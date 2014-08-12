@@ -427,13 +427,8 @@ $(function() {
                 speed      = $this.data('speed') || 50,
                 hoverPause = $this.data('hover-pause') || "yes";
 
-            var width = 0;
-            $items.each(function() {
-                width += $(this).outerWidth(true, true);
-            });
-
             $this.css('overflow', 'hidden');
-            $container.css('width', width * 4 + 'px');
+            $container.css('width', '400%');
 
             setInterval(function() {
                 var slideDistance = $container.children().first().outerWidth(true, true);
