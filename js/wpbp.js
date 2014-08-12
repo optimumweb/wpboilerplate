@@ -424,7 +424,7 @@ $(function() {
             var $this      = $(this),
                 $container = $this.find('.container'),
                 $items     = $container.children(),
-                speed      = $this.data('speed') || 1000,
+                speed      = $this.data('speed') || 10000,
                 hoverPause = $this.data('hover-pause') || "yes",
                 offset     = 0;
 
@@ -442,7 +442,7 @@ $(function() {
             console.log(cloningPeriod);
 
             setInterval(function() {
-                offset -= 50;
+                offset -= 940;
 
                 $container.animate({left: offset + 'px'}, speed, 'linear', function() {
                     //$container.children().first().clone().insertAfter($container.children().last());
