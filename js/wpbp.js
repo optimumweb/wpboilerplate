@@ -425,15 +425,16 @@ $(function() {
                 $container = $this.find('.container'),
                 $items     = $container.children(),
                 speed      = $this.data('speed') || 50,
-                hoverPause = $this.data('hover-pause') || "yes";
+                hoverPause = $this.data('hover-pause') || "yes",
+                offset     = 0;
 
             $this.css('overflow', 'hidden');
             $container.css('width', '400%').css('position', 'relative');
 
             setInterval(function() {
-                var slideDistance = $container.children().first().outerWidth(true, true);
+                var offset -= $container.children().first().outerWidth(true, true);
 
-                $container.animate({left: -slideDistance + 'px'}, 800, function() {
+                $container.animate({left: offset + 'px'}, 800, function() {
                     $container.children().first().clone().insertAfter($container.children().last());
                 });
             }, 3000);
