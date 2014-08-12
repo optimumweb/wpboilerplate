@@ -14,6 +14,8 @@ $(function() {
 
         $('.simpleSlider').simpleSlider();
 
+        $('.simpleCarousel').simpleCarousel();
+
         $('.valign, .vAlign').vAlign();
 
         $('.fullCenter').center();
@@ -31,8 +33,6 @@ $(function() {
     $(window).bind('load resize', function() {
 
         $('.valign, .vAlign').vAlign();
-
-        $('.simpleCarousel').simpleCarousel();
 
     });
 
