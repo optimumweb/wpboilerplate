@@ -424,20 +424,22 @@ $(function() {
             var $this      = $(this),
                 $container = $this.find('.container'),
                 $items     = $container.children(),
-                speed      = $this.data('speed') || 50,
+                speed      = $this.data('speed') || 400,
                 hoverPause = $this.data('hover-pause') || "yes",
                 offset     = 0;
 
             $this.css('overflow', 'hidden');
             $container.css('width', '400%').css('position', 'relative');
 
-            setInterval(function() {
-                offset -= 5;
+            var duration =
 
-                $container.animate({left: offset + 'px'}, 100, 'linear', function() {
+            setInterval(function() {
+                offset -= 50;
+
+                $container.animate({left: offset + 'px'}, speed, 'linear', function() {
                     //$container.children().first().clone().insertAfter($container.children().last());
                 });
-            }, 100);
+            }, speed);
         });
 
     };
