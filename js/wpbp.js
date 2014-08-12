@@ -335,7 +335,9 @@ $(function() {
                 $fireNext  = $this.find('.next'),
                 $firePrev  = $this.find('.prev'),
                 paused     = false,
-                skip       = 0;
+                now        = new Date(),
+                fireTime   = null,
+                skip       = false;
 
             if ( hoverPause == "yes" ) {
                 $this.hover(
@@ -358,7 +360,7 @@ $(function() {
                     $next.fadeIn(fxSpeed).addClass('current');
                 }).removeClass('current');
 
-                skip = 1;
+                fireTime = new Date();
             });
 
             $this.bind('firePrev', function() {
@@ -369,7 +371,7 @@ $(function() {
                     $prev.fadeIn(fxSpeed).addClass('current');
                 }).removeClass('current');
 
-                skip = 1;
+                fireTime = new Date();
             });
 
             $fireNext.click(function(e) {
@@ -383,7 +385,10 @@ $(function() {
             });
 
             setInterval(function() {
-                if ( !paused && !skip-- && slideshow == "yes" ) {
+                now = new Date();
+                skip = ( now.getTime() - fireTime.getTime() ) < period;
+
+                if ( !paused && !skip && slideshow == "yes" ) {
                     $this.trigger('fireNext');
                 }
             }, period);
