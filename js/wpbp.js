@@ -428,13 +428,13 @@ $(function() {
                 hoverPause = $this.data('hover-pause') || "yes";
 
             var width = 0;
-            $items.each(function() { width += $(this).width(); });
+            $items.each(function() { width += $(this).outerWidth(true, true); });
 
             $this.css('overflow', 'hidden');
             $container.css('width', width + 'px');
 
             setInterval(function() {
-                var slideDistance = $container.children().first().width();
+                var slideDistance = $container.children().first().outerWidth(true, true);
 
                 $container.animate({marginLeft: -slideDistance + 'px'}, 800, function() {
                     $container.children().first().insertAfter($container.children().last());
