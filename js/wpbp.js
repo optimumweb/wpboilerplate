@@ -432,7 +432,10 @@ $(function() {
             $container.css('width', '400%').css('position', 'relative');
 
             var totalWidth = 0;
-            $items.each(function() { totalWidth += $(this).outerWidth(true, true); });
+            $items.each(function() {
+                totalWidth += $(this).outerWidth(true, true);
+                console.log(totalWidth);
+            });
 
             var cloningPeriod = totalWidth / offset * speed;
 
