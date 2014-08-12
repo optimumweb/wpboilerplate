@@ -14,6 +14,8 @@ $(function() {
 
         $('.simpleSlider').simpleSlider();
 
+        $('.simpleCarousel').simpleCarousel();
+
         $('.valign, .vAlign').vAlign();
 
         $('.fullCenter').center();
@@ -395,6 +397,40 @@ $(function() {
                 }
             }, period);
 
+        });
+
+    };
+
+});
+
+
+/*
+ * simpleCarousel
+ *
+ * Simple jQuery Carousel.
+ * @author Jonathan Roy <jroy@optimumweb.ca>
+ * @version 1.0
+ * @package wpboilerplate
+ */
+
+$(function() {
+
+    "use strict"; // jshint ;_;
+
+    jQuery.fn.simpleCarousel = function() {
+
+        return this.each(function() {
+
+            var $this      = $(this),
+                $container = $this.find('.container'),
+                $items     = $container.children(),
+                speed      = $this.data('speed') || 50,
+                hoverPause = $this.data('hover-pause') || "yes";
+
+            var infinity = 1E6,
+                duration = infinity / speed;
+
+            $container.animate({marginLeft: -infinity}, duration, function() {});
         });
 
     };
