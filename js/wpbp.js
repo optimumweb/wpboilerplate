@@ -432,14 +432,12 @@ $(function() {
             $container.css('position', 'relative');
 
             setInterval(function() {
+                offset -= 940;
 
+                $container.animate({left: offset + 'px'}, speed, 'linear');
+
+                $container.children().clone().insertAfter($container.children().last())
             }, speed);
-
-            offset -= 940;
-
-            $container.animate({left: offset + 'px'}, speed, 'linear', function() {
-                //$container.children().first().clone().insertAfter($container.children().last());
-            });
         });
 
     };
