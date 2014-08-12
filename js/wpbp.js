@@ -428,9 +428,7 @@ $(function() {
                 hoverPause = $this.data('hover-pause') || "yes";
 
             $this.css('overflow', 'hidden');
-
-            var offset = 0;
-
+            
             setInterval(function() {
                 var slideDistance = $container.children().first().width();
 
