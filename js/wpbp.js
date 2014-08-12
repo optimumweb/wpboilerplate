@@ -427,6 +427,8 @@ $(function() {
                 speed      = $this.data('speed') || 50,
                 hoverPause = $this.data('hover-pause') || "yes";
 
+            $this.css('overflow', 'hidden');
+
             var infinity = 1E6,
                 duration = infinity / speed;
 
