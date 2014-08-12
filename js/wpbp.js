@@ -429,12 +429,12 @@ $(function() {
 
             $this.css('overflow', 'hidden');
 
-            var infinity = 1000,
+            var infinity = 10000,
                 duration = infinity / speed;
 
             console.log(duration);
 
-            $container.animate({marginLeft: -infinity}, duration, 'linear', function() {});
+            $container.animate({marginLeft: -infinity + 'px'}, duration, 'linear', function() {});
         });
 
     };
