@@ -429,10 +429,12 @@ $(function() {
 
             $this.css('overflow', 'hidden');
 
+            var offset = 0;
+
             setInterval(function() {
                 var slideDistance = $items.first().outerWidth(true, true);
 
-                $container.animate({marginLeft: -slideDistance + 'px'}, 500, function() {
+                $container.animate({marginLeft: offset - slideDistance + 'px'}, 500, function() {
                     $items.first().insertAfter($items.last());
                 });
             }, 1000);
