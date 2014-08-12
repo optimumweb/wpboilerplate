@@ -432,7 +432,7 @@ $(function() {
             var offset = 0;
 
             setInterval(function() {
-                var slideDistance = $items.first().outerWidth(true, true);
+                var slideDistance = $items.first().width();
 
                 offset -= slideDistance;
 
