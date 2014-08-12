@@ -431,7 +431,12 @@ $(function() {
             $this.css('overflow', 'hidden');
             $container.css('width', '400%').css('position', 'relative');
 
-            var duration =
+            var totalWidth = 0;
+            $items.each(function() { totalWidth += $(this).outerWidth(true, true); });
+
+            var cloningPeriod = totalWidth / offset * speed;
+
+            console.log(cloningPeriod);
 
             setInterval(function() {
                 offset -= 50;
