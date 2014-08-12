@@ -429,7 +429,7 @@ $(function() {
                 offset     = 0;
 
             $this.css('overflow', 'hidden');
-            $container.css('position', 'relative');
+            $container.css('width', '100000%').css('position', 'relative');
 
             setInterval(function() {
                 offset -= 940;
