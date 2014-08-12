@@ -424,7 +424,7 @@ $(function() {
             var $this      = $(this),
                 $container = $this.find('.container'),
                 $items     = $container.children(),
-                speed      = $this.data('speed') || 400,
+                speed      = $this.data('speed') || 200,
                 hoverPause = $this.data('hover-pause') || "yes",
                 offset     = 0;
 
