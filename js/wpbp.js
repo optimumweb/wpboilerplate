@@ -428,12 +428,12 @@ $(function() {
                 hoverPause = $this.data('hover-pause') || "yes";
 
             $this.css('overflow', 'hidden');
-            $container.css('width', '400%');
+            $container.css('width', '400%').css('position', 'relative');
 
             setInterval(function() {
                 var slideDistance = $container.children().first().outerWidth(true, true);
 
-                $container.animate({marginLeft: -slideDistance + 'px'}, 800, function() {
+                $container.animate({left: -slideDistance + 'px'}, 800, function() {
                     $container.children().first().insertAfter($container.children().last());
                 });
             }, 3000);
