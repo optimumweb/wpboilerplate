@@ -436,7 +436,7 @@ $(function() {
 
                 $container.animate({left: offset + 'px'}, speed, 'linear');
 
-                $container.children().clone().insertAfter($container.children().last())
+                $container.children().insertAfter($container.children().last())
             }, speed);
         });
 
