@@ -430,11 +430,10 @@ $(function() {
             var width = 0;
             $items.each(function() {
                 width += $(this).outerWidth(true, true);
-                console.log(width);
             });
 
             $this.css('overflow', 'hidden');
-            $container.css('width', width + 'px');
+            $container.css('width', width * 4 + 'px');
 
             setInterval(function() {
                 var slideDistance = $container.children().first().outerWidth(true, true);
