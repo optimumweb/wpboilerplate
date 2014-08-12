@@ -336,7 +336,7 @@ $(function() {
                 $firePrev  = $this.find('.prev'),
                 paused     = false,
                 now        = new Date(),
-                fireTime   = null,
+                fireTime   = 0,
                 skip       = false;
 
             if ( hoverPause == "yes" ) {
