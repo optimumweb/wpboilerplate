@@ -432,12 +432,12 @@ $(function() {
             $container.css('width', '400%').css('position', 'relative');
 
             setInterval(function() {
-                offset -= $container.children().first().outerWidth(true, true);
+                offset -= 5;
 
-                $container.animate({left: offset + 'px'}, 800, function() {
+                $container.animate({left: offset + 'px'}, 100, 'linear', function() {
                     $container.children().first().clone().insertAfter($container.children().last());
                 });
-            }, 3000);
+            }, 100);
         });
 
     };
