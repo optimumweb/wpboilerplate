@@ -432,7 +432,7 @@ $(function() {
             $container.css('width', '400%').css('position', 'relative');
 
             setInterval(function() {
-                var offset -= $container.children().first().outerWidth(true, true);
+                offset -= $container.children().first().outerWidth(true, true);
 
                 $container.animate({left: offset + 'px'}, 800, function() {
                     $container.children().first().clone().insertAfter($container.children().last());
