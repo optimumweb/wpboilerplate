@@ -428,14 +428,14 @@ $(function() {
                 hoverPause = $this.data('hover-pause') || "yes";
 
             $this.css('overflow', 'hidden');
-            
+
             setInterval(function() {
                 var slideDistance = $container.children().first().width();
 
-                $container.animate({marginLeft: -slideDistance + 'px'}, 500, function() {
+                $container.animate({marginLeft: -slideDistance + 'px'}, 800, function() {
                     $container.children().first().insertAfter($container.children().last());
                 });
-            }, 1000);
+            }, 3000);
         });
 
     };
