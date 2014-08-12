@@ -429,12 +429,13 @@ $(function() {
 
             $this.css('overflow', 'hidden');
 
-            var infinity = 1000,
-                duration = infinity / speed;
+            setInterval(function() {
+                var slideDistance = $items.first().outerWidth(true, true);
 
-            console.log(duration);
-
-            $container.animate({marginLeft: -infinity + 'px'}, duration, 'linear');
+                $container.animate({marginLeft: -slideDistance}, 500, function() {
+                    $items.first().insertAfter($items.last());
+                });
+            }, 500);
         });
 
     };
