@@ -428,7 +428,10 @@ $(function() {
                 hoverPause = $this.data('hover-pause') || "yes";
 
             var width = 0;
-            $items.each(function() { width += $(this).outerWidth(true, true); });
+            $items.each(function() {
+                width += $(this).outerWidth(true, true);
+                console.log(width);
+            });
 
             $this.css('overflow', 'hidden');
             $container.css('width', width + 'px');
