@@ -432,7 +432,7 @@ $(function() {
             var infinity = 1E6,
                 duration = infinity / speed;
 
-            $container.animate({marginLeft: -infinity}, duration, function() {});
+            $container.animate({marginLeft: -infinity}, duration, 'linear', function() {});
         });
 
     };
