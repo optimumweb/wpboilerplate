@@ -434,7 +434,7 @@ $(function() {
                 var slideDistance = $container.children().first().outerWidth(true, true);
 
                 $container.animate({left: -slideDistance + 'px'}, 800, function() {
-                    $container.children().first().insertAfter($container.children().last());
+                    //$container.children().first().insertAfter($container.children().last());
                 });
             }, 3000);
         });
