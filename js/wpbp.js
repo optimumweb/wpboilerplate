@@ -412,10 +412,9 @@ $(function() {
             });
 
             $this.bind('setActiveFire', function() {
-                var $current = $slides.filter('.current'),
-                    current_id = $current.attr('id');
+                var $current = $slides.filter('.current');
 
-                console.log('Current ID = ' + current_id);
+                console.log('Current size = ' + $slides.filter('.current').size());
 
                 $('.fireThat').removeClass('active').each(function() {
                     console.log('This HREF = ' + $(this).attr('href'));
