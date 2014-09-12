@@ -416,7 +416,7 @@ $(function() {
                     current_id = $current.attr('id');
 
                 $('.fireThat').removeClass('active').each(function() {
-                    if ( $(this).attr('href') == current_id ) {
+                    if ( $(this).attr('href') == '#' + current_id ) {
                         $(this).addClass('active');
                     }
                 });
