@@ -360,8 +360,6 @@ $(function() {
                     zz = z.getTime();
 
                 $(this).attr('id', 'sss_' + zz);
-                
-                sleep(1);
             })
 
             if ( $this.hasClass('addFire') ) {
