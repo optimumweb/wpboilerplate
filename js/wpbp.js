@@ -378,9 +378,8 @@ $(function() {
 
                 $current.fadeOut(fxSpeed, function() {
                     $next.fadeIn(fxSpeed).addClass('current');
+                    $this.trigger('setActiveFire');
                 }).removeClass('current');
-
-                $this.trigger('setActiveFire');
 
                 fireTime = new Date();
             });
@@ -391,9 +390,8 @@ $(function() {
 
                 $current.fadeOut(fxSpeed, function() {
                     $prev.fadeIn(fxSpeed).addClass('current');
+                    $this.trigger('setActiveFire');
                 }).removeClass('current');
-
-                $this.trigger('setActiveFire');
 
                 fireTime = new Date();
             });
@@ -404,9 +402,8 @@ $(function() {
 
                 $current.fadeOut(fxSpeed, function() {
                     $that.fadeIn(fxSpeed).addClass('current');
+                    $this.trigger('setActiveFire');
                 }).removeClass('current');
-
-                $this.trigger('setActiveFire');
 
                 fireTime = new Date();
             });
