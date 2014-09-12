@@ -397,7 +397,7 @@ $(function() {
 
             $this.bind('fireThat', function(e, fireThat) {
                 var $current = $slides.filter('.current'),
-                    $that = $slide.filter(fireThat);
+                    $that = $slides.filter(fireThat);
 
                 $current.fadeOut(fxSpeed, function() {
                     $that.fadeIn(fxSpeed).addClass('current');
