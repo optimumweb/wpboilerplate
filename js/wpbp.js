@@ -361,8 +361,10 @@ $(function() {
 
             if ( $this.hasClass('addFire') ) {
                 var i = 1;
+                $this.append('<div class="fireThats"></div>');
+                var $fireThats = $this.find('.fireThats');
                 $slides.each(function() {
-                    $this.append('<a class="fireThat" href="#' + $(this).attr('id') + '">' + i++ + '</a>');
+                    $fireThats.append('<a class="fireThat" href="#' + $(this).attr('id') + '">' + i++ + '</a>');
                 });
                 $this.append('<a class="fireNext" href="#next"></a>');
                 $this.append('<a class="firePrev" href="#prev"></a>');
