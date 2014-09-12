@@ -415,10 +415,10 @@ $(function() {
                 var $current = $slides.filter('.current'),
                     current_id = $current.attr('id');
 
-                console.log(current_id);
+                console.log('Current ID = ' + current_id);
 
                 $('.fireThat').removeClass('active').each(function() {
-                    console.log($(this).attr('href'));
+                    console.log('This HREF = ' + $(this).attr('href'));
                     if ( $(this).attr('href') == '#' + current_id ) {
                         $(this).addClass('active');
                     }
