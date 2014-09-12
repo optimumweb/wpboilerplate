@@ -413,7 +413,7 @@ $(function() {
                 $this.trigger('firePrev');
             });
 
-            $this.on('click', 'fireThat', function(e) {
+            $this.on('click', '.fireThat', function(e) {
                 e.preventDefault();
                 console.log('fireThat!');
                 var fireThat = $(this).attr('#href');
