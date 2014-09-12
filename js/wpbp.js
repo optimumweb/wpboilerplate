@@ -403,17 +403,17 @@ $(function() {
                 fireTime = new Date();
             });
 
-            $fireNext.click(function(e) {
+            $fireNext.on('click', function(e) {
                 e.preventDefault();
                 $this.trigger('fireNext');
             });
 
-            $firePrev.click(function(e) {
+            $firePrev.on('click', function(e) {
                 e.preventDefault();
                 $this.trigger('firePrev');
             });
 
-            $fireThat.click(function(e) {
+            $fireThat.on('click', function(e) {
                 e.preventDefault();
                 var fireThat = $(this).attr('#href');
                 $this.trigger('fireThat', [fireThat]);
