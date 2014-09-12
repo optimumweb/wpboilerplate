@@ -380,6 +380,8 @@ $(function() {
                     $next.fadeIn(fxSpeed).addClass('current');
                 }).removeClass('current');
 
+                $this.trigger('setActiveFire');
+
                 fireTime = new Date();
             });
 
@@ -390,6 +392,8 @@ $(function() {
                 $current.fadeOut(fxSpeed, function() {
                     $prev.fadeIn(fxSpeed).addClass('current');
                 }).removeClass('current');
+
+                $this.trigger('setActiveFire');
 
                 fireTime = new Date();
             });
@@ -402,7 +406,20 @@ $(function() {
                     $that.fadeIn(fxSpeed).addClass('current');
                 }).removeClass('current');
 
+                $this.trigger('setActiveFire');
+
                 fireTime = new Date();
+            });
+
+            $this.bind('setActiveFire', function() {
+                var $current = $slides.filter('.current'),
+                    current_id = $current.attr('id');
+
+                $('.fireThat').removeClass('active').each(function() {
+                    if ( $(this).attr('href') == current_id ) {
+                        $(this).addClass('active');
+                    }
+                });
             });
 
             $this.on('click', '.fireNext', function(e) {
