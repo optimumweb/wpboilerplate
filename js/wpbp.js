@@ -336,6 +336,7 @@ $(function() {
                 N          = $slides.size(),
                 $fireNext  = $this.find('.next'),
                 $firePrev  = $this.find('.prev'),
+                $fireThat  = $this.find('.fire'),
                 paused     = false,
                 now        = new Date(),
                 fireTime   = new Date(0),
@@ -356,7 +357,7 @@ $(function() {
 
             $slides.hide().first().show().addClass('current');
 
-            $this.bind('fireNext', function() {
+            $this.bind('fireNext', function(e) {
                 var $current = $slides.filter('.current'),
                     $next = $current.next().size() ? $current.next() : $slides.first();
 
@@ -367,12 +368,23 @@ $(function() {
                 fireTime = new Date();
             });
 
-            $this.bind('firePrev', function() {
+            $this.bind('firePrev', function(e) {
                 var $current = $slides.filter('.current'),
                     $prev = $current.prev().size() ? $current.prev() : $slides.last();
 
                 $current.fadeOut(fxSpeed, function() {
                     $prev.fadeIn(fxSpeed).addClass('current');
+                }).removeClass('current');
+
+                fireTime = new Date();
+            });
+
+            $this.bind('fireThat', function(e, fireThat) {
+                var $current = $slides.filter('.current'),
+                    $that = $slide.filter(fireThat);
+
+                $current.fadeOut(fxSpeed, function() {
+                    $that.fadeIn(fxSpeed).addClass('current');
                 }).removeClass('current');
 
                 fireTime = new Date();
@@ -386,6 +398,12 @@ $(function() {
             $firePrev.click(function(e) {
                 e.preventDefault();
                 $this.trigger('firePrev');
+            });
+
+            $fireThat.click(function(e) {
+                e.preventDefault();
+                var fireThat = $(this).attr('#href');
+                $this.trigger('fireThat', [fireThat]);
             });
 
             setInterval(function() {
