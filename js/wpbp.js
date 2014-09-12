@@ -358,14 +358,14 @@ $(function() {
             $slides.each(function() {
                 var z  = new Date(),
                     zz = z.getTime();
-                
+
                 $(this).attr('id', 'sss_' + zz);
             })
 
             if ( $this.hasClass('addFire') ) {
                 var i = 1;
                 $slides.each(function() {
-                    $this.append('<a class="fireThat" href="' + $(this).attr('id') + '">' + i++ + '</a>');
+                    $this.append('<a class="fireThat" href="#' + $(this).attr('id') + '">' + i++ + '</a>');
                 });
                 $this.append('<a class="next" href="#next"></a>');
                 $this.append('<a class="prev" href="#prev"></a>');
