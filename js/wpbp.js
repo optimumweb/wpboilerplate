@@ -356,10 +356,7 @@ $(function() {
             }
 
             $slides.each(function() {
-                var z  = new Date(),
-                    zz = z.getTime();
-
-                $(this).attr('id', 'sss_' + zz);
+                $(this).attr('id', 'sss_' + Math.round(Math.random() * 1E15));
             })
 
             if ( $this.hasClass('addFire') ) {
