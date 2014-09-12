@@ -334,9 +334,9 @@ $(function() {
                 slideshow  = $this.data('slideshow') || "yes",
                 $slides    = $this.find('.slides').children(),
                 N          = $slides.size(),
-                $fireNext  = $this.find('.next'),
-                $firePrev  = $this.find('.prev'),
-                $fireThat  = $this.find('.fireThat'),
+                //$fireNext  = $this.find('.next'),
+                //$firePrev  = $this.find('.prev'),
+                //$fireThat  = $this.find('.fireThat'),
                 paused     = false,
                 now        = new Date(),
                 fireTime   = new Date(0),
@@ -364,8 +364,8 @@ $(function() {
                 $slides.each(function() {
                     $this.append('<a class="fireThat" href="#' + $(this).attr('id') + '">' + i++ + '</a>');
                 });
-                $this.append('<a class="next" href="#next"></a>');
-                $this.append('<a class="prev" href="#prev"></a>');
+                $this.append('<a class="fireNext" href="#next"></a>');
+                $this.append('<a class="firePrev" href="#prev"></a>');
             }
 
             $slides.hide().first().show().addClass('current');
@@ -403,12 +403,12 @@ $(function() {
                 fireTime = new Date();
             });
 
-            $fireNext.on('click', function(e) {
+            $this.on('click', '.fireNext', function(e) {
                 e.preventDefault();
                 $this.trigger('fireNext');
             });
 
-            $firePrev.on('click', function(e) {
+            $this.on('click', '.firePrev', function(e) {
                 e.preventDefault();
                 $this.trigger('firePrev');
             });
