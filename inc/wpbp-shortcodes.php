@@ -44,7 +44,7 @@ function parse_shortcode_content($content, $options = array())
 }
 
 // [the_title post_id="123"]
-function wpbp_the_title($atts, $content = null)
+function wpbp_the_title($atts)
 {
     extract(shortcode_atts(array('post_id' => null,), $atts));
     if ( !isset($post_id) ) set_post_ID($post_id);
