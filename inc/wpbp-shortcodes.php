@@ -43,13 +43,10 @@ function parse_shortcode_content($content, $options = array())
 	return $content;
 }
 
-// [container cols="12"]...[/container]
+// [container]...[/container]
 function container_960gs($atts, $content = null)
 {
-	extract(shortcode_atts(array(
-		'cols' => '16'
-	), $atts));
-	return '<div class="container_' . $cols . '">' . parse_shortcode_content($content) . '</div>';
+	return '<div class="container ' . wpbp_get_option('container_class') . '">' . parse_shortcode_content($content) . '</div>';
 }
 add_shortcode('container', 'container_960gs');
 
