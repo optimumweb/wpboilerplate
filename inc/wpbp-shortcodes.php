@@ -44,13 +44,13 @@ function parse_shortcode_content($content, $options = array())
 }
 
 // [the_title post_id="123"]
-function wpbp_section($atts, $content = null)
+function wpbp_the_title($atts, $content = null)
 {
     extract(shortcode_atts(array('post_id' => null,), $atts));
     if ( !isset($post_id) ) set_post_ID($post_id);
     return get_the_title($post_id);
 }
-add_shortcode('section', 'wpbp_section');
+add_shortcode('the_title', 'wpbp_the_title');
 
 // [section id="section-id" class="section-class"]...[/section]
 function wpbp_section($atts, $content = null)
