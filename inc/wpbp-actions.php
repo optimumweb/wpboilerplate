@@ -103,7 +103,3 @@ function wpbp_favicon()
     }
 }
 
-function wpbp_clear()
-{
-	echo '<div class="clear"></div>';
-}
