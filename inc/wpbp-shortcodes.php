@@ -43,29 +43,40 @@ function parse_shortcode_content($content, $options = array())
 	return $content;
 }
 
+// [section id="section-id" class="section-class"]...[/section]
+function wpbp_section($atts, $content = null)
+{
+    extract(shortcode_atts(array(
+        'id'    => '',
+        'class' => ''
+    ), $atts));
+    return '<section id="' . $id . '" class="' . $class . '">' . parse_shortcode_content($content) . '</section>';
+}
+add_shortcode('section', 'wpbp_section');
+
 // [container]...[/container]
-function container_960gs($atts, $content = null)
+function wpbp_container($atts, $content = null)
 {
 	return '<div class="container ' . wpbp_get_option('container_class') . '">' . parse_shortcode_content($content) . '</div>';
 }
-add_shortcode('container', 'container_960gs');
+add_shortcode('container', 'wpbp_container');
 
 // [grid cols="6"]...[/grid]
-function grid_960gs($atts, $content = null)
+function wpbp_grid($atts, $content = null)
 {
 	extract(shortcode_atts(array(
 		'cols' => '1'
 	), $atts));
 	return '<div class="grid_' . $cols . '">' . parse_shortcode_content($content) . '</div>';
 }
-add_shortcode('grid', 'grid_960gs');
+add_shortcode('grid', 'wpbp');
 
 // [clear]
-function clear_960gs()
+function wpbp_clear()
 {
 	return '<div class="clear"></div>';
 }
-add_shortcode('clear', 'clear_960gs');
+add_shortcode('clear', 'wpbp_clear');
 
 // [hr]
 function wpbp_hr()
@@ -75,10 +86,10 @@ function wpbp_hr()
 add_shortcode('hr', 'wpbp_hr');
 
 /**
- * MAKE SMARTBOX
+ * SMARTBOX
  */
 
-function make_smartbox($atts, $content = null)
+function wpbp_smartbox($atts, $content = null)
 {
     extract( shortcode_atts( array(
         'id'          => '',
@@ -162,7 +173,7 @@ function make_smartbox($atts, $content = null)
     
     return $box;
 }
-add_shortcode('smartbox', 'make_smartbox');
+add_shortcode('smartbox', 'wpbp_smartbox');
 
 // [article-header]...[/article-header]
 function wpbp_article_header($atts = null, $content = null)
@@ -214,7 +225,7 @@ function shortcode_show_menu($atts, $content, $tag)
 add_shortcode('show-menu', 'shortcode_show_menu');
 
 // [paypal type="buy now" amount="12.99" business="me@mybusiness.com" currency="USD" item_name="Teddy Bear" src="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" target="_blank"]
-function make_paypal($atts, $content = null)
+function wpbp_paypal($atts, $content = null)
 {
     extract(shortcode_atts(array(
         'target'    => '_self',
@@ -252,9 +263,9 @@ function make_paypal($atts, $content = null)
     $paypal = ob_get_clean();
     return parse_shortcode_content($paypal);
 }
-add_shortcode('paypal', 'make_paypal');
+add_shortcode('paypal', 'wpbp_paypal');
 
-function make_responsive_embed($atts)
+function wpbp_responsive_embed($atts)
 {
     extract(shortcode_atts(array(
         'ratio'       => '16x9',
@@ -271,7 +282,7 @@ function make_responsive_embed($atts)
         return '<div class="embed-container" style="padding-bottom:'. $padding_bottom .';"><'. $type .' src="'. $src .'" frameborder="'. $frameborder .'" allowfullscreen></'. $type .'></div>';
     }
 }
-add_shortcode('responsive_embed', 'make_responsive_embed');
+add_shortcode('responsive_embed', 'wpbp_responsive_embed');
 
 function list_term_children($term_id, $taxonomies, $args) {
     $children = get_terms( $taxonomies, array_merge( $args, array( 'parent' => $term_id ) ) );
@@ -287,7 +298,7 @@ function list_term_children($term_id, $taxonomies, $args) {
     }
 }
 
-function make_taxonomy_list($atts)
+function wpbp_taxonomy_list($atts)
 {
     extract(shortcode_atts(array(
         'tax'        => 'post_tag',
@@ -302,9 +313,9 @@ function make_taxonomy_list($atts)
     list_term_children(0, $taxonomies, $args);
     return ob_get_clean();
 }
-add_shortcode('taxonomy_list', 'make_taxonomy_list');
+add_shortcode('taxonomy_list', 'wpbp_taxonomy_list');
 
-function make_spacer($atts)
+function wpbp_spacer($atts)
 {
     extract(shortcode_atts(array(
         'size' => 'medium',
@@ -327,4 +338,4 @@ function make_spacer($atts)
 
     return '<div style="height: ' . $height . '"></div>';
 }
-add_shortcode('spacer', 'make_spacer');
+add_shortcode('spacer', 'wpbp_spacer');
