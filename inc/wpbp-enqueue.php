@@ -6,31 +6,32 @@ function wpbp_register_lib()
 
 	$wpbp_lib = wpbp_get_lib();
 
-  foreach ( $wpbp_lib as $handle => $lib ) {
-    if ( isset( $lib['js'] ) && wpbp_is_valid_var( $lib['js'] ) ) {
-      if ( !isset( $lib['deps'] ) )      $lib['deps']      = array();
-      if ( !isset( $lib['ver'] ) )       $lib['ver']       = false;
-      if ( !isset( $lib['in_footer'] ) ) $lib['in_footer'] = false;
-      wpbp_register_script($handle, $lib['js'], $lib['deps'], $lib['ver'], $lib['in_footer']);
-    }
-    if ( isset( $lib['css'] ) && wpbp_is_valid_var( $lib['css'] ) ) {
-      wpbp_register_style($handle, $lib['css']);
-    }
-  }
+    foreach ( $wpbp_lib as $handle => $lib ) {
+        if ( isset( $lib['js'] ) && wpbp_is_valid_var( $lib['js'] ) ) {
+            if ( !isset( $lib['deps'] ) )      $lib['deps']      = array();
+            if ( !isset( $lib['ver'] ) )       $lib['ver']       = false;
+            if ( !isset( $lib['in_footer'] ) ) $lib['in_footer'] = false;
+            wpbp_register_script($handle, $lib['js'], $lib['deps'], $lib['ver'], $lib['in_footer']);
+        }
 
-  if ( wpbp_get_option('js_files') ) {
-    foreach ( ( preg_split('/\r\n|\r|\n/', wpbp_get_option('js_files')) ) as $js_file ) {
-      wpbp_add_script( pathinfo($js_file, PATHINFO_FILENAME), $js_file );
+        if ( isset( $lib['css'] ) && wpbp_is_valid_var( $lib['css'] ) ) {
+            wpbp_register_style($handle, $lib['css']);
+        }
     }
-  }
 
-  if ( wpbp_get_option('css_files') ) {
-    foreach ( ( preg_split('/\r\n|\r|\n/', wpbp_get_option('css_files')) ) as $css_file ) {
-      wpbp_add_style( pathinfo($css_file, PATHINFO_FILENAME), $css_file );
+    if ( wpbp_get_option('js_files') ) {
+        foreach ( ( preg_split('/\r\n|\r|\n/', wpbp_get_option('js_files')) ) as $js_file ) {
+            wpbp_add_script( pathinfo($js_file, PATHINFO_FILENAME), $js_file );
+        }
     }
-  }
 
-	return;
+    if ( wpbp_get_option('css_files') ) {
+        foreach ( ( preg_split('/\r\n|\r|\n/', wpbp_get_option('css_files')) ) as $css_file ) {
+            wpbp_add_style( pathinfo($css_file, PATHINFO_FILENAME), $css_file );
+        }
+    }
+
+    return;
 }
 
 function wpbp_register_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
@@ -59,20 +60,20 @@ function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $m
 
 function wpbp_enqueue_lib($handles = null)
 {
-  if ( !is_array( $handles ) && is_string( $handles ) ) $handles = array( $handles );
+    if ( !is_array( $handles ) && is_string( $handles ) ) $handles = array( $handles );
 
-  $lib = wpbp_get_lib();
+    $lib = wpbp_get_lib();
 
-  foreach ( $handles as $handle ) {
-    if ( isset( $lib[$handle] ) ) {
-      if ( isset( $lib[$handle]['js'] ) ) {
-        wp_enqueue_script( $handle );
-      }
-      if ( isset( $lib[$handle]['css'] ) ) {
-        wp_enqueue_style( $handle );
-      }
+    foreach ( $handles as $handle ) {
+        if ( isset( $lib[$handle] ) ) {
+            if ( isset( $lib[$handle]['js'] ) ) {
+                wp_enqueue_script( $handle );
+            }
+            if ( isset( $lib[$handle]['css'] ) ) {
+                wp_enqueue_style( $handle );
+            }
+        }
     }
-  }
 }
 
 function wpbp_enqueue_scripts($scripts = array())

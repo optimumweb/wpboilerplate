@@ -2,44 +2,44 @@
 
 if ( !function_exists('set_post_ID') ) {
 
-  /**
-   * set_post_ID
-   * Assigns the current post ID to the passed variable.
-   */
-  function set_post_ID(&$post_ID)
-  {
-    if ( !isset($post_ID) || !is_int($post_ID) ) {
-      $post_ID = get_queried_object_id();
+    /**
+    * set_post_ID
+    * Assigns the current post ID to the passed variable.
+    */
+    function set_post_ID(&$post_ID)
+    {
+        if ( !isset($post_ID) || !is_int($post_ID) ) {
+            $post_ID = get_queried_object_id();
+        }
     }
-  }
 
 }
 
 if ( !function_exists('get_ID_by_slug') ) {
 
-  /**
-   * get_ID_by_slug
-   * Returns the ID of a given post slug
-   */
-  function get_ID_by_slug($slug)
-  {
-    global $wpdb;
-    $post_ID = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '" . $slug . "'");
-    return $post_ID;
-  }
+    /**
+    * get_ID_by_slug
+    * Returns the ID of a given post slug
+    */
+    function get_ID_by_slug($slug)
+    {
+        global $wpdb;
+        $post_ID = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '" . $slug . "'");
+        return $post_ID;
+    }
 
 }
 
 if ( !function_exists('blog_url') ) {
 
-  /**
-   * blog_url
-   * Returns the url of the posts page.
-   */
-  function blog_url()
-  {
-    return get_permalink( get_option('page_for_posts' ) );
-  }
+    /**
+    * blog_url
+    * Returns the url of the posts page.
+    */
+    function blog_url()
+    {
+        return get_permalink( get_option('page_for_posts' ) );
+    }
 
 }
 
@@ -207,21 +207,21 @@ if ( !function_exists('wpbp_error_log') ) {
 // the following function requires WPML to be installed and active
 if ( !function_exists('wpbp_wpml_lang_sel') && function_exists('icl_get_languages') ) {
 
-  function wpbp_wpml_lang_sel()
-  {
-    $languages = icl_get_languages('skip_missing=1&orderby=code');
-    echo '<ul class="menu lang-sel">';
-    if ( count($languages) > 1 ) {
-      foreach( $languages as $lang ) {
-        echo '<li id="lang-' . $lang['language_code'] . '"' . ( $lang['active'] ? ' class="current-menu-item"' : '' ) . '><a' . ( $lang['active'] ? '' : ' rel="alternate"' ) . ' href="' . $lang['url'] . '" hreflang="' . $lang['language_code'] . '">' . $lang['native_name'] . '</a></li>';
-      }
+    function wpbp_wpml_lang_sel()
+    {
+        $languages = icl_get_languages('skip_missing=1&orderby=code');
+        echo '<ul class="menu lang-sel">';
+        if ( count($languages) > 1 ) {
+            foreach( $languages as $lang ) {
+                echo '<li id="lang-' . $lang['language_code'] . '"' . ( $lang['active'] ? ' class="current-menu-item"' : '' ) . '><a' . ( $lang['active'] ? '' : ' rel="alternate"' ) . ' href="' . $lang['url'] . '" hreflang="' . $lang['language_code'] . '">' . $lang['native_name'] . '</a></li>';
+            }
+        }
+        else {
+            echo '<li id="lang-en"' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? ' class="current-menu-item"' : '' ) . '><a' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? '' : ' rel="alternate"' ) . ' href="' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? '#' : '/en/' ) . '" hreflang="en">English</a></li>';
+            echo '<li id="lang-fr"' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? ' class="current-menu-item"' : '' ) . '><a' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? '' : ' rel="alternate"' ) . ' href="' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? '#' : '/' ) . '" hreflang="fr">Fran&ccedil;ais</a></li>';
+        }
+        echo '</ul>';
     }
-    else {
-      echo '<li id="lang-en"' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? ' class="current-menu-item"' : '' ) . '><a' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? '' : ' rel="alternate"' ) . ' href="' . ( ( ICL_LANGUAGE_CODE == 'en' ) ? '#' : '/en/' ) . '" hreflang="en">English</a></li>';
-      echo '<li id="lang-fr"' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? ' class="current-menu-item"' : '' ) . '><a' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? '' : ' rel="alternate"' ) . ' href="' . ( ( ICL_LANGUAGE_CODE == 'fr' ) ? '#' : '/' ) . '" hreflang="fr">Fran&ccedil;ais</a></li>';
-    }
-    echo '</ul>';
-  }
 
 }
 
