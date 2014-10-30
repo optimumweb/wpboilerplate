@@ -42,7 +42,6 @@ body { min-width: 960px; }
 .grid_14, .mobile_grid_14,
 .grid_15, .mobile_grid_15,
 .grid_16, .mobile_grid_16 {
-  float: left;
   position: relative;
   padding: 0 10px;
   min-height: 1px;
@@ -79,6 +78,7 @@ body { min-width: 960px; }
 .colSpace (@index, @colWidth) when (@index > 0) {
   (~".grid_@{index}") {
     width: @colWidth * @index;
+    float: left;
   }
 
   .colSpace(@index - 1, @colWidth);
@@ -92,6 +92,7 @@ body { min-width: 960px; }
 .mobileColSpace (@index, @colWidth) when (@index > 0) {
   (~".mobile_grid_@{index}") {
     width: @colWidth * @index;
+    float: left;
   }
 
   .mobileColSpace(@index - 1, @colWidth);
@@ -314,6 +315,7 @@ html.no-boxsizing {
 
 // RESPONSIVE GRID
 // --------------------------------------------------
+
 
 @media only screen and (min-width: @screenXlarge) {
   body.responsive {
