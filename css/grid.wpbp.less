@@ -26,15 +26,15 @@ body { min-width: 960px; }
 // GRID GLOBAL STYLES
 // --------------------------------------------------
 
-.grid_1,  .mobile_grid_1,
-.grid_2,  .mobile_grid_2,
-.grid_3,  .mobile_grid_3,
-.grid_4,  .mobile_grid_4,
-.grid_5,  .mobile_grid_5,
-.grid_6,  .mobile_grid_6,
-.grid_7,  .mobile_grid_7,
-.grid_8,  .mobile_grid_8,
-.grid_9,  .mobile_grid_9,
+.grid_1, .mobile_grid_1,
+.grid_2, .mobile_grid_2,
+.grid_3, .mobile_grid_3,
+.grid_4, .mobile_grid_4,
+.grid_5, .mobile_grid_5,
+.grid_6, .mobile_grid_6,
+.grid_7, .mobile_grid_7,
+.grid_8, .mobile_grid_8,
+.grid_9, .mobile_grid_9,
 .grid_10, .mobile_grid_10,
 .grid_11, .mobile_grid_11,
 .grid_12, .mobile_grid_12,
@@ -85,6 +85,19 @@ body { min-width: 960px; }
 }
 
 .colSpace (@index, @colWidth) when (@index = 0) {}
+
+// Mobile Column Space
+// -------------------------
+
+.mobileColSpace (@index, @colWidth) when (@index > 0) {
+  (~".mobile_grid_@{index}") {
+    width: @colWidth * @index;
+  }
+
+  .mobileColSpace(@index - 1, @colWidth);
+}
+
+.mobileColSpace (@index, @colWidth) when (@index = 0) {}
 
 // Prefix Space
 // -------------------------
@@ -185,7 +198,6 @@ body { min-width: 960px; }
   // -------------------------
 
   .colSpace(@cols, @colWidth);
-
 
   // Prefix Space
   // -------------------------
@@ -399,37 +411,28 @@ html.no-boxsizing {
     .grid_13,
     .grid_14,
     .grid_15,
-    .grid_16 {
-      float: none;
-      width: 100%;
-
-      .grid_1,
-      .grid_2,
-      .grid_3,
-      .grid_4,
-      .grid_5,
-      .grid_6,
-      .grid_7,
-      .grid_8,
-      .grid_9,
-      .grid_10,
-      .grid_11,
-      .grid_12,
-      .grid_13,
-      .grid_14,
-      .grid_15,
-      .grid_16 {
-        padding: 0;
-      }
-
-      .block_grid > * {
-        padding: 0;
-      }
-    }
-
+    .grid_16,
     .block_grid > * {
       float: none;
       width: 100%;
+    }
+
+    // 12 COLUMNS MOBILE GRID
+    // --------------------------------------------------
+
+    .container_12 {
+      @cols:      12;
+      @colWidth:  8.333333333333333%;
+      .mobileColSpace(@cols, @colWidth);
+    }
+
+    // 16 COLUMNS MOBILE GRID
+    // --------------------------------------------------
+
+    .container_16 {
+      @cols:      16;
+      @colWidth:  6.250%;
+      .mobileColSpace(@cols, @colWidth);
     }
   }
 }
