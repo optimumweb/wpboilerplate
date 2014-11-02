@@ -163,7 +163,7 @@ body {
 .container_16 {
   margin-left: auto;
   margin-right: auto;
-  width: 62.5em;
+  width: 62.5rem;
 }
 .grid_1,
 .mobile_grid_1,
@@ -198,7 +198,7 @@ body {
 .grid_16,
 .mobile_grid_16 {
   position: relative;
-  padding: 0 0.9375em;
+  padding: 0 0.9375rem;
   min-height: 1px;
 }
 .grid_1.center,
@@ -887,43 +887,43 @@ html.no-boxsizing .grid_16,
 html.no-boxsizing .mobile_grid_16 {
   padding: 0;
 }
-@media only screen and (min-width: 1600px) {
+@media only screen and (min-width: 100rem) {
   body.responsive {
-    min-width: 1560px;
+    min-width: 95rem;
   }
   body.responsive .container_12,
   body.responsive .container_16 {
-    width: 1560px;
+    width: 95rem;
   }
 }
-@media only screen and (min-width: 1280px) and (max-width: 1600px) {
+@media only screen and (min-width: 80rem) and (max-width: 100rem) {
   body.responsive {
-    min-width: 1200px;
+    min-width: 75rem;
   }
   body.responsive .container_12,
   body.responsive .container_16 {
-    width: 1200px;
+    width: 75rem;
   }
 }
-@media only screen and (min-width: 980px) and (max-width: 1280px) {
+@media only screen and (min-width: 61.25rem) and (max-width: 80rem) {
   body.responsive {
-    min-width: 960px;
+    min-width: 62.5rem;
   }
   body.responsive .container_12,
   body.responsive .container_16 {
-    width: 960px;
+    width: 62.5rem;
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 980px) {
+@media only screen and (min-width: 48rem) and (max-width: 61.25rem) {
   body.responsive {
-    min-width: 720px;
+    min-width: 45rem;
   }
   body.responsive .container_12,
   body.responsive .container_16 {
-    width: 720px;
+    width: 45rem;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 48rem) {
   body.responsive,
   body.mobile-responsive {
     -webkit-text-size-adjust: none;
@@ -1720,7 +1720,7 @@ form .shield {
 .hide-for-print {
   display: inherit !important;
 }
-@media only screen and (min-width: 1600px) {
+@media only screen and (min-width: 100rem) {
   .hide-for-small,
   .hide-for-medium,
   .hide-for-medium-down,
@@ -1738,7 +1738,7 @@ form .shield {
     display: none !important;
   }
 }
-@media only screen and (max-width: 980px) and (min-width: 768px) {
+@media only screen and (max-width: 61.25rem) and (min-width: 48rem) {
   .hide-for-small,
   .show-for-medium,
   .show-for-medium-down,
@@ -1756,7 +1756,7 @@ form .shield {
     display: none !important;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 48rem) {
   .show-for-small,
   .hide-for-medium,
   .show-for-medium-down,
