@@ -153,7 +153,7 @@ section {
   *behavior: url(http://firecdn.net/libs/box-sizing-polyfill/boxsizing.htc);
 }
 body {
-  min-width: 960px;
+  min-width: 62.5em;
 }
 .container {
   width: auto;
@@ -163,7 +163,7 @@ body {
 .container_16 {
   margin-left: auto;
   margin-right: auto;
-  width: 960px;
+  width: 62.5em;
 }
 .grid_1,
 .mobile_grid_1,
@@ -198,7 +198,7 @@ body {
 .grid_16,
 .mobile_grid_16 {
   position: relative;
-  padding: 0 10px;
+  padding: 0 0.9375em;
   min-height: 1px;
 }
 .grid_1.center,
@@ -787,7 +787,7 @@ body {
   display: block;
   float: left;
   position: relative;
-  padding: 0 10px;
+  padding: 0 0.9375em;
   min-height: 1px;
 }
 .block_grid.by_2 > * {
@@ -1139,7 +1139,6 @@ html.no-boxsizing .mobile_grid_16 {
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
   line-height: 1.4;
   color: #333333;
   background-color: #ffffff;
