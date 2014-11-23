@@ -26,7 +26,7 @@
 				</section>
 				<?php wpbp_main_after(); ?>
 			</div>
-			<div class="<?php wpbp_options('sidebar_class'); ?>">
+			<div class="<?php wpbp_option('sidebar_class'); ?>">
 				<?php wpbp_sidebar_before(); ?>
 				<aside id="sidebar" role="complementary">
 					<?php wpbp_sidebar_inside_before(); ?>
