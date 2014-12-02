@@ -2,9 +2,9 @@
  * WPBP.js
  */
 
-$(function() {
+(function($, window, document) {
 
-    $(document).ready(function() {
+    $(function() {
 
         $('.ir, .imageReplace').imageReplace();
 
@@ -28,35 +28,30 @@ $(function() {
 
         $('.wpbp-tabs').wpbpTabs();
 
+        $(window).bind('load resize', function() {
+
+            $('.valign, .vAlign').vAlign();
+
+        });
+
     });
 
-    $(window).bind('load resize', function() {
 
-        $('.valign, .vAlign').vAlign();
+    /*
+     * imageReplace
+     *
+     * Replaces elements with the 'ir' class with an image specified by 'data-ir'.
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 1.1
+     * @package wpboilerplate
+     */
 
-    });
-
-});
-
-/*
- * imageReplace
- *
- * Replaces elements with the 'ir' class with an image specified by 'data-ir'.
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 1.1
- * @package wpboilerplate
- */
-
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.imageReplace = function() {
+    $.fn.imageReplace = function() {
 
         return this.each(function() {
 
-            var $this = $(this);
-            var ir = $this.data('ir');
+            var $this = $(this),
+                ir    = $this.data('ir');
 
             if ( typeof ir != 'undefined' ) {
                 $this.css('background-image', 'url(' + ir + ')');
@@ -66,71 +61,59 @@ $(function() {
 
     };
 
-});
 
+    /*
+     * vAlign
+     *
+     * Aligns vertically elements with the 'valign' class with reference either the parent element
+     * or another element specified by 'data-ref'.
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 1.1
+     * @package wpboilerplate
+     */
 
-/*
- * vAlign
- *
- * Aligns vertically elements with the 'valign' class with reference either the parent element
- * or another element specified by 'data-ref'.
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 1.1
- * @package wpboilerplate
- */
-
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.vAlign = function() {
+    $.fn.vAlign = function() {
 
         return this.each(function() {
 
-            var $this = $(this);
-            var $ref = ( typeof $this.data('ref') != 'undefined' ) ? $($this.data('ref')) : $this.parent();
-            var thisHeight = $this.outerHeight(), refHeight = $ref.outerHeight();
-            var offset = Math.round( ( refHeight - thisHeight ) / 2 );
+            var $this      = $(this),
+                $ref       = typeof $this.data('ref') != 'undefined' ? $($this.data('ref')) : $this.parent(),
+                thisHeight = $this.outerHeight(), refHeight = $ref.outerHeight(),
+                offset     = Math.round( ( refHeight - thisHeight ) / 2 );
 
-            $this.css('top', offset + 'px');
-            $this.addClass('valigned');
+            $this.css('top', offset + 'px').addClass('valigned');
 
         });
 
     };
 
-});
 
-/*
- * ajaxForm
- *
- * Validate and send a form asynchronously
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 2.1
- * @package wpboilerplate
- */
+    /*
+     * ajaxForm
+     *
+     * Validate and send a form asynchronously
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 2.1
+     * @package wpboilerplate
+     */
 
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.ajaxForm = function() {
+    $.fn.ajaxForm = function() {
 
         return this.each(function() {
 
             // define form elements
-            var $form = $(this);
-            var $formFields = $form.find('.fields');
-            var $formSuccess = $form.find('.success');
-            var $formError = $form.find('.error');
-            var $formWarning = $form.find('.warning');
-            var $formLoading = $form.find('.loading');
+            var $form        = $(this),
+                $formFields  = $form.find('.fields'),
+                $formSuccess = $form.find('.success'),
+                $formError   = $form.find('.error'),
+                $formWarning = $form.find('.warning'),
+                $formLoading = $form.find('.loading');
 
             // define form properties
-            var formId = $form.attr('id');
-            var formAction = $form.attr('action');
-            var formMethod = $form.attr('method');
-            var formEnctype = $form.attr('enctype');
+            var formId      = $form.attr('id'),
+                formAction  = $form.attr('action'),
+                formMethod  = $form.attr('method'),
+                formEnctype = $form.attr('enctype');
 
             // hide response messages and loading
             $formSuccess.hide();
@@ -145,8 +128,11 @@ $(function() {
                     formStarted = true;
                     $form.addClass('started');
                     // trigger google analytics
-                    if ( typeof _gaq != 'undefined' ) {
+                    if ( typeof _gaq == 'object' ) {
                         _gaq.push(['_trackEvent', 'AjaxForms', 'Start', formId]);
+                    }
+                    else if ( typeof ga == 'function' ) {
+                        ga('send', 'event', 'AjaxForms', 'Start', formId);
                     }
                 }
             });
@@ -222,24 +208,33 @@ $(function() {
                                 $formFields.hide();
                                 $form.trigger('success').addClass('sent');
                                 // trigger google analytics
-                                if ( typeof _gaq != 'undefined' ) {
+                                if ( typeof _gaq == 'object' ) {
                                     _gaq.push(['_trackEvent', 'AjaxForms', 'Success', formId]);
+                                }
+                                else if ( typeof ga == 'function' ) {
+                                    ga('send', 'event', 'AjaxForms', 'Success', formId);
                                 }
                             },
                             400: function() {
                                 $formWarning.fadeIn();
                                 $form.trigger('warning');
                                 // trigger google analytics
-                                if ( typeof _gaq != 'undefined' ) {
+                                if ( typeof _gaq == 'object' ) {
                                     _gaq.push(['_trackEvent', 'AjaxForms', 'Warning', formId]);
+                                }
+                                else if ( typeof ga == 'function' ) {
+                                    ga('send', 'event', 'AjaxForms', 'Warning', formId);
                                 }
                             },
                             500: function() {
                                 $form.trigger('error');
                                 $formError.fadeIn();
                                 // trigger google analytics
-                                if ( typeof _gaq != 'undefined' ) {
+                                if ( typeof _gaq == 'object' ) {
                                     _gaq.push(['_trackEvent', 'AjaxForms', 'Error', formId]);
+                                }
+                                else if ( typeof ga == 'function' ) {
+                                    ga('send', 'event', 'AjaxForms', 'Error', formId);
                                 }
                             }
                         }
@@ -265,65 +260,52 @@ $(function() {
         });
     };
 
-});
 
+    /*
+     * center
+     *
+     * Centers an element in the window
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 1.1
+     * @package wpboilerplate
+     */
 
-/*
- * center
- *
- * Centers an element in the window
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 1.1
- * @package wpboilerplate
- */
-
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.center = function() {
+    $.fn.center = function() {
 
         return this.each(function() {
 
-            var $this      = $(this);
-            var thisWidth  = $this.outerWidth(true);
-            var thisHeight = $this.outerHeight(true);
+            var $this        = $(this),
+                thisWidth    = $this.outerWidth(true),
+                thisHeight   = $this.outerHeight(true),
+                $window      = $(window),
+                windowWidth  = $window.width(),
+                windowHeight = $window.height(),
+                scrollTop    = $window.scrollTop();
 
-            var $window      = $(window);
-            var windowWidth  = $window.width();
-            var windowHeight = $window.height();
-            var scrollTop    = $window.scrollTop();
-
-            var offsetTop  = Math.max( Math.round( ( windowHeight - thisHeight ) / 2 ) + scrollTop, 0 );
-            var offsetLeft = Math.max( Math.round( ( windowWidth - thisWidth ) / 2 ), 0 );
+            var offsetTop  = Math.max( Math.round( ( windowHeight - thisHeight ) / 2 ) + scrollTop, 0),
+                offsetLeft = Math.max( Math.round( ( windowWidth - thisWidth ) / 2 ), 0 );
 
             $this.css({
                 position: 'absolute',
-                top: offsetTop + 'px',
-                left: offsetLeft + 'px'
+                top:      offsetTop + 'px',
+                left:     offsetLeft + 'px'
             });
 
         });
 
     };
 
-});
 
+    /*
+     * simpleSlider
+     *
+     * Simplest jQuery slider possible. Takes an element and cycles through its children with fadeIn/fadeOut effects.
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 2.0
+     * @package wpboilerplate
+     */
 
-/*
- * simpleSlider
- *
- * Simplest jQuery slider possible. Takes an element and cycles through its children with fadeIn/fadeOut effects.
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 2.0
- * @package wpboilerplate
- */
-
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.simpleSlider = function() {
+    $.fn.simpleSlider = function() {
 
         return this.each(function() {
 
@@ -447,23 +429,17 @@ $(function() {
 
     };
 
-});
 
+    /*
+     * simpleCarousel
+     *
+     * Simple jQuery Carousel.
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 1.0
+     * @package wpboilerplate
+     */
 
-/*
- * simpleCarousel
- *
- * Simple jQuery Carousel.
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 1.0
- * @package wpboilerplate
- */
-
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.simpleCarousel = function() {
+    $.fn.simpleCarousel = function() {
 
         return this.each(function() {
 
@@ -488,37 +464,29 @@ $(function() {
 
     };
 
-});
 
+    /*
+     * smartbox
+     *
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 2.1
+     * @package wpboilerplate
+     */
 
-/*
- * smartbox
- *
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 2.1
- * @package wpboilerplate
- */
-
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.smartbox = function(options, callback) {
+    $.fn.smartbox = function(options, callback) {
 
         return this.each(function() {
 
-            var $this = $(this);
-            var $title = $this.find('.title');
-            var $content = $this.find('.content');
-
-            var id = $this.attr('id');
+            var $this    = $(this),
+                $title   = $this.find('.title'),
+                $content = $this.find('.content'),
+                id       = $this.attr('id');
 
             // class=ajax: content loads async.
             if ( $this.hasClass('ajax') ) {
 
-                var $ajaxTrigger = $this.find('a.ajax-trigger').first();
-
-                var ajaxSrc = $this.data('src').replace('#',' #') || $ajaxTrigger.attr('href').replace('#',' #');
+                var $ajaxTrigger = $this.find('a.ajax-trigger').first(),
+                    ajaxSrc      = $this.data('src').replace('#',' #') || $ajaxTrigger.attr('href').replace('#',' #');
 
                 // class=ajax+lazy: content loads async. on trigger
                 if ( $this.hasClass('lazy') ) {
@@ -612,23 +580,17 @@ $(function() {
 
     };
 
-});
 
+    /*
+     * dropdownNav
+     *
+     * Converts a list into a select dropdown for navigation
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 0.99
+     * @package wpboilerplate
+     */
 
-/*
- * dropdownNav
- *
- * Converts a list into a select dropdown for navigation
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 0.99
- * @package wpboilerplate
- */
-
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.dropdownNav = function() {
+    $.fn.dropdownNav = function() {
 
         return this.each(function() {
 
@@ -652,28 +614,22 @@ $(function() {
 
     };
 
-});
 
+    /*
+     * sameHeightAs
+     *
+     * Makes an element the same height as another
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 0.1
+     * @package wpboilerplate
+     */
 
-/*
- * sameHeightAs
- *
- * Makes an element the same height as another
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 0.1
- * @package wpboilerplate
- */
-
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.sameHeightAs = function() {
+    $.fn.sameHeightAs = function() {
 
         return this.each(function() {
 
-            var $this = $(this);
-            var ref = $this.data('ref');
+            var $this = $(this),
+                ref   = $this.data('ref');
 
             if ( ref && $(ref).size() ) {
                 var $ref = $(ref);
@@ -684,38 +640,32 @@ $(function() {
 
     };
 
-});
 
+    /*
+     * wpbpModal
+     *
+     *
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 0.2
+     * @package wpboilerplate
+     */
 
-/*
- * wpbpModal
- *
- *
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 0.2
- * @package wpboilerplate
- */
-
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.wpbpModal = function() {
+    $.fn.wpbpModal = function() {
 
         return this.each(function() {
 
-            var fadeDuration = 250;
-            var blanketOpacity = 0.5;
+            var fadeDuration   = 250,
+                blanketOpacity = 0.5;
 
-            var $blanket = $('#wpbp-modal-blanket');
-            var $anchors = $('a[href^="#"]');
-            var $modalBoxes = $('.wpbp-modal-box');
+            var $blanket    = $('#wpbp-modal-blanket'),
+                $anchors    = $('a[href^="#"]'),
+                $modalBoxes = $('.wpbp-modal-box');
 
             $anchors.each(function() {
 
-                var $this = $(this);
-                var href = $this.attr('href');
-                var $href = $(href);
+                var $this = $(this),
+                    href  = $this.attr('href'),
+                    $href = $(href);
 
                 if ( $href.size() == 1 && $href.hasClass('wpbp-modal-box') ) {
                     $this.data('wpbp-target-modal-box', href).addClass('wpbp-modal-trigger');
@@ -755,13 +705,14 @@ $(function() {
 
                 e.preventDefault();
 
-                var $this = $(this);
-                var target = $this.data('wpbp-target-modal-box');
-                var $target = $( target );
+                var $this   = $(this),
+                    target  = $this.data('wpbp-target-modal-box'),
+                    $target = $( target );
 
                 if ( $target.size() == 0 || !$target.hasClass('wpbp-modal-box') ) {
                     console.log('Error: Target "' + target + '" is not a modal box!');
                 }
+
                 else {
 
                     if ( $this.hasClass('wpbp-modal-open') ) {
@@ -800,23 +751,17 @@ $(function() {
 
     };
 
-});
 
+    /*
+     * wpbpTabs
+     *
+     *
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 0.1
+     * @package wpboilerplate
+     */
 
-/*
- * wpbpTabs
- *
- *
- * @author Jonathan Roy <jroy@optimumweb.ca>
- * @version 0.1
- * @package wpboilerplate
- */
-
-$(function() {
-
-    "use strict"; // jshint ;_;
-
-    jQuery.fn.wpbpTabs = function() {
+    $.fn.wpbpTabs = function() {
 
         return this.each(function() {
 
@@ -885,4 +830,4 @@ $(function() {
 
     };
 
-});
+}(window.jQuery, window, document));
