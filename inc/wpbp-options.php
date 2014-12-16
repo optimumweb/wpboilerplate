@@ -110,6 +110,7 @@ function wpbp_get_default_theme_options()
 	$default_theme_options = array(
         'google_analytics_id'   => '',
         'google_tag_manager_id' => '',
+        'optimizely_project_id' => '',
 		'css_framework'         => $default_framework,
 		'container_class'       => $default_framework_settings['classes']['container'],
 		'main_class'            => $default_framework_settings['classes']['main'],
@@ -164,6 +165,16 @@ function wpbp_theme_options_render_page()
                             <input type="text" name="wpbp_theme_options[google_tag_manager_id]" id="google_tag_manager_id" value="<?php echo esc_attr($wpbp_options['google_tag_manager_id']); ?>" />
                             <br />
                             <small class="description"><?php printf(__('Enter your GTM-XXXX ID', 'wpbp')); ?></small>
+                        </fieldset>
+                    </td>
+                </tr>
+
+                <tr valign="top"><th scope="row"><?php _e('Optimizely Project ID', 'wpbp'); ?></th>
+                    <td>
+                        <fieldset><legend class="screen-reader-text"><span><?php _e('Optimizely Project ID', 'wpbp'); ?></span></legend>
+                            <input type="text" name="wpbp_theme_options[optimizely_project_id]" id="optimizely_project_id" value="<?php echo esc_attr($wpbp_options['optimizely_project_id']); ?>" />
+                            <br />
+                            <small class="description"><?php printf(__('Enter your Optimizely Project ID', 'wpbp')); ?></small>
                         </fieldset>
                     </td>
                 </tr>

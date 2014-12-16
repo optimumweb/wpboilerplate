@@ -1,103 +1,91 @@
 <?php
 
 add_action('init',            'wpbp_register_lib');
-add_action('wpbp_head',       'wpbp_google_analytics_content_experiment');
-add_action('wpbp_head',       'wpbp_google_analytics');
-add_action('wpbp_head',       'wpbp_google_tag_manager');
-add_action('wpbp_head',       'wpbp_custom_css');
-add_action('wpbp_head',       'wpbp_favicon');
-add_action('wpbp_footer',     'wpbp_custom_js');
-add_action('wpbp_footer',     'wpbp_add_post_js');
+add_action('wpbp_head',       'wpbp_insert_optimizely');
+add_action('wpbp_head',       'wpbp_insert_google_analytics');
+add_action('wpbp_head',       'wpbp_insert_google_tag_manager');
+add_action('wpbp_head',       'wpbp_insert_custom_css');
+add_action('wpbp_head',       'wpbp_insert_favicon');
+add_action('wpbp_footer',     'wpbp_insert_custom_js');
+add_action('wpbp_footer',     'wpbp_insert_post_js');
 add_action('wpbp_loop_after', 'wpbp_clear');
 
-function wpbp_google_analytics()
+function wpbp_insert_optimizely()
 {
-    $id = wpbp_get_option('google_analytics_id');
-    if ( $id ) : ?>
+    $project_id = wpbp_get_option('optimizely_project_id');
+    if ( $project_id ) {
+        echo '<script src="//cdn.optimizely.com/js/' . $project_id . '.js"></script>' . PHP_EOL;
+    }
+}
+
+function wpbp_insert_google_analytics()
+{
+    $ga_id = wpbp_get_option('google_analytics_id');
+    if ( $ga_id ) : ?>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', '<?php echo $id; ?>', 'auto');
+    ga('create', '<?php echo $ga_id; ?>', 'auto');
     ga('send', 'pageview');
 
 </script>
 <?php endif;
 }
 
-function wpbp_google_analytics_content_experiment()
+function wpbp_insert_google_tag_manager()
 {
-    set_post_ID($post_ID);
-    $test_key = get_post_meta($post_ID, 'ga_test_key', true);
-    if ( $test_key ) : ?>
-<!-- Google Analytics Content Experiment code -->
-<script>function utmx_section(){}function utmx(){}(function(){var
-k='<?php echo $test_key; ?>',d=document,l=d.location,c=d.cookie;
-if(l.search.indexOf('utm_expid='+k)>0)return;
-function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
-indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
-length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
-'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
-'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
-'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
-valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-</script><script>utmx('url','A/B');</script>
-<!-- End of Google Analytics Content Experiment code -->
-<?php endif;
-}
-
-function wpbp_google_tag_manager()
-{
-    $id = esc_attr( wpbp_get_option('google_tag_manager_id') );
-    if ( $id !== '' ) : ?>
+    $gtm_id = esc_attr( wpbp_get_option('google_tag_manager_id') );
+    if ( $gtm_id !== '' ) : ?>
 <!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $id; ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','<?php echo $id; ?>');</script>
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $gtm_id; ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','<?php echo $gtm_id; ?>');</script>
 <!-- End Google Tag Manager -->
     <?php endif;
 }
 
-function wpbp_custom_css()
+function wpbp_insert_custom_css()
 {
-    if ( wpbp_get_option('custom_css') ) :
-?>
+    $custom_css = wpbp_get_option('custom_css');
+
+    if ( $custom_css ) : ?>
 <style type="text/css">
-<?php wpbp_option('custom_css'); ?>
+<?php echo $custom_css; ?>
 </style>
-<?php
-    endif;
+<?php endif;
 }
 
-function wpbp_custom_js()
+function wpbp_insert_custom_js()
 {
-    if ( wpbp_get_option('custom_js') ) :
-?>
+    $custom_js = wpbp_get_option('custom_js');
+
+    if ( $custom_js ) : ?>
 <script type="text/javascript">
-<?php wpbp_option('custom_js'); ?>
+<?php echo $custom_js; ?>
 </script>
-<?php
-    endif;
+<?php endif;
 }
 
-function wpbp_add_post_js()
+function wpbp_insert_post_js()
 {
     set_post_ID($post_ID);
-    if ( get_post_meta($post_ID, 'js', true) ) :
-?>
-    <script type="text/javascript">
-        <?php echo get_post_meta($post_ID, 'js', true); ?>
-    </script>
-<?php
-    endif;
+    $post_js = get_post_meta($post_ID, 'js', true);
+
+    if ( $post_js ) : ?>
+<script type="text/javascript">
+<?php echo $post_js; ?>
+</script>
+<?php endif;
 }
 
-function wpbp_favicon()
+function wpbp_insert_favicon()
 {
-    if ( wpbp_get_option('favicon') ) {
-        echo '<link rel="icon" type="image/png" href="' . wpbp_get_option('favicon') . '">';
+    $favicon = wpbp_get_option('favicon');
+
+    if ( $favicon) {
+        echo '<link rel="icon" type="image/png" href="' . $favicon . '">';
     }
 }
 
