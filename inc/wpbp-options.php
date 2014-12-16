@@ -296,6 +296,7 @@ function wpbp_theme_options_validate($input)
 
     $output['google_analytics_id']   = isset($input['google_analytics_id'])   ? $input['google_analytics_id']   : null;
     $output['google_tag_manager_id'] = isset($input['google_tag_manager_id']) ? $input['google_tag_manager_id'] : null;
+    $output['optimizely_project_id'] = isset($input['optimizely_project_id']) ? $input['optimizely_project_id'] : null;
 	$output['responsive']            = isset($input['responsive'])            ? $input['responsive']            : null;
 	$output['main_class']            = isset($input['main_class'])            ? $input['main_class']            : null;
 	$output['sidebar_class']         = isset($input['sidebar_class'])         ? $input['sidebar_class']         : null;
