@@ -2,9 +2,9 @@
 
 add_action('init', 'wpbp_register_lib');
 
+add_action('wpbp_head', 'wpbp_insert_optimizely');
 add_action('wpbp_head', 'wpbp_insert_google_analytics');
 add_action('wpbp_head', 'wpbp_insert_google_tag_manager');
-add_action('wpbp_head', 'wpbp_insert_optimizely');
 add_action('wpbp_head', 'wpbp_insert_custom_css');
 add_action('wpbp_head', 'wpbp_insert_favicon');
 
