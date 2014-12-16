@@ -8,6 +8,8 @@
 
 <head>
 
+<?php wpbp_head_inside_before(); ?>
+
 <meta charset="utf-8">
 
 <?php if ( in_array(wpbp_get_option('responsive'), array('responsive', 'mobile-responsive')) ) : ?>
@@ -21,6 +23,8 @@
 <?php wp_head(); ?>
 
 <?php wpbp_head(); ?>
+
+<?php wpbp_head_inside_after(); ?>
 
 </head>
 
