@@ -316,9 +316,6 @@
                 slideshow  = $this.data('slideshow') || "yes",
                 $slides    = $this.find('.slides').children(),
                 N          = $slides.size(),
-                //$fireNext  = $this.find('.next'),
-                //$firePrev  = $this.find('.prev'),
-                //$fireThat  = $this.find('.fireThat'),
                 paused     = false,
                 now        = new Date(),
                 fireTime   = new Date(0),
@@ -333,8 +330,6 @@
 
             if ( N <= 1 ) {
                 slideshow = "no";
-                $fireNext.hide();
-                $firePrev.hide();
             }
 
             $slides.each(function() {
