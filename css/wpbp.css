@@ -787,7 +787,7 @@ body {
   display: block;
   float: left;
   position: relative;
-  padding: 0 0.9375em;
+  padding: 0 0.9375em 0.5em;
   min-height: 1px;
 }
 .block_grid.by_2 > * {
