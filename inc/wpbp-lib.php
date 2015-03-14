@@ -126,7 +126,7 @@ function wpbp_get_lib($which = null)
             'deps' => array('jquery', 'inview'),
             'ver'  => '1.0'
         ),
-        'magnificPopup' => array(
+        'magnific-popup' => array(
             'js'   => TEMPLATE_URI . '/lib/magnific-popup/jquery.magnific-popup.min.js',
             'css'  => TEMPLATE_URI . '/lib/magnific-popup/magnific-popup.css',
             'deps' => array('jquery'),
