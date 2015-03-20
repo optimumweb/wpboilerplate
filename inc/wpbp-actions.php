@@ -4,11 +4,11 @@ add_action('init', 'wpbp_register_lib');
 
 add_action('wpbp_head', 'wpbp_insert_optimizely');
 add_action('wpbp_head', 'wpbp_insert_google_analytics');
-add_action('wpbp_head', 'wpbp_insert_google_remarketing_tag');
 add_action('wpbp_head', 'wpbp_insert_google_tag_manager');
 add_action('wpbp_head', 'wpbp_insert_custom_css');
 add_action('wpbp_head', 'wpbp_insert_favicon');
 
+add_action('wpbp_footer', 'wpbp_insert_google_remarketing_tag');
 add_action('wpbp_footer', 'wpbp_insert_custom_js');
 add_action('wpbp_footer', 'wpbp_insert_post_js');
 
