@@ -109,6 +109,7 @@ function wpbp_get_default_theme_options()
 	$default_framework_settings = $wpbp_css_frameworks[$default_framework];
 	$default_theme_options = array(
         'google_analytics_id'   => '',
+        'google_conversion_id'  => '',
         'google_tag_manager_id' => '',
         'optimizely_project_id' => '',
 		'css_framework'         => $default_framework,
@@ -155,6 +156,16 @@ function wpbp_theme_options_render_page()
                             <input type="text" name="wpbp_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($wpbp_options['google_analytics_id']); ?>" />
                             <br />
                             <small class="description"><?php printf(__('Enter your UA-XXXXX-X ID', 'wpbp')); ?></small>
+                        </fieldset>
+                    </td>
+                </tr>
+
+                <tr valign="top"><th scope="row"><?php _e('Google Remarketing Tag ID', 'wpbp'); ?></th>
+                    <td>
+                        <fieldset><legend class="screen-reader-text"><span><?php _e('Google Remarketing Tag ID', 'wpbp'); ?></span></legend>
+                            <input type="text" name="wpbp_theme_options[google_remarketing_id]" id="google_remarketing_id" value="<?php echo esc_attr($wpbp_options['google_remarketing_id']); ?>" />
+                            <br />
+                            <small class="description"><?php printf(__('Enter your Google Remarketing Tag ID', 'wpbp')); ?></small>
                         </fieldset>
                     </td>
                 </tr>
@@ -295,6 +306,7 @@ function wpbp_theme_options_validate($input)
 	$output['container_class'] = $wpbp_css_frameworks[$output['css_framework']]['classes']['container'];
 
     $output['google_analytics_id']   = isset($input['google_analytics_id'])   ? $input['google_analytics_id']   : null;
+    $output['google_remarketing_id'] = isset($input['google_remarketing_id']) ? $input['google_remarketing_id'] : null;
     $output['google_tag_manager_id'] = isset($input['google_tag_manager_id']) ? $input['google_tag_manager_id'] : null;
     $output['optimizely_project_id'] = isset($input['optimizely_project_id']) ? $input['optimizely_project_id'] : null;
 	$output['responsive']            = isset($input['responsive'])            ? $input['responsive']            : null;
