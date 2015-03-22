@@ -1,7 +1,17 @@
 wpboilerplate
 =============
 
-wpboilerplate is a powerful quickstart WordPress theme made for developers that's based on Roots, HTML5 Boilerplate, 960 Grid System, LessCSS and Starkers that will help you rapidly create sites.
+wpboilerplate is a powerful quickstart WordPress theme made for developers. It's based on Roots, HTML5 Boilerplate, 960 Grid System, LessCSS and Starkers. that will help you rapidly create sites.
+
+## Installation
+
+Install wpboilerplate under the wp-content/themes directory like you would with any theme.
+
+    git clone git://github.com/optimumweb/wpboilerplate.git
+
+Then, install the [wpboilerplate-child](https://github.com/optimumweb/wpboilerplate-child) child-theme under the same wp-content/themes directory. Make sure to name this child-theme to your theme name.
+
+    git clone git://github.com/optimumweb/wpboilerplate-child.git my-child-theme
 
 ## Author
 
