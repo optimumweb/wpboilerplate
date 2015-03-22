@@ -146,5 +146,5 @@ function wpbp_get_lib($which = null)
         )
     );
 
-    return isset( $which, $wpbp_lib[$which] ) ? $wpbp_lib[$which] : $wpbp_lib;
+    return isset($which, $wpbp_lib[$which]) ? $wpbp_lib[$which] : $wpbp_lib;
 }
