@@ -18,7 +18,7 @@ function wpbp_insert_optimizely()
 {
     $project_id = wpbp_get_option('optimizely_project_id');
 
-    $file = 'tags/optimizely.php';
+    $file = TEMPLATE_DIRECTORY . '/inc/tags/optimizely.php';
 
     if ( !empty($project_id) && file_exists($file) ) {
         include($file);
