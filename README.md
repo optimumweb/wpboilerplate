@@ -1,7 +1,7 @@
 wpboilerplate
 =============
 
-wpboilerplate is a powerful quickstart WordPress theme made for developers. It's based on Roots, HTML5 Boilerplate, 960 Grid System, LessCSS and Starkers. It will help you rapidly create sites!
+wpboilerplate is a powerful quickstart WordPress theme made for developers. It's based on [Roots](https://roots.io), [HTML5 Boilerplate](https://html5boilerplate.com), [960 Grid System](http://960.gs), [LessCSS](http://lesscss.org) and [Starkers](http://viewportindustries.com/products/starkers). It will help you rapidly create sites!
 
 ## Installation
 
