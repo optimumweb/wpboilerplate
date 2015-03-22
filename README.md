@@ -1,7 +1,9 @@
 wpboilerplate
 =============
 
-wpboilerplate is a powerful quickstart WordPress theme made for developers. It's based on [Roots](https://roots.io), [HTML5 Boilerplate](https://html5boilerplate.com), [960 Grid System](http://960.gs), [LessCSS](http://lesscss.org) and [Starkers](http://viewportindustries.com/products/starkers). It will help you rapidly create sites!
+wpboilerplate is a powerful quickstart [WordPress](https://wordpress.org) theme made for developers. It's based on [Roots](https://roots.io), [HTML5 Boilerplate](https://html5boilerplate.com), [960 Grid System](http://960.gs), [LessCSS](http://lesscss.org) and [Starkers](http://viewportindustries.com/products/starkers). It will help you rapidly create sites!
+
+Source: https://github.com/optimumweb/wpboilerplate
 
 ## Installation
 
@@ -14,6 +16,12 @@ Then, install the [wpboilerplate-child](https://github.com/optimumweb/wpboilerpl
     git clone git://github.com/optimumweb/wpboilerplate-child.git my-child-theme
 
 You should never have to modify the wpboilerplate theme. You should be working from the wpboilerplate-child theme to customize it to your needs.
+
+To make sure you won't be modifying the original wpboilerplate-child theme, you should remove the origin and add yours.
+
+    cd my-child-theme
+    git remote rm origin
+    git remote add origin <my_child_theme_url>
 
 ## Author
 
