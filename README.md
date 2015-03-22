@@ -5,7 +5,7 @@ wpboilerplate is a powerful quickstart WordPress theme made for developers. It's
 
 ## Installation
 
-Install wpboilerplate under the wp-content/themes directory like you would with any theme.
+Install wpboilerplate under the *wp-content/themes* directory like you would with any theme.
 
     git clone git://github.com/optimumweb/wpboilerplate.git
 
