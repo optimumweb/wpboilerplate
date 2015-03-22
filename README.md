@@ -13,6 +13,8 @@ Then, install the [wpboilerplate-child](https://github.com/optimumweb/wpboilerpl
 
     git clone git://github.com/optimumweb/wpboilerplate-child.git my-child-theme
 
+You should never have to modify the wpboilerplate theme. You should be working from the wpboilerplate-child theme to customize it to your needs.
+
 ## Author
 
 [Jonathan Roy](https://twitter.com/jonathanroy), [OptimumWeb](http://optimumweb.ca)
