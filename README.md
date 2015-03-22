@@ -9,7 +9,7 @@ Install wpboilerplate under the *wp-content/themes* directory like you would wit
 
     git clone git://github.com/optimumweb/wpboilerplate.git
 
-Then, install the [wpboilerplate-child](https://github.com/optimumweb/wpboilerplate-child) child-theme under the same wp-content/themes directory. Make sure to name this child-theme to your theme name.
+Then, install the [wpboilerplate-child](https://github.com/optimumweb/wpboilerplate-child) child-theme under the same *wp-content/themes* directory. Make sure to name this child-theme to your theme name.
 
     git clone git://github.com/optimumweb/wpboilerplate-child.git my-child-theme
 
