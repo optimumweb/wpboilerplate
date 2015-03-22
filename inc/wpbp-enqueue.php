@@ -7,14 +7,14 @@ function wpbp_register_lib()
 	$wpbp_lib = wpbp_get_lib();
 
     foreach ( $wpbp_lib as $handle => $lib ) {
-        if ( isset( $lib['js'] ) && wpbp_is_valid_var( $lib['js'] ) ) {
+        if ( !empty($lib['js']) ) {
             if ( !isset( $lib['deps'] ) )      $lib['deps']      = array();
             if ( !isset( $lib['ver'] ) )       $lib['ver']       = false;
             if ( !isset( $lib['in_footer'] ) ) $lib['in_footer'] = false;
             wpbp_register_script($handle, $lib['js'], $lib['deps'], $lib['ver'], $lib['in_footer']);
         }
 
-        if ( isset( $lib['css'] ) && wpbp_is_valid_var( $lib['css'] ) ) {
+        if ( !empty($lib['css']) ) {
             wpbp_register_style($handle, $lib['css']);
         }
     }

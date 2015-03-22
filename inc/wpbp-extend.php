@@ -51,12 +51,12 @@ if ( !function_exists('get_author') ) {
 	 */
 	function get_author($field = null, $ID = null)
 	{
-		if ( isset( $ID ) && is_int($ID) ) {
+		if ( isset($ID) && is_int($ID) ) {
 			$author = get_user_by('id', $ID);
 		} elseif ( is_author() ) {
 			$author = get_user_by('slug', get_query_var('author_name'));
 		}
-		return ( isset($field) ) ? ( ( isset( $author->$field ) ) ? $author->$field : false ) : $author ;
+		return isset($field) ? ( isset($author->$field) ? $author->$field : false ) : $author ;
 	}
 
 }
@@ -159,7 +159,7 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 	{
         set_post_ID($post_ID);
 		$post = get_post($post_ID);
-		$excerpt = ( isset( $post->post_excerpt ) && strlen( $post->post_excerpt ) > 0 ) ? $post->post_excerpt : substr( strip_tags( $post->post_content ), 0, 250 ) . '...';
+		$excerpt = ( isset($post->post_excerpt) && strlen($post->post_excerpt) > 0 ) ? $post->post_excerpt : substr( strip_tags( $post->post_content ), 0, 250 ) . '...';
 		return $excerpt;
 	}
 
@@ -171,7 +171,7 @@ if ( !function_exists('wpbp_error_log') ) {
     {
         $wp_debug_file_path = WP_CONTENT_DIR . '/debug.log';
 
-        if ( is_writeable( $wp_debug_file_path ) ) {
+        if ( is_writeable($wp_debug_file_path) ) {
             if ( $handle = @fopen($wp_debug_file_path, 'a') ) {
                 $result = @fwrite($handle, $message . PHP_EOL);
                 @fclose( $handle );
@@ -211,7 +211,7 @@ if ( !function_exists('wpbp_wpml_lang_sel') && function_exists('icl_get_language
     {
         $languages = icl_get_languages('skip_missing=1&orderby=code');
         echo '<ul class="menu lang-sel">';
-        if ( count($languages) > 1 ) {
+        if ( is_array($languages) && count($languages) > 1 ) {
             foreach( $languages as $lang ) {
                 echo '<li id="lang-' . $lang['language_code'] . '"' . ( $lang['active'] ? ' class="current-menu-item"' : '' ) . '><a' . ( $lang['active'] ? '' : ' rel="alternate"' ) . ' href="' . $lang['url'] . '" hreflang="' . $lang['language_code'] . '">' . $lang['native_name'] . '</a></li>';
             }

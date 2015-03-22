@@ -5,14 +5,17 @@
  * Displays a vCard.
  */
 
-class wpbp_vcard extends WP_Widget {
+class wpbp_vcard extends WP_Widget
+{
 
-	function wpbp_vcard() {
+	function wpbp_vcard()
+    {
 		$widget_ops = array('description' => 'Displays a vCard');
 		parent::WP_Widget(false, __('WPBP: vCard', 'wpbp'), $widget_ops);
 	}
    
-	function widget($args, $instance) {  
+	function widget($args, $instance)
+    {
 		extract($args);
 		extract($instance);
 
@@ -66,14 +69,15 @@ class wpbp_vcard extends WP_Widget {
 			<?php endif; ?>
 		</p>        
     <?php echo $after_widget;
-        
 	}
 	
-	function update($new_instance, $old_instance) {                
+	function update($new_instance, $old_instance)
+    {
 		return $new_instance;
 	}
 
-	function form($instance) {
+	function form($instance)
+    {
 		global $current_user;
 		get_currentuserinfo();
 		$fields = array(
@@ -184,8 +188,7 @@ class wpbp_vcard extends WP_Widget {
 		);
 		wpbp_build_form($fields, $instance);
 	}
-} 
-
+}
 register_widget('wpbp_vcard');
 
 
@@ -194,14 +197,17 @@ register_widget('wpbp_vcard');
  * Displays a navigation menu based on taxonomies and their respective posts.
  */
 
-class wpbp_tax_nav extends WP_Widget {
+class wpbp_tax_nav extends WP_Widget
+{
 
-	function wpbp_tax_nav() {
+	function wpbp_tax_nav()
+    {
 		$widget_ops = array('description' => 'Displays a navigation menu based on taxonomies and their respective posts.');
 		parent::WP_Widget(false, __('WPBP: Taxonomy Navigation', 'wpbp'), $widget_ops);
 	}
 
-	function widget($args, $instance) {
+	function widget($args, $instance)
+    {
 		extract($args);
 		extract($instance);
 
@@ -279,11 +285,13 @@ class wpbp_tax_nav extends WP_Widget {
 
 	}
 
-	function update($new_instance, $old_instance) {
+	function update($new_instance, $old_instance)
+    {
 		return $new_instance;
 	}
 
-	function form($instance) {
+	function form($instance)
+    {
 		$fields = array(
 			'title' => array(
 				'id' => $this->get_field_id('title'),
@@ -384,7 +392,6 @@ class wpbp_tax_nav extends WP_Widget {
 		wpbp_build_form($fields, $instance);
 	}
 }
-
 register_widget('wpbp_tax_nav');
 
 
@@ -393,14 +400,17 @@ register_widget('wpbp_tax_nav');
  * Displays the latest posts
  */
 
-class wpbp_latest_posts extends WP_Widget {
+class wpbp_latest_posts extends WP_Widget
+{
 
-    function wpbp_latest_posts() {
+    function wpbp_latest_posts()
+    {
 		$widget_ops = array('description' => 'Displays the latest posts');
 		parent::WP_Widget(false, __('WPBP: Latest Posts', 'wpbp'), $widget_ops);
 	}
 
-	function widget($args, $instance) {
+	function widget($args, $instance)
+    {
 		extract($args);
 		extract($instance);
 
@@ -430,11 +440,13 @@ class wpbp_latest_posts extends WP_Widget {
 
 	}
 
-	function update($new_instance, $old_instance) {
+	function update($new_instance, $old_instance)
+    {
 		return $new_instance;
 	}
 
-	function form($instance) {
+	function form($instance)
+    {
 		$fields = array(
 			'title' => array(
 				'id' => $this->get_field_id('title'),
@@ -456,7 +468,6 @@ class wpbp_latest_posts extends WP_Widget {
 		wpbp_build_form($fields, $instance);
 	}
 }
-
 register_widget('wpbp_latest_posts');
 
 
@@ -465,14 +476,17 @@ register_widget('wpbp_latest_posts');
  * Displays the most popular posts based on number of views in the last 'x' days.
  */
 
-class wpbp_most_popular extends WP_Widget {
+class wpbp_most_popular extends WP_Widget
+{
 
-	function wpbp_most_popular() {
+	function wpbp_most_popular()
+    {
 		$widget_ops = array('description' => 'Displays the most popular posts based on number of views in the last \'x\' days.');
 		parent::WP_Widget(false, __('WPBP: Most Popular', 'wpbp'), $widget_ops);
 	}
 
-	function widget($args, $instance) {
+	function widget($args, $instance)
+    {
 		extract($args);
 		extract($instance);
 
@@ -516,11 +530,13 @@ class wpbp_most_popular extends WP_Widget {
 
 	}
 
-	function update($new_instance, $old_instance) {
+	function update($new_instance, $old_instance)
+    {
 		return $new_instance;
 	}
 
-	function form($instance) {
+	function form($instance)
+    {
 		$fields = array(
 			'title' => array(
 				'id' => $this->get_field_id('title'),
@@ -583,14 +599,17 @@ register_widget('wpbp_most_popular');
  * Inserts a Google AdSense Ad Unit to your page.
  */
  
- class wpbp_google_adsense_unit extends WP_Widget {
+ class wpbp_google_adsense_unit extends WP_Widget
+ {
 
-	function wpbp_google_adsense_unit() {
+	function wpbp_google_adsense_unit()
+    {
 		$widget_ops = array('description' => 'Inserts a Google AdSense Ad Unit to your page.');
 		parent::WP_Widget(false, __('WPBP: Google AdSense Unit', 'wpbp'), $widget_ops);
 	}
 
-	function widget($args, $instance) {
+	function widget($args, $instance)
+    {
 		extract($args);
 		extract($instance);
 
@@ -612,11 +631,13 @@ google_ad_height = "<?php echo $google_ad_height; ?>";
 		echo $after_widget;
 	}
 
-	function update($new_instance, $old_instance) {
+	function update($new_instance, $old_instance)
+    {
 		return $new_instance;
 	}
 
-	function form($instance) {
+	function form($instance)
+    {
 		$fields = array(
 			'title' => array(
 				'id' => $this->get_field_id('title'),
@@ -657,5 +678,4 @@ google_ad_height = "<?php echo $google_ad_height; ?>";
 		wpbp_build_form($fields, $instance);
 	}
 }
-
 register_widget('wpbp_google_adsense_unit');

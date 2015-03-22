@@ -4,19 +4,7 @@ if ( !function_exists('wpbp_is_valid_var') ) {
 
 	function wpbp_is_valid_var($var)
 	{
-		if ( isset( $var ) ) {
-
-			// string
-			if ( is_string( $var ) && strlen( $var ) == 0 ) return false;
-
-			// array
-			elseif ( is_array( $var ) && count( $var ) == 0 ) return false;
-
-			// unknown
-			else return true;
-		}
-
-		return false;
+		return !empty($var);
 	}
 
 }
@@ -28,8 +16,7 @@ if ( !function_exists('wpbp_are_valid_vars') && function_exists('wpbp_is_valid_v
 		$vars = func_get_args();
 
 		foreach ( $vars as $var ) {
-			if ( wpbp_is_valid_var( $var ) ) continue;
-			else return false;
+			if ( empty($var) ) return false;
 		}
 
 		return true;
@@ -47,8 +34,7 @@ if ( !function_exists('wpbp_first_valid') ) {
 		$vars = func_get_args();
 
 		foreach ( $vars as $var ) {
-			if ( wpbp_is_valid_var( $var ) ) return $var;
-			else continue;
+			if ( !empty($var) ) return $var;
 		}
 
 		return null;
