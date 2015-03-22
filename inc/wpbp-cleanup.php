@@ -2,29 +2,32 @@
 
 // redirect /?s to /search/
 // http://txfx.net/wordpress-plugins/nice-search/
-function wpbp_nice_search_redirect() {
-	if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
+function wpbp_nice_search_redirect()
+{
+	if ( is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false ) {
 		wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var( 's' )))), 301);
 	    exit();
 	}
 }
-
 add_action('template_redirect', 'wpbp_nice_search_redirect');
 
-function wpbp_search_query($escaped = true) {
+function wpbp_search_query($escaped = true)
+{
 	$query = apply_filters('wpbp_search_query', get_query_var('s'));
-	if ($escaped) {
+
+	if ( $escaped ) {
     	$query = esc_attr($query);
 	}
+
  	return urldecode($query);
 }
-
 add_filter('get_search_query', 'wpbp_search_query');
 
 // root relative URLs for everything
 // inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
-function wpbp_root_relative_url($input) {
+function wpbp_root_relative_url($input)
+{
 	$output = preg_replace_callback(
 		'/(https?:\/\/[^\/|"]+)([^"]+)?/',
 		create_function(
@@ -38,6 +41,7 @@ function wpbp_root_relative_url($input) {
 		),
 		$input
 	);
+
 	return $output;
 }
 
@@ -63,7 +67,8 @@ if ( !is_admin() ) {
 }
 
 // remove root relative URLs on any attachments in the feed
-function wpbp_root_relative_attachment_urls() {
+function wpbp_root_relative_attachment_urls()
+{
 	if ( !is_feed() ) {
 		add_filter('wp_get_attachment_url', 'wpbp_root_relative_url');
 		add_filter('wp_get_attachment_link', 'wpbp_root_relative_url');
@@ -73,11 +78,13 @@ function wpbp_root_relative_attachment_urls() {
 add_action('pre_get_posts', 'wpbp_root_relative_attachment_urls');
 
 // remove dir and set lang="en" as default (rather than en-US)
-function wpbp_language_attributes() {
+function wpbp_language_attributes()
+{
 	$attributes = array();
 	$output = '';
 	$lang = get_bloginfo('language');
-	if ($lang && $lang !== 'en-US') {
+
+	if ( $lang && $lang !== 'en-US' ) {
 		$attributes[] = "lang=\"$lang\"";
 	} else {
 		$attributes[] = 'lang="en"';
@@ -85,9 +92,9 @@ function wpbp_language_attributes() {
 
 	$output = implode(' ', $attributes);
 	$output = apply_filters('wpbp_language_attributes', $output);
+
 	return $output;
 }
-
 add_filter('language_attributes', 'wpbp_language_attributes');
 
 // remove WordPress version from RSS feed
@@ -95,40 +102,48 @@ function wpbp_no_generator() { return ''; }
 add_filter('the_generator', 'wpbp_no_generator');
 
 // cleanup wp_head
-function wpbp_noindex() {
-	if (get_option('blog_public') === '0') {
+function wpbp_noindex()
+{
+	if ( get_option('blog_public') === '0' ) {
 		echo '<meta name="robots" content="noindex,nofollow">', "\n";
 	}
 }	
 
-function wpbp_rel_canonical() {
-	if (!is_singular()) {
+function wpbp_rel_canonical()
+{
+	if ( !is_singular() ) {
 		return;
 	}
 
 	global $wp_the_query;
-	if (!$id = $wp_the_query->get_queried_object_id()) {
+
+	if ( !$id = $wp_the_query->get_queried_object_id() ) {
 		return;
 	}
 
 	$link = get_permalink($id);
+
 	echo "<link rel=\"canonical\" href=\"$link\">\n";
 }
 
 // remove CSS from recent comments widget
-function wpbp_remove_recent_comments_style() {
+function wpbp_remove_recent_comments_style()
+{
 	global $wp_widget_factory;
-	if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
+
+	if ( isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments']) ) {
 		remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
 	}
 }
 
 // remove CSS from gallery
-function wpbp_gallery_style($css) {
+function wpbp_gallery_style($css)
+{
 	return preg_replace("/<style type='text\/css'>(.*?)<\/style>/s", '', $css);
 }
 
-function wpbp_head_cleanup() {
+function wpbp_head_cleanup()
+{
 	// http://wpengineer.com/1438/wordpress-header/
 	remove_action('wp_head', 'feed_links', 2);
 	remove_action('wp_head', 'feed_links_extra', 3);
@@ -148,24 +163,24 @@ function wpbp_head_cleanup() {
 	add_filter('gallery_style', 'wpbp_gallery_style');
 	
 	// stop Gravity Forms from outputting CSS since it's linked in header.php
-	if (class_exists('RGForms')) {
+	if ( class_exists('RGForms') ) {
 		update_option('rg_gforms_disable_css', 1);
 	}
 
 	// deregister l10n.js (new since WordPress 3.1)
 	// why you might want to keep it: http://wordpress.stackexchange.com/questions/5451/what-does-l10n-js-do-in-wordpress-3-1-and-how-do-i-remove-it/5484#5484
 	// don't load jQuery through WordPress since it's linked in header.php
-	if (!is_admin()) {
+	if ( !is_admin() ) {
 		wp_deregister_script('l10n');
 		wp_deregister_script('jquery');
 		wp_register_script('jquery', '', '', '', true);
 	}	
 }
-
 add_action('init', 'wpbp_head_cleanup');
 
 // cleanup gallery_shortcode()
-function wpbp_gallery_shortcode($attr) {
+function wpbp_gallery_shortcode($attr)
+{
 	global $post, $wp_locale;
 
 	static $instance = 0;
@@ -177,7 +192,7 @@ function wpbp_gallery_shortcode($attr) {
 		return $output;
 
 	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
-	if ( isset( $attr['orderby'] ) ) {
+	if ( isset($attr['orderby']) ) {
 		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
 		if ( !$attr['orderby'] )
 			unset( $attr['orderby'] );
@@ -243,22 +258,19 @@ function wpbp_gallery_shortcode($attr) {
 	foreach ( $attachments as $id => $attachment ) {
 		// make the gallery link to the file by default instead of the attachment
 		// thanks to Matt Price (countingrows.com)
-    $link = isset($attr['link']) && $attr['link'] === 'attachment' ? 
-      wp_get_attachment_link($id, $size, true, false) : 
-      wp_get_attachment_link($id, $size, false, false);
-		$output .= "
-			<{$icontag} class=\"gallery-item\">
-				$link
-			";
+
+        $link = isset($attr['link']) && $attr['link'] === 'attachment' ? wp_get_attachment_link($id, $size, true, false) :  wp_get_attachment_link($id, $size, false, false);
+        $output .= "<{$icontag} class=\"gallery-item\">$link";
+
 		if ( $captiontag && trim($attachment->post_excerpt) ) {
-			$output .= "
-				<{$captiontag} class=\"gallery-caption\">
-				" . wptexturize($attachment->post_excerpt) . "
-				</{$captiontag}>";
+			$output .= "<{$captiontag} class=\"gallery-caption\">" . wptexturize($attachment->post_excerpt) . "</{$captiontag}>";
 		}
+
 		$output .= "</{$icontag}>";
-		if ( $columns > 0 && ++$i % $columns == 0 )
-			$output .= '';
+
+		if ( $columns > 0 && ++$i % $columns == 0 ) {
+            $output .= '';
+        }
 	}
 
 	$output .= "</section>\n";
@@ -270,13 +282,13 @@ remove_shortcode('gallery');
 add_shortcode('gallery', 'wpbp_gallery_shortcode');
 
 // http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
-function wpbp_remove_dashboard_widgets() {
+function wpbp_remove_dashboard_widgets()
+{
 	remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
 	remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
 	remove_meta_box('dashboard_primary', 'dashboard', 'normal');
 	remove_meta_box('dashboard_secondary', 'dashboard', 'normal');
 }
-
 add_action('admin_init', 'wpbp_remove_dashboard_widgets');
 
 // excerpt cleanup
@@ -284,23 +296,25 @@ function wpbp_excerpt_length($length) {
 	return 40;
 }
 
-function wpbp_excerpt_more($more) {
+function wpbp_excerpt_more($more)
+{
 	return ' &hellip; <a href="' . get_permalink() . '">' . __( 'Continued', 'wpbp' ) . '</a>';
 }
-
 add_filter('excerpt_length', 'wpbp_excerpt_length');
 add_filter('excerpt_more', 'wpbp_excerpt_more');
 
 // remove container from menus
-function wpbp_nav_menu_args($args = '') {
+function wpbp_nav_menu_args($args = '')
+{
 	$args['container'] = false;
 	return $args;
 }
-
 add_filter('wp_nav_menu_args', 'wpbp_nav_menu_args');
 
-class wpbp_nav_walker extends Walker_Nav_Menu {
-	function start_el(&$output, $item, $depth, $args) {
+class wpbp_nav_walker extends Walker_Nav_Menu
+{
+	function start_el(&$output, $item, $depth, $args)
+    {
 		global $wp_query;
 	    $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
@@ -334,13 +348,15 @@ class wpbp_nav_walker extends Walker_Nav_Menu {
 	}
 }
 
-function wpbp_check_current($val) {
+function wpbp_check_current($val)
+{
 	return preg_match('/current-menu/', $val);
 }
 
 // add to robots.txt
 // http://codex.wordpress.org/Search_Engine_Optimization_for_WordPress#Robots.txt_Optimization
-function wpbp_robots() {
+function wpbp_robots()
+{
 	echo "Disallow: /cgi-bin\n";
 	echo "Disallow: /wp-admin\n";
 	echo "Disallow: /wp-includes\n";
@@ -360,35 +376,35 @@ function wpbp_robots() {
 	echo "Allow: /wp-content/uploads\n";
 	echo "Allow: /assets";
 }
-
 add_action('do_robots', 'wpbp_robots');
 
 // http://www.google.com/support/webmasters/bin/answer.py?answer=1229920
-function wpbp_author_link($link) {
+function wpbp_author_link($link)
+{
 	return str_replace('<a ', '<a class="fn" rel="author"', $link);
 }
-
 add_filter('the_author_posts_link', 'wpbp_author_link');
 
 // we don't need to self-close these tags in html5:
 // <img>, <input>
-function wpbp_remove_self_closing_tags($input) {
+function wpbp_remove_self_closing_tags($input)
+{
 	return str_replace(' />', '>', $input);
 }
-
 add_filter('get_avatar', 'wpbp_remove_self_closing_tags');
 add_filter('comment_id_fields', 'wpbp_remove_self_closing_tags');
 
 // check to see if the tagline is set to default
 // show an admin notice to update if it hasn't been changed
 // you want to change this or remove it because it's used as the description in the RSS feed
-function wpbp_notice_tagline() {
+function wpbp_notice_tagline()
+{
 	echo '<div class="error">';
 	echo '<p>' . sprintf(__('Please update your <a href="%s">site tagline</a>', 'wpbp'), admin_url('options-general.php')) . '</p>';
 	echo '</div>';
 }
 
-if (get_option('blogdescription') === 'Just another WordPress site') {
+if ( get_option('blogdescription') === 'Just another WordPress site' ) {
 	add_action('admin_notices', 'wpbp_notice_tagline');
 }
 
@@ -400,17 +416,19 @@ if ( !defined('ICL_DONT_LOAD_LANGUAGES_JS') ) define('ICL_DONT_LOAD_LANGUAGES_JS
 
 // set the post revisions to 5 unless the constant
 // was set in wp-config.php to avoid DB bloat
-if (!defined('WP_POST_REVISIONS')) define('WP_POST_REVISIONS', 5);
+if ( !defined('WP_POST_REVISIONS') ) define('WP_POST_REVISIONS', 5);
 
 // allow more tags in TinyMCE including iframes
-function wpbp_change_mce_options($options) {
-	$ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src]';	
-	if (isset($initArray['extended_valid_elements'])) {
+function wpbp_change_mce_options($options)
+{
+	$ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src]';
+
+	if ( isset($initArray['extended_valid_elements']) ) {
 		$options['extended_valid_elements'] .= ',' . $ext;
 	} else {
 		$options['extended_valid_elements'] = $ext;
 	}
+
 	return $options;
 }
-
 add_filter('tiny_mce_before_init', 'wpbp_change_mce_options');

@@ -1,10 +1,8 @@
 <?php
 
-// http://foolswisdom.com/wp-activate-theme-actio/
-
 global $pagenow;
 
-if ( is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated']) ) {
+if ( is_admin() && $pagenow  === 'themes.php' && isset($_GET['activated']) ) {
 
 	// on theme activation make sure there's a Home page
 	// create it if there isn't and set the Home page menu order to -1
@@ -13,7 +11,7 @@ if ( is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated']) ) {
 	$existing_pages = get_pages();
 	$temp = array();
 
-	foreach ($existing_pages as $page) {
+	foreach ( $existing_pages as $page ) {
 		$temp[] = $page->post_title;
 	}
 
@@ -41,16 +39,12 @@ if ( is_admin() && $pagenow  === 'themes.php' && isset( $_GET['activated']) ) {
 	//wp_update_post($home_menu_order);
 
 	// set the permalink structure
-	if (get_option('permalink_structure') !== '/%year%/%monthnum%/%postname%/') {
+	if ( get_option('permalink_structure') !== '/%year%/%monthnum%/%postname%/' ) {
 		update_option('permalink_structure', '/%year%/%monthnum%/%postname%/');
 	}
 
 	$wp_rewrite->init();
 	$wp_rewrite->flush_rules();
-
-	// don't organize uploads by year and month
-	update_option('uploads_use_yearmonth_folders', 0);
-	update_option('upload_path', 'assets');
 
 	// automatically create menus and set their locations
 	// add all pages to the Primary Navigation
