@@ -7,7 +7,7 @@ Source: https://github.com/optimumweb/wpboilerplate
 
 ## Installation
 
-Install wpboilerplate under the *wp-content/themes* directory like you would with any theme.
+Install wpboilerplate under the *wp-content/themes* directory like you would with any WordPress theme.
 
     git clone git://github.com/optimumweb/wpboilerplate.git
 
