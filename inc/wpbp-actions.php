@@ -18,8 +18,10 @@ function wpbp_insert_optimizely()
 {
     $project_id = wpbp_get_option('optimizely_project_id');
 
-    if ( !empty($project_id) ) {
-        echo '<script src="//cdn.optimizely.com/js/' . $project_id . '.js"></script>' . PHP_EOL;
+    $file = 'tags/optimizely.php';
+
+    if ( !empty($project_id) && file_exists($file) ) {
+        include($file);
     }
 }
 
@@ -38,7 +40,7 @@ function wpbp_insert_google_analytics()
     ga('send', 'pageview');
 
 </script>
-<?php endif;
+    <?php endif;
 }
 
 function wpbp_insert_google_remarketing_tag()
@@ -83,22 +85,22 @@ function wpbp_insert_custom_css()
 {
     $custom_css = wpbp_get_option('custom_css');
 
-    if ( $custom_css ) : ?>
+    if ( !empty($custom_css) ) : ?>
 <style type="text/css">
 <?php echo $custom_css; ?>
 </style>
-<?php endif;
+    <?php endif;
 }
 
 function wpbp_insert_custom_js()
 {
     $custom_js = wpbp_get_option('custom_js');
 
-    if ( $custom_js ) : ?>
+    if ( !empty($custom_js) ) : ?>
 <script type="text/javascript">
 <?php echo $custom_js; ?>
 </script>
-<?php endif;
+    <?php endif;
 }
 
 function wpbp_insert_post_js()
@@ -106,18 +108,18 @@ function wpbp_insert_post_js()
     set_post_ID($post_ID);
     $post_js = get_post_meta($post_ID, 'js', true);
 
-    if ( $post_js ) : ?>
+    if ( !empty($post_js) ) : ?>
 <script type="text/javascript">
 <?php echo $post_js; ?>
 </script>
-<?php endif;
+    <?php endif;
 }
 
 function wpbp_insert_favicon()
 {
     $favicon = wpbp_get_option('favicon');
 
-    if ( $favicon) {
+    if ( !empty($favicon) ) {
         echo '<link rel="icon" type="image/png" href="' . $favicon . '">';
     }
 }
