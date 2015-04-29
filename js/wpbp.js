@@ -398,6 +398,12 @@
 
             $this.bind('firePause', function() {
                 paused = !paused;
+
+                if ( paused ) {
+                    $this.addClass('paused');
+                } else {
+                    $this.removeClass('paused');
+                }
             });
 
             $this.on('click', '.fireNext', function(e) {
@@ -424,12 +430,6 @@
             setInterval(function() {
                 now = new Date();
                 skip = ( now.getTime() - fireTime.getTime() ) < period;
-
-                if ( paused ) {
-                    $this.addClass('paused');
-                } else {
-                    $this.removeClass('paused');
-                }
 
                 if ( !paused && !skip && slideshow == "yes" ) {
                     $this.trigger('fireNext');
