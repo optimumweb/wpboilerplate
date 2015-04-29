@@ -396,6 +396,10 @@
                 });
             });
 
+            $this.bind('firePause', function() {
+                paused = !paused;
+            });
+
             $this.on('click', '.fireNext', function(e) {
                 e.preventDefault();
                 $this.trigger('fireNext');
@@ -412,9 +416,20 @@
                 $this.trigger('fireThat', [fireThat]);
             });
 
+            $this.on('click', '.firePause', function(e) {
+                e.preventDefault();
+                $this.trigger('firePause');
+            });
+
             setInterval(function() {
                 now = new Date();
                 skip = ( now.getTime() - fireTime.getTime() ) < period;
+
+                if ( paused ) {
+                    $this.addClass('paused');
+                } else {
+                    $this.removeClass('paused');
+                }
 
                 if ( !paused && !skip && slideshow == "yes" ) {
                     $this.trigger('fireNext');
