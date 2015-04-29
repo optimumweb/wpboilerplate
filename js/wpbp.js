@@ -345,6 +345,7 @@
                 });
                 $this.append('<a class="fireNext" href="#next"></a>');
                 $this.append('<a class="firePrev" href="#prev"></a>');
+                $this.append('<a class="firePause" href="#pause"></a>');
             }
 
             $slides.hide().first().show().addClass('current');

@@ -87,7 +87,7 @@ function wpbp_register_sidebars($sidebars)
 				'after_title'   => '</h3>'
 			) );
 		}
-        
+
 		return true;
 
 	}
