@@ -337,43 +337,6 @@ html.no-boxsizing {
     .container_16 {
       width: 45rem;
     }
-  }
-}
-
-// Below 760px
-@media only screen and (max-width: @screenSmall) {
-  body.responsive,
-  body.mobile-responsive {
-    -webkit-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-
-    .mobile-center {
-      text-align: center;
-    }
-
-    .mobile-left {
-      text-align: left;
-    }
-
-    .mobile-right {
-      text-align: right;
-    }
-
-    .mobile-hide {
-      display: none;
-    }
-
-    .mobile-show {
-      display: block;
-    }
-
-    .container_12,
-    .container_16 {
-      width: 100%;
-    }
 
     .block_grid > * {
       float: none;
@@ -416,73 +379,89 @@ html.no-boxsizing {
       left: 0;
     }
 
-  // 12 COLUMNS GRID
-  // --------------------------------------------------
-
     .container_12 {
-
       @cols:      12;
       @colWidth:  8.333333333333333%;
+      @prefix:    "medium_";
 
-    // Column Space
-    // -------------------------
-
-      .colSpace(@cols, @colWidth, "small_");
-
-    // Prefix Space
-    // -------------------------
-
-      .prefixSpace(@cols, @colWidth, "small_");
-
-    // Suffix Space
-    // -------------------------
-
-      .suffixSpace(@cols, @colWidth, "small_");
-
-    // Push Space
-    // -------------------------
-
-      .pushSpace(@cols, @colWidth, "small_");
-
-    // Pull Space
-    // -------------------------
-
-      .pullSpace(@cols, @colWidth, "small_");
-
+      .colSpace(@cols, @colWidth, @prefix);
+      .prefixSpace(@cols, @colWidth, @prefix);
+      .suffixSpace(@cols, @colWidth, @prefix);
+      .pushSpace(@cols, @colWidth, @prefix);
+      .pullSpace(@cols, @colWidth, @prefix);
     }
 
-  // 16 COLUMNS GRID
-  // --------------------------------------------------
-
     .container_16 {
-
       @cols:      16;
       @colWidth:  6.250%;
+      @prefix:    "medium_";
 
-    // Column Space
-    // -------------------------
+      .colSpace(@cols, @colWidth, @prefix);
+      .prefixSpace(@cols, @colWidth, @prefix);
+      .suffixSpace(@cols, @colWidth, @prefix);
+      .pushSpace(@cols, @colWidth, @prefix);
+      .pullSpace(@cols, @colWidth, @prefix);
+    }
+  }
+}
 
-      .colSpace(@cols, @colWidth, "small_");
+// Below 760px
+@media only screen and (max-width: @screenSmall) {
+  body.responsive,
+  body.mobile-responsive {
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
 
-    // Prefix Space
-    // -------------------------
+    .mobile-center {
+      text-align: center;
+    }
 
-      .prefixSpace(@cols, @colWidth, "small_");
+    .mobile-left {
+      text-align: left;
+    }
 
-    // Suffix Space
-    // -------------------------
+    .mobile-right {
+      text-align: right;
+    }
 
-      .suffixSpace(@cols, @colWidth, "small_");
+    .mobile-hide {
+      display: none;
+    }
 
-    // Push Space
-    // -------------------------
+    .mobile-show {
+      display: block;
+    }
 
-      .pushSpace(@cols, @colWidth, "small_");
+    .container_12,
+    .container_16 {
+      width: 100%;
+    }
 
-    // Pull Space
-    // -------------------------
+    .container_12 {
+      @cols:      12;
+      @colWidth:  8.333333333333333%;
+      @prefix:    "small_";
 
-      .pullSpace(@cols, @colWidth, "small_");
+      .colSpace(@cols, @colWidth, @prefix);
+      .prefixSpace(@cols, @colWidth, @prefix);
+      .suffixSpace(@cols, @colWidth, @prefix);
+      .pushSpace(@cols, @colWidth, @prefix);
+      .pullSpace(@cols, @colWidth, @prefix);
+    }
+
+    .container_16 {
+      @cols:      16;
+      @colWidth:  6.250%;
+      @prefix:    "small_";
+
+      .colSpace(@cols, @colWidth, @prefix);
+      .prefixSpace(@cols, @colWidth, @prefix);
+      .suffixSpace(@cols, @colWidth, @prefix);
+      .pushSpace(@cols, @colWidth, @prefix);
+      .pullSpace(@cols, @colWidth, @prefix);
     }
   }
 }
