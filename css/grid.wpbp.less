@@ -80,31 +80,24 @@ body { min-width: 62.5em; }
     width: @colWidth * @index;
     float: left;
   }
+  (~".mobile_grid_@{index}") {
+    width: @colWidth * @index;
+    float: left;
+  }
 
   .colSpace(@index - 1, @colWidth);
 }
 
 .colSpace (@index, @colWidth) when (@index = 0) {}
 
-// Mobile Column Space
-// -------------------------
-
-.mobileColSpace (@index, @colWidth) when (@index > 0) {
-  (~".mobile_grid_@{index}") {
-    width: @colWidth * @index;
-    float: left;
-  }
-
-  .mobileColSpace(@index - 1, @colWidth);
-}
-
-.mobileColSpace (@index, @colWidth) when (@index = 0) {}
-
 // Prefix Space
 // -------------------------
 
 .prefixSpace (@index, @colWidth) when (@index > 0) {
   (~".prefix_@{index}") {
+    padding-left: @colWidth * @index;
+  }
+  (~".mobile_prefix_@{index}") {
     padding-left: @colWidth * @index;
   }
 
@@ -120,6 +113,9 @@ body { min-width: 62.5em; }
   (~".suffix_@{index}") {
     padding-right: @colWidth * @index;
   }
+  (~".mobile_suffix_@{index}") {
+    padding-right: @colWidth * @index;
+  }
 
   .suffixSpace(@index - 1, @colWidth);
 }
@@ -133,6 +129,9 @@ body { min-width: 62.5em; }
   (~".push_@{index}") {
     left: @colWidth * @index;
   }
+  (~".mobile_push_@{index}") {
+    left: @colWidth * @index;
+  }
 
   .pushSpace(@index - 1, @colWidth);
 }
@@ -144,6 +143,9 @@ body { min-width: 62.5em; }
 
 .pullSpace (@index, @colWidth) when (@index > 0) {
   (~".pull_@{index}") {
+    left: -@colWidth * @index;
+  }
+  (~".mobile_pull_@{index}") {
     left: -@colWidth * @index;
   }
 
@@ -398,43 +400,45 @@ html.no-boxsizing {
       width: 100%;
     }
 
-    .grid_1,
-    .grid_2,
-    .grid_3,
-    .grid_4,
-    .grid_5,
-    .grid_6,
-    .grid_7,
-    .grid_8,
-    .grid_9,
-    .grid_10,
-    .grid_11,
-    .grid_12,
-    .grid_13,
-    .grid_14,
-    .grid_15,
-    .grid_16,
     .block_grid > * {
       float: none;
       width: 100%;
     }
 
-    // 12 COLUMNS MOBILE GRID
-    // --------------------------------------------------
-
-    .container_12 {
-      @cols:      12;
-      @colWidth:  8.333333333333333%;
-      .mobileColSpace(@cols, @colWidth);
+    .grid_1,  .grid_2,  .grid_3,  .grid_4,
+    .grid_5,  .grid_6,  .grid_7,  .grid_8,
+    .grid_9,  .grid_10, .grid_11, .grid_12,
+    .grid_13, .grid_14, .grid_15, .grid_16 {
+      float: none;
+      width: 100%;
     }
 
-    // 16 COLUMNS MOBILE GRID
-    // --------------------------------------------------
+    .prefix_1,  .prefix_2,  .prefix_3,  .prefix_4,
+    .prefix_5,  .prefix_6,  .prefix_7,  .prefix_8,
+    .prefix_9,  .prefix_10, .prefix_11, .prefix_12,
+    .prefix_13, .prefix_14, .prefix_15, .prefix_16 {
+      padding-left: 0;
+    }
 
-    .container_16 {
-      @cols:      16;
-      @colWidth:  6.250%;
-      .mobileColSpace(@cols, @colWidth);
+    .suffix_1,  .suffix_2,  .suffix_3,  .suffix_4,
+    .suffix_5,  .suffix_6,  .suffix_7,  .suffix_8,
+    .suffix_9,  .suffix_10, .suffix_11, .suffix_12,
+    .suffix_13, .suffix_14, .suffix_15, .suffix_16 {
+      padding-right: 0;
+    }
+
+    .push_1,  .push_2,  .push_3,  .push_4,
+    .push_5,  .push_6,  .push_7,  .push_8,
+    .push_9,  .push_10, .push_11, .push_12,
+    .push_13, .push_14, .push_15, .push_16 {
+      left: 0;
+    }
+
+    .pull_1,  .pull_2,  .pull_3,  .pull_4,
+    .pull_5,  .pull_6,  .pull_7,  .pull_8,
+    .pull_9,  .pull_10, .pull_11, .pull_12,
+    .pull_13, .pull_14, .pull_15, .pull_16 {
+      left: 0;
     }
   }
 }
