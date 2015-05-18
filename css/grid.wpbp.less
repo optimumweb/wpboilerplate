@@ -75,84 +75,59 @@ body { min-width: 62.5em; }
 // Column Space
 // -------------------------
 
-.colSpace (@index, @colWidth) when (@index > 0) {
-  (~".grid_@{index}") {
+.colSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
+  (~".@{prefix}grid_@{index}") {
     width: @colWidth * @index;
     float: left;
   }
-  (~".mobile_grid_@{index}") {
-    width: @colWidth * @index;
-    float: left;
-  }
-
-  .colSpace(@index - 1, @colWidth);
+  .colSpace(@index - 1, @colWidth, @prefix);
 }
-
-.colSpace (@index, @colWidth) when (@index = 0) {}
+.colSpace (@index, @colWidth, @prefix: ~'') when (@index = 0) {}
 
 // Prefix Space
 // -------------------------
 
-.prefixSpace (@index, @colWidth) when (@index > 0) {
-  (~".prefix_@{index}") {
+.prefixSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
+  (~".@{prefix}prefix_@{index}") {
     padding-left: @colWidth * @index;
   }
-  (~".mobile_prefix_@{index}") {
-    padding-left: @colWidth * @index;
-  }
-
-  .prefixSpace(@index - 1, @colWidth);
+  .prefixSpace(@index - 1, @colWidth, @prefix);
 }
 
-.prefixSpace (@index, @colWidth) when (@index = 0) {}
+.prefixSpace (@index, @colWidth, @prefix: ~'') when (@index = 0) {}
 
 // Suffix Space
 // -------------------------
 
-.suffixSpace (@index, @colWidth) when (@index > 0) {
-  (~".suffix_@{index}") {
+.suffixSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
+  (~".@{prefix}suffix_@{index}") {
     padding-right: @colWidth * @index;
   }
-  (~".mobile_suffix_@{index}") {
-    padding-right: @colWidth * @index;
-  }
-
-  .suffixSpace(@index - 1, @colWidth);
+  .suffixSpace(@index - 1, @colWidth, @prefix);
 }
-
-.suffixSpace (@index, @colWidth) when (@index = 0) {}
+.suffixSpace (@index, @colWidth, @prefix: ~'') when (@index = 0) {}
 
 // Push Space
 // -------------------------
 
-.pushSpace (@index, @colWidth) when (@index > 0) {
-  (~".push_@{index}") {
+.pushSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
+  (~".@{prefix}push_@{index}") {
     left: @colWidth * @index;
   }
-  (~".mobile_push_@{index}") {
-    left: @colWidth * @index;
-  }
-
-  .pushSpace(@index - 1, @colWidth);
+  .pushSpace(@index - 1, @colWidth, @prefix);
 }
-
-.pushSpace (@index, @colWidth) when (@index = 0) {}
+.pushSpace (@index, @colWidth, @prefix: ~'') when (@index = 0) {}
 
 // Pull Space
 // -------------------------
 
-.pullSpace (@index, @colWidth) when (@index > 0) {
-  (~".pull_@{index}") {
+.pullSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
+  (~".@{prefix}pull_@{index}") {
     left: -@colWidth * @index;
   }
-  (~".mobile_pull_@{index}") {
-    left: -@colWidth * @index;
-  }
-
-  .pullSpace(@index - 1, @colWidth);
+  .pullSpace(@index - 1, @colWidth, @prefix);
 }
-
-.pullSpace (@index, @colWidth) when (@index = 0) {}
+.pullSpace (@index, @colWidth, @prefix: ~'') when (@index = 0) {}
 
 // 12 COLUMNS GRID
 // --------------------------------------------------
@@ -439,6 +414,75 @@ html.no-boxsizing {
     .pull_9,  .pull_10, .pull_11, .pull_12,
     .pull_13, .pull_14, .pull_15, .pull_16 {
       left: 0;
+    }
+
+  // 12 COLUMNS GRID
+  // --------------------------------------------------
+
+    .container_12 {
+
+      @cols:      12;
+      @colWidth:  8.333333333333333%;
+
+    // Column Space
+    // -------------------------
+
+      .colSpace(@cols, @colWidth, "mobile_");
+
+    // Prefix Space
+    // -------------------------
+
+      .prefixSpace(@cols, @colWidth, "mobile_");
+
+    // Suffix Space
+    // -------------------------
+
+      .suffixSpace(@cols, @colWidth, "mobile_");
+
+    // Push Space
+    // -------------------------
+
+      .pushSpace(@cols, @colWidth, "mobile_");
+
+    // Pull Space
+    // -------------------------
+
+      .pullSpace(@cols, @colWidth, "mobile_");
+
+    }
+
+  // 16 COLUMNS GRID
+  // --------------------------------------------------
+
+    .container_16 {
+
+      @cols:      16;
+      @colWidth:  6.250%;
+
+    // Column Space
+    // -------------------------
+
+      .colSpace(@cols, @colWidth, "mobile_");
+
+    // Prefix Space
+    // -------------------------
+
+      .prefixSpace(@cols, @colWidth, "mobile_");
+
+    // Suffix Space
+    // -------------------------
+
+      .suffixSpace(@cols, @colWidth, "mobile_");
+
+    // Push Space
+    // -------------------------
+
+      .pushSpace(@cols, @colWidth, "mobile_");
+
+    // Pull Space
+    // -------------------------
+
+      .pullSpace(@cols, @colWidth, "mobile_");
     }
   }
 }
