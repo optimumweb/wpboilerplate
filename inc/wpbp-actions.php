@@ -23,7 +23,7 @@ function wpbp_insert_utm_values()
     foreach ( $utms as $utm => $value ) {
         if ( isset($_GET[$utm]) ) {
             $utms[$utm] = $_GET[$utm];
-            setcookie($utm, $_GET[$utm], time()+60*60*24*30); // now + 30 days
+            setcookie($utm, $_GET[$utm], time()+60*60*24*30, '/'); // now + 30 days
         } elseif ( isset($_COOKIE[$utm]) ) {
             $utms[$utm] = $_COOKIE[$utm];
         }
