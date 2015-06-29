@@ -2,6 +2,7 @@
 
 add_action('init', 'wpbp_register_lib');
 
+add_action('wpbp_head', 'wpbp_insert_utm_values');
 add_action('wpbp_head', 'wpbp_insert_optimizely');
 add_action('wpbp_head', 'wpbp_insert_google_analytics');
 add_action('wpbp_head', 'wpbp_insert_google_tag_manager');
@@ -13,6 +14,27 @@ add_action('wpbp_footer', 'wpbp_insert_custom_js');
 add_action('wpbp_footer', 'wpbp_insert_post_js');
 
 add_action('wpbp_loop_after', 'wpbp_clear');
+
+
+function wpbp_insert_utm_values()
+{
+    $utms = array( 'utm_source' => '', 'utm_medium' => '', 'utm_term' => '', 'utm_content' => '', 'utm_campaign' => '' );
+
+    foreach ( $utms as $utm => $value ) {
+        if ( isset($_GET[$utm]) ) {
+            $utms[$utm] = $_GET[$utm];
+            setcookie($utm, $_GET[$utm]);
+        } elseif ( isset($_COOKIE[$utm]) ) {
+            $utms[$utm] = $_COOKIE[$utm];
+        }
+    }
+
+    $file = TEMPLATE_DIRECTORY . '/inc/tags/utm.php';
+
+    if ( file_exists($file) ) {
+        include($file);
+    }
+}
 
 function wpbp_insert_optimizely()
 {
