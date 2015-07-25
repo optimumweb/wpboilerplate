@@ -1619,7 +1619,7 @@ ul.block_grid {
     position: relative;
     left: -6.25%;
   }
-  body.responsive .small_clear {
+  body.responsive .medium_clear {
     clear: both;
     display: block;
     overflow: hidden;
@@ -2727,8 +2727,8 @@ ul.block_grid {
     position: relative;
     left: -6.25%;
   }
-  body.responsive .medium_clear,
-  body.mobile-responsive .medium_clear {
+  body.responsive .small_clear,
+  body.mobile-responsive .small_clear {
     clear: both;
     display: block;
     overflow: hidden;
