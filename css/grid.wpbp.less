@@ -93,30 +93,14 @@ body {
 // 12 COLUMNS GRID
 // --------------------------------------------------
 
-.container_12 {
-  @cols:      12;
-  @colWidth:  8.333333333333333%;
+@cols:     12;
+@colWidth: 8.333333333333333%;
 
-  .colSpace(@cols, @colWidth);
-  .prefixSpace(@cols, @colWidth);
-  .suffixSpace(@cols, @colWidth);
-  .pushSpace(@cols, @colWidth);
-  .pullSpace(@cols, @colWidth);
-}
-
-// 16 COLUMNS GRID
-// --------------------------------------------------
-
-.container_16 {
-  @cols:      16;
-  @colWidth:  6.250%;
-
-  .colSpace(@cols, @colWidth);
-  .prefixSpace(@cols, @colWidth);
-  .suffixSpace(@cols, @colWidth);
-  .pushSpace(@cols, @colWidth);
-  .pullSpace(@cols, @colWidth);
-}
+.colSpace(@cols, @colWidth);
+.prefixSpace(@cols, @colWidth);
+.suffixSpace(@cols, @colWidth);
+.pushSpace(@cols, @colWidth);
+.pullSpace(@cols, @colWidth);
 
 // BLOCK GRIDS
 // --------------------------------------------------
@@ -261,29 +245,15 @@ ul.block_grid {
       width: 45rem;
     }
 
-    .container_12 {
-      @cols:      12;
-      @colWidth:  8.333333333333333%;
-      @prefix:    "medium_";
+    @cols:      12;
+    @colWidth:  8.333333333333333%;
+    @prefix:    "medium_";
 
-      .colSpace(@cols, @colWidth, @prefix);
-      .prefixSpace(@cols, @colWidth, @prefix);
-      .suffixSpace(@cols, @colWidth, @prefix);
-      .pushSpace(@cols, @colWidth, @prefix);
-      .pullSpace(@cols, @colWidth, @prefix);
-    }
-
-    .container_16 {
-      @cols:      16;
-      @colWidth:  6.250%;
-      @prefix:    "medium_";
-
-      .colSpace(@cols, @colWidth, @prefix);
-      .prefixSpace(@cols, @colWidth, @prefix);
-      .suffixSpace(@cols, @colWidth, @prefix);
-      .pushSpace(@cols, @colWidth, @prefix);
-      .pullSpace(@cols, @colWidth, @prefix);
-    }
+    .colSpace(@cols, @colWidth, @prefix);
+    .prefixSpace(@cols, @colWidth, @prefix);
+    .suffixSpace(@cols, @colWidth, @prefix);
+    .pushSpace(@cols, @colWidth, @prefix);
+    .pullSpace(@cols, @colWidth, @prefix);
 
     .medium_clear {
       clear: both;
@@ -362,29 +332,15 @@ ul.block_grid {
       width: 100%;
     }
 
-    .container_12 {
-      @cols:      12;
-      @colWidth:  8.333333333333333%;
-      @prefix:    "small_";
+    @cols:      12;
+    @colWidth:  8.333333333333333%;
+    @prefix:    "small_";
 
-      .colSpace(@cols, @colWidth, @prefix);
-      .prefixSpace(@cols, @colWidth, @prefix);
-      .suffixSpace(@cols, @colWidth, @prefix);
-      .pushSpace(@cols, @colWidth, @prefix);
-      .pullSpace(@cols, @colWidth, @prefix);
-    }
-
-    .container_16 {
-      @cols:      16;
-      @colWidth:  6.250%;
-      @prefix:    "small_";
-
-      .colSpace(@cols, @colWidth, @prefix);
-      .prefixSpace(@cols, @colWidth, @prefix);
-      .suffixSpace(@cols, @colWidth, @prefix);
-      .pushSpace(@cols, @colWidth, @prefix);
-      .pullSpace(@cols, @colWidth, @prefix);
-    }
+    .colSpace(@cols, @colWidth, @prefix);
+    .prefixSpace(@cols, @colWidth, @prefix);
+    .suffixSpace(@cols, @colWidth, @prefix);
+    .pushSpace(@cols, @colWidth, @prefix);
+    .pullSpace(@cols, @colWidth, @prefix);
 
     .small_clear {
       clear: both;
