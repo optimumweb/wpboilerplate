@@ -499,8 +499,8 @@
                 var $ajaxTrigger = $this.find('a.ajax-trigger').first(),
                     ajaxSrc      = $this.data('src').replace('#',' #') || $ajaxTrigger.attr('href').replace('#',' #');
 
-                // class=ajax+lazy: content loads async. on trigger
                 if ( $this.hasClass('lazy') ) {
+                    // class=ajax+lazy: content loads async. on trigger
 
                     $ajaxTrigger.click(function(e) {
 
@@ -515,10 +515,8 @@
                         }
 
                     });
-                }
-
-                // content loads on page load
-                else {
+                } else {
+                    // content loads on page load
                     $content.load(ajaxSrc, function() {
                         $this.addClass('ajax-loaded');
                     });
@@ -550,9 +548,7 @@
                 if ( $content.is(':visible') ) {
                     $this.addClass('open').removeClass('closed');
                     $content.show();
-                }
-
-                else {
+                } else {
                     $this.addClass('closed').removeClass('open');
                     $content.hide();
                 }

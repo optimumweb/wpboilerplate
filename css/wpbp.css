@@ -157,13 +157,10 @@ body {
 }
 .container {
   width: auto;
+  max-width: 62.5rem;
   margin: 0;
-}
-.container_12,
-.container_16 {
   margin-left: auto;
   margin-right: auto;
-  width: 62.5rem;
 }
 .grid_12 {
   position: relative;
@@ -417,6 +414,12 @@ body {
   position: relative;
   left: -8.333333333333332%;
 }
+.container.fluid {
+  max-width: none !important;
+}
+.container.collapse > [class^="grid_"] {
+  padding: 0 !important;
+}
 .block_grid > * {
   display: block;
   float: left;
@@ -466,10 +469,8 @@ ul.block_grid {
 }
 .clearfix:before,
 .clearfix:after,
-.container_12:before,
-.container_12:after,
-.container_16:before,
-.container_16:after {
+.container:before,
+.container:after {
   content: '.';
   display: block;
   overflow: hidden;
@@ -480,21 +481,18 @@ ul.block_grid {
   height: 0;
 }
 .clearfix:after,
-.container_12:after,
-.container_16:after {
+.container:after {
   clear: both;
 }
 .clearfix,
-.container_12,
-.container_16 {
+.container {
   zoom: 1;
 }
 @media only screen and (min-width: 100rem) {
   body.responsive {
     min-width: 95rem;
   }
-  body.responsive .container_12,
-  body.responsive .container_16 {
+  body.responsive .container {
     width: 95rem;
   }
 }
@@ -502,8 +500,7 @@ ul.block_grid {
   body.responsive {
     min-width: 75rem;
   }
-  body.responsive .container_12,
-  body.responsive .container_16 {
+  body.responsive .container {
     width: 75rem;
   }
 }
@@ -511,8 +508,7 @@ ul.block_grid {
   body.responsive {
     min-width: 62.5rem;
   }
-  body.responsive .container_12,
-  body.responsive .container_16 {
+  body.responsive .container {
     width: 62.5rem;
   }
 }
@@ -520,179 +516,28 @@ ul.block_grid {
   body.responsive {
     min-width: 45rem;
   }
-  body.responsive .grid_1,
-  body.responsive .grid_2,
-  body.responsive .grid_3,
-  body.responsive .grid_4,
-  body.responsive .grid_5,
-  body.responsive .grid_6,
-  body.responsive .grid_7,
-  body.responsive .grid_8,
-  body.responsive .grid_9,
-  body.responsive .grid_10,
-  body.responsive .grid_11,
-  body.responsive .grid_12,
-  body.responsive .grid_13,
-  body.responsive .grid_14,
-  body.responsive .grid_15,
-  body.responsive .grid_16,
-  body.responsive .small_grid_1,
-  body.responsive .small_grid_2,
-  body.responsive .small_grid_3,
-  body.responsive .small_grid_4,
-  body.responsive .small_grid_5,
-  body.responsive .small_grid_6,
-  body.responsive .small_grid_7,
-  body.responsive .small_grid_8,
-  body.responsive .small_grid_9,
-  body.responsive .small_grid_10,
-  body.responsive .small_grid_11,
-  body.responsive .small_grid_12,
-  body.responsive .small_grid_13,
-  body.responsive .small_grid_14,
-  body.responsive .small_grid_15,
-  body.responsive .small_grid_16 {
+  body.responsive [class^="grid_"],
+  body.responsive [class^="small_grid_"] {
     float: none;
     width: 100%;
   }
-  body.responsive .prefix_1,
-  body.responsive .prefix_2,
-  body.responsive .prefix_3,
-  body.responsive .prefix_4,
-  body.responsive .prefix_5,
-  body.responsive .prefix_6,
-  body.responsive .prefix_7,
-  body.responsive .prefix_8,
-  body.responsive .prefix_9,
-  body.responsive .prefix_10,
-  body.responsive .prefix_11,
-  body.responsive .prefix_12,
-  body.responsive .prefix_13,
-  body.responsive .prefix_14,
-  body.responsive .prefix_15,
-  body.responsive .prefix_16,
-  body.responsive .small_prefix_1,
-  body.responsive .small_prefix_2,
-  body.responsive .small_prefix_3,
-  body.responsive .small_prefix_4,
-  body.responsive .small_prefix_5,
-  body.responsive .small_prefix_6,
-  body.responsive .small_prefix_7,
-  body.responsive .small_prefix_8,
-  body.responsive .small_prefix_9,
-  body.responsive .small_prefix_10,
-  body.responsive .small_prefix_11,
-  body.responsive .small_prefix_12,
-  body.responsive .small_prefix_13,
-  body.responsive .small_prefix_14,
-  body.responsive .small_prefix_15,
-  body.responsive .small_prefix_16 {
+  body.responsive [class^="prefix_"],
+  body.responsive [class^="small_prefix_"] {
     padding-left: 0;
   }
-  body.responsive .suffix_1,
-  body.responsive .suffix_2,
-  body.responsive .suffix_3,
-  body.responsive .suffix_4,
-  body.responsive .suffix_5,
-  body.responsive .suffix_6,
-  body.responsive .suffix_7,
-  body.responsive .suffix_8,
-  body.responsive .suffix_9,
-  body.responsive .suffix_10,
-  body.responsive .suffix_11,
-  body.responsive .suffix_12,
-  body.responsive .suffix_13,
-  body.responsive .suffix_14,
-  body.responsive .suffix_15,
-  body.responsive .suffix_16,
-  body.responsive .small_suffix_1,
-  body.responsive .small_suffix_2,
-  body.responsive .small_suffix_3,
-  body.responsive .small_suffix_4,
-  body.responsive .small_suffix_5,
-  body.responsive .small_suffix_6,
-  body.responsive .small_suffix_7,
-  body.responsive .small_suffix_8,
-  body.responsive .small_suffix_9,
-  body.responsive .small_suffix_10,
-  body.responsive .small_suffix_11,
-  body.responsive .small_suffix_12,
-  body.responsive .small_suffix_13,
-  body.responsive .small_suffix_14,
-  body.responsive .small_suffix_15,
-  body.responsive .small_suffix_16 {
+  body.responsive [class^="suffix_"],
+  body.responsive [class^="small_suffix_"] {
     padding-right: 0;
   }
-  body.responsive .push_1,
-  body.responsive .push_2,
-  body.responsive .push_3,
-  body.responsive .push_4,
-  body.responsive .push_5,
-  body.responsive .push_6,
-  body.responsive .push_7,
-  body.responsive .push_8,
-  body.responsive .push_9,
-  body.responsive .push_10,
-  body.responsive .push_11,
-  body.responsive .push_12,
-  body.responsive .push_13,
-  body.responsive .push_14,
-  body.responsive .push_15,
-  body.responsive .push_16,
-  body.responsive .small_push_1,
-  body.responsive .small_push_2,
-  body.responsive .small_push_3,
-  body.responsive .small_push_4,
-  body.responsive .small_push_5,
-  body.responsive .small_push_6,
-  body.responsive .small_push_7,
-  body.responsive .small_push_8,
-  body.responsive .small_push_9,
-  body.responsive .small_push_10,
-  body.responsive .small_push_11,
-  body.responsive .small_push_12,
-  body.responsive .small_push_13,
-  body.responsive .small_push_14,
-  body.responsive .small_push_15,
-  body.responsive .small_push_16 {
+  body.responsive [class^="push_"],
+  body.responsive [class^="small_push_"] {
     left: 0;
   }
-  body.responsive .pull_1,
-  body.responsive .pull_2,
-  body.responsive .pull_3,
-  body.responsive .pull_4,
-  body.responsive .pull_5,
-  body.responsive .pull_6,
-  body.responsive .pull_7,
-  body.responsive .pull_8,
-  body.responsive .pull_9,
-  body.responsive .pull_10,
-  body.responsive .pull_11,
-  body.responsive .pull_12,
-  body.responsive .pull_13,
-  body.responsive .pull_14,
-  body.responsive .pull_15,
-  body.responsive .pull_16,
-  body.responsive .small_pull_1,
-  body.responsive .small_pull_2,
-  body.responsive .small_pull_3,
-  body.responsive .small_pull_4,
-  body.responsive .small_pull_5,
-  body.responsive .small_pull_6,
-  body.responsive .small_pull_7,
-  body.responsive .small_pull_8,
-  body.responsive .small_pull_9,
-  body.responsive .small_pull_10,
-  body.responsive .small_pull_11,
-  body.responsive .small_pull_12,
-  body.responsive .small_pull_13,
-  body.responsive .small_pull_14,
-  body.responsive .small_pull_15,
-  body.responsive .small_pull_16 {
+  body.responsive [class^="pull_"],
+  body.responsive [class^="small_pull_"] {
     left: 0;
   }
-  body.responsive .container_12,
-  body.responsive .container_16 {
+  body.responsive .container {
     width: 45rem;
   }
   body.responsive .medium_grid_12 {
@@ -990,341 +835,39 @@ ul.block_grid {
     float: none;
     width: 100%;
   }
-  body.responsive .grid_1,
-  body.mobile-responsive .grid_1,
-  body.responsive .grid_2,
-  body.mobile-responsive .grid_2,
-  body.responsive .grid_3,
-  body.mobile-responsive .grid_3,
-  body.responsive .grid_4,
-  body.mobile-responsive .grid_4,
-  body.responsive .grid_5,
-  body.mobile-responsive .grid_5,
-  body.responsive .grid_6,
-  body.mobile-responsive .grid_6,
-  body.responsive .grid_7,
-  body.mobile-responsive .grid_7,
-  body.responsive .grid_8,
-  body.mobile-responsive .grid_8,
-  body.responsive .grid_9,
-  body.mobile-responsive .grid_9,
-  body.responsive .grid_10,
-  body.mobile-responsive .grid_10,
-  body.responsive .grid_11,
-  body.mobile-responsive .grid_11,
-  body.responsive .grid_12,
-  body.mobile-responsive .grid_12,
-  body.responsive .grid_13,
-  body.mobile-responsive .grid_13,
-  body.responsive .grid_14,
-  body.mobile-responsive .grid_14,
-  body.responsive .grid_15,
-  body.mobile-responsive .grid_15,
-  body.responsive .grid_16,
-  body.mobile-responsive .grid_16,
-  body.responsive .medium_grid_1,
-  body.mobile-responsive .medium_grid_1,
-  body.responsive .medium_grid_2,
-  body.mobile-responsive .medium_grid_2,
-  body.responsive .medium_grid_3,
-  body.mobile-responsive .medium_grid_3,
-  body.responsive .medium_grid_4,
-  body.mobile-responsive .medium_grid_4,
-  body.responsive .medium_grid_5,
-  body.mobile-responsive .medium_grid_5,
-  body.responsive .medium_grid_6,
-  body.mobile-responsive .medium_grid_6,
-  body.responsive .medium_grid_7,
-  body.mobile-responsive .medium_grid_7,
-  body.responsive .medium_grid_8,
-  body.mobile-responsive .medium_grid_8,
-  body.responsive .medium_grid_9,
-  body.mobile-responsive .medium_grid_9,
-  body.responsive .medium_grid_10,
-  body.mobile-responsive .medium_grid_10,
-  body.responsive .medium_grid_11,
-  body.mobile-responsive .medium_grid_11,
-  body.responsive .medium_grid_12,
-  body.mobile-responsive .medium_grid_12,
-  body.responsive .medium_grid_13,
-  body.mobile-responsive .medium_grid_13,
-  body.responsive .medium_grid_14,
-  body.mobile-responsive .medium_grid_14,
-  body.responsive .medium_grid_15,
-  body.mobile-responsive .medium_grid_15,
-  body.responsive .medium_grid_16,
-  body.mobile-responsive .medium_grid_16 {
+  body.responsive [class^="grid_"],
+  body.mobile-responsive [class^="grid_"],
+  body.responsive [class^="medium_grid_"],
+  body.mobile-responsive [class^="medium_grid_"] {
     float: none;
     width: 100%;
   }
-  body.responsive .prefix_1,
-  body.mobile-responsive .prefix_1,
-  body.responsive .prefix_2,
-  body.mobile-responsive .prefix_2,
-  body.responsive .prefix_3,
-  body.mobile-responsive .prefix_3,
-  body.responsive .prefix_4,
-  body.mobile-responsive .prefix_4,
-  body.responsive .prefix_5,
-  body.mobile-responsive .prefix_5,
-  body.responsive .prefix_6,
-  body.mobile-responsive .prefix_6,
-  body.responsive .prefix_7,
-  body.mobile-responsive .prefix_7,
-  body.responsive .prefix_8,
-  body.mobile-responsive .prefix_8,
-  body.responsive .prefix_9,
-  body.mobile-responsive .prefix_9,
-  body.responsive .prefix_10,
-  body.mobile-responsive .prefix_10,
-  body.responsive .prefix_11,
-  body.mobile-responsive .prefix_11,
-  body.responsive .prefix_12,
-  body.mobile-responsive .prefix_12,
-  body.responsive .prefix_13,
-  body.mobile-responsive .prefix_13,
-  body.responsive .prefix_14,
-  body.mobile-responsive .prefix_14,
-  body.responsive .prefix_15,
-  body.mobile-responsive .prefix_15,
-  body.responsive .prefix_16,
-  body.mobile-responsive .prefix_16,
-  body.responsive .medium_prefix_1,
-  body.mobile-responsive .medium_prefix_1,
-  body.responsive .medium_prefix_2,
-  body.mobile-responsive .medium_prefix_2,
-  body.responsive .medium_prefix_3,
-  body.mobile-responsive .medium_prefix_3,
-  body.responsive .medium_prefix_4,
-  body.mobile-responsive .medium_prefix_4,
-  body.responsive .medium_prefix_5,
-  body.mobile-responsive .medium_prefix_5,
-  body.responsive .medium_prefix_6,
-  body.mobile-responsive .medium_prefix_6,
-  body.responsive .medium_prefix_7,
-  body.mobile-responsive .medium_prefix_7,
-  body.responsive .medium_prefix_8,
-  body.mobile-responsive .medium_prefix_8,
-  body.responsive .medium_prefix_9,
-  body.mobile-responsive .medium_prefix_9,
-  body.responsive .medium_prefix_10,
-  body.mobile-responsive .medium_prefix_10,
-  body.responsive .medium_prefix_11,
-  body.mobile-responsive .medium_prefix_11,
-  body.responsive .medium_prefix_12,
-  body.mobile-responsive .medium_prefix_12,
-  body.responsive .medium_prefix_13,
-  body.mobile-responsive .medium_prefix_13,
-  body.responsive .medium_prefix_14,
-  body.mobile-responsive .medium_prefix_14,
-  body.responsive .medium_prefix_15,
-  body.mobile-responsive .medium_prefix_15,
-  body.responsive .medium_prefix_16,
-  body.mobile-responsive .medium_prefix_16 {
+  body.responsive [class^="prefix_"],
+  body.mobile-responsive [class^="prefix_"],
+  body.responsive [class^="medium_prefix_"],
+  body.mobile-responsive [class^="medium_prefix_"] {
     padding-left: 0;
   }
-  body.responsive .suffix_1,
-  body.mobile-responsive .suffix_1,
-  body.responsive .suffix_2,
-  body.mobile-responsive .suffix_2,
-  body.responsive .suffix_3,
-  body.mobile-responsive .suffix_3,
-  body.responsive .suffix_4,
-  body.mobile-responsive .suffix_4,
-  body.responsive .suffix_5,
-  body.mobile-responsive .suffix_5,
-  body.responsive .suffix_6,
-  body.mobile-responsive .suffix_6,
-  body.responsive .suffix_7,
-  body.mobile-responsive .suffix_7,
-  body.responsive .suffix_8,
-  body.mobile-responsive .suffix_8,
-  body.responsive .suffix_9,
-  body.mobile-responsive .suffix_9,
-  body.responsive .suffix_10,
-  body.mobile-responsive .suffix_10,
-  body.responsive .suffix_11,
-  body.mobile-responsive .suffix_11,
-  body.responsive .suffix_12,
-  body.mobile-responsive .suffix_12,
-  body.responsive .suffix_13,
-  body.mobile-responsive .suffix_13,
-  body.responsive .suffix_14,
-  body.mobile-responsive .suffix_14,
-  body.responsive .suffix_15,
-  body.mobile-responsive .suffix_15,
-  body.responsive .suffix_16,
-  body.mobile-responsive .suffix_16,
-  body.responsive .medium_suffix_1,
-  body.mobile-responsive .medium_suffix_1,
-  body.responsive .medium_suffix_2,
-  body.mobile-responsive .medium_suffix_2,
-  body.responsive .medium_suffix_3,
-  body.mobile-responsive .medium_suffix_3,
-  body.responsive .medium_suffix_4,
-  body.mobile-responsive .medium_suffix_4,
-  body.responsive .medium_suffix_5,
-  body.mobile-responsive .medium_suffix_5,
-  body.responsive .medium_suffix_6,
-  body.mobile-responsive .medium_suffix_6,
-  body.responsive .medium_suffix_7,
-  body.mobile-responsive .medium_suffix_7,
-  body.responsive .medium_suffix_8,
-  body.mobile-responsive .medium_suffix_8,
-  body.responsive .medium_suffix_9,
-  body.mobile-responsive .medium_suffix_9,
-  body.responsive .medium_suffix_10,
-  body.mobile-responsive .medium_suffix_10,
-  body.responsive .medium_suffix_11,
-  body.mobile-responsive .medium_suffix_11,
-  body.responsive .medium_suffix_12,
-  body.mobile-responsive .medium_suffix_12,
-  body.responsive .medium_suffix_13,
-  body.mobile-responsive .medium_suffix_13,
-  body.responsive .medium_suffix_14,
-  body.mobile-responsive .medium_suffix_14,
-  body.responsive .medium_suffix_15,
-  body.mobile-responsive .medium_suffix_15,
-  body.responsive .medium_suffix_16,
-  body.mobile-responsive .medium_suffix_16 {
+  body.responsive [class^="suffix_"],
+  body.mobile-responsive [class^="suffix_"],
+  body.responsive [class^="medium_suffix_"],
+  body.mobile-responsive [class^="medium_suffix_"] {
     padding-right: 0;
   }
-  body.responsive .push_1,
-  body.mobile-responsive .push_1,
-  body.responsive .push_2,
-  body.mobile-responsive .push_2,
-  body.responsive .push_3,
-  body.mobile-responsive .push_3,
-  body.responsive .push_4,
-  body.mobile-responsive .push_4,
-  body.responsive .push_5,
-  body.mobile-responsive .push_5,
-  body.responsive .push_6,
-  body.mobile-responsive .push_6,
-  body.responsive .push_7,
-  body.mobile-responsive .push_7,
-  body.responsive .push_8,
-  body.mobile-responsive .push_8,
-  body.responsive .push_9,
-  body.mobile-responsive .push_9,
-  body.responsive .push_10,
-  body.mobile-responsive .push_10,
-  body.responsive .push_11,
-  body.mobile-responsive .push_11,
-  body.responsive .push_12,
-  body.mobile-responsive .push_12,
-  body.responsive .push_13,
-  body.mobile-responsive .push_13,
-  body.responsive .push_14,
-  body.mobile-responsive .push_14,
-  body.responsive .push_15,
-  body.mobile-responsive .push_15,
-  body.responsive .push_16,
-  body.mobile-responsive .push_16,
-  body.responsive .medium_push_1,
-  body.mobile-responsive .medium_push_1,
-  body.responsive .medium_push_2,
-  body.mobile-responsive .medium_push_2,
-  body.responsive .medium_push_3,
-  body.mobile-responsive .medium_push_3,
-  body.responsive .medium_push_4,
-  body.mobile-responsive .medium_push_4,
-  body.responsive .medium_push_5,
-  body.mobile-responsive .medium_push_5,
-  body.responsive .medium_push_6,
-  body.mobile-responsive .medium_push_6,
-  body.responsive .medium_push_7,
-  body.mobile-responsive .medium_push_7,
-  body.responsive .medium_push_8,
-  body.mobile-responsive .medium_push_8,
-  body.responsive .medium_push_9,
-  body.mobile-responsive .medium_push_9,
-  body.responsive .medium_push_10,
-  body.mobile-responsive .medium_push_10,
-  body.responsive .medium_push_11,
-  body.mobile-responsive .medium_push_11,
-  body.responsive .medium_push_12,
-  body.mobile-responsive .medium_push_12,
-  body.responsive .medium_push_13,
-  body.mobile-responsive .medium_push_13,
-  body.responsive .medium_push_14,
-  body.mobile-responsive .medium_push_14,
-  body.responsive .medium_push_15,
-  body.mobile-responsive .medium_push_15,
-  body.responsive .medium_push_16,
-  body.mobile-responsive .medium_push_16 {
+  body.responsive [class^="push_"],
+  body.mobile-responsive [class^="push_"],
+  body.responsive [class^="medium_push_"],
+  body.mobile-responsive [class^="medium_push_"] {
     left: 0;
   }
-  body.responsive .pull_1,
-  body.mobile-responsive .pull_1,
-  body.responsive .pull_2,
-  body.mobile-responsive .pull_2,
-  body.responsive .pull_3,
-  body.mobile-responsive .pull_3,
-  body.responsive .pull_4,
-  body.mobile-responsive .pull_4,
-  body.responsive .pull_5,
-  body.mobile-responsive .pull_5,
-  body.responsive .pull_6,
-  body.mobile-responsive .pull_6,
-  body.responsive .pull_7,
-  body.mobile-responsive .pull_7,
-  body.responsive .pull_8,
-  body.mobile-responsive .pull_8,
-  body.responsive .pull_9,
-  body.mobile-responsive .pull_9,
-  body.responsive .pull_10,
-  body.mobile-responsive .pull_10,
-  body.responsive .pull_11,
-  body.mobile-responsive .pull_11,
-  body.responsive .pull_12,
-  body.mobile-responsive .pull_12,
-  body.responsive .pull_13,
-  body.mobile-responsive .pull_13,
-  body.responsive .pull_14,
-  body.mobile-responsive .pull_14,
-  body.responsive .pull_15,
-  body.mobile-responsive .pull_15,
-  body.responsive .pull_16,
-  body.mobile-responsive .pull_16,
-  body.responsive .medium_pull_1,
-  body.mobile-responsive .medium_pull_1,
-  body.responsive .medium_pull_2,
-  body.mobile-responsive .medium_pull_2,
-  body.responsive .medium_pull_3,
-  body.mobile-responsive .medium_pull_3,
-  body.responsive .medium_pull_4,
-  body.mobile-responsive .medium_pull_4,
-  body.responsive .medium_pull_5,
-  body.mobile-responsive .medium_pull_5,
-  body.responsive .medium_pull_6,
-  body.mobile-responsive .medium_pull_6,
-  body.responsive .medium_pull_7,
-  body.mobile-responsive .medium_pull_7,
-  body.responsive .medium_pull_8,
-  body.mobile-responsive .medium_pull_8,
-  body.responsive .medium_pull_9,
-  body.mobile-responsive .medium_pull_9,
-  body.responsive .medium_pull_10,
-  body.mobile-responsive .medium_pull_10,
-  body.responsive .medium_pull_11,
-  body.mobile-responsive .medium_pull_11,
-  body.responsive .medium_pull_12,
-  body.mobile-responsive .medium_pull_12,
-  body.responsive .medium_pull_13,
-  body.mobile-responsive .medium_pull_13,
-  body.responsive .medium_pull_14,
-  body.mobile-responsive .medium_pull_14,
-  body.responsive .medium_pull_15,
-  body.mobile-responsive .medium_pull_15,
-  body.responsive .medium_pull_16,
-  body.mobile-responsive .medium_pull_16 {
+  body.responsive [class^="pull_"],
+  body.mobile-responsive [class^="pull_"],
+  body.responsive [class^="medium_pull_"],
+  body.mobile-responsive [class^="medium_pull_"] {
     left: 0;
   }
-  body.responsive .container_12,
-  body.mobile-responsive .container_12,
-  body.responsive .container_16,
-  body.mobile-responsive .container_16 {
+  body.responsive .container,
+  body.mobile-responsive .container {
     width: 100%;
   }
   body.responsive .small_grid_12,

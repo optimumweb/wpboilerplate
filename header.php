@@ -4,7 +4,7 @@
 		<?php wpbp_header_before(); ?>
 		<header id="header" role="banner">
 			<?php wpbp_header_inside_before(); ?>
-            <div class="container <?php wpbp_option('container_class'); ?>">
+            <div class="container">
                 <div class="grid_4">
                     <hgroup id="site-title">
                         <h1><a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a></h1>

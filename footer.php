@@ -1,7 +1,7 @@
 		<?php wpbp_footer_before(); ?>
 		<footer id="footer" role="contentinfo">
 			<?php wpbp_footer_inside_before(); ?>
-			<div class="container <?php wpbp_option('container_class'); ?>">
+			<div class="container">
                 <div class="grid_8">
                     <nav id="footer-nav">
                         <?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation' ) ); ?>

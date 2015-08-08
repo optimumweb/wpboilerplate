@@ -122,13 +122,13 @@ function wpbp_smartbox($atts, $content = null)
     $id = ' id="' . $id . '"';
     
     // define box .class
-    $class = 'smartbox container ' . $class;
+    $class = 'smartbox ' . $class;
     if ( $sliding )		$class .= ' sliding';
     if ( $collapsible )	$class .= ' collapsible';
     if ( $closed )		$class .= ' closed';
     if ( $ajax )		$class .= ' ajax';
     if ( $lazy )		$class .= ' lazy';
-    $class = ' class="' . $class . '"';
+    $class = ' class="' . preg_replace('/\s+/', ' ', $class) . '"';
     
     // define box data
     $data = '';
