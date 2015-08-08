@@ -155,9 +155,9 @@ function wpbp_theme_options_render_page()
                     </td>
                 </tr>
 
-                <tr valign="top" class="radio-option"><th scope="row"><?php _e('Fluid Layout?', 'wpbp'); ?></th>
+                <tr valign="top" class="radio-option"><th scope="row"><?php _e("Fluid Layout?", 'wpbp'); ?></th>
                     <td>
-                        <fieldset><legend class="screen-reader-text"><span><?php _e('Fluid Layout?', 'wpbp'); ?></span></legend>
+                        <fieldset><legend class="screen-reader-text"><span><?php _e("Fluid Layout?", 'wpbp'); ?></span></legend>
                             <select name="wpbp_theme_options[fluid]" id="wpbp_theme_options[fluid]">
                                 <option value="yes" <?php selected($wpbp_options['fluid'], 'yes'); ?>><?php _e("Yes", 'wpbp'); ?></option>
                                 <option value="no" <?php selected($wpbp_options['fluid'], 'no'); ?>><?php _e("No", 'wpbp'); ?></option>
@@ -168,7 +168,7 @@ function wpbp_theme_options_render_page()
 
 				<tr valign="top" class="radio-option"><th scope="row"><?php _e('Responsive Layout?', 'wpbp'); ?></th>
                     <td>
-                        <fieldset><legend class="screen-reader-text"><span><?php _e('Responsive Layout?', 'wpbp'); ?></span></legend>
+                        <fieldset><legend class="screen-reader-text"><span><?php _e("Responsive Layout?", 'wpbp'); ?></span></legend>
                             <select name="wpbp_theme_options[responsive]" id="wpbp_theme_options[responsive]">
                                 <option value="responsive" <?php selected($wpbp_options['responsive'], 'responsive'); ?>><?php _e("Full-responsive", 'wpbp'); ?></option>
                                 <option value="mobile-responsive" <?php selected($wpbp_options['responsive'], 'mobile-responsive'); ?>><?php _e("Mobile-responsive", 'wpbp'); ?></option>
