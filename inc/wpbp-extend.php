@@ -227,7 +227,7 @@ if ( !function_exists('wpbp_container_class') ) {
 
     function wpbp_container_class()
     {
-        echo "container " . wpbp_get_option('fluid') == 'yes' ? "fluid" : "";
+        echo "container " . ( wpbp_get_option('fluid') == 'yes' ? "fluid" : "" );
     }
 
 }
