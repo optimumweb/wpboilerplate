@@ -21,7 +21,7 @@ add_action('admin_enqueue_scripts', 'wpbp_admin_enqueue_scripts');
 function wpbp_get_option($option)
 {
 	global $wpbp_options;
-	return ( is_array( $wpbp_options ) && isset( $wpbp_options[$option] ) ) ? $wpbp_options[$option] : "";
+	return is_array( $wpbp_options ) && isset($wpbp_options[$option]) ? $wpbp_options[$option] : "";
 }
 
 function wpbp_option($option)
@@ -54,7 +54,7 @@ function wpbp_theme_options_add_page()
 		'wpbp_theme_options_render_page'
 	);
 
-	if (!$theme_page) return;
+	if ( !$theme_page ) return;
 }
 add_action('admin_menu', 'wpbp_theme_options_add_page');
 
@@ -64,58 +64,23 @@ function wpbp_admin_bar_render()
 
 	$wp_admin_bar->add_menu(array(
 		'parent' => 'appearance',
-		'id' => 'wpbp_theme_options',
-		'title' => __('Boilerplate Options', 'wpbp'),
-		'href' => admin_url('themes.php?page=wpbp_options')
+		'id'     => 'wpbp_theme_options',
+		'title'  => __('Boilerplate Options', 'wpbp'),
+		'href'   => admin_url('themes.php?page=wpbp_options')
 	));
 }
 add_action('wp_before_admin_bar_render', 'wpbp_admin_bar_render');
 
-global $wpbp_css_frameworks;
-$wpbp_css_frameworks = array(
-	'960gs_12' => array(
-		'name'		=> '960gs_12',
-		'label'		=> __('960gs (12 cols)', 'wpbp'),
-		'classes'	=> array(
-			'container'	=> 'container_12',
-			'main'		=> 'grid_9',
-			'sidebar'	=> 'grid_3'
-		)
-	),
-	'960gs_16' => array(
-		'name'		=> '960gs_16',
-		'label'		=> __('960gs (16 cols)', 'wpbp'),
-		'classes'	=> array(
-			'container'	=> 'container_16',
-			'main'		=> 'grid_11',
-			'sidebar'	=> 'grid_5'
-		)
-	)
-);
-
-// Write the above array of CSS frameworks into a script tag
-function wpbp_add_frameworks_object_script()
-{
-	global $wpbp_css_frameworks;
-	$json = json_encode($wpbp_css_frameworks);
-    echo "<script> var wpbp_css_frameworks = " . $json . "; </script>\n";
-}
-add_action('admin_head', 'wpbp_add_frameworks_object_script');
-
 function wpbp_get_default_theme_options()
 {
-	global $wpbp_css_frameworks;
-	$default_framework = '960gs_12';
-	$default_framework_settings = $wpbp_css_frameworks[$default_framework];
 	$default_theme_options = array(
         'google_analytics_id'   => '',
         'google_conversion_id'  => '',
         'google_tag_manager_id' => '',
         'optimizely_project_id' => '',
-		'css_framework'         => $default_framework,
-		'container_class'       => $default_framework_settings['classes']['container'],
-		'main_class'            => $default_framework_settings['classes']['main'],
-		'sidebar_class'         => $default_framework_settings['classes']['sidebar'],
+		'main_class'            => 'grid_9',
+		'sidebar_class'         => 'grid_3',
+        'fluid'                 => 'yes',
 		'responsive'            => 'responsive',
         'css_files'             => '',
 		'custom_css'            => '',
@@ -190,21 +155,20 @@ function wpbp_theme_options_render_page()
                     </td>
                 </tr>
 
-				<tr valign="top" class="radio-option"><th scope="row"><?php _e('CSS Grid Framework', 'wpbp'); ?></th>
-					<td>
-						<fieldset class="wpbp_css_frameworks"><legend class="screen-reader-text"><span><?php _e('CSS Grid Framework', 'wpbp'); ?></span></legend>
-							<select name="wpbp_theme_options[css_framework]" id="wpbp_theme_options[css_framework]">
-							<?php foreach ($wpbp_css_frameworks as $css_framework) { ?>
-								<option value="<?php echo esc_attr($css_framework['name']); ?>" <?php selected($wpbp_options['css_framework'], $css_framework['name']); ?>><?php echo $css_framework['label']; ?></option>
-							<?php } ?>
-							</select>
-						</fieldset>
-					</td>
-				</tr>
-
-				<tr valign="top" class="radio-option"><th scope="row"><?php _e('Responsive?', 'wpbp'); ?></th>
+                <tr valign="top" class="radio-option"><th scope="row"><?php _e('Fluid Layout?', 'wpbp'); ?></th>
                     <td>
-                        <fieldset><legend class="screen-reader-text"><span><?php _e('Responsive?', 'wpbp'); ?></span></legend>
+                        <fieldset><legend class="screen-reader-text"><span><?php _e('Fluid Layout?', 'wpbp'); ?></span></legend>
+                            <select name="wpbp_theme_options[fluid]" id="wpbp_theme_options[fluid]">
+                                <option value="yes" <?php selected($wpbp_options['fluid'], 'yes'); ?>><?php _e("Yes", 'wpbp'); ?></option>
+                                <option value="no" <?php selected($wpbp_options['fluid'], 'no'); ?>><?php _e("No", 'wpbp'); ?></option>
+                            </select>
+                        </fieldset>
+                    </td>
+                </tr>
+
+				<tr valign="top" class="radio-option"><th scope="row"><?php _e('Responsive Layout?', 'wpbp'); ?></th>
+                    <td>
+                        <fieldset><legend class="screen-reader-text"><span><?php _e('Responsive Layout?', 'wpbp'); ?></span></legend>
                             <select name="wpbp_theme_options[responsive]" id="wpbp_theme_options[responsive]">
                                 <option value="responsive" <?php selected($wpbp_options['responsive'], 'responsive'); ?>><?php _e("Full-responsive", 'wpbp'); ?></option>
                                 <option value="mobile-responsive" <?php selected($wpbp_options['responsive'], 'mobile-responsive'); ?>><?php _e("Mobile-responsive", 'wpbp'); ?></option>
@@ -267,7 +231,7 @@ function wpbp_theme_options_render_page()
                 <tr valign="top"><th scope="row"><?php _e('Custom Javascript', 'wpbp'); ?></th>
                     <td>
                         <fieldset><legend class="screen-reader-text"><span><?php _e('Custom Javascript', 'wpbp'); ?></span></legend>
-                            <textarea name="wpbp_theme_options[custom_js]" id="custom_css" cols="94" rows="10"><?php echo esc_attr($wpbp_options['custom_js']); ?></textarea>
+                            <textarea name="wpbp_theme_options[custom_js]" id="custom_js" cols="94" rows="10"><?php echo esc_attr($wpbp_options['custom_js']); ?></textarea>
                             <br />
                             <small class="description"><?php printf(__('Enter custom Javascript for this site', 'wpbp')); ?></small>
                         </fieldset>
@@ -296,19 +260,14 @@ function wpbp_theme_options_render_page()
 function wpbp_theme_options_validate($input)
 {
 	global $wpbp_css_frameworks;
+
 	$output = $defaults = wpbp_get_default_theme_options();
-
-	if ( isset($input['css_framework']) && array_key_exists($input['css_framework'], $wpbp_css_frameworks) ) {
-		$output['css_framework'] = $input['css_framework'];
-	}
-
-	// set the value of the main container class depending on the selected grid framework
-	$output['container_class'] = $wpbp_css_frameworks[$output['css_framework']]['classes']['container'];
 
     $output['google_analytics_id']   = isset($input['google_analytics_id'])   ? $input['google_analytics_id']   : null;
     $output['google_remarketing_id'] = isset($input['google_remarketing_id']) ? $input['google_remarketing_id'] : null;
     $output['google_tag_manager_id'] = isset($input['google_tag_manager_id']) ? $input['google_tag_manager_id'] : null;
     $output['optimizely_project_id'] = isset($input['optimizely_project_id']) ? $input['optimizely_project_id'] : null;
+    $output['fluid']                 = isset($input['fluid'])                 ? $input['fluid']                 : null;
 	$output['responsive']            = isset($input['responsive'])            ? $input['responsive']            : null;
 	$output['main_class']            = isset($input['main_class'])            ? $input['main_class']            : null;
 	$output['sidebar_class']         = isset($input['sidebar_class'])         ? $input['sidebar_class']         : null;

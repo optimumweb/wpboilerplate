@@ -223,3 +223,11 @@ if ( !function_exists('wpbp_wpml_lang_sel') && function_exists('icl_get_language
 
 }
 
+if ( !function_exists('wpbp_container_class') ) {
+
+    function wpbp_container_class()
+    {
+        echo "container " . wpbp_get_option('fluid') == 'yes' ? "fluid" : "";
+    }
+
+}
