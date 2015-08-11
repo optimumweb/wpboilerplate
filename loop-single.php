@@ -12,11 +12,16 @@
 				<span class="post-author byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>
 			</section>
 		</header>
+        <?php if ( has_post_thumbnail() ) : ?>
+        <section class="post-thumbnail">
+            <?php the_post_thumbnail('large'); ?>
+        </section>
+        <?php endif; ?>
 		<section class="post-content">
 			<?php the_content(); ?>
 		</section>
 		<footer class="post-footer">
-			<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpbp'), 'after' => '</p></nav>' )); ?>
+			<?php wp_link_pages(array( 'before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpbp'), 'after' => '</p></nav>' )); ?>
 			<p class="post-tags"><?php the_tags(); ?></p>
 		</footer>
 		<section id="post-comments">

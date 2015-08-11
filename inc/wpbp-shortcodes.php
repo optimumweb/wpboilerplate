@@ -46,7 +46,7 @@ function parse_shortcode_content($content, $options = array())
 // [the_title post_id="123"]
 function wpbp_the_title($atts)
 {
-    extract(shortcode_atts(array('post_id' => null), $atts));
+    extract(shortcode_atts(array( 'post_id' => null ), $atts));
     if ( !isset($post_id) ) set_post_ID($post_id);
     return get_the_title($post_id);
 }
@@ -62,13 +62,6 @@ function wpbp_section($atts, $content = null)
     return '<section id="' . $id . '" class="' . $class . '">' . parse_shortcode_content($content) . '</section>';
 }
 add_shortcode('section', 'wpbp_section');
-
-// [container]...[/container]
-function wpbp_container($atts, $content = null)
-{
-	return '<div class="container ' . wpbp_get_option('container_class') . '">' . parse_shortcode_content($content) . '</div>';
-}
-add_shortcode('container', 'wpbp_container');
 
 // [grid cols="6"]...[/grid]
 function wpbp_grid($atts, $content = null)
@@ -93,6 +86,54 @@ function wpbp_hr()
 	return '<hr />';
 }
 add_shortcode('hr', 'wpbp_hr');
+
+
+function wpbp_recent_posts($atts = array())
+{
+    $params = shortcode_atts(array(
+        'posts_per_page' => 6,
+        'offset'         => null,
+        'category'       => null,
+        'category_name'  => null,
+        'orderby'        => null,
+        'order'          => null,
+        'include'        => null,
+        'exclude'        => array( get_post_id() ),
+        'meta_key'       => null,
+        'meta_value'     => null,
+        'post_type'      => null,
+        'tax_query'      => null,
+        'post_template'  => null,
+        'no_results'     => __("Aucuns résultats", 'wpbp')
+    ), $atts);
+
+    if ( isset($params['tax_query']) ) {
+        $tq = explode("=", $params['tax_query']);
+        $params['tax_query'] = array( array(
+            'taxonomy' => $tq[0],
+            'field'    => 'slug',
+            'terms'    => $tq[1]
+        ) );
+    }
+
+    $post_template_path = THEME_DIRECTORY . '/' . $params['post_template'] . '.php';
+
+    ob_start();
+
+    $query = new WP_Query($params);
+
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            include($post_template_path);
+        }
+    } else {
+        echo '<div class="no-results">' . $params['no_results'] . '</div>';
+    }
+
+    return ob_get_clean();
+}
+add_shortcode('wpbp_recent_posts', 'wpbp_recent_posts');
 
 /**
  * SMARTBOX

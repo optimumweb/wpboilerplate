@@ -157,7 +157,9 @@ ul.block_grid {
 .clearfix:before,
 .clearfix:after,
 .container:before,
-.container:after {
+.container:after,
+.block_grid:before,
+.block_grid:after {
   content: '.';
   display: block;
   overflow: hidden;
@@ -169,12 +171,14 @@ ul.block_grid {
 }
 
 .clearfix:after,
-.container:after {
+.container:after,
+.block_grid:after {
   clear: both;
 }
 
 .clearfix,
-.container {
+.container,
+.block_grid {
   zoom: 1;
 }
 

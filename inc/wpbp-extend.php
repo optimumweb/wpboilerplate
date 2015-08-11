@@ -1,5 +1,14 @@
 <?php
 
+if ( !function_exists('get_post_id') ) {
+
+    function get_post_id()
+    {
+        return get_queried_object_id();
+    }
+
+}
+
 if ( !function_exists('set_post_ID') ) {
 
     /**
@@ -8,8 +17,8 @@ if ( !function_exists('set_post_ID') ) {
     */
     function set_post_ID(&$post_ID)
     {
-        if ( !isset($post_ID) || !is_int($post_ID) ) {
-            $post_ID = get_queried_object_id();
+        if ( !isset($post_ID) || !is_numeric($post_ID) ) {
+            $post_ID = get_post_id();
         }
     }
 

@@ -35,7 +35,7 @@
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if ( $wp_query->max_num_pages > 1 ) : ?>
 	<nav id="post-nav">
-		<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'wpbp' ) ); ?></div>
-		<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'wpbp' ) ); ?></div>
+		<div class="post-previous"><?php next_posts_link( __("&larr; Older posts", 'wpbp') ); ?></div>
+		<div class="post-next"><?php previous_posts_link( __("Newer posts &rarr;", 'wpbp') ); ?></div>
 	</nav>
 <?php endif; ?>

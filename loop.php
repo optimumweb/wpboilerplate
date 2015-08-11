@@ -20,8 +20,15 @@
 				<span class="post-author byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>
 			</section>
 		</header>
+        <?php if ( has_post_thumbnail() ) : ?>
+        <section class="post-thumbnail">
+            <a href="<?php the_permalink(); ?>">
+                <?php the_post_thumbnail('thumbnail'); ?>
+            </a>
+        </section>
+        <?php endif; ?>
 		<section class="post-content">
-			<?php if (is_archive() || is_search()) : // Only display excerpts for archives and search ?>
+			<?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search ?>
 			<?php the_excerpt(); ?>
 			<?php else : ?>
 			<?php the_content(); ?>
