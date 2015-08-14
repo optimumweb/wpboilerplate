@@ -784,10 +784,10 @@
                     $anchorTarget = $(anchorTarget);
 
                 $contents.removeClass('active').hide();
-                $anchorTarget.addClass('active').show();
+                $anchorTarget.addClass('active').show().trigger('activated');
 
                 $anchors.removeClass('active');
-                $anchor.addClass('active');
+                $anchor.addClass('active').trigger('activated');
             });
 
             $anchors.click(function(e) {
