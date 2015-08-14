@@ -111,8 +111,6 @@ function wpbp_recent_posts($atts = array())
         $params['post__not_in'] = $params['exclude'];
     }
 
-    var_dump($params);
-
     if ( isset($params['tax_query']) ) {
         $tq = explode("=", $params['tax_query']);
         $params['tax_query'] = array( array(
