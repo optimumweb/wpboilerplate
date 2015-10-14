@@ -64,6 +64,7 @@ if ( !is_admin() ) {
 	add_filter('year_link', 'wpbp_root_relative_url');
 	add_filter('tag_link', 'wpbp_root_relative_url');
 	add_filter('the_author_posts_link', 'wpbp_root_relative_url');
+    add_filter('widget_text', 'do_shortcode');
 }
 
 // remove root relative URLs on any attachments in the feed
@@ -432,3 +433,14 @@ function wpbp_change_mce_options($options)
 	return $options;
 }
 add_filter('tiny_mce_before_init', 'wpbp_change_mce_options');
+
+function remove_stupid_br($content)
+{
+    global $shortcode_tags;
+    $shortcode_handles = array_keys($shortcode_tags);
+    $block = join("|", $shortcode_handles);
+    $rep = preg_replace("/(<p>)?\[($block)(\s[^\]]+)?\](<\/p>|<br \/>)?/","[$2$3]", $content);
+    $rep = preg_replace("/(<p>)?\[\/($block)](<\/p>|<br \/>)?/","[/$2]", $rep);
+    return $rep;
+}
+add_filter("the_content", "remove_stupid_br");

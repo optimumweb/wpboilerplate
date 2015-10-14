@@ -60,6 +60,7 @@ function wpbp_section($atts, $content = null)
         'class' => '',
         'style' => ''
     ), $atts));
+
     return '<section id="' . $id . '" class="' . $class . '" style="' . $style . '">' . parse_shortcode_content($content) . '</section>';
 }
 add_shortcode('section', 'wpbp_section');
@@ -68,9 +69,12 @@ add_shortcode('section', 'wpbp_section');
 function wpbp_container($atts, $content = null)
 {
     extract(shortcode_atts(array(
-        'cols' => '12'
+        'cols'  => '12',
+        'id'    => "",
+        'class' => ""
     ), $atts));
-    return '<div class="container container_' . $cols . '">' . parse_shortcode_content($content) . '</div>';
+
+    return '<div id="' . $id . '" class="container container_' . $cols . ' ' . $class . '">' . parse_shortcode_content($content) . '</div>';
 }
 add_shortcode('container', 'wpbp_container');
 
@@ -78,11 +82,37 @@ add_shortcode('container', 'wpbp_container');
 function wpbp_grid($atts, $content = null)
 {
 	extract(shortcode_atts(array(
-		'cols' => '1'
+		'cols'  => '1',
+        'class' => ""
 	), $atts));
-	return '<div class="grid_' . $cols . '">' . parse_shortcode_content($content) . '</div>';
+
+	return '<div class="grid_' . $cols . ' ' . $class . '">' . parse_shortcode_content($content) . '</div>';
 }
-add_shortcode('grid', 'wpbp_grid');
+add_shortcode('grid',  'wpbp_grid');
+add_shortcode('grid2', 'wpbp_grid');
+add_shortcode('grid3', 'wpbp_grid');
+
+// [div class="class"]...[/div]
+function wpbp_div($atts, $content = null)
+{
+    extract(shortcode_atts(array(
+        'class' => ''
+    ), $atts));
+
+    return '<div class="' . $class . '">' . parse_shortcode_content($content) . '</div>';
+}
+add_shortcode('div', 'wpbp_div');
+
+// [p class="class"]...[/p]
+function wpbp_paragraph($atts, $content = null)
+{
+    extract(shortcode_atts(array(
+        'class' => ''
+    ), $atts));
+
+    return '<p class="' . $class . '">' . parse_shortcode_content($content) . '</p>';
+}
+add_shortcode('p', 'wpbp_paragraph');
 
 // [clear]
 function wpbp_clear()
