@@ -14,31 +14,31 @@ function parse_shortcode_content($content, $options = array())
 	), $options ) );
 
     if ( $unautop )
-        $content = shortcode_unautop( $content );
+        $content = shortcode_unautop($content);
 
     if ( $wpautop )
-        $content = wpautop( $content );
+        $content = wpautop($content);
 
 	if ( $do_shortcode )
-		$content = do_shortcode( $content );
+		$content = do_shortcode($content);
 		
 	if ( $trim )
-		$content = trim( $content );
+		$content = trim($content);
 
 	// Remove '</p>' from the start of the string.
 	if ( substr( $content, 0, 4 ) == '</p>' )
-		$content = substr( $content, 4 );
+		$content = substr($content, 4);
 
 	// Remove '<p>' from the end of the string.
 	if ( substr( $content, -3, 3 ) == '<p>' )
-		$content = substr( $content, 0, -3 );
+		$content = substr($content, 0, -3);
 
 	// Remove any instances of '<p></p>'.
-	$content = str_replace( array( '<p></p>' ), '', $content );
-    $content = str_replace( array( '<p> </p>' ), '', $content );
+	$content = str_replace(array( '<p></p>' ), '', $content);
+    $content = str_replace(array( '<p> </p>' ), '', $content);
 
 	if ( $do_shortcode )
-		$content = do_shortcode( $content );
+		$content = do_shortcode($content);
 
 	return $content;
 }
@@ -57,11 +57,22 @@ function wpbp_section($atts, $content = null)
 {
     extract(shortcode_atts(array(
         'id'    => '',
-        'class' => ''
+        'class' => '',
+        'style' => ''
     ), $atts));
-    return '<section id="' . $id . '" class="' . $class . '">' . parse_shortcode_content($content) . '</section>';
+    return '<section id="' . $id . '" class="' . $class . '" style="' . $style . '">' . parse_shortcode_content($content) . '</section>';
 }
 add_shortcode('section', 'wpbp_section');
+
+// [container cols="12"]...[/container]
+function wpbp_container($atts, $content = null)
+{
+    extract(shortcode_atts(array(
+        'cols' => '12'
+    ), $atts));
+    return '<div class="container container_' . $cols . '">' . parse_shortcode_content($content) . '</div>';
+}
+add_shortcode('container', 'wpbp_container');
 
 // [grid cols="6"]...[/grid]
 function wpbp_grid($atts, $content = null)
@@ -71,7 +82,7 @@ function wpbp_grid($atts, $content = null)
 	), $atts));
 	return '<div class="grid_' . $cols . '">' . parse_shortcode_content($content) . '</div>';
 }
-add_shortcode('grid', 'wpbp');
+add_shortcode('grid', 'wpbp_grid');
 
 // [clear]
 function wpbp_clear()
