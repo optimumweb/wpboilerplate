@@ -83,10 +83,14 @@ function wpbp_grid($atts, $content = null)
 {
 	extract(shortcode_atts(array(
 		'cols'  => '1',
-        'class' => ""
+        'class' => "",
+        'style' => ""
 	), $atts));
 
-	return '<div class="grid_' . $cols . ' ' . $class . '">' . parse_shortcode_content($content) . '</div>';
+    $html_class = $class ? 'class="grid_' . $cols . ' ' . $class . '"' : ' class="grid_' . $cols . '"';
+    $html_style = $style ? 'style="' . $style . '"' : '';
+
+	return '<div' . implode(" ", [ $html_class, $html_style ]) . '>' . parse_shortcode_content($content) . '</div>';
 }
 add_shortcode('grid',  'wpbp_grid');
 add_shortcode('grid2', 'wpbp_grid');
