@@ -18,7 +18,7 @@
 
 <title><?php wp_title(''); ?></title>
 
-<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
+<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>feed/">
 
 <?php wp_head(); ?>
 
