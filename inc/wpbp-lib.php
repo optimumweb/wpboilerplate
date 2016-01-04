@@ -134,7 +134,10 @@ function wpbp_get_lib($which = null)
         ),
         'noUiSlider' => array(
             'js'  => TEMPLATE_URI . '/lib/noUiSlider/nouislider.min.js',
-            'css' => TEMPLATE_URI . '/lib/noUiSlider/nouislider.min.css',
+            'css' => array(
+                TEMPLATE_URI . '/lib/noUiSlider/nouislider.min.css',
+                TEMPLATE_URI . '/lib/noUiSlider/nouislider.tooltips.css'
+            ),
             'ver' => '8.2.1'
         ),
         'default' => array(
