@@ -140,6 +140,10 @@ function wpbp_get_lib($which = null)
             ),
             'ver' => '8.2.1'
         ),
+        'wNumb' => array(
+            'js'  => TEMPLATE_URI . '/lib/wnumb/wNumb.js',
+            'ver' => '1.0.2'
+        ),
         'default' => array(
             'css'  => TEMPLATE_URI . '/lib/wpbp/css/default.css'
         ),
