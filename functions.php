@@ -1,5 +1,9 @@
 <?php
 
+// Increase max upload size
+@ini_set('upload_max_size' , '16M');
+@ini_set('post_max_size', '16M');
+
 if ( !defined('TEMPLATE_DIRECTORY') ) define('TEMPLATE_DIRECTORY', get_template_directory());
 if ( !defined('TEMPLATE_URI') )       define('TEMPLATE_URI',       get_template_directory_uri());
 if ( !defined('THEME_DIRECTORY') )    define('THEME_DIRECTORY',    get_theme_root() . '/' . get_stylesheet());
