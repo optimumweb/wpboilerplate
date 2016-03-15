@@ -238,6 +238,26 @@ function wpbp_theme_options_render_page()
                     </td>
                 </tr>
 
+				<tr valign="top"><th scope="row"><?php _e('Custom Header Code', 'wpbp'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Custom Header Code', 'wpbp'); ?></span></legend>
+							<textarea name="wpbp_theme_options[custom_header_code]" id="custom_header_code" cols="94" rows="10"><?php echo esc_attr($wpbp_options['custom_header_code']); ?></textarea>
+							<br />
+							<small class="description"><?php printf(__('Enter custom code that will appear in the &lt;head&gt;&lt;/head&gt; section', 'wpbp')); ?></small>
+						</fieldset>
+					</td>
+				</tr>
+
+				<tr valign="top"><th scope="row"><?php _e('Custom Footer Code', 'wpbp'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Custom Footer Code', 'wpbp'); ?></span></legend>
+							<textarea name="wpbp_theme_options[custom_footer_code]" id="custom_footer_code" cols="94" rows="10"><?php echo esc_attr($wpbp_options['custom_footer_code']); ?></textarea>
+							<br />
+							<small class="description"><?php printf(__('Enter custom code that will appear before the &lt;/body&gt; tag', 'wpbp')); ?></small>
+						</fieldset>
+					</td>
+				</tr>
+
 				<tr valign="top"><th scope="row"><?php _e('Favicon', 'wpbp'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Favicon', 'wpbp'); ?></span></legend>
@@ -275,6 +295,8 @@ function wpbp_theme_options_validate($input)
 	$output['custom_css']            = isset($input['custom_css'])            ? $input['custom_css']            : null;
     $output['js_files']              = isset($input['js_files'])              ? $input['js_files']              : null;
     $output['custom_js']             = isset($input['custom_js'])             ? $input['custom_js']             : null;
+	$output['custom_header_code']    = isset($input['custom_header_code'])    ? $input['custom_header_code']    : null;
+	$output['custom_footer_code']    = isset($input['custom_footer_code'])    ? $input['custom_footer_code']    : null;
     $output['favicon']               = isset($input['favicon'])               ? $input['favicon']               : null;
 
 	return apply_filters('wpbp_theme_options_validate', $output, $input, $defaults);

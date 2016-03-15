@@ -8,10 +8,12 @@ add_action('wpbp_head', 'wpbp_insert_google_analytics');
 add_action('wpbp_head', 'wpbp_insert_google_tag_manager');
 add_action('wpbp_head', 'wpbp_insert_custom_css');
 add_action('wpbp_head', 'wpbp_insert_favicon');
+add_action('wpbp_head', 'wpbp_insert_custom_header_code');
 
 add_action('wpbp_footer', 'wpbp_insert_google_remarketing_tag');
 add_action('wpbp_footer', 'wpbp_insert_custom_js');
 add_action('wpbp_footer', 'wpbp_insert_post_js');
+add_action('wpbp_footer', 'wpbp_insert_custom_footer_code');
 
 add_action('wpbp_loop_after', 'wpbp_clear');
 
@@ -108,6 +110,18 @@ function wpbp_insert_post_js()
     }
 }
 
+function wpbp_insert_custom_header_code()
+{
+    $code = wpbp_get_option('custom_header_code');
+    if ( !empty($code) ) echo $code;
+}
+
+function wpbp_insert_custom_footer_code()
+{
+    $code = wpbp_get_option('custom_footer_code');
+    if ( !empty($code) ) echo $code;
+}
+
 function wpbp_insert_favicon()
 {
     $favicon = wpbp_get_option('favicon');
@@ -116,4 +130,3 @@ function wpbp_insert_favicon()
         echo '<link rel="icon" type="image/png" href="' . $favicon . '">';
     }
 }
-
