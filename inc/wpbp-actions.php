@@ -87,7 +87,7 @@ function wpbp_insert_custom_css()
     $custom_css = wpbp_get_option('custom_css');
 
     if ( !empty($custom_css) ) {
-        echo '<style type="text/css">'.$custom_css.'</style>';
+        echo '<style type="text/css">'.$custom_css.'</style>' . PHP_EOL;
     }
 }
 
@@ -96,7 +96,7 @@ function wpbp_insert_custom_js()
     $custom_js = wpbp_get_option('custom_js');
 
     if ( !empty($custom_js) ) {
-        echo '<script type="text/javascript">'.$custom_js.'</script>';
+        echo '<script type="text/javascript">'.$custom_js.'</script>' . PHP_EOL;
     }
 }
 
@@ -106,20 +106,20 @@ function wpbp_insert_post_js()
     $post_js = get_post_meta($post_ID, 'js', true);
 
     if ( !empty($post_js) ) {
-        echo '<script type="text/javascript">'.$post_js.'</script>';
+        echo '<script type="text/javascript">'.$post_js.'</script>' . PHP_EOL;
     }
 }
 
 function wpbp_insert_custom_header_code()
 {
     $code = wpbp_get_option('custom_header_code');
-    if ( !empty($code) ) echo $code;
+    if ( !empty($code) ) echo $code . PHP_EOL;
 }
 
 function wpbp_insert_custom_footer_code()
 {
     $code = wpbp_get_option('custom_footer_code');
-    if ( !empty($code) ) echo $code;
+    if ( !empty($code) ) echo $code . PHP_EOL;
 }
 
 function wpbp_insert_favicon()
@@ -127,6 +127,6 @@ function wpbp_insert_favicon()
     $favicon = wpbp_get_option('favicon');
 
     if ( !empty($favicon) ) {
-        echo '<link rel="icon" type="image/png" href="' . $favicon . '">';
+        echo '<link rel="icon" type="image/png" href="' . $favicon . '">' . PHP_EOL;
     }
 }
