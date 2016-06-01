@@ -23,6 +23,7 @@ $required_files = array(
     '/inc/wpbp-shortcodes.php',   // shortcodes
     '/inc/wpbp-utm.php',          // google analytics utm variables
     '/inc/wpbp-breadcrumb.php',   // breadcrumb
+	'/inc/wpbp-adtrack.php',      // ad tracking
     '/inc/wpbp-custom.php'        // custom functions
 );
 
