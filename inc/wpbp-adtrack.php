@@ -3,9 +3,9 @@
 add_action('init',      'wpbp_adtrack_init');
 add_action('wpbp_head', 'wpbp_adtrack_insert');
 
-$adtrack_params = [ 'lpurl', 'matchtype', 'network', 'creative', 'keyword', 'placement', 'adposition', 'device' ];
+$adtrack_params = array( 'lpurl', 'matchtype', 'network', 'creative', 'keyword', 'placement', 'adposition', 'device' );
 
-$adtrack_values = [];
+$adtrack_values = array();
 
 function wpbp_adtrack_init()
 {
@@ -44,7 +44,7 @@ function wpbp_adtrack_get_all()
 {
     global $adtrack_params;
 
-    $values = [];
+    $values = array();
 
     foreach ( $adtrack_params as $param ) {
         if ( $value = wpbp_adtrack_get_param($param) ) {
