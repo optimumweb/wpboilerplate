@@ -80,8 +80,8 @@ function wpbp_register_sidebars($sidebars)
 		foreach ( $sidebars as $sidebar ) {
 			register_sidebar( array(
 				'name'          => $sidebar,
-				'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="container">',
-				'after_widget'  => '</div><div class="clear"></div></div>',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '<div class="clear"></div></div>',
 				'before_title'  => '<h3 class="widget-title">',
 				'after_title'   => '</h3>'
 			) );
