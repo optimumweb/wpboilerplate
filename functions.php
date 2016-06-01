@@ -9,7 +9,6 @@ $required_files = array(
     '/inc/wpbp-activation.php',   // activation
     '/inc/wpbp-options.php',      // theme options
     '/inc/wpbp-cleanup.php',      // cleanup
-    '/inc/wpbp-htaccess.php',     // rewrites for assets, h5bp htaccess
     '/inc/wpbp-hooks.php',        // hooks
     '/inc/wpbp-actions.php',      // actions
     '/inc/wpbp-lib.php',          // library
