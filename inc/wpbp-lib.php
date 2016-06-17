@@ -144,6 +144,14 @@ function wpbp_get_lib($which = null)
             'js'  => TEMPLATE_URI . '/lib/wnumb/wNumb.js',
             'ver' => '1.0.2'
         ),
+        'owlCarousel' => array(
+            'js'  => TEMPLATE_URI . '/lib/owl-carousel/owl.carousel.min.js',
+            'css' => array(
+                TEMPLATE_URI . '/lib/owl-carousel/owl.carousel.css',
+                TEMPLATE_URI . '/lib/owl-carousel/owl.theme.css'
+            ),
+            'ver' => '1.3.3'
+        ),
         'default' => array(
             'css'  => TEMPLATE_URI . '/lib/wpbp/css/default.css'
         ),
