@@ -152,6 +152,10 @@ function wpbp_get_lib($which = null)
             ),
             'ver' => '1.3.3'
         ),
+        'parallax.js' => array(
+            'js'  => TEMPLATE_URI . '/lib/parallax.js/parallax.min.js',
+            'ver' => '1.4.2'
+        ),
         'default' => array(
             'css'  => TEMPLATE_URI . '/lib/wpbp/css/default.css'
         ),
