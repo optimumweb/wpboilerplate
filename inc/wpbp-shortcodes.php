@@ -179,7 +179,7 @@ function wpbp_recent_posts($atts = array())
             if ( isset($post_template_path) ) {
                 include($post_template_path);
             } else {
-                echo '<a class="wpbp-recent-post" href="' . the_permalink() . '">' . the_title() . '</a>' . PHP_EOL;
+                echo '<a class="wpbp-recent-post" href="' . get_permalink() . '">' . get_the_title() . '</a>' . PHP_EOL;
             }
         }
     } else {
