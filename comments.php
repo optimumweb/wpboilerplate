@@ -21,19 +21,19 @@
 
 <?php
 // Do not delete these lines
-	if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME'])) {
-		die (__('Please do not load this page directly. Thanks!', 'wpbp'));
-	}
-
-	if ( post_password_required() ) : ?>
-		<section id="comments">
-			<div class="notice">
-				<p class="bottom"><?php _e('This post is password protected. Enter the password to view comments.', 'wpbp'); ?></p>
-			</div>
-		</section>
-	<?php return; endif; ?>
+if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME'])) {
+    die (__('Please do not load this page directly. Thanks!', 'wpbp'));
+}
 ?>
-<?php // You can start editing here. ?>
+
+<?php if ( post_password_required() ) : ?>
+    <section id="comments">
+        <div class="notice">
+            <p class="bottom"><?php _e('This post is password protected. Enter the password to view comments.', 'wpbp'); ?></p>
+        </div>
+    </section>
+<?php return; endif; ?>
+
 <?php if ( have_comments() ) : ?>
 	<section id="comments">
 		<h3><?php comments_number(__('No Responses to', 'wpbp'), __('One Response to', 'wpbp'), __('% Responses to', 'wpbp') ); ?> &#8220;<?php the_title(); ?>&#8221;</h3>
