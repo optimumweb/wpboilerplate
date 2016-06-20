@@ -4,9 +4,9 @@
 	<article id="page-<?php the_ID(); ?>" class="page">
 		<?php wpbp_post_inside_before(); ?>
         <?php if ( !get_post_meta(get_the_ID(), 'hide_the_title', true) ) : ?>
-		<header class="page-header">
-			<h1 class="page-title"><?php the_title(); ?></h1>
-		</header>
+			<header class="page-header">
+				<h1 class="page-title"><?php the_title(); ?></h1>
+			</header>
         <?php endif; ?>
 		<section class="page-content">
 			<?php the_content(); ?>

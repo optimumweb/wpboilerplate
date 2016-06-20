@@ -15,10 +15,10 @@
 			<h2 class="post-title">
 				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 			</h2>
-			<section class="post-meta">
+			<div class="post-meta">
 				<time class="post-date updated" datetime="<?php the_time('c'); ?>" pubdate><?php printf(__('Posted on %s at %s', 'wpbp'), get_the_time(__('l, F jS, Y', 'wpbp')), get_the_time()); ?></time>
 				<span class="post-author byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>
-			</section>
+			</div>
 		</header>
 		<section class="post-content">
 			<?php the_excerpt(); ?>

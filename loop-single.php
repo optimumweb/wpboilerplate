@@ -7,15 +7,15 @@
 			<h1 class="post-title">
 				<?php the_title(); ?>
 			</h1>
-			<section class="post-meta">
+			<div class="post-meta">
 				<time class="post-date updated" datetime="<?php the_time('c'); ?>" pubdate><?php printf(__('Posted on %s at %s', 'wpbp'), get_the_time(__('l, F jS, Y', 'wpbp')), get_the_time()); ?></time>
 				<span class="post-author byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>
-			</section>
+			</div>
 		</header>
         <?php if ( has_post_thumbnail() ) : ?>
-        <section class="post-thumbnail">
-            <?php the_post_thumbnail('large'); ?>
-        </section>
+			<div class="post-thumbnail">
+				<?php the_post_thumbnail('large'); ?>
+			</div>
         <?php endif; ?>
 		<section class="post-content">
 			<?php the_content(); ?>
@@ -24,7 +24,7 @@
 			<?php wp_link_pages(array( 'before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpbp'), 'after' => '</p></nav>' )); ?>
 			<p class="post-tags"><?php the_tags(); ?></p>
 		</footer>
-		<section id="post-comments">
+		<section class="post-comments">
 			<?php comments_template(); ?>
 		</section>
 		<div class="clear"></div>
