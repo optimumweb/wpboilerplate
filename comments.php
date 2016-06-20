@@ -1,6 +1,6 @@
 <?php function wpbp_comments($comment, $args, $depth) { $GLOBALS['comment'] = $comment; ?>
 	<li <?php comment_class(); ?>>
-		<article id="comment-<?php comment_ID(); ?>">
+		<article class="comment-box" id="comment-<?php comment_ID(); ?>">
 			<header class="comment-author vcard">
 				<?php echo get_avatar($comment,$size='32'); ?>
 				<?php printf(__('<cite class="fn">%s</cite>', 'wpbp'), get_comment_author_link()) ?>
