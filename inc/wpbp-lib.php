@@ -145,16 +145,18 @@ function wpbp_get_lib($which = null)
             'ver' => '1.0.2'
         ),
         'owlCarousel' => array(
-            'js'  => TEMPLATE_URI . '/lib/owl-carousel/owl.carousel.min.js',
-            'css' => array(
+            'js'   => TEMPLATE_URI . '/lib/owl-carousel/owl.carousel.min.js',
+            'css'  => array(
                 TEMPLATE_URI . '/lib/owl-carousel/owl.carousel.css',
                 TEMPLATE_URI . '/lib/owl-carousel/owl.theme.css'
             ),
-            'ver' => '1.3.3'
+            'ver'  => '1.3.3',
+            'deps' => array('jquery'),
         ),
         'parallax.js' => array(
-            'js'  => TEMPLATE_URI . '/lib/parallax.js/parallax.min.js',
-            'ver' => '1.4.2'
+            'js'   => TEMPLATE_URI . '/lib/parallax.js/parallax.min.js',
+            'ver'  => '1.4.2',
+            'deps' => array('jquery'),
         ),
         'default' => array(
             'css'  => TEMPLATE_URI . '/lib/wpbp/css/default.css'
