@@ -165,7 +165,9 @@ function wpbp_recent_posts($atts = array())
         ) );
     }
 
-    $post_template_path = THEME_DIRECTORY . '/' . $params['post_template'] . '.php';
+    if ( !empty($params['post_template']) ) {
+        $post_template_path = THEME_DIRECTORY . '/' . $params['post_template'] . '.php';
+    }
 
     ob_start();
 
@@ -174,7 +176,11 @@ function wpbp_recent_posts($atts = array())
     if ( $query->have_posts() ) {
         while ( $query->have_posts() ) {
             $query->the_post();
-            include($post_template_path);
+            if ( isset($post_template_path) ) {
+                include($post_template_path);
+            } else {
+                echo '<a class="wpbp-recent-post" href="' . the_permalink() . '">' . the_title() . '</a>' . PHP_EOL;
+            }
         }
     } else {
         echo '<div class="no-results">' . $params['no_results'] . '</div>';
