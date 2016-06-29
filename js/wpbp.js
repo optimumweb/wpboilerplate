@@ -872,7 +872,11 @@
                     var scrollProgress = ( scrollTop - scrollStart ) / ( scrollEnd - scrollStart ),
                         coverBgPosY    = scrollProgress * ( parseInt(coverBgPosEnd) - parseInt(coverBgPosStart) ) + parseInt(coverBgPosStart);
 
-                    $cover.css('background-position', '50% ' + coverBgPosY + '%');
+                    //$cover.css('background-position', '50% ' + coverBgPosY + '%');
+
+                    $cover.animate({
+                        'background-position-y': coverBgPosY + '%'
+                    }, 100, 'linear');
 
                 }
 
