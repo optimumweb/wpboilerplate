@@ -852,32 +852,27 @@
 
         return this.each(function() {
 
-            var $cover         = $(this),
-                coverOffsetTop = $cover.offset().top,
-                coverHeight    = $cover.outerHeight(true);
+            var $cover = $(this);
 
-            var coverBgPosYMin = $cover.data('wpbp-parallax-min') || 25,
-                coverBgPosYMax = $cover.data('wpbp-parallax-max') || 75;
+            $(window).on('load scroll resize', function() {
 
-            var windowHeight, scrollStart, scrollEnd;
+                var coverOffsetTop = $cover.offset().top,
+                    coverHeight    = $cover.outerHeight(true),
+                    coverBgPosYMin = $cover.data('wpbp-parallax-min') || 25,
+                    coverBgPosYMax = $cover.data('wpbp-parallax-max') || 75;
 
-            $(window)
-                .on('load resize', function() {
-
-                    windowHeight = $(window).height();
-                    scrollStart  = Math.max(coverOffsetTop - windowHeight, 0);
+                var windowHeight = $(window).height(),
+                    scrollStart  = Math.max(coverOffsetTop - windowHeight, 0),
                     scrollEnd    = coverOffsetTop + coverHeight;
 
-                }).on('load scroll resize', function() {
+                var scrollTop = $(window).scrollTop();
 
-                    var scrollTop = $(window).scrollTop();
+                var scrollProgress = ( scrollTop - scrollStart ) / ( scrollEnd - scrollStart ),
+                    coverBgPosY    = scrollProgress * ( parseInt(coverBgPosYMax) - parseInt(coverBgPosYMin) ) + parseInt(coverBgPosYMin);
 
-                    var scrollProgress = ( scrollTop - scrollStart ) / ( scrollEnd - scrollStart ),
-                        coverBgPosY    = scrollProgress * ( parseInt(coverBgPosYMax) - parseInt(coverBgPosYMin) ) + parseInt(coverBgPosYMin);
+                $cover.css('background-position', '50% ' + coverBgPosY + '%');
 
-                    $cover.css('background-position', '50% ' + coverBgPosY + '%');
-
-                });
+            });
 
         });
 
