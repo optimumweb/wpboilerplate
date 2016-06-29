@@ -856,10 +856,10 @@
 
             $(window).on('load scroll resize', function() {
 
-                var coverOffsetTop = $cover.offset().top,
-                    coverHeight    = $cover.outerHeight(true),
-                    coverBgPosYMin = $cover.data('wpbp-parallax-min') || 25,
-                    coverBgPosYMax = $cover.data('wpbp-parallax-max') || 75;
+                var coverOffsetTop  = $cover.offset().top,
+                    coverHeight     = $cover.outerHeight(true),
+                    coverBgPosStart = $cover.data('wpbp-parallax-start') || 75,
+                    coverBgPosEnd   = $cover.data('wpbp-parallax-end') || 25;
 
                 var windowHeight = $(window).height(),
                     scrollStart  = Math.max(coverOffsetTop - windowHeight, 0),
@@ -870,7 +870,7 @@
                 if ( scrollTop >= scrollStart && scrollTop <= scrollEnd ) {
 
                     var scrollProgress = ( scrollTop - scrollStart ) / ( scrollEnd - scrollStart ),
-                        coverBgPosY    = scrollProgress * ( parseInt(coverBgPosYMax) - parseInt(coverBgPosYMin) ) + parseInt(coverBgPosYMin);
+                        coverBgPosY    = scrollProgress * ( parseInt(coverBgPosEnd) - parseInt(coverBgPosStart) ) + parseInt(coverBgPosStart);
 
                     $cover.css('background-position', '50% ' + coverBgPosY + '%');
 
