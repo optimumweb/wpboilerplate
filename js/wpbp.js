@@ -874,7 +874,7 @@
 
                     //$cover.css('background-position', '50% ' + coverBgPosY + '%');
 
-                    $cover.animate({
+                    $cover.stop(true).animate({
                         'background-position-y': coverBgPosY + '%'
                     }, 100, 'linear');
 
