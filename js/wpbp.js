@@ -876,7 +876,7 @@
 
                     $cover.stop().animate({
                         'background-position-y': coverBgPosY + '%'
-                    }, 100, 'linear');
+                    }, 1000);
 
                 }
 
