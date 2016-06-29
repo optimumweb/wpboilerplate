@@ -856,8 +856,8 @@
                 coverOffsetTop = $cover.offset().top,
                 coverHeight    = $cover.outerHeight(true);
 
-            var coverBgPosYMin = $cover.data('parallax-min') || 30,
-                coverBgPosYMax = $cover.data('parallax-max') || 70;
+            var coverBgPosYMin = $cover.data('wpbp-parallax-min') || 30,
+                coverBgPosYMax = $cover.data('wpbp-parallax-max') || 70;
 
             var windowHeight, scrollStart, scrollEnd;
 
