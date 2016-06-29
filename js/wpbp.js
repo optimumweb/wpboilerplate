@@ -28,6 +28,8 @@
 
         $('.wpbp-tabs').wpbpTabs();
 
+        $('.wpbp-parallax').wpbpParallax();
+
         $(window).bind('load resize', function() {
 
             $('.valign, .vAlign').vAlign();
@@ -832,6 +834,50 @@
                 });
                 $contents.height(maxHeight);
             }
+
+        });
+
+    };
+
+    /*
+     * wpbpParallax
+     *
+     *
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 0.1
+     * @package wpboilerplate
+     */
+
+    $.fn.wpbpParallax = function() {
+
+        return this.each(function() {
+
+            var $cover         = $(this),
+                coverOffsetTop = $cover.offset().top,
+                coverHeight    = $cover.outerHeight(true);
+
+            var coverBgPosYMin = $cover.data('parallax-min') || 30,
+                coverBgPosYMax = $cover.data('parallax-max') || 70;
+
+            var windowHeight, scrollStart, scrollEnd;
+
+            $(window)
+                .on('load resize', function() {
+
+                    windowHeight = $(window).height();
+                    scrollStart  = Math.max(coverOffsetTop - windowHeight, 0);
+                    scrollEnd    = coverOffsetTop + coverHeight;
+
+                }).on('load scroll resize', function() {
+
+                    var scrollTop = $(window).scrollTop();
+
+                    var scrollProgress = ( scrollTop - scrollStart ) / ( scrollEnd - scrollStart ),
+                        coverBgPosY    = scrollProgress * ( parseInt(coverBgPosYMax) - parseInt(coverBgPosYMin) ) + parseInt(coverBgPosYMin);
+
+                    $cover.css('background-position', '50% ' + coverBgPosY + '%');
+
+                });
 
         });
 
