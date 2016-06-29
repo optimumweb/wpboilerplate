@@ -867,10 +867,14 @@
 
                 var scrollTop = $(window).scrollTop();
 
-                var scrollProgress = ( scrollTop - scrollStart ) / ( scrollEnd - scrollStart ),
-                    coverBgPosY    = scrollProgress * ( parseInt(coverBgPosYMax) - parseInt(coverBgPosYMin) ) + parseInt(coverBgPosYMin);
+                if ( scrollTop >= scrollStart && scrollTop <= scrollEnd ) {
 
-                $cover.css('background-position', '50% ' + coverBgPosY + '%');
+                    var scrollProgress = ( scrollTop - scrollStart ) / ( scrollEnd - scrollStart ),
+                        coverBgPosY    = scrollProgress * ( parseInt(coverBgPosYMax) - parseInt(coverBgPosYMin) ) + parseInt(coverBgPosYMin);
+
+                    $cover.css('background-position', '50% ' + coverBgPosY + '%');
+
+                }
 
             });
 
