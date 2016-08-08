@@ -6,12 +6,12 @@
 
 function parse_shortcode_content($content, $options = array())
 {
-	extract( array_merge( array(
+	extract(array_merge(array(
         'unautop'      => true,
 		'wpautop'      => false,
 		'do_shortcode' => true,
 		'trim'         => true,
-	), $options ) );
+	), $options));
 
     if ( $unautop )
         $content = shortcode_unautop($content);
@@ -132,7 +132,6 @@ function wpbp_hr()
 }
 add_shortcode('hr', 'wpbp_hr');
 
-
 function wpbp_recent_posts($atts = array())
 {
     $params = shortcode_atts(array(
@@ -177,21 +176,80 @@ function wpbp_recent_posts($atts = array())
     $query = new WP_Query($params);
 
     if ( $query->have_posts() ) {
+        echo '<ul class="wpbp-recent-posts">';
         while ( $query->have_posts() ) {
             $query->the_post();
             if ( isset($post_template_path) ) {
                 include($post_template_path);
             } else {
-                echo '<a class="wpbp-recent-post" href="' . get_permalink() . '">' . get_the_title() . '</a><br />' . PHP_EOL;
+                echo '<li class="wpbp-recent-post"><a class="wpbp-recent-post-link" href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
             }
         }
+        echo '</ul>' . PHP_EOL;
     } else {
-        echo '<div class="no-results">' . $params['no_results'] . '</div>';
+        echo '<div class="no-results">' . $params['no_results'] . '</div>' . PHP_EOL;
     }
 
     return ob_get_clean();
 }
 add_shortcode('wpbp_recent_posts', 'wpbp_recent_posts');
+
+function wpbp_related_posts($atts = array())
+{
+    $params = shortcode_atts(array(
+        'number_of_posts' => 4,
+        'post_template'   => null,
+        'no_results'      => __("Aucuns résultats", 'wpbp')
+    ));
+
+    $post_id = get_post_id();
+
+    $tags = wp_get_post_tags($post_id);
+
+    if ( !empty($tags) ) {
+
+        $tag_ids = array();
+
+        foreach ( $tags as $tag ) {
+            $tag_ids[] = $tag->term_id;
+        }
+
+        if ( !empty($params['post_template']) ) {
+            $post_template_path = THEME_DIRECTORY . '/' . $params['post_template'] . '.php';
+            if ( !file_exists($post_template_path) ) {
+                unset($post_template_path);
+            }
+        }
+
+        ob_start();
+
+        $query = new WP_Query(array(
+            'tag__in'          => $tag_ids,
+            'post__not_in'     => array( $post_id ),
+            'posts_per_page'   => $params['number_of_posts'],
+            'caller_get_posts' => 1
+        ));
+
+        if ( $query->have_posts() ) {
+            echo '<ul class="wpbp-related-posts">';
+            while ( $query->have_posts() ) {
+                $query->the_post();
+                if ( isset($post_template_path) ) {
+                    include($post_template_path);
+                } else {
+                    echo '<li class="wpbp-related-post"><a class="wpbp-related-post-link" href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+                }
+            }
+            echo '</ul>' . PHP_EOL;
+        } else {
+            echo '<div class="no-results">' . $params['no_results'] . '</div>' . PHP_EOL;
+        }
+
+        return ob_get_clean();
+
+    }
+}
+add_shortcode('related_posts', 'wpbp_related_posts');
 
 /**
  * SMARTBOX
@@ -347,26 +405,26 @@ function wpbp_paypal($atts, $content = null)
     
     ob_start();
     
-    if ( $type == 'buy_now' ) :
-?><form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="<?php echo $target; ?>">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="<?php echo $business; ?>">
-<input type="hidden" name="currency_code" value="<?php echo $currency; ?>">
-<input type="hidden" name="item_name" value="<?php echo $item_name; ?>">
-<input type="hidden" name="amount" value="<?php echo $amount; ?>">
-<input type="image" src="<?php echo $src; ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-</form><?php
-    elseif ( $type == 'add_to_cart' ) :
-?><form name="_cart" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="paypal">
-<input type="hidden" name="cmd" value="_cart">
-<input type="hidden" name="add" value="1">
-<input type="hidden" name="business" value="<?php echo $business; ?>">
-<input type="hidden" name="currency_code" value="<?php echo $currency; ?>">
-<input type="hidden" name="item_name" value="<?php echo $item_name; ?>">
-<input type="hidden" name="amount" value="<?php echo $amount; ?>">
-<input type="image" src="<?php echo $src; ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-</form><?php   
-    endif;
+    if ( $type == 'buy_now' ) : ?>
+<form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="<?php echo $target; ?>">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="<?php echo $business; ?>">
+    <input type="hidden" name="currency_code" value="<?php echo $currency; ?>">
+    <input type="hidden" name="item_name" value="<?php echo $item_name; ?>">
+    <input type="hidden" name="amount" value="<?php echo $amount; ?>">
+    <input type="image" src="<?php echo $src; ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+<?php elseif ( $type == 'add_to_cart' ) : ?>
+<form name="_cart" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="paypal">
+    <input type="hidden" name="cmd" value="_cart">
+    <input type="hidden" name="add" value="1">
+    <input type="hidden" name="business" value="<?php echo $business; ?>">
+    <input type="hidden" name="currency_code" value="<?php echo $currency; ?>">
+    <input type="hidden" name="item_name" value="<?php echo $item_name; ?>">
+    <input type="hidden" name="amount" value="<?php echo $amount; ?>">
+    <input type="image" src="<?php echo $src; ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+<?php endif;
 
     $paypal = ob_get_clean();
     return parse_shortcode_content($paypal);
