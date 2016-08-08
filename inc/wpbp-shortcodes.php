@@ -179,11 +179,13 @@ function wpbp_recent_posts($atts = array())
         echo '<ul class="wpbp-recent-posts">';
         while ( $query->have_posts() ) {
             $query->the_post();
+            echo '<li class="wpbp-recent-post">';
             if ( isset($post_template_path) ) {
                 include($post_template_path);
             } else {
-                echo '<li class="wpbp-recent-post"><a class="wpbp-recent-post-link" href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+                echo '<a class="wpbp-recent-post-link" href="' . get_permalink() . '">' . get_the_title() . '</a>';
             }
+            echo '</li>';
         }
         echo '</ul>' . PHP_EOL;
     } else {
@@ -234,11 +236,13 @@ function wpbp_related_posts($atts = array())
             echo '<ul class="wpbp-related-posts">';
             while ( $query->have_posts() ) {
                 $query->the_post();
+                echo '<li class="wpbp-related-post">';
                 if ( isset($post_template_path) ) {
                     include($post_template_path);
                 } else {
-                    echo '<li class="wpbp-related-post"><a class="wpbp-related-post-link" href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+                    echo '<a class="wpbp-related-post-link" href="' . get_permalink() . '">' . get_the_title() . '</a>';
                 }
+                echo '</li>';
             }
             echo '</ul>' . PHP_EOL;
         } else {
