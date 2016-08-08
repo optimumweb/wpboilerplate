@@ -202,6 +202,8 @@ function wpbp_related_posts($atts = array())
         'no_results'      => __("Aucuns résultats", 'wpbp')
     ));
 
+    ob_start();
+
     $post_id = get_post_id();
 
     $tags = wp_get_post_tags($post_id);
@@ -220,8 +222,6 @@ function wpbp_related_posts($atts = array())
                 unset($post_template_path);
             }
         }
-
-        ob_start();
 
         $query = new WP_Query(array(
             'tag__in'          => $tag_ids,
@@ -245,9 +245,11 @@ function wpbp_related_posts($atts = array())
             echo '<div class="no-results">' . $params['no_results'] . '</div>' . PHP_EOL;
         }
 
-        return ob_get_clean();
-
+    } else {
+        echo '<div class="no-results">' . $params['no_results'] . '</div>' . PHP_EOL;
     }
+
+    return ob_get_clean();
 }
 add_shortcode('wpbp_related_posts', 'wpbp_related_posts');
 
