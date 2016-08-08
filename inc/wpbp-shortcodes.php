@@ -202,7 +202,7 @@ function wpbp_related_posts($atts = array())
         'number_of_posts' => 4,
         'post_template'   => null,
         'no_results'      => __("Aucuns résultats", 'wpbp')
-    ));
+    ), $atts);
 
     ob_start();
 
