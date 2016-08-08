@@ -249,7 +249,7 @@ function wpbp_related_posts($atts = array())
 
     }
 }
-add_shortcode('related_posts', 'wpbp_related_posts');
+add_shortcode('wpbp_related_posts', 'wpbp_related_posts');
 
 /**
  * SMARTBOX
