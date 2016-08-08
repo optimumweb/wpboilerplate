@@ -96,3 +96,6 @@ function wpbp_register_sidebars($sidebars)
 
 // create widget areas: sidebar, footer
 wpbp_register_sidebars( array( 'Sidebar' ) );
+
+// Enable shortcodes in widgets
+add_filter('widget_text', 'do_shortcode');
