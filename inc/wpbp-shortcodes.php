@@ -199,7 +199,7 @@ add_shortcode('wpbp_recent_posts', 'wpbp_recent_posts');
 function wpbp_related_posts($atts = array())
 {
     $params = shortcode_atts(array(
-        'number_of_posts' => 4,
+        'number_of_posts' => 6,
         'post_template'   => null,
         'no_results'      => __("Aucuns résultats", 'wpbp')
     ), $atts);
