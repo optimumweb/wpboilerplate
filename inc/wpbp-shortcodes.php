@@ -201,7 +201,7 @@ function wpbp_related_posts($atts = array())
     $params = shortcode_atts(array(
         'number_of_posts' => 6,
         'post_template'   => null,
-        'no_results'      => __("Aucuns résultats", 'wpbp')
+        'no_results'      => __("No results", 'wpbp')
     ), $atts);
 
     ob_start();
