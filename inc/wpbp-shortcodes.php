@@ -148,7 +148,7 @@ function wpbp_recent_posts($atts = array())
         'post_type'      => null,
         'tax_query'      => null,
         'post_template'  => null,
-        'no_results'     => __("Aucuns résultats", 'wpbp')
+        'no_results'     => __("No results", 'wpbp')
     ), $atts);
 
     if ( isset($params['exclude']) ) {
