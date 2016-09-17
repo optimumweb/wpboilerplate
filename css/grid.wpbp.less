@@ -21,6 +21,16 @@ body {
   margin: 0;
   margin-left: auto;
   margin-right: auto;
+
+  .container {
+    margin-left: -0.9375rem;
+    margin-right: -0.9375rem;
+
+    &.collapse {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
 }
 
 // GENERATORS
@@ -250,6 +260,11 @@ ul.block_grid {
 
     .container {
       width: 45rem;
+
+      .container {
+        margin-left: 0;
+        margin-right: 0;
+      }
     }
 
     @cols:      12;
@@ -336,6 +351,11 @@ ul.block_grid {
 
     .container {
       width: 100%;
+
+      .container {
+        margin-left: 0;
+        margin-right: 0;
+      }
     }
 
     @cols:      12;
