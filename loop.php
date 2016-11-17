@@ -29,9 +29,9 @@
         <?php endif; ?>
 		<section class="post-content">
 			<?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search ?>
-			<?php the_excerpt(); ?>
+				<?php the_excerpt(); ?>
 			<?php else : ?>
-			<?php the_content(); ?>
+				<?php the_content(); ?>
 			<?php endif; ?>
 		</section>
 		<footer class="post-footer">
