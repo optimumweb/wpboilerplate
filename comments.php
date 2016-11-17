@@ -49,7 +49,7 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['
 	</section>
 <?php else : // this is displayed if there are no comments so far ?>
 	<?php if ( !comments_open() ) : ?>
-		<section id="comments">
+		<section id="comments" class="comments-closed">
 			<div class="notice">
 				<p class="bottom"><?php _e('Comments are closed.', 'wpbp') ?></p>
 			</div>
