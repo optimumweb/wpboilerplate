@@ -158,6 +158,10 @@ function wpbp_get_lib($which = null)
             'ver'  => '1.4.2',
             'deps' => array('jquery'),
         ),
+        'fontawesome' => array(
+            'css' => TEMPLATE_URI . '/lib/fontawesome/css/font-awesome.min.css',
+            'ver' => '4.7.0'
+        ),
         'default' => array(
             'css'  => TEMPLATE_URI . '/lib/wpbp/css/default.css'
         ),
