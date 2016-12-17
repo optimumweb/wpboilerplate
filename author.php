@@ -7,15 +7,16 @@
 				<section id="main" role="main">
 					<?php wpbp_main_inside_before(); ?>
                     <h1 class="page-title">
-                        <?php printf( __('Author: %s', 'wpbp'), single_author_title('', false) ); ?>
+                        <?php printf(__('Author: %s', 'wpbp'), single_author_title('', false)); ?>
                     </h1>
                     <div class="author-info">
-                        <?php $author = get_author(); ?>
-                        <?php if ( $author->google_profile ) : ?>
-                        <a href="<?php echo $author->google_profile; ?>" rel="me" target="_blank">
-                            <?php printf( __("%s's Google Profile", "wpbp"), $author->display_name ); ?>
-                        </a>
-                        <?php endif; ?>
+                        <?php if ( $author = get_author() ) : ?>
+							<?php if ( $author->google_profile ) : ?>
+								<a href="<?php echo $author->google_profile; ?>" rel="me" target="_blank">
+									<?php printf( __("%s's Google Profile", "wpbp"), $author->display_name ); ?>
+								</a>
+							<?php endif; ?>
+						<?php endif; ?>
                     </div>
                     <?php wpbp_loop_before(); ?>
                     <?php get_template_part('loop', 'author'); ?>

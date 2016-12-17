@@ -7,14 +7,14 @@
 				<section id="main" role="main">
 					<?php wpbp_main_inside_before(); ?>
                     <h1 class="page-title">
-                        <?php if ( is_day() ) : printf( __('Daily Archives: %s', 'wpbp'), get_the_date() ); ?>
-                        <?php elseif ( is_month() ) : printf( __('Monthly Archives: %s', 'wpbp'), get_the_date('F Y') ); ?>
-                        <?php elseif ( is_year() ) : printf( __('Yearly Archives: %s', 'wpbp'), get_the_date('Y') ); ?>
+                        <?php if ( is_day() ) : printf(__('Daily Archives: %s', 'wpbp'), get_the_date()); ?>
+                        <?php elseif ( is_month() ) : printf(__('Monthly Archives: %s', 'wpbp'), get_the_date('F Y')); ?>
+                        <?php elseif ( is_year() ) : printf(__('Yearly Archives: %s', 'wpbp'), get_the_date('Y')); ?>
                         <?php else : $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy')); echo $term->name; ?>
                         <?php endif; ?>
                     </h1>
                     <?php if ( term_description() ) : ?>
-                    <p class="term-description"><?php echo term_description(); ?></p>
+                    	<p class="term-description"><?php echo term_description(); ?></p>
                     <?php endif; ?>
                     <?php wpbp_loop_before(); ?>
                     <?php get_template_part('loop', 'archive'); ?>

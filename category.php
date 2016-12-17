@@ -7,7 +7,7 @@
 				<section id="main" role="main">
 					<?php wpbp_main_inside_before(); ?>
                     <h1 class="page-title">
-                        <?php printf( __('Category: %s', 'wpbp'), single_cat_title('', false) ); ?>
+                        <?php printf(__('Category: %s', 'wpbp'), single_cat_title('', false)); ?>
                     </h1>
                     <?php wpbp_loop_before(); ?>
                     <?php get_template_part('loop', 'category'); ?>

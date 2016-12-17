@@ -7,7 +7,7 @@
 				<section id="main" role="main">
 					<?php wpbp_main_inside_before(); ?>
                     <h1 class="page-title">
-                        <?php _e('Latest Posts', 'wpbp');?>
+                        <?php _e('Latest Posts', 'wpbp'); ?>
                     </h1>
                     <?php get_template_part('loop', 'index'); ?>
 					<?php wpbp_main_inside_after(); ?>

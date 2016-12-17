@@ -7,7 +7,7 @@
 				<section id="main" role="main">
 					<?php wpbp_main_inside_before(); ?>
                     <h1 class="page-title">
-                        <?php printf( __('Search results for: &laquo; %s &raquo;', 'wpbp'), get_search_query() ); ?>
+                        <?php printf(__('Search results for: &laquo; %s &raquo;', 'wpbp'), get_search_query()); ?>
                     </h1>
                     <?php wpbp_loop_before(); ?>
                     <?php get_template_part('loop', 'search'); ?>
