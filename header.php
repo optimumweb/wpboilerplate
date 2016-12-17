@@ -13,10 +13,7 @@
                 </div>
                 <div class="grid_8">
                     <nav id="main-nav" role="navigation">
-                        <div class="container">
-                            <?php wp_nav_menu(array( 'theme_location' => 'primary_navigation' )); ?>
-                            <div class="clear"></div>
-                        </div>
+                        <?php wp_nav_menu(array( 'theme_location' => 'primary_navigation' )); ?>
                     </nav>
                 </div>
             </div>
