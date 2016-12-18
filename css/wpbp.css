@@ -162,6 +162,10 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+.container .container {
+  margin-left: -0.9375rem;
+  margin-right: -0.9375rem;
+}
 .grid_12 {
   position: relative;
   padding: 0 0.9375rem;
@@ -520,6 +524,9 @@ ul.block_grid {
   body.responsive {
     min-width: 45rem;
   }
+  body.responsive .container {
+    max-width: 45rem;
+  }
   body.responsive [class*="grid_"],
   body.responsive [class*="small_grid_"] {
     float: none;
@@ -540,9 +547,6 @@ ul.block_grid {
   body.responsive [class*="pull_"],
   body.responsive [class*="small_pull_"] {
     left: 0;
-  }
-  body.responsive .container {
-    max-width: 45rem;
   }
   body.responsive .medium_grid_12 {
     position: relative;
@@ -873,6 +877,11 @@ ul.block_grid {
   body.responsive .container,
   body.mobile-responsive .container {
     width: 100%;
+  }
+  body.responsive .container .container,
+  body.mobile-responsive .container .container {
+    margin-left: 0;
+    margin-right: 0;
   }
   body.responsive .small_grid_12,
   body.mobile-responsive .small_grid_12 {

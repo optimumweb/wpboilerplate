@@ -3,6 +3,8 @@
 // Grid system based on 960.gs and Foundation by Zurb
 // -----------------------------------------------------
 
+@gridGutter: 0.9375rem;
+
 // Choose a decent box model first
 * {
   .box-sizing(border-box);
@@ -21,6 +23,11 @@ body {
   margin: 0;
   margin-left: auto;
   margin-right: auto;
+
+  .container {
+    margin-left: -@gridGutter;
+    margin-right: -@gridGutter;
+  }
 }
 
 // GENERATORS
@@ -32,7 +39,7 @@ body {
 .colSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
   (~".@{prefix}grid_@{index}") {
     position: relative;
-    padding: 0 0.9375rem;
+    padding: 0 @gridGutter;
     min-height: 1px;
     width: @colWidth * @index;
     float: left;
@@ -222,6 +229,10 @@ ul.block_grid {
   body.responsive {
     min-width: 45rem;
 
+    .container {
+      max-width: 45rem;
+    }
+
     [class*="grid_"],
     [class*="small_grid_"] {
       float: none;
@@ -246,10 +257,6 @@ ul.block_grid {
     [class*="pull_"],
     [class*="small_pull_"] {
       left: 0;
-    }
-
-    .container {
-      max-width: 45rem;
     }
 
     @cols:      12;
@@ -336,6 +343,11 @@ ul.block_grid {
 
     .container {
       width: 100%;
+
+      .container {
+        margin-left: 0;
+        margin-right: 0;
+      }
     }
 
     @cols:      12;
