@@ -24,7 +24,7 @@ body {
   margin-left: auto;
   margin-right: auto;
 
-  .container {
+  .container:not(.collapse) {
     margin-left: -@gridGutter;
     margin-right: -@gridGutter;
   }
@@ -344,7 +344,7 @@ ul.block_grid {
     .container {
       width: 100%;
 
-      .container {
+      .container:not(.collapse) {
         margin-left: 0;
         margin-right: 0;
       }
