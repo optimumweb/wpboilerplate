@@ -32,4 +32,3 @@
 	</article>
 	<?php wpbp_post_after(); ?>
 <?php endwhile; // End the loop ?>
-
