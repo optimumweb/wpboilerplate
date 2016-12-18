@@ -2,427 +2,467 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2016-12-17 05:53+0000\n"
+"PO-Revision-Date: 2016-12-17 05:54+0000\n"
+"Last-Translator: Divorce Québec <info@divorce-quebec.ca>\n"
+"Language-Team: French (Canada)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "X-Poedit-Language: \n"
 "X-Poedit-Country: \n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
 "X-Poedit-Basepath: \n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Textdomain-Support: yes"
+"X-Textdomain-Support: yes\n"
+"Language: fr-CA\n"
+"X-Generator: Loco - https://localise.biz/"
 
-#: comments.php:80
-#: comments.php:84
-#@ wpbp
-msgid " (required)"
+#. Name of the template
+msgid "List Subpages"
 msgstr ""
 
-#: inc/wpbp-options.php:148
-#: inc/wpbp-options.php:150
-#@ wpbp
-msgid "#main CSS Classes"
-msgstr ""
-
-#: inc/wpbp-options.php:158
-#: inc/wpbp-options.php:160
-#@ wpbp
-msgid "#sidebar CSS Classes"
-msgstr ""
-
-#: comments.php:46
-#@ wpbp
-msgid "% Responses to"
-msgstr "% réponses à"
-
-#: comments.php:8
+#: loop-single.php:11 loop.php:19
 #, php-format
-#@ wpbp
-msgid "%1$s"
+msgid "Posted on %s"
+msgstr "Publié le %s"
+
+#. Name of the template
+msgid "Sitemap"
 msgstr ""
 
-#: inc/wpbp-options.php:114
+#: category.php:10
 #, php-format
-#@ wpbp
-msgid "%s Theme Options"
+msgid "Category: %s"
+msgstr "Catégorie : %s"
+
+#. Name of the template
+msgid "Full Width"
 msgstr ""
 
-#: comments.php:53
-#@ wpbp
-msgid "&larr; Older comments"
-msgstr "&larr; Commentaires précédents"
-
-#: loop-search.php:37
-#: loop.php:41
-#@ wpbp
-msgid "&larr; Older posts"
-msgstr "&larr; Articles précédents"
-
-#: comments.php:9
-#@ wpbp
-msgid "(Edit)"
-msgstr "(Modifier)"
-
-#: inc/wpbp-options.php:59
-#@ wpbp
-msgid "960gs (12 cols)"
+#: functions.php:67
+msgid "Primary Navigation"
 msgstr ""
 
-#: inc/wpbp-options.php:68
-#@ wpbp
-msgid "960gs (16 cols)"
+#: functions.php:68
+msgid "Secondary Navigation"
+msgstr ""
+
+#. Name of the template
+msgid "Custom"
+msgstr ""
+
+#: comments.php:6
+#, php-format
+msgid "<cite class=\"fn comment-author\">%s</cite>"
 msgstr ""
 
 #: comments.php:7
 #, php-format
-#@ wpbp
-msgid "<cite class=\"fn\">%s</cite>"
+msgid "%1$s"
 msgstr ""
 
-#: page-sitemap.php:19
-#@ wpbp
-msgid "Archives"
-msgstr "Archives"
+#: comments.php:72 comments.php:76
+msgid " (required)"
+msgstr "(requis)"
 
-#: inc/wpbp-options.php:136
-#: inc/wpbp-options.php:138
-#@ wpbp
-msgid "CSS Grid Framework"
-msgstr ""
-
-#: 404.php:14
-#@ wpbp
-msgid "Check your spelling"
-msgstr "Corrigez votre orthographe"
-
-#: inc/wpbp-widgets.php:51
-#@ wpbp
-msgid "City/Locality:"
-msgstr "Ville :"
-
-#: 404.php:16
-#@ wpbp
-msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
-msgstr "Cliquez sur le bouton <a href=\"javascript:history.back()\">retour</a>"
-
-#: comments.php:93
-#@ wpbp
-msgid "Comment"
-msgstr "Commentez"
-
-#: comments.php:63
-#@ wpbp
-msgid "Comments are closed."
-msgstr "Les commentaires sont fermés."
-
-#: inc/wpbp-cleanup.php:288
-#@ wpbp
-msgid "Continued"
-msgstr "Lire la suite"
-
-#: comments.php:84
-#@ wpbp
-msgid "Email (will not be published)"
-msgstr "Courriel (ne sera pas publié)"
-
-#: inc/wpbp-widgets.php:67
-#@ wpbp
-msgid "Email:"
-msgstr "Courriel :"
-
-#: inc/wpbp-options.php:131
-#@ wpbp
-msgid "Enter your UA-XXXXX-X ID"
-msgstr ""
-
-#: 404.php:8
-#@ wpbp
-msgid "File Not Found"
-msgstr "Page introuvable"
-
-#: inc/wpbp-options.php:126
-#: inc/wpbp-options.php:128
-#@ wpbp
-msgid "Google Analytics ID"
-msgstr ""
-
-#: index.php:8
-#@ wpbp
-msgid "Latest Posts"
-msgstr "Derniers articles"
-
-#: comments.php:70
-#@ wpbp
-msgid "Leave a Reply"
-msgstr "Laissez un commentaire"
-
-#: comments.php:70
+#: author.php:10
 #, php-format
-#@ wpbp
-msgid "Leave a Reply to %s"
-msgstr "Laissez une réponse à %s"
+msgid "Author: %s"
+msgstr "Auteur : %s"
 
-#: comments.php:77
-#@ wpbp
-msgid "Log out &raquo;"
-msgstr "Déconnexion &raquo;"
-
-#: comments.php:77
-#@ wpbp
-msgid "Log out of this account"
-msgstr "Déconnectez vous de ce compte"
-
-#: comments.php:77
+#: author.php:16
 #, php-format
-#@ wpbp
-msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
-msgstr "Connecté en tant que <a href=\"%s/wp-admin/profile.php\">%s</a>."
-
-#: comments.php:80
-#@ wpbp
-msgid "Name"
-msgstr "Nom"
-
-#: comments.php:54
-#@ wpbp
-msgid "Newer comments &rarr;"
-msgstr "Commentaires plus récents &rarr;"
-
-#: loop-search.php:38
-#: loop.php:42
-#@ wpbp
-msgid "Newer posts &rarr;"
-msgstr "Articles plus récents &rarr;"
-
-#: comments.php:46
-#@ wpbp
-msgid "No Responses to"
-msgstr "Aucune réponse à"
-
-#: comments.php:46
-#@ wpbp
-msgid "One Response to"
-msgstr "Une réponse à"
-
-#: page-sitemap.php:15
-#@ wpbp
-msgid "Pages"
-msgstr "Pages"
-
-#: loop-page.php:8
-#: loop-single.php:18
-#@ wpbp
-msgid "Pages:"
-msgstr "Pages :"
-
-#: comments.php:31
-#@ wpbp
-msgid "Please do not load this page directly. Thanks!"
-msgstr "Veuillez ne pas accéder à cette page directement. Merci!"
-
-#: inc/wpbp-htaccess.php:6
-#, php-format
-#@ wpbp
-msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writeable "
-msgstr ""
-
-#: 404.php:12
-#@ wpbp
-msgid "Please try the following:"
-msgstr "Veuillez essayer ce qui suit :"
-
-#: inc/wpbp-cleanup.php:387
-#, php-format
-#@ wpbp
-msgid "Please update your <a href=\"%s\">site tagline</a>"
-msgstr ""
-
-#: page-sitemap.php:17
-#@ wpbp
-msgid "Posts"
-msgstr "Articles"
-
-#: 404.php:15
-#, php-format
-#@ wpbp
-msgid "Return to the <a href=\"%s\">home page</a>"
-msgstr "Retour à l'<a href=\"%s\">accueil</a>"
-
-#: searchform.php:2
-#: searchform.php:3
-#@ wpbp
-msgid "Search"
-msgstr "Recherche"
-
-#: loop-search.php:4
-#: loop.php:4
-#@ wpbp
-msgid "Sorry, no results were found."
-msgstr "Désolé, aucun résultat."
-
-#: inc/wpbp-widgets.php:55
-#@ wpbp
-msgid "State/Region:"
-msgstr "Province/région : "
-
-#: inc/wpbp-widgets.php:47
-#@ wpbp
-msgid "Street Address:"
-msgstr "Adresse :"
-
-#: comments.php:96
-#@ wpbp
-msgid "Submit Comment"
-msgstr "Soumettre un commentaire"
-
-#: inc/wpbp-widgets.php:63
-#@ wpbp
-msgid "Telephone:"
-msgstr "Téléphone :"
-
-#: 404.php:10
-#@ wpbp
-msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-msgstr "La page demandée a peut-être été enlevée, renommée ou est temporairement inaccessible."
-
-#: inc/wpbp-options.php:31
-#: inc/wpbp-options.php:32
-#: inc/wpbp-options.php:49
-#@ wpbp
-msgid "Theme Options"
-msgstr ""
-
-#: comments.php:36
-#@ wpbp
-msgid "This post is password protected. Enter the password to view comments."
-msgstr "Cet article est protégé par mot de passe. Veuillez entrer votre mot de passe pour voir les commentaires."
-
-#: inc/wpbp-widgets.php:43
-#@ wpbp
-msgid "Title (optional):"
-msgstr "Titre (facultatif) :"
-
-#: comments.php:88
-#@ wpbp
-msgid "Website"
-msgstr "Site web"
-
-#: comments.php:73
-#, php-format
-#@ wpbp
-msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr "Vous devez être <a href=\"%s\">connecté</a> pour publier un commentaire."
-
-#: comments.php:14
-#@ wpbp
-msgid "Your comment is awaiting moderation."
-msgstr "Votre commentaire est en attente de modération."
+msgid "%s's Google Profile"
+msgstr "Profil Google de %s"
 
 #: archive.php:10
 #, php-format
-#@ wpbp
-msgid "Daily Archives: &laquo; %s &raquo;"
-msgstr "Archives quotidiennes : &laquo; %s &raquo;"
+msgid "Daily Archives: %s"
+msgstr "Archives quotidiennes : %s"
+
+#: archive.php:11
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Archives mensuelles : %s"
 
 #: archive.php:12
 #, php-format
-#@ wpbp
-msgid "Monthly Archives: &laquo; %s &raquo;"
-msgstr "Archives mensuelles : &laquo; %s &raquo;"
+msgid "Yearly Archives: %s"
+msgstr "Archives annuelles : %s"
 
-#: archive.php:14
-#, php-format
-#@ wpbp
-msgid "Yearly Archives: &laquo; %s &raquo;"
-msgstr "Archives annuelles : &laquo; %s &raquo;"
-
-#: archive.php:16
-#, php-format
-#@ wpbp
-msgid "Category: &laquo; %s &raquo;"
-msgstr "Catégorie : &laquo; %s &raquo;"
-
-#: archive.php:18
-#, php-format
-#@ wpbp
-msgid "Tag: &laquo; %s &raquo;"
-msgstr "Tag : &laquo; %s &raquo;"
-
-#: archive.php:20
-#, php-format
-#@ wpbp
-msgid "Author: &laquo; %s &raquo;"
-msgstr "Auteur : &laquo; %s &raquo;"
-
-#: functions.php:43
-#@ wpbp
-msgid "Primary Navigation"
+#. Name of the template
+msgid "Wide"
 msgstr ""
 
-#: inc/wpbp-options.php:153
-#: inc/wpbp-options.php:163
-#@ wpbp
-msgid "Default:"
-msgstr ""
-
-#: inc/wpbp-options.php:168
-#: inc/wpbp-options.php:170
-#@ wpbp
-msgid "Custom CSS"
-msgstr ""
-
-#: inc/wpbp-options.php:173
-#@ wpbp
-msgid "Enter custom CSS for this site"
-msgstr ""
-
-#: inc/wpbp-widgets.php:7
-#@ wpbp
+#: inc/wpbp-widgets.php:14
 msgid "WPBP: vCard"
 msgstr ""
 
-#: inc/wpbp-widgets.php:59
-#@ wpbp
-msgid "Zipcode/Postal Code:"
-msgstr "Code postal :"
-
-#: inc/wpbp-widgets.php:81
-#@ wpbp
-msgid "WPBP: Category Navigation"
+#: inc/wpbp-widgets.php:206
+msgid "WPBP: Taxonomy Navigation"
 msgstr ""
 
-#: loop-search.php:17
-#: loop-single.php:9
-#: loop.php:17
-#, php-format
-#@ wpbp
-msgid "Posted on %s at %s"
-msgstr "Publié le %s à %s"
+#: inc/wpbp-widgets.php:409
+msgid "WPBP: Latest Posts"
+msgstr ""
 
-#: loop-search.php:17
-#: loop-single.php:9
-#: loop.php:17
-#@ wpbp
+#: inc/wpbp-widgets.php:485
+msgid "WPBP: Most Popular"
+msgstr ""
+
+#: inc/wpbp-widgets.php:608
+msgid "WPBP: Google AdSense Unit"
+msgstr ""
+
+#: inc/wpbp-shortcodes.php:151 inc/wpbp-shortcodes.php:204
+msgid "No results"
+msgstr "Aucuns résultats"
+
+#: inc/wpbp-cleanup.php:404
+#, php-format
+msgid "Please update your <a href=\"%s\">site tagline</a>"
+msgstr ""
+
+#: inc/wpbp-options.php:50 inc/wpbp-options.php:51 inc/wpbp-options.php:68
+#: inc/wpbp-options.php:106
+msgid "Boilerplate Options"
+msgstr ""
+
+#: inc/wpbp-options.php:118 inc/wpbp-options.php:120
+msgid "Google Analytics ID"
+msgstr ""
+
+#: inc/wpbp-options.php:123
+msgid "Enter your UA-XXXXX-X ID"
+msgstr ""
+
+#: inc/wpbp-options.php:128 inc/wpbp-options.php:130
+msgid "Google Remarketing Tag ID"
+msgstr ""
+
+#: inc/wpbp-options.php:133
+msgid "Enter your Google Remarketing Tag ID"
+msgstr ""
+
+#: inc/wpbp-options.php:138 inc/wpbp-options.php:140
+msgid "Google Tag Manager ID"
+msgstr ""
+
+#: inc/wpbp-options.php:143
+msgid "Enter your GTM-XXXX ID"
+msgstr ""
+
+#: inc/wpbp-options.php:148 inc/wpbp-options.php:150
+msgid "Optimizely Project ID"
+msgstr ""
+
+#: inc/wpbp-options.php:153
+msgid "Enter your Optimizely Project ID"
+msgstr ""
+
+#: inc/wpbp-options.php:158 inc/wpbp-options.php:160
+msgid "Fluid Layout?"
+msgstr ""
+
+#: inc/wpbp-options.php:162
+msgid "Yes"
+msgstr ""
+
+#: inc/wpbp-options.php:163
+msgid "No"
+msgstr ""
+
+#: inc/wpbp-options.php:169 inc/wpbp-options.php:171
+msgid "Responsive Layout?"
+msgstr ""
+
+#: inc/wpbp-options.php:173
+msgid "Full-responsive"
+msgstr ""
+
+#: inc/wpbp-options.php:174
+msgid "Mobile-responsive"
+msgstr ""
+
+#: inc/wpbp-options.php:175
+msgid "Non-responsive"
+msgstr ""
+
+#: inc/wpbp-options.php:181 inc/wpbp-options.php:183
+msgid "#main CSS Classes"
+msgstr ""
+
+#: inc/wpbp-options.php:186 inc/wpbp-options.php:196
+msgid "Default:"
+msgstr ""
+
+#: inc/wpbp-options.php:191 inc/wpbp-options.php:193
+msgid "#sidebar CSS Classes"
+msgstr ""
+
+#: inc/wpbp-options.php:201 inc/wpbp-options.php:203
+msgid "CSS files"
+msgstr ""
+
+#: inc/wpbp-options.php:206
+msgid "Enter CSS files URL you want to include. One file per line."
+msgstr ""
+
+#: inc/wpbp-options.php:211 inc/wpbp-options.php:213
+msgid "Custom CSS"
+msgstr ""
+
+#: inc/wpbp-options.php:216
+msgid "Enter custom CSS for this site"
+msgstr ""
+
+#: inc/wpbp-options.php:221 inc/wpbp-options.php:223
+msgid "Javascript files"
+msgstr ""
+
+#: inc/wpbp-options.php:226
+msgid "Enter javascript files URL you want to include. One file per line."
+msgstr ""
+
+#: inc/wpbp-options.php:231 inc/wpbp-options.php:233
+msgid "Custom Javascript"
+msgstr ""
+
+#: inc/wpbp-options.php:236
+msgid "Enter custom Javascript for this site"
+msgstr ""
+
+#: inc/wpbp-options.php:241 inc/wpbp-options.php:243
+msgid "Custom Header Code"
+msgstr ""
+
+#: inc/wpbp-options.php:246
+msgid ""
+"Enter custom code that will appear in the &lt;head&gt;&lt;/head&gt; section"
+msgstr ""
+
+#: inc/wpbp-options.php:251 inc/wpbp-options.php:253
+msgid "Custom Footer Code"
+msgstr ""
+
+#: inc/wpbp-options.php:256
+msgid "Enter custom code that will appear before the &lt;/body&gt; tag"
+msgstr ""
+
+#: inc/wpbp-options.php:261 inc/wpbp-options.php:263
+msgid "Favicon"
+msgstr ""
+
+#: inc/wpbp-options.php:266
+msgid "Enter your favicon URL"
+msgstr ""
+
+#. Name of the theme
+msgid "wpboilerplate"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"wpboilerplate is a powerful quickstart WordPress theme made for developers "
+"that's based on Roots, HTML5 Boilerplate, 960 Grid System, LessCSS and "
+"Starkers that will help you rapidly create sites."
+msgstr ""
+
+#. URI of the theme
+msgid "http://wpboilerplate.com/"
+msgstr ""
+
+#. Author of the theme
+msgid "Jonathan Roy @ OptimumWeb"
+msgstr ""
+
+#. Author URI of the theme
+msgid "http://optimumweb.ca"
+msgstr ""
+
+#: loop-single.php:11 loop-search.php:19 loop.php:19
 msgid "l, F jS, Y"
 msgstr "l, j F, Y"
 
-#: loop-search.php:18
-#: loop-single.php:10
-#: loop.php:18
-#@ wpbp
+#: loop-single.php:12 loop-search.php:20 loop.php:20
 msgid "by"
 msgstr "par"
 
-#: search.php:9
+#: loop-single.php:24 loop-page.php:15
+msgid "Pages:"
+msgstr "Pages :"
+
+#: page-sitemap.php:16
+msgid "Pages"
+msgstr "Pages"
+
+#: page-sitemap.php:18
+msgid "Posts"
+msgstr "Articles"
+
+#: page-sitemap.php:20
+msgid "Archives"
+msgstr "Archives"
+
+#: search.php:10
 #, php-format
-#@ wpbp
 msgid "Search results for: &laquo; %s &raquo;"
 msgstr "Résultats de recherche pour : &laquo; %s &raquo;"
 
+#: loop-search.php:4 loop.php:4
+msgid "Sorry, no results were found."
+msgstr "Désolé, aucun résultat."
+
+#: loop-search.php:19
+#, php-format
+msgid "Posted on %s at %s"
+msgstr "Publié le %s à %s"
+
+#: loop-search.php:38 loop.php:49
+msgid "&larr; Older posts"
+msgstr "&larr; Articles précédents"
+
+#: loop-search.php:39 loop.php:50
+msgid "Newer posts &rarr;"
+msgstr "Articles plus récents &rarr;"
+
+#: index.php:10
+msgid "Latest Posts"
+msgstr "Derniers articles"
+
+#: 404.php:9
+msgid "File Not Found"
+msgstr "Page introuvable"
+
+#: 404.php:12
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable."
+msgstr ""
+"La page demandée a peut-être été enlevée, renommée ou est temporairement "
+"inaccessible."
+
+#: 404.php:14
+msgid "Please try the following:"
+msgstr "Veuillez essayer ce qui suit :"
+
+#: 404.php:16
+msgid "Check your spelling"
+msgstr "Corrigez votre orthographe"
+
+#: 404.php:17
+#, php-format
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Retour à l'<a href=\"%s\">accueil</a>"
+
+#: 404.php:18
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Cliquez sur le bouton <a href=\"javascript:history.back()\">retour</a>"
+
+#: tag.php:10
+#, php-format
+msgid "Tag: &laquo; %s &raquo;"
+msgstr "Tag : &laquo; %s &raquo;"
+
+#: comments.php:8
+msgid "(Edit)"
+msgstr "(Modifier)"
+
+#: comments.php:12
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de modération."
+
+#: comments.php:25
+msgid "Please do not load this page directly. Thanks!"
+msgstr "Veuillez ne pas accéder à cette page directement. Merci!"
+
+#: comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+"Cet article est protégé par mot de passe. Veuillez entrer votre mot de passe "
+"pour voir les commentaires."
+
+#: comments.php:39
+msgid "No Responses to"
+msgstr "Aucune réponse à"
+
+#: comments.php:39
+msgid "One Response to"
+msgstr "Une réponse à"
+
+#: comments.php:39
+msgid "% Responses to"
+msgstr "% réponses à"
+
+#: comments.php:45
+msgid "&larr; Older comments"
+msgstr "&larr; Commentaires précédents"
+
+#: comments.php:46
+msgid "Newer comments &rarr;"
+msgstr "Commentaires plus récents &rarr;"
+
+#: comments.php:54
+msgid "Comments are closed."
+msgstr "Les commentaires sont fermés."
+
+#: comments.php:62
+msgid "Leave a Reply"
+msgstr "Laissez un commentaire"
+
+#: comments.php:62
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Laissez une réponse à %s"
+
+#: comments.php:65
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+"Vous devez être <a href=\"%s\">connecté</a> pour publier un commentaire."
+
+#: comments.php:69
+#, php-format
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Connecté en tant que <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: comments.php:69
+msgid "Log out of this account"
+msgstr "Déconnectez vous de ce compte"
+
+#: comments.php:69
+msgid "Log out &raquo;"
+msgstr "Déconnexion &raquo;"
+
+#: comments.php:72
+msgid "Name"
+msgstr "Nom"
+
+#: comments.php:76
+msgid "Email (will not be published)"
+msgstr "Courriel (ne sera pas publié)"
+
+#: comments.php:80
+msgid "Website"
+msgstr "Site web"
+
+#: comments.php:85
+msgid "Comment"
+msgstr "Commentez"
+
+#: comments.php:88
+msgid "Submit Comment"
+msgstr "Soumettre un commentaire"
+
+#: searchform.php:2 searchform.php:3
+msgid "Search"
+msgstr "Recherche"
+
+#: inc/wpbp-cleanup.php:302
+msgid "Continued"
+msgstr "Lire la suite"
