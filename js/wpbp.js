@@ -938,6 +938,7 @@
                         selectedNavOptionTarget = $selectedNavOption.data('target');
 
                     if ( selectedNavOptionURL ) {
+                        console.log(selectedNavOptionURL, selectedNavOptionTarget);
                         window.open(selectedNavOptionURL, selectedNavOptionTarget);
                     }
 
