@@ -901,8 +901,6 @@
                 depth = 0;
             }
 
-            console.log($navList, $responsiveNav, depth);
-
             $navList.children('li').each(function() {
 
                 var $navItem          = $(this),
@@ -921,7 +919,7 @@
 
                 var navItemLinkLabelPrefix = depth > 0 ? '-'.repeat(depth) + ' ' : '';
 
-                $navOption.text(navItemLinkLabelPrefix + navItemLinkLabel).val(navItemURL);
+                $navOption.text(navItemLinkLabelPrefix + navItemLinkLabel).val(navItemLinkURL);
 
                 if ( navItemLinkTarget != undefined ) {
                     $navOption.data('target', navItemLinkTarget);
