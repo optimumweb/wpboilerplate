@@ -926,7 +926,7 @@
                     $navOption.data('target', navItemTarget);
                 }
 
-                if ( navItemURL == window.location.href ) {
+                if ( navItemURL == window.location.href || navItemURL == window.location.pathname ) {
                     $navOption.attr('selected', true);
                 }
 
