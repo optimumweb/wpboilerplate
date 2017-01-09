@@ -905,7 +905,7 @@
 
             var $responsiveNav = $('.responsive-nav[data-responsive-nav-for="' + navID + '"]');
 
-            $responsiveNav.append('<option>' + navLabel + '</option>');
+            $responsiveNav.append('<option value="">' + navLabel + '</option>');
 
             $responsiveNav.hide();
 
@@ -938,8 +938,11 @@
                         selectedNavOptionTarget = $selectedNavOption.data('target');
 
                     if ( selectedNavOptionURL ) {
-                        console.log(selectedNavOptionURL, selectedNavOptionTarget);
-                        window.open(selectedNavOptionURL, selectedNavOptionTarget);
+                        if ( selectedNavOptionTarget != undefined ) {
+                            window.open(selectedNavOptionURL, selectedNavOptionTarget);
+                        } else {
+                            window.location.href = selectedNavOptionURL;
+                        }
                     }
 
                 }
