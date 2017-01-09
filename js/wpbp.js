@@ -895,7 +895,7 @@
 
     $.fn.wpbpResponsiveNav = function() {
 
-        var addNavOptions = function($navList, $responsiveNav, depth) {
+        function addNavOptions($navList, $responsiveNav, depth) {
 
             if ( depth == undefined ) {
                 dept = 0;
