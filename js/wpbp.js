@@ -901,6 +901,8 @@
                 dept = 0;
             }
 
+            console.log($navList, $responsiveNav, depth);
+
             $navList.children('li').each(function() {
 
                 var $navItem          = $(this),
@@ -950,8 +952,6 @@
             var $responsiveNav = $('.responsive-nav[data-responsive-nav-for="' + navID + '"]');
 
             $responsiveNav.append('<option value="">' + navLabel + '</option>').hide();
-
-            console.log($nav.children('ul'), $responsiveNav);
 
             addNavOptions($nav.children('ul'), $responsiveNav);
 
