@@ -945,8 +945,7 @@
 
             });
 
-            $(window).on('load resize', function() {
-
+            $nav.on('wpbpResponsiveNav:toggle', function() {
                 if ( $(window).width() > 768 ) {
                     $nav.show();
                     $responsiveNav.hide();
@@ -954,7 +953,10 @@
                     $nav.hide();
                     $responsiveNav.show();
                 }
+            }).trigger('wpbpResponsiveNav:toggle');
 
+            $(window).on('resize', function() {
+                $nav.trigger('wpbpResponsiveNav:toggle');
             });
 
         });
