@@ -898,7 +898,7 @@
         function addNavOptions($navList, $responsiveNav, depth) {
 
             if ( depth === undefined ) {
-                dept = 0;
+                depth = 0;
             }
 
             console.log($navList, $responsiveNav, depth);
