@@ -30,6 +30,8 @@
 
         $('.wpbp-parallax').wpbpParallax();
 
+        $('.wpbp-responsive-nav').wpbpResponsiveNav();
+
         $(window).bind('load resize', function() {
 
             $('.valign, .vAlign').vAlign();
@@ -881,5 +883,83 @@
         });
 
     };
+
+    /*
+     * wpbpResponsiveNav
+     *
+     *
+     * @author Jonathan Roy <jroy@optimumweb.ca>
+     * @version 0.1
+     * @package wpboilerplate
+     */
+
+    $.fn.wpbpResponsiveNav = function() {
+
+        return this.each(function() {
+
+            var $nav     = $(this),
+                navID    = $nav.attr('id'),
+                navLabel = $nav.data('responsive-nav-label') || "Menu";
+
+            $nav.insertAfter('<select class="responsive-nav" data-responsive-nav-for="' + navID + '"></select>');
+
+            var $responsiveNav = $('.responsive-nav[data-responsive-nav-for="' + navID + '"]');
+
+            $responsiveNav.append('<option>' + navLabel + '</option>');
+
+            $responsiveNav.hide();
+
+            $nav.find('a').each(function() {
+
+                var $navItem      = $(this),
+                    navItemLabel  = $navItem.text(),
+                    navItemURL    = $navItem.attr('href'),
+                    navItemTarget = $navItem.attr('target');
+
+                $responsiveNav.append('<option></option>');
+
+                var $navOption = $responsiveNav.find('option').last();
+
+                $navOption.text(navItemLabel).val(navItemURL);
+
+                if ( navItemTarget != undefined ) {
+                    $navOption.data('target', navItemTarget);
+                }
+
+            });
+
+            $responsiveNav.on('change', function() {
+
+                var $selectedNavOption = $(this).find('option:selected');
+
+                if ( $selectedNavOption.size() == 1 ) {
+
+                    var selectedNavOptionURL    = $selectedNavOption.val(),
+                        selectedNavOptionTarget = $selectedNavOption.data('target');
+
+                    if ( selectedNavOptionURL ) {
+                        window.open(selectedNavOptionURL, selectedNavOptionTarget);
+                    }
+
+                }
+
+            });
+
+            $(window).on('load resize', function() {
+
+                if ( $(window).width() > 768 ) {
+                    $nav.show();
+                    $responsiveNav.hide();
+                } else {
+                    $nav.hide();
+                    $responsiveNav.show();
+                }
+
+            });
+
+        });
+
+    };
+
 
 }(window.jQuery, window, document));
