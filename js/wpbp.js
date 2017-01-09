@@ -901,7 +901,7 @@
                 navID    = $nav.attr('id'),
                 navLabel = $nav.data('responsive-nav-label') || "Menu";
 
-            $nav.insertAfter('<select class="responsive-nav" data-responsive-nav-for="' + navID + '"></select>');
+            $('<select class="responsive-nav" data-responsive-nav-for="' + navID + '"></select>').insertAfter($nav);
 
             var $responsiveNav = $('.responsive-nav[data-responsive-nav-for="' + navID + '"]');
 
