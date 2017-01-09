@@ -895,6 +895,50 @@
 
     $.fn.wpbpResponsiveNav = function() {
 
+        var addNavOptions = function($navList, $responsiveNav, depth) {
+
+            if ( depth == undefined ) {
+                dept = 0;
+            }
+
+            $navList.children('li').each(function() {
+
+                var $navItem          = $(this),
+                    $navItemLink      = $navItem.children('a'),
+                    navItemLinkLabel  = $navItemLink.text(),
+                    navItemLinkURL    = $navItemLink.attr('href'),
+                    navItemLinkTarget = $navItemLink.attr('target');
+
+                if ( $navItem.hasClass('wpbp-responsive-nav-ignore') || $navItemLink.hasClass('wpbp-responsive-nav-ignore') ) {
+                    return true;
+                }
+
+                $responsiveNav.append('<option></option>');
+
+                var $navOption = $responsiveNav.find('option').last();
+
+                var navItemLinkLabelPrefix = depth > 0 ? '-'.repeat(depth) + ' ' : '';
+
+                $navOption.text(navItemLinkLabelPrefix + navItemLinkLabel).val(navItemURL);
+
+                if ( navItemLinkTarget != undefined ) {
+                    $navOption.data('target', navItemLinkTarget);
+                }
+
+                if ( navItemLinkURL == window.location.href || navItemLinkURL == window.location.pathname ) {
+                    $navOption.attr('selected', true);
+                }
+
+                var $subNavList = $navItem.children('ul');
+
+                if ( $subNavList.size() > 0 ) {
+                    addNavOptions($subNavList, $responsiveNav, depth + 1);
+                }
+
+            });
+
+        };
+
         return this.each(function() {
 
             var $nav     = $(this),
@@ -905,32 +949,9 @@
 
             var $responsiveNav = $('.responsive-nav[data-responsive-nav-for="' + navID + '"]');
 
-            $responsiveNav.append('<option value="">' + navLabel + '</option>');
+            $responsiveNav.append('<option value="">' + navLabel + '</option>').hide();
 
-            $responsiveNav.hide();
-
-            $nav.find('a').each(function() {
-
-                var $navItem      = $(this),
-                    navItemLabel  = $navItem.text(),
-                    navItemURL    = $navItem.attr('href'),
-                    navItemTarget = $navItem.attr('target');
-
-                $responsiveNav.append('<option></option>');
-
-                var $navOption = $responsiveNav.find('option').last();
-
-                $navOption.text(navItemLabel).val(navItemURL);
-
-                if ( navItemTarget != undefined ) {
-                    $navOption.data('target', navItemTarget);
-                }
-
-                if ( navItemURL == window.location.href || navItemURL == window.location.pathname ) {
-                    $navOption.attr('selected', true);
-                }
-
-            });
+            addNavOptions($nav.children('ul'), $responsiveNav);
 
             $responsiveNav.on('change', function() {
 
@@ -973,3 +994,9 @@
 
 
 }(window.jQuery, window, document));
+
+// Extensions
+
+String.prototype.repeat = function(num) {
+    return new Array( num + 1 ).join(this);
+};
