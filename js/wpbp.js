@@ -926,6 +926,10 @@
                     $navOption.data('target', navItemTarget);
                 }
 
+                if ( navItemURL == window.location.href ) {
+                    $navOption.attr('selected', true);
+                }
+
             });
 
             $responsiveNav.on('change', function() {
