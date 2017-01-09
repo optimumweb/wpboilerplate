@@ -951,6 +951,8 @@
 
             $responsiveNav.append('<option value="">' + navLabel + '</option>').hide();
 
+            console.log($nav.children('ul'), $responsiveNav);
+
             addNavOptions($nav.children('ul'), $responsiveNav);
 
             $responsiveNav.on('change', function() {
