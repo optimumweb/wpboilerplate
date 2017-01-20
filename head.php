@@ -1,6 +1,6 @@
 <?php global $post; ?>
 <?php wpbp_before_html(); ?>
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" <?php language_attributes(); ?>> <![endif]-->
@@ -10,15 +10,13 @@
 
 <?php wpbp_head_inside_before(); ?>
 
-<meta charset="utf-8">
+<meta charset="<?php bloginfo('charset'); ?>">
 
 <?php if ( in_array(wpbp_get_option('responsive'), array('responsive', 'mobile-responsive')) ) : ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php endif; ?>
 
 <title><?php wp_title(''); ?></title>
-
-<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 
 <?php wp_head(); ?>
 
