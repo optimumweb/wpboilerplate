@@ -4,7 +4,9 @@ if ( !function_exists('get_post_id') ) {
 
     function get_post_id()
     {
-        return get_queried_object_id();
+        if ( is_single() ) {
+            return get_queried_object_id();
+        }
     }
 
 }
