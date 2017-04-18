@@ -78,6 +78,7 @@ function wpbp_get_default_theme_options()
         'google_conversion_id'  => '',
         'google_tag_manager_id' => '',
         'optimizely_project_id' => '',
+		'gauges_site_id'        => '',
 		'main_class'            => 'grid_9',
 		'sidebar_class'         => 'grid_3',
         'fluid'                 => 'yes',
@@ -154,6 +155,16 @@ function wpbp_theme_options_render_page()
                         </fieldset>
                     </td>
                 </tr>
+
+				<tr valign="top"><th scope="row"><?php _e('Gaug.es Site ID', 'wpbp'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Gaug.es Site ID', 'wpbp'); ?></span></legend>
+							<input type="text" name="wpbp_theme_options[gauges_site_id]" id="gauges_site_id" value="<?php echo esc_attr($wpbp_options['gauges_site_id']); ?>" />
+							<br />
+							<small class="description"><?php printf(__('Enter your Gaug.es Site ID', 'wpbp')); ?></small>
+						</fieldset>
+					</td>
+				</tr>
 
                 <tr valign="top" class="radio-option"><th scope="row"><?php _e("Fluid Layout?", 'wpbp'); ?></th>
                     <td>
@@ -287,6 +298,7 @@ function wpbp_theme_options_validate($input)
     $output['google_remarketing_id'] = isset($input['google_remarketing_id']) ? $input['google_remarketing_id'] : null;
     $output['google_tag_manager_id'] = isset($input['google_tag_manager_id']) ? $input['google_tag_manager_id'] : null;
     $output['optimizely_project_id'] = isset($input['optimizely_project_id']) ? $input['optimizely_project_id'] : null;
+	$output['gauges_site_id']        = isset($input['gauges_site_id'])        ? $input['gauges_site_id']        : null;
     $output['fluid']                 = isset($input['fluid'])                 ? $input['fluid']                 : null;
 	$output['responsive']            = isset($input['responsive'])            ? $input['responsive']            : null;
 	$output['main_class']            = isset($input['main_class'])            ? $input['main_class']            : null;
