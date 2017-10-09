@@ -145,7 +145,15 @@ body {
   &.by_9 > * { width: 100% / 9.00 !important; }
   &.by_10 > * { width: 100% / 10.00 !important; }
 
-  &.by_2 > *:nth-child(2n+1) {
+  &.by_2 > *:nth-child(2n+1),
+  &.by_3 > *:nth-child(3n+1),
+  &.by_4 > *:nth-child(4n+1),
+  &.by_5 > *:nth-child(5n+1),
+  &.by_6 > *:nth-child(6n+1),
+  &.by_7 > *:nth-child(7n+1),
+  &.by_8 > *:nth-child(8n+1),
+  &.by_9 > *:nth-child(9n+1),
+  &.by_10 > *:nth-child(10n+1) {
     clear: both;
   }
 }
