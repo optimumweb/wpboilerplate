@@ -124,11 +124,14 @@ body {
 // --------------------------------------------------
 
 .block_grid {
+  margin-left: -@gridGutter;
+  margin-right: -@gridGutter;
+
   > * {
     display: block;
     float: left;
     position: relative;
-    padding: 0 0.9375em 0.5em;
+    padding: 0 @gridGutter 0.5em;
     min-height: 1px;
   }
 
@@ -144,8 +147,6 @@ body {
 }
 
 ul.block_grid {
-  margin-left: 0;
-  margin-right: 0;
   padding: 0;
 }
 
