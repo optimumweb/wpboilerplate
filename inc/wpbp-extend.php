@@ -4,9 +4,7 @@ if ( !function_exists('get_post_id') ) {
 
     function get_post_id()
     {
-        if ( is_single() ) {
-            return get_queried_object_id();
-        }
+        return get_queried_object_id();
     }
 
 }
@@ -35,8 +33,7 @@ if ( !function_exists('get_ID_by_slug') ) {
     function get_ID_by_slug($slug)
     {
         global $wpdb;
-        $post_ID = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '" . $slug . "'");
-        return $post_ID;
+        return $wpdb->get_var(sprintf("SELECT ID FROM %s WHERE post_name = '%s' LIMIT 1", $wpdb->posts, $slug));
     }
 
 }
@@ -49,7 +46,7 @@ if ( !function_exists('blog_url') ) {
     */
     function blog_url()
     {
-        return get_permalink( get_option('page_for_posts' ) );
+        return get_permalink(get_option('page_for_posts'));
     }
 
 }
@@ -60,14 +57,20 @@ if ( !function_exists('get_author') ) {
 	 * get_author
 	 * Returns information about a specified author (current by default).
 	 */
-	function get_author($field = null, $ID = null)
+	function get_author($field = null, $id = null)
 	{
-		if ( isset($ID) && is_int($ID) ) {
-			$author = get_user_by('id', $ID);
+		if ( isset($id) && is_int($id) ) {
+			$author = get_user_by('id', $id);
 		} elseif ( is_author() ) {
 			$author = get_user_by('slug', get_query_var('author_name'));
 		}
-		return isset($field) ? ( isset($author->$field) ? $author->$field : false ) : $author ;
+        if ( isset($author) ) {
+            if ( isset($field) ) {
+                return property_exists($author, $field) ? $author->$field : null;
+            } else {
+                return $author;
+            }
+        }
 	}
 
 }
