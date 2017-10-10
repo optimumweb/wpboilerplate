@@ -31,13 +31,6 @@ if ( is_admin() && $pagenow  === 'themes.php' && isset($_GET['activated']) ) {
 		$result = wp_insert_post($add_default_pages);
 	}
 
-	//$home = get_page_by_title('Home');
-	//update_option('show_on_front', 'page');
-	//update_option('page_on_front', $home->ID);
-
-	//$home_menu_order = array('ID' => $home->ID, 'menu_order' => -1);
-	//wp_update_post($home_menu_order);
-
 	// set the permalink structure
 	if ( get_option('permalink_structure') !== '/%year%/%monthnum%/%postname%/' ) {
 		update_option('permalink_structure', '/%year%/%monthnum%/%postname%/');
@@ -51,12 +44,12 @@ if ( is_admin() && $pagenow  === 'themes.php' && isset($_GET['activated']) ) {
 	$wpbp_nav_theme_mod = false;
 
 	if ( !has_nav_menu('primary_navigation') ) {
-		$primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
+		$primary_nav_id = wp_create_nav_menu('Primary Navigation', array( 'slug' => 'primary_navigation' ));
 		$wpbp_nav_theme_mod['primary_navigation'] = $primary_nav_id;
 	}
 
 	if ( !has_nav_menu('secondary_navigation') ) {
-		$utility_nav_id = wp_create_nav_menu('Secondary Navigation', array('slug' => 'secondary_navigation'));
+		$utility_nav_id = wp_create_nav_menu('Secondary Navigation', array( 'slug' => 'secondary_navigation' ));
 		$wpbp_nav_theme_mod['secondary_navigation'] = $utility_nav_id;
 	}
 
