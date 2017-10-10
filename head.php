@@ -24,7 +24,7 @@
 
 <?php wpbp_head_inside_after(); ?>
 
-<!-- Force HTTPS? <?php echo wpbp_get_option('force_https'); ?> --?>
+<!-- Force HTTPS? <?php echo wpbp_get_option('force_https'); ?> -->
 
 </head>
 
