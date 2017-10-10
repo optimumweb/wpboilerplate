@@ -493,7 +493,7 @@ function wpbp_spacer($atts)
         'size' => 'medium',
     ), $atts));
 
-    switch ($size) {
+    switch ( $size ) {
         case 'small':
             $height = "0.5em";
             break;
