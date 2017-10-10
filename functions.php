@@ -32,7 +32,7 @@ foreach ( $required_files as $f ) {
 	$template_fpath = TEMPLATE_DIRECTORY . $f;
 	$fpath = file_exists($theme_fpath) ? $theme_fpath : ( file_exists($template_fpath) ? $template_fpath : false );
 	if ( $fpath ) {
-		require_once( $fpath );
+		require_once($fpath);
 	}
 }
 
@@ -43,23 +43,10 @@ function wpbp_setup()
 	load_theme_textdomain('wpbp', TEMPLATE_DIRECTORY . '/lang');
 
 	// tell the TinyMCE editor to use editor-style.css
-	// if you have issues with getting the editor to show your changes then use the following line:
-	// add_editor_style('editor-style.css?' . time());
 	add_editor_style('editor-style.css');
 
 	// http://codex.wordpress.org/Post_Thumbnails
 	add_theme_support('post-thumbnails');
-	//set_post_thumbnail_size(150, 150, false);
-
-	// http://codex.wordpress.org/Post_Formats
-	//add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
-
-	function wpbp_custom_image_header_site() { }
-
-	function wpbp_custom_image_header_admin() { ?>
-		<style type="text/css"> .appearance_page_custom-header #headimg { min-height: 0; } </style>
-	<?php }
-	add_custom_image_header('wpbp_custom_image_header_site', 'wpbp_custom_image_header_admin');
 
 	add_theme_support('menus');
 
@@ -72,30 +59,23 @@ add_action('after_setup_theme', 'wpbp_setup');
 
 function wpbp_register_sidebars($sidebars)
 {
-	if ( !is_array( $sidebars ) && is_string( $sidebars ) ) {
-
-		return wpbp_register_sidebars( $sidebars );
-
-	} else {
-
+	if ( is_array($sidebars) && !empty($sidebars) ) {
 		foreach ( $sidebars as $sidebar ) {
-			register_sidebar( array(
+			register_sidebar(array(
 				'name'          => $sidebar,
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '<div class="clear"></div></div>',
 				'before_title'  => '<h3 class="widget-title">',
 				'after_title'   => '</h3>'
-			) );
+			));
 		}
-
 		return true;
-
 	}
 	return false;
 }
 
 // create widget areas: sidebar, footer
-wpbp_register_sidebars( array( 'Sidebar' ) );
+wpbp_register_sidebars(array( 'Sidebar' ));
 
 // Enable shortcodes in widgets
 add_filter('widget_text', 'do_shortcode');
