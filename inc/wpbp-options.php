@@ -171,8 +171,8 @@ function wpbp_theme_options_render_page()
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e("Force HTTPS?", 'wpbp'); ?></span></legend>
 							<select name="wpbp_theme_options[force_https]" id="wpbp_theme_options[force_https]">
-								<option value="yes" <?php selected($wpbp_options['force_https'], 'yes'); ?>><?php _e("Yes", 'wpbp'); ?></option>
 								<option value="no" <?php selected($wpbp_options['force_https'], 'no'); ?>><?php _e("No", 'wpbp'); ?></option>
+								<option value="yes" <?php selected($wpbp_options['force_https'], 'yes'); ?>><?php _e("Yes", 'wpbp'); ?></option>
 							</select>
 						</fieldset>
 					</td>
