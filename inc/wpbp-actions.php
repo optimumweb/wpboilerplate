@@ -2,6 +2,7 @@
 
 add_action('init', 'wpbp_register_lib');
 
+
 add_action('wpbp_head', 'wpbp_insert_utm_values');
 add_action('wpbp_head', 'wpbp_insert_optimizely');
 add_action('wpbp_head', 'wpbp_insert_google_analytics');
@@ -17,7 +18,6 @@ add_action('wpbp_footer', 'wpbp_insert_custom_footer_code');
 add_action('wpbp_footer', 'wpbp_insert_post_js');
 
 add_action('wpbp_loop_after', 'wpbp_clear');
-
 
 function wpbp_insert_utm_values()
 {

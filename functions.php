@@ -8,6 +8,7 @@ if ( !defined('THEME_URI') )          define('THEME_URI',          get_styleshee
 $required_files = array(
     '/inc/wpbp-activation.php',   // activation
     '/inc/wpbp-options.php',      // theme options
+	'/inc/wpbp-security.php',     // security
     '/inc/wpbp-cleanup.php',      // cleanup
     '/inc/wpbp-hooks.php',        // hooks
     '/inc/wpbp-actions.php',      // actions
