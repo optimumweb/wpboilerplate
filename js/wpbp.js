@@ -132,10 +132,11 @@
                     formStarted = true;
                     $form.addClass('started');
                     // trigger google analytics
-                    if ( typeof _gaq == 'object' ) {
+                    if ( typeof gtag == 'function' ) {
+                        gtag('event', 'AjaxForms.Start', { 'event_category': 'AjaxForms', 'event_action': 'Start', 'event_label': formId });
+                    } else if ( typeof _gaq == 'object' ) {
                         _gaq.push(['_trackEvent', 'AjaxForms', 'Start', formId]);
-                    }
-                    else if ( typeof ga == 'function' ) {
+                    } else if ( typeof ga == 'function' ) {
                         ga('send', 'event', 'AjaxForms', 'Start', formId);
                     }
                 }
@@ -212,10 +213,11 @@
                                 $formFields.hide();
                                 $form.trigger('success').addClass('sent');
                                 // trigger google analytics
-                                if ( typeof _gaq == 'object' ) {
+                                if ( typeof gtag == 'function' ) {
+                                    gtag('event', 'AjaxForms.Success', { 'event_category': 'AjaxForms', 'event_action': 'Success', 'event_label': formId });
+                                } else if ( typeof _gaq == 'object' ) {
                                     _gaq.push(['_trackEvent', 'AjaxForms', 'Success', formId]);
-                                }
-                                else if ( typeof ga == 'function' ) {
+                                } else if ( typeof ga == 'function' ) {
                                     ga('send', 'event', 'AjaxForms', 'Success', formId);
                                 }
                             },
@@ -223,10 +225,11 @@
                                 $formWarning.fadeIn();
                                 $form.trigger('warning');
                                 // trigger google analytics
-                                if ( typeof _gaq == 'object' ) {
+                                if ( typeof gtag == 'function' ) {
+                                    gtag('event', 'AjaxForms.Warning', { 'event_category': 'AjaxForms', 'event_action': 'Warning', 'event_label': formId });
+                                } else if ( typeof _gaq == 'object' ) {
                                     _gaq.push(['_trackEvent', 'AjaxForms', 'Warning', formId]);
-                                }
-                                else if ( typeof ga == 'function' ) {
+                                } else if ( typeof ga == 'function' ) {
                                     ga('send', 'event', 'AjaxForms', 'Warning', formId);
                                 }
                             },
@@ -234,10 +237,11 @@
                                 $form.trigger('error');
                                 $formError.fadeIn();
                                 // trigger google analytics
-                                if ( typeof _gaq == 'object' ) {
+                                if ( typeof gtag == 'function' ) {
+                                    gtag('event', 'AjaxForms.Error', { 'event_category': 'AjaxForms', 'event_action': 'Error', 'event_label': formId });
+                                } else if ( typeof _gaq == 'object' ) {
                                     _gaq.push(['_trackEvent', 'AjaxForms', 'Error', formId]);
-                                }
-                                else if ( typeof ga == 'function' ) {
+                                } else if ( typeof ga == 'function' ) {
                                     ga('send', 'event', 'AjaxForms', 'Error', formId);
                                 }
                             }
