@@ -148,7 +148,9 @@ function wpbp_recent_posts($atts = array())
         'post_type'      => null,
         'tax_query'      => null,
         'post_template'  => null,
-        'no_results'     => __("No results", 'wpbp')
+        'no_results'     => __("No results", 'wpbp'),
+        'list_class'     => null,
+        'item_class'     => null
     ), $atts);
 
     if ( isset($params['exclude']) ) {
@@ -176,10 +178,10 @@ function wpbp_recent_posts($atts = array())
     $query = new WP_Query($params);
 
     if ( $query->have_posts() ) {
-        echo '<ul class="wpbp-recent-posts">';
+        echo '<ul class="wpbp-recent-posts ' . $params['list_class'] . '">';
         while ( $query->have_posts() ) {
             $query->the_post();
-            echo '<li class="wpbp-recent-post">';
+            echo '<li class="wpbp-recent-post ' . $params['item_class'] . '">';
             if ( isset($post_template_path) ) {
                 include($post_template_path);
             } else {
