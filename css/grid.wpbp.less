@@ -298,7 +298,7 @@ body.mobile-responsive {
     &.small_by_9 > * { width: 100% / 9 !important; }
     &.small_by_10 > * { width: 100% / 10 !important; }
 
-    > * { clear: none; }
+    > *:nth-child(n) { clear: none; }
     &.small_by_2 > *:nth-child(2n+1),
     &.small_by_3 > *:nth-child(3n+1),
     &.small_by_4 > *:nth-child(4n+1),
@@ -329,7 +329,7 @@ body.mobile-responsive {
       &.medium_by_9 > * { width: 100% / 9 !important; }
       &.medium_by_10 > * { width: 100% / 10 !important; }
 
-      > * { clear: none; }
+      > *:nth-child(n) { clear: none; }
       &.medium_by_2 > *:nth-child(2n+1),
       &.medium_by_3 > *:nth-child(3n+1),
       &.medium_by_4 > *:nth-child(4n+1),
@@ -362,7 +362,7 @@ body.mobile-responsive {
       &.by_9 > * { width: 100% / 9 !important; }
       &.by_10 > * { width: 100% / 10 !important; }
 
-      > * { clear: none; }
+      > *:nth-child(n) { clear: none; }
       &.by_2 > *:nth-child(2n+1),
       &.by_3 > *:nth-child(3n+1),
       &.by_4 > *:nth-child(4n+1),
