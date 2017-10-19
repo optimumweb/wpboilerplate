@@ -220,11 +220,13 @@ body.mobile-responsive {
 
 // > @screenMedium
 @media only screen and (min-width: @screenMedium) {
-  .colSpace(@cols, @colWidth);
-  .prefixSpace(@cols, @colWidth);
-  .suffixSpace(@cols, @colWidth);
-  .pushSpace(@cols, @colWidth);
-  .pullSpace(@cols, @colWidth);
+  body {
+    .colSpace(@cols, @colWidth);
+    .prefixSpace(@cols, @colWidth);
+    .suffixSpace(@cols, @colWidth);
+    .pushSpace(@cols, @colWidth);
+    .pullSpace(@cols, @colWidth);
+  }
 }
 
 // > @screenXlarge
