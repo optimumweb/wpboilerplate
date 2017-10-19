@@ -218,11 +218,14 @@ body.mobile-responsive {
   }
 }
 
-.colSpace(@cols, @colWidth);
-.prefixSpace(@cols, @colWidth);
-.suffixSpace(@cols, @colWidth);
-.pushSpace(@cols, @colWidth);
-.pullSpace(@cols, @colWidth);
+// > @screenMedium
+@media only screen and (min-width: @screenMedium) {
+  .colSpace(@cols, @colWidth);
+  .prefixSpace(@cols, @colWidth);
+  .suffixSpace(@cols, @colWidth);
+  .pushSpace(@cols, @colWidth);
+  .pullSpace(@cols, @colWidth);
+}
 
 // > @screenXlarge
 @media only screen and (min-width: @screenXlarge) {
@@ -265,15 +268,6 @@ body.mobile-responsive {
 
     .container {
       max-width: @screenSmall;
-    }
-
-    [class^="grid_"],
-    [class*=" grid_"],
-    [class*="small_grid_"] {
-      &:not([class*="medium_grid_"]) {
-        float: none;
-        width: 100%;
-      }
     }
 
     [class^="prefix_"],
@@ -319,15 +313,6 @@ body.mobile-responsive {
     .block_grid > * {
       float: none;
       width: 100% !important;
-    }
-
-    [class^="grid_"],
-    [class*=" grid_"],
-    [class^="medium_grid_"] {
-      &:not([class*="small_grid_"]) {
-        float: none;
-        width: 100%;
-      }
     }
 
     [class^="prefix_"],
