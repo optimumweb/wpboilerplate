@@ -1782,16 +1782,13 @@ img {
     position: absolute !important;
     left: -999em !important;
   }
-  .small-center,
-  .mobile-center {
+  .small-center {
     text-align: center;
   }
-  .small-left,
-  .mobile-left {
+  .small-left {
     text-align: left;
   }
-  .small-right,
-  .mobile-right {
+  .small-right {
     text-align: right;
   }
 }
@@ -1806,6 +1803,17 @@ img {
   .medium-hide {
     position: absolute !important;
     left: -999em !important;
+  }
+}
+@media screen and (max-width: 62.5rem) {
+  .mobile-center {
+    text-align: center;
+  }
+  .mobile-left {
+    text-align: left;
+  }
+  .mobile-right {
+    text-align: right;
   }
 }
 @media screen and (min-width: 62.5rem) {
