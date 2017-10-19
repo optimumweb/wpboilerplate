@@ -325,7 +325,7 @@ body.mobile-responsive {
   body.responsive,
   body.mobile-responsive {
     .block_grid {
-      &[class^="by_"] > *, &[class^=" by_"] > * { float: left; }
+      &[class^="by_"] > *, &[class*=" by_"] > * { float: left; }
       &.by_2 > * { width: 100% / 2 !important; }
       &.by_3 > * { width: 100% / 3 !important; }
       &.by_4 > * { width: 100% / 4 !important; }
