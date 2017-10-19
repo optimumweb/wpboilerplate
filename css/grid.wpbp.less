@@ -97,16 +97,6 @@ body {
 .pullSpace (@index, @colWidth, @prefix: ~'') when (@index = 0) {}
 
 
-// BASE GRID
-// --------------------------------------------------
-
-.colSpace(@cols, @colWidth);
-.prefixSpace(@cols, @colWidth);
-.suffixSpace(@cols, @colWidth);
-.pushSpace(@cols, @colWidth);
-.pullSpace(@cols, @colWidth);
-
-
 // FLUID OR COLLAPSE
 // --------------------------------------------------
 
@@ -227,6 +217,12 @@ body.mobile-responsive {
     .pullSpace(@cols, @colWidth, "medium_");
   }
 }
+
+.colSpace(@cols, @colWidth);
+.prefixSpace(@cols, @colWidth);
+.suffixSpace(@cols, @colWidth);
+.pushSpace(@cols, @colWidth);
+.pullSpace(@cols, @colWidth);
 
 // > @screenXlarge
 @media only screen and (min-width: @screenXlarge) {
