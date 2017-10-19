@@ -207,6 +207,27 @@ ul.block_grid {
 // RESPONSIVE GRID
 // --------------------------------------------------
 
+body.responsive,
+body.mobile-responsive {
+  .colSpace(@cols, @colWidth, "small_");
+  .prefixSpace(@cols, @colWidth, "small_");
+  .suffixSpace(@cols, @colWidth, "small_");
+  .pushSpace(@cols, @colWidth, "small_");
+  .pullSpace(@cols, @colWidth, "small_");
+}
+
+// > @screenSmall
+@media only screen and (min-width: @screenSmall) {
+  body.responsive,
+  body.mobile-responsive {
+    .colSpace(@cols, @colWidth, "medium_");
+    .prefixSpace(@cols, @colWidth, "medium_");
+    .suffixSpace(@cols, @colWidth, "medium_");
+    .pushSpace(@cols, @colWidth, "medium_");
+    .pullSpace(@cols, @colWidth, "medium_");
+  }
+}
+
 // > @screenXlarge
 @media only screen and (min-width: @screenXlarge) {
   body.responsive {
@@ -283,12 +304,6 @@ ul.block_grid {
       left: 0;
     }
 
-    .colSpace(@cols, @colWidth, "medium_");
-    .prefixSpace(@cols, @colWidth, "medium_");
-    .suffixSpace(@cols, @colWidth, "medium_");
-    .pushSpace(@cols, @colWidth, "medium_");
-    .pullSpace(@cols, @colWidth, "medium_");
-
     .medium_clear {
       .clear();
     }
@@ -351,12 +366,6 @@ ul.block_grid {
         margin-right: 0;
       }
     }
-
-    .colSpace(@cols, @colWidth, "small_");
-    .prefixSpace(@cols, @colWidth, "small_");
-    .suffixSpace(@cols, @colWidth, "small_");
-    .pushSpace(@cols, @colWidth, "small_");
-    .pullSpace(@cols, @colWidth, "small_");
 
     .small_clear {
       .clear();
