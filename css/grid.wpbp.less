@@ -38,11 +38,11 @@ body {
   position: relative;
   padding: 0 @gridGutter;
   min-height: 1px;
-  float: left;
 }
 
 .colSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
   (~".@{prefix}grid_@{index}") {
+    float: left;
     width: @colWidth * @index;
   }
   .colSpace(@index - 1, @colWidth, @prefix);

@@ -168,7 +168,6 @@ body {
   position: relative;
   padding: 0 0.9375rem;
   min-height: 1px;
-  float: left;
 }
 .container.fluid {
   max-width: none !important;
@@ -265,50 +264,62 @@ ul.block_grid {
 }
 body.responsive .small_grid_12,
 body.mobile-responsive .small_grid_12 {
+  float: left;
   width: 100%;
 }
 body.responsive .small_grid_11,
 body.mobile-responsive .small_grid_11 {
+  float: left;
   width: 91.66666666666667%;
 }
 body.responsive .small_grid_10,
 body.mobile-responsive .small_grid_10 {
+  float: left;
   width: 83.33333333333334%;
 }
 body.responsive .small_grid_9,
 body.mobile-responsive .small_grid_9 {
+  float: left;
   width: 75%;
 }
 body.responsive .small_grid_8,
 body.mobile-responsive .small_grid_8 {
+  float: left;
   width: 66.66666666666667%;
 }
 body.responsive .small_grid_7,
 body.mobile-responsive .small_grid_7 {
+  float: left;
   width: 58.333333333333336%;
 }
 body.responsive .small_grid_6,
 body.mobile-responsive .small_grid_6 {
+  float: left;
   width: 50%;
 }
 body.responsive .small_grid_5,
 body.mobile-responsive .small_grid_5 {
+  float: left;
   width: 41.66666666666667%;
 }
 body.responsive .small_grid_4,
 body.mobile-responsive .small_grid_4 {
+  float: left;
   width: 33.333333333333336%;
 }
 body.responsive .small_grid_3,
 body.mobile-responsive .small_grid_3 {
+  float: left;
   width: 25%;
 }
 body.responsive .small_grid_2,
 body.mobile-responsive .small_grid_2 {
+  float: left;
   width: 16.666666666666668%;
 }
 body.responsive .small_grid_1,
 body.mobile-responsive .small_grid_1 {
+  float: left;
   width: 8.333333333333334%;
 }
 body.responsive .small_prefix_12,
@@ -530,50 +541,62 @@ body.mobile-responsive .small_pull_1 {
 @media only screen and (min-width: 48rem) {
   body.responsive .medium_grid_12,
   body.mobile-responsive .medium_grid_12 {
+    float: left;
     width: 100%;
   }
   body.responsive .medium_grid_11,
   body.mobile-responsive .medium_grid_11 {
+    float: left;
     width: 91.66666666666667%;
   }
   body.responsive .medium_grid_10,
   body.mobile-responsive .medium_grid_10 {
+    float: left;
     width: 83.33333333333334%;
   }
   body.responsive .medium_grid_9,
   body.mobile-responsive .medium_grid_9 {
+    float: left;
     width: 75%;
   }
   body.responsive .medium_grid_8,
   body.mobile-responsive .medium_grid_8 {
+    float: left;
     width: 66.66666666666667%;
   }
   body.responsive .medium_grid_7,
   body.mobile-responsive .medium_grid_7 {
+    float: left;
     width: 58.333333333333336%;
   }
   body.responsive .medium_grid_6,
   body.mobile-responsive .medium_grid_6 {
+    float: left;
     width: 50%;
   }
   body.responsive .medium_grid_5,
   body.mobile-responsive .medium_grid_5 {
+    float: left;
     width: 41.66666666666667%;
   }
   body.responsive .medium_grid_4,
   body.mobile-responsive .medium_grid_4 {
+    float: left;
     width: 33.333333333333336%;
   }
   body.responsive .medium_grid_3,
   body.mobile-responsive .medium_grid_3 {
+    float: left;
     width: 25%;
   }
   body.responsive .medium_grid_2,
   body.mobile-responsive .medium_grid_2 {
+    float: left;
     width: 16.666666666666668%;
   }
   body.responsive .medium_grid_1,
   body.mobile-responsive .medium_grid_1 {
+    float: left;
     width: 8.333333333333334%;
   }
   body.responsive .medium_prefix_12,
@@ -795,39 +818,51 @@ body.mobile-responsive .small_pull_1 {
 }
 @media only screen and (min-width: 62.5rem) {
   .grid_12 {
+    float: left;
     width: 100%;
   }
   .grid_11 {
+    float: left;
     width: 91.66666666666667%;
   }
   .grid_10 {
+    float: left;
     width: 83.33333333333334%;
   }
   .grid_9 {
+    float: left;
     width: 75%;
   }
   .grid_8 {
+    float: left;
     width: 66.66666666666667%;
   }
   .grid_7 {
+    float: left;
     width: 58.333333333333336%;
   }
   .grid_6 {
+    float: left;
     width: 50%;
   }
   .grid_5 {
+    float: left;
     width: 41.66666666666667%;
   }
   .grid_4 {
+    float: left;
     width: 33.333333333333336%;
   }
   .grid_3 {
+    float: left;
     width: 25%;
   }
   .grid_2 {
+    float: left;
     width: 16.666666666666668%;
   }
   .grid_1 {
+    float: left;
     width: 8.333333333333334%;
   }
   .prefix_12 {
