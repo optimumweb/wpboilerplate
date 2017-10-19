@@ -252,12 +252,10 @@ ul.block_grid {
 
     [class^="grid_"],
     [class^="small_grid_"] {
-      float: none;
-      width: 100%;
-    }
-
-    [class^="medium_grid_"] {
-      float: left;
+      &:not([class^="medium_grid_"]) {
+        float: none;
+        width: 100%;
+      }
     }
 
     [class^="prefix_"],
@@ -309,12 +307,10 @@ ul.block_grid {
 
     [class^="grid_"],
     [class^="medium_grid_"] {
-      float: none;
-      width: 100%;
-    }
-
-    [class^="small_grid_"] {
-      float: left;
+      &:not([class^="small_grid_"]) {
+        float: none;
+        width: 100%;
+      }
     }
 
     [class^="prefix_"],
