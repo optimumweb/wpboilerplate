@@ -3,23 +3,21 @@
 // Grid system based on 960.gs and Foundation by Zurb
 // -----------------------------------------------------
 
+@cols:       12;
+@colWidth:   100% / @cols;
 @gridGutter: 0.9375rem;
 
-// Choose a decent box model first
 * {
   .box-sizing(border-box);
 }
 
 body {
-  min-width: 62.5em;
+  min-width: @screenBase;
 }
-
-// CONTAINER
-// --------------------------------------------------
 
 .container {
   width: auto;
-  max-width: 62.5rem;
+  max-width: @screenBase;
   margin: 0;
   margin-left: auto;
   margin-right: auto;
@@ -36,13 +34,16 @@ body {
 // Column Space
 // -------------------------
 
+[class*="grid_"] {
+  position: relative;
+  padding: 0 @gridGutter;
+  min-height: 1px;
+  float: left;
+}
+
 .colSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
   (~".@{prefix}grid_@{index}") {
-    position: relative;
-    padding: 0 @gridGutter;
-    min-height: 1px;
     width: @colWidth * @index;
-    float: left;
   }
   .colSpace(@index - 1, @colWidth, @prefix);
 }
@@ -95,11 +96,9 @@ body {
 }
 .pullSpace (@index, @colWidth, @prefix: ~'') when (@index = 0) {}
 
-// 12 COLUMNS GRID
-// --------------------------------------------------
 
-@cols:     12;
-@colWidth: 8.333333333333333%;
+// BASE GRID
+// --------------------------------------------------
 
 .colSpace(@cols, @colWidth);
 .prefixSpace(@cols, @colWidth);
@@ -107,7 +106,8 @@ body {
 .pushSpace(@cols, @colWidth);
 .pullSpace(@cols, @colWidth);
 
-// MODIFIERS
+
+// FLUID OR COLLAPSE
 // --------------------------------------------------
 
 .container {
@@ -120,7 +120,7 @@ body {
   }
 }
 
-// BLOCK GRIDS
+// BLOCK GRID
 // --------------------------------------------------
 
 .block_grid {
@@ -135,15 +135,15 @@ body {
     min-height: 1px;
   }
 
-  &.by_2 > * { width: 100% / 2.00 !important; }
-  &.by_3 > * { width: 100% / 3.00 !important; }
-  &.by_4 > * { width: 100% / 4.00 !important; }
-  &.by_5 > * { width: 100% / 5.00 !important; }
-  &.by_6 > * { width: 100% / 6.00 !important; }
-  &.by_7 > * { width: 100% / 7.00 !important; }
-  &.by_8 > * { width: 100% / 8.00 !important; }
-  &.by_9 > * { width: 100% / 9.00 !important; }
-  &.by_10 > * { width: 100% / 10.00 !important; }
+  &.by_2 > * { width: 100% / 2 !important; }
+  &.by_3 > * { width: 100% / 3 !important; }
+  &.by_4 > * { width: 100% / 4 !important; }
+  &.by_5 > * { width: 100% / 5 !important; }
+  &.by_6 > * { width: 100% / 6 !important; }
+  &.by_7 > * { width: 100% / 7 !important; }
+  &.by_8 > * { width: 100% / 8 !important; }
+  &.by_9 > * { width: 100% / 9 !important; }
+  &.by_10 > * { width: 100% / 10 !important; }
 
   &.by_2 > *:nth-child(2n+1),
   &.by_3 > *:nth-child(3n+1),
@@ -207,7 +207,6 @@ ul.block_grid {
 // RESPONSIVE GRID
 // --------------------------------------------------
 
-
 // > @screenXlarge
 @media only screen and (min-width: @screenXlarge) {
   body.responsive {
@@ -243,7 +242,8 @@ ul.block_grid {
 
 // @screenSmall -> @screenMedium
 @media only screen and (min-width: @screenSmall) and (max-width: @screenMedium) {
-  body.responsive {
+  body.responsive,
+  body.mobile-responsive {
     min-width: @screenSmall;
 
     .container {
@@ -276,23 +276,14 @@ ul.block_grid {
       left: 0;
     }
 
-    @cols:      12;
-    @colWidth:  8.333333333333333%;
-    @prefix:    "medium_";
-
-    .colSpace(@cols, @colWidth, @prefix);
-    .prefixSpace(@cols, @colWidth, @prefix);
-    .suffixSpace(@cols, @colWidth, @prefix);
-    .pushSpace(@cols, @colWidth, @prefix);
-    .pullSpace(@cols, @colWidth, @prefix);
+    .colSpace(@cols, @colWidth, "medium_");
+    .prefixSpace(@cols, @colWidth, "medium_");
+    .suffixSpace(@cols, @colWidth, "medium_");
+    .pushSpace(@cols, @colWidth, "medium_");
+    .pullSpace(@cols, @colWidth, "medium_");
 
     .medium_clear {
-      clear: both;
-      display: block;
-      overflow: hidden;
-      visibility: hidden;
-      width: 0;
-      height: 0;
+      .clear();
     }
   }
 }
@@ -306,26 +297,6 @@ ul.block_grid {
     width: 100%;
     min-width: 0;
     margin: 0;
-
-    .mobile-center {
-      text-align: center;
-    }
-
-    .mobile-left {
-      text-align: left;
-    }
-
-    .mobile-right {
-      text-align: right;
-    }
-
-    .mobile-hide {
-      display: none;
-    }
-
-    .mobile-show {
-      display: block;
-    }
 
     .block_grid > * {
       float: none;
@@ -367,23 +338,14 @@ ul.block_grid {
       }
     }
 
-    @cols:      12;
-    @colWidth:  8.333333333333333%;
-    @prefix:    "small_";
-
-    .colSpace(@cols, @colWidth, @prefix);
-    .prefixSpace(@cols, @colWidth, @prefix);
-    .suffixSpace(@cols, @colWidth, @prefix);
-    .pushSpace(@cols, @colWidth, @prefix);
-    .pullSpace(@cols, @colWidth, @prefix);
+    .colSpace(@cols, @colWidth, "small_");
+    .prefixSpace(@cols, @colWidth, "small_");
+    .suffixSpace(@cols, @colWidth, "small_");
+    .pushSpace(@cols, @colWidth, "small_");
+    .pullSpace(@cols, @colWidth, "small_");
 
     .small_clear {
-      clear: both;
-      display: block;
-      overflow: hidden;
-      visibility: hidden;
-      width: 0;
-      height: 0;
+      .clear();
     }
   }
 }
