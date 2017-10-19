@@ -45,7 +45,7 @@ img {
 }
 
 // Small
-@media screen and (max-width: 40rem) {
+@media screen and (max-width: @screenSmall) {
 
   .small-only,
   .medium-and-below-only {
@@ -61,7 +61,7 @@ img {
 }
 
 // Medium
-@media screen and (min-width: 40.063rem) and (max-width: 64rem) {
+@media screen and (min-width: @screenSmall) and (max-width: @screenMedium) {
 
   .medium-only,
   .medium-and-below-only,
@@ -78,7 +78,7 @@ img {
 }
 
 // Large
-@media screen and (min-width: 64.063rem) {
+@media screen and (min-width: @screenMedium) {
 
   .large-only,
   .medium-and-above-only {

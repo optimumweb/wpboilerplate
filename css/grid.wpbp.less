@@ -208,44 +208,46 @@ ul.block_grid {
 // --------------------------------------------------
 
 
+// > @screenXlarge
 @media only screen and (min-width: @screenXlarge) {
   body.responsive {
-    min-width: 95rem;
+    min-width: @screenXlarge;
 
     .container {
-      max-width: 95rem;
+      max-width: @screenXlarge;
     }
   }
 }
 
+// @screenLarge -> @screenXlarge
 @media only screen and (min-width: @screenLarge) and (max-width: @screenXlarge) {
   body.responsive {
-    min-width: 75rem;
+    min-width: @screenLarge;
 
     .container {
-      max-width: 75rem;
+      max-width: @screenLarge;
     }
   }
 }
 
-// 981px - 1280px
+// @screenMedium -> @screenLarge
 @media only screen and (min-width: @screenMedium) and (max-width: @screenLarge) {
   body.responsive {
-    min-width: 62.5rem;
+    min-width: @screenMedium;
 
     .container {
-      max-width: 62.5rem;
+      max-width: @screenMedium;
     }
   }
 }
 
-// 761px - 980px
+// @screenSmall -> @screenMedium
 @media only screen and (min-width: @screenSmall) and (max-width: @screenMedium) {
   body.responsive {
-    min-width: 45rem;
+    min-width: @screenSmall;
 
     .container {
-      max-width: 45rem;
+      max-width: @screenSmall;
     }
 
     [class*="grid_"],
@@ -295,7 +297,7 @@ ul.block_grid {
   }
 }
 
-// Below 760px
+// < @screenSmall
 @media only screen and (max-width: @screenSmall) {
   body.responsive,
   body.mobile-responsive {
