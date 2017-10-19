@@ -274,30 +274,6 @@ body.mobile-responsive {
       max-width: @screenSmall;
     }
 
-    [class^="prefix_"],
-    [class*=" prefix_"],
-    [class^="small_prefix_"] {
-      padding-left: 0;
-    }
-
-    [class^="suffix_"],
-    [class*=" suffix_"],
-    [class^="small_suffix_"] {
-      padding-right: 0;
-    }
-
-    [class^="push_"],
-    [class*=" push_"],
-    [class^="small_push_"] {
-      left: 0;
-    }
-
-    [class^="pull_"],
-    [class*=" pull_"],
-    [class^="small_pull_"] {
-      left: 0;
-    }
-
     .medium_clear {
       .clear();
     }
@@ -319,30 +295,6 @@ body.mobile-responsive {
       width: 100% !important;
     }
 
-    [class^="prefix_"],
-    [class*=" prefix_"],
-    [class^="medium_prefix_"] {
-      padding-left: 0;
-    }
-
-    [class^="suffix_"],
-    [class*=" suffix_"],
-    [class^="medium_suffix_"] {
-      padding-right: 0;
-    }
-
-    [class^="push_"],
-    [class*=" push_"],
-    [class^="medium_push_"] {
-      left: 0;
-    }
-
-    [class^="pull_"],
-    [class*=" pull_"],
-    [class^="medium_pull_"] {
-      left: 0;
-    }
-
     .container {
       width: 100%;
 
@@ -352,7 +304,8 @@ body.mobile-responsive {
       }
     }
 
-    .small_clear {
+    .small_clear,
+    .medium_clear {
       .clear();
     }
   }

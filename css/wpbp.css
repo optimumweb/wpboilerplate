@@ -1187,38 +1187,6 @@ body.mobile-responsive .small_pull_1 {
   body.mobile-responsive .container {
     max-width: 48rem;
   }
-  body.responsive [class^="prefix_"],
-  body.mobile-responsive [class^="prefix_"],
-  body.responsive [class*=" prefix_"],
-  body.mobile-responsive [class*=" prefix_"],
-  body.responsive [class^="small_prefix_"],
-  body.mobile-responsive [class^="small_prefix_"] {
-    padding-left: 0;
-  }
-  body.responsive [class^="suffix_"],
-  body.mobile-responsive [class^="suffix_"],
-  body.responsive [class*=" suffix_"],
-  body.mobile-responsive [class*=" suffix_"],
-  body.responsive [class^="small_suffix_"],
-  body.mobile-responsive [class^="small_suffix_"] {
-    padding-right: 0;
-  }
-  body.responsive [class^="push_"],
-  body.mobile-responsive [class^="push_"],
-  body.responsive [class*=" push_"],
-  body.mobile-responsive [class*=" push_"],
-  body.responsive [class^="small_push_"],
-  body.mobile-responsive [class^="small_push_"] {
-    left: 0;
-  }
-  body.responsive [class^="pull_"],
-  body.mobile-responsive [class^="pull_"],
-  body.responsive [class*=" pull_"],
-  body.mobile-responsive [class*=" pull_"],
-  body.responsive [class^="small_pull_"],
-  body.mobile-responsive [class^="small_pull_"] {
-    left: 0;
-  }
   body.responsive .medium_clear,
   body.mobile-responsive .medium_clear {
     clear: both;
@@ -1243,38 +1211,6 @@ body.mobile-responsive .small_pull_1 {
     float: none;
     width: 100% !important;
   }
-  body.responsive [class^="prefix_"],
-  body.mobile-responsive [class^="prefix_"],
-  body.responsive [class*=" prefix_"],
-  body.mobile-responsive [class*=" prefix_"],
-  body.responsive [class^="medium_prefix_"],
-  body.mobile-responsive [class^="medium_prefix_"] {
-    padding-left: 0;
-  }
-  body.responsive [class^="suffix_"],
-  body.mobile-responsive [class^="suffix_"],
-  body.responsive [class*=" suffix_"],
-  body.mobile-responsive [class*=" suffix_"],
-  body.responsive [class^="medium_suffix_"],
-  body.mobile-responsive [class^="medium_suffix_"] {
-    padding-right: 0;
-  }
-  body.responsive [class^="push_"],
-  body.mobile-responsive [class^="push_"],
-  body.responsive [class*=" push_"],
-  body.mobile-responsive [class*=" push_"],
-  body.responsive [class^="medium_push_"],
-  body.mobile-responsive [class^="medium_push_"] {
-    left: 0;
-  }
-  body.responsive [class^="pull_"],
-  body.mobile-responsive [class^="pull_"],
-  body.responsive [class*=" pull_"],
-  body.mobile-responsive [class*=" pull_"],
-  body.responsive [class^="medium_pull_"],
-  body.mobile-responsive [class^="medium_pull_"] {
-    left: 0;
-  }
   body.responsive .container,
   body.mobile-responsive .container {
     width: 100%;
@@ -1285,7 +1221,9 @@ body.mobile-responsive .small_pull_1 {
     margin-right: 0;
   }
   body.responsive .small_clear,
-  body.mobile-responsive .small_clear {
+  body.mobile-responsive .small_clear,
+  body.responsive .medium_clear,
+  body.mobile-responsive .medium_clear {
     clear: both;
     display: block;
     overflow: hidden;
