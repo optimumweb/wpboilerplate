@@ -82,7 +82,8 @@
 
             var $this      = $(this),
                 $ref       = typeof $this.data('valign-ref') != 'undefined' ? $($this.data('valign-ref')) : $this.parent(),
-                thisHeight = $this.outerHeight(), refHeight = $ref.outerHeight(),
+                thisHeight = $this.outerHeight(),
+                refHeight  = $ref.height(),
                 offset     = Math.round( ( refHeight - thisHeight ) / 2 );
 
             $this.css('top', offset + 'px').addClass('valigned');
