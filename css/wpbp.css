@@ -817,339 +817,339 @@ body.mobile-responsive .small_pull_1 {
   }
 }
 @media only screen and (min-width: 62.5rem) {
+  body .grid_12,
   body.responsive .grid_12,
-  body.mobile-responsive .grid_12,
-  body.non-responsive .grid_12 {
+  body.mobile-responsive .grid_12 {
     float: left;
     width: 100%;
   }
+  body .grid_11,
   body.responsive .grid_11,
-  body.mobile-responsive .grid_11,
-  body.non-responsive .grid_11 {
+  body.mobile-responsive .grid_11 {
     float: left;
     width: 91.66666666666667%;
   }
+  body .grid_10,
   body.responsive .grid_10,
-  body.mobile-responsive .grid_10,
-  body.non-responsive .grid_10 {
+  body.mobile-responsive .grid_10 {
     float: left;
     width: 83.33333333333334%;
   }
+  body .grid_9,
   body.responsive .grid_9,
-  body.mobile-responsive .grid_9,
-  body.non-responsive .grid_9 {
+  body.mobile-responsive .grid_9 {
     float: left;
     width: 75%;
   }
+  body .grid_8,
   body.responsive .grid_8,
-  body.mobile-responsive .grid_8,
-  body.non-responsive .grid_8 {
+  body.mobile-responsive .grid_8 {
     float: left;
     width: 66.66666666666667%;
   }
+  body .grid_7,
   body.responsive .grid_7,
-  body.mobile-responsive .grid_7,
-  body.non-responsive .grid_7 {
+  body.mobile-responsive .grid_7 {
     float: left;
     width: 58.333333333333336%;
   }
+  body .grid_6,
   body.responsive .grid_6,
-  body.mobile-responsive .grid_6,
-  body.non-responsive .grid_6 {
+  body.mobile-responsive .grid_6 {
     float: left;
     width: 50%;
   }
+  body .grid_5,
   body.responsive .grid_5,
-  body.mobile-responsive .grid_5,
-  body.non-responsive .grid_5 {
+  body.mobile-responsive .grid_5 {
     float: left;
     width: 41.66666666666667%;
   }
+  body .grid_4,
   body.responsive .grid_4,
-  body.mobile-responsive .grid_4,
-  body.non-responsive .grid_4 {
+  body.mobile-responsive .grid_4 {
     float: left;
     width: 33.333333333333336%;
   }
+  body .grid_3,
   body.responsive .grid_3,
-  body.mobile-responsive .grid_3,
-  body.non-responsive .grid_3 {
+  body.mobile-responsive .grid_3 {
     float: left;
     width: 25%;
   }
+  body .grid_2,
   body.responsive .grid_2,
-  body.mobile-responsive .grid_2,
-  body.non-responsive .grid_2 {
+  body.mobile-responsive .grid_2 {
     float: left;
     width: 16.666666666666668%;
   }
+  body .grid_1,
   body.responsive .grid_1,
-  body.mobile-responsive .grid_1,
-  body.non-responsive .grid_1 {
+  body.mobile-responsive .grid_1 {
     float: left;
     width: 8.333333333333334%;
   }
+  body .prefix_12,
   body.responsive .prefix_12,
-  body.mobile-responsive .prefix_12,
-  body.non-responsive .prefix_12 {
+  body.mobile-responsive .prefix_12 {
     padding-left: 100%;
   }
+  body .prefix_11,
   body.responsive .prefix_11,
-  body.mobile-responsive .prefix_11,
-  body.non-responsive .prefix_11 {
+  body.mobile-responsive .prefix_11 {
     padding-left: 91.66666666666667%;
   }
+  body .prefix_10,
   body.responsive .prefix_10,
-  body.mobile-responsive .prefix_10,
-  body.non-responsive .prefix_10 {
+  body.mobile-responsive .prefix_10 {
     padding-left: 83.33333333333334%;
   }
+  body .prefix_9,
   body.responsive .prefix_9,
-  body.mobile-responsive .prefix_9,
-  body.non-responsive .prefix_9 {
+  body.mobile-responsive .prefix_9 {
     padding-left: 75%;
   }
+  body .prefix_8,
   body.responsive .prefix_8,
-  body.mobile-responsive .prefix_8,
-  body.non-responsive .prefix_8 {
+  body.mobile-responsive .prefix_8 {
     padding-left: 66.66666666666667%;
   }
+  body .prefix_7,
   body.responsive .prefix_7,
-  body.mobile-responsive .prefix_7,
-  body.non-responsive .prefix_7 {
+  body.mobile-responsive .prefix_7 {
     padding-left: 58.333333333333336%;
   }
+  body .prefix_6,
   body.responsive .prefix_6,
-  body.mobile-responsive .prefix_6,
-  body.non-responsive .prefix_6 {
+  body.mobile-responsive .prefix_6 {
     padding-left: 50%;
   }
+  body .prefix_5,
   body.responsive .prefix_5,
-  body.mobile-responsive .prefix_5,
-  body.non-responsive .prefix_5 {
+  body.mobile-responsive .prefix_5 {
     padding-left: 41.66666666666667%;
   }
+  body .prefix_4,
   body.responsive .prefix_4,
-  body.mobile-responsive .prefix_4,
-  body.non-responsive .prefix_4 {
+  body.mobile-responsive .prefix_4 {
     padding-left: 33.333333333333336%;
   }
+  body .prefix_3,
   body.responsive .prefix_3,
-  body.mobile-responsive .prefix_3,
-  body.non-responsive .prefix_3 {
+  body.mobile-responsive .prefix_3 {
     padding-left: 25%;
   }
+  body .prefix_2,
   body.responsive .prefix_2,
-  body.mobile-responsive .prefix_2,
-  body.non-responsive .prefix_2 {
+  body.mobile-responsive .prefix_2 {
     padding-left: 16.666666666666668%;
   }
+  body .prefix_1,
   body.responsive .prefix_1,
-  body.mobile-responsive .prefix_1,
-  body.non-responsive .prefix_1 {
+  body.mobile-responsive .prefix_1 {
     padding-left: 8.333333333333334%;
   }
+  body .suffix_12,
   body.responsive .suffix_12,
-  body.mobile-responsive .suffix_12,
-  body.non-responsive .suffix_12 {
+  body.mobile-responsive .suffix_12 {
     padding-right: 100%;
   }
+  body .suffix_11,
   body.responsive .suffix_11,
-  body.mobile-responsive .suffix_11,
-  body.non-responsive .suffix_11 {
+  body.mobile-responsive .suffix_11 {
     padding-right: 91.66666666666667%;
   }
+  body .suffix_10,
   body.responsive .suffix_10,
-  body.mobile-responsive .suffix_10,
-  body.non-responsive .suffix_10 {
+  body.mobile-responsive .suffix_10 {
     padding-right: 83.33333333333334%;
   }
+  body .suffix_9,
   body.responsive .suffix_9,
-  body.mobile-responsive .suffix_9,
-  body.non-responsive .suffix_9 {
+  body.mobile-responsive .suffix_9 {
     padding-right: 75%;
   }
+  body .suffix_8,
   body.responsive .suffix_8,
-  body.mobile-responsive .suffix_8,
-  body.non-responsive .suffix_8 {
+  body.mobile-responsive .suffix_8 {
     padding-right: 66.66666666666667%;
   }
+  body .suffix_7,
   body.responsive .suffix_7,
-  body.mobile-responsive .suffix_7,
-  body.non-responsive .suffix_7 {
+  body.mobile-responsive .suffix_7 {
     padding-right: 58.333333333333336%;
   }
+  body .suffix_6,
   body.responsive .suffix_6,
-  body.mobile-responsive .suffix_6,
-  body.non-responsive .suffix_6 {
+  body.mobile-responsive .suffix_6 {
     padding-right: 50%;
   }
+  body .suffix_5,
   body.responsive .suffix_5,
-  body.mobile-responsive .suffix_5,
-  body.non-responsive .suffix_5 {
+  body.mobile-responsive .suffix_5 {
     padding-right: 41.66666666666667%;
   }
+  body .suffix_4,
   body.responsive .suffix_4,
-  body.mobile-responsive .suffix_4,
-  body.non-responsive .suffix_4 {
+  body.mobile-responsive .suffix_4 {
     padding-right: 33.333333333333336%;
   }
+  body .suffix_3,
   body.responsive .suffix_3,
-  body.mobile-responsive .suffix_3,
-  body.non-responsive .suffix_3 {
+  body.mobile-responsive .suffix_3 {
     padding-right: 25%;
   }
+  body .suffix_2,
   body.responsive .suffix_2,
-  body.mobile-responsive .suffix_2,
-  body.non-responsive .suffix_2 {
+  body.mobile-responsive .suffix_2 {
     padding-right: 16.666666666666668%;
   }
+  body .suffix_1,
   body.responsive .suffix_1,
-  body.mobile-responsive .suffix_1,
-  body.non-responsive .suffix_1 {
+  body.mobile-responsive .suffix_1 {
     padding-right: 8.333333333333334%;
   }
+  body .push_12,
   body.responsive .push_12,
-  body.mobile-responsive .push_12,
-  body.non-responsive .push_12 {
+  body.mobile-responsive .push_12 {
     position: relative;
     left: 100%;
   }
+  body .push_11,
   body.responsive .push_11,
-  body.mobile-responsive .push_11,
-  body.non-responsive .push_11 {
+  body.mobile-responsive .push_11 {
     position: relative;
     left: 91.66666666666667%;
   }
+  body .push_10,
   body.responsive .push_10,
-  body.mobile-responsive .push_10,
-  body.non-responsive .push_10 {
+  body.mobile-responsive .push_10 {
     position: relative;
     left: 83.33333333333334%;
   }
+  body .push_9,
   body.responsive .push_9,
-  body.mobile-responsive .push_9,
-  body.non-responsive .push_9 {
+  body.mobile-responsive .push_9 {
     position: relative;
     left: 75%;
   }
+  body .push_8,
   body.responsive .push_8,
-  body.mobile-responsive .push_8,
-  body.non-responsive .push_8 {
+  body.mobile-responsive .push_8 {
     position: relative;
     left: 66.66666666666667%;
   }
+  body .push_7,
   body.responsive .push_7,
-  body.mobile-responsive .push_7,
-  body.non-responsive .push_7 {
+  body.mobile-responsive .push_7 {
     position: relative;
     left: 58.333333333333336%;
   }
+  body .push_6,
   body.responsive .push_6,
-  body.mobile-responsive .push_6,
-  body.non-responsive .push_6 {
+  body.mobile-responsive .push_6 {
     position: relative;
     left: 50%;
   }
+  body .push_5,
   body.responsive .push_5,
-  body.mobile-responsive .push_5,
-  body.non-responsive .push_5 {
+  body.mobile-responsive .push_5 {
     position: relative;
     left: 41.66666666666667%;
   }
+  body .push_4,
   body.responsive .push_4,
-  body.mobile-responsive .push_4,
-  body.non-responsive .push_4 {
+  body.mobile-responsive .push_4 {
     position: relative;
     left: 33.333333333333336%;
   }
+  body .push_3,
   body.responsive .push_3,
-  body.mobile-responsive .push_3,
-  body.non-responsive .push_3 {
+  body.mobile-responsive .push_3 {
     position: relative;
     left: 25%;
   }
+  body .push_2,
   body.responsive .push_2,
-  body.mobile-responsive .push_2,
-  body.non-responsive .push_2 {
+  body.mobile-responsive .push_2 {
     position: relative;
     left: 16.666666666666668%;
   }
+  body .push_1,
   body.responsive .push_1,
-  body.mobile-responsive .push_1,
-  body.non-responsive .push_1 {
+  body.mobile-responsive .push_1 {
     position: relative;
     left: 8.333333333333334%;
   }
+  body .pull_12,
   body.responsive .pull_12,
-  body.mobile-responsive .pull_12,
-  body.non-responsive .pull_12 {
+  body.mobile-responsive .pull_12 {
     position: relative;
     left: -100%;
   }
+  body .pull_11,
   body.responsive .pull_11,
-  body.mobile-responsive .pull_11,
-  body.non-responsive .pull_11 {
+  body.mobile-responsive .pull_11 {
     position: relative;
     left: -91.66666666666667%;
   }
+  body .pull_10,
   body.responsive .pull_10,
-  body.mobile-responsive .pull_10,
-  body.non-responsive .pull_10 {
+  body.mobile-responsive .pull_10 {
     position: relative;
     left: -83.33333333333334%;
   }
+  body .pull_9,
   body.responsive .pull_9,
-  body.mobile-responsive .pull_9,
-  body.non-responsive .pull_9 {
+  body.mobile-responsive .pull_9 {
     position: relative;
     left: -75%;
   }
+  body .pull_8,
   body.responsive .pull_8,
-  body.mobile-responsive .pull_8,
-  body.non-responsive .pull_8 {
+  body.mobile-responsive .pull_8 {
     position: relative;
     left: -66.66666666666667%;
   }
+  body .pull_7,
   body.responsive .pull_7,
-  body.mobile-responsive .pull_7,
-  body.non-responsive .pull_7 {
+  body.mobile-responsive .pull_7 {
     position: relative;
     left: -58.333333333333336%;
   }
+  body .pull_6,
   body.responsive .pull_6,
-  body.mobile-responsive .pull_6,
-  body.non-responsive .pull_6 {
+  body.mobile-responsive .pull_6 {
     position: relative;
     left: -50%;
   }
+  body .pull_5,
   body.responsive .pull_5,
-  body.mobile-responsive .pull_5,
-  body.non-responsive .pull_5 {
+  body.mobile-responsive .pull_5 {
     position: relative;
     left: -41.66666666666667%;
   }
+  body .pull_4,
   body.responsive .pull_4,
-  body.mobile-responsive .pull_4,
-  body.non-responsive .pull_4 {
+  body.mobile-responsive .pull_4 {
     position: relative;
     left: -33.333333333333336%;
   }
+  body .pull_3,
   body.responsive .pull_3,
-  body.mobile-responsive .pull_3,
-  body.non-responsive .pull_3 {
+  body.mobile-responsive .pull_3 {
     position: relative;
     left: -25%;
   }
+  body .pull_2,
   body.responsive .pull_2,
-  body.mobile-responsive .pull_2,
-  body.non-responsive .pull_2 {
+  body.mobile-responsive .pull_2 {
     position: relative;
     left: -16.666666666666668%;
   }
+  body .pull_1,
   body.responsive .pull_1,
-  body.mobile-responsive .pull_1,
-  body.non-responsive .pull_1 {
+  body.mobile-responsive .pull_1 {
     position: relative;
     left: -8.333333333333334%;
   }
