@@ -81,7 +81,7 @@
         return this.each(function() {
 
             var $this      = $(this),
-                $ref       = typeof $this.data('ref') != 'undefined' ? $($this.data('ref')) : $this.parent(),
+                $ref       = typeof $this.data('valign-ref') != 'undefined' ? $($this.data('valign-ref')) : $this.parent(),
                 thisHeight = $this.outerHeight(), refHeight = $ref.outerHeight(),
                 offset     = Math.round( ( refHeight - thisHeight ) / 2 );
 
