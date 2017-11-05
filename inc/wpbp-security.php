@@ -10,3 +10,15 @@ function wpbp_force_https()
     }
 }
 add_action('template_redirect', 'wpbp_force_https', 1);
+
+
+function wpbp_hsts_header()
+{
+    if ( wpbp_get_option('force_https') == 'yes' ) {
+        $hsts_max_age = wpbp_get_option('hsts_max_age');
+        if ( $hsts_max_age != '' ) {
+            header("Strict-Transport-Security: max-age=" . $hsts_max_age);
+        }
+    }
+}
+add_action('send_headers', 'wpbp_hsts_header');

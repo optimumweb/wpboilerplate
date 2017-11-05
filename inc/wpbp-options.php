@@ -80,6 +80,7 @@ function wpbp_get_default_theme_options()
         'optimizely_project_id' => '',
 		'gauges_site_id'        => '',
 		'force_https'           => 'no',
+		'hsts_max_age'          => '',
 		'main_class'            => 'grid_9',
 		'sidebar_class'         => 'grid_3',
         'fluid'                 => 'yes',
@@ -174,6 +175,16 @@ function wpbp_theme_options_render_page()
 								<option value="no" <?php selected($wpbp_options['force_https'], 'no'); ?>><?php _e("No", 'wpbp'); ?></option>
 								<option value="yes" <?php selected($wpbp_options['force_https'], 'yes'); ?>><?php _e("Yes", 'wpbp'); ?></option>
 							</select>
+						</fieldset>
+					</td>
+				</tr>
+
+				<tr valign="top"><th scope="row"><?php _e('HSTS Max Age', 'wpbp'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('HSTS Max Age', 'wpbp'); ?></span></legend>
+							<input type="text" name="wpbp_theme_options[hsts_max_age]" id="hsts_max_age" value="<?php echo esc_attr($wpbp_options['hsts_max_age']); ?>" />
+							<br />
+							<small class="description"><?php printf(__('Set your HTTP Strict Transport Security Max Age Header', 'wpbp')); ?></small>
 						</fieldset>
 					</td>
 				</tr>
@@ -312,6 +323,7 @@ function wpbp_theme_options_validate($input)
     $output['optimizely_project_id'] = isset($input['optimizely_project_id']) ? $input['optimizely_project_id'] : null;
 	$output['gauges_site_id']        = isset($input['gauges_site_id'])        ? $input['gauges_site_id']        : null;
 	$output['force_https']           = isset($input['force_https'])           ? $input['force_https']           : null;
+	$output['hsts_max_age']          = isset($input['hsts_max_age'])          ? $input['hsts_max_age']          : null;
     $output['fluid']                 = isset($input['fluid'])                 ? $input['fluid']                 : null;
 	$output['responsive']            = isset($input['responsive'])            ? $input['responsive']            : null;
 	$output['main_class']            = isset($input['main_class'])            ? $input['main_class']            : null;
