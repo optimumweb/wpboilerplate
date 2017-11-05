@@ -17,7 +17,7 @@ function wpbp_hsts_header()
     if ( is_ssl() ) {
         $hsts_max_age = wpbp_get_option('hsts_max_age');
         if ( $hsts_max_age != '' ) {
-            header("Strict-Transport-Security: max-age=" . $hsts_max_age);
+            header(sprintf("Strict-Transport-Security: max-age=%d; includeSubDomains; preload", $hsts_max_age));
         }
     }
 }
