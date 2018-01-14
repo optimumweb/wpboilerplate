@@ -518,9 +518,11 @@ function wpbp_date($atts)
 {
     extract(shortcode_atts(array(
         'format'    => null,
-        'timestamp' => null
+        'timestamp' => time()
     ), $atts));
 
-    return date($format, $timestamp);
+    if ( isset($format, $timestamp) ) {
+        return date($format, $timestamp);
+    }
 }
 add_shortcode('wpbp_date', 'wpbp_date');
