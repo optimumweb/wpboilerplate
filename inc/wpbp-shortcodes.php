@@ -513,3 +513,14 @@ function wpbp_spacer($atts)
     return '<div style="height: ' . $height . '"></div>';
 }
 add_shortcode('spacer', 'wpbp_spacer');
+
+function wpbp_date($atts)
+{
+    extract(shortcode_atts(array(
+        'format'    => null,
+        'timestamp' => null
+    ), $atts));
+
+    return date($format, $timestamp);
+}
+add_shortcode('wpbp_date', 'wpbp_date');
