@@ -11,11 +11,11 @@ add_action('wpbp_head', 'wpbp_insert_gauges_tag');
 add_action('wpbp_head', 'wpbp_insert_custom_css');
 add_action('wpbp_head', 'wpbp_insert_favicon');
 add_action('wpbp_head', 'wpbp_insert_custom_header_code');
+add_action('wpbp_head', 'wpbp_insert_post_js');
 
 add_action('wpbp_footer', 'wpbp_insert_google_remarketing_tag');
 add_action('wpbp_footer', 'wpbp_insert_custom_js');
 add_action('wpbp_footer', 'wpbp_insert_custom_footer_code');
-add_action('wpbp_footer', 'wpbp_insert_post_js');
 
 add_action('wpbp_loop_after', 'wpbp_clear');
 
