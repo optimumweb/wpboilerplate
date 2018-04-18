@@ -3,38 +3,36 @@
 add_action('init',      'wpbp_adtrack_init');
 add_action('wpbp_head', 'wpbp_adtrack_insert');
 
-$adtrack_params = array( 'lpurl', 'matchtype', 'network', 'creative', 'keyword', 'placement', 'adposition', 'device' );
-
+$adtrack_params = array( 'lpurl', 'matchtype', 'network', 'creative', 'keyword', 'placement', 'adposition', 'device', 'gclid' );
 $adtrack_values = array();
 
 function wpbp_adtrack_init()
 {
     global $adtrack_params, $adtrack_values;
 
-    if ( !empty($_GET) ) {
-        foreach ( $adtrack_params as $param ) {
-            if ( isset($_GET[$param]) ) {
-                wpbp_adtrack_set_param($param, $_GET[$param]);
-            }
+    foreach ( $adtrack_params as $param ) {
+        if ( isset($_GET[$param]) ) {
+            wpbp_adtrack_set_param($param, $_GET[$param]);
         }
     }
 
     $adtrack_values = wpbp_adtrack_get_all();
 }
 
-function wpbp_adtrack_set_param($param, $value)
+function wpbp_adtrack_set_param($param, $value, $expire_in_days = 60)
 {
     global $adtrack_values;
     $adtrack_values[$param] = $value;
-    setcookie("adtrack_" . $param, $_GET[$param], time() + 60*24*60*60);
+    $expire = time() + $expire_in_days * 24 * 60 * 60;
+    setcookie('adtrack_' . $param, $value, $expire);
 }
 
 function wpbp_adtrack_get_param($param)
 {
     global $adtrack_values;
 
-    if ( isset($_COOKIE["adtrack_" . $param]) ) {
-        return $_COOKIE["adtrack_" . $param];
+    if ( isset($_COOKIE['adtrack_' . $param]) ) {
+        return $_COOKIE['adtrack_' . $param];
     } elseif ( isset($adtrack_values[$param]) ) {
         return $adtrack_values[$param];
     }

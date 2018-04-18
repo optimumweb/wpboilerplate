@@ -14,13 +14,13 @@ function wpbp_get_utm($key = null, $override = array())
 {
 	$utm = array();
 
-	if ( !empty( $_COOKIE['__utmz'] ) ) {
+	if ( !empty($_COOKIE['__utmz']) ) {
 
 		$pattern = "/(utmcsr=([^\|]*)[\|]?)|(utmccn=([^\|]*)[\|]?)|(utmcmd=([^\|]*)[\|]?)|(utmctr=([^\|]*)[\|]?)|(utmcct=([^\|]*)[\|]?)/i";
 
-		preg_match_all( $pattern, $_COOKIE['__utmz'], $matches );
+		preg_match_all($pattern, $_COOKIE['__utmz'], $matches);
 
-		if ( !empty( $matches[0] ) ) {
+		if ( isset($matches[0]) && is_array($matches[0]) && count($matches[0]) > 0 ) {
 
 			foreach ( $matches[0] as $match ) {
 
@@ -31,10 +31,12 @@ function wpbp_get_utm($key = null, $override = array())
 				list($k, $v) = explode("=", $match);
 
 				$utm[$k] = $v;
+
 			}
 		}
 
-		$utm = array_merge( $utm, $override );
+		$utm = array_merge($utm, $override);
+
 	}
 
 	return $key ? $utm[$key] : $utm;
@@ -45,10 +47,11 @@ function wpbp_get_utm($key = null, $override = array())
  */
 
 function wpbp_parse_utm_fields($utm = array())
-{ ?>
-	<input id="utmccn" name="field[utmccn][value]" value="<?php echo $utm['utmccn']; ?>" type="hidden" />
-	<input id="utmcmd" name="field[utmcmd][value]" value="<?php echo $utm['utmcmd']; ?>" type="hidden" />
-	<input id="utmcsr" name="field[utmcsr][value]" value="<?php echo $utm['utmcsr']; ?>" type="hidden" />
-	<input id="utmctr" name="field[utmctr][value]" value="<?php echo $utm['utmctr']; ?>" type="hidden" />
-	<input id="utmcct" name="field[utmcct][value]" value="<?php echo $utm['utmcct']; ?>" type="hidden" />
-<?php }
+{
+	$utm_fields = array( 'utmccn', 'utmcmd', 'utmcsr', 'utmctr', 'utmcct' );
+	foreach ( $utm_fields as $utm_field ) {
+		if ( array_key_exists($utm_field, $utm) ) {
+			echo sprintf('<input id="%s" name="field[%s][value]" value="%s" type="hidden" />', $utm_field, $utm_field, $utm[$utm_field]) . PHP_EOL;
+		}
+	}
+}
