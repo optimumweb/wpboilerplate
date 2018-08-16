@@ -683,7 +683,7 @@
                     href  = $this.attr('href'),
                     $href = $(href);
 
-                if ( $href.size() == 1 && $href.hasClass('wpbp-modal-box') ) {
+                if ( $href.length == 1 && $href.hasClass('wpbp-modal-box') ) {
                     $this.data('wpbp-target-modal-box', href).addClass('wpbp-modal-trigger');
                 }
 
@@ -725,7 +725,7 @@
                     target  = $this.data('wpbp-target-modal-box'),
                     $target = $( target );
 
-                if ( $target.size() == 0 || !$target.hasClass('wpbp-modal-box') ) {
+                if ( $target.length == 0 || !$target.hasClass('wpbp-modal-box') ) {
                     console.log('Error: Target "' + target + '" is not a modal box!');
                 }
 
@@ -812,7 +812,7 @@
                 var slideshow = window.setInterval(function() {
                     if ( skip < 0 && inView ) {
                         var $nextAnchor = $anchors.filter('.active').parent().next().find('a');
-                        if ( $nextAnchor.size() == 0 ) $nextAnchor = $anchors.first()
+                        if ( $nextAnchor.length == 0 ) $nextAnchor = $anchors.first()
                         $nextAnchor.trigger('fire');
                     } else {
                         --skip;
@@ -936,7 +936,7 @@
 
                 var $subNavList = $navItem.children('ul');
 
-                if ( $subNavList.size() > 0 ) {
+                if ( $subNavList.length > 0 ) {
                     addNavOptions($subNavList, $responsiveNav, depth + 1);
                 }
 
@@ -962,7 +962,7 @@
 
                 var $selectedNavOption = $(this).find('option:selected');
 
-                if ( $selectedNavOption.size() == 1 ) {
+                if ( $selectedNavOption.length == 1 ) {
 
                     var selectedNavOptionURL    = $selectedNavOption.val(),
                         selectedNavOptionTarget = $selectedNavOption.data('target');
