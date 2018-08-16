@@ -5,12 +5,12 @@ function wpbp_get_lib($which = null)
     $wpbp_lib = array(
         'jquery' => array(
             'js'   => TEMPLATE_URI . '/lib/jquery/jquery.min.js',
-            'ver'  => '1.11.1'
+            'ver'  => '3.3.1'
         ),
         'jquery-ui' => array(
             'js'   => TEMPLATE_URI . '/lib/jquery-ui/jquery-ui.min.js',
             'css'  => TEMPLATE_URI . '/lib/jquery-ui/css/base/jquery.ui.all.css',
-            'ver'  => '1.8.22'
+            'ver'  => '1.12.1'
         ),
         'jquery-ui-smoothness' => array(
             'css'  => TEMPLATE_URI . '/lib/jquery-ui/css/smoothness/jquery-ui.css'
