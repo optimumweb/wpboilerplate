@@ -18,8 +18,6 @@
 
 <title><?php wp_title(''); ?></title>
 
-<meta name="referrer" content="origin">
-
 <?php wp_head(); ?>
 
 <?php wpbp_head(); ?>
