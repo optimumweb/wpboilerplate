@@ -10,12 +10,8 @@
 						<h1 class="page-title">
 							<?php printf(__('Author: %s', 'wpbp'), $author->display_name); ?>
 						</h1>
-						<div class="author-info">
-							<?php if ( $author->google_profile ) : ?>
-								<a href="<?php echo $author->google_profile; ?>" rel="me" target="_blank">
-									<?php printf( __("%s's Google Profile", "wpbp"), $author->display_name ); ?>
-								</a>
-							<?php endif; ?>
+						<div class="author-description">
+							<?php the_author_meta('description'); ?>
 						</div>
 					<?php endif; ?>
                     <?php wpbp_loop_before(); ?>
