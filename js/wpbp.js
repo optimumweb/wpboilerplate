@@ -683,6 +683,8 @@
                     href  = $this.attr('href'),
                     $href = $(href);
 
+                console.log(href);
+
                 if ( $href.length == 1 && $href.hasClass('wpbp-modal-box') ) {
                     $this.data('wpbp-target-modal-box', href).addClass('wpbp-modal-trigger');
                 }
