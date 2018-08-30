@@ -324,7 +324,7 @@
                 hoverPause = $this.data('hover-pause') || "no",
                 slideshow  = $this.data('slideshow') || "yes",
                 $slides    = $this.find('.slides').children(),
-                N          = $slides.size(),
+                N          = $slides.length,
                 paused     = false,
                 now        = new Date(),
                 fireTime   = new Date(0),
@@ -361,7 +361,7 @@
 
             $this.bind('fireNext', function(e) {
                 var $current = $slides.filter('.current'),
-                    $next = $current.next().size() ? $current.next() : $slides.first();
+                    $next = $current.next().length ? $current.next() : $slides.first();
 
                 $current.fadeOut(fxSpeed, function() {
                     $next.fadeIn(fxSpeed).addClass('current');
@@ -373,7 +373,7 @@
 
             $this.bind('firePrev', function(e) {
                 var $current = $slides.filter('.current'),
-                    $prev = $current.prev().size() ? $current.prev() : $slides.last();
+                    $prev = $current.prev().length ? $current.prev() : $slides.last();
 
                 $current.fadeOut(fxSpeed, function() {
                     $prev.fadeIn(fxSpeed).addClass('current');
@@ -549,7 +549,7 @@
 
                 if ( collapseTriggerTarget() != null ) {
                     var $collapseTriggerTarget = $( collapseTriggerTarget() );
-                    if ( $collapseTriggerTarget.size() > 0 ) {
+                    if ( $collapseTriggerTarget.length > 0 ) {
                         var $content = $collapseTriggerTarget;
                     }
                 }
@@ -647,7 +647,7 @@
             var $this = $(this),
                 ref   = $this.data('ref');
 
-            if ( ref && $(ref).size() ) {
+            if ( ref && $(ref).length ) {
                 var $ref = $(ref);
                 $this.height( $ref.height() );
             }
