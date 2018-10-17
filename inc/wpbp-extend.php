@@ -103,12 +103,11 @@ if ( !function_exists('get_featured_image_url') ) {
 		if ( get_post_meta($post_ID, 'featured_image_url', true) ) {
 			$url = get_post_meta($post_ID, 'featured_image_url', true);
 		} else {
-			$post_thumbnail_id = get_post_thumbnail_id($post_ID);
-			if ( $post_thumbnail_id ) {
+			if ( $post_thumbnail_id = get_post_thumbnail_id($post_ID) ) {
 				$url = wp_get_attachment_url($post_thumbnail_id);
 			}
 		}
-        return isset($url) ? get_full_url($url) : null;
+        return !empty($url) ? get_full_url($url) : null;
 	}
 
 }
