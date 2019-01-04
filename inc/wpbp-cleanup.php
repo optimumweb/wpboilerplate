@@ -34,3 +34,9 @@ if ( !defined('ICL_DONT_LOAD_LANGUAGES_JS') ) define('ICL_DONT_LOAD_LANGUAGES_JS
 // set the post revisions to 5 unless the constant
 // was set in wp-config.php to avoid DB bloat
 if ( !defined('WP_POST_REVISIONS') ) define('WP_POST_REVISIONS', 5);
+
+// Remove stupid WP Emoji
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('admin_print_scripts', 'print_emoji_detection_script');
+remove_action('admin_print_styles', 'print_emoji_styles');
