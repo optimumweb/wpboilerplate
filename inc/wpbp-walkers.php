@@ -1,9 +1,8 @@
 <?php
 
-class Description_Walker extends Walker_Nav_Menu
-{
-    function start_el(&$output, $item, $depth, $args)
-    {
+class Description_Walker extends Walker_Nav_Menu {
+
+    function start_el( &$output, $item, $depth = 0, $args = array() ) {
         global $wp_query;
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
@@ -33,22 +32,20 @@ class Description_Walker extends Walker_Nav_Menu
 
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }
+
 }
 
-class Minimal_Walker extends Walker_Nav_Menu
-{
-    function start_lvl($output, $depth)
-    {
+class Minimal_Walker extends Walker_Nav_Menu {
+
+    function start_lvl( &$output, $depth = 0, $args = array() ) {
         return "";
     }
 
-    function end_lvl($output, $depth)
-    {
+    function end_lvl( &$output, $depth = 0, $args = array() ) {
         return "";
     }
 
-    function start_el($output, $item, $depth, $args)
-    {
+    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
         global $wp_query;
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
@@ -75,16 +72,14 @@ class Minimal_Walker extends Walker_Nav_Menu
         return $output;
     }
 
-    function end_el($output, $element, $depth)
-    {
+    function end_el( &$output, $element, $depth = 0, $args = array() ) {
         return "";
     }
 }
 
 class Capability_Based_Walker extends Walker_Nav_Menu
 {
-	function start_el(&$output, $item, $depth, $args = array())
-	{
+	function start_el( &$output, $item, $depth = 0, $args = array() ) {
 		$required_capability = $item->xfn;
 
 		if ( !empty($required_capability) && !current_user_can($required_capability) ) return;
@@ -116,8 +111,7 @@ class Capability_Based_Walker extends Walker_Nav_Menu
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 
-	function end_el(&$output, $item, $depth, $args = array())
-	{
+	function end_el( &$output, $item, $depth = 0, $args = array() ) {
 		$required_capability = $item->xfn;
 		if ( strlen( $required_capability ) >= 1 && !current_user_can( $required_capability ) ) return;
 
