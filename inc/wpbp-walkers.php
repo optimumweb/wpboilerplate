@@ -79,7 +79,7 @@ class Minimal_Walker extends Walker_Nav_Menu {
 
 class Capability_Based_Walker extends Walker_Nav_Menu
 {
-	function start_el( &$output, $item, $depth = 0, $args = array() ) {
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$required_capability = $item->xfn;
 
 		if ( !empty($required_capability) && !current_user_can($required_capability) ) return;
