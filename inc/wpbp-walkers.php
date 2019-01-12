@@ -129,7 +129,7 @@ class Sister_Nav_Walker extends Walker_Nav_Menu {
     var $found_parents = array();
     var $found_children = array();
 
-    function start_el(&$output, $item, $depth, $args) {
+    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
         global $wp_query;
 
         // this only works for second level sub navigations
@@ -170,14 +170,14 @@ class Sister_Nav_Walker extends Walker_Nav_Menu {
         }
     }
 
-    function end_el(&$output, $item, $depth) {
+    function end_el( &$output, $item, $depth = 0, $args = array() ) {
         // closes only the opened li
         if ( is_array($this->found_parents) && in_array($item->ID, $this->found_parents) ) {
             $output .= "</li>";
         }
     }
 
-    function end_lvl(&$output, $depth) {
+    function end_lvl( &$output, $depth = 0, $args = array() ) {
         $output = trim($output);
         // if the sub-menu is empty, strip the opening tag, else closes it
         if ( substr($output, -21) == '<ul class="sub-menu">' ) {
