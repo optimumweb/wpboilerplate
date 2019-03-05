@@ -60,9 +60,11 @@ add_action('after_setup_theme', 'wpbp_setup');
 
 function wpbp_register_sidebars($sidebars)
 {
-	if ( is_array($sidebars) && !empty($sidebars) ) {
-		foreach ( $sidebars as $sidebar ) {
+	if ( is_array($sidebars) && count($sidebars) > 0 ) {
+		foreach ( $sidebars as $sidebar_id => $sidebar ) {
+		    if ( is_numeric($sidebar_id) ) $sidebar_id = 'sidebar-' . $sidebar_id;
 			register_sidebar(array(
+			    'id'            => $sidebar_id,
 				'name'          => $sidebar,
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '<div class="clear"></div></div>',
