@@ -8,7 +8,7 @@
 class wpbp_vcard extends WP_Widget
 {
 
-	function wpbp_vcard()
+	function __construct()
     {
 		$widget_ops = array('description' => 'Displays a vCard');
 		parent::WP_Widget(false, __('WPBP: vCard', 'wpbp'), $widget_ops);
@@ -200,7 +200,7 @@ register_widget('wpbp_vcard');
 class wpbp_tax_nav extends WP_Widget
 {
 
-	function wpbp_tax_nav()
+	function __construct()
     {
 		$widget_ops = array('description' => 'Displays a navigation menu based on taxonomies and their respective posts.');
 		parent::WP_Widget(false, __('WPBP: Taxonomy Navigation', 'wpbp'), $widget_ops);
@@ -403,7 +403,7 @@ register_widget('wpbp_tax_nav');
 class wpbp_latest_posts extends WP_Widget
 {
 
-    function wpbp_latest_posts()
+    function __construct()
     {
 		$widget_ops = array('description' => 'Displays the latest posts');
 		parent::WP_Widget(false, __('WPBP: Latest Posts', 'wpbp'), $widget_ops);
@@ -479,7 +479,7 @@ register_widget('wpbp_latest_posts');
 class wpbp_most_popular extends WP_Widget
 {
 
-	function wpbp_most_popular()
+	function __construct()
     {
 		$widget_ops = array('description' => 'Displays the most popular posts based on number of views in the last \'x\' days.');
 		parent::WP_Widget(false, __('WPBP: Most Popular', 'wpbp'), $widget_ops);
@@ -602,7 +602,7 @@ register_widget('wpbp_most_popular');
  class wpbp_google_adsense_unit extends WP_Widget
  {
 
-	function wpbp_google_adsense_unit()
+	function __construct()
     {
 		$widget_ops = array('description' => 'Inserts a Google AdSense Ad Unit to your page.');
 		parent::WP_Widget(false, __('WPBP: Google AdSense Unit', 'wpbp'), $widget_ops);
