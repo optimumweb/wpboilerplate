@@ -123,7 +123,7 @@ function wpbp_get_lib($which = null)
         'animatedElement' => array(
             'js'   => TEMPLATE_URI . '/lib/animated-element/jquery.animatedElement.js',
             'css'  => TEMPLATE_URI . '/lib/animated-element/animatedElement.css',
-            'deps' => array('jquery', 'inview'),
+            'deps' => array('jquery'),
             'ver'  => '1.0'
         ),
         'magnific-popup' => array(
