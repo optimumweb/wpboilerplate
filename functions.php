@@ -64,7 +64,7 @@ function wpbp_register_sidebars($sidebars)
 		foreach ( $sidebars as $sidebar_id => $sidebar ) {
 		    if ( is_numeric($sidebar_id) ) $sidebar_id = 'sidebar-' . $sidebar_id;
 			register_sidebar(array(
-			    'id'            => $sidebar_id,
+			    //'id'            => $sidebar_id,
 				'name'          => $sidebar,
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '<div class="clear"></div></div>',
