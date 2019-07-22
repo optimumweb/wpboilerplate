@@ -74,22 +74,23 @@ add_action('wp_before_admin_bar_render', 'wpbp_admin_bar_render');
 function wpbp_get_default_theme_options()
 {
 	$default_theme_options = array(
-        'google_analytics_id'   => '',
-        'google_conversion_id'  => '',
-        'google_tag_manager_id' => '',
-        'optimizely_project_id' => '',
-		'gauges_site_id'        => '',
-		'force_https'           => 'no',
-		'hsts_max_age'          => '',
-		'main_class'            => 'grid_9',
-		'sidebar_class'         => 'grid_3',
-        'fluid'                 => 'yes',
-		'responsive'            => 'responsive',
-        'css_files'             => '',
-		'custom_css'            => '',
-        'js_files'              => '',
-        'custom_js'             => '',
-        'favicon'               => ''
+        'google_analytics_id'   => "",
+        'google_conversion_id'  => "",
+        'google_tag_manager_id' => "",
+        'optimizely_project_id' => "",
+		'gauges_site_id'        => "",
+		'force_https'           => "no",
+		'hsts_max_age'          => "",
+		'disable_xmlrpc'        => "yes",
+		'main_class'            => "grid_9",
+		'sidebar_class'         => "grid_3",
+        'fluid'                 => "yes",
+		'responsive'            => "responsive",
+        'css_files'             => "",
+		'custom_css'            => "",
+        'js_files'              => "",
+        'custom_js'             => "",
+        'favicon'               => ""
 	);
 
 	return apply_filters('wpbp_default_theme_options', $default_theme_options);
@@ -102,7 +103,6 @@ function wpbp_get_theme_options()
 
 function wpbp_theme_options_render_page()
 {
-	global $wpbp_css_frameworks;
 	?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
@@ -118,80 +118,111 @@ function wpbp_theme_options_render_page()
 
 			<table class="form-table">
 
-                <tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'wpbp'); ?></th>
+                <tr valign="top">
+                    <th scope="row"><?php _e("Google Analytics ID", 'wpbp'); ?></th>
                     <td>
-                        <fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'wpbp'); ?></span></legend>
+                        <fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Google Analytics ID", 'wpbp'); ?></span></legend>
                             <input type="text" name="wpbp_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($wpbp_options['google_analytics_id']); ?>" />
                             <br />
-                            <small class="description"><?php printf(__('Enter your UA-XXXXX-X ID', 'wpbp')); ?></small>
+                            <small class="description"><?php printf(__("Enter your UA-XXXXX-X ID", 'wpbp')); ?></small>
                         </fieldset>
                     </td>
                 </tr>
 
-                <tr valign="top"><th scope="row"><?php _e('Google Remarketing Tag ID', 'wpbp'); ?></th>
+                <tr valign="top">
+                    <th scope="row"><?php _e("Google Remarketing Tag ID", 'wpbp'); ?></th>
                     <td>
-                        <fieldset><legend class="screen-reader-text"><span><?php _e('Google Remarketing Tag ID', 'wpbp'); ?></span></legend>
+                        <fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Google Remarketing Tag ID", 'wpbp'); ?></span></legend>
                             <input type="text" name="wpbp_theme_options[google_remarketing_id]" id="google_remarketing_id" value="<?php echo esc_attr($wpbp_options['google_remarketing_id']); ?>" />
                             <br />
-                            <small class="description"><?php printf(__('Enter your Google Remarketing Tag ID', 'wpbp')); ?></small>
+                            <small class="description"><?php printf(__("Enter your Google Remarketing Tag ID", 'wpbp')); ?></small>
                         </fieldset>
                     </td>
                 </tr>
 
-                <tr valign="top"><th scope="row"><?php _e('Google Tag Manager ID', 'wpbp'); ?></th>
+                <tr valign="top">
+                    <th scope="row"><?php _e("Google Tag Manager ID", 'wpbp'); ?></th>
                     <td>
-                        <fieldset><legend class="screen-reader-text"><span><?php _e('Google Tag Manager ID', 'wpbp'); ?></span></legend>
+                        <fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Google Tag Manager ID", 'wpbp'); ?></span></legend>
                             <input type="text" name="wpbp_theme_options[google_tag_manager_id]" id="google_tag_manager_id" value="<?php echo esc_attr($wpbp_options['google_tag_manager_id']); ?>" />
                             <br />
-                            <small class="description"><?php printf(__('Enter your GTM-XXXX ID', 'wpbp')); ?></small>
+                            <small class="description"><?php printf(__("Enter your GTM-XXXX ID", 'wpbp')); ?></small>
                         </fieldset>
                     </td>
                 </tr>
 
-                <tr valign="top"><th scope="row"><?php _e('Optimizely Project ID', 'wpbp'); ?></th>
+                <tr valign="top">
+                    <th scope="row"><?php _e("Optimizely Project ID", 'wpbp'); ?></th>
                     <td>
-                        <fieldset><legend class="screen-reader-text"><span><?php _e('Optimizely Project ID', 'wpbp'); ?></span></legend>
+                        <fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Optimizely Project ID", 'wpbp'); ?></span></legend>
                             <input type="text" name="wpbp_theme_options[optimizely_project_id]" id="optimizely_project_id" value="<?php echo esc_attr($wpbp_options['optimizely_project_id']); ?>" />
                             <br />
-                            <small class="description"><?php printf(__('Enter your Optimizely Project ID', 'wpbp')); ?></small>
+                            <small class="description"><?php printf(__("Enter your Optimizely Project ID", 'wpbp')); ?></small>
                         </fieldset>
                     </td>
                 </tr>
 
-				<tr valign="top"><th scope="row"><?php _e('Gaug.es Site ID', 'wpbp'); ?></th>
+				<tr valign="top">
+                    <th scope="row"><?php _e("Gaug.es Site ID", 'wpbp'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('Gaug.es Site ID', 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Gaug.es Site ID", 'wpbp'); ?></span></legend>
 							<input type="text" name="wpbp_theme_options[gauges_site_id]" id="gauges_site_id" value="<?php echo esc_attr($wpbp_options['gauges_site_id']); ?>" />
 							<br />
-							<small class="description"><?php printf(__('Enter your Gaug.es Site ID', 'wpbp')); ?></small>
+							<small class="description"><?php printf(__("Enter your Gaug.es Site ID", 'wpbp')); ?></small>
 						</fieldset>
 					</td>
 				</tr>
 
-				<tr valign="top" class="radio-option"><th scope="row"><?php _e("Force HTTPS?", 'wpbp'); ?></th>
+				<tr valign="top" class="radio-option">
+                    <th scope="row"><?php _e("Force HTTPS?", 'wpbp'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e("Force HTTPS?", 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Force HTTPS?", 'wpbp'); ?></span></legend>
 							<select name="wpbp_theme_options[force_https]" id="wpbp_theme_options[force_https]">
-								<option value="no" <?php selected($wpbp_options['force_https'], 'no'); ?>><?php _e("No", 'wpbp'); ?></option>
-								<option value="yes" <?php selected($wpbp_options['force_https'], 'yes'); ?>><?php _e("Yes", 'wpbp'); ?></option>
+								<option value="no" <?php selected($wpbp_options['force_https'], "no"); ?>><?php _e("No", 'wpbp'); ?></option>
+								<option value="yes" <?php selected($wpbp_options['force_https'], "yes"); ?>><?php _e("Yes", 'wpbp'); ?></option>
 							</select>
 						</fieldset>
 					</td>
 				</tr>
 
-				<tr valign="top"><th scope="row"><?php _e('HSTS Max Age', 'wpbp'); ?></th>
+				<tr valign="top">
+                    <th scope="row"><?php _e("HSTS Max Age", 'wpbp'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('HSTS Max Age', 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("HSTS Max Age", 'wpbp'); ?></span></legend>
 							<input type="text" name="wpbp_theme_options[hsts_max_age]" id="hsts_max_age" value="<?php echo esc_attr($wpbp_options['hsts_max_age']); ?>" />
 							<br />
-							<small class="description"><?php printf(__('Set your HTTP Strict Transport Security Max Age Header', 'wpbp')); ?></small>
+							<small class="description"><?php printf(__("Set your HTTP Strict Transport Security Max Age Header", 'wpbp')); ?></small>
 						</fieldset>
 					</td>
 				</tr>
 
-                <tr valign="top" class="radio-option"><th scope="row"><?php _e("Fluid Layout?", 'wpbp'); ?></th>
+                <tr valign="top">
+                    <th scope="row"><?php _e("Disable XML-RPC?", 'wpbp'); ?></th>
                     <td>
-                        <fieldset><legend class="screen-reader-text"><span><?php _e("Fluid Layout?", 'wpbp'); ?></span></legend>
+                        <fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Disable XML-RPC?", 'wpbp'); ?></span></legend>
+                            <select name="wpbp_theme_options[force_https]" id="wpbp_theme_options[disable_xmlrpc]">
+                                <option value="yes" <?php selected($wpbp_options['disable_xmlrpc'], "yes"); ?>><?php _e("Yes", 'wpbp'); ?></option>
+                                <option value="no" <?php selected($wpbp_options['disable_xmlrpc'], "no"); ?>><?php _e("No", 'wpbp'); ?></option>
+                            </select>
+                            <br />
+                            <small class="description"><?php printf(__("The XMLRPC allows remote connection to WordPress. We recommend disabling it by default for security reasons.", 'wpbp')); ?></small>
+                        </fieldset>
+                    </td>
+                </tr>
+
+                <tr valign="top">
+                    <th scope="row"><?php _e("Fluid Layout?", 'wpbp'); ?></th>
+                    <td>
+                        <fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Fluid Layout?", 'wpbp'); ?></span></legend>
                             <select name="wpbp_theme_options[fluid]" id="wpbp_theme_options[fluid]">
                                 <option value="yes" <?php selected($wpbp_options['fluid'], 'yes'); ?>><?php _e("Yes", 'wpbp'); ?></option>
                                 <option value="no" <?php selected($wpbp_options['fluid'], 'no'); ?>><?php _e("No", 'wpbp'); ?></option>
@@ -200,104 +231,124 @@ function wpbp_theme_options_render_page()
                     </td>
                 </tr>
 
-				<tr valign="top" class="radio-option"><th scope="row"><?php _e('Responsive Layout?', 'wpbp'); ?></th>
+				<tr valign="top">
+                    <th scope="row"><?php _e("Responsive Layout?", 'wpbp'); ?></th>
                     <td>
-                        <fieldset><legend class="screen-reader-text"><span><?php _e("Responsive Layout?", 'wpbp'); ?></span></legend>
+                        <fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Responsive Layout?", 'wpbp'); ?></span></legend>
                             <select name="wpbp_theme_options[responsive]" id="wpbp_theme_options[responsive]">
-                                <option value="responsive" <?php selected($wpbp_options['responsive'], 'responsive'); ?>><?php _e("Full-responsive", 'wpbp'); ?></option>
-                                <option value="mobile-responsive" <?php selected($wpbp_options['responsive'], 'mobile-responsive'); ?>><?php _e("Mobile-responsive", 'wpbp'); ?></option>
-                                <option value="non-responsive" <?php selected($wpbp_options['responsive'], 'non-responsive'); ?>><?php _e("Non-responsive", 'wpbp'); ?></option>
+                                <option value="responsive" <?php selected($wpbp_options['responsive'], "responsive"); ?>><?php _e("Full-responsive", 'wpbp'); ?></option>
+                                <option value="mobile-responsive" <?php selected($wpbp_options['responsive'], "mobile-responsive"); ?>><?php _e("Mobile-responsive", 'wpbp'); ?></option>
+                                <option value="non-responsive" <?php selected($wpbp_options['responsive'], "non-responsive"); ?>><?php _e("Non-responsive", 'wpbp'); ?></option>
                             </select>
                         </fieldset>
                     </td>
                 </tr>
 
-				<tr valign="top"><th scope="row"><?php _e('#main CSS Classes', 'wpbp'); ?></th>
+				<tr valign="top">
+                    <th scope="row"><?php _e("#main CSS Classes", 'wpbp'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'wpbp'); ?></span></legend>
 							<input type="text" name="wpbp_theme_options[main_class]" id="main_class" value="<?php echo esc_attr($wpbp_options['main_class']); ?>" class="regular-text" />
 							<br />
-              				<small class="description"><?php _e('Default:', 'wpbp'); ?> <span><?php echo $wpbp_default_options['main_class']; ?></span></small>
+              				<small class="description"><?php _e("Default:", 'wpbp'); ?> <span><?php echo $wpbp_default_options['main_class']; ?></span></small>
 						</fieldset>
 					</td>
 				</tr>
 
-				<tr valign="top"><th scope="row"><?php _e('#sidebar CSS Classes', 'wpbp'); ?></th>
+				<tr valign="top">
+                    <th scope="row"><?php _e("#sidebar CSS Classes", 'wpbp'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('#sidebar CSS Classes', 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("#sidebar CSS Classes", 'wpbp'); ?></span></legend>
 							<input type="text" name="wpbp_theme_options[sidebar_class]" id="sidebar_class" value="<?php echo esc_attr($wpbp_options['sidebar_class']); ?>" class="regular-text" />
 							<br />
-              				<small class="description"><?php _e('Default:', 'wpbp'); ?> <span><?php echo $wpbp_default_options['sidebar_class']; ?></span></small>
+              				<small class="description"><?php _e("Default:", 'wpbp'); ?> <span><?php echo $wpbp_default_options['sidebar_class']; ?></span></small>
 						</fieldset>
 					</td>
 				</tr>
 
-                <tr valign="top"><th scope="row"><?php _e('CSS files', 'wpbp'); ?></th>
+                <tr valign="top">
+                    <th scope="row"><?php _e("CSS files", 'wpbp'); ?></th>
         			<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('CSS files', 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("CSS files", 'wpbp'); ?></span></legend>
 							<textarea name="wpbp_theme_options[css_files]" id="css_files" cols="94" rows="10"><?php echo esc_attr($wpbp_options['css_files']); ?></textarea>
 							<br />
-							<small class="description"><?php printf(__('Enter CSS files URL you want to include. One file per line.', 'wpbp')); ?></small>
+							<small class="description"><?php printf(__("Enter CSS files URL you want to include. One file per line.", 'wpbp')); ?></small>
 						</fieldset>
 					</td>
 				</tr>
 
-				<tr valign="top"><th scope="row"><?php _e('Custom CSS', 'wpbp'); ?></th>
+				<tr valign="top">
+                    <th scope="row"><?php _e("Custom CSS", 'wpbp'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('Custom CSS', 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Custom CSS", 'wpbp'); ?></span></legend>
 							<textarea name="wpbp_theme_options[custom_css]" id="custom_css" cols="94" rows="10"><?php echo esc_attr($wpbp_options['custom_css']); ?></textarea>
 							<br />
-							<small class="description"><?php printf(__('Enter custom CSS for this site', 'wpbp')); ?></small>
+							<small class="description"><?php printf(__("Enter custom CSS for this site", 'wpbp')); ?></small>
 						</fieldset>
 					</td>
 				</tr>
 
-                <tr valign="top"><th scope="row"><?php _e('Javascript files', 'wpbp'); ?></th>
+                <tr valign="top">
+                    <th scope="row"><?php _e("Javascript files", 'wpbp'); ?></th>
     				<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('Javascript files', 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Javascript files", 'wpbp'); ?></span></legend>
 							<textarea name="wpbp_theme_options[js_files]" id="js_files" cols="94" rows="10"><?php echo esc_attr($wpbp_options['js_files']); ?></textarea>
 							<br />
-							<small class="description"><?php printf(__('Enter javascript files URL you want to include. One file per line.', 'wpbp')); ?></small>
+							<small class="description"><?php printf(__("Enter javascript files URL you want to include. One file per line.", 'wpbp')); ?></small>
 						</fieldset>
 					</td>
 				</tr>
 
-                <tr valign="top"><th scope="row"><?php _e('Custom Javascript', 'wpbp'); ?></th>
+                <tr valign="top">
+                    <th scope="row"><?php _e("Custom Javascript", 'wpbp'); ?></th>
                     <td>
-                        <fieldset><legend class="screen-reader-text"><span><?php _e('Custom Javascript', 'wpbp'); ?></span></legend>
+                        <fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Custom Javascript", 'wpbp'); ?></span></legend>
                             <textarea name="wpbp_theme_options[custom_js]" id="custom_js" cols="94" rows="10"><?php echo esc_attr($wpbp_options['custom_js']); ?></textarea>
                             <br />
-                            <small class="description"><?php printf(__('Enter custom Javascript for this site', 'wpbp')); ?></small>
+                            <small class="description"><?php printf(__("Enter custom Javascript for this site", 'wpbp')); ?></small>
                         </fieldset>
                     </td>
                 </tr>
 
-				<tr valign="top"><th scope="row"><?php _e('Custom Header Code', 'wpbp'); ?></th>
+				<tr valign="top">
+                    <th scope="row"><?php _e("Custom Header Code", 'wpbp'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('Custom Header Code', 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Custom Header Code", 'wpbp'); ?></span></legend>
 							<textarea name="wpbp_theme_options[custom_header_code]" id="custom_header_code" cols="94" rows="10"><?php echo esc_attr($wpbp_options['custom_header_code']); ?></textarea>
 							<br />
-							<small class="description"><?php printf(__('Enter custom code that will appear in the &lt;head&gt;&lt;/head&gt; section', 'wpbp')); ?></small>
+							<small class="description"><?php printf(__("Enter custom code that will appear in the &lt;head&gt;&lt;/head&gt; section", 'wpbp')); ?></small>
 						</fieldset>
 					</td>
 				</tr>
 
-				<tr valign="top"><th scope="row"><?php _e('Custom Footer Code', 'wpbp'); ?></th>
+				<tr valign="top">
+                    <th scope="row"><?php _e("Custom Footer Code", 'wpbp'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('Custom Footer Code', 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Custom Footer Code", 'wpbp'); ?></span></legend>
 							<textarea name="wpbp_theme_options[custom_footer_code]" id="custom_footer_code" cols="94" rows="10"><?php echo esc_attr($wpbp_options['custom_footer_code']); ?></textarea>
 							<br />
-							<small class="description"><?php printf(__('Enter custom code that will appear before the &lt;/body&gt; tag', 'wpbp')); ?></small>
+							<small class="description"><?php printf(__("Enter custom code that will appear before the &lt;/body&gt; tag", 'wpbp')); ?></small>
 						</fieldset>
 					</td>
 				</tr>
 
-				<tr valign="top"><th scope="row"><?php _e('Favicon', 'wpbp'); ?></th>
+				<tr valign="top">
+                    <th scope="row"><?php _e("Favicon", 'wpbp'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('Favicon', 'wpbp'); ?></span></legend>
+						<fieldset>
+                            <legend class="screen-reader-text"><span><?php _e("Favicon", 'wpbp'); ?></span></legend>
 							<input type="text" name="wpbp_theme_options[favicon]" id="favicon" value="<?php echo esc_attr($wpbp_options['favicon']); ?>" class="regular-text" />
 							<br />
-							<small class="description"><?php printf(__('Enter your favicon URL', 'wpbp')); ?></small>
+							<small class="description"><?php printf(__("Enter your favicon URL", 'wpbp')); ?></small>
 						</fieldset>
 					</td>
 				</tr>
@@ -313,8 +364,6 @@ function wpbp_theme_options_render_page()
 
 function wpbp_theme_options_validate($input)
 {
-	global $wpbp_css_frameworks;
-
 	$output = $defaults = wpbp_get_default_theme_options();
 
     $output['google_analytics_id']   = isset($input['google_analytics_id'])   ? $input['google_analytics_id']   : null;
@@ -324,6 +373,7 @@ function wpbp_theme_options_validate($input)
 	$output['gauges_site_id']        = isset($input['gauges_site_id'])        ? $input['gauges_site_id']        : null;
 	$output['force_https']           = isset($input['force_https'])           ? $input['force_https']           : null;
 	$output['hsts_max_age']          = isset($input['hsts_max_age'])          ? $input['hsts_max_age']          : null;
+    $output['disable_xmlrpc']        = isset($input['disable_xmlrpc'])        ? $input['disable_xmlrpc']        : null;
     $output['fluid']                 = isset($input['fluid'])                 ? $input['fluid']                 : null;
 	$output['responsive']            = isset($input['responsive'])            ? $input['responsive']            : null;
 	$output['main_class']            = isset($input['main_class'])            ? $input['main_class']            : null;
