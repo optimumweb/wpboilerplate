@@ -1,8 +1,8 @@
 
 # BEGIN Deny WordPress xmlrpc.php requests
 <Files xmlrpc.php>
-order deny,allow
-deny from all
+Order deny,allow
+Deny from all
 </Files>
 # END Deny WordPress xmlrpc.php requests
 
