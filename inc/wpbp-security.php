@@ -21,7 +21,10 @@ function wpbp_hsts_header()
 }
 add_action('send_headers', 'wpbp_hsts_header');
 
-// Disable XML-RPC
-if ( wpbp_get_option('disable_xmlrpc') == "yes" ) {
-    add_filter('xmlrpc_enabled', '__return_false');
+function wpbp_disable_xmlrpc()
+{
+    if ( wpbp_get_option('disable_xmlrpc') == "yes" ) {
+        add_filter('xmlrpc_enabled', '__return_false');
+    }
 }
+add_action('init', 'wpbp_disable_xmlrpc');
