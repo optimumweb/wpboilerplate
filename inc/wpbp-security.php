@@ -21,11 +21,11 @@ function wpbp_hsts_header()
 }
 add_action('send_headers', 'wpbp_hsts_header');
 
-function disable_xmlrpc()
+function wpbp_disable_xmlrpc()
 {
     $disable_xmlrpc = wpbp_get_option('disable_xmlrpc');
     if ( $disable_xmlrpc == "yes" ) {
         add_filter('xmlrpc_enabled', '__return_false');
     }
 }
-add_action('init', 'disable_xmlrpc');
+add_action('init', 'wpbp_disable_xmlrpc');

@@ -106,7 +106,7 @@ function wpbp_theme_options_render_page()
 	?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
-		<h2><?php _e('Boilerplate Options', 'wpbp'); ?></h2>
+		<h2><?php _e("Boilerplate Options", 'wpbp'); ?></h2>
 		<?php settings_errors(); ?>
 
 		<form method="post" action="options.php">
@@ -196,7 +196,7 @@ function wpbp_theme_options_render_page()
 					<td>
 						<fieldset>
                             <legend class="screen-reader-text"><span><?php _e("HSTS Max Age", 'wpbp'); ?></span></legend>
-							<input type="text" name="wpbp_theme_options[hsts_max_age]" id="hsts_max_age" value="<?php echo esc_attr($wpbp_options['hsts_max_age']); ?>" />
+							<input type="text" name="wpbp_theme_options[hsts_max_age]" id="wpbp_theme_options[hsts_max_age]" value="<?php echo esc_attr($wpbp_options['hsts_max_age']); ?>" />
 							<br />
 							<small class="description"><?php printf(__("Set your HTTP Strict Transport Security Max Age Header", 'wpbp')); ?></small>
 						</fieldset>
@@ -208,7 +208,7 @@ function wpbp_theme_options_render_page()
                     <td>
                         <fieldset>
                             <legend class="screen-reader-text"><span><?php _e("Disable XML-RPC?", 'wpbp'); ?></span></legend>
-                            <select name="wpbp_theme_options[force_https]" id="wpbp_theme_options[disable_xmlrpc]">
+                            <select name="wpbp_theme_options[disable_xmlrpc]" id="wpbp_theme_options[disable_xmlrpc]">
                                 <option value="yes" <?php selected($wpbp_options['disable_xmlrpc'], "yes"); ?>><?php _e("Yes", 'wpbp'); ?></option>
                                 <option value="no" <?php selected($wpbp_options['disable_xmlrpc'], "no"); ?>><?php _e("No", 'wpbp'); ?></option>
                             </select>
