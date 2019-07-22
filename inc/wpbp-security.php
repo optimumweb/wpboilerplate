@@ -28,3 +28,16 @@ function wpbp_disable_xmlrpc()
     }
 }
 add_action('init', 'wpbp_disable_xmlrpc');
+
+function wpbp_deny_xmlrpc($htaccess_rules)
+{
+    if ( wpbp_get_option('disable_xmlrpc') == "yes" ) {
+        $filename = 'htaccess/deny_xmlrpc';
+        if ( file_exists($filename) ) {
+            $content = file_get_contents($filename);
+            return $content . $htaccess_rules;
+        }
+    }
+    return $htaccess_rules;
+}
+add_filter('mod_rewrite_rules', 'wpbp_deny_xmlrpc');
