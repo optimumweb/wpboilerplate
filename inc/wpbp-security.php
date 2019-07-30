@@ -47,7 +47,7 @@ function wpbp_login_notification($user_login, $user)
 {
     $admin_email = get_option('admin_email');
     $blogname = html_entity_decode(get_option('blogname'));
-    $subject = sprintf("%s - Login Notification", $blogname);
+    $subject = sprintf("%s - WordPress Login Notification", $blogname);
     $message = implode(PHP_EOL, [
         sprintf("Datetime: %s", date('c')),
         sprintf("Username: %s", $user_login),
