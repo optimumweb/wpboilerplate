@@ -41,3 +41,19 @@ function wpbp_deny_xmlrpc($htaccess_rules)
     return $htaccess_rules;
 }
 add_filter('mod_rewrite_rules', 'wpbp_deny_xmlrpc');
+
+
+function wpbp_login_notification()
+{
+    $current_user = wp_get_current_user();
+    $admin_email = get_option('admin_email');
+    $blogname = get_option('blogname');
+    $subject = sprintf("%s - Login Notification", $blogname);
+    $message = implode(PHP_EOL, [
+        sprintf("Datetime: %s", date('c')),
+        sprintf("Username: %s", $current_user->user_login),
+        sprintf("IP Address: %s", $_SERVER['REMOTE_ADDR'])
+    ]);
+    wp_mail($admin_email, $subject, $message);
+}
+add_action('wp_login', 'wpbp_login_notification');
