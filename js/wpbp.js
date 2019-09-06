@@ -32,7 +32,7 @@
 
         $('.wpbp-responsive-nav').wpbpResponsiveNav();
 
-        $(window).bind('load resize', function() {
+        $(window).on('load resize', function() {
 
             $('.valign, .vAlign').vAlign();
 
@@ -359,7 +359,7 @@
 
             $slides.hide().first().show().addClass('current');
 
-            $this.bind('fireNext', function(e) {
+            $this.on('fireNext', function(e) {
                 var $current = $slides.filter('.current'),
                     $next = $current.next().length ? $current.next() : $slides.first();
 
@@ -371,7 +371,7 @@
                 fireTime = new Date();
             });
 
-            $this.bind('firePrev', function(e) {
+            $this.on('firePrev', function(e) {
                 var $current = $slides.filter('.current'),
                     $prev = $current.prev().length ? $current.prev() : $slides.last();
 
@@ -383,7 +383,7 @@
                 fireTime = new Date();
             });
 
-            $this.bind('fireThat', function(e, fireThat) {
+            $this.on('fireThat', function(e, fireThat) {
                 var $current = $slides.filter('.current'),
                     $that = $slides.filter(fireThat);
 
@@ -395,7 +395,7 @@
                 fireTime = new Date();
             });
 
-            $this.bind('setActiveFire', function() {
+            $this.on('setActiveFire', function() {
                 var $current = $slides.filter('.current');
 
                 $('.fireThat').removeClass('active').each(function() {
@@ -405,7 +405,7 @@
                 });
             });
 
-            $this.bind('firePause', function() {
+            $this.on('firePause', function() {
                 paused = !paused;
 
                 if ( paused ) {
@@ -694,7 +694,7 @@
 
             });
 
-            $modalBoxes.bind('open', function() {
+            $modalBoxes.on('open', function() {
 
                 var $this = $(this);
 
@@ -708,7 +708,7 @@
 
                 });
 
-            }).bind('close', function() {
+            }).on('close', function() {
 
                     var $this = $(this);
 
@@ -792,7 +792,7 @@
 
             $contents.hide().filter('.active').show();
 
-            $anchors.bind('fire', function() {
+            $anchors.on('fire', function() {
                 var $anchor       = $(this),
                     anchorTarget  = $anchor.attr('href'),
                     $anchorTarget = $(anchorTarget);
