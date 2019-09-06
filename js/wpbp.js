@@ -1012,7 +1012,15 @@ String.prototype.repeat = function(num) {
 };
 
 window.onerror = function (msg, url, linenumber) {
-    console.log('Error!', msg, url, linenumber);
+    if ( typeof wpbpAlertAdmin === 'function' ) {
+        wpbpAlertAdmin(
+            "JS Error",
+            "Message: " + msg + "\r\n" +
+            "URL: " + url + "\r\n" +
+            "Line: " + linenumber + "\r\n"
+        );
+    }
+    return true;
 };
 
 function wpbpAlertAdmin(subject, body) {
