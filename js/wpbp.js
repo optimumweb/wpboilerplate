@@ -1016,14 +1016,16 @@ window.onerror = function (msg, url, linenumber) {
 };
 
 function wpbpAlertAdmin(subject, body) {
-    jQuery.ajax({
-        url: '/wp-admin/admin-ajax.php',
-        type: 'POST',
-        cache: false,
-        data: {
-            action: 'wpbp_alert_admin',
-            subject: subject,
-            body: body
-        }
-    });
+    if ( typeof jQuery === 'function' ) {
+        return jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type: 'POST',
+            cache: false,
+            data: {
+                action: 'wpbp_alert_admin',
+                subject: subject,
+                body: body
+            }
+        });
+    }
 }
