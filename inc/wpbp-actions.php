@@ -152,6 +152,6 @@ function wpbp_alert_admin()
     $body = $_REQUEST['body'];
     $admin_email = get_option('admin_email');
     $headers  = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= "Content-type: text/plain; charset=UTF-8" . "\r\n";
     return mail($admin_email, $subject, $body, $headers);
 }
