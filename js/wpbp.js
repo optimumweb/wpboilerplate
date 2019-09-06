@@ -1013,12 +1013,7 @@ String.prototype.repeat = function(num) {
 
 window.onerror = function (msg, url, linenumber) {
     if ( typeof wpbpAlertAdmin === 'function' ) {
-        wpbpAlertAdmin(
-            "JS Error",
-            "Message: " + msg + "\r\n" +
-            "URL: " + url + "\r\n" +
-            "Line: " + linenumber + "\r\n"
-        );
+        wpbpAlertAdmin("JS Error", "Message: " + msg + "\r\n" + "URL: " + url + "\r\n" + "Line: " + linenumber + "\r\n");
     }
     return true;
 };
