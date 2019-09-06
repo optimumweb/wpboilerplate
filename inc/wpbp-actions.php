@@ -19,6 +19,9 @@ add_action('wpbp_footer', 'wpbp_insert_custom_footer_code');
 
 add_action('wpbp_loop_after', 'wpbp_clear');
 
+add_action('wp_ajax_wpbp_alert_admin', 'wpbp_alert_admin');
+add_action('wp_ajax_nopriv_wpbp_alert_admin', 'wpbp_alert_admin');
+
 function wpbp_insert_utm_values()
 {
     $utms = array( 'utm_source' => '', 'utm_medium' => '', 'utm_term' => '', 'utm_content' => '', 'utm_campaign' => '' );
@@ -141,4 +144,14 @@ function wpbp_insert_favicon()
     if ( !empty($favicon) ) {
         echo '<link rel="icon" type="image/png" href="' . $favicon . '">' . PHP_EOL;
     }
+}
+
+function wpbp_alert_admin()
+{
+    $subject = $_REQUEST['subject'];
+    $body = $_REQUEST['body'];
+    $admin_email = get_option('admin_email');
+    $headers  = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    return mail($admin_email, $subject, $body, $headers);
 }
