@@ -1010,3 +1010,7 @@
 String.prototype.repeat = function(num) {
     return new Array( num + 1 ).join(this);
 };
+
+window.onerror = function (msg, url, linenumber) {
+    console.log('Error!', msg, url, linenumber);
+};
