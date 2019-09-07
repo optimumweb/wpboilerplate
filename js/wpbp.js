@@ -1011,9 +1011,11 @@ String.prototype.repeat = function(num) {
     return new Array( num + 1 ).join(this);
 };
 
-window.onerror = function (msg, url, linenumber) {
+window.onerror = function (msg, file, linenumber) {
     if ( typeof wpbpAlertAdmin === 'function' ) {
-        wpbpAlertAdmin("JS Error", "Message: " + msg + "\r\n" + "URL: " + url + "\r\n" + "Line: " + linenumber + "\r\n");
+        var subject = "JS Error",
+            body = ["Message: " + msg, "File: " + file, "Line: " + linenumber, "URL: " + window.location.href].join("\r\n");
+        wpbpAlertAdmin(subject, body);
     }
     return true;
 };
