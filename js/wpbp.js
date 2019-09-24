@@ -1013,9 +1013,9 @@ String.prototype.repeat = function(num) {
 
 window.onerror = function (msg, file, linenumber) {
     if ( typeof wpbpAlertAdmin === 'function' ) {
-        var subject = "JS Error",
-            body = ["Message: " + msg, "File: " + file, "Line: " + linenumber, "URL: " + window.location.href].join("\r\n");
-        wpbpAlertAdmin(subject, body);
+        if ( linenumber > 0 ) {
+            wpbpAlertAdmin("JS Error", ["Message: " + msg, "File: " + file, "Line: " + linenumber, "URL: " + window.location.href].join("\r\n"));
+        }
     }
     return true;
 };
