@@ -175,7 +175,7 @@ function wpbp_get_lib($which = null)
             'css'  => THEME_URI . '/style.css'
         ),
         'js-cookie' => array(
-            'js' => TEMPLATE_DIRECTORY . '/lib/js-cookie/js.cookie.min.js',
+            'js' => TEMPLATE_URI . '/lib/js-cookie/js.cookie.min.js',
             'ver' => '2.2.1'
         )
     );
