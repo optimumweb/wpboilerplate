@@ -2,7 +2,6 @@
 
 add_action('init', 'wpbp_register_lib');
 
-
 add_action('wpbp_head', 'wpbp_insert_utm_values');
 add_action('wpbp_head', 'wpbp_insert_optimizely');
 add_action('wpbp_head', 'wpbp_insert_google_analytics');

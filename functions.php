@@ -12,6 +12,7 @@ $required_files = array(
     '/inc/wpbp-cleanup.php',      // cleanup
     '/inc/wpbp-hooks.php',        // hooks
     '/inc/wpbp-actions.php',      // actions
+    '/inc/wpbp-filters.php',      // filters
     '/inc/wpbp-lib.php',          // library
     '/inc/wpbp-enqueue.php',      // takes care of enqueued scripts and stylesheets
     '/inc/wpbp-validation.php',   // form validation tool
