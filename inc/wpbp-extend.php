@@ -176,6 +176,18 @@ if ( !function_exists('wpbp_get_the_excerpt') ) {
 
 }
 
+if ( !function_exists('wpbp_get_posts_by_tag') ) {
+
+    function wpbp_get_posts_by_tag($tag, $args = [], $field = 'name')
+    {
+        if ( $term = get_term_by($field, $tag, 'post_tag') ) {
+            $args = array_merge((array) $args, [ 'tag__in' => $term->term_id ]);
+            return get_posts($args);
+        }
+    }
+
+}
+
 if ( !function_exists('wpbp_error_log') ) {
 
     function wpbp_error_log($message, $notify_admin = false, $echo_in_footer = false)
