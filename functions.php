@@ -1,5 +1,14 @@
 <?php
 
+// Set 'max_execution_time' to 60 minutes in WP Admin, unless default is longer
+if ( is_admin() ) {
+    $wp_admin_max_execution_time = 60*60;
+    $current_max_exection_time = ini_get('max_execution_time');
+    if ( $current_max_exection_time > 0 && $current_max_exection_time < $wp_admin_max_execution_time ) {
+        set_time_limit($wp_admin_max_execution_time);
+    }
+}
+
 if ( !defined('TEMPLATE_DIRECTORY') ) define('TEMPLATE_DIRECTORY', get_template_directory());
 if ( !defined('TEMPLATE_URI') )       define('TEMPLATE_URI',       get_template_directory_uri());
 if ( !defined('THEME_DIRECTORY') )    define('THEME_DIRECTORY',    get_theme_root() . '/' . get_stylesheet());
@@ -42,20 +51,20 @@ $wpbp_options = wpbp_get_theme_options();
 
 function wpbp_setup()
 {
-	load_theme_textdomain('wpbp', TEMPLATE_DIRECTORY . '/lang');
+    load_theme_textdomain('wpbp', TEMPLATE_DIRECTORY . '/lang');
 
-	// tell the TinyMCE editor to use editor-style.css
-	add_editor_style('editor-style.css');
+    // tell the TinyMCE editor to use editor-style.css
+    add_editor_style('editor-style.css');
 
-	// http://codex.wordpress.org/Post_Thumbnails
-	add_theme_support('post-thumbnails');
+    // http://codex.wordpress.org/Post_Thumbnails
+    add_theme_support('post-thumbnails');
 
-	add_theme_support('menus');
+    add_theme_support('menus');
 
-	register_nav_menus(array(
-		'primary_navigation'   => __('Primary Navigation', 'wpbp'),
-		'secondary_navigation' => __('Secondary Navigation', 'wpbp'),
-	));
+    register_nav_menus(array(
+        'primary_navigation'   => __('Primary Navigation', 'wpbp'),
+        'secondary_navigation' => __('Secondary Navigation', 'wpbp'),
+    ));
 }
 add_action('after_setup_theme', 'wpbp_setup');
 
@@ -84,6 +93,3 @@ function wpbp_register_sidebars($sidebars)
 
 // create widget areas: sidebar, footer
 wpbp_register_sidebars(array( 'Sidebar' ));
-
-// Enable shortcodes in widgets
-add_filter('widget_text', 'do_shortcode');

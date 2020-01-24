@@ -2,7 +2,7 @@
 
 global $pagenow;
 
-if ( is_admin() && $pagenow  === 'themes.php' && isset($_GET['activated']) ) {
+if ( is_admin() && $pagenow === 'themes.php' && isset($_GET['activated']) ) {
 
 	// on theme activation make sure there's a Home page
 	// create it if there isn't and set the Home page menu order to -1
