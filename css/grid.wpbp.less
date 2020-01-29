@@ -41,7 +41,7 @@ body {
 }
 
 .colSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
-  (~".@{prefix}grid_@{index}") {
+  ~.@{prefix}grid_@{index} {
     float: left;
     width: @colWidth * @index;
   }
@@ -53,7 +53,7 @@ body {
 // -------------------------
 
 .prefixSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
-  (~".@{prefix}prefix_@{index}") {
+  ~.@{prefix}prefix_@{index} {
     padding-left: @colWidth * @index;
   }
   .prefixSpace(@index - 1, @colWidth, @prefix);
@@ -65,7 +65,7 @@ body {
 // -------------------------
 
 .suffixSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
-  (~".@{prefix}suffix_@{index}") {
+  ~.@{prefix}suffix_@{index} {
     padding-right: @colWidth * @index;
   }
   .suffixSpace(@index - 1, @colWidth, @prefix);
@@ -76,7 +76,7 @@ body {
 // -------------------------
 
 .pushSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
-  (~".@{prefix}push_@{index}") {
+  ~.@{prefix}push_@{index} {
     position: relative;
     left: @colWidth * @index;
   }
@@ -88,7 +88,7 @@ body {
 // -------------------------
 
 .pullSpace (@index, @colWidth, @prefix: ~'') when (@index > 0) {
-  (~".@{prefix}pull_@{index}") {
+  ~.@{prefix}pull_@{index} {
     position: relative;
     left: -@colWidth * @index;
   }
