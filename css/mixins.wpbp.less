@@ -11,7 +11,6 @@
 // --------
 // For clearing floats like a boss h5bp.com/q
 .clearfix {
-  *zoom: 1;
   &:before,
   &:after {
     display: table;
@@ -38,33 +37,6 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-// IE7 inline-block
-// ----------------
-.ie7-inline-block() {
-  *display: inline; /* IE7 inline-block hack */
-  *zoom: 1;
-}
-
-// IE7 likes to collapse whitespace on either side of the inline-block elements.
-// Ems because we're attempting to match the width of a space character. Left
-// version is for form buttons, which typically come after other elements, and
-// right version is for icons, which come before. Applying both is ok, but it will
-// mean that space between those elements will be .6em (~2 space characters) in IE7,
-// instead of the 1 space in other browsers.
-.ie7-restore-left-whitespace() {
-  *margin-left: .3em;
-  &:first-child {
-    *margin-left: 0;
-  }
-}
-
-.ie7-restore-right-whitespace() {
-  *margin-right: .3em;
-  &:last-child {
-    *margin-left: 0;
-  }
 }
 
 // Sizing shortcuts
@@ -397,7 +369,6 @@
     background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-repeat: no-repeat;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
   }
   .radial(@innerColor: #555, @outerColor: #333)  {
     background-color: @outerColor;
@@ -428,29 +399,11 @@
 // COMPONENT MIXINS
 // --------------------------------------------------
 
-// Horizontal dividers
-// -------------------------
-// Dividers (basically an hr) within dropdowns and nav lists
-.nav-divider(@top: #e5e5e5, @bottom: @white) {
-  // IE7 needs a set width since we gave a height. Restricting just
-  // to IE7 to keep the 1px left/right space in other browsers.
-  // It is unclear where IE is getting the extra space that we need
-  // to negative-margin away, but so it goes.
-  *width: 100%;
-  height: 1px;
-  margin: ((@baseLineHeight / 2) - 1) 1px; // 8px 1px
-  *margin: -5px 0 5px;
-  overflow: hidden;
-  background-color: @top;
-  border-bottom: 1px solid @bottom;
-}
-
 // Button backgrounds
 // ------------------
 .buttonBackground(@startColor, @endColor) {
   // gradientBar will set the background to a pleasing blend of these, to support IE<=9
   .gradientBar(@startColor, @endColor);
-  *background-color: @endColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   .reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
