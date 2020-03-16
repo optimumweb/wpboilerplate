@@ -744,7 +744,7 @@
                         $modalBox.trigger('open');
                     } else if ( $this.hasClass('wpbp-modal-close') ) {
                         $modalBox.trigger('close');
-                    } else if ( $target.hasClass('wpbp-modal-box-opened') ) {
+                    } else if ( $modalBox.hasClass('wpbp-modal-box-opened') ) {
                         $modalBox.trigger('close');
                     } else {
                         $modalBox.trigger('open');
