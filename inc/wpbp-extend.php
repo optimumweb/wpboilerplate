@@ -227,6 +227,15 @@ if ( !function_exists('wpbp_error_log') ) {
 
 }
 
+if ( !function_exists('is_login_page') ) {
+
+    function is_login_page()
+    {
+        return isset($GLOBALS['pagenow']) && in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
+    }
+
+}
+
 // the following function requires WPML to be installed and active
 if ( !function_exists('wpbp_wpml_lang_sel') && function_exists('icl_get_languages') ) {
 
