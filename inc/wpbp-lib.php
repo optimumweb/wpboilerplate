@@ -4,8 +4,8 @@ function wpbp_get_lib($which = null)
 {
     $wpbp_lib = array(
         'jquery' => array(
-            'js'   => TEMPLATE_URI . '/lib/jquery/jquery.min.js',
-            'ver'  => '3.3.1'
+            'js'   => TEMPLATE_URI . '/lib/jquery/1.7.2/jquery.js',
+            'ver'  => '1.7.2'
         ),
         'jquery-ui' => array(
             'js'   => TEMPLATE_URI . '/lib/jquery-ui/jquery-ui.min.js',
