@@ -85,8 +85,8 @@ function wpbp_get_lib($which = null)
             'ver'  => '1.4.1'
         ),
         'modernizr' => array(
-            'js'   => TEMPLATE_URI . '/lib/modernizr/modernizr.min.js',
-            'ver'  => '2.6.2'
+            'js'   => TEMPLATE_URI . '/lib/modernizr/2.8.3/modernizr.min.js',
+            'ver'  => '2.8.3'
         ),
         'lesscss' => array(
             'js'   => TEMPLATE_URI . '/lib/less/less.min.js',
