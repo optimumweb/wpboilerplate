@@ -304,42 +304,6 @@
 
     };
 
-    $.fn.center2 = function() {
-
-        return this.each(function() {
-
-            var $this            = $(this),
-                thisWidth        = $this.outerWidth(true),
-                thisHeight       = $this.outerHeight(true),
-                thisOffset       = $this.offset(),
-                thisOffsetLeft   = thisOffset.left,
-                thisOffsetTop    = thisOffset.top,
-                $parent          = $this.offsetParent(),
-                parentOffset     = $parent.offset(),
-                parentOffsetLeft = parentOffset.left,
-                parentOffsetTop  = parentOffset.top,
-                $window          = $(window),
-                windowWidth      = $window.width(),
-                windowHeight     = $window.height(),
-                scrollTop        = $window.scrollTop(),
-                scrollLeft       = $window.scrollLeft();
-
-            var targetOffsetTop  = Math.max( Math.round( ( windowHeight - thisHeight ) / 2 ) + scrollTop, 0),
-                targetOffsetLeft = Math.max( Math.round( ( windowWidth - thisWidth ) / 2 ) + scrollLeft, 0 );
-
-            var offsetTop = targetOffsetTop - parentOffsetTop - thisOffsetTop,
-                offsetLeft = targetOffsetLeft - parentOffsetLeft - thisOffsetLeft;
-
-            $this.css({
-                position: 'absolute',
-                top:      '+=' + offsetTop + 'px',
-                left:     '+=' + offsetLeft + 'px'
-            });
-
-        });
-
-    };
-
 
     /*
      * simpleSlider
@@ -733,7 +697,7 @@
 
                     $blanket.fadeTo(fadeDuration, blanketOpacity, function() {
                         $this.fadeIn(fadeDuration, function() {
-                            $this.trigger('opened').addClass('wpbp-modal-box-opened').center2();
+                            $this.trigger('opened').addClass('wpbp-modal-box-opened').center();
                         });
                     });
                 })
