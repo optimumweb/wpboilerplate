@@ -326,6 +326,13 @@
             var offsetTop = targetOffsetTop - thisOffsetTop + scrollTop,
                 offsetLeft = targetOffsetLeft - thisOffsetLeft + scrollLeft;
 
+            console.log({
+                scrollTop: scrollTop,
+                thisOffsetTop: thisOffsetTop,
+                targetOffsetTop: targetOffsetTop,
+                offsetTop: offsetTop
+            });
+
             $this.css({
                 position: 'absolute',
                 top:      '+=' + offsetTop + 'px',
