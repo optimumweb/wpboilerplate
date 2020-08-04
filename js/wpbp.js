@@ -695,11 +695,10 @@
                 .on('open', function() {
                     var $this = $(this);
 
-                    console.log($this, 'open!');
-
                     $blanket.fadeTo(fadeDuration, blanketOpacity, function() {
                         $this.fadeIn(fadeDuration, function() {
                             $this.trigger('opened').addClass('wpbp-modal-box-opened');
+                            console.log($this, 'done...');
                         });
                     });
                 })
