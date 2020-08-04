@@ -695,6 +695,8 @@
                 .on('open', function() {
                     var $this = $(this);
 
+                    console.log($this, 'open!');
+
                     $blanket.fadeTo(fadeDuration, blanketOpacity, function() {
                         $this.fadeIn(fadeDuration, function() {
                             $this.trigger('opened').addClass('wpbp-modal-box-opened');
@@ -736,7 +738,6 @@
                         $modalBox.trigger('close');
                     } else {
                         $modalBox.trigger('open');
-                        console.log($modalBox, 'open!');
                     }
                 }
 
