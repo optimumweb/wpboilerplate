@@ -673,57 +673,45 @@
             var fadeDuration   = 250,
                 blanketOpacity = 0.5;
 
-            var $blanket    = $('#wpbp-modal-blanket'),
-                $anchors    = $('a[href^="#"]'),
-                $modalBoxes = $('.wpbp-modal-box');
+            var $this       = $(this),
+                $blanket    = $this.find('#wpbp-modal-blanket'),
+                $anchors    = $this.find('a[href^="#"]'),
+                $modalBoxes = $this.find('.wpbp-modal-box');
 
             $anchors.each(function() {
-
                 var $this = $(this),
                     href  = $this.attr('href');
 
                 if ( href !== '#' ) {
-
                     var $href = $(href);
 
                     if ( $href.length === 1 && $href.hasClass('wpbp-modal-box') ) {
                         $this.data('wpbp-target-modal-box', href).addClass('wpbp-modal-trigger');
                     }
-
                 }
-
             });
 
-            $modalBoxes.on('open', function() {
+            $modalBoxes
+                .on('open', function() {
+                    var $this = $(this);
 
-                var $this = $(this);
-
-                $blanket.fadeTo(fadeDuration, blanketOpacity, function() {
-
-                    $this.fadeIn(fadeDuration, function() {
-
-                        $this.trigger('opened').addClass('wpbp-modal-box-opened');
-
+                    $blanket.fadeTo(fadeDuration, blanketOpacity, function() {
+                        $this.fadeIn(fadeDuration, function() {
+                            $this.trigger('opened').addClass('wpbp-modal-box-opened');
+                        });
                     });
+                })
+                .on('close', function() {
+                    var $this = $(this);
 
-                });
+                    $this.fadeOut(fadeDuration, function() {
+                        $blanket.fadeOut(fadeDuration);
+                        $this.trigger('closed').removeClass('wpbp-modal-box-opened');
+                    });
+                })
+                .center();
 
-            }).on('close', function() {
-
-                var $this = $(this);
-
-                $this.fadeOut(fadeDuration, function() {
-
-                    $blanket.fadeOut(fadeDuration);
-
-                    $this.trigger('closed').removeClass('wpbp-modal-box-opened');
-
-                });
-
-            }).center();
-
-            $('.wpbp-modal-trigger').click(function(e) {
-
+            $this.on('click', '.wpbp-modal-trigger', function(e) {
                 e.preventDefault();
 
                 var $this     = $(this),
