@@ -21,8 +21,8 @@
 
     <div id="wpbp-modal-blanket"></div>
 
-<?php wp_footer(); ?>
-<?php wpbp_footer(); ?>
+    <?php wp_footer(); ?>
+    <?php wpbp_footer(); ?>
 
 </body>
 </html>
