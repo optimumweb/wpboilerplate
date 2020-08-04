@@ -714,8 +714,6 @@
             $this.on('click', '.wpbp-modal-trigger', function(e) {
                 e.preventDefault();
 
-                console.log('wpbp-modal-trigger', $(this));
-
                 var $this     = $(this),
                     target    = $this.data('wpbp-target-modal-box'),
                     href      = $this.attr('href'),
@@ -728,6 +726,8 @@
                 } else {
                     $modalBox = $this.parents('.wpbp-modal-box').first();
                 }
+
+                console.log('wpbp-modal-trigger', $modalBox);
 
                 if ( $modalBox !== null && $modalBox.length > 0 && $modalBox.hasClass('wpbp-modal-box') ) {
                     if ( $this.hasClass('wpbp-modal-open') ) {
