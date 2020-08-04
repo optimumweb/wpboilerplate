@@ -308,30 +308,27 @@
 
         return this.each(function() {
 
-            var $this          = $(this),
-                thisWidth      = $this.outerWidth(true),
-                thisHeight     = $this.outerHeight(true),
-                thisOffset     = $this.offset(),
-                thisOffsetLeft = thisOffset.left,
-                thisOffsetTop  = thisOffset.top,
-                $window        = $(window),
-                windowWidth    = $window.width(),
-                windowHeight   = $window.height(),
-                scrollTop      = $window.scrollTop(),
-                scrollLeft     = $window.scrollLeft();
+            var $this            = $(this),
+                thisWidth        = $this.outerWidth(true),
+                thisHeight       = $this.outerHeight(true),
+                thisOffset       = $this.offset(),
+                thisOffsetLeft   = thisOffset.left,
+                thisOffsetTop    = thisOffset.top,
+                $parent          = $this.offsetParent(),
+                parentOffset     = $parent.offset(),
+                parentOffsetLeft = parentOffset.left,
+                parentOffsetTop  = parentOffset.top,
+                $window          = $(window),
+                windowWidth      = $window.width(),
+                windowHeight     = $window.height(),
+                scrollTop        = $window.scrollTop(),
+                scrollLeft       = $window.scrollLeft();
 
             var targetOffsetTop  = Math.max( Math.round( ( windowHeight - thisHeight ) / 2 ) + scrollTop, 0),
                 targetOffsetLeft = Math.max( Math.round( ( windowWidth - thisWidth ) / 2 ) + scrollLeft, 0 );
 
-            var offsetTop = targetOffsetTop - thisOffsetTop,
-                offsetLeft = targetOffsetLeft - thisOffsetLeft;
-
-            console.log({
-                scrollTop: scrollTop,
-                thisOffsetTop: thisOffsetTop,
-                targetOffsetTop: targetOffsetTop,
-                offsetTop: offsetTop
-            });
+            var offsetTop = targetOffsetTop - parentOffsetTop,
+                offsetLeft = targetOffsetLeft - parentOffsetLeft;
 
             $this.css({
                 position: 'absolute',
