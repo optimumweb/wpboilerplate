@@ -327,8 +327,8 @@
 
             $this.css({
                 position: 'absolute',
-                top:      offsetTop + 'px',
-                left:     offsetLeft + 'px'
+                top:      '+=' + offsetTop + 'px',
+                left:     '+=' + offsetLeft + 'px'
             });
 
         });
