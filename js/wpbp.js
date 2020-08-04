@@ -304,6 +304,37 @@
 
     };
 
+    $.fn.center2 = function() {
+
+        return this.each(function() {
+
+            var $this          = $(this),
+                thisWidth      = $this.outerWidth(true),
+                thisHeight     = $this.outerHeight(true),
+                thisOffset     = $this.offset(),
+                thisOffsetLeft = thisOffset.left,
+                thisOffsetTop  = thisOffset.top,
+                $window        = $(window),
+                windowWidth    = $window.width(),
+                windowHeight   = $window.height(),
+                scrollTop      = $window.scrollTop();
+
+            var targetOffsetTop  = Math.max( Math.round( ( windowHeight - thisHeight ) / 2 ) + scrollTop, 0),
+                targetOffsetLeft = Math.max( Math.round( ( windowWidth - thisWidth ) / 2 ), 0 );
+
+            var offsetTop = targetOffsetTop - thisOffsetTop,
+                offsetLeft = targetOffsetLeft - thisOffsetLeft;
+
+            $this.css({
+                position: 'absolute',
+                top:      offsetTop + 'px',
+                left:     offsetLeft + 'px'
+            });
+
+        });
+
+    };
+
 
     /*
      * simpleSlider
