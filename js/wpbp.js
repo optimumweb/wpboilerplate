@@ -697,8 +697,7 @@
 
                     $blanket.fadeTo(fadeDuration, blanketOpacity, function() {
                         $this.fadeIn(fadeDuration, function() {
-                            $this.trigger('opened').addClass('wpbp-modal-box-opened');
-                            console.log($this, 'done...');
+                            $this.trigger('opened').addClass('wpbp-modal-box-opened').center();
                         });
                     });
                 })
@@ -709,8 +708,7 @@
                         $blanket.fadeOut(fadeDuration);
                         $this.trigger('closed').removeClass('wpbp-modal-box-opened');
                     });
-                })
-                .center();
+                });
 
             $this.on('click', '.wpbp-modal-trigger', function(e) {
                 e.preventDefault();
