@@ -320,11 +320,11 @@
                 scrollTop      = $window.scrollTop(),
                 scrollLeft     = $window.scrollLeft();
 
-            var targetOffsetTop  = Math.max( Math.round( ( windowHeight - thisHeight ) / 2 ), 0),
-                targetOffsetLeft = Math.max( Math.round( ( windowWidth - thisWidth ) / 2 ), 0 );
+            var targetOffsetTop  = Math.max( Math.round( ( windowHeight - thisHeight ) / 2 ) + scrollTop, 0),
+                targetOffsetLeft = Math.max( Math.round( ( windowWidth - thisWidth ) / 2 ) + scrollLeft, 0 );
 
-            var offsetTop = targetOffsetTop - thisOffsetTop + scrollTop,
-                offsetLeft = targetOffsetLeft - thisOffsetLeft + scrollLeft;
+            var offsetTop = targetOffsetTop - thisOffsetTop,
+                offsetLeft = targetOffsetLeft - thisOffsetLeft;
 
             console.log({
                 scrollTop: scrollTop,
