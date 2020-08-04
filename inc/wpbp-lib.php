@@ -169,7 +169,7 @@ function wpbp_get_lib($which = null)
             'js'   => TEMPLATE_URI . '/js/wpbp.js',
             'css'  => TEMPLATE_URI . '/css/wpbp.css',
             'deps' => array('jquery'),
-            'ver'  => '3.1.2'
+            'ver'  => '3.1.3'
         ),
         'wp-meta' => array(
             'css'  => THEME_URI . '/style.css'
