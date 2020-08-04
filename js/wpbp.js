@@ -327,8 +327,8 @@
             var targetOffsetTop  = Math.max( Math.round( ( windowHeight - thisHeight ) / 2 ) + scrollTop, 0),
                 targetOffsetLeft = Math.max( Math.round( ( windowWidth - thisWidth ) / 2 ) + scrollLeft, 0 );
 
-            var offsetTop = targetOffsetTop - parentOffsetTop,
-                offsetLeft = targetOffsetLeft - parentOffsetLeft;
+            var offsetTop = targetOffsetTop - parentOffsetTop - thisOffsetTop,
+                offsetLeft = targetOffsetLeft - parentOffsetLeft - thisOffsetLeft;
 
             $this.css({
                 position: 'absolute',
