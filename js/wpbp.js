@@ -727,8 +727,6 @@
                     $modalBox = $this.parents('.wpbp-modal-box').first();
                 }
 
-                console.log('wpbp-modal-trigger', $modalBox);
-
                 if ( $modalBox !== null && $modalBox.length > 0 && $modalBox.hasClass('wpbp-modal-box') ) {
                     if ( $this.hasClass('wpbp-modal-open') ) {
                         $modalBox.trigger('open');
@@ -738,6 +736,7 @@
                         $modalBox.trigger('close');
                     } else {
                         $modalBox.trigger('open');
+                        console.log($modalBox, 'open!');
                     }
                 }
 
