@@ -714,6 +714,8 @@
             $this.on('click', '.wpbp-modal-trigger', function(e) {
                 e.preventDefault();
 
+                console.log('wpbp-modal-trigger', $(this));
+
                 var $this     = $(this),
                     target    = $this.data('wpbp-target-modal-box'),
                     href      = $this.attr('href'),
