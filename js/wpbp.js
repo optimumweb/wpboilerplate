@@ -697,7 +697,7 @@
 
                     $blanket.fadeTo(fadeDuration, blanketOpacity, function() {
                         $this.fadeIn(fadeDuration, function() {
-                            $this.trigger('opened').addClass('wpbp-modal-box-opened').center();
+                            $this.trigger('opened').addClass('wpbp-modal-box-opened');
                         });
                     });
                 })
