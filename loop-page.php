@@ -1,7 +1,7 @@
 <?php /* Start loop */ ?>
 <?php while ( have_posts() ) : the_post(); ?>
 	<?php wpbp_post_before(); ?>
-	<article id="page-<?php the_ID(); ?>" class="page page-<?php echo get_post_field('page_name'); ?>">
+	<article id="page-<?php the_ID(); ?>" class="page page-<?php echo get_post_field('post_name'); ?>">
 		<?php wpbp_post_inside_before(); ?>
         <?php if ( !get_post_meta(get_the_ID(), 'hide_the_title', true) ) : ?>
 			<header class="page-header">
