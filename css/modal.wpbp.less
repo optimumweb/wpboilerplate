@@ -14,13 +14,14 @@
 .wpbp-modal-box {
     display: none;
     position: fixed;
-    top: 0;
+    top: 50%;
     left: 0;
     right: 0;
     z-index: 9999999;
     max-width: 95%;
     max-height: calc(100vh - 150px);
-    margin: 150px auto;
+    margin: 0 auto;
+    .translate(0, -50%);
 
     &.wpbp-modal-box-small {
         width: 30rem;
