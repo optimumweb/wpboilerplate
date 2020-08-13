@@ -64,10 +64,6 @@ function wpbp_register_lib()
 
 function wpbp_register_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
 {
-    if ( isset($_GET['debug']) && $handle === 'wpbp' ) {
-        var_dump($handle, $src, $deps, $ver, $in_footer);
-        exit();
-    }
 	wp_deregister_script($handle);
 	wp_register_script($handle, $src, $deps, $ver, $in_footer);
 }
