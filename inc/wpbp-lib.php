@@ -32,41 +32,41 @@ function wpbp_get_lib($which = null)
         ),
         'scrollTo' => array(
             'js'   => TEMPLATE_URI . '/lib/scrollTo/jquery.scrollTo.min.js',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
             'ver'  => '1.4.2'
         ),
         'cycle' => array(
             'js'   => TEMPLATE_URI . '/lib/cycle/jquery.cycle.min.js',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
             'ver'  => '2.9998'
         ),
         'powerslide' => array(
             'js'   => TEMPLATE_URI . '/lib/powerslide/js/powerslide.min.js',
             'css'  => TEMPLATE_URI . '/lib/powerslide/css/powerslide.css',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
             'ver'  => '1.1'
         ),
         'lightbox' => array(
             'js'   => TEMPLATE_URI . '/lib/lightbox/js/lightbox.min.js',
             'css'  => TEMPLATE_URI . '/lib/lightbox/css/lightbox.min.css',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
             'ver'  => '2.51'
         ),
         'hoverIntent' => array(
             'js'   => TEMPLATE_URI . '/lib/hoverIntent/jquery.hoverIntent.min.js',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
             'ver'  => '6.0'
         ),
         'flexslider' => array(
             'js'   => TEMPLATE_URI . '/lib/flexslider/jquery.flexslider.min.js',
             'css'  => TEMPLATE_URI . '/lib/flexslider/flexslider.css',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
             'ver'  => '2.1'
         ),
         'bootstrap' => array(
             'js'   => TEMPLATE_URI . '/lib/bootstrap/js/bootstrap.min.js',
             'css'  => TEMPLATE_URI . '/lib/bootstrap/css/bootstrap.min.css',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
             'ver'  => '2.0.4'
         ),
         'bootstrap-responsive' => array(
@@ -123,13 +123,13 @@ function wpbp_get_lib($which = null)
         'animatedElement' => array(
             'js'   => TEMPLATE_URI . '/lib/animated-element/jquery.animatedElement.js',
             'css'  => TEMPLATE_URI . '/lib/animated-element/animatedElement.css',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
             'ver'  => '1.0'
         ),
         'magnific-popup' => array(
             'js'   => TEMPLATE_URI . '/lib/magnific-popup/jquery.magnific-popup.min.js',
             'css'  => TEMPLATE_URI . '/lib/magnific-popup/magnific-popup.css',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
             'ver'  => '1.0.0'
         ),
         'noUiSlider' => array(
@@ -151,12 +151,12 @@ function wpbp_get_lib($which = null)
                 TEMPLATE_URI . '/lib/owl-carousel/owl.theme.css'
             ),
             'ver'  => '1.3.3',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
         ),
         'parallax.js' => array(
             'js'   => TEMPLATE_URI . '/lib/parallax.js/parallax.min.js',
             'ver'  => '1.4.2',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
         ),
         'fontawesome' => array(
             'css' => TEMPLATE_URI . '/lib/fontawesome/css/font-awesome.min.css',
@@ -168,7 +168,7 @@ function wpbp_get_lib($which = null)
         'wpbp' => array(
             'js'   => TEMPLATE_URI . '/js/wpbp.js',
             'css'  => TEMPLATE_URI . '/css/wpbp.css',
-            'deps' => array('jquery'),
+            'deps' => array( 'jquery' ),
             'ver'  => '3.1.5'
         ),
         'wp-meta' => array(

@@ -6,7 +6,7 @@ function wpbp_register_lib()
 
         $wpbp_libs = wpbp_get_lib();
 
-        if ( !empty($wpbp_libs) ) {
+        if ( is_array($wpbp_libs) && count($wpbp_libs) > 0 ) {
 
             foreach ( $wpbp_libs as $handle => $lib ) {
 
@@ -43,7 +43,7 @@ function wpbp_register_lib()
 
         if ( $js_files = wpbp_get_option('js_files') ) {
             $js_files = preg_split('/\r\n|\r|\n/', $js_files);
-            if ( !empty($js_files) ) {
+            if ( is_array($js_files) && count($js_files) > 0 ) {
                 foreach ( $js_files as $js_file ) {
                     wpbp_add_script( pathinfo($js_file, PATHINFO_FILENAME), $js_file );
                 }
@@ -52,7 +52,7 @@ function wpbp_register_lib()
 
         if ( $css_files = wpbp_get_option('css_files') ) {
             $css_files = preg_split('/\r\n|\r|\n/', $css_files);
-            if ( !empty($css_files) ) {
+            if ( is_array($css_files) && count($css_files) ) {
                 foreach ( $css_files as $css_file ) {
                     wpbp_add_style( pathinfo($css_file, PATHINFO_FILENAME), $css_file );
                 }
