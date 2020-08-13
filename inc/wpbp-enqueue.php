@@ -14,7 +14,7 @@ function wpbp_register_lib()
                     'js'        => null,
                     'css'       => null,
                     'deps'      => array(),
-                    'ver'       => false,
+                    'ver'       => null,
                     'in_footer' => false
                 ), $lib);
 
@@ -34,7 +34,7 @@ function wpbp_register_lib()
                             wpbp_register_style($handle . "_" . $key, $css);
                         }
                     } else {
-                        wpbp_register_style($handle, $lib['css']);
+                        wpbp_register_style($handle, $lib['css'], $lib['deps'], $lib['ver']);
                     }
                 }
             }
@@ -76,8 +76,13 @@ function wpbp_add_script($handle, $src = false, $deps = array(), $ver = false, $
 
 function wpbp_register_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
 {
+    if ( isset($_GET['debug']) && $handle === 'wpbp' ) {
+        var_dump($handle, $src, $deps, $ver, $media);
+        exit();
+    }
 	wp_deregister_style($handle);
-	wp_register_style($handle, $src, $deps, $ver, $media);
+    wp_register_style($handle, $src);
+	//wp_register_style($handle, $src, $deps, $ver, $media);
 }
 
 function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
