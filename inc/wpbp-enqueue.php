@@ -31,10 +31,10 @@ function wpbp_register_lib()
                 if ( !empty($lib['css']) ) {
                     if ( is_array($lib['css']) ) {
                         foreach ( $lib['css'] as $key => $css ) {
-                            wpbp_register_style($handle . "_" . $key, $css, $lib['deps'], $lib['ver']);
+                            wpbp_register_style($handle . "_" . $key, $css);
                         }
                     } else {
-                        wpbp_register_style($handle, $lib['css'], $lib['deps'], $lib['ver']);
+                        wpbp_register_style($handle, $lib['css']);
                     }
                 }
             }
