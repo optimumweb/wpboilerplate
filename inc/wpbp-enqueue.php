@@ -34,7 +34,7 @@ function wpbp_register_lib()
                             wpbp_register_style($handle . "_" . $key, $css);
                         }
                     } else {
-                        wpbp_register_style($handle, $lib['css'], $lib['deps'], $lib['ver']);
+                        wpbp_register_style($handle, $lib['css'], array(), $lib['ver']);
                     }
                 }
             }
@@ -64,11 +64,6 @@ function wpbp_register_lib()
 
 function wpbp_register_script($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
 {
-    if ( is_array($deps) && count($deps) > 0 ) {
-        foreach ( $deps as &$dep ) {
-            //if ( !wp_script_is($handle, 'registered') ) unset($dep);
-        }
-    }
 	wp_deregister_script($handle);
 	wp_register_script($handle, $src, $deps, $ver, $in_footer);
 }
@@ -81,14 +76,8 @@ function wpbp_add_script($handle, $src = false, $deps = array(), $ver = false, $
 
 function wpbp_register_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
 {
-    if ( is_array($deps) && count($deps) > 0 ) {
-        foreach ( $deps as &$dep ) {
-            //if ( !wp_style_is($handle, 'registered') ) unset($dep);
-        }
-    }
 	wp_deregister_style($handle);
-    wp_register_style($handle, $src);
-	//wp_register_style($handle, $src, $deps, $ver, $media);
+	wp_register_style($handle, $src, $deps, $ver, $media);
 }
 
 function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
