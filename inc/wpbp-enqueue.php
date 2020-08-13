@@ -30,12 +30,11 @@ function wpbp_register_lib()
                             }
                         }
 
-                        if ( is_array($js['src']) ) {
-                            foreach ( $js['src'] as $key => $src ) {
-                                wpbp_register_script($handle . "_" . $key, $src, $js['deps'], $js['ver'], $js['in_footer']);
-                            }
-                        } else {
-                            wpbp_register_script($handle, $js['src'], $js['deps'], $js['ver'], $js['in_footer']);
+                        $js['src'] = is_array($js['src']) ? $js['src'] : [ $js['src'] ];
+
+                        foreach ( $js['src'] as $key => $src ) {
+                            $_handle = count($js['src']) > 1 ? $handle . '_' . md5($src) : $handle;
+                            wpbp_register_script($_handle, $src, $js['deps'], $js['ver'], $js['in_footer']);
                         }
 
                     }
@@ -54,12 +53,11 @@ function wpbp_register_lib()
                             }
                         }
 
-                        if ( is_array($css['src']) ) {
-                            foreach ( $css['src'] as $key => $src ) {
-                                wpbp_register_style($handle . "_" . $key, $src, $css['deps'], $css['ver']);
-                            }
-                        } else {
-                            wpbp_register_style($handle, $css['src'], $css['deps'], $css['ver']);
+                        $css['src'] = is_array($css['src']) ? $css['src'] : [ $css['src'] ];
+
+                        foreach ( $css['src'] as $key => $src ) {
+                            $_handle = count($css['src']) > 1 ? $handle . '_' . md5($src) : $handle;
+                            wpbp_register_style($_handle, $src, $css['deps'], $css['ver']);
                         }
 
                     }
