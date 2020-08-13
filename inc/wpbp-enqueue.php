@@ -66,7 +66,7 @@ function wpbp_register_script($handle, $src = false, $deps = array(), $ver = fal
 {
     if ( is_array($deps) && count($deps) > 0 ) {
         foreach ( $deps as &$dep ) {
-            if ( !wp_script_is($handle, 'registered') ) unset($dep);
+            //if ( !wp_script_is($handle, 'registered') ) unset($dep);
         }
     }
 	wp_deregister_script($handle);
@@ -83,12 +83,12 @@ function wpbp_register_style($handle, $src = false, $deps = array(), $ver = fals
 {
     if ( is_array($deps) && count($deps) > 0 ) {
         foreach ( $deps as &$dep ) {
-            if ( !wp_style_is($handle, 'registered') ) unset($dep);
+            //if ( !wp_style_is($handle, 'registered') ) unset($dep);
         }
     }
 	wp_deregister_style($handle);
-    //wp_register_style($handle, $src);
-	wp_register_style($handle, $src, $deps, $ver, $media);
+    wp_register_style($handle, $src);
+	//wp_register_style($handle, $src, $deps, $ver, $media);
 }
 
 function wpbp_add_style($handle, $src = false, $deps = array(), $ver = false, $media = 'all')
