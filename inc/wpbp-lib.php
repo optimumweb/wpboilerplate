@@ -3,6 +3,15 @@
 function wpbp_get_lib($which = null)
 {
     $wpbp_lib = array(
+        'default' => array(
+            'css'  => TEMPLATE_URI . '/lib/wpbp/css/default.css'
+        ),
+        'wpbp' => array(
+            'js'   => TEMPLATE_URI . '/js/wpbp.js',
+            'css'  => TEMPLATE_URI . '/css/wpbp.css',
+            'deps' => array( 'jquery' ),
+            'ver'  => '3.1.5'
+        ),
         'jquery' => array(
             'js'   => TEMPLATE_URI . '/lib/jquery/jquery.min.js',
             'ver'  => '3.3.1'
@@ -161,15 +170,6 @@ function wpbp_get_lib($which = null)
         'fontawesome' => array(
             'css' => TEMPLATE_URI . '/lib/fontawesome/css/font-awesome.min.css',
             'ver' => '4.7.0'
-        ),
-        'default' => array(
-            'css'  => TEMPLATE_URI . '/lib/wpbp/css/default.css'
-        ),
-        'wpbp' => array(
-            'js'   => TEMPLATE_URI . '/js/wpbp.js',
-            'css'  => TEMPLATE_URI . '/css/wpbp.css',
-            'deps' => array( 'jquery' ),
-            'ver'  => '3.1.5'
         ),
         'wp-meta' => array(
             'css'  => THEME_URI . '/style.css'
