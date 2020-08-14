@@ -2,8 +2,6 @@
 
 function wpbp_register_lib()
 {
-    global $wpbp_debug;
-
 	if ( !is_admin() ) {
 
         $wpbp_libs = wpbp_get_lib();
@@ -36,7 +34,6 @@ function wpbp_register_lib()
 
                         foreach ( $js['src'] as $key => $src ) {
                             $_handle = count($js['src']) > 1 ? $handle . '_' . md5($src) : $handle;
-                            $wpbp_debug[] = compact('_handle', 'src');
                             wpbp_register_script($_handle, $src, $js['deps'], $js['ver'], $js['in_footer']);
                         }
 
