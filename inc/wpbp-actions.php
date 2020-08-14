@@ -15,6 +15,7 @@ add_action('wpbp_head', 'wpbp_insert_post_js');
 add_action('wpbp_footer', 'wpbp_insert_google_remarketing_tag');
 add_action('wpbp_footer', 'wpbp_insert_custom_js');
 add_action('wpbp_footer', 'wpbp_insert_custom_footer_code');
+add_action('wpbp_footer', 'wpbp_debug_dump');
 
 add_action('wpbp_loop_after', 'wpbp_clear');
 
@@ -153,4 +154,15 @@ function wpbp_alert_admin()
     $headers  = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type: text/plain; charset=UTF-8" . "\r\n";
     return mail($admin_email, $subject, $body, $headers);
+}
+
+function wpbp_debug_dump()
+{
+    global $wpbp_debug;
+
+    if ( !empty($wpbp_debug) ) {
+        echo '<!-- wpbp_debug: ' . PHP_EOL;
+        var_dump($wpbp_debug);
+        echo '-->' . PHP_EOL;
+    }
 }

@@ -1,5 +1,7 @@
 <?php
 
+$wpbp_debug = [];
+
 // Set 'max_execution_time' to 60 minutes in WP Admin, unless default is longer
 if ( is_admin() ) {
     $wp_admin_max_execution_time = 60*60;
