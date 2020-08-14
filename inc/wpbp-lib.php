@@ -16,7 +16,7 @@ function wpbp_get_lib($which = null)
             'css' => [
                 'src' => TEMPLATE_URI . '/css/wpbp.css'
             ],
-            'ver' => '3.1.5'
+            'ver' => '3.1.6'
         ],
         'jquery' => [
             'js' => [
