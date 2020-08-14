@@ -125,8 +125,9 @@ function wpbp_enqueue_lib($handles = null)
     foreach ( $handles as $handle ) {
         if ( isset($lib[$handle]) ) {
             if ( isset($lib[$handle]['js']) ) {
-                if ( is_array($lib[$handle]['js']) ) {
-                    foreach ( $lib[$handle]['js'] as $key => $js ) {
+                $js = $lib[$handle]['js'];
+                if ( is_array($js['src']) ) {
+                    foreach ( $js['src'] as $key => $src ) {
                         wp_enqueue_script($handle . "_" . $key);
                     }
                 } else {
@@ -134,8 +135,9 @@ function wpbp_enqueue_lib($handles = null)
                 }
             }
             if ( isset($lib[$handle]['css']) ) {
-                if ( is_array($lib[$handle]['css']) ) {
-                    foreach ( $lib[$handle]['css'] as $key => $css ) {
+                $css = $lib[$handle]['css'];
+                if ( is_array($css['src']) ) {
+                    foreach ( $css['src'] as $key => $src ) {
                         wp_enqueue_style($handle . "_" . $key);
                     }
                 } else {
