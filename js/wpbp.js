@@ -713,9 +713,9 @@
             $this.on('click', '.wpbp-modal-trigger', function(e) {
                 e.preventDefault();
 
-                var $this     = $(this),
-                    target    = $this.data('wpbp-target-modal-box'),
-                    href      = $this.attr('href'),
+                var $trigger  = $(this),
+                    target    = $trigger.data('wpbp-target-modal-box'),
+                    href      = $trigger.attr('href'),
                     $modalBox = null;
 
                 if ( typeof target !== 'undefined' ) {
@@ -723,13 +723,15 @@
                 } else if ( typeof href !== 'undefined' && href !== '#' ) {
                     $modalBox = $(href);
                 } else {
-                    $modalBox = $this.parents('.wpbp-modal-box').first();
+                    $modalBox = $trigger.parents('.wpbp-modal-box').first();
                 }
 
+                console.log($trigger, $modalBox);
+
                 if ( $modalBox !== null && $modalBox.length > 0 && $modalBox.hasClass('wpbp-modal-box') ) {
-                    if ( $this.hasClass('wpbp-modal-open') ) {
+                    if ( $trigger.hasClass('wpbp-modal-open') ) {
                         $modalBox.trigger('open');
-                    } else if ( $this.hasClass('wpbp-modal-close') ) {
+                    } else if ( $trigger.hasClass('wpbp-modal-close') ) {
                         $modalBox.trigger('close');
                     } else if ( $modalBox.hasClass('wpbp-modal-box-opened') ) {
                         $modalBox.trigger('close');
