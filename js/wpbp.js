@@ -726,8 +726,6 @@
                     $modalBox = $trigger.parents('.wpbp-modal-box').first();
                 }
 
-                console.log($trigger, $modalBox);
-
                 if ( $modalBox !== null && $modalBox.length > 0 && $modalBox.hasClass('wpbp-modal-box') ) {
                     if ( $trigger.hasClass('wpbp-modal-open') ) {
                         $modalBox.trigger('open');
