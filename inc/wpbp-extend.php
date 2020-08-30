@@ -239,13 +239,13 @@ if ( !function_exists('is_login_page') ) {
 // the following function requires WPML to be installed and active
 if ( !function_exists('wpbp_wpml_lang_sel') && function_exists('icl_get_languages') ) {
 
-    function wpbp_wpml_lang_sel()
+    function wpbp_wpml_lang_sel($display = 'native_name')
     {
         $languages = icl_get_languages('skip_missing=1&orderby=code');
         echo '<ul class="menu lang-sel">';
         if ( is_array($languages) && count($languages) > 1 ) {
             foreach( $languages as $lang ) {
-                echo '<li id="lang-' . $lang['language_code'] . '"' . ( $lang['active'] ? ' class="current-menu-item"' : '' ) . '><a' . ( $lang['active'] ? '' : ' rel="alternate"' ) . ' href="' . $lang['url'] . '" hreflang="' . $lang['language_code'] . '">' . $lang['native_name'] . '</a></li>';
+                echo '<li id="lang-' . $lang['language_code'] . '"' . ( $lang['active'] ? ' class="current-menu-item"' : '' ) . '><a' . ( $lang['active'] ? '' : ' rel="alternate"' ) . ' href="' . $lang['url'] . '" hreflang="' . $lang['language_code'] . '">' . $lang[$display] . '</a></li>';
             }
         }
         else {
