@@ -1,5 +1,5 @@
 <?php if ( !empty($site_id) ) : ?>
-<script type="text/javascript">
+<script>
     var _gauges = _gauges || [];
     (function() {
         var t   = document.createElement('script');

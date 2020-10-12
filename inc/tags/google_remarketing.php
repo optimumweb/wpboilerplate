@@ -3,14 +3,14 @@
 <!--------------------------------------------------
 Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
 --------------------------------------------------->
-<script type="text/javascript">
+<script>
     /* <![CDATA[ */
     var google_conversion_id = <?php echo $google_remarketing_id; ?>;
     var google_custom_params = window.google_tag_params;
     var google_remarketing_only = true;
     /* ]]> */
 </script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+<script src="//www.googleadservices.com/pagead/conversion.js">
 </script>
 <noscript>
     <div style="display:inline;">

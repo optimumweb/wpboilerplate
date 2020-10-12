@@ -111,7 +111,7 @@ function wpbp_insert_custom_js()
     $custom_js = wpbp_get_option('custom_js');
 
     if ( !empty($custom_js) ) {
-        echo '<script type="text/javascript">'.$custom_js.'</script>' . PHP_EOL;
+        echo '<script>'.$custom_js.'</script>' . PHP_EOL;
     }
 }
 
@@ -121,7 +121,7 @@ function wpbp_insert_post_js()
     $post_js = get_post_meta($post_ID, 'js', true);
 
     if ( !empty($post_js) ) {
-        echo '<script type="text/javascript">'.$post_js.'</script>' . PHP_EOL;
+        echo '<script>'.$post_js.'</script>' . PHP_EOL;
     }
 }
 
