@@ -12,7 +12,7 @@
                     </hgroup>
                 </div>
                 <div class="grid_8 text-right mobile-center">
-                    <nav id="main-nav" role="navigation">
+                    <nav id="main-nav">
                         <?php wp_nav_menu(array( 'theme_location' => 'primary_navigation' )); ?>
                     </nav>
                 </div>
