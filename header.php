@@ -2,7 +2,7 @@
 	<?php wpbp_wrap_before(); ?>
 	<div id="wrap" role="document">
 		<?php wpbp_header_before(); ?>
-		<header id="header" role="banner">
+		<header id="header">
 			<?php wpbp_header_inside_before(); ?>
             <div class="<?php wpbp_container_class(); ?>">
                 <div class="grid_4 mobile-center">
