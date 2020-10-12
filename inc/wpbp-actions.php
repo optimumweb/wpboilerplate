@@ -102,7 +102,7 @@ function wpbp_insert_custom_css()
     $custom_css = wpbp_get_option('custom_css');
 
     if ( !empty($custom_css) ) {
-        echo '<style type="text/css">'.$custom_css.'</style>' . PHP_EOL;
+        echo '<style>'.$custom_css.'</style>' . PHP_EOL;
     }
 }
 
