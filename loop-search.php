@@ -20,9 +20,9 @@
 				<span class="post-author byline author vcard"><?php _e('by', 'wpbp'); ?> <?php the_author_posts_link(); ?></span>
 			</div>
 		</header>
-		<section class="post-content">
+		<div class="post-content">
 			<?php the_excerpt(); ?>
-		</section>
+		</div>
 		<footer class="post-footer">
 			<p class="post-tags"><?php the_tags(); ?></p>
 		</footer>

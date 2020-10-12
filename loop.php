@@ -27,13 +27,13 @@
 				</a>
 			</div>
         <?php endif; ?>
-		<section class="post-content">
+		<div class="post-content">
 			<?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search ?>
 				<?php the_excerpt(); ?>
 			<?php else : ?>
 				<?php the_content(); ?>
 			<?php endif; ?>
-		</section>
+		</div>
 		<footer class="post-footer">
 			<p class="post-tags"><?php the_tags(); ?></p>
 		</footer>

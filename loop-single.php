@@ -17,9 +17,9 @@
 				<?php the_post_thumbnail('large'); ?>
 			</div>
         <?php endif; ?>
-		<section class="post-content">
+		<div class="post-content">
 			<?php the_content(); ?>
-		</section>
+		</div>
 		<footer class="post-footer">
 			<?php wp_link_pages(array( 'before' => '<nav id="page-nav"><p>' . __('Pages:', 'wpbp'), 'after' => '</p></nav>' )); ?>
 			<p class="post-tags"><?php the_tags(); ?></p>

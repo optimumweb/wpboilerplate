@@ -8,9 +8,9 @@
 				<h1 class="page-title"><?php the_title(); ?></h1>
 			</header>
         <?php endif; ?>
-		<section class="page-content">
+		<div class="page-content">
 			<?php the_content(); ?>
-		</section>
+		</div>
 		<footer class="page-footer">
 			<?php wp_link_pages(array( 'before' => '<nav class="page-nav"><p>' . __('Pages:', 'wpbp'), 'after' => '</p></nav>' )); ?>
 		</footer>
