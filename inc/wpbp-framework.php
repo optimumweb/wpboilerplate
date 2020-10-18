@@ -207,7 +207,7 @@ if ( !function_exists('array_plot') ) {
 
 if ( !function_exists('array_get') ) {
 
-    function array_get($array, $key, $iterate = false)
+    function array_get($array, $key, $iterate = false, $default = null)
     {
         if ( is_array($array) ) {
             if ( $iterate ) {
@@ -222,6 +222,7 @@ if ( !function_exists('array_get') ) {
                 }
             }
         }
+        return $default;
     }
 
 }
