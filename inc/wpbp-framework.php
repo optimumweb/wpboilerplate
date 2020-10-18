@@ -207,12 +207,12 @@ if ( !function_exists('array_plot') ) {
 
 if ( !function_exists('array_get') ) {
 
-    function array_get($array, $key, $iterate = false, $default = null)
+    function array_get($array, $key, $strcmp = false, $default = null)
     {
         if ( is_array($array) ) {
-            if ( $iterate ) {
+            if ( $strcmp ) {
                 foreach ( $array as $k => $v ) {
-                    if ( $k == $key ) {
+                    if ( strcmp($k, $key) === 0 ) {
                         return $v;
                     }
                 }
