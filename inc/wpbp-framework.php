@@ -205,6 +205,27 @@ if ( !function_exists('array_plot') ) {
 
 }
 
+if ( !function_exists('array_get') ) {
+
+    function array_get($array, $key, $iterate = false)
+    {
+        if ( is_array($array) ) {
+            if ( $iterate ) {
+                foreach ( $array as $k => $v ) {
+                    if ( $k == $key ) {
+                        return $v;
+                    }
+                }
+            } else {
+                if ( array_key_exists($key, $array) ) {
+                    return $array[$key];
+                }
+            }
+        }
+    }
+
+}
+
 if ( !function_exists('sanitize') ) {
 
 	function sanitize($value)
