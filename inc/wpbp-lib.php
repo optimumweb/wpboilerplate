@@ -273,6 +273,15 @@ function wpbp_get_lib($which = null)
                 'src' => TEMPLATE_URI . '/lib/js-cookie/js.cookie.min.js'
             ],
             'ver' => '2.2.1'
+        ],
+        'aos' => [
+            'js' => [
+                'src' => TEMPLATE_URI . '/lib/aos/2.3.4/dist/aos.js'
+            ],
+            'css' => [
+                'src' => TEMPLATE_URI . '/lib/aos/2.3.4/dist/aos.css'
+            ],
+            'ver' => '2.3.4'
         ]
     ];
 
