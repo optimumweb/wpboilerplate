@@ -276,10 +276,10 @@ function wpbp_get_lib($which = null)
         ],
         'aos' => [
             'js' => [
-                'src' => TEMPLATE_URI . '/lib/aos/2.3.4/dist/aos.js'
+                'src' => TEMPLATE_URI . '/lib/aos/2.3.4/aos.js'
             ],
             'css' => [
-                'src' => TEMPLATE_URI . '/lib/aos/2.3.4/dist/aos.css'
+                'src' => TEMPLATE_URI . '/lib/aos/2.3.4/aos.css'
             ],
             'ver' => '2.3.4'
         ]
