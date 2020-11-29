@@ -393,7 +393,7 @@ function shortcode_show_menu( $atts, $content, $tag ) {
 	return apply_filters( 'shortcode_show_menu', $out, $atts, $content, $tag );
 }
 
-add_shortcode('show-menu', 'shortcode_show_menu');
+add_shortcode( 'show-menu', 'shortcode_show_menu' );
 
 // [paypal type="buy now" amount="12.99" business="me@mybusiness.com" currency="USD" item_name="Teddy Bear" src="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" target="_blank"]
 function wpbp_paypal( $atts, $content = null ) {

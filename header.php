@@ -13,7 +13,7 @@
                             </a>
                         </h1>
                         <h3>
-                            <?php bloginfo('description'); ?>
+                            <?php bloginfo( 'description' ); ?>
                         </h3>
                     </div>
                 </div>
