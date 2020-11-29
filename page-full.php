@@ -9,7 +9,7 @@ get_header(); ?>
     <section id="main" role="main">
         <?php wpbp_main_inside_before(); ?>
         <?php wpbp_loop_before(); ?>
-        <?php get_template_part('loop', 'page'); ?>
+        <?php get_template_part( 'loop', 'page' ); ?>
         <?php wpbp_loop_after(); ?>
         <?php wpbp_main_inside_after(); ?>
     </section>

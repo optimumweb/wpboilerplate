@@ -10,13 +10,13 @@
 
 <?php wpbp_head_inside_before(); ?>
 
-<meta charset="<?php bloginfo('charset'); ?>">
+<meta charset="<?php bloginfo( 'charset' ); ?>">
 
-<?php if ( in_array(wpbp_get_option('responsive'), array('responsive', 'mobile-responsive')) ) : ?>
+<?php if ( in_array( wpbp_get_option( 'responsive' ), array( 'responsive', 'mobile-responsive' ) ) ) : ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php endif; ?>
 
-<title><?php wp_title(''); ?></title>
+<title><?php wp_title( '' ); ?></title>
 
 <?php wp_head(); ?>
 
@@ -26,4 +26,4 @@
 
 </head>
 
-<body <?php body_class(array( $post->post_name, wpbp_get_option('css_framework'), wpbp_get_option('responsive') )); ?>>
+<body <?php body_class( array( $post->post_name, wpbp_get_option( 'css_framework' ), wpbp_get_option( 'responsive' ) ) ); ?>>

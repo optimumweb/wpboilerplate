@@ -1,4 +1,4 @@
-<?php if ( !empty($gtm_id) ) : ?>
+<?php if ( ! empty( $gtm_id ) ) : ?>
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $gtm_id; ?>"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

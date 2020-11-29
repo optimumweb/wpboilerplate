@@ -1,4 +1,4 @@
-<?php if ( !empty($site_id) ) : ?>
+<?php if ( ! empty( $site_id ) ) : ?>
 <script type="text/javascript">
     var _gauges = _gauges || [];
     (function() {

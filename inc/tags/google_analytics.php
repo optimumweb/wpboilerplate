@@ -1,4 +1,4 @@
-<?php if ( !empty($ga_id) ) : ?>
+<?php if ( ! empty( $ga_id ) ) : ?>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $ga_id; ?>"></script>
 <script>

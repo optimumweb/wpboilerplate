@@ -4,13 +4,13 @@
 			<div class="<?php wpbp_container_class(); ?>">
                 <div class="grid_8 mobile-center">
                     <nav id="footer-nav">
-                        <?php wp_nav_menu(array( 'theme_location' => 'secondary_navigation' )); ?>
+                        <?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation' ) ); ?>
                         <div class="clear"></div>
                     </nav>
                 </div>
                 <div class="grid_4 text-right mobile-center">
                     <div id="copy">
-                        &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>
+                        &copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>
                     </div>
                 </div>
 			</div>

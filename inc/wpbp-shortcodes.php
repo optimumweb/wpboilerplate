@@ -4,137 +4,128 @@
  * Clean up shortcode $content
  */
 
-function parse_shortcode_content($content, $options = array())
-{
-	extract(array_merge(array(
+function parse_shortcode_content( $content, $options = array() ) {
+	extract( array_merge( array(
         'unautop'      => true,
 		'wpautop'      => false,
 		'do_shortcode' => true,
 		'trim'         => true,
-	), $options));
+	), (array) $options ) );
 
-    if ( $unautop )
-        $content = shortcode_unautop($content);
+    if ( $unautop ) $content = shortcode_unautop( $content );
 
-    if ( $wpautop )
-        $content = wpautop($content);
+    if ( $wpautop ) $content = wpautop( $content );
 
-	if ( $do_shortcode )
-		$content = do_shortcode($content);
+	if ( $do_shortcode ) $content = do_shortcode( $content );
 		
-	if ( $trim )
-		$content = trim($content);
+	if ( $trim ) $content = trim( $content );
 
 	// Remove '</p>' from the start of the string.
-	if ( substr( $content, 0, 4 ) == '</p>' )
-		$content = substr($content, 4);
+	if ( substr( $content, 0, 4 ) === '</p>' ) {
+        $content = substr( $content, 4 );
+    }
 
 	// Remove '<p>' from the end of the string.
-	if ( substr( $content, -3, 3 ) == '<p>' )
-		$content = substr($content, 0, -3);
+	if ( substr( $content, -3, 3 ) === '<p>' ) {
+        $content = substr( $content, 0, -3 );
+    }
 
 	// Remove any instances of '<p></p>'.
-	$content = str_replace(array( '<p></p>' ), '', $content);
-    $content = str_replace(array( '<p> </p>' ), '', $content);
+	$content = str_replace( array( '<p></p>' ), '', $content );
+    $content = str_replace( array( '<p> </p>' ), '', $content );
 
-	if ( $do_shortcode )
-		$content = do_shortcode($content);
+	if ( $do_shortcode ) $content = do_shortcode( $content );
 
 	return $content;
 }
 
 // [the_title post_id="123"]
-function wpbp_the_title($atts)
-{
-    extract(shortcode_atts(array( 'post_id' => null ), $atts));
-    if ( !isset($post_id) ) set_post_ID($post_id);
-    return get_the_title($post_id);
+function wpbp_the_title( $atts ) {
+    extract( shortcode_atts( array(
+            'post_id' => null
+    ), (array) $atts ) );
+
+    if ( ! isset( $post_id ) ) set_post_ID( $post_id );
+
+    return get_the_title( $post_id );
 }
-add_shortcode('the_title', 'wpbp_the_title');
+add_shortcode( 'the_title', 'wpbp_the_title' );
 
 // [section id="section-id" class="section-class"]...[/section]
-function wpbp_section($atts, $content = null)
-{
-    extract(shortcode_atts(array(
+function wpbp_section( $atts, $content = null ) {
+    extract( shortcode_atts( array(
         'id'    => '',
         'class' => '',
         'style' => ''
-    ), $atts));
+    ), (array) $atts ) );
 
-    return '<section id="' . $id . '" class="' . $class . '" style="' . $style . '">' . parse_shortcode_content($content) . '</section>';
+    return '<section id="' . $id . '" class="' . $class . '" style="' . $style . '">' . parse_shortcode_content( $content ) . '</section>';
 }
-add_shortcode('section', 'wpbp_section');
+add_shortcode( 'section', 'wpbp_section' );
 
 // [container cols="12"]...[/container]
-function wpbp_container($atts, $content = null)
-{
-    extract(shortcode_atts(array(
+function wpbp_container( $atts, $content = null ) {
+    extract( shortcode_atts( array(
         'cols'  => '12',
-        'id'    => "",
-        'class' => ""
-    ), $atts));
+        'id'    => '',
+        'class' => ''
+    ), (array) $atts ) );
 
-    return '<div id="' . $id . '" class="container container_' . $cols . ' ' . $class . '">' . parse_shortcode_content($content) . '</div>';
+    return '<div id="' . $id . '" class="container container_' . $cols . ' ' . $class . '">' . parse_shortcode_content( $content ) . '</div>';
 }
-add_shortcode('container', 'wpbp_container');
+add_shortcode( 'container', 'wpbp_container' );
 
 // [grid cols="6"]...[/grid]
-function wpbp_grid($atts, $content = null)
-{
-	extract(shortcode_atts(array(
+function wpbp_grid( $atts, $content = null ) {
+	extract( shortcode_atts( array(
 		'cols'  => '1',
-        'class' => "",
-        'style' => ""
-	), $atts));
+        'class' => '',
+        'style' => ''
+	), (array) $atts ) );
 
     $html_class = $class ? 'class="grid_' . $cols . ' ' . $class . '"' : ' class="grid_' . $cols . '"';
     $html_style = $style ? 'style="' . $style . '"' : '';
 
-	return '<div ' . implode(" ", array( $html_class, $html_style )) . '>' . parse_shortcode_content($content) . '</div>';
+	return '<div ' . implode( " ", array( $html_class, $html_style ) ) . '>' . parse_shortcode_content( $content ) . '</div>';
 }
-add_shortcode('grid',  'wpbp_grid');
-add_shortcode('grid2', 'wpbp_grid');
-add_shortcode('grid3', 'wpbp_grid');
+add_shortcode( 'grid',  'wpbp_grid' );
+add_shortcode( 'grid2', 'wpbp_grid' );
+add_shortcode( 'grid3', 'wpbp_grid' );
 
 // [div class="class"]...[/div]
-function wpbp_div($atts, $content = null)
-{
-    extract(shortcode_atts(array(
+function wpbp_div( $atts, $content = null ) {
+    extract( shortcode_atts( array(
         'class' => ''
-    ), $atts));
+    ), (array) $atts ) );
 
-    return '<div class="' . $class . '">' . parse_shortcode_content($content) . '</div>';
+    return '<div class="' . $class . '">' . parse_shortcode_content( $content ) . '</div>';
 }
-add_shortcode('div', 'wpbp_div');
+add_shortcode( 'div', 'wpbp_div' );
 
 // [p class="class"]...[/p]
-function wpbp_paragraph($atts, $content = null)
-{
-    extract(shortcode_atts(array(
+function wpbp_paragraph( $atts, $content = null ) {
+    extract( shortcode_atts( array(
         'class' => ''
-    ), $atts));
+    ), (array) $atts ) );
 
-    return '<p class="' . $class . '">' . parse_shortcode_content($content) . '</p>';
+    return '<p class="' . $class . '">' . parse_shortcode_content( $content ) . '</p>';
 }
-add_shortcode('p', 'wpbp_paragraph');
+add_shortcode( 'p', 'wpbp_paragraph' );
 
 // [clear]
-function wpbp_clear()
-{
+function wpbp_clear() {
 	return '<div class="clear"></div>';
 }
-add_shortcode('clear', 'wpbp_clear');
+add_shortcode( 'clear', 'wpbp_clear' );
 
 // [hr]
-function wpbp_hr()
-{
+function wpbp_hr() {
 	return '<hr />';
 }
-add_shortcode('hr', 'wpbp_hr');
+add_shortcode( 'hr', 'wpbp_hr' );
 
-function wpbp_recent_posts($atts = array())
-{
-    $params = shortcode_atts(array(
+function wpbp_recent_posts( $atts = array() ) {
+    $params = shortcode_atts( array(
         'posts_per_page' => 6,
         'offset'         => null,
         'category'       => null,
@@ -148,17 +139,17 @@ function wpbp_recent_posts($atts = array())
         'post_type'      => null,
         'tax_query'      => null,
         'post_template'  => null,
-        'no_results'     => __("No results", 'wpbp'),
+        'no_results'     => __( "No results", 'wpbp' ),
         'list_class'     => null,
         'item_class'     => null
-    ), $atts);
+    ), (array) $atts );
 
-    if ( isset($params['exclude']) ) {
+    if ( isset( $params['exclude'] ) ) {
         $params['post__not_in'] = $params['exclude'];
     }
 
-    if ( isset($params['tax_query']) ) {
-        $tq = explode("=", $params['tax_query']);
+    if ( isset( $params['tax_query'] ) ) {
+        $tq = explode( '=', $params['tax_query'] );
         $params['tax_query'] = array( array(
             'taxonomy' => $tq[0],
             'field'    => 'slug',
@@ -166,24 +157,24 @@ function wpbp_recent_posts($atts = array())
         ) );
     }
 
-    if ( !empty($params['post_template']) ) {
+    if ( ! empty( $params['post_template'] ) ) {
         $post_template_path = THEME_DIRECTORY . '/' . $params['post_template'] . '.php';
-        if ( !file_exists($post_template_path) ) {
-            unset($post_template_path);
+        if ( ! file_exists( $post_template_path ) ) {
+            unset( $post_template_path );
         }
     }
 
     ob_start();
 
-    $query = new WP_Query($params);
+    $query = new WP_Query( $params );
 
     if ( $query->have_posts() ) {
         echo '<ul class="wpbp-recent-posts ' . $params['list_class'] . '">';
         while ( $query->have_posts() ) {
             $query->the_post();
             echo '<li class="wpbp-recent-post ' . $params['item_class'] . '">';
-            if ( isset($post_template_path) ) {
-                include($post_template_path);
+            if ( isset( $post_template_path ) ) {
+                include( $post_template_path );
             } else {
                 echo '<a class="wpbp-recent-post-link" href="' . get_permalink() . '">' . get_the_title() . '</a>';
             }
@@ -196,23 +187,22 @@ function wpbp_recent_posts($atts = array())
 
     return ob_get_clean();
 }
-add_shortcode('wpbp_recent_posts', 'wpbp_recent_posts');
+add_shortcode( 'wpbp_recent_posts', 'wpbp_recent_posts' );
 
-function wpbp_related_posts($atts = array())
-{
-    $params = shortcode_atts(array(
+function wpbp_related_posts( $atts = array() ) {
+    $params = shortcode_atts( array(
         'number_of_posts' => 6,
         'post_template'   => null,
-        'no_results'      => __("No results", 'wpbp')
-    ), $atts);
+        'no_results'      => __( "No results", 'wpbp' )
+    ), (array) $atts);
 
     ob_start();
 
     $post_id = get_post_id();
 
-    $tags = wp_get_post_tags($post_id);
+    $tags = wp_get_post_tags( $post_id );
 
-    if ( !empty($tags) ) {
+    if ( ! empty( $tags ) ) {
 
         $tag_ids = array();
 
@@ -220,27 +210,27 @@ function wpbp_related_posts($atts = array())
             $tag_ids[] = $tag->term_id;
         }
 
-        if ( !empty($params['post_template']) ) {
+        if ( ! empty( $params['post_template'] ) ) {
             $post_template_path = THEME_DIRECTORY . '/' . $params['post_template'] . '.php';
-            if ( !file_exists($post_template_path) ) {
-                unset($post_template_path);
+            if ( ! file_exists( $post_template_path ) ) {
+                unset( $post_template_path );
             }
         }
 
-        $query = new WP_Query(array(
+        $query = new WP_Query( array(
             'tag__in'          => $tag_ids,
             'post__not_in'     => array( $post_id ),
             'posts_per_page'   => $params['number_of_posts'],
             'caller_get_posts' => 1
-        ));
+        )) ;
 
         if ( $query->have_posts() ) {
             echo '<ul class="wpbp-related-posts">';
             while ( $query->have_posts() ) {
                 $query->the_post();
                 echo '<li class="wpbp-related-post">';
-                if ( isset($post_template_path) ) {
-                    include($post_template_path);
+                if ( isset( $post_template_path ) ) {
+                    include( $post_template_path );
                 } else {
                     echo '<a class="wpbp-related-post-link" href="' . get_permalink() . '">' . get_the_title() . '</a>';
                 }
@@ -257,14 +247,13 @@ function wpbp_related_posts($atts = array())
 
     return ob_get_clean();
 }
-add_shortcode('wpbp_related_posts', 'wpbp_related_posts');
+add_shortcode( 'wpbp_related_posts', 'wpbp_related_posts' );
 
 /**
  * SMARTBOX
  */
 
-function wpbp_smartbox($atts, $content = null)
-{
+function wpbp_smartbox( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'id'          => '',
         'class'       => '',
@@ -279,9 +268,9 @@ function wpbp_smartbox($atts, $content = null)
         'ajax'        => false,
         'src'         => false,
         'lazy'        => false
-    ), $atts ) );
+    ), (array) $atts ) );
 
-    if ( !$id ) $id = sanitize_title($title);
+    if ( !$id ) $id = sanitize_title( $title );
 
     // define box #id
     $id = ' id="' . $id . '"';
@@ -293,19 +282,18 @@ function wpbp_smartbox($atts, $content = null)
     if ( $closed )		$class .= ' closed';
     if ( $ajax )		$class .= ' ajax';
     if ( $lazy )		$class .= ' lazy';
-    $class = ' class="' . preg_replace('/\s+/', ' ', $class) . '"';
+    $class = ' class="' . preg_replace( '/\s+/', ' ', $class ) . '"';
     
     // define box data
     $data = '';
     if ( $src ) $data .= ' data-src="' . $src . '"';
     
-    if ( $src && !$ajax ) {
-    	$src_ID		= get_ID_by_slug( $src );
-    	if ( $src_ID && get_post( $src_ID ) ) {
-			$title		= wpbp_first_valid( $title, get_the_title( $src_ID ) );
-			$content	= wpbp_first_valid( $content, get_post_field( 'post_content', $src_ID ) );
-    	}
-    	else {
+    if ( $src && ! $ajax ) {
+    	$src_ID = get_ID_by_slug( $src );
+    	if ( isset( $src_ID ) && get_post( $src_ID ) ) {
+			$title = wpbp_first_valid( $title, get_the_title( $src_ID ) );
+			$content = wpbp_first_valid( $content, get_post_field( 'post_content', $src_ID ) );
+    	} else {
     		$title = 'Invalid Post';
     		$content = '<p>Cannot find post with slug "' . $src . '".</p>';
     	}
@@ -313,20 +301,32 @@ function wpbp_smartbox($atts, $content = null)
     
     $box = '<div' . $id . $class . $data . '>';
     
-	if ( isset($title) && strlen($title) > 0 ) {
+	if ( isset( $title ) && strlen( $title ) > 0 ) {
 		$box .= '<div class="box-title title">';
-        if ( $title_tag ) $box .= '<' . $title_tag . '>';
-        if ( $href || ( $src && $ajax ) ) {
-            if ( $href ) $box .= '<a href="' . $href . '" target="' . $target . '">' . $title . '</a>';
-            elseif ( $src && $ajax ) $box .= '<a class="ajax-trigger" href="' . $src . '">' . $title . '</a>';
+
+        if ( $title_tag ) {
+            $box .= '<' . $title_tag . '>';
         }
-		else $box .= $title;
-        if ( $title_tag ) $box .= '</' . $title_tag . '>';
+
+        if ( $href || ( $src && $ajax ) ) {
+            if ( $href ) {
+                $box .= '<a href="' . $href . '" target="' . $target . '">' . $title . '</a>';
+            } elseif ( $src && $ajax ) {
+                $box .= '<a class="ajax-trigger" href="' . $src . '">' . $title . '</a>';
+            }
+        } else {
+            $box .= $title;
+        }
+
+        if ( $title_tag ) {
+            $box .= '</' . $title_tag . '>';
+        }
+
 		$box .= '</div>';
 	}
 		
 	$box .= '<div class="box-content content">';
-	$box .= parse_shortcode_content($content);
+	$box .= parse_shortcode_content( $content );
 	$box .= '<div class="clear"></div></div>';
     
     if ( $sliding ) {
@@ -347,14 +347,13 @@ function wpbp_smartbox($atts, $content = null)
     
     return $box;
 }
-add_shortcode('smartbox', 'wpbp_smartbox');
+add_shortcode( 'smartbox', 'wpbp_smartbox' );
 
 // [article-header]...[/article-header]
-function wpbp_article_header($atts = null, $content = null)
-{
-	return '<div class="article-header">' . parse_shortcode_content($content) . '</div>';
+function wpbp_article_header( $atts = null, $content = null ) {
+	return '<div class="article-header">' . parse_shortcode_content( $content ) . '</div>';
 }
-add_shortcode("article-header", "wpbp_article_header");
+add_shortcode( 'article-header', 'wpbp_article_header' );
 
 /**
  * Plugin Name: Show Menu Shortcode
@@ -365,8 +364,7 @@ add_shortcode("article-header", "wpbp_article_header");
  * Author URI: http://www.mokamedianyc.com
 */
 
-function shortcode_show_menu($atts, $content, $tag)
-{	
+function shortcode_show_menu( $atts, $content, $tag ) {
 	global $post;
 	
 	// Set defaults
@@ -387,21 +385,19 @@ function shortcode_show_menu($atts, $content, $tag)
 	);
 	
 	// Merge user provided atts with defaults
-	$atts = shortcode_atts($defaults, $atts);
+	$atts = shortcode_atts( $defaults, $atts );
 	
 	// Create output
-	$out = wp_nav_menu($atts);
+	$out = wp_nav_menu( $atts );
 	
-	return apply_filters('shortcode_show_menu', $out, $atts, $content, $tag);
-	
+	return apply_filters( 'shortcode_show_menu', $out, $atts, $content, $tag );
 }
 
 add_shortcode('show-menu', 'shortcode_show_menu');
 
 // [paypal type="buy now" amount="12.99" business="me@mybusiness.com" currency="USD" item_name="Teddy Bear" src="http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" target="_blank"]
-function wpbp_paypal($atts, $content = null)
-{
-    extract(shortcode_atts(array(
+function wpbp_paypal( $atts, $content = null ) {
+    extract( shortcode_atts( array(
         'target'    => '_self',
         'type'      => 'buy_now',
 		'amount'    => '0.00',
@@ -409,11 +405,12 @@ function wpbp_paypal($atts, $content = null)
         'currency'  => 'USD',
         'item_name' => '',
         'src'       => 'http://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif'
-	), $atts));
+	), (array) $atts ) );
     
     ob_start();
     
-    if ( $type == 'buy_now' ) : ?>
+    if ( $type === 'buy_now' ) :
+?>
 <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="<?php echo $target; ?>">
     <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="<?php echo $business; ?>">
@@ -435,65 +432,67 @@ function wpbp_paypal($atts, $content = null)
 <?php endif;
 
     $paypal = ob_get_clean();
-    return parse_shortcode_content($paypal);
+    return parse_shortcode_content( $paypal );
 }
-add_shortcode('paypal', 'wpbp_paypal');
+add_shortcode( 'paypal', 'wpbp_paypal' );
 
-function wpbp_responsive_embed($atts)
-{
-    extract(shortcode_atts(array(
+function wpbp_responsive_embed( $atts ) {
+    extract( shortcode_atts( array(
         'ratio'       => '16x9',
         'type'        => 'iframe',
         'src'         => '',
         'frameborder' => 0
-    ), $atts));
+    ), (array) $atts ) );
 
-    if ( isset($src) && strlen($src) > 0 ) {
-        $ratio = explode('x', $ratio);
+    if ( isset( $src ) && strlen( $src ) > 0 ) {
+        $ratio = explode( 'x', $ratio );
         $ratio = $ratio[1] / $ratio[0];
         $padding_bottom = ( $ratio * 100 ) . '%';
 
         return '<div class="embed-container" style="padding-bottom:'. $padding_bottom .';"><'. $type .' src="'. $src .'" frameborder="'. $frameborder .'" allowfullscreen></'. $type .'></div>';
     }
 }
-add_shortcode('responsive_embed', 'wpbp_responsive_embed');
+add_shortcode( 'responsive_embed', 'wpbp_responsive_embed' );
 
-function list_term_children($term_id, $taxonomies, $args) {
+function list_term_children( $term_id, $taxonomies, $args ) {
     $children = get_terms( $taxonomies, array_merge( $args, array( 'parent' => $term_id ) ) );
+
     if ( count($children) > 0 ) {
         echo '<ul>';
         foreach ( $children as $child ) {
             echo '<li>';
-            echo '<a href="' . get_term_link($child) . '">' . $child->name . '</a>';
-            list_term_children($child->term_id, $taxonomies, $args);
+            echo '<a href="' . get_term_link( $child ) . '">' . $child->name . '</a>';
+            list_term_children( $child->term_id, $taxonomies, $args );
             echo '</li>';
         }
         echo '</ul>';
     }
 }
 
-function wpbp_taxonomy_list($atts)
-{
-    extract(shortcode_atts(array(
+function wpbp_taxonomy_list( $atts ) {
+    extract( shortcode_atts( array(
         'tax'        => 'post_tag',
         'orderby'    => 'name',
         'hide_empty' => false
-    ), $atts));
+    ), (array) $atts ) );
 
-    $taxonomies = array_map("trim", explode(",", $tax));
-    $args = array( 'orderby' => $orderby, 'hide_empty' => $hide_empty );
+    $taxonomies = array_map( "trim", explode( ",", $tax ) );
+
+    $args = array(
+        'orderby' => $orderby,
+        'hide_empty' => $hide_empty
+    );
 
     ob_start();
-    list_term_children(0, $taxonomies, $args);
+    list_term_children( 0, $taxonomies, $args );
     return ob_get_clean();
 }
-add_shortcode('taxonomy_list', 'wpbp_taxonomy_list');
+add_shortcode( 'taxonomy_list', 'wpbp_taxonomy_list' );
 
-function wpbp_spacer($atts)
-{
-    extract(shortcode_atts(array(
+function wpbp_spacer( $atts ) {
+    extract( shortcode_atts( array(
         'size' => 'medium',
-    ), $atts));
+    ), (array) $atts ) );
 
     switch ( $size ) {
         case 'small':
@@ -512,17 +511,16 @@ function wpbp_spacer($atts)
 
     return '<div style="height: ' . $height . '"></div>';
 }
-add_shortcode('spacer', 'wpbp_spacer');
+add_shortcode( 'spacer', 'wpbp_spacer' );
 
-function wpbp_date($atts)
-{
-    extract(shortcode_atts(array(
+function wpbp_date( $atts ) {
+    extract( shortcode_atts( array(
         'format'    => null,
         'timestamp' => time()
-    ), $atts));
+    ), (array) $atts ) );
 
-    if ( isset($format, $timestamp) ) {
-        return date($format, $timestamp);
+    if ( isset( $format, $timestamp ) ) {
+        return date( $format, $timestamp );
     }
 }
-add_shortcode('wpbp_date', 'wpbp_date');
+add_shortcode( 'wpbp_date', 'wpbp_date' );
