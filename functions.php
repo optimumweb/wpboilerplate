@@ -73,6 +73,8 @@ function wpbp_setup() {
 add_action( 'after_setup_theme', 'wpbp_setup' );
 
 function wpbp_register_sidebars( $sidebars ) {
+    $ids = array();
+
 	if ( is_array( $sidebars ) && count( $sidebars ) > 0 ) {
 		foreach ( $sidebars as $sidebar_id => $sidebar ) {
 		    $args = array(
@@ -87,11 +89,11 @@ function wpbp_register_sidebars( $sidebars ) {
 		        $args['id'] = $sidebar_id;
             }
 
-			register_sidebar( $args );
+			$ids[] = register_sidebar( $args );
 		}
-		return true;
 	}
-	return false;
+
+	return $ids;
 }
 
 // create widget areas: sidebar, footer
