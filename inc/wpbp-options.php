@@ -28,7 +28,9 @@ function wpbp_theme_options_init() {
 		add_option( 'wpbp_theme_options', wpbp_get_default_theme_options() );
 	}
 
-	register_setting( 'wpbp_options', 'wpbp_theme_options', 'wpbp_theme_options_validate' );
+	register_setting( 'wpbp_options', 'wpbp_theme_options', array(
+        'sanitize_callback' => 'wpbp_theme_options_validate'
+    ) );
 }
 add_action( 'admin_init', 'wpbp_theme_options_init' );
 
