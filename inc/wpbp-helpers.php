@@ -80,5 +80,5 @@ function wpbp_container_class() {
     if ( wpbp_get_option( 'fluid' ) === 'yes' ) {
         $class[] = 'fluid';
     }
-    echo implode( '', $class );
+    echo implode( ' ', $class );
 }
