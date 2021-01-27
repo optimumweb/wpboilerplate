@@ -69,6 +69,7 @@ function wpbp_get_default_theme_options() {
         'google_analytics_id'   => "",
         'google_conversion_id'  => "",
         'google_tag_manager_id' => "",
+        'google_ads_id'         => "",
         'optimizely_project_id' => "",
 		'gauges_site_id'        => "",
 		'force_https'           => "no",
@@ -139,6 +140,18 @@ function wpbp_theme_options_render_page() { ?>
                             <input type="text" name="wpbp_theme_options[google_tag_manager_id]" id="google_tag_manager_id" value="<?php echo esc_attr( $wpbp_options['google_tag_manager_id'] ); ?>" />
                             <br />
                             <small class="description"><?php printf( __( "Enter your GTM-XXXX ID", 'wpbp' ) ); ?></small>
+                        </fieldset>
+                    </td>
+                </tr>
+
+                <tr valign="top">
+                    <th scope="row"><?php _e( "Google Ads ID", 'wpbp' ); ?></th>
+                    <td>
+                        <fieldset>
+                            <legend class="screen-reader-text"><span><?php _e( "Google Ads ID", 'wpbp' ); ?></span></legend>
+                            <input type="text" name="wpbp_theme_options[google_ads_id]" id="google_ads_id" value="<?php echo esc_attr( $wpbp_options['google_ads_id'] ); ?>" />
+                            <br />
+                            <small class="description"><?php printf( __( "Enter your AW-XXXXXXXXXX", 'wpbp' ) ); ?></small>
                         </fieldset>
                     </td>
                 </tr>
@@ -355,6 +368,7 @@ function wpbp_theme_options_validate( $input ) {
     $output['google_analytics_id']   = isset( $input['google_analytics_id'] )   ? $input['google_analytics_id']   : null;
     $output['google_remarketing_id'] = isset( $input['google_remarketing_id'] ) ? $input['google_remarketing_id'] : null;
     $output['google_tag_manager_id'] = isset( $input['google_tag_manager_id'] ) ? $input['google_tag_manager_id'] : null;
+    $output['google_ads_id']         = isset( $input['google_ads_id'] )         ? $input['google_ads_id']         : null;
     $output['optimizely_project_id'] = isset( $input['optimizely_project_id'] ) ? $input['optimizely_project_id'] : null;
 	$output['gauges_site_id']        = isset( $input['gauges_site_id'] )        ? $input['gauges_site_id']        : null;
 	$output['force_https']           = isset( $input['force_https'] )           ? $input['force_https']           : null;

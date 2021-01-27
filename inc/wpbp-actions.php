@@ -58,7 +58,8 @@ function wpbp_insert_optimizely() {
 }
 
 function wpbp_insert_google_analytics() {
-    $ga_id = wpbp_get_option( 'google_analytics_id' );
+    $google_analytics_id = wpbp_get_option( 'google_analytics_id' );
+    $google_ads_id = wpbp_get_option( 'google_ads_id' );
 
     $file = TEMPLATE_DIRECTORY . '/inc/tags/google_analytics.php';
 
