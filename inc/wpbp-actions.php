@@ -61,10 +61,12 @@ function wpbp_insert_google_analytics() {
     $google_analytics_id = wpbp_get_option( 'google_analytics_id' );
     $google_ads_id = wpbp_get_option( 'google_ads_id' );
 
-    $file = TEMPLATE_DIRECTORY . '/inc/tags/google_analytics.php';
+    if ( ! empty( $google_analytics_id ) || ! empty( $google_ads_id ) ) {
+        $file = TEMPLATE_DIRECTORY . '/inc/tags/google_analytics.php';
 
-    if ( file_exists( $file ) ) {
-        include( $file );
+        if ( file_exists( $file ) ) {
+            include( $file );
+        }
     }
 }
 
