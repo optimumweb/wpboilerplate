@@ -63,7 +63,7 @@ function wpbp_insert_google_analytics() {
 
     $file = TEMPLATE_DIRECTORY . '/inc/tags/google_analytics.php';
 
-    if ( ! empty( $ga_id ) && file_exists( $file ) ) {
+    if ( file_exists( $file ) ) {
         include( $file );
     }
 }
