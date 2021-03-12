@@ -998,6 +998,7 @@ String.prototype.repeat = function(num) {
     return new Array( num + 1 ).join(this);
 };
 
+/*
 window.onerror = function (msg, file, linenumber) {
     if ( typeof wpbpAlertAdmin === 'function' ) {
         if ( linenumber > 0 ) {
@@ -1021,3 +1022,4 @@ function wpbpAlertAdmin(subject, body) {
         });
     }
 }
+*/
