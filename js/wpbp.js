@@ -998,11 +998,10 @@ String.prototype.repeat = function(num) {
     return new Array( num + 1 ).join(this);
 };
 
-/*
 window.onerror = function (msg, file, linenumber) {
     if ( typeof wpbpAlertAdmin === 'function' ) {
         if ( linenumber > 0 ) {
-            wpbpAlertAdmin("JS Error", ["Message: " + msg, "File: " + file, "Line: " + linenumber, "URL: " + window.location.href].join("\r\n"));
+            //wpbpAlertAdmin("JS Error", ["Message: " + msg, "File: " + file, "Line: " + linenumber, "URL: " + window.location.href].join("\r\n"));
         }
     }
     return true;
@@ -1022,4 +1021,3 @@ function wpbpAlertAdmin(subject, body) {
         });
     }
 }
-*/
