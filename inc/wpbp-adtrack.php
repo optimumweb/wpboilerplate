@@ -9,9 +9,11 @@ $adtrack_values = array();
 function wpbp_adtrack_init() {
     global $adtrack_params, $adtrack_values;
 
-    foreach ( $adtrack_params as $param ) {
-        if ( isset( $_GET[$param] ) ) {
-            wpbp_adtrack_set_param( $param, $_GET[$param] );
+    if ( is_array( $adtrack_params ) && count ( $adtrack_params ) > 0 ) {
+        foreach ( $adtrack_params as $param ) {
+            if ( isset( $_GET[$param] ) ) {
+                wpbp_adtrack_set_param( $param, $_GET[$param] );
+            }
         }
     }
 
