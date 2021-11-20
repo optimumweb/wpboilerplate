@@ -43,9 +43,11 @@ function wpbp_adtrack_get_all() {
 
     $values = array();
 
-    foreach ( $adtrack_params as $param ) {
-        if ( $value = wpbp_adtrack_get_param( $param ) ) {
-            $values[$param] = $value;
+    if ( is_array( $adtrack_params ) && count( $adtrack_params ) > 0 ) {
+        foreach ( $adtrack_params as $param ) {
+            if ( $value = wpbp_adtrack_get_param( $param ) ) {
+                $values[$param] = $value;
+            }
         }
     }
 
