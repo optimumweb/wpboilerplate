@@ -4,7 +4,7 @@
 // -----------------------------------------------------
 
 @cols:       12;
-@colWidth:   100% / @cols;
+@colWidth:   8.333%;
 @gridGutter: 0.9375rem;
 
 * {
@@ -158,22 +158,22 @@ body {
 
 body.responsive,
 body.mobile-responsive {
-    .colSpace(@cols, @colWidth, 'small_');
-    .prefixSpace(@cols, @colWidth, 'small_');
-    .suffixSpace(@cols, @colWidth, 'small_');
-    .pushSpace(@cols, @colWidth, 'small_');
-    .pullSpace(@cols, @colWidth, 'small_');
+    .colSpace(@cols, @colWidth, small_);
+    .prefixSpace(@cols, @colWidth, small_);
+    .suffixSpace(@cols, @colWidth, small_);
+    .pushSpace(@cols, @colWidth, small_);
+    //.pullSpace(@cols, @colWidth, small_);
 }
 
 // > @screenSmall
 @media only screen and (min-width: @screenSmall) {
     body.responsive,
     body.mobile-responsive {
-        .colSpace(@cols, @colWidth, 'medium_');
-        .prefixSpace(@cols, @colWidth, 'medium_');
-        .suffixSpace(@cols, @colWidth, 'medium_');
-        .pushSpace(@cols, @colWidth, 'medium_');
-        .pullSpace(@cols, @colWidth, 'medium_');
+        .colSpace(@cols, @colWidth, medium_);
+        .prefixSpace(@cols, @colWidth, medium_);
+        .suffixSpace(@cols, @colWidth, medium_);
+        .pushSpace(@cols, @colWidth, medium_);
+        //.pullSpace(@cols, @colWidth, medium_);
     }
 }
 
@@ -186,7 +186,7 @@ body.mobile-responsive {
         .prefixSpace(@cols, @colWidth);
         .suffixSpace(@cols, @colWidth);
         .pushSpace(@cols, @colWidth);
-        .pullSpace(@cols, @colWidth);
+        //.pullSpace(@cols, @colWidth);
     }
 }
 
@@ -291,15 +291,15 @@ body.responsive,
 body.mobile-responsive {
     .block_grid {
         &[class*="small_by_"] > * { float: left; }
-        &.small_by_2 > * { width: 100% / 2 !important; }
-        &.small_by_3 > * { width: 100% / 3 !important; }
-        &.small_by_4 > * { width: 100% / 4 !important; }
-        &.small_by_5 > * { width: 100% / 5 !important; }
-        &.small_by_6 > * { width: 100% / 6 !important; }
-        &.small_by_7 > * { width: 100% / 7 !important; }
-        &.small_by_8 > * { width: 100% / 8 !important; }
-        &.small_by_9 > * { width: 100% / 9 !important; }
-        &.small_by_10 > * { width: 100% / 10 !important; }
+        &.small_by_2 > * { width: calc(100%/2); }
+        &.small_by_3 > * { width: calc(100%/3); }
+        &.small_by_4 > * { width: calc(100%/4); }
+        &.small_by_5 > * { width: calc(100%/5); }
+        &.small_by_6 > * { width: calc(100%/6); }
+        &.small_by_7 > * { width: calc(100%/7); }
+        &.small_by_8 > * { width: calc(100%/8); }
+        &.small_by_9 > * { width: calc(100%/9); }
+        &.small_by_10 > * { width: calc(100%/10); }
 
         &.small_by_2 > *:nth-child(2n+1),
         &.small_by_3 > *:nth-child(3n+1),
@@ -321,15 +321,15 @@ body.mobile-responsive {
     body.mobile-responsive {
         .block_grid {
             &[class*="medium_by_"] > * { float: left; }
-            &.medium_by_2 > * { width: 100% / 2 !important; }
-            &.medium_by_3 > * { width: 100% / 3 !important; }
-            &.medium_by_4 > * { width: 100% / 4 !important; }
-            &.medium_by_5 > * { width: 100% / 5 !important; }
-            &.medium_by_6 > * { width: 100% / 6 !important; }
-            &.medium_by_7 > * { width: 100% / 7 !important; }
-            &.medium_by_8 > * { width: 100% / 8 !important; }
-            &.medium_by_9 > * { width: 100% / 9 !important; }
-            &.medium_by_10 > * { width: 100% / 10 !important; }
+            &.medium_by_2 > * { width: calc(100%/2); }
+            &.medium_by_3 > * { width: calc(100%/3); }
+            &.medium_by_4 > * { width: calc(100%/4); }
+            &.medium_by_5 > * { width: calc(100%/5); }
+            &.medium_by_6 > * { width: calc(100%/6); }
+            &.medium_by_7 > * { width: calc(100%/7); }
+            &.medium_by_8 > * { width: calc(100%/8); }
+            &.medium_by_9 > * { width: calc(100%/9); }
+            &.medium_by_10 > * { width: calc(100%/10); }
 
             &.small_by_2 > *:nth-child(2n+1),
             &.small_by_3 > *:nth-child(3n+1),
@@ -365,15 +365,15 @@ body.mobile-responsive {
     body.mobile-responsive {
         .block_grid {
             &[class^="by_"] > *, &[class*=" by_"] > * { float: left; }
-            &.by_2 > * { width: 100% / 2 !important; }
-            &.by_3 > * { width: 100% / 3 !important; }
-            &.by_4 > * { width: 100% / 4 !important; }
-            &.by_5 > * { width: 100% / 5 !important; }
-            &.by_6 > * { width: 100% / 6 !important; }
-            &.by_7 > * { width: 100% / 7 !important; }
-            &.by_8 > * { width: 100% / 8 !important; }
-            &.by_9 > * { width: 100% / 9 !important; }
-            &.by_10 > * { width: 100% / 10 !important; }
+            &.by_2 > * { width: calc(100%/2); }
+            &.by_3 > * { width: calc(100%/3); }
+            &.by_4 > * { width: calc(100%/4); }
+            &.by_5 > * { width: calc(100%/5); }
+            &.by_6 > * { width: calc(100%/6); }
+            &.by_7 > * { width: calc(100%/7); }
+            &.by_8 > * { width: calc(100%/8); }
+            &.by_9 > * { width: calc(100%/9); }
+            &.by_10 > * { width: calc(100%/10); }
 
             &.small_by_2 > *:nth-child(2n+1),
             &.small_by_3 > *:nth-child(3n+1),
