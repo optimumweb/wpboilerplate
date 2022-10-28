@@ -24,7 +24,7 @@ function wpbp_register_lib() {
                     if ( isset( $js['src'] ) ) {
 
                         foreach ( array( 'ver', 'deps', 'in_footer' ) as $attr ) {
-                            if ( ! array_key_exists( $attr, $js ) && array_key_exists( $attr, $js ) ) {
+                            if ( ! array_key_exists( $attr, $js ) && array_key_exists( $attr, $lib ) ) {
                                 $js[$attr] = $lib[$attr];
                             }
                         }
