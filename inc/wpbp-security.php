@@ -2,8 +2,15 @@
 
 function wpbp_force_https() {
     if ( ! is_ssl() && wpbp_get_option( 'force_https' ) === 'yes' ) {
-        wp_redirect( 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301 );
-        exit();
+        if ( isset($_SERVER['HTTP_HOST']) ) {
+            wp_redirect( 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301 );
+            exit();
+        } elseif ( function_exists( 'get_home_url' ) ) {
+            if ( $home_url = get_home_url( null, '', 'https' ) ) {
+                wp_redirect( $home_url, 301 );
+                exit();
+            }
+        }
     }
 }
 add_action( 'template_redirect', 'wpbp_force_https', 1 );
