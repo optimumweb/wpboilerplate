@@ -94,7 +94,7 @@ body {
 // Pull Space
 // -------------------------
 
-.pullSpace(@type, @index, @colWidth, @prefix: ~'') when (@index > 0) {
+.pullSpace(@index, @colWidth, @prefix: ~'') when (@index > 0) {
     .@{prefix}pull_@{index} {
         position: relative;
         left: -@colWidth * @index;
@@ -158,22 +158,22 @@ body {
 
 body.responsive,
 body.mobile-responsive {
-    .colSpace(@cols, @colWidth, small_);
-    .prefixSpace(@cols, @colWidth, small_);
-    .suffixSpace(@cols, @colWidth, small_);
-    .pushSpace(@cols, @colWidth, small_);
-    //.pullSpace(@cols, @colWidth, small_);
+    .colSpace(@cols, @colWidth, 'small_');
+    .prefixSpace(@cols, @colWidth, 'small_');
+    .suffixSpace(@cols, @colWidth, 'small_');
+    .pushSpace(@cols, @colWidth, 'small_');
+    .pullSpace(@cols, @colWidth, 'small_');
 }
 
 // > @screenSmall
 @media only screen and (min-width: @screenSmall) {
     body.responsive,
     body.mobile-responsive {
-        .colSpace(@cols, @colWidth, medium_);
-        .prefixSpace(@cols, @colWidth, medium_);
-        .suffixSpace(@cols, @colWidth, medium_);
-        .pushSpace(@cols, @colWidth, medium_);
-        //.pullSpace(@cols, @colWidth, medium_);
+        .colSpace(@cols, @colWidth, 'medium_');
+        .prefixSpace(@cols, @colWidth, 'medium_');
+        .suffixSpace(@cols, @colWidth, 'medium_');
+        .pushSpace(@cols, @colWidth, 'medium_');
+        .pullSpace(@cols, @colWidth, 'medium_');
     }
 }
 
@@ -186,7 +186,7 @@ body.mobile-responsive {
         .prefixSpace(@cols, @colWidth);
         .suffixSpace(@cols, @colWidth);
         .pushSpace(@cols, @colWidth);
-        //.pullSpace(@cols, @colWidth);
+        .pullSpace(@cols, @colWidth);
     }
 }
 
