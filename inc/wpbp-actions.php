@@ -103,11 +103,12 @@ function wpbp_insert_gauges_tag() {
 
 function wpbp_insert_matomo_tag() {
     $matomo_endpoint = wpbp_get_option( 'matomo_endpoint' );
+    $matomo_site_id = wpbp_get_option( 'matomo_endpoint' );
 
-    $file = TEMPLATE_DIRECTORY . '/inc/tags/matomo.php';
-
-    if ( ! empty( $matomo_endpoint ) && file_exists( $file ) ) {
-        include( $file );
+    if ( ! empty( $matomo_endpoint ) && ! empty( $matomo_site_id ) ) {
+        if ( file_exists( $file = TEMPLATE_DIRECTORY . '/inc/tags/matomo.php' ) ) {
+            include( $file );
+        }
     }
 }
 
