@@ -6,6 +6,7 @@ add_action( 'wpbp_head', 'wpbp_insert_utm_values' );
 add_action( 'wpbp_head', 'wpbp_insert_optimizely' );
 add_action( 'wpbp_head', 'wpbp_insert_google_analytics' );
 add_action( 'wpbp_head', 'wpbp_insert_google_tag_manager' );
+add_action( 'wpbp_head', 'wpbp_insert_matomo_tag' );
 add_action( 'wpbp_head', 'wpbp_insert_custom_css' );
 add_action( 'wpbp_head', 'wpbp_insert_favicon' );
 add_action( 'wpbp_head', 'wpbp_insert_custom_header_code' );
@@ -96,6 +97,16 @@ function wpbp_insert_gauges_tag() {
     $file = TEMPLATE_DIRECTORY . '/inc/tags/gauges.php';
 
     if ( ! empty( $site_id ) && file_exists( $file ) ) {
+        include( $file );
+    }
+}
+
+function wpbp_insert_matomo_tag() {
+    $matomo_endpoint = wpbp_get_option( 'matomo_endpoint' );
+
+    $file = TEMPLATE_DIRECTORY . '/inc/tags/matomo.php';
+
+    if ( ! empty( $matomo_endpoint ) && file_exists( $file ) ) {
         include( $file );
     }
 }
