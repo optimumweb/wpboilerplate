@@ -73,6 +73,7 @@ function wpbp_get_default_theme_options() {
         'optimizely_project_id' => "",
 		'gauges_site_id'        => "",
         'matomo_endpoint'       => "",
+        'matomo_site_id'        => "",
 		'force_https'           => "no",
 		'hsts_max_age'          => "",
 		'disable_xmlrpc'        => "yes",
@@ -189,6 +190,18 @@ function wpbp_theme_options_render_page() { ?>
                             <input type="text" name="wpbp_theme_options[matomo_endpoint]" id="matomo_endpoint" value="<?php echo esc_attr( $wpbp_options['matomo_endpoint'] ); ?>" />
                             <br />
                             <small class="description"><?php printf( __( "Enter your Matomo Endpoint", 'wpbp' ) ); ?></small>
+                        </fieldset>
+                    </td>
+                </tr>
+
+                <tr valign="top">
+                    <th scope="row"><?php _e( "Matomo Site ID", 'wpbp' ); ?></th>
+                    <td>
+                        <fieldset>
+                            <legend class="screen-reader-text"><span><?php _e( "Matomo Site ID", 'wpbp' ); ?></span></legend>
+                            <input type="text" name="wpbp_theme_options[matomo_site_id]" id="matomo_site_id" value="<?php echo esc_attr( $wpbp_options['matomo_site_id'] ); ?>" />
+                            <br />
+                            <small class="description"><?php printf( __( "Enter your Matomo Site ID", 'wpbp' ) ); ?></small>
                         </fieldset>
                     </td>
                 </tr>
@@ -385,6 +398,7 @@ function wpbp_theme_options_validate( $input ) {
     $output['optimizely_project_id'] = isset( $input['optimizely_project_id'] ) ? $input['optimizely_project_id'] : null;
 	$output['gauges_site_id']        = isset( $input['gauges_site_id'] )        ? $input['gauges_site_id']        : null;
     $output['matomo_endpoint']       = isset( $input['matomo_endpoint'] )       ? $input['matomo_endpoint']       : null;
+    $output['matomo_site_id']        = isset( $input['matomo_site_id'] )        ? $input['matomo_site_id']        : null;
 	$output['force_https']           = isset( $input['force_https'] )           ? $input['force_https']           : null;
 	$output['hsts_max_age']          = isset( $input['hsts_max_age'] )          ? $input['hsts_max_age']          : null;
     $output['disable_xmlrpc']        = isset( $input['disable_xmlrpc'] )        ? $input['disable_xmlrpc']        : null;
