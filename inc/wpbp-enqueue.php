@@ -10,11 +10,11 @@ function wpbp_register_lib() {
             foreach ( $wpbp_libs as $handle => $lib ) {
 
                 $lib = array_merge( array(
-                    'js'        => null,
-                    'css'       => null,
-                    'deps'      => array(),
-                    'ver'       => null,
-                    'in_footer' => false
+                    'js'   => null,
+                    'css'  => null,
+                    'deps' => array(),
+                    'ver'  => null,
+                    'args' => array(),
                 ), $lib );
 
                 if ( isset( $lib['js'] ) ) {
@@ -23,7 +23,7 @@ function wpbp_register_lib() {
 
                     if ( isset( $js['src'] ) ) {
 
-                        foreach ( array( 'ver', 'deps', 'in_footer' ) as $attr ) {
+                        foreach ( array( 'ver', 'deps', 'args' ) as $attr ) {
                             if ( ! array_key_exists( $attr, $js ) && array_key_exists( $attr, $lib ) ) {
                                 $js[$attr] = $lib[$attr];
                             }
@@ -33,7 +33,7 @@ function wpbp_register_lib() {
 
                         foreach ( $js['src'] as $key => $src ) {
                             $_handle = count( $js['src'] ) > 1 ? $handle . '_' . md5( $src ) : $handle;
-                            wpbp_register_script( $_handle, $src, $js['deps'], $js['ver'], $js['in_footer'] );
+                            wpbp_register_script( $_handle, $src, $js['deps'], $js['ver'], $js['args'] );
                         }
 
                     }
@@ -88,13 +88,13 @@ function wpbp_register_lib() {
     }
 }
 
-function wpbp_register_script( $handle, $src = false, $deps = array(), $ver = false, $in_footer = false ) {
+function wpbp_register_script( $handle, $src = false, $deps = array(), $ver = false, $args = array() ) {
 	wp_deregister_script( $handle );
-	wp_register_script( $handle, $src, $deps, $ver, $in_footer );
+	wp_register_script( $handle, $src, $deps, $ver, $args );
 }
 
-function wpbp_add_script( $handle, $src = false, $deps = array(), $ver = false, $in_footer = true ) {
-	wpbp_register_script( $handle, $src, $deps, $ver, $in_footer );
+function wpbp_add_script( $handle, $src = false, $deps = array(), $ver = false, $args = array() ) {
+	wpbp_register_script( $handle, $src, $deps, $ver, $args );
 	wp_enqueue_script( $handle );
 }
 
