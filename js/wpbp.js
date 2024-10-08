@@ -709,8 +709,11 @@
                     }
 
                     $this.fadeOut(fadeDuration, function() {
-                        $blanket.fadeOut(fadeDuration);
                         $this.trigger('closed').removeClass('wpbp-modal-box-opened');
+
+                        if ($modalBoxes.filter('.wpbp-modal-box-opened').length === 0) {
+                            $blanket.fadeOut(fadeDuration);
+                        }
                     });
                 });
 
