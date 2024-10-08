@@ -704,6 +704,10 @@
                 .on('close', function() {
                     var $this = $(this);
 
+                    if ($this.hasClass('wpbp-modal-box-immutable')) {
+                        return false;
+                    }
+
                     $this.fadeOut(fadeDuration, function() {
                         $blanket.fadeOut(fadeDuration);
                         $this.trigger('closed').removeClass('wpbp-modal-box-opened');
