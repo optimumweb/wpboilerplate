@@ -670,8 +670,7 @@
 
         return this.each(function() {
 
-            var fadeDuration   = 250,
-                blanketOpacity = 0.5;
+            var fadeDuration = 250;
 
             var $this       = $(this),
                 $blanket    = $this.find('#wpbp-modal-blanket'),
@@ -695,7 +694,7 @@
                 .on('open', function() {
                     var $this = $(this);
 
-                    $blanket.fadeTo(fadeDuration, blanketOpacity, function() {
+                    $blanket.fadeIn(fadeDuration, function() {
                         $this.fadeIn(fadeDuration, function() {
                             $this.trigger('opened').addClass('wpbp-modal-box-opened');
                         });
